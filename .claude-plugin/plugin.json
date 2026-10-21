@@ -1,0 +1,14 @@
+{
+  "name": "parasiter",
+  "displayName": "PARASITER by Rumer",
+  "version": "0.1.0",
+  "description": "Parasite SEO workflow for your AI assistant: find and analyze platforms, pick the content type that sells, write sales reviews, audit pages, create post images, analyze niches and affiliate programs, set goals and get a daily plan.",
+  "author": {
+    "name": "Rumer (Affiliate Credo)",
+    "url": "https://affiliatecredo.com"
+  },
+  "homepage": "https://affiliatecredo.com",
+  "repository": "https://github.com/Parasiter-SEO/parasiter-plugin",
+  "license": "LicenseRef-Proprietary",
+  "keywords": ["parasite seo", "affiliate marketing", "seo", "content", "conversion"]
+}

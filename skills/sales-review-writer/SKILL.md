@@ -1,0 +1,76 @@
+---
+name: sales-review-writer
+description: Write a conversion-focused review or comparison article for parasite SEO and affiliate sales — single-product review, "best of" comparison, A vs B, personal experience, complaints/doubts or purchase guide — adapted to the target platform (Medium/LinkedIn, forum, PDF, press release, Raisely, Reddit/Quora, Facebook, YouTube description). Use whenever the user wants to write, draft, rewrite or improve a review or sales article, or after content-type-selector hands off a content brief.
+---
+
+# Sales Review Writer
+
+Part of PARASITER by Rumer (Affiliate Credo).
+
+Core idea: **you are not sending traffic, you are sending buyers.** Most reviews online are no-name, generic AI retellings of the product page. This article wins because a real author with a clear point of view leads the reader from the problem to the decision and to the purchase page, prepared to buy.
+
+The user is the operator. You write the draft; they correct it. Never treat the first draft as final, and never silently drop parts of the structure below — AI drafts tend to "forget" sections, shorten, and drift in style. Check yourself against `references/quality-check.md` before handing over.
+
+Reply to the user in their language. Write the article in the target language of the brief (default English).
+
+## Step 1 — Inputs
+
+If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for what is missing. Otherwise collect:
+
+1. **Product(s)** and the affiliate link(s). For "best of": 5, 7 or 10 products, the order, and which one is #1.
+2. **Content type**: single review, best-of comparison, A vs B, personal experience, complaints/doubts, packages/price guide.
+3. **Platform** where it will be published (decides length, tone and formatting — see `references/platform-formats.md`).
+4. **Author profile** — required, see Step 2.
+5. **Current offer**: real prices, bundles, discounts, bonuses, free shipping, guarantee, and until when the offer runs. If web access is available, send the product name(s), known URLs, country and currency to the **`product-researcher` agent**: it returns the specs, packages, prices, discounts, shipping and guarantee from the merchant's own pages, each with a source and date, plus conflicts and unverified merchant claims. Show the user that table and ask them to confirm the deal on the merchant page before publishing. Without web access, ask the user to open the merchant page and give the terms. Record the date it was checked.
+6. **Unique assets**: own use of the product, photos, notes, measurements, screenshots, data.
+7. **Target query and country.**
+
+## Step 1b — Pick a visual reference
+
+Open `references/examples/INDEX.md`, pick 1–2 screenshots that match the content type and platform, look at them, and tell the user in one line which reference you follow. Take the structure and visual approach, not the text or claims. If nothing matches, follow `references/article-structure.md`.
+
+## Step 2 — The author (the hook)
+
+The author is the main reason the reader stays. Every article introduces its author in the opening: who they are, what they do, their role or position, why the reader should trust and listen to them, and what they did that qualifies them to judge this product (used it, compared N products, works in the field for X years, studied buyer feedback).
+
+Build the author block only from facts the user gives (real name or the pen name they publish under, real background, real experience). If the user has no profile yet, ask once and suggest they keep it in a saved file so every future article reuses it. Do not invent credentials, job titles, tests or results — a fake expert breaks trust the moment a reader checks, and it violates platform and advertising rules. If the user has no hands-on experience, the author's authority comes from research and comparison ("I compared the packages, terms and buyer complaints of 5 products"), and the article says so.
+
+Templates and examples: `references/author-intro.md`.
+
+## Step 3 — Structure
+
+Follow the template for the content type in `references/article-structure.md`. Every type shares the same opening, in this order:
+
+1. **Title** — the value of the page, what the reader gets, a hint of the deal or decision. Must match what the page delivers 100%.
+2. **First image** — real or custom-generated (never stock): the author, the buyer, or the products in hand. It often becomes the Google snippet image.
+3. **Quick facts box, line by line** — the product's key characteristics one per line (what it is, for whom, main feature, format/size, price from, guarantee) **plus the current deals and discounts** with the last-checked date and the main link. For "best of": a line-by-line or table summary of all products with #1 marked. Many sales happen right here. Build it from the confirmed `product-researcher` table when there is one.
+4. **Author intro + hook** — who I am and why listen (Step 2), then the reader's problem → the solution → the bridge (how this product gets you there), then what this article will give them.
+5. **Table of contents** — headings that on their own tell the story of the article. Someone who reads only the TOC and the H2/H3 headings must understand the conclusion and why to buy.
+
+Then the body per type, then FAQ, verdict with the main CTA, affiliate disclosure and last-checked date.
+
+## Step 4 — Conversion triggers
+
+Place CTAs next to the moment of decision, not at random. A CTA explains **why buy now, why this product, why this offer**, using the real current deal (`references/cta-and-offers.md`). "Click here to visit the official site" is not a CTA. Check where each link lands — a direct order/bundle page often converts better than the homepage.
+
+Urgency only from real conditions (an offer that actually ends, limited stock the merchant states). No invented deadlines.
+
+## Step 5 — Visuals
+
+Propose 3–6 images with a one-line purpose each: hero image, product in use, infographic of key facts, comparison widget/table, price/bundle visual. Hand the image prompts to the `post-illustrations` skill. Respect platform limits (PDF — few light images; Raisely — cover only; forums — external hosting).
+
+## Step 6 — Deliver
+
+1. Output the full article in the platform's format (Markdown by default; plain text with emojis for Raisely; BBCode/plain for forums when asked).
+2. Under it, a short **operator checklist**: facts to verify, placeholders left (marked `[VERIFY: …]`), images to create, links to check.
+3. Ask what to change. Iterate section by section; keep everything the user did not ask to change.
+4. Suggest running `page-audit` on the final text before publishing — it sends the text to the independent auditor, so the page is not graded by the same context that wrote it.
+
+## Rules (always)
+
+- Facts only: prices, bundles, shipping, warranty, ingredients, specs come from the user or the merchant page (directly or via `product-researcher`). Unknown → `[VERIFY: …]`, never a guess.
+- Personal experience only if the user really has it. Otherwise: research-based expert angle.
+- No invented tests, reviews, customer quotes, results, clinical claims or guaranteed outcomes. Health/money topics: describe limits honestly.
+- Show cons and say who the product is NOT for — that is what makes the recommendation believable.
+- Affiliate disclosure and last-checked date on every page.
+- Length: at least 1,500–2,000 words on article platforms unless the platform format says otherwise.

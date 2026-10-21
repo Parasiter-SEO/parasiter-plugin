@@ -1,0 +1,39 @@
+# Quality check before handing over
+
+Run this on every draft. Fix what fails before showing the user; list anything that needs their input.
+
+## Structure
+- [ ] Title states the value and matches the page 100%.
+- [ ] First image planned (real or custom, not stock).
+- [ ] Quick facts box at the top: line-by-line characteristics + current deals + last-checked date + main link.
+- [ ] Author intro: who, role/position, why trust, why listen — from the user's real profile.
+- [ ] Hook: problem → solution → bridge → what the article gives.
+- [ ] Table of contents present; headings alone tell the story and the conclusion.
+- [ ] All sections of the chosen template are present (nothing silently dropped).
+- [ ] Same template for every product in best-of articles.
+- [ ] Alternatives / comparison included even in a single review.
+- [ ] Pros AND cons; who it is NOT for.
+- [ ] FAQ from real buyer questions.
+- [ ] Clear verdict with the main CTA.
+- [ ] Affiliate disclosure + last-checked date.
+
+## Conversion
+- [ ] Every CTA says why this product, why this offer, why now.
+- [ ] CTAs sit at decision points, not scattered.
+- [ ] Links go to the best landing page (order/bundle page where it converts better).
+- [ ] Tone of CTAs fits the platform.
+
+## Honesty
+- [ ] No invented credentials, tests, results, reviews, quotes, prices, terms or deadlines.
+- [ ] Unknown facts marked `[VERIFY: …]`.
+- [ ] Personal experience only where the user has it.
+- [ ] No guaranteed outcomes; health/money limits stated.
+
+## Platform
+- [ ] Length and formatting fit the platform (`platform-formats.md`).
+- [ ] Reads natively for that platform — not like spam.
+
+## Reader test
+- [ ] Is there a reason to click this page even after an AI summary?
+- [ ] Would a buyer who reads only the top screen know what to buy and where?
+- [ ] Does the author sound like a real person with a view, not a product page?

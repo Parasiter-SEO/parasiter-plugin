@@ -1,0 +1,15 @@
+{
+  "name": "parasiter",
+  "description": "PARASITER by Rumer — parasite SEO skills and agents for your AI assistant.",
+  "owner": {
+    "name": "Rumer (Affiliate Credo)",
+    "url": "https://affiliatecredo.com"
+  },
+  "plugins": [
+    {
+      "name": "parasiter",
+      "source": "./",
+      "description": "Parasite SEO workflow: platforms, content types that sell, sales reviews, page audits, post images, niches, affiliate programs, goals and a daily plan."
+    }
+  ]
+}
