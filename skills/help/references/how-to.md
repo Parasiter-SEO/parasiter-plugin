@@ -50,6 +50,9 @@ First session of the week, or "am I on track?" → `goals` compares plan and fac
 ## Client report
 "Make a report for my client for October" → `client-reports`, built from the journal; internal notes kept out unless you want them.
 
+## Get news and notifications in Telegram (Pro, Insider)
+Say "connect Telegram" → open the personal link → press Start. The bot sends invites to your plan's channel (and the Insider group). "What's new?" shows the same news in Claude.
+
 ## Change language
 "Switch to Spanish" — plans and explanations change; pages keep the content language of your target country unless you change it too.
 

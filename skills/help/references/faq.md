@@ -4,15 +4,23 @@
 - **Free, $0** — the plugin without a key. Skills that need the server (platform database, feed, scheduled monitoring) fall back to live search and manual checks.
 <!-- Maintainer: when the split of skills between Free / Pro / Insider is final, list it here and in catalog.md. -->
 - **Pro, $19/month** — personal key: checked platform database, feed and weekly market analysis, scheduled monitoring, navigator updates; new platforms about 7 days after they are found.
-- **Insider, $39/month** — everything in Pro, the full skill set and extra features, new platforms the day they are found, private Telegram group.
+- **Insider, $39/month** — everything in Pro, the full skill set and extra features, new platforms the day they are found, PARASITER Insider channel and the private Insider group.
+- Pro includes the PARASITER Pro channel and personal notifications from the bot. Telegram is for paid plans only.
 - Annual billing about 20% less. Prices are preliminary — current terms on the official site.
 - The key is personal: one key, one person. It stops working when the subscription ends; skills keep working without server data.
 - Platform feed updates come as findings appear — several times a week, sometimes less. No daily promise.
 
+## Telegram
+- **How to connect**: say "connect Telegram" in Claude, open the personal link, press Start. A username is not enough: Telegram bots cannot write to someone first.
+- **Notifications**: page alerts, Monday reminder to upload sales, daily news digest, billing. At most one message a day (billing aside), quiet at night. Turn any off: "turn off news notifications" in Claude, or /stop in the bot.
+- **Plan ends**: access to the channels and group ends with it and comes back on renewal.
+- The bot never asks for a password, phone number or login code.
+- Do not forward channel posts outside: they are for subscribers.
+
 ## Where is my data?
 - Profile, goals, journal and sales files are in the user's own project folder. PARASITER does not upload them anywhere.
 - Sales exports often contain customer data; the import keeps only date, program, product, sub-ID, order ID, amount, commission, currency and status.
-- With a key, only what monitoring needs (page URL, main query, platform) goes to the PARASITER server.
+- With a key, only what monitoring needs (page URL, main query, platform) goes to the PARASITER server. Linking Telegram stores your Telegram ID with your key. Sales and the journal never go to the server or to Telegram.
 
 ## Why can't every sale be tied to a page?
 Networks often show no sub-ID or referrer, buyers come back later, and many pages promote the same offer. UTM tags don't help: they go to the merchant's analytics, which the affiliate doesn't see. PARASITER counts every sale exactly by program, month and pack; per-page numbers add an estimated share, always labelled. A sub-ID per page (or per platform / pack), separate Amazon tracking IDs and network click reports make it more precise.

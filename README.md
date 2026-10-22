@@ -4,7 +4,7 @@ Parasite SEO inside your AI assistant. Skills and agents that find platforms, pi
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
-> **Status: private beta (v0.4.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.5.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
@@ -28,7 +28,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | `post-illustrations` | Image plan and generator prompts for your posts |
 | `platform-finder` | Finds platforms for your niche; checked database with a key |
 | `platform-analyzer` | Breaks down one platform, 0–100 score, verdict |
-| `platform-feed` | New platforms and weekly market analysis from Rumer (key required) |
+| `platform-feed` | News from Rumer: new platforms, plugin updates, ideas, weekly market analysis, polls; connects Telegram (key required) |
 | `platform-monitor` | Alive / indexed / ranking status of your pages; scheduled with a key |
 | `niche-analysis` | Keywords and SERPs via your own SEO tool API |
 | `affiliate-finder` | Finds and scores affiliate programs (with agent) |
@@ -59,12 +59,16 @@ The plugin is written in English and works in any language. On first run the nav
 ## Plans
 
 - **Free, $0** — the plugin without a key.
-- **Pro, $19/month** — personal key: platform database, feed and weekly analysis, monitoring, navigator updates; new platforms about 7 days after they are found.
-- **Insider, $39/month** — everything in Pro, the full skill set and extra features, new platforms the day they are found, private Telegram group.
+- **Pro, $19/month** — personal key: platform database, feed and weekly analysis, monitoring, navigator updates; new platforms about 7 days after they are found. **PARASITER Pro** Telegram channel and personal notifications from the bot.
+- **Insider, $39/month** — everything in Pro, the full skill set and extra features, new platforms the day they are found. **PARASITER Insider** Telegram channel (platforms a week earlier, extra posts) and the private Insider group (discussion, polls).
 
 Annual billing saves about 20%. First members from the group keep their early price for life. Prices are preliminary.
 
 Updates to the platform feed come as findings appear — several times a week, sometimes less.
+
+## News and Telegram (Pro and Insider)
+
+Every new platform, plugin update, idea, market analysis and poll from Rumer appears in three places at once: in Claude at the start of your session ("what's new?"), in the Telegram channel of your plan, and — for Insider — in the private group. To link Telegram, say **"connect Telegram"** in Claude: you get a personal link, press Start in the bot, and it sends your channel invites. The bot also sends personal notifications — pages that died, a Monday reminder to upload sales, a daily news digest, billing — at most one a day, any type can be turned off. What changed in each version: `CHANGELOG.md`.
 
 ## Install (Claude Code)
 

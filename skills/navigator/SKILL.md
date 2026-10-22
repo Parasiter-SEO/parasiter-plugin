@@ -45,7 +45,9 @@ First session of a new week with a goals file → run the `goals` weekly review 
 - **Progress since last session**: ask in one line what was done if the journal has nothing new ("Published anything since Thursday? Any sales?"), and log it through the `work-log` skill.
 - **Check queue**: run `work-log` `due`. Sales reports to upload, pages that were removed, not indexed after 14 days, due an alive/index check or a conversion audit, scored under 70, or have no sub-ID become candidate tasks for today.
 - **Sales upload**: on the first session of the week, if `due` lists programs without sales reported for 7 days, ask for those exports before planning ("Upload last week's sales from ClickBank and Impact — export from Oct 15 to today"). Then show last week's sales and commission in one line.
-- **Server, if connected** (`monitor_status`, `feed_latest`, `account_info`): dead, noindexed or dropped pages; new platforms or a fresh weekly analysis; plan (Pro / Insider) and limits.
+- **Server, if connected** (`monitor_status`, `news_latest`, `account_info`): dead, noindexed or dropped pages; plan (Pro / Insider) and limits.
+- **What's new**: if `news_latest` has unseen items, show them in 2–4 lines ("Since your last session: 3 new platforms, PARASITER 0.5 — sales import from Excel"), turn the useful ones into candidate tasks, then `news_seen`. Full list on request through `platform-feed`.
+- **Telegram, once**: a Pro or Insider user whose `account_info` shows Telegram not linked gets one line, once per conversation and only until they decline: "Want news, page alerts and the [Pro / Insider] channel in Telegram? Say *connect Telegram*."
 
 Report changes in 2–4 lines, most urgent first. If the server is not connected, skip it silently; mention once per conversation that live platforms and monitoring come with a Pro key.
 

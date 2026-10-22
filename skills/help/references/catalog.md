@@ -2,7 +2,7 @@
 
 <!-- Maintainer: update this file, how-to.md and faq.md whenever a skill, agent, server tool, plan or file changes. The help skill answers only from these files. -->
 
-PARASITER by Rumer — parasite SEO inside the user's AI assistant. Skills hold the method; agents do research and checks in their own context and hand back facts with sources. The user never calls agents; skills send them. Version 0.4 (private beta).
+PARASITER by Rumer — parasite SEO inside the user's AI assistant. Skills hold the method; agents do research and checks in their own context and hand back facts with sources. The user never calls agents; skills send them. Version 0.5 (private beta).
 
 ## The workflow in 5 steps
 
@@ -25,7 +25,7 @@ PARASITER by Rumer — parasite SEO inside the user's AI assistant. Skills hold 
 | `post-illustrations` | Image plan and generator prompts in one style: cover, product-in-hand, comparison card, facts infographic, price visual, Facebook series; sizes per platform. | "Make images for this review" | No |
 | `platform-finder` | Finds platforms for a niche and language: forums, communities, Q&A, article, profile, document, site-builder, event pages; filtered by link rules, indexing, moderation. Live search through the platform-scout agent; with a key, the checked platform database first. | "Where can I publish about VPNs in Spanish?" | Database: Pro |
 | `platform-analyzer` | Breaks down one platform: registration, fresh-post indexing, noindex, links, moderation, warm-up, lifespan; 0–100 score and what to publish there. | "Should I post on X?" | No |
-| `platform-feed` | Rumer's feed: new platforms, top lists, weekly market analysis, what changed after Google updates — turned into actions for the user's niche. | "What's new this week?" | Pro (Insider: same-day platforms) |
+| `platform-feed` | Rumer's news feed: new platforms, plugin updates, ideas, weekly market analysis, polls — turned into actions for the user's niche. Connects Telegram: plan channel, Insider group, personal notifications. | "What's new?", "Connect Telegram" | Pro (Insider: same-day platforms, Insider channel and group) |
 | `platform-monitor` | Alive / removed, indexed / noindex, still ranking, affiliate link working. With a key, scheduled server checks; without, a manual check (page-checker agent for longer lists). Results go into the journal. | "Are my pages alive?", "Check my links" | Scheduled: Pro. Manual: no |
 | `niche-analysis` | Keywords by buyer-modifier cluster, difficulty, SERP make-up, which parasite platforms already rank, competitor pages — through the user's own SEO tool API (DataForSEO, Serpstat, Semrush, Ahrefs) or CSV exports. | "Is this niche worth it?", "Find keywords for X" | Needs the user's own SEO API key or exports |
 | `affiliate-finder` | Finds and scores affiliate programs and offers: model, rate, cookie, payout, GEOs, traffic rules, offer page — via the affiliate-scout agent. | "Which program should I promote for keto?" | No |
@@ -45,7 +45,7 @@ PARASITER by Rumer — parasite SEO inside the user's AI assistant. Skills hold 
 
 ## Server tools (Pro / Insider key)
 
-`account_info` (plan, limits) · `platforms_search` (checked platform database) · `feed_latest`, `analysis_latest` (feed and weekly analysis) · `monitor_track`, `monitor_status` (scheduled page checks). Skills say when they need one and fall back to live search or manual checks without a key. The server is in beta.
+`account_info` (plan, limits, Telegram linked) · `platforms_search` (checked platform database) · `feed_latest`, `analysis_latest` (platforms and weekly analysis) · `news_latest`, `news_seen` (news feed) · `telegram_link`, `telegram_status`, `telegram_settings`, `telegram_unlink` (Telegram) · `monitor_track`, `monitor_status` (scheduled page checks). Skills say when they need one and fall back to live search or manual checks without a key. The server is in beta.
 
 ## The user's files
 
@@ -57,6 +57,17 @@ Kept in the user's project folder, written by the skills:
 | `parasite-seo-goals.md` | goals | baseline, goals, milestones, this week's targets, reviews |
 | `parasite-seo-progress.csv` | work-log | pages, checks, audits, traffic, imports, other work — one row per fact |
 | `parasite-seo-sales.csv` | work-log | one row per sale, manual or imported |
+
+## Telegram (Pro and Insider only)
+
+| Chat | Who | What |
+|---|---|---|
+| PARASITER Pro channel | Pro and Insider | news, updates, ideas, polls; new platforms ~7 days after found |
+| PARASITER Insider channel | Insider | everything the same day, plus Insider-only posts |
+| Insider group | Insider | discussion with Rumer and members, polls, questions |
+| PARASITER bot | Pro and Insider | linking, invites, personal notifications: page alerts, Monday sales reminder, news digest, billing |
+
+Free: no server and no Telegram chats; the public channel @rumerparasiteseo is open to everyone.
 
 ## What PARASITER does not do
 
