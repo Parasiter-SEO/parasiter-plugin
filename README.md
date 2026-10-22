@@ -4,7 +4,7 @@ Parasite SEO inside your AI assistant. Skills and agents that find platforms, pi
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
-> **Status: private beta (v0.3.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.4.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
@@ -33,6 +33,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | `niche-analysis` | Keywords and SERPs via your own SEO tool API |
 | `affiliate-finder` | Finds and scores affiliate programs (with agent) |
 | `client-reports` | Performance analytics and client reports from your data |
+| `help` | Built-in help: what each skill does, how to do any task step by step, plans, files, privacy. Ask "what can PARASITER do?" or "how do I …?" |
 
 ## Agents
 

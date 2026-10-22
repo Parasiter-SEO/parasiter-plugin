@@ -84,6 +84,7 @@ Ask "Start with #1?" When the user agrees, follow the target skill. After each t
 | Check a page before/after publishing | page-audit |
 | Is it alive / indexed / ranking | platform-monitor |
 | What earns, what to fix | client-reports |
+| Questions about PARASITER itself: what it does, how to …, plans | help |
 
 ## Rules
 
