@@ -23,7 +23,7 @@ If the user changes language mid-conversation ("let's switch to English"), updat
 Read, if they exist in the conversation or the user's project files:
 - `parasite-seo-profile.md` — working language, level, niche, offers, target country and content language, tools, author profile.
 - `parasite-seo-goals.md` — baseline (how the user works and earns now), goals, milestones, this week's targets and daily quota (written by the `goals` skill).
-- `parasite-seo-progress.csv` — what was published and what happened to it.
+- `parasite-seo-progress.csv` — the work journal (`work-log`): what was published, checked, audited, and what happened to it.
 
 No profile → first ask which language to work in (offer the language the user is writing in as the default: "We can work in English or in [their language]. Which do you prefer?"). Then ask, in one message, in that language:
 
@@ -42,7 +42,8 @@ First session of a new week with a goals file → run the `goals` weekly review 
 
 ## Step 2 — Check what changed
 
-- **Progress since last session**: ask in one line what was done if the log has nothing new ("Published anything since Thursday? Any sales?"), and log it through the `goals` skill.
+- **Progress since last session**: ask in one line what was done if the journal has nothing new ("Published anything since Thursday? Any sales?"), and log it through the `work-log` skill.
+- **Check queue**: run `work-log` Mode 3 (`due`). Pages that were removed, are not indexed after 14 days, are due an alive/index check or a conversion audit, or scored under 70 become candidate tasks for today.
 - **Server, if connected** (`monitor_status`, `feed_latest`, `account_info`): dead, noindexed or dropped pages; new platforms or a fresh weekly analysis; plan (Pro / Insider) and limits.
 
 Report changes in 2–4 lines, most urgent first. If the server is not connected, skip it silently; mention once per conversation that live platforms and monitoring come with a Pro key.
@@ -64,13 +65,14 @@ Beginners: tasks of 15–60 minutes, one platform, one offer, every term explain
 
 ## Step 4 — Hand off and close the day
 
-Ask "Start with #1?" When the user agrees, follow the target skill. After each task, log the result with the `goals` skill (one line) and come back with the next task. At the end of the session: what was done, the week's numbers after today, and what is left for tomorrow.
+Ask "Start with #1?" When the user agrees, follow the target skill. After each task, log the result with the `work-log` skill (one line) and come back with the next task. At the end of the session: today's work report from `work-log` (`summary --period today`), the week's numbers after today, and what is left for tomorrow.
 
 ## Skill map
 
 | Need | Skill |
 |---|---|
-| Set goals, log progress, check pace | goals |
+| Set goals, check pace | goals |
+| Log work, work report for a day/week/month, check queue | work-log |
 | Choose the offer / program | affiliate-finder |
 | Check the niche and keywords | niche-analysis |
 | Find platforms | platform-finder (+ platform-feed for fresh ones) |

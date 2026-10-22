@@ -14,7 +14,7 @@ Reply in the user's language. Reports for clients can be in the client's languag
 ## Step 1 — Collect
 
 Ask for what the user has (any subset works):
-1. **Publications log** — URL, platform, date, product/offer, content type, main query, country. Template: `references/log-template.csv`.
+1. **Publications log** — URL, platform, date, product/offer, content type, main query, country. Template: `references/log-template.csv`. If the user keeps the work journal (`parasite-seo-progress.csv`, `work-log`), take URLs, platforms, offers, dates, statuses and stats from it instead of asking.
 2. **Search Console** (own pages/sites) — performance export by page and query: impressions, clicks, CTR, position.
 3. **Rank tracker** export for parasite pages (third-party platforms have no Search Console).
 4. **Affiliate stats** — clicks, conversions, commission by sub-ID/link or by day.

@@ -73,16 +73,16 @@ Keep the Baseline and Goals sections exactly as the user said them. The baseline
 
 ## parasite-seo-progress.csv
 
+The work journal. It is kept by the `work-log` skill; the full format (columns, events, statuses, check schedule) is in `skills/work-log/references/log-format.md`.
+
 ```
-date,event,page_url,platform,offer,status,clicks,sales,revenue,note
-2026-10-19,baseline,,,,,,,400,"30 live pages, 4/week, 10 h/week, $400/month"
-2026-10-20,published,https://…,medium,vpn,live,,,,comparison review
-2026-10-22,status,https://…,medium,vpn,indexed,,,,
-2026-10-27,stats,https://…,medium,vpn,,34,2,18.40,from network
-2026-10-29,status,https://…,forum-x,vpn,removed,,,,repost from copy
+date,time,event,page_url,platform,offer,main_query,content_type,status,score,clicks,sales,revenue,minutes,note
+2026-10-19,09:00,baseline,,,,,,,,,,400,,"30 live pages, 4/week, 10 h/week, $400/month"
+2026-10-20,11:20,published,https://…,medium,vpn,nordvpn vs surfshark,ab-comparison,live,,,,,90,
+2026-10-22,08:10,check,https://…,medium,vpn,,,indexed,,,,,,
+2026-10-27,18:00,stats,https://…,medium,vpn,,,,,34,2,18.40,,from network
 ```
 
-- `event`: baseline · published · status · stats · refreshed · moved · note
-- `status`: live · indexed · noindex · dropped · removed · dead
-- `clicks`, `sales`, `revenue`: for the period since the last stats row of that page (for `baseline`: monthly revenue now)
+- Goals reads: `baseline` (starting point), `published` (pages per week), `check` (alive / indexed), `stats` (clicks, sales, revenue).
+- For `baseline`, `revenue` is monthly revenue now.
 - One row per fact. Never edit old rows; add a new one.

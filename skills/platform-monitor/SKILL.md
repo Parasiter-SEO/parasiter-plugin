@@ -40,6 +40,10 @@ For more than 3 URLs, hand the list to the **`page-checker` agent** (URL, main q
 
 Output the same summary table, marked "manual check, [date]". Suggest the server for ongoing tracking only once.
 
+## Log every result
+
+Every check result goes into the work journal as a `check` row (`work-log`): `status` live · indexed · not-indexed · noindex · dropped · removed. Pages to check come from the journal's check queue (`work-log` Mode 3) — the user does not have to list them again.
+
 ## Rules
 
 - Never claim a page is indexed or ranking without a check result; mark unknowns.

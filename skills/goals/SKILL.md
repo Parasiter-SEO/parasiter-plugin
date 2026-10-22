@@ -84,13 +84,13 @@ Ramp from the baseline, not from zero: week 1 starts near the user's current wee
 
 ## Mode 5 — Log progress
 
-When the user reports work ("published 3 pages on X", "2 sales today", "Medium deleted my post"), add rows to `parasite-seo-progress.csv`. If the server is connected, also pull `monitor_status` so alive / indexed / dropped statuses come in without the user typing them. Confirm in one line what was logged and what it changes in this week's numbers.
+When the user reports work ("published 3 pages on X", "2 sales today", "Medium deleted my post"), log it with the `work-log` skill: it owns `parasite-seo-progress.csv` (format in `work-log/references/log-format.md`), queues each new page for alive/index checks and a conversion audit, and makes day/week/month work reports. If the server is connected, also pull `monitor_status` so alive / indexed / dropped statuses come in as `check` rows without the user typing them. Confirm in one line what was logged and what it changes in this week's numbers.
 
 ## Mode 6 — Weekly review
 
 Once a week (the navigator triggers it on the user's first session of the week, or the user asks "am I on track"):
 
-1. Plan vs fact for the week: published, alive, indexed, platforms, clicks, sales, income.
+1. Plan vs fact for the week: published, alive, indexed, platforms, clicks, sales, income. Take the fact from `work-log` (`summary --period last-week`).
 2. **Against the baseline** — what has changed since the start (pages per week, live pages, income).
 3. **Pace** — at the current rate, where will the horizon end? Use the measured pace once there are 2 weeks of data.
 4. Replace assumptions with real numbers and recalculate the income chain.

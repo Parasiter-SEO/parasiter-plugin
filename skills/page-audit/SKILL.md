@@ -59,3 +59,4 @@ Give rewritten fragments for the top 1–3 critical issues (new title, quick fac
 - Judge only what is on the page; mark assumptions.
 - Never "fix" by adding invented facts, reviews or urgency. Missing facts → `[VERIFY: …]` and ask the user.
 - Re-audit after fixes and show the score change.
+- If the page has a URL, log the score in the work journal as an `audit` row (`work-log`); after fixes, log `refreshed` and the new `audit`.
