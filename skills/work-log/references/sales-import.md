@@ -12,7 +12,9 @@ Every affiliate network and most platforms let the user export a report. The use
 
 If a network only has daily totals by sub-ID, log them as `stats` rows per page (`add --event stats --url … --aff-clicks … --sales … --revenue …`).
 
-## Where the sub-ID goes
+## Where the sub-ID goes (when the network supports it)
+
+A sub-ID is optional. Without it every sale still counts by program and campaign, and per-page numbers are estimated. Many programs, merchant-direct offers and coupon sales never pass one.
 
 The parameter name differs by network. Common ones (confirm in the network's own help, they change):
 

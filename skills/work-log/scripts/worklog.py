@@ -32,7 +32,7 @@ import sys
 from collections import Counter, defaultdict
 from datetime import date, datetime, timedelta
 
-COLUMNS = ["date", "time", "event", "page_url", "platform", "offer", "program", "sub_id",
+COLUMNS = ["date", "time", "event", "page_url", "platform", "offer", "program", "campaign", "sub_id",
            "main_query", "content_type", "status", "score", "views", "clicks", "aff_clicks",
            "sales", "revenue", "minutes", "note"]
 SALE_COLUMNS = ["date", "program", "network", "offer", "sub_id", "page_url", "order_id",
@@ -243,12 +243,13 @@ def page_states(rows, today):
         url = r.get("page_url", "")
         if not url or r["_d"] > today:
             continue
-        p = pages.setdefault(url, {"url": url, "platform": "", "offer": "", "program": "",
+        p = pages.setdefault(url, {"url": url, "platform": "", "offer": "", "program": "", "campaign": "",
                                    "sub_id": "", "query": "", "content_type": "",
                                    "published": None, "last_check": None, "status": "",
                                    "ever_indexed": False, "last_audit": None, "score": None,
                                    "last_refresh": None, "moved": None, "first": r["_d"]})
         for k, col in (("platform", "platform"), ("offer", "offer"), ("program", "program"),
+                       ("campaign", "campaign"),
                        ("sub_id", "sub_id"), ("query", "main_query"),
                        ("content_type", "content_type")):
             if not p[k] and r.get(col):
@@ -405,24 +406,81 @@ def previous_range(period, start, end):
 
 # ---------- effectiveness ----------
 
+PAGE_DIMS = {"page", "platform", "offer", "content_type", "campaign"}
+
+
+def estimate_shares(rows, sales, pages, s, e):
+    """Spread sales that have no page over the pages of the same program.
+
+    Each unattributed sale is split among pages of its program (or offer) that were
+    published by the sale date and not moved before it, weighted by affiliate clicks in
+    the period, else views, else equally. Returns ({url: {cur: amount}}, {url: sales},
+    unallocated {cur: amount}, methods Counter). Always an estimate.
+    """
+    traffic = defaultdict(lambda: [0.0, 0.0])
+    has = defaultdict(lambda: [False, False])  # page has any clicks / views data
+    for r in rows:
+        if s <= r["_d"] <= e and r["event"] in ("traffic", "stats") and r.get("page_url"):
+            u = r["page_url"]
+            if r.get("aff_clicks", "") != "":
+                traffic[u][0] += num(r.get("aff_clicks")) or 0
+                has[u][0] = True
+            if r.get("views", "") != "":
+                traffic[u][1] += num(r.get("views")) or 0
+                has[u][1] = True
+    est, est_n, unalloc, methods = defaultdict(lambda: defaultdict(float)), defaultdict(float), \
+        defaultdict(float), Counter()
+    for r in sales:
+        if not (s <= r["_d"] <= e) or r["_page"] or not counted(r):
+            continue
+        cur = (r.get("currency") or "USD").upper()
+        prog = (r.get("program") or "").lower()
+        off = (r.get("offer") or "").lower()
+        cands = [p for p in pages.values()
+                 if p["published"] <= r["_d"] and not (p["moved"] and p["moved"] < r["_d"])
+                 and ((prog and (p["program"] or "").lower() == prog)
+                      or (not prog and off and (p["offer"] or "").lower() == off))]
+        if not cands:
+            unalloc[cur] += r["_c"]
+            methods["no matching pages"] += 1
+            continue
+        w, m = None, "equal split"
+        for idx, label in ((0, "affiliate clicks"), (1, "views")):
+            known = [traffic[p["url"]][idx] for p in cands if has[p["url"]][idx]]
+            if known and sum(known):
+                avg = sum(known) / len(known)  # pages with no data get the average, not zero
+                w = [traffic[p["url"]][idx] if has[p["url"]][idx] else avg for p in cands]
+                m = label
+                break
+        if w is None:
+            w = [1.0] * len(cands)
+        tot = sum(w)
+        methods[m] += 1
+        for p, wi in zip(cands, w):
+            est[p["url"]][cur] += r["_c"] * wi / tot
+            est_n[p["url"]] += (1 if r["_c"] > 0 else -1) * wi / tot
+    return est, est_n, unalloc, methods
+
+
 def effect_table(rows, sales, pages, s, e, by):
     """Group pages, traffic and sales in [s, e] by a dimension."""
     groups = defaultdict(lambda: {"pages": set(), "views": 0.0, "aff_clicks": 0.0,
                                   "sales": 0, "commission": defaultdict(float),
                                   "pending": defaultdict(float), "reversed": 0,
-                                  "stats_sales": 0.0, "stats_rev": 0.0})
+                                  "stats_sales": 0.0, "stats_rev": 0.0,
+                                  "est": defaultdict(float), "est_n": 0.0})
 
     def key_for(page_url, fallback=None, d=None):
         if by == "month":
             return d.strftime("%Y-%m") if d else "—"
         if by == "page":
-            return page_url or "(no page: unknown sub-ID)"
+            return page_url or "(sales without a page)"
         p = pages.get(page_url)
         if p and p.get(by):
             return p[by]
         if fallback and fallback.get(by):
             return fallback[by]
-        return "(no page)" if not page_url else "(not set)"
+        return "(sales without a page)" if not page_url else "(not set)"
 
     for p in pages.values():
         if p["published"] <= e and not (p["moved"] and p["moved"] < s):
@@ -458,6 +516,17 @@ def effect_table(rows, sales, pages, s, e, by):
             g["reversed"] += 1
         if r["status"] == "pending":
             g["pending"][cur] += r["_c"]
+    if by in PAGE_DIMS:
+        est, est_n, unalloc, _ = estimate_shares(rows, sales, pages, s, e)
+        for url, by_cur in est.items():
+            g = groups[key_for(url)]
+            for cur, v in by_cur.items():
+                g["est"][cur] += v
+            g["est_n"] += est_n[url]
+        nk = key_for("")
+        if nk in groups:
+            groups[nk]["est"] = defaultdict(float, unalloc)
+            groups[nk]["est_mark"] = True
     return groups
 
 
@@ -479,6 +548,44 @@ def print_effect(groups, by, cur, limit=None):
     if limit:
         out = out[:limit]
     head = "Page" if by == "page" else by.replace("_", " ").title()
+    has_est = any(g["est"] for g in groups.values())
+    if has_est:
+        print(f"| {head} | Pages | Views | Aff. clicks | Sales (exact) | Commission (exact) | + Estimated share | Total with estimate | Pending | EPC* | Per page* | Per 1k views* |")
+        print("|---|---|---|---|---|---|---|---|---|---|---|---|")
+        out.sort(key=lambda x: (-(x[2] + (0 if x[1].get("est_mark") else x[1]["est"].get(cur, 0))),
+                                -x[1]["views"], str(x[0])))
+        for k, g, com, n in out:
+            unalloc_row = g.get("est_mark")
+            add = g["est"].get(cur, 0.0)
+            total = com if unalloc_row else com + add
+            pages_n = len(g["pages"])
+            epc = total / g["aff_clicks"] if g["aff_clicks"] else None
+            per_page = total / pages_n if pages_n else None
+            rpm = total / g["views"] * 1000 if g["views"] else None
+            name = short(k, 45) if by == "page" else k
+            rev = f" ({g['reversed']} reversed)" if g["reversed"] else ""
+            share = (f"{money(add, cur)} not shared" if unalloc_row and add
+                     else "spread over pages ↑" if unalloc_row
+                     else (f"+{money(add, cur)} (~{g['est_n']:.1f} sales)" if add else "—"))
+            print(f"| {name} | {pages_n or '—'} | {fmt(g['views']) if g['views'] else '—'} | "
+                  f"{fmt(g['aff_clicks']) if g['aff_clicks'] else '—'} | {fmt(n)}{rev} | "
+                  f"{money(com, cur)} | {share} | {'—' if unalloc_row else money(total, cur)} | "
+                  f"{money(g['pending'].get(cur), cur) if g['pending'].get(cur) else '—'} | "
+                  f"{money(epc, cur) if epc is not None and not unalloc_row else '—'} | "
+                  f"{money(per_page, cur) if per_page is not None else '—'} | "
+                  f"{money(rpm, cur) if rpm is not None and not unalloc_row else '—'} |")
+        print("\n\\* with the estimated share. The estimate spreads sales that have no page over the "
+              "pages of the same program (by affiliate clicks, else views, else equally; pages with no traffic data get the average). "
+              "It shows where money probably comes from, not a fact.")
+        others = Counter()
+        for g in groups.values():
+            for c2, v in g["commission"].items():
+                if c2 != cur:
+                    others[c2] += v
+        if others:
+            print("\nOther currencies, not in the table: " +
+                  " · ".join(money(v, c2) for c2, v in others.items()))
+        return
     print(f"| {head} | Pages | Views | Aff. clicks | Sales | Commission | Pending | EPC | Conv. | Per page | Per 1k views |")
     print("|---|---|---|---|---|---|---|---|---|---|---|")
     for k, g, com, n in out:
@@ -591,7 +698,7 @@ def due_lists(rows, sales, pages, today):
         if reason:
             out["audit"].append((p, reason))
         if not p["sub_id"] and p["age"] <= 365:
-            out["no_sub"].append((p, "no sub-ID: sales cannot be tied to this page"))
+            out["no_sub"].append((p, "sales counted by program"))
     out["sales"] = sales_due(rows, sales, pages, today)
     return out
 
@@ -661,12 +768,13 @@ def cmd_summary(a):
         if rev_n:
             line += f" · {rev_n} reversed"
         if unattr:
-            line += f" · {unattr} not tied to a page"
+            line += f" · {n - unattr} tied to a page, {unattr} by program only"
         if legacy:
             line += f" · {money(legacy)} from stats rows"
         print(f"\n{line}")
         if views or aclk:
-            print(f"**Traffic:** {fmt(views)} views · {fmt(aclk)} affiliate clicks"
+            print("**Traffic:** " + " · ".join(x for x in (
+                      f"{fmt(views)} views" if views else "", f"{fmt(aclk)} affiliate clicks" if aclk else "") if x)
                   + (f" · conv. {pct(n / aclk)}" if aclk and n else ""))
 
     if a.period not in ("today", "yesterday", None) and s != e:
@@ -730,7 +838,7 @@ def cmd_summary(a):
     parts = [f"{len(due[k])} {t}" for k, t in (
         ("sales", "sales reports to upload"), ("check", "checks due"),
         ("not_indexed", "not indexed 14+ days"), ("republish", "to republish"),
-        ("audit", "audits due"), ("improve", "to improve"), ("no_sub", "pages without sub-ID"))
+        ("audit", "audits due"), ("improve", "to improve"))
         if due[k]]
     if parts:
         print(f"\n**Needs attention today ({today}):** " + " · ".join(parts) + " — run `due` for the list")
@@ -755,9 +863,11 @@ def cmd_effect(a):
     print(f"\n**Total:** {n} sales · {money(tot.get(cur, 0), cur)} commission"
           f" · {live} pages alive or unchecked at period end"
           + (f" · {money(tot.get(cur, 0) / live, cur)} per page" if live else ""))
-    if unattr:
-        print(f"\n{unattr} sales have no page: their sub-ID is missing or not in the journal. "
-              "Add the sub-ID to the page's `published` row and they will be attributed.")
+    if n:
+        exact = n - unattr
+        print(f"\n**Attribution:** {exact} of {n} sales tied to a page exactly ({exact / n * 100:.0f}%), "
+              f"{unattr} known only by program. Program and month totals count every sale; "
+              "page, platform, offer, content-type and campaign tables add an estimated share for the rest.")
     print("\nEPC = commission / affiliate clicks · Conv. = sales / affiliate clicks · "
           "Per page = commission / pages · Per 1k views = commission / views × 1000. "
           "Numbers only from the user's logs and exports.")
@@ -783,7 +893,7 @@ def cmd_due(a):
         ("check", "Alive / index check due"),
         ("improve", f"Audit score under {AUDIT_MIN} — improve, then re-audit"),
         ("audit", "Conversion audit due"),
-        ("no_sub", "No sub-ID — add one to the affiliate link and the journal"),
+        ("no_sub", "Optional: no sub-ID — add one if the network supports it, otherwise sales are counted by program"),
     ]
     for key, title in sections:
         items = due[key]
@@ -830,7 +940,7 @@ def cmd_pages(a):
 
 def cmd_add(a):
     row = journal_row(event=a.event, page_url=a.url, platform=a.platform, offer=a.offer,
-                      program=a.program, sub_id=a.sub_id, main_query=a.query,
+                      program=a.program, campaign=a.campaign, sub_id=a.sub_id, main_query=a.query,
                       content_type=a.type, status=a.status, score=a.score, views=a.views,
                       clicks=a.clicks, aff_clicks=a.aff_clicks, sales=a.sales,
                       revenue=a.revenue, minutes=a.minutes, note=a.note)
@@ -1034,7 +1144,8 @@ def cmd_import_sales(a):
           f" ({sum(1 for r in new if r['status'] == 'pending')} pending,"
           f" {sum(1 for r in new if r['status'] == 'reversed')} reversed)")
     if no_sub:
-        print(f"- {no_sub} sales have no sub-ID: they count for the program but not for a page.")
+        print(f"- {no_sub} sales have no sub-ID: counted in program and month totals exactly; "
+              "per-page share is estimated in `effect`.")
     if unknown_sub:
         print("- Sub-IDs not found in the journal (add them to the page's published row): "
               + ", ".join(f"{k} ({v})" for k, v in unknown_sub.most_common(15)))
@@ -1119,7 +1230,7 @@ def main():
     ef = sub.add_parser("effect"); common(ef)
     ef.add_argument("--period", default="month")
     ef.add_argument("--by", default="page",
-                    choices=["page", "platform", "offer", "program", "content_type", "month"])
+                    choices=["page", "platform", "offer", "program", "campaign", "content_type", "month"])
     ef.set_defaults(fn=cmd_effect)
 
     d = sub.add_parser("due"); common(d); d.set_defaults(fn=cmd_due)
@@ -1129,7 +1240,7 @@ def main():
 
     ad = sub.add_parser("add"); common(ad, today=False)
     ad.add_argument("--event", required=True, choices=EVENTS)
-    for opt in ("url", "platform", "offer", "program", "sub-id", "query", "type", "status",
+    for opt in ("url", "platform", "offer", "program", "campaign", "sub-id", "query", "type", "status",
                 "score", "views", "clicks", "aff-clicks", "sales", "revenue", "minutes",
                 "note", "date", "time"):
         ad.add_argument(f"--{opt}")

@@ -27,7 +27,7 @@ Whenever the user reports work, or another skill finishes a step, add the row ri
 
 | User says / skill finishes | Row (`add --event …`) |
 |---|---|
-| "Published / added an article: URL" | `published` + platform, offer, program, **sub-ID**, main query, content type |
+| "Published / added an article: URL" | `published` + platform, offer, program, campaign (pack), sub-ID if any, main query, content type |
 | "Sent it to indexing" | `submitted` |
 | platform-monitor / page-checker result | `check` + status live · indexed · not-indexed · noindex · dropped · removed |
 | page-audit result | `audit` + score 0–100 |
@@ -40,7 +40,7 @@ Whenever the user reports work, or another skill finishes a step, add the row ri
 python3 scripts/worklog.py add parasite-seo-progress.csv --event published --url https://… --platform medium --offer nordvpn --program "NordVPN (Impact)" --sub-id md-1022-1 --query "nordvpn vs surfshark" --type ab-comparison
 ```
 
-**Sub-ID on every page.** It is what ties a sale to a page. If the user has none, propose one before they publish: `[platform 2 letters]-[MMDD]-[n]`, e.g. `md-1022-1`, and show where it goes in their network's link (`references/sales-import.md`). Amazon has no sub-ID: use a separate tracking ID per page or platform.
+**Program and campaign on every page.** `program` is the affiliate account the sales come from (must match the import's `--program`); `campaign` is the pack the page belongs to ("keto-pack-oct", 20 articles published together). These two are enough to count every sale. A **sub-ID** is a bonus: where the network supports it, it ties a sale to the exact page. Offer one (`md-1022-1`, see `references/sales-import.md`) but never block or nag — many programs, coupons and merchant sites cannot pass it.
 
 After a `published` row: offer page-audit if the page has no audit; with the server (Pro) call `monitor_track` (URL, main query, platform); remind once per session to keep a copy of the text. Confirm in one line ("Logged: Medium, sub-ID md-1022-1. Index check Oct 24. Audit now?").
 
@@ -58,11 +58,28 @@ python3 scripts/worklog.py import-sales parasite-seo-progress.csv export.csv --p
 ```
 The script finds the columns (date, order ID, commission, amount, sub-ID, status, product, currency) under the names networks use, handles `,`/`;` files, US/EU dates and decimals, skips rows already imported, records status changes (pending → approved, refunds) as new rows, and logs an `import` row in the journal. If it cannot find a column it prints the file's headers: map them with `--map commission="Your Earnings"` and re-run. Excel export → save as CSV first (or convert with the xlsx skill). PDF or screenshot only → read the sales from it and log them with `sale`, one by one, marking `--note "from screenshot"`.
 
-After an import, report in 3–4 lines: new sales, commission, pending, refunds, and **sub-IDs not in the journal** — ask which page each belongs to and add it to that page's `published` row so its sales attach.
+After an import, report in 3–4 lines: new sales, commission, pending, refunds. If sub-IDs appear that are not in the journal, ask once which page they belong to and add them to that page's `published` row so past and future sales attach.
 
 ### Weekly sales upload
 
 The check queue (Mode 5) lists every program with live pages whose sales were not imported or logged for 7 days, and asks for a monthly export even when sales are logged by hand (exports catch refunds and missed sales). The navigator raises it on the first session of the week. Ask plainly: "Upload this week's export from ClickBank and Impact: [date] to today." How to export: `references/sales-import.md`.
+
+### Sales without a page are normal
+
+Often a sale cannot be tied to an article: the network shows no sub-ID or referrer, the buyer came back days later, or 20 articles of a pack promote the same offer. UTM tags don't solve it either — they land in the merchant's analytics, which the affiliate never sees. So the journal works on three levels and never treats an untied sale as an error:
+
+1. **Exact** — the sale has a page (URL or a known sub-ID).
+2. **By program / campaign** — every sale has a program; program, month and campaign totals count all of them exactly. Judge a pack by its total: "20 keto pages, October: 6 sales, $240, $12 per page".
+3. **Estimated share** — page, platform, offer, content-type and campaign tables spread untied sales over the pages of the same program that were live at the sale date, weighted by affiliate clicks, else views, else equally. Always labelled as an estimate; use it to see where money *probably* comes from, never report it as fact.
+
+Always show the attribution share ("3 of 12 sales tied to a page"). Ask "which page was it?" only when the user might really know (a single sale on a fresh page); never require it.
+
+Ways to tie more sales, where the platform and network allow (offer once, don't push):
+- sub-ID per page, or at least per platform or per pack;
+- Amazon and programs without sub-IDs: a separate tracking ID per platform or pack;
+- a unique coupon code per platform or pack, when the merchant gives codes;
+- affiliate clicks per page from the network's click report — even without sale attribution, clicks make the estimate much better.
+Redirect links through the user's own domain count clicks per page, but some platforms remove or penalise redirects and shorteners — warn before suggesting them.
 
 ## Mode 3 — Traffic
 
@@ -76,7 +93,7 @@ Always pass the export's date range: the same page and period are never counted 
 
 **Work report** — "what did I do today / this week / in September": `summary --period <period>` (`today`, `yesterday`, `week`, `last-week`, `month`, `last-month`, `YYYY-MM`, `YYYY-MM-DD`, `YYYY-MM-DD..YYYY-MM-DD`, `all`). It shows: work done, sales and commission, traffic, comparison with the previous period, work by day, pages published with their status now, pages that earned, and what needs attention.
 
-**Effectiveness** — "what earns", "which platforms/offers work", "is the system paying off": `effect --period <period> --by page|platform|offer|program|content_type|month`. Per group: pages, views, affiliate clicks, sales, commission, pending, EPC, conversion, commission per page, per 1,000 views. `--by month --period all` shows the trend since the baseline.
+**Effectiveness** — "what earns", "which platforms/offers work", "is the system paying off": `effect --period <period> --by page|platform|offer|program|campaign|content_type|month`. Per group: pages, views, affiliate clicks, sales, commission, pending, EPC, conversion, commission per page, per 1,000 views. `--by program`, `--by month` count every sale exactly; page-level views show exact sales plus the estimated share. `--by month --period all` shows the trend since the baseline — the clearest answer to "is the system paying off".
 
 Read the table for the user in 3–5 lines: what earns most per page, what gets traffic but no sales (→ page-audit: first screen, CTA, intent), what gets nothing after 30–60 days (→ reposition or drop), which content type and platform to do more of. Compare with the baseline in `parasite-seo-goals.md` when it exists. Deeper client-facing reports: `client-reports`.
 
@@ -89,7 +106,7 @@ Read the table for the user in 3–5 lines: what earns most per page, what gets 
 - **Alive / index check due** — 2, 7, 14 days after publishing, then every 14 days; `not-indexed` rechecked after 3 days.
 - **Audit score under 70** — improve with page-audit, log `refreshed` + new `audit`.
 - **Audit due** — never audited, refreshed since, or 14/30/60-day review.
-- **No sub-ID** — sales from these pages cannot be counted per page.
+- **Optional: no sub-ID** — shown only in the full queue; sales are still counted by program.
 
 Checks of more than 3 URLs go to the `page-checker` agent (via platform-monitor); every result is logged as `check`.
 

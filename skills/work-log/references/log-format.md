@@ -7,16 +7,16 @@ Two files in the user's project folder. One row per fact. Never edit old rows; a
 Shared by `work-log`, `goals`, `navigator` and `client-reports`.
 
 ```
-date,time,event,page_url,platform,offer,program,sub_id,main_query,content_type,status,score,views,clicks,aff_clicks,sales,revenue,minutes,note
+date,time,event,page_url,platform,offer,program,campaign,sub_id,main_query,content_type,status,score,views,clicks,aff_clicks,sales,revenue,minutes,note
 2026-10-19,09:00,baseline,,,,,,,,,,,,,,400,,"30 live pages, 4/week, 10 h/week, $400/month"
-2026-10-20,11:20,published,https://medium.com/@me/vpn-compare,medium,nordvpn,NordVPN (Impact),md-1020-1,nordvpn vs surfshark,ab-comparison,live,,,,,,,90,
-2026-10-20,11:35,audit,https://medium.com/@me/vpn-compare,medium,nordvpn,,,,,,82,,,,,,10,
-2026-10-20,11:40,submitted,https://medium.com/@me/vpn-compare,medium,,,,,,,,,,,,,,
-2026-10-22,08:10,check,https://medium.com/@me/vpn-compare,medium,,,,,,indexed,,,,,,,,
-2026-10-27,18:00,traffic,https://medium.com/@me/vpn-compare,medium,nordvpn,,,,,,,1200,,40,,,,traffic 2026-10-20..2026-10-27 from medium-stats.csv
+2026-10-20,11:20,published,https://medium.com/@me/vpn-compare,medium,nordvpn,NordVPN (Impact),vpn-test,md-1020-1,nordvpn vs surfshark,ab-comparison,live,,,,,,,90,
+2026-10-20,11:35,audit,https://medium.com/@me/vpn-compare,medium,nordvpn,,,,,,,82,,,,,,10,
+2026-10-20,11:40,submitted,https://medium.com/@me/vpn-compare,medium,,,,,,,,,,,,,,,
+2026-10-22,08:10,check,https://medium.com/@me/vpn-compare,medium,,,,,,,indexed,,,,,,,,
+2026-10-27,18:00,traffic,https://medium.com/@me/vpn-compare,medium,nordvpn,,,,,,,,1200,,40,,,,traffic 2026-10-20..2026-10-27 from medium-stats.csv
 2026-10-27,18:05,import,,,,NordVPN (Impact),,,,,,,,,,,,"sales import impact.csv: 2026-10-20..2026-10-27, 3 new, 0 status updates, 0 already in"
-2026-10-29,10:00,check,https://forum-x.com/t/123,forum-x,,,,,,removed,,,,,,,,
-2026-10-29,10:30,moved,https://forum-x.com/t/123,forum-x,,,,,,,,,,,,,,"to https://other.com/p/9"
+2026-10-29,10:00,check,https://forum-x.com/t/123,forum-x,,,,,,,removed,,,,,,,,
+2026-10-29,10:30,moved,https://forum-x.com/t/123,forum-x,,,,,,,,,,,,,,,"to https://other.com/p/9"
 ```
 
 | Column | Meaning |
@@ -27,7 +27,8 @@ date,time,event,page_url,platform,offer,program,sub_id,main_query,content_type,s
 | `platform` | slug: medium, linkedin, reddit, forum-x |
 | `offer` | product or brand slug |
 | `program` | affiliate program or network account the sales come from: "ClickBank", "NordVPN (Impact)", "Amazon US". Must match the `--program` used for imports |
-| `sub_id` | tracking value in this page's affiliate link (on `published`); ties sales to the page |
+| `campaign` | the pack the page belongs to ("keto-pack-oct"): pages published together for one offer, judged together |
+| `sub_id` | optional: tracking value in this page's affiliate link (on `published`); ties sales to the exact page when the network passes it |
 | `main_query`, `content_type` | on `published` |
 | `status` | on `check` (and optionally `published`), see below |
 | `score` | page-audit 0–100, on `audit` |
@@ -78,6 +79,7 @@ Counting rules:
 - `reversed` with positive commission: shown, not counted. Negative rows (refunds, chargebacks): subtract.
 - A `manual` sale without order ID is dropped when an imported sale of the same program and commission within ±2 days exists.
 - Sales are attributed to a page by `page_url`, else by `sub_id` → the page whose `published` row has that sub-ID. Adding a sub-ID to a page later attributes its past sales too.
+- Sales without a page are normal. They count exactly in program and month totals. Page, platform, offer, content-type and campaign views add an **estimated share**: each untied sale is split over the pages of the same program published by the sale date and not moved before it, by affiliate clicks in the period, else views, else equally; pages with no traffic data get the average weight. Always shown as an estimate.
 
 ## Schedules
 
