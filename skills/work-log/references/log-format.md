@@ -8,13 +8,13 @@ Shared by `work-log`, `goals`, `navigator` and `client-reports`.
 
 ```
 date,time,event,page_url,platform,offer,program,campaign,sub_id,main_query,content_type,status,score,views,clicks,aff_clicks,sales,revenue,minutes,note
-2026-10-19,09:00,baseline,,,,,,,,,,,,,,400,,"30 live pages, 4/week, 10 h/week, $400/month"
+2026-10-19,09:00,baseline,,,,,,,,,,,,,,,400,,"30 live pages, 4/week, 10 h/week, $400/month"
 2026-10-20,11:20,published,https://medium.com/@me/vpn-compare,medium,nordvpn,NordVPN (Impact),vpn-test,md-1020-1,nordvpn vs surfshark,ab-comparison,live,,,,,,,90,
 2026-10-20,11:35,audit,https://medium.com/@me/vpn-compare,medium,nordvpn,,,,,,,82,,,,,,10,
 2026-10-20,11:40,submitted,https://medium.com/@me/vpn-compare,medium,,,,,,,,,,,,,,,
 2026-10-22,08:10,check,https://medium.com/@me/vpn-compare,medium,,,,,,,indexed,,,,,,,,
 2026-10-27,18:00,traffic,https://medium.com/@me/vpn-compare,medium,nordvpn,,,,,,,,1200,,40,,,,traffic 2026-10-20..2026-10-27 from medium-stats.csv
-2026-10-27,18:05,import,,,,NordVPN (Impact),,,,,,,,,,,,"sales import impact.csv: 2026-10-20..2026-10-27, 3 new, 0 status updates, 0 already in"
+2026-10-27,18:05,import,,,,NordVPN (Impact),,,,,,,,,,,,,"sales import impact.csv: 2026-10-20..2026-10-27, 3 new, 0 status updates, 0 already in"
 2026-10-29,10:00,check,https://forum-x.com/t/123,forum-x,,,,,,,removed,,,,,,,,
 2026-10-29,10:30,moved,https://forum-x.com/t/123,forum-x,,,,,,,,,,,,,,,"to https://other.com/p/9"
 ```
