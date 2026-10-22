@@ -1,63 +1,86 @@
-# Journal format — parasite-seo-progress.csv
+# Journal formats
 
-One file, shared by `work-log`, `goals`, `navigator` and `client-reports`. One row per fact. Never edit old rows; add a new one.
+Two files in the user's project folder. One row per fact. Never edit old rows; add a new one.
+
+## parasite-seo-progress.csv — work and traffic
+
+Shared by `work-log`, `goals`, `navigator` and `client-reports`.
 
 ```
-date,time,event,page_url,platform,offer,main_query,content_type,status,score,clicks,sales,revenue,minutes,note
-2026-10-19,09:00,baseline,,,,,,,,,,400,,"30 live pages, 4/week, 10 h/week, $400/month"
-2026-10-20,11:20,published,https://medium.com/@me/vpn-compare,medium,vpn,nordvpn vs surfshark,ab-comparison,live,,,,,90,
-2026-10-20,11:35,audit,https://medium.com/@me/vpn-compare,medium,vpn,,,,82,,,,10,first screen ok
-2026-10-20,11:40,submitted,https://medium.com/@me/vpn-compare,medium,vpn,,,,,,,,,GSC not available: pinged via links
-2026-10-22,08:10,check,https://medium.com/@me/vpn-compare,medium,vpn,,,indexed,,,,,,
-2026-10-27,18:00,stats,https://medium.com/@me/vpn-compare,medium,vpn,,,,,34,2,18.40,,from network
-2026-10-29,10:00,check,https://forum-x.com/t/123,forum-x,vpn,,,removed,,,,,,
-2026-10-29,10:30,moved,https://forum-x.com/t/123,forum-x,vpn,,,,,,,,,"to https://other.com/p/9"
+date,time,event,page_url,platform,offer,program,sub_id,main_query,content_type,status,score,views,clicks,aff_clicks,sales,revenue,minutes,note
+2026-10-19,09:00,baseline,,,,,,,,,,,,,,400,,"30 live pages, 4/week, 10 h/week, $400/month"
+2026-10-20,11:20,published,https://medium.com/@me/vpn-compare,medium,nordvpn,NordVPN (Impact),md-1020-1,nordvpn vs surfshark,ab-comparison,live,,,,,,,90,
+2026-10-20,11:35,audit,https://medium.com/@me/vpn-compare,medium,nordvpn,,,,,,82,,,,,,10,
+2026-10-20,11:40,submitted,https://medium.com/@me/vpn-compare,medium,,,,,,,,,,,,,,
+2026-10-22,08:10,check,https://medium.com/@me/vpn-compare,medium,,,,,,indexed,,,,,,,,
+2026-10-27,18:00,traffic,https://medium.com/@me/vpn-compare,medium,nordvpn,,,,,,,1200,,40,,,,traffic 2026-10-20..2026-10-27 from medium-stats.csv
+2026-10-27,18:05,import,,,,NordVPN (Impact),,,,,,,,,,,,"sales import impact.csv: 2026-10-20..2026-10-27, 3 new, 0 status updates, 0 already in"
+2026-10-29,10:00,check,https://forum-x.com/t/123,forum-x,,,,,,removed,,,,,,,,
+2026-10-29,10:30,moved,https://forum-x.com/t/123,forum-x,,,,,,,,,,,,,,"to https://other.com/p/9"
 ```
-
-## Columns
 
 | Column | Meaning |
 |---|---|
-| `date` | YYYY-MM-DD, the user's local date |
-| `time` | HH:MM, optional |
+| `date`, `time` | user's local date YYYY-MM-DD, time HH:MM (optional) |
 | `event` | see below |
-| `page_url` | the page this row is about; empty for baseline / task / platform rows without a page |
-| `platform` | short slug: medium, linkedin, reddit, forum-x |
-| `offer` | product or program slug |
-| `main_query` | the query the page targets (on `published`) |
-| `content_type` | from content-type-selector: ab-comparison, top-list, single-review, deals, research… |
-| `status` | see below |
-| `score` | page-audit score 0–100 (on `audit`) |
-| `clicks`, `sales`, `revenue` | on `stats`: for the period since the last stats row of that page. On `baseline`: monthly revenue now |
-| `minutes` | time spent, if the user says |
+| `page_url` | the page; empty for baseline / task / platform / import |
+| `platform` | slug: medium, linkedin, reddit, forum-x |
+| `offer` | product or brand slug |
+| `program` | affiliate program or network account the sales come from: "ClickBank", "NordVPN (Impact)", "Amazon US". Must match the `--program` used for imports |
+| `sub_id` | tracking value in this page's affiliate link (on `published`); ties sales to the page |
+| `main_query`, `content_type` | on `published` |
+| `status` | on `check` (and optionally `published`), see below |
+| `score` | page-audit 0–100, on `audit` |
+| `views` | platform views / reads / visits for the period, on `traffic` |
+| `clicks` | search clicks (Search Console), on `traffic` |
+| `aff_clicks` | clicks on the affiliate link (network click / hop report), on `traffic` |
+| `sales`, `revenue` | only on `stats` (aggregate numbers when single sales cannot be imported); on `baseline`, `revenue` = monthly revenue now |
+| `minutes` | time spent |
 | `note` | free text |
 
-Older journals have only `date,event,page_url,platform,offer,status,clicks,sales,revenue,note`. Keep them; the script reads any subset of columns by name.
+Older journals with fewer columns are read as they are; the first write upgrades the header and keeps all values. Old `stats` rows with `clicks` are read as affiliate clicks.
 
-## Events
+### Events
 
-| Event | When |
+`baseline` · `published` · `submitted` · `check` · `audit` · `refreshed` · `moved` · `platform` · `traffic` · `stats` · `import` · `task` · `note`
+
+### Statuses
+
+`live` (opens, index unknown) · `indexed` · `not-indexed` · `noindex` · `dropped` (indexed, lost ranking) · `removed` (404, deleted, banned) · `dead` (platform gone)
+
+Alive = latest check live, indexed, not-indexed or dropped. Indexed = latest check indexed or dropped.
+
+## parasite-seo-sales.csv — sales
+
+```
+date,program,network,offer,sub_id,page_url,order_id,amount,commission,currency,status,source,note
+2026-10-21,ClickBank,ClickBank,KetoX,li-1010-1,,ABC123,79.00,42.50,USD,approved,import:clickbank-oct.csv,
+2026-10-22,NordVPN (Impact),,,md-1020-1,,,,30.00,USD,approved,manual,told in chat
+2026-10-25,ClickBank,ClickBank,KetoX,li-1010-1,,ABC123,-79.00,-42.50,USD,reversed,import:clickbank-oct2.csv,
+```
+
+| Column | Meaning |
 |---|---|
-| `baseline` | starting point from goals Mode 1 |
-| `published` | page went live (new URL) |
-| `submitted` | sent to indexing (Search Console, indexing service, links) |
-| `check` | alive / index check result → `status` |
-| `audit` | page-audit result → `score` |
-| `refreshed` | content updated (deal box, date, CTA, blocks) |
-| `moved` | page left this URL; the new URL gets its own `published` row |
-| `platform` | new platform registered or tested (`platform`, `note`) |
-| `stats` | clicks / sales / revenue from the network or platform |
-| `task` | any other work: research, drafts, images (`note`, `minutes`) |
-| `note` | anything else worth remembering |
+| `date` | sale date |
+| `program`, `network` | as in the journal |
+| `offer` | product from the export |
+| `sub_id` | from the export; the page is found through the journal's `published` rows |
+| `page_url` | only when the user names the page directly |
+| `order_id` | transaction / receipt / action ID; used to skip duplicates and apply status changes |
+| `amount` | sale amount (customer paid) |
+| `commission` | what the user earns — the number every report uses |
+| `currency` | ISO code |
+| `status` | `approved` · `pending` · `reversed` |
+| `source` | `manual` or `import:<file>` |
 
-## Statuses (on `check`, optionally on `published`)
+Counting rules:
+- Latest row per order wins (a later import with a new status updates the sale).
+- `reversed` with positive commission: shown, not counted. Negative rows (refunds, chargebacks): subtract.
+- A `manual` sale without order ID is dropped when an imported sale of the same program and commission within ±2 days exists.
+- Sales are attributed to a page by `page_url`, else by `sub_id` → the page whose `published` row has that sub-ID. Adding a sub-ID to a page later attributes its past sales too.
 
-`live` (page opens, index unknown) · `indexed` · `not-indexed` · `noindex` · `dropped` (indexed but lost ranking) · `removed` (404, deleted, banned account) · `dead` (platform gone)
+## Schedules
 
-A page counts as alive when its latest check is live, indexed, not-indexed or dropped. It counts as indexed only when its latest check is `indexed` or `dropped`.
-
-## Check schedule
-
-- Alive + index: day 2, 7, 14 after `published`, then every 14 days. After `not-indexed`: recheck in 3 days. Server (Pro) checks daily; its results come in through `monitor_status` and are logged as `check` rows.
-- Audit: at publishing; again after every `refreshed`; review points at 14, 30, 60 days. Score under 70 = needs improvement.
-- Not indexed 14+ days after publishing: flag for resubmit, links or move.
+- Alive + index check: day 2, 7, 14 after publishing, then every 14 days; after `not-indexed`, in 3 days. Server (Pro) checks daily and its results come in as `check` rows.
+- Audit: at publishing, after every `refreshed`, and at the 14/30/60-day review. Under 70 = needs improvement.
+- Sales upload: per program with live pages, if nothing was imported or logged for 7 days; export at least monthly even with manual logging.

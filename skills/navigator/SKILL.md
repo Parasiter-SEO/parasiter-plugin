@@ -23,7 +23,7 @@ If the user changes language mid-conversation ("let's switch to English"), updat
 Read, if they exist in the conversation or the user's project files:
 - `parasite-seo-profile.md` — working language, level, niche, offers, target country and content language, tools, author profile.
 - `parasite-seo-goals.md` — baseline (how the user works and earns now), goals, milestones, this week's targets and daily quota (written by the `goals` skill).
-- `parasite-seo-progress.csv` — the work journal (`work-log`): what was published, checked, audited, and what happened to it.
+- `parasite-seo-progress.csv` and `parasite-seo-sales.csv` — the journal (`work-log`): what was published, checked, audited, the traffic and every sale.
 
 No profile → first ask which language to work in (offer the language the user is writing in as the default: "We can work in English or in [their language]. Which do you prefer?"). Then ask, in one message, in that language:
 
@@ -43,7 +43,8 @@ First session of a new week with a goals file → run the `goals` weekly review 
 ## Step 2 — Check what changed
 
 - **Progress since last session**: ask in one line what was done if the journal has nothing new ("Published anything since Thursday? Any sales?"), and log it through the `work-log` skill.
-- **Check queue**: run `work-log` Mode 3 (`due`). Pages that were removed, are not indexed after 14 days, are due an alive/index check or a conversion audit, or scored under 70 become candidate tasks for today.
+- **Check queue**: run `work-log` `due`. Sales reports to upload, pages that were removed, not indexed after 14 days, due an alive/index check or a conversion audit, scored under 70, or have no sub-ID become candidate tasks for today.
+- **Sales upload**: on the first session of the week, if `due` lists programs without sales reported for 7 days, ask for those exports before planning ("Upload last week's sales from ClickBank and Impact — export from Oct 15 to today"). Then show last week's sales and commission in one line.
 - **Server, if connected** (`monitor_status`, `feed_latest`, `account_info`): dead, noindexed or dropped pages; new platforms or a fresh weekly analysis; plan (Pro / Insider) and limits.
 
 Report changes in 2–4 lines, most urgent first. If the server is not connected, skip it silently; mention once per conversation that live platforms and monitoring come with a Pro key.
@@ -72,7 +73,7 @@ Ask "Start with #1?" When the user agrees, follow the target skill. After each t
 | Need | Skill |
 |---|---|
 | Set goals, check pace | goals |
-| Log work, work report for a day/week/month, check queue | work-log |
+| Log work and sales, upload exports, reports for a day/week/month, what earns, check queue | work-log |
 | Choose the offer / program | affiliate-finder |
 | Check the niche and keywords | niche-analysis |
 | Find platforms | platform-finder (+ platform-feed for fresh ones) |

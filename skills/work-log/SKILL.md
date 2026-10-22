@@ -1,92 +1,107 @@
 ---
 name: work-log
-description: The user's parasite SEO work journal. Records every action the moment it happens — page published, sent to indexing, checked alive/indexed, audited, refreshed, moved, platform tested, sales — and turns the journal into work reports for today, yesterday, a week, a month or any date range, plus a queue of pages due for alive/index checks and conversion audits. Use when the user reports work ("added an article", "indexed it", "published 3 pages", "2 sales"), asks "what did I do today / this week / in September", wants a weekly or monthly work report, or asks which pages need checking or fixing.
+description: The user's parasite SEO journal of work, traffic and sales. Records every action the moment it happens (page published, sent to indexing, checked alive/indexed, audited, refreshed, moved, platform tested), every sale (logged by hand or imported from affiliate network exports) and traffic (platform views, affiliate clicks), ties sales to pages by sub-ID, and turns it all into reports for any day, week or month, effectiveness tables by page, platform, offer, program and content type, and a queue of pages due for checks plus sales reports due for upload. Use when the user reports work or a sale ("added an article", "indexed it", "made a sale"), uploads a sales or traffic export, asks "what did I do / earn this week", wants a weekly or monthly report, asks which pages, platforms or offers earn, or what needs checking.
 ---
 
 # Work Log
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-Every piece of work goes into one journal the moment it is done. A page that is in the journal gets checked: is it alive, is it still indexed, does it follow the conversion rules. A page that is not in the journal is invisible — it will die or drop out of the index and nobody will notice.
+Parasite SEO is measured in sales, not positions. This skill keeps three things in one place: **what was done** (pages, checks, audits), **what traffic came** (views, affiliate clicks) and **what it earned** (every sale, tied to its page). A page that is in the journal gets checked — alive, still indexed, follows the conversion rules. A sale that is in the journal tells which page, platform, offer and content type actually pay.
 
-Reply in the working language from `parasite-seo-profile.md`. Keep the journal's column names and `event` / `status` values in English so it stays machine-readable.
+Reply in the working language from `parasite-seo-profile.md`. Keep column names and `event` / `status` values in English so the files stay machine-readable.
 
-## The journal
+## Files
 
-One file in the user's project folder: `parasite-seo-progress.csv` (the same file `goals` reads). One row per fact, never edit old rows — add a new one. Columns, events and statuses: `references/log-format.md`.
+In the user's project folder (formats in `references/log-format.md`):
+- `parasite-seo-progress.csv` — work journal: pages, checks, audits, traffic, imports (the same file `goals` reads).
+- `parasite-seo-sales.csv` — one row per sale, logged by hand or imported.
 
-If the file does not exist, create it with the header row. If it has the older, shorter header, keep the old rows and continue with the full header: the script reads both.
+One row per fact. Never edit or delete old rows; corrections and status changes are new rows. If a file has an older, shorter header, the script upgrades the header and keeps every value.
 
-## Mode 1 — Log as you go
+The script `scripts/worklog.py` does all reading, writing and counting. Pass `--date` / `--time` in the user's local time when the machine clock may differ (cloud sandboxes run in UTC). Without code execution, append rows by hand and count the same way.
 
-Whenever the user reports work, or another skill finishes a step, add the row(s) right away — do not wait for the end of the day.
+## Mode 1 — Log work as you go
 
-| User says / skill finishes | Rows |
+Whenever the user reports work, or another skill finishes a step, add the row right away.
+
+| User says / skill finishes | Row (`add --event …`) |
 |---|---|
-| "Published / added an article: URL" | `published` (+ `platform`, `offer`, `main_query`, `content_type` if known) |
+| "Published / added an article: URL" | `published` + platform, offer, program, **sub-ID**, main query, content type |
 | "Sent it to indexing" | `submitted` |
-| platform-monitor or page-checker result | `check` with `status` alive · indexed · not-indexed · noindex · removed |
-| page-audit result | `audit` with `score` (0–100) |
-| "Updated / refreshed the page" | `refreshed` |
-| "Moved it to another platform" | `moved` on the old URL + `published` on the new one |
-| "Registered / tested a new platform" | `platform` |
-| "2 sales from X" / network stats | `stats` with `clicks`, `sales`, `revenue` |
-| Other work (research, drafts, images) | `task` with a short `note` |
-
-Ask only for what is missing and matters: the URL for a page, the platform, the main query. Never ask twice in a session for the same field. If the user says how long it took, put it in `minutes`.
-
-When code execution is available, append with the script so the CSV stays valid:
-```
-python3 scripts/worklog.py add parasite-seo-progress.csv --event published --url https://… --platform medium --offer vpn --query "nordvpn vs surfshark" --type ab-comparison
-```
-Pass `--date` and `--time` in the user's local time when the machine's clock may differ (cloud sandboxes run in UTC). Otherwise append the row yourself, quoting any field with a comma.
-
-Confirm in one line: what was logged and what happens next ("Logged: published on Medium. Index check due Oct 24, audit now?").
-
-### Right after a `published` row
-
-1. **Audit** — if the page has no `audit` row yet, offer page-audit now (link or text). Log the score.
-2. **Track** — with the server (Pro): call `monitor_track` with URL, main query and platform so alive/index checks run on schedule. Without it, the page lands in the manual check queue (Mode 3).
-3. Remind once per session to keep a copy of the text — that is what makes republishing fast.
-
-## Mode 2 — Work report
-
-"What did I do today / yesterday / this week / last month / in September / from 1 to 15 Oct?"
-
-Run `python3 scripts/worklog.py summary parasite-seo-progress.csv --period <period>` (periods: `today`, `yesterday`, `week`, `last-week`, `month`, `last-month`, `YYYY-MM`, `YYYY-MM-DD`, `YYYY-MM-DD..YYYY-MM-DD`, `all`). Without code execution, count from the file the same way.
+| platform-monitor / page-checker result | `check` + status live · indexed · not-indexed · noindex · dropped · removed |
+| page-audit result | `audit` + score 0–100 |
+| "Updated the page" | `refreshed` |
+| "Moved it" | `moved` on the old URL + `published` on the new one (new sub-ID) |
+| "Registered / tested a platform" | `platform` |
+| Other work (research, drafts, images) | `task` + note |
 
 ```
-Work report · [period] · [dates]
-Done: N published · N sent to indexing · N checks · N audits · N refreshed · N moved · N platforms tested · [time]
-By day: [date — what was done]
-Pages published: [url — platform — offer — status now — audit score]
-Health of these pages: alive N · indexed N · not indexed N · removed N · not checked yet N
-Results logged: clicks · sales · revenue (only from stats rows)
-Needs attention: [from Mode 3]
+python3 scripts/worklog.py add parasite-seo-progress.csv --event published --url https://… --platform medium --offer nordvpn --program "NordVPN (Impact)" --sub-id md-1022-1 --query "nordvpn vs surfshark" --type ab-comparison
 ```
-For a week or month add: comparison with the previous period of the same length, and against `goals` targets if a goals file exists (pages published vs weekly target). For money and per-page earnings, hand off to `client-reports`.
 
-## Mode 3 — Check queue
+**Sub-ID on every page.** It is what ties a sale to a page. If the user has none, propose one before they publish: `[platform 2 letters]-[MMDD]-[n]`, e.g. `md-1022-1`, and show where it goes in their network's link (`references/sales-import.md`). Amazon has no sub-ID: use a separate tracking ID per page or platform.
 
-"What needs checking?", or at the start of a session (the navigator asks for it):
+After a `published` row: offer page-audit if the page has no audit; with the server (Pro) call `monitor_track` (URL, main query, platform); remind once per session to keep a copy of the text. Confirm in one line ("Logged: Medium, sub-ID md-1022-1. Index check Oct 24. Audit now?").
 
-Run `python3 scripts/worklog.py due parasite-seo-progress.csv`. It lists:
-- **Index / alive check due** — 2, 7 and 14 days after publishing, then every 14 days; pages whose last check was `not-indexed` are rechecked after 3 days.
-- **Not indexed after 14 days** — resubmit, add internal/external links, or move.
-- **Removed / noindex** — republish from the saved copy (platform-finder for a new home), log `moved`.
-- **Audit due** — never audited, audited before the last refresh, or the 14/30/60-day review point reached.
-- **Needs improvement** — last audit score under 70 → page-audit fixes, then `refreshed` + new `audit`.
+## Mode 2 — Log sales
 
-Send checks of more than 3 URLs to the `page-checker` agent (via platform-monitor) and log every result as a `check` row. Send audits to page-audit and log the score.
+**One sale, by hand** — "made a sale, $42 from the keto article":
+```
+python3 scripts/worklog.py sale parasite-seo-progress.csv --program ClickBank --commission 42 --sub-id li-1010-1 [--url … --amount 79 --order-id … --status pending]
+```
+Ask only for program and commission; page (URL or sub-ID) if the user knows it. A manual sale that later appears in an import is matched (same program, commission, ±2 days) and counted once.
 
-## Mode 4 — Page registry
+**Network export** — the main source of truth: it has every sale, sub-IDs, pending/approved status and refunds. When the user uploads a CSV export:
+```
+python3 scripts/worklog.py import-sales parasite-seo-progress.csv export.csv --program ClickBank --network ClickBank
+```
+The script finds the columns (date, order ID, commission, amount, sub-ID, status, product, currency) under the names networks use, handles `,`/`;` files, US/EU dates and decimals, skips rows already imported, records status changes (pending → approved, refunds) as new rows, and logs an `import` row in the journal. If it cannot find a column it prints the file's headers: map them with `--map commission="Your Earnings"` and re-run. Excel export → save as CSV first (or convert with the xlsx skill). PDF or screenshot only → read the sales from it and log them with `sale`, one by one, marking `--note "from screenshot"`.
 
-"Show all my pages" / "what's the status of my Medium pages": `python3 scripts/worklog.py pages parasite-seo-progress.csv [--platform medium]` — one line per URL with platform, age, latest status and date, last audit score, sales logged.
+After an import, report in 3–4 lines: new sales, commission, pending, refunds, and **sub-IDs not in the journal** — ask which page each belongs to and add it to that page's `published` row so its sales attach.
+
+### Weekly sales upload
+
+The check queue (Mode 5) lists every program with live pages whose sales were not imported or logged for 7 days, and asks for a monthly export even when sales are logged by hand (exports catch refunds and missed sales). The navigator raises it on the first session of the week. Ask plainly: "Upload this week's export from ClickBank and Impact: [date] to today." How to export: `references/sales-import.md`.
+
+## Mode 3 — Traffic
+
+Views and clicks are what turn sales into conversion. Two sources:
+- **Platform stats** (Medium stats, LinkedIn post analytics, forum views, YouTube, Search Console for own pages): export or screenshot → `import-traffic export.csv --platform medium --from 2026-10-01 --to 2026-10-21`. Matching is by page URL. From a screenshot, log per page: `add --event traffic --url … --views 1200 --date <period end> --note "traffic 2026-10-01..2026-10-21"`.
+- **Affiliate clicks** (network click / hop reports by sub-ID): the same `import-traffic`; matching is by sub-ID.
+
+Always pass the export's date range: the same page and period are never counted twice. Traffic is dated at the end of its period.
+
+## Mode 4 — Reports
+
+**Work report** — "what did I do today / this week / in September": `summary --period <period>` (`today`, `yesterday`, `week`, `last-week`, `month`, `last-month`, `YYYY-MM`, `YYYY-MM-DD`, `YYYY-MM-DD..YYYY-MM-DD`, `all`). It shows: work done, sales and commission, traffic, comparison with the previous period, work by day, pages published with their status now, pages that earned, and what needs attention.
+
+**Effectiveness** — "what earns", "which platforms/offers work", "is the system paying off": `effect --period <period> --by page|platform|offer|program|content_type|month`. Per group: pages, views, affiliate clicks, sales, commission, pending, EPC, conversion, commission per page, per 1,000 views. `--by month --period all` shows the trend since the baseline.
+
+Read the table for the user in 3–5 lines: what earns most per page, what gets traffic but no sales (→ page-audit: first screen, CTA, intent), what gets nothing after 30–60 days (→ reposition or drop), which content type and platform to do more of. Compare with the baseline in `parasite-seo-goals.md` when it exists. Deeper client-facing reports: `client-reports`.
+
+## Mode 5 — Check queue
+
+"What needs checking?" or at session start (the navigator asks): `due`. It lists, most urgent first:
+- **Sales reports to upload** — per program, with the date range to export.
+- **Removed / noindex** — republish from the saved copy, log `moved`.
+- **Not indexed 14+ days** — resubmit, add links, or move.
+- **Alive / index check due** — 2, 7, 14 days after publishing, then every 14 days; `not-indexed` rechecked after 3 days.
+- **Audit score under 70** — improve with page-audit, log `refreshed` + new `audit`.
+- **Audit due** — never audited, refreshed since, or 14/30/60-day review.
+- **No sub-ID** — sales from these pages cannot be counted per page.
+
+Checks of more than 3 URLs go to the `page-checker` agent (via platform-monitor); every result is logged as `check`.
+
+## Mode 6 — Page registry
+
+`pages [--platform medium]` — every page with platform, offer, sub-ID, age, status, audit score, views, affiliate clicks, sales and commission.
 
 ## Rules
 
-- Log facts only. Never mark a page indexed or alive without a check result; "not checked yet" is a valid state.
-- Never rewrite or delete old rows; corrections are new rows with a `note`.
-- Reports count what is in the journal. If a period looks empty, say so and ask whether something was not logged — do not fill gaps with guesses.
-- Revenue numbers come only from the user's stats; no forecasts in work reports.
-- Keep the journal in the user's project; do not send it to third-party services.
+- Facts only. Never mark a page indexed or alive without a check result; never record a sale the user did not report or export.
+- Commission is what counts; reversed sales are shown but not counted, refunds subtract. Pending is shown separately.
+- Money stays in its currency; do not convert unless the user gives a rate.
+- No income forecasts in reports; label any estimate.
+- Exports contain customer data: keep only the columns the journal needs and keep the files in the user's project. Never send them to third-party services.
+- If a period looks empty, say so and ask whether something was not logged — do not fill gaps.

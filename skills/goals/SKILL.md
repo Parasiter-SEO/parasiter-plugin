@@ -16,7 +16,7 @@ Reply in the working language from `parasite-seo-profile.md` (navigator "Two lan
 All live in the user's project folder, next to `parasite-seo-profile.md`:
 
 - `parasite-seo-goals.md` — baseline, goals, numbers used, milestones, weekly targets. Format in `references/goal-file.md`.
-- `parasite-seo-progress.csv` — one row per event (page published, status change, clicks, sales). Columns in `references/goal-file.md`.
+- `parasite-seo-progress.csv` and `parasite-seo-sales.csv` — the work and sales journal kept by `work-log` (pages, statuses, traffic, every sale). Format in `work-log/references/log-format.md`.
 
 If the files exist, read them first and go to the mode the user needs. If there is no baseline, start with **Mode 1**, even when the user asks straight for goals.
 
@@ -68,7 +68,7 @@ Check the goal against the baseline with `references/planning-math.md`:
 1. **Change from today** — how many times the goal is the user's current pace and income ("goal is 3× your current pages per week with 1.5× the hours").
 2. **Capacity** — pages the user can build in the horizon at their measured pace and planned hours.
 3. **Survival** — pages likely still alive at the end, using the user's own past survival if the baseline has it.
-4. **Income chain** — target income → sales → clicks → live pages needed, from the user's own clicks and EPC. Where the baseline has none, use the labelled starting assumptions from `planning-math.md` and set the first milestone as "collect real data from the first 20 pages".
+4. **Income chain** — target income → sales → clicks → live pages needed, from the user's own clicks and EPC (`work-log effect` once sales and traffic are logged). Where the baseline has none, use the labelled starting assumptions from `planning-math.md` and set the first milestone as "collect real data from the first 20 pages".
 
 Show one table: baseline, goal, what the time allows, gap. If there is a gap, offer three ways to close it and let the user pick: more time per week, a longer horizon, or a lower target. Never quietly lower the user's goal and never promise the income.
 
@@ -84,13 +84,13 @@ Ramp from the baseline, not from zero: week 1 starts near the user's current wee
 
 ## Mode 5 — Log progress
 
-When the user reports work ("published 3 pages on X", "2 sales today", "Medium deleted my post"), log it with the `work-log` skill: it owns `parasite-seo-progress.csv` (format in `work-log/references/log-format.md`), queues each new page for alive/index checks and a conversion audit, and makes day/week/month work reports. If the server is connected, also pull `monitor_status` so alive / indexed / dropped statuses come in as `check` rows without the user typing them. Confirm in one line what was logged and what it changes in this week's numbers.
+When the user reports work ("published 3 pages on X", "2 sales today", "Medium deleted my post") or uploads a sales or traffic export, log it with the `work-log` skill: it keeps the work and sales journal, ties each sale to its page by sub-ID, queues each new page for alive/index checks and a conversion audit, and makes day/week/month reports. If the server is connected, also pull `monitor_status` so alive / indexed / dropped statuses come in as `check` rows without the user typing them. Confirm in one line what was logged and what it changes in this week's numbers.
 
 ## Mode 6 — Weekly review
 
 Once a week (the navigator triggers it on the user's first session of the week, or the user asks "am I on track"):
 
-1. Plan vs fact for the week: published, alive, indexed, platforms, clicks, sales, income. Take the fact from `work-log` (`summary --period last-week`).
+1. Plan vs fact for the week: published, alive, indexed, platforms, clicks, sales, income. Take the fact from `work-log`: `summary --period last-week` for work, sales and traffic, `effect --by platform` / `--by content_type` for what earns. If a program's sales are not uploaded for the week, ask for the export first — the review is only as good as the sales data.
 2. **Against the baseline** — what has changed since the start (pages per week, live pages, income).
 3. **Pace** — at the current rate, where will the horizon end? Use the measured pace once there are 2 weeks of data.
 4. Replace assumptions with real numbers and recalculate the income chain.

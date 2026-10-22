@@ -42,7 +42,7 @@ Output the same summary table, marked "manual check, [date]". Suggest the server
 
 ## Log every result
 
-Every check result goes into the work journal as a `check` row (`work-log`): `status` live · indexed · not-indexed · noindex · dropped · removed. Pages to check come from the journal's check queue (`work-log` Mode 3) — the user does not have to list them again.
+Every check result goes into the work journal as a `check` row (`work-log`): `status` live · indexed · not-indexed · noindex · dropped · removed. Pages to check come from the journal's check queue (`work-log` `due`) — the user does not have to list them again.
 
 ## Rules
 
