@@ -2,7 +2,7 @@
 
 <!-- Maintainer: update this file, how-to.md and faq.md whenever a skill, agent, server tool, plan or file changes. The help skill answers only from these files. -->
 
-PARASITER by Rumer — parasite SEO inside the user's AI assistant. Skills hold the method; agents do research and checks in their own context and hand back facts with sources. The user never calls agents; skills send them. Version 0.5 (private beta).
+PARASITER by Rumer — parasite SEO inside the user's AI assistant, built for affiliate marketers: review pages on trusted platforms → affiliate link → commission. Current version targets affiliate marketers at any level (beginner, earning from a few pages, scaling packs); agency client work and promoting one's own product or course are not the focus yet (client-reports exists, but the system is tuned for affiliate work). Skills hold the method; agents do research and checks in their own context and hand back facts with sources. The user never calls agents; skills send them. Version 0.5 (private beta).
 
 ## The workflow in 5 steps
 

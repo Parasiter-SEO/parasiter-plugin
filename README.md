@@ -1,6 +1,8 @@
 # PARASITER by Rumer
 
-Parasite SEO inside your AI assistant. Skills and agents that find platforms, pick the content type that sells, write the review, audit the page, and tell you what to do next at your level.
+Parasite SEO inside your AI assistant, built for **affiliate marketers**: you publish review pages on platforms Google already trusts, readers click your affiliate link, you earn the commission. Skills and agents find platforms, pick the content type that sells, write the review, audit the page, track every sale, and tell you what to do next at your level.
+
+**Who it's for now:** affiliate marketers at any stage — starting out, earning from a few pages, or scaling packs of pages across platforms and offers. Agency client work and promoting your own product or course are not the focus of this version; they come later.
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
