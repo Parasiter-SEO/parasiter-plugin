@@ -1,10 +1,10 @@
 # FAQ
 
 ## Plans and key
-- **Free, $0** — the plugin without a key. Skills that need the server (platform database, feed, scheduled monitoring) fall back to live search and manual checks.
-<!-- Maintainer: when the split of skills between Free / Pro / Insider is final, list it here and in catalog.md. -->
-- **Pro, $19/month** — personal key: checked platform database, feed and weekly market analysis, scheduled monitoring, navigator updates; new platforms about 7 days after they are found.
-- **Insider, $39/month** — everything in Pro, the full skill set and extra features, new platforms the day they are found, PARASITER Insider channel and the private Insider group.
+<!-- Maintainer: keep this split identical to the pricing block on the site. -->
+- **Free, $0** — plugin without a key, 6 skills: goals, content-type-selector, sales-review-writer, page-audit, post-illustrations, help.
+- **Pro, $19/month** — 12 skills: Free + navigator, platform-finder, platform-analyzer, platform-feed, platform-monitor, work-log. Personal key: checked platform database, feed and weekly market analysis, scheduled monitoring, navigator updates; new platforms about 7 days after they are found.
+- **Insider, $39/month** — all 15 skills: Pro + niche-analysis, affiliate-finder, client-reports; extra features, new platforms the day they are found, PARASITER Insider channel and the private Insider group.
 - Pro includes the PARASITER Pro channel and personal notifications from the bot. Telegram is for paid plans only.
 - Annual billing about 20% less. Prices are preliminary — current terms on the official site.
 - The key is personal: one key, one person. It stops working when the subscription ends; skills keep working without server data.
