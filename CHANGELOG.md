@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.6.4 — 2026-10-23
+
+- **Writer profile.** Fill it once (author block, photo, your affiliate links, disclosure, CTA and image style), save it in your Claude Project, and every article only asks what is new: product, link, deal, platform. Say *"set up my writer profile"* to start.
+
 ## 0.6.3 — 2026-10-23
 
 - **Your link everywhere it sells.** Before writing, Claude asks for your affiliate link for every product, links the product name in the facts box, each section, the tables and the verdict, and builds the CTAs on it.

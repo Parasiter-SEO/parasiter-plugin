@@ -13,11 +13,15 @@ The user is the operator. You write the draft; they correct it. Never treat the 
 
 Reply to the user in their language. Write the article in the target language of the brief (default English).
 
+## Step 0 — Writer profile
+
+Look for the user's writer profile `parasite-seo-writer.md` (project files, folder, or pasted in the chat): author block, author photo, affiliate links library, disclosure, CTA style, image style, default platforms and country. If it exists, use it and ask only for what is new for this article. If not, offer the one-time setup once and give the filled file back ready to save. Template and where to keep it: `references/writer-profile.md`.
+
 ## Step 1 — Inputs
 
-If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for what is missing. Otherwise collect:
+If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for what is missing. Take everything the writer profile already answers from it (author, links, disclosure, style). Otherwise collect:
 
-1. **Product(s) and the affiliate link for each — always ask, before writing.** "What is your affiliate link for [product]?" Do not start the article without it; if the user has no link yet, write `[AFFILIATE LINK: product]` placeholders and list them in the operator checklist. For "best of": 5, 7 or 10 products, the order, which one is #1, and a link for every product. Ask also whether a specific package/order page link converts better than the main one.
+1. **Product(s) and the affiliate link for each — always ask, before writing** (unless the profile's links library already has it; then confirm it in one line). "What is your affiliate link for [product]?" Do not start the article without it; if the user has no link yet, write `[AFFILIATE LINK: product]` placeholders and list them in the operator checklist. For "best of": 5, 7 or 10 products, the order, which one is #1, and a link for every product. Ask also whether a specific package/order page link converts better than the main one.
 2. **Content type**: single review, best-of comparison, A vs B, personal experience, complaints/doubts, packages/price guide.
 3. **Platform** where it will be published (decides length, tone and formatting — see `references/platform-formats.md`).
 4. **Author profile** — required, see Step 2.
@@ -33,7 +37,7 @@ Open `references/examples/INDEX.md`, pick 1–2 screenshots that match the conte
 
 The author is the main reason the reader stays. Every article introduces its author in the opening: who they are, what they do, their role or position, why the reader should trust and listen to them, and what they did that qualifies them to judge this product (used it, compared N products, works in the field for X years, studied buyer feedback).
 
-Build the author block only from facts the user gives (real name or the pen name they publish under, real background, real experience). If the user has no profile yet, ask once and suggest they keep it in a saved file so every future article reuses it. Do not invent credentials, job titles, tests or results — a fake expert breaks trust the moment a reader checks, and it violates platform and advertising rules. If the user has no hands-on experience, the author's authority comes from research and comparison ("I compared the packages, terms and buyer complaints of 5 products"), and the article says so.
+Build the author block only from facts the user gives (real name or the pen name they publish under, real background, real experience). If there is no writer profile yet, ask once and give the filled profile back so every future article reuses it (Step 0). Do not invent credentials, job titles, tests or results — a fake expert breaks trust the moment a reader checks, and it violates platform and advertising rules. If the user has no hands-on experience, the author's authority comes from research and comparison ("I compared the packages, terms and buyer complaints of 5 products"), and the article says so.
 
 Templates and examples: `references/author-intro.md`.
 
@@ -85,7 +89,7 @@ Text on images only from verified facts, with the checked date on any price.
 
 **Photo-like images** (product in hand, lifestyle scene, author-style photo) cannot be made reliably with code: give a ready prompt for the user's image generator via the `post-illustrations` skill, and mark the spot in the article. Prefer the user's own real photos when they have them.
 
-Without code execution, give all image prompts via `post-illustrations`. Respect platform limits (PDF — few light images; Raisely — cover only; forums — external hosting). Never generate fake people presented as real users or experts, fake certificates or before/after results.
+Without code execution, say once that the JPG cards appear automatically when the assistant's code execution / file creation is turned on (in Claude: Settings → Capabilities), and give all image prompts via `post-illustrations` meanwhile. Respect platform limits (PDF — few light images; Raisely — cover only; forums — external hosting). Never generate fake people presented as real users or experts, fake certificates or before/after results.
 
 ## Step 6 — Deliver
 
