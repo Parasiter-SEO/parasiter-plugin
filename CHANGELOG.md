@@ -2,6 +2,13 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.8.0 — 2026-10-23
+
+- **What to write and where.** Your topics × platforms in one table, and the best gaps: a topic that is in the top 10 or earning on one platform but missing on your strong ones. Say *"what should I write next?"* or *"which topics are missing on Medium?"*
+- **Top positions.** Checks record the page's position; see which pages are in the top 10, per page and per platform. Say *"which of my pages are in the top?"*
+- **Priorities.** Mark your main pages, topics and platforms (★): they are checked first and weigh more in the advice. Say *"Medium is my main platform"*.
+- **Topics.** Pages on the same subject are grouped across platforms; name them once, in batches.
+
 ## 0.7.0 — 2026-10-23
 
 - **Bring the pages you already have.** Upload or paste your published pages — a list of links, CSV, Excel, any table. Each page goes into your journal with its platform, date, offer and program when the table has them; duplicates are skipped. Say *"here are my pages"*.

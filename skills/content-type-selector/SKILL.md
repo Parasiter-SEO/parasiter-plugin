@@ -15,6 +15,8 @@ Reply in the user's language. Keep questions short; ask only what you cannot inf
 
 ## Step 1 — Get the inputs
 
+If the user doesn't know what or where to write, start from their own base: `work-log` `coverage` lists proven topics (top 10, earning, priority) missing on their strong platforms. Offer the top 3 gaps ("glp1 patch review → Medium: #7 and earning on the forum, Medium is your priority platform"); the chosen gap gives the product, the platform and the page to learn from. The new page takes a different angle or content type from the existing one.
+
 Ask for (skip what the user already gave):
 
 1. **Product** they promote (and the affiliate offer / network if known).

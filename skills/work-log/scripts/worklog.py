@@ -22,7 +22,10 @@ Commands:
                  [--type T] [--map field=Header ...]   (CSV/TSV/TXT or any text with URLs)
   platforms      JOURNAL [--today D]                  personal platform base with stats
   platform-set   JOURNAL --platform P [--domain --type --language --links --account --score
-                 --state active|testing|paused|dropped|dead --note]
+                 --state active|testing|paused|dropped|dead --priority high|normal|low --note]
+  tag            JOURNAL (--url U ... | --urls-file F | --platform P | --match TEXT)
+                 [--topic --priority --position --offer --program --campaign --query --type]
+  coverage       JOURNAL [--topic T] [--platform P] [--gaps N]   topics x platforms, what to write where
 
 Periods: today, yesterday, week, last-week, month, last-month, YYYY-MM, YYYY-MM-DD,
 YYYY-MM-DD..YYYY-MM-DD, all.  --sales-file FILE overrides the sales file path.
@@ -39,11 +42,13 @@ from datetime import date, datetime, timedelta
 
 COLUMNS = ["date", "time", "event", "page_url", "platform", "offer", "program", "campaign", "sub_id",
            "main_query", "content_type", "status", "score", "views", "clicks", "aff_clicks",
-           "sales", "revenue", "minutes", "note"]
+           "sales", "revenue", "minutes", "note", "topic", "priority", "position"]
 SALE_COLUMNS = ["date", "program", "network", "offer", "sub_id", "page_url", "order_id",
                 "amount", "commission", "currency", "status", "source", "note"]
 EVENTS = ["baseline", "published", "submitted", "check", "audit", "refreshed", "moved",
-          "platform", "traffic", "stats", "import", "task", "note"]
+          "platform", "traffic", "stats", "import", "task", "note", "tag"]
+PRIORITIES = ["high", "normal", "low"]
+TOP = 10
 ALIVE = {"live", "indexed", "not-indexed", "dropped"}
 INDEXED = {"indexed", "dropped"}
 GONE = {"removed", "dead", "noindex"}
@@ -58,7 +63,7 @@ LABELS = {"published": "published", "submitted": "sent to indexing", "check": "c
           "audit": "audits", "refreshed": "refreshed", "moved": "moved",
           "platform": "platforms tested", "traffic": "traffic entries",
           "stats": "stats entries", "import": "imports", "task": "other tasks",
-          "note": "notes", "baseline": "baseline"}
+          "note": "notes", "baseline": "baseline", "tag": "tags"}
 
 # column aliases for exports (compared after normalising: lowercase, letters/digits only)
 SALE_ALIASES = {
@@ -106,7 +111,7 @@ STATUS_MAP = {
 
 
 PLATFORM_COLUMNS = ["platform", "domain", "type", "language", "links", "account", "score",
-                    "state", "added", "source", "note"]
+                    "state", "priority", "added", "source", "note"]
 PAGE_ALIASES = {
     "url": TRAFFIC_ALIASES["url"] + ["urls", "pages", "postlink", "publishedurl"],
     "date": ["date", "published", "publishdate", "publishedat", "publicationdate", "datepublished",
@@ -120,6 +125,9 @@ PAGE_ALIASES = {
     "content_type": ["type", "contenttype", "format", "articletype"],
     "status": ["status", "state", "indexed"],
     "note": ["note", "notes", "comment", "comments", "title", "headline"],
+    "topic": ["topic", "theme", "cluster", "subject"],
+    "priority": ["priority", "prio", "important", "main"],
+    "position": ["position", "pos", "rank", "ranking", "avgposition", "averageposition", "serp"],
 }
 # known platforms: domain suffix -> (slug, type)
 KNOWN_PLATFORMS = {
@@ -320,14 +328,28 @@ def page_states(rows, today):
                                    "published": None, "last_check": None, "status": "",
                                    "ever_indexed": False, "last_audit": None, "score": None,
                                    "last_refresh": None, "moved": None, "first": r["_d"],
-                                   "imported": False})
+                                   "imported": False, "topic": "", "priority": "normal",
+                                   "position": None, "pos_date": None, "best_pos": None})
         for k, col in (("platform", "platform"), ("offer", "offer"), ("program", "program"),
                        ("campaign", "campaign"),
                        ("sub_id", "sub_id"), ("query", "main_query"),
                        ("content_type", "content_type")):
             if not p[k] and r.get(col):
                 p[k] = r[col]
+        if r.get("topic"):
+            p["topic"] = r["topic"]
+        if (r.get("priority") or "").lower() in PRIORITIES:
+            p["priority"] = r["priority"].lower()
         ev, st = r["event"], r["status"]
+        pos = num(r.get("position"))
+        if pos is not None and ev in ("check", "traffic", "note", "tag", "published"):
+            p["position"], p["pos_date"] = pos, r["_d"]
+            p["best_pos"] = pos if p["best_pos"] is None else min(p["best_pos"], pos)
+        if ev == "tag":
+            for k, col in (("offer", "offer"), ("program", "program"), ("campaign", "campaign"),
+                           ("sub_id", "sub_id"), ("query", "main_query"), ("content_type", "content_type")):
+                if r.get(col):
+                    p[k] = r[col]
         if ev == "published" and p["published"] is None:
             p["published"] = r["_d"]
             p["imported"] = (r.get("note") or "").startswith("imported from")
@@ -347,7 +369,34 @@ def page_states(rows, today):
         if p["published"] is None:
             p["published"] = p["first"]
         p["age"] = (today - p["published"]).days
+        p["topic_key"] = topic_key(p)
     return pages
+
+
+STOP = {"the", "a", "an", "and", "or", "of", "for", "to", "in", "on", "my", "your", "is", "are", "do",
+        "does", "it", "with", "vs", "best", "top", "review", "reviews", "honest", "2024", "2025", "2026",
+        "2027", "what", "how", "why", "which", "who", "really", "work", "works", "guide", "p", "pulse",
+        "post", "posts", "threads", "thread", "topic", "t", "answer", "view", "home", "html", "htm",
+        "php", "blog", "article", "s", "i", "you", "we", "this", "that", "should", "can", "about"}
+
+
+def slug_words(url):
+    path = re.sub(r"^[a-z]+://[^/]+", "", (url or "").lower()).split("?")[0]
+    segs = [x for x in path.split("/") if x and not x.startswith("@")]
+    seg = max(segs, key=lambda x: len(re.findall(r"[a-z]{3,}", x)), default="")
+    words = [w for w in re.split(r"[^a-z0-9]+", seg) if w and w not in STOP and not re.fullmatch(r"[0-9a-f]{6,}|\d+", w)]
+    return words[:6]
+
+
+def topic_key(p):
+    """Topic of a page: set topic > main query > offer + content type > words from the URL."""
+    t = p.get("topic") or p.get("query")
+    if t:
+        return re.sub(r"\s+", " ", t.strip().lower())
+    if p.get("offer"):
+        return (p["offer"] + (" · " + p["content_type"] if p.get("content_type") else "")).lower()
+    w = slug_words(p["url"])
+    return ("~ " + " ".join(w)) if w else "~ untitled"
 
 
 def lookups(pages):
@@ -986,16 +1035,19 @@ def cmd_due(a):
         if not items:
             continue
         print(f"## {title} ({len(items)})\n")
-        for p, why in sorted(items, key=lambda x: x[0]["published"]):
+        for p, why in sorted(items, key=lambda x: (PRIORITIES.index(x[0]["priority"]), x[0]["published"])):
             q = f" · “{p['query']}”" if p["query"] else ""
-            print(f"- {short(p['url'])} · {p['platform'] or '?'} · {p['age']} d{q} — {why}")
+            star = "★ " if p["priority"] == "high" else ""
+            print(f"- {star}{short(p['url'])} · {p['platform'] or '?'} · {p['age']} d{q} — {why}")
         print()
 
 
 def cmd_pages(a):
     today, rows, pages, sales = load(a)
-    items = [p for p in pages.values() if not a.platform or p["platform"] == a.platform]
-    items.sort(key=lambda p: p["published"], reverse=True)
+    items = [p for p in pages.values() if (not a.platform or p["platform"] == a.platform)
+             and (not a.priority or p["priority"] == a.priority)
+             and (not a.topic or a.topic.lower() in p["topic_key"])]
+    items.sort(key=lambda p: (PRIORITIES.index(p["priority"]), -(p["published"].toordinal())))
     earned = defaultdict(lambda: [0, 0.0])
     for r in sales:
         if r["_page"] and counted(r):
@@ -1010,16 +1062,18 @@ def cmd_pages(a):
     if not items:
         print("No pages in the journal yet.")
         return
-    print("| Published | Page | Platform | Offer | Sub-ID | Age | Status | Audit | Views | Aff. clicks | Sales | Commission |")
-    print("|---|---|---|---|---|---|---|---|---|---|---|---|")
+    print("| Published | Page | Platform | Topic | Prio | Offer | Age | Status | Pos | Audit | Views | Aff. clicks | Sales | Commission |")
+    print("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
     hc = Counter()
     for p in items:
         h = health(p)
         hc[h] += 1
         n, c = earned[p["url"]]
         v, ac = traffic[p["url"]]
-        print(f"| {p['published']} | {short(p['url'], 45)} | {p['platform']} | {p['offer']} | "
-              f"{p['sub_id'] or '—'} | {p['age']} d | {h} | {fmt(p['score'])} | "
+        pos = "—" if p["position"] is None else (f"**{p['position']:.0f}**" if p["position"] <= TOP else f"{p['position']:.0f}")
+        print(f"| {p['published']} | {short(p['url'], 45)} | {p['platform']} | {short(p['topic_key'], 30)} | "
+              f"{'★' if p['priority'] == 'high' else ('low' if p['priority'] == 'low' else '')} | {p['offer']} | "
+              f"{p['age']} d | {h} | {pos} | {fmt(p['score'])} | "
               f"{fmt(v) if v else '—'} | {fmt(ac) if ac else '—'} | {n} | {money(c)} |")
     print("\n**Status:** " + " · ".join(f"{k} {v}" for k, v in hc.most_common()))
 
@@ -1029,7 +1083,8 @@ def cmd_add(a):
                       program=a.program, campaign=a.campaign, sub_id=a.sub_id, main_query=a.query,
                       content_type=a.type, status=a.status, score=a.score, views=a.views,
                       clicks=a.clicks, aff_clicks=a.aff_clicks, sales=a.sales,
-                      revenue=a.revenue, minutes=a.minutes, note=a.note)
+                      revenue=a.revenue, minutes=a.minutes, note=a.note, topic=a.topic,
+                      priority=a.priority, position=a.position)
     if a.date:
         row["date"] = a.date
     if a.time:
@@ -1416,7 +1471,10 @@ def cmd_import_pages(a):
                                program=extra.get("program") or a.program,
                                campaign=extra.get("campaign") or a.campaign,
                                sub_id=extra.get("sub_id"), main_query=extra.get("main_query"),
-                               content_type=extra.get("content_type") or a.type, status=st, note=note))
+                               content_type=extra.get("content_type") or a.type, status=st, note=note,
+                               topic=extra.get("topic"),
+                               priority=(extra.get("priority") or "").lower() if (extra.get("priority") or "").lower() in PRIORITIES else "",
+                               position=extra.get("position") if num(extra.get("position")) is not None else ""))
     if out:
         append(a.journal, COLUMNS, out)
     new = register_platforms(a.journal, found, "my pages")
@@ -1497,15 +1555,19 @@ def cmd_platforms(a):
     if not reg:
         print("No platforms yet. Import your pages (import-pages) or log one: add --event platform --platform <slug>.")
         return
-    print("| Platform | Domain | Type | State | Pages | Alive | Indexed | Gone | Not checked | Last page | Sales | Commission | Score |")
-    print("|---|---|---|---|---|---|---|---|---|---|---|---|---|")
-    order = sorted(reg.values(), key=lambda r: (-st[r["platform"].lower()]["pages"], r["platform"]))
+    tops = Counter(p["platform"].lower() for p in pages.values()
+                   if p["position"] is not None and p["position"] <= TOP and not p["moved"] and health(p) not in GONE)
+    print(f"| Platform | Domain | Type | State | Prio | Pages | Alive | Indexed | Top {TOP} | Gone | Not checked | Last page | Sales | Commission | Score |")
+    print("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
+    order = sorted(reg.values(), key=lambda r: (PRIORITIES.index(r.get("priority") or "normal"),
+                                                -st[r["platform"].lower()]["pages"], r["platform"]))
     attention = []
     for r in order:
         s = st[r["platform"].lower()]
         score = r.get("score") or (fmt(s["score"]) if s["score"] is not None else "")
-        print(f"| {r['platform']} | {r.get('domain') or '—'} | {r.get('type') or '?'} | {r.get('state') or 'active'} | "
-              f"{s['pages']} | {s['alive']} | {s['indexed']} | {s['gone']} | {s['unchecked']} | "
+        prio = {"high": "★", "low": "low"}.get(r.get("priority") or "", "")
+        print(f"| {r['platform']} | {r.get('domain') or '—'} | {r.get('type') or '?'} | {r.get('state') or 'active'} | {prio} | "
+              f"{s['pages']} | {s['alive']} | {s['indexed']} | {tops[r['platform'].lower()]} | {s['gone']} | {s['unchecked']} | "
               f"{s['last'] or '—'} | {s['sales']} | {money(s['comm'])} | {score or '—'} |")
         checked = s["pages"] - s["unchecked"]
         if checked >= 3 and s["gone"] / checked >= 0.5 and (r.get("state") or "active") == "active":
@@ -1528,12 +1590,182 @@ def cmd_platform_set(a):
     key = a.platform.lower()
     r = reg.setdefault(key, {"platform": a.platform, "state": "active",
                              "added": date.today().isoformat(), "source": "manual"})
-    for f in ("domain", "type", "language", "links", "account", "score", "state", "note"):
+    for f in ("domain", "type", "language", "links", "account", "score", "state", "priority", "note"):
         v = getattr(a, f)
         if v is not None:
             r[f] = v
     write_platforms(path, reg)
     print(f"Platform base: {r['platform']} · " + " · ".join(f"{f} {r[f]}" for f in PLATFORM_COLUMNS[1:] if r.get(f)))
+
+
+def cmd_tag(a):
+    """Set topic / priority / position / offer … on many pages at once (a `tag` row per page)."""
+    rows = read_rows(a.journal)
+    pages = page_states(rows, date.max)
+    by_norm = {norm_url(u): p for u, p in pages.items()}
+    targets = []
+    urls = list(a.url or [])
+    if a.urls_file:
+        urls += urls_from_text(a.urls_file)[1]
+    for u in urls:
+        p = by_norm.get(norm_url(u))
+        if p:
+            targets.append(p)
+        else:
+            print(f"- not in the journal: {short(u)}")
+    if a.platform or a.match:
+        for p in pages.values():
+            if a.platform and p["platform"].lower() != a.platform.lower():
+                continue
+            if a.match and a.match.lower() not in (p["url"] + " " + p["topic_key"]).lower():
+                continue
+            targets.append(p)
+    seen, out = set(), []
+    for p in targets:
+        if p["url"] in seen:
+            continue
+        seen.add(p["url"])
+        out.append(journal_row(date=a.date or date.today().isoformat(), time="", event="tag", page_url=p["url"],
+                               platform=p["platform"], topic=a.topic, priority=a.priority,
+                               position=a.position, offer=a.offer, program=a.program, campaign=a.campaign,
+                               main_query=a.query, content_type=a.type, note=a.note))
+    if not out:
+        sys.exit("No pages matched. Use --url, --urls-file, --platform or --match.")
+    append(a.journal, COLUMNS, out)
+    what = ", ".join(f"{k} {v}" for k, v in (("topic", a.topic), ("priority", a.priority), ("position", a.position),
+                                             ("offer", a.offer), ("program", a.program), ("campaign", a.campaign),
+                                             ("query", a.query), ("type", a.type)) if v)
+    print(f"Tagged {len(out)} pages: {what or a.note or '—'}")
+
+
+def page_strength(p, earned):
+    """How proven a page's topic is: top position, earning, indexed, priority."""
+    sc = 0.0
+    if p["position"] is not None and p["position"] <= TOP:
+        sc += 3 + (TOP - p["position"]) / TOP
+    elif p["position"] is not None and p["position"] <= 20:
+        sc += 1.5
+    if earned.get(p["url"], [0, 0.0])[1] > 0:
+        sc += 3
+    if p["ever_indexed"]:
+        sc += 1
+    if p["priority"] == "high":
+        sc += 2
+    return sc
+
+
+def cmd_coverage(a):
+    today, rows, pages, sales = load(a)
+    reg = read_platforms(platforms_path(a.journal))
+    earned = defaultdict(lambda: [0, 0.0])
+    for r in sales:
+        if r["_page"] and counted(r):
+            earned[r["_page"]][0] += 1
+            earned[r["_page"]][1] += r["_c"]
+    live = [p for p in pages.values() if not p["moved"] and health(p) not in GONE and p["platform"]]
+    gone = [p for p in pages.values() if p["moved"] or health(p) in GONE]
+    topics = defaultdict(dict)  # topic -> platform -> best page
+    for p in live:
+        cur = topics[p["topic_key"]].get(p["platform"].lower())
+        if cur is None or page_strength(p, earned) > page_strength(cur, earned):
+            topics[p["topic_key"]][p["platform"].lower()] = p
+    lost = defaultdict(set)
+    for p in gone:
+        lost[p["topic_key"]].add(p["platform"].lower())
+    # platform strength
+    st = platform_stats(rows, sales, pages, today)
+    plat = {}
+    for key in set(st) | set(reg):
+        s, r = st[key], reg.get(key, {})
+        state = (r.get("state") or "active")
+        if state in ("dropped", "dead", "paused"):
+            continue
+        checked = s["pages"] - s["unchecked"]
+        top = sum(1 for p in live if p["platform"].lower() == key and p["position"] is not None and p["position"] <= TOP)
+        idx = s["indexed"] / checked if checked else None
+        strength = (3 if (r.get("priority") == "high") else 0) + top * 1.5 + (2 * idx if idx is not None else 0.5) \
+            + (2 if s["comm"] > 0 else 0) + ((num(r.get("score")) or 0) / 50) - (2 if r.get("priority") == "low" else 0) \
+            - (3 * s["gone"] / checked if checked else 0)
+        plat[key] = {"name": r.get("platform") or key, "strength": strength, "top": top, "idx": idx,
+                     "pages": s["pages"], "priority": r.get("priority") or "normal", "state": state,
+                     "type": r.get("type") or ""}
+    if a.platform:
+        plat = {k: v for k, v in plat.items() if k == a.platform.lower()}
+    names = sorted(plat, key=lambda k: -plat[k]["strength"])
+    tlist = sorted(topics, key=lambda t: (-max(page_strength(p, earned) for p in topics[t].values()), -len(topics[t]), t))
+    if a.topic:
+        tlist = [t for t in tlist if a.topic.lower() in t]
+    print(f"# Topic coverage · {today} · {len(tlist)} topics × {len(names)} platforms\n")
+    if not tlist:
+        print("No live pages with platforms yet. Import your pages first (import-pages).")
+        return
+    unnamed = sum(1 for t in tlist if t.startswith("~ "))
+    cols = names[: a.max_platforms]
+    print("| Topic | " + " | ".join(plat[k]["name"] for k in cols) + " | On |")
+    print("|---|" + "---|" * len(cols) + "---|")
+    for t in tlist[: a.limit]:
+        cells = []
+        for k in cols:
+            p = topics[t].get(k)
+            if p is None:
+                cells.append("✗ lost" if k in lost[t] else "·")
+            elif p["position"] is not None and p["position"] <= TOP:
+                cells.append(f"**#{p['position']:.0f}**")
+            elif p["position"] is not None:
+                cells.append(f"#{p['position']:.0f}")
+            elif health(p) in INDEXED:
+                cells.append("✓ idx")
+            elif health(p) == "not-indexed":
+                cells.append("no idx")
+            else:
+                cells.append("✓")
+        star = " ★" if any(p["priority"] == "high" for p in topics[t].values()) else ""
+        print(f"| {t}{star} | " + " | ".join(cells) + f" | {len(topics[t])} |")
+    print("\n`#N` position (bold = top 10) · `✓ idx` indexed · `✓` live, not checked · `no idx` not indexed · `✗ lost` page removed · `·` no page · ★ priority")
+    if len(names) > len(cols):
+        print(f"Showing the {len(cols)} strongest platforms of {len(names)}; --platform P for one.")
+    if unnamed:
+        print(f"{unnamed} topics are guessed from URLs (marked ~): name them with `tag --topic` so pages on the same subject group together.")
+
+    # gaps: proven topic missing on a strong platform
+    gaps = []
+    for t in tlist:
+        if t.startswith("~ ") and not a.include_guessed:
+            continue
+        have = topics[t]
+        proof = max(page_strength(p, earned) for p in have.values())
+        best = max(have.values(), key=lambda p: page_strength(p, earned))
+        for k in names:
+            if k in have:
+                continue
+            pl = plat[k]
+            if pl["pages"] == 0 and pl["priority"] != "high":
+                continue
+            score = proof * 1.0 + pl["strength"] + (1 if k in lost[t] else 0)
+            why = []
+            if best["position"] is not None and best["position"] <= TOP:
+                why.append(f"#{best['position']:.0f} on {best['platform']}")
+            if earned.get(best["url"], [0, 0])[1] > 0:
+                why.append(f"earns on {best['platform']}")
+            if best["priority"] == "high":
+                why.append("priority topic")
+            if pl["top"]:
+                why.append(f"{pl['name']} has {pl['top']} pages in the top {TOP}")
+            elif pl["idx"] is not None:
+                why.append(f"{pl['name']} indexes {pl['idx'] * 100:.0f}%")
+            if pl["priority"] == "high":
+                why.append(f"{pl['name']} is a priority platform")
+            if k in lost[t]:
+                why.append("your page there was removed — republish")
+            gaps.append((score, t, pl["name"], best, why))
+    gaps.sort(key=lambda g: -g[0])
+    print(f"\n## What to write where — {min(len(gaps), a.gaps)} best gaps\n")
+    if not gaps:
+        print("No gaps: every named topic is on every active platform, or topics still need names (tag --topic).")
+        return
+    for i, (sc, t, pname, best, why) in enumerate(gaps[: a.gaps], 1):
+        print(f"{i}. **{t}** → {pname} · from {short(best['url'], 50)}" + (f" — {'; '.join(why)}" if why else ""))
+    print("\nRewrite for the new platform, don't copy: new angle or content type, the platform's format. Check the topic's SERP first (content-type-selector).")
 
 
 def main():
@@ -1559,14 +1791,16 @@ def main():
     d = sub.add_parser("due"); common(d); d.set_defaults(fn=cmd_due)
 
     p = sub.add_parser("pages"); common(p)
-    p.add_argument("--platform"); p.set_defaults(fn=cmd_pages)
+    p.add_argument("--platform"); p.add_argument("--topic")
+    p.add_argument("--priority", choices=PRIORITIES); p.set_defaults(fn=cmd_pages)
 
     ad = sub.add_parser("add"); common(ad, today=False)
     ad.add_argument("--event", required=True, choices=EVENTS)
     for opt in ("url", "platform", "offer", "program", "campaign", "sub-id", "query", "type", "status",
                 "score", "views", "clicks", "aff-clicks", "sales", "revenue", "minutes",
-                "note", "date", "time"):
+                "note", "date", "time", "topic", "position"):
         ad.add_argument(f"--{opt}")
+    ad.add_argument("--priority", choices=PRIORITIES)
     ad.set_defaults(fn=cmd_add)
 
     sa = sub.add_parser("sale"); common(sa, today=False)
@@ -1601,11 +1835,29 @@ def main():
 
     pl = sub.add_parser("platforms"); common(pl); pl.set_defaults(fn=cmd_platforms)
 
+    tg = sub.add_parser("tag"); common(tg, today=False)
+    tg.add_argument("--url", action="append")
+    tg.add_argument("--urls-file")
+    tg.add_argument("--platform"); tg.add_argument("--match", help="substring of URL or topic")
+    for opt in ("topic", "position", "offer", "program", "campaign", "query", "type", "note", "date"):
+        tg.add_argument(f"--{opt}")
+    tg.add_argument("--priority", choices=PRIORITIES)
+    tg.set_defaults(fn=cmd_tag)
+
+    cv = sub.add_parser("coverage"); common(cv)
+    cv.add_argument("--topic"); cv.add_argument("--platform")
+    cv.add_argument("--limit", type=int, default=40)
+    cv.add_argument("--gaps", type=int, default=10)
+    cv.add_argument("--max-platforms", type=int, default=8)
+    cv.add_argument("--include-guessed", action="store_true")
+    cv.set_defaults(fn=cmd_coverage)
+
     ps = sub.add_parser("platform-set"); common(ps, today=False)
     ps.add_argument("--platform", required=True)
     for opt in ("domain", "type", "language", "links", "account", "score", "note"):
         ps.add_argument(f"--{opt}")
     ps.add_argument("--state", choices=["active", "testing", "paused", "dropped", "dead"])
+    ps.add_argument("--priority", choices=PRIORITIES)
     ps.set_defaults(fn=cmd_platform_set)
 
     a = ap.parse_args()

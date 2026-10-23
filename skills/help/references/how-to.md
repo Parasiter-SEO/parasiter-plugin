@@ -13,6 +13,15 @@ Each recipe: what the user says, what happens. Give the user only the recipe the
 ## See my platforms
 "My platforms" → your platform base: each platform with pages, alive, indexed, gone, sales, score and state. "Mark healthboards as dropped", "my account on X is …" updates it. `platform-analyzer` adds its score automatically.
 
+## Mark my main pages, platforms and topics
+"Medium and Quora are my main platforms", "these 10 pages are priority", "all keto pages are the topic *keto gummies review*" → priorities (★) and topics in your base. Priority pages are checked first; priority platforms and topics weigh more in the advice.
+
+## Which pages are in the top
+"Which of my pages are in the top 10?" → your pages with positions (from checks, a rank tracker or Search Console). "Show only priority pages" filters the list.
+
+## What to write and where
+"What should I write next?", "which topics are missing on Medium?" → topic coverage: a table of your topics × platforms and the best gaps, e.g. *glp1 patch review → Medium: #7 and earning on the forum, Medium is your priority platform*. Pick one and it goes to content-type-selector and sales-review-writer (a new angle, never a copy).
+
 ## Pick a product or program
 "Which program should I promote for [niche]?" → `affiliate-finder` compares programs (commission, cookie, payout, traffic rules). Then "is [product] worth it?" → `niche-analysis` if you have an SEO tool API or exports.
 

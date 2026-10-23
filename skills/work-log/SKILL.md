@@ -1,6 +1,6 @@
 ---
 name: work-log
-description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms. Imports the pages the user already published (a list of links or a table) and builds their own platform base from them. Records every action the moment it happens (page published, sent to indexing, checked alive/indexed, audited, refreshed, moved, platform tested), every sale (logged by hand or imported from affiliate network exports) and traffic (platform views, affiliate clicks), ties sales to pages by sub-ID, and turns it all into reports for any day, week or month, effectiveness tables by page, platform, offer, program and content type, and a queue of pages due for checks plus sales reports due for upload. Use when the user uploads or pastes a list of their existing pages, asks for "my platforms" / "my platform base", reports work or a sale ("added an article", "indexed it", "made a sale"), uploads a sales or traffic export, asks "what did I do / earn this week", wants a weekly or monthly report, asks which pages, platforms or offers earn, or what needs checking.
+description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms. Imports the pages the user already published (a list of links or a table) and builds their own platform base from them. Records every action the moment it happens (page published, sent to indexing, checked alive/indexed, audited, refreshed, moved, platform tested), every sale (logged by hand or imported from affiliate network exports) and traffic (platform views, affiliate clicks), ties sales to pages by sub-ID, and turns it all into reports for any day, week or month, effectiveness tables by page, platform, offer, program and content type, and a queue of pages due for checks plus sales reports due for upload. Use when the user uploads or pastes a list of their existing pages, asks for "my platforms" / "my platform base", marks pages or platforms as priority, names topics, asks which pages are in the top, "what should I write and where", "which topics are missing on X", reports work or a sale ("added an article", "indexed it", "made a sale"), uploads a sales or traffic export, asks "what did I do / earn this week", wants a weekly or monthly report, asks which pages, platforms or offers earn, or what needs checking.
 ---
 
 # Work Log
@@ -147,6 +147,27 @@ python3 scripts/worklog.py platform-set parasite-seo-progress.csv --platform hea
 States: `active` (publishing), `testing` (1–3 test posts), `paused`, `dropped` (stopped: died, cleaned up, no traffic), `dead` (platform gone). Never write logins or passwords here — an account name is enough.
 
 Other skills use the base: `platform-finder` excludes or marks platforms already in it, `platform-analyzer` writes its score and verdict back with `platform-set`, the navigator prefers `active` platforms with live, indexed pages for new posts.
+
+## Mode 8 — Topics, priorities, top positions and what to write where
+
+The base is not only a list: it tells the user where each topic stands and where it is missing.
+
+**Topics.** A topic groups pages on the same subject across platforms ("keto gummies review", "nordvpn vs surfshark"). It is the page's `topic`, else its main query, else offer + content type, else words guessed from the URL (shown with `~`). After an import, propose topic names from URLs and titles in batches and confirm with the user, then set them:
+```
+python3 scripts/worklog.py tag parasite-seo-progress.csv --match keto --topic "keto gummies review"
+python3 scripts/worklog.py tag parasite-seo-progress.csv --urls-file batch.txt --topic "glp1 patch review"
+```
+`tag` works on `--url` (repeatable), `--urls-file`, `--platform` or `--match` (text in URL or topic) and can also set `--offer --program --campaign --query --type --position`. Latest tag wins.
+
+**Priorities.** The user marks what matters most: `tag … --priority high|normal|low` for pages and topics, `platform-set --platform medium --priority high` for platforms. Priority pages come first in the check queue and page list (★), priority platforms and topics weigh more in the advice below. Ask once after the import: "Which platforms and which pages are your main ones?"
+
+**Top positions.** Every check can carry the page's position for its main query (`add --event check … --position 4`, or `tag --position` from a rank tracker / Search Console export). Top 10 is shown in bold in `pages` (`--priority high`, `--topic …` filters), counted per platform in `platforms`, and is the strongest proof that a topic works. Ask for positions when the user has a rank tracker or Search Console; never guess them.
+
+**Coverage — what to write where.** `coverage` builds a matrix of topics × platforms (position, indexed, live, not indexed, lost, missing) and then lists the best gaps: a proven topic (top 10, earning, indexed or priority) missing on a strong platform (priority, pages in the top 10, high index rate, sales, analyzer score; platforms losing pages and dropped/dead/paused ones are pushed down or skipped). Each gap says why: "#4 on medium; healthboards has 2 pages in the top 10".
+```
+python3 scripts/worklog.py coverage parasite-seo-progress.csv [--topic keto] [--platform quora] [--gaps 10]
+```
+Read it to the user as 3–5 concrete suggestions: topic → platform → why → the content type to use there. A new page on a topic must be rewritten for the platform (new angle or content type, the platform's format), never copied — duplicates get filtered and hurt both pages. Hand the chosen gap to `content-type-selector` and `sales-review-writer`. The navigator uses this list for "new content" in the daily plan.
 
 ## Rules
 

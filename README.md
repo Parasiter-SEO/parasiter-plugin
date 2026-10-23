@@ -15,7 +15,7 @@ On first run the navigator asks who you are and what for. SEO specialists and ag
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
-> **Status: private beta (v0.7.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.8.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
@@ -33,7 +33,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 |---|---|
 | `goals` | Baseline journal, goals over 1 week to 12 months, reality check, milestones, weekly targets, progress log, weekly review |
 | `navigator` | Entry point: asks your role and offers the tools for it; for affiliates, today's plan from your goals, progress and time; routes each task |
-| `work-log` | Journal of work, traffic and sales, and your inventory: imports pages you already have and builds your own platform base; logs every page, action and sale; imports network and platform exports; ties sales to pages by sub-ID; reports for any day, week or month; effectiveness by page, platform, offer, program, content type; check queue and weekly sales upload reminder |
+| `work-log` | Journal of work, traffic and sales, and your inventory: imports pages you already have and builds your own platform base; topics, priorities, top-10 positions and what to write where; logs every page, action and sale; imports network and platform exports; ties sales to pages by sub-ID; reports for any day, week or month; effectiveness by page, platform, offer, program, content type; check queue and weekly sales upload reminder |
 | `content-type-selector` | Picks the content type and topic that sell before writing |
 | `sales-review-writer` | Writes the sales review / comparison for your platform |
 | `page-audit` | Audits a page by link or text, 0–100 score, fixes |

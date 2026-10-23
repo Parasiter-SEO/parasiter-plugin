@@ -38,12 +38,15 @@ date,time,event,page_url,platform,offer,program,campaign,sub_id,main_query,conte
 | `sales`, `revenue` | only on `stats` (aggregate numbers when single sales cannot be imported); on `baseline`, `revenue` = monthly revenue now |
 | `minutes` | time spent |
 | `note` | free text |
+| `topic` | topic name grouping pages on one subject across platforms (latest `tag` wins) |
+| `priority` | high · normal · low (pages; latest wins) |
+| `position` | Google position for the page's main query, on `check` or `tag` |
 
 Older journals with fewer columns are read as they are; the first write upgrades the header and keeps all values. Old `stats` rows with `clicks` are read as affiliate clicks.
 
 ### Events
 
-`baseline` · `published` · `submitted` · `check` · `audit` · `refreshed` · `moved` · `platform` · `traffic` · `stats` · `import` · `task` · `note`
+`baseline` · `published` · `submitted` · `check` · `audit` · `refreshed` · `moved` · `platform` · `traffic` · `stats` · `import` · `task` · `note` · `tag` (sets topic, priority, position, offer, program, campaign, query or type on a page)
 
 ### Statuses
 
@@ -99,6 +102,7 @@ healthboards,healthboards.com,forum,en,nofollow,rumer_k,72,testing,2026-10-23,my
 | `account` | account name or note (never passwords) |
 | `score` | last platform-analyzer score 0–100 |
 | `state` | active · testing · paused · dropped · dead |
+| `priority` | high · normal · low |
 | `added`, `source` | when and how it entered the base: my pages, journal, manual, analyzer |
 
 One row per platform, updated in place (`platform-set`). Page counts, statuses and sales are never stored here: `platforms` computes them from the journal and sales files.
