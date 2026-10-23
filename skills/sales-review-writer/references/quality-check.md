@@ -11,7 +11,12 @@ Run this on every draft. Fix what fails before showing the user; list anything t
 - [ ] Table of contents present; headings alone tell the story and the conclusion.
 - [ ] All sections of the chosen template are present (nothing silently dropped).
 - [ ] Same template for every product in best-of articles.
-- [ ] Alternatives / comparison included even in a single review.
+- [ ] Pains: 3–5 concrete pains in the buyer's words, with what they cost.
+- [ ] Product facts tied to each pain: how the product solves it.
+- [ ] Life after: concrete scenes of how the reader's life improves — no guaranteed results.
+- [ ] Dedicated prices and current offers block (packages, per unit, best value, deal, guarantee, date, CTA).
+- [ ] Comparison with 2–3 competing products + natural alternatives (or a note in the checklist why skipped).
+- [ ] At least 1,500 words (counted).
 - [ ] Pros AND cons; who it is NOT for.
 - [ ] FAQ from real buyer questions.
 - [ ] Clear verdict with the main CTA.

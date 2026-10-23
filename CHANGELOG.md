@@ -2,6 +2,11 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.6.2 — 2026-10-23
+
+- **Stronger sales articles.** Every review now works through the reader's pains, shows how the product solves each one, paints the "life after", has a dedicated prices and current offers block, and compares the product with competitors and natural alternatives. Minimum 1,500 words.
+- **Copy in one go.** The finished article comes on screen as one clean block, ready to paste into the platform; the checklist comes separately. Ask for a .docx if you want a file.
+
 ## 0.6.1 — 2026-10-23
 
 - **No more levels.** Beginner / intermediate / advanced are gone. Your plan follows your role, goals, journal and today's time. Ask Claude to explain any term or to make tasks smaller or bigger, any time.

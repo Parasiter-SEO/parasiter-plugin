@@ -49,6 +49,16 @@ Follow the template for the content type in `references/article-structure.md`. E
 
 Then the body per type, then FAQ, verdict with the main CTA, affiliate disclosure and last-checked date.
 
+### Mandatory blocks in every article (Rumer's rules)
+
+Whatever the content type, the body always contains these five blocks. Templates and order per type: `references/article-structure.md`.
+
+1. **The reader's pains** — work through 3–5 concrete pains in the buyer's own words (what hurts, what they already tried, what it costs them in money, time, confidence, daily life). Pains are the engine of the article: every later block answers one of them.
+2. **Product facts and how it solves the problem** — what the product is and how it works, fact by fact, each fact tied to the pain it answers ("Pain → what the product does about it → why that works"). Facts from the merchant or the user only.
+3. **Life after** — how the reader's day and life change once the problem is handled: concrete everyday scenes (mornings, work, money, relationships, confidence), what improves and why it matters. Write it as the picture the product is designed to deliver and what users typically report — never as a guaranteed result; health and money topics keep the honest limits.
+4. **Prices and current offers** — a dedicated block (in addition to the quick facts box): every package with price and price per unit, the best-value pick and why, current discount / coupon / bonus / free shipping / guarantee, last-checked date, CTA to the exact package page.
+5. **Comparison and alternatives** — almost every article compares the product with 2–3 competing products (table + "choose X if…") and gives **natural alternatives**: non-product or low-cost options (lifestyle changes, home and natural remedies, free tools or methods) with an honest note on when they are enough and when the product is the better choice. Skip the comparison only when the content type is a pure packages/price guide for one product, and say so in the operator checklist.
+
 ## Step 4 — Conversion triggers
 
 Place CTAs next to the moment of decision, not at random. A CTA explains **why buy now, why this product, why this offer**, using the real current deal (`references/cta-and-offers.md`). "Click here to visit the official site" is not a CTA. Check where each link lands — a direct order/bundle page often converts better than the homepage.
@@ -61,8 +71,8 @@ Propose 3–6 images with a one-line purpose each: hero image, product in use, i
 
 ## Step 6 — Deliver
 
-1. Output the full article in the platform's format (Markdown by default; plain text with emojis for Raisely; BBCode/plain for forums when asked).
-2. Under it, a short **operator checklist**: facts to verify, placeholders left (marked `[VERIFY: …]`), images to create, links to check.
+1. Output the full article **on screen, as one continuous copy-ready block**: the article only, from title to disclosure, with no comments, notes or questions inside it, so the user can copy it in one go and paste it into the platform. Format per platform (Markdown by default; plain text with emojis for Raisely; BBCode/plain for forums when asked). Before the article, one line: word count and the reference followed. If the user asks for a file, also give it as a .docx (or Google Doc where connected) with the same text.
+2. Under the article, separately, a short **operator checklist**: facts to verify, placeholders left (marked `[VERIFY: …]`), images to create, links to check.
 3. Ask what to change. Iterate section by section; keep everything the user did not ask to change.
 4. Suggest running `page-audit` on the final text before publishing — it sends the text to the independent auditor, so the page is not graded by the same context that wrote it.
 
@@ -74,4 +84,4 @@ Propose 3–6 images with a one-line purpose each: hero image, product in use, i
 - Show cons and say who the product is NOT for — that is what makes the recommendation believable.
 - Affiliate disclosure and last-checked date on every page.
 - Role from `parasite-seo-profile.md` (navigator `references/roles.md`): this skill is for affiliates and bloggers. For a course author / own product or an agency writing for a client, say it is not in their toolset; never present the user's own or a client's product as an independent review, test or ranking.
-- Length: at least 1,500–2,000 words on article platforms unless the platform format says otherwise.
+- Length: **every article is at least 1,500 words** (count before handing over; if short, deepen pains, facts, life after, comparison and FAQ — never pad with filler). Longer where the platform wants it (PDF ~3,000, press release 2,000–3,000). Only non-article formats are shorter: Facebook posts, YouTube descriptions, Reddit/Quora answers.
