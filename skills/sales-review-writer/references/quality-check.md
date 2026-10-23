@@ -22,7 +22,16 @@ Run this on every draft. Fix what fails before showing the user; list anything t
 - [ ] Clear verdict with the main CTA.
 - [ ] Affiliate disclosure + last-checked date.
 
+## Formatting
+- [ ] H1 title, H2 sections, H3 subsections; table of contents with anchor links.
+- [ ] Lists and bold key facts; short paragraphs.
+- [ ] 3–5 tables where they help the decision (quick facts, pain → solution, comparison, prices, pros/cons).
+- [ ] Article rendered formatted in the chat, ready to copy; code-block version for Markdown/BBCode platforms.
+- [ ] 3–6 images placed in the article: JPG cards made with code where possible, prompts for photo-like images.
+
 ## Conversion
+- [ ] Affiliate link asked for and used; placeholders listed if missing.
+- [ ] Product name linked in quick facts, first mention per section, tables and verdict.
 - [ ] Every CTA says why this product, why this offer, why now.
 - [ ] CTAs sit at decision points, not scattered.
 - [ ] Links go to the best landing page (order/bundle page where it converts better).

@@ -24,6 +24,8 @@ Button/link texts: "Check Current Package", "See Today's Price", "View Official 
 
 ## Placement
 
+- The product name itself is a link (quick facts, first mention per section, tables, verdict).
+
 - Quick facts box at the top (many buy right here).
 - After each product section in best-of articles.
 - Next to each choice scenario ("Pick A if…").

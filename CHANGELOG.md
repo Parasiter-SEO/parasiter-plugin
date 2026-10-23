@@ -2,6 +2,12 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.6.3 — 2026-10-23
+
+- **Your link everywhere it sells.** Before writing, Claude asks for your affiliate link for every product, links the product name in the facts box, each section, the tables and the verdict, and builds the CTAs on it.
+- **Images come with the article.** Quick facts, pain → solution, comparison and price cards are drawn as JPG right in the chat; for photo-like images you get a ready prompt for your image generator.
+- **Ready to paste.** Fully formatted in the chat: headings, table of contents, lists and 3–5 tables. Copy it straight into Medium, LinkedIn or WordPress; a Markdown/BBCode copy for forums and Reddit.
+
 ## 0.6.2 — 2026-10-23
 
 - **Stronger sales articles.** Every review now works through the reader's pains, shows how the product solves each one, paints the "life after", has a dedicated prices and current offers block, and compares the product with competitors and natural alternatives. Minimum 1,500 words.

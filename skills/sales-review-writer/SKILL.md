@@ -17,7 +17,7 @@ Reply to the user in their language. Write the article in the target language of
 
 If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for what is missing. Otherwise collect:
 
-1. **Product(s)** and the affiliate link(s). For "best of": 5, 7 or 10 products, the order, and which one is #1.
+1. **Product(s) and the affiliate link for each — always ask, before writing.** "What is your affiliate link for [product]?" Do not start the article without it; if the user has no link yet, write `[AFFILIATE LINK: product]` placeholders and list them in the operator checklist. For "best of": 5, 7 or 10 products, the order, which one is #1, and a link for every product. Ask also whether a specific package/order page link converts better than the main one.
 2. **Content type**: single review, best-of comparison, A vs B, personal experience, complaints/doubts, packages/price guide.
 3. **Platform** where it will be published (decides length, tone and formatting — see `references/platform-formats.md`).
 4. **Author profile** — required, see Step 2.
@@ -65,13 +65,37 @@ Place CTAs next to the moment of decision, not at random. A CTA explains **why b
 
 Urgency only from real conditions (an offer that actually ends, limited stock the merchant states). No invented deadlines.
 
+**Links in the text:**
+- The **product name is a link** to the affiliate URL: in the quick facts box, at the first mention in each section, in comparison and price tables, and in the verdict. Not every mention — about once per section, so the text stays readable.
+- Every CTA button or line is a link with a clear action text ("See today's price for the 6-bottle pack →").
+- Competing products get the user's affiliate link if they have one; otherwise plain text or the official site, never a fake link.
+- Where the platform does not allow links in the body (some forums, Reddit), say so in the checklist and place the link where the platform allows it (signature, profile, first reply).
+
 ## Step 5 — Visuals
 
-Propose 3–6 images with a one-line purpose each: hero image, product in use, infographic of key facts, comparison widget/table, price/bundle visual. Hand the image prompts to the `post-illustrations` skill. Respect platform limits (PDF — few light images; Raisely — cover only; forums — external hosting).
+Every article comes with its images. Plan 3–6, one line each: what it shows and where it goes in the article.
+
+**Make the images yourself when code execution is available** — render them with code (HTML/SVG or Python imaging) and save as **JPG, 1200×675** (cover 1600×900), one consistent style per article, and show each one in the chat right where it belongs so the user can copy or save it directly:
+- quick facts card (line-by-line characteristics + current deal);
+- pains → solution infographic;
+- comparison card / table image (product vs competitors);
+- prices and packages card (best value marked);
+- verdict / "choose X if…" card.
+Text on images only from verified facts, with the checked date on any price.
+
+**Photo-like images** (product in hand, lifestyle scene, author-style photo) cannot be made reliably with code: give a ready prompt for the user's image generator via the `post-illustrations` skill, and mark the spot in the article. Prefer the user's own real photos when they have them.
+
+Without code execution, give all image prompts via `post-illustrations`. Respect platform limits (PDF — few light images; Raisely — cover only; forums — external hosting). Never generate fake people presented as real users or experts, fake certificates or before/after results.
 
 ## Step 6 — Deliver
 
-1. Output the full article **on screen, as one continuous copy-ready block**: the article only, from title to disclosure, with no comments, notes or questions inside it, so the user can copy it in one go and paste it into the platform. Format per platform (Markdown by default; plain text with emojis for Raisely; BBCode/plain for forums when asked). Before the article, one line: word count and the reference followed. If the user asks for a file, also give it as a .docx (or Google Doc where connected) with the same text.
+1. Output the full article **right in the chat, fully formatted, ready to copy** — no file to download unless the user asks for one. The article only, from title to disclosure, with no comments, notes or questions inside it.
+   - **Formatting is required:** one H1 title; H2 sections and H3 subsections; a **table of contents** with anchor links to the H2 sections right after the author intro; bullet and numbered lists; bold for key facts; short paragraphs (2–4 lines on mobile).
+   - **Tables often** — wherever they help the decision: quick facts, pain → solution, comparison with competitors, prices and packages, pros and cons, "choose X if…". A typical article has 3–5 tables.
+   - Render it as formatted text (not inside a code block), so copying it into Medium, LinkedIn, WordPress, Raisely and similar editors keeps headings, lists, links and tables. For platforms that need Markdown or BBCode source (Dev.to, Reddit, many forums), **also** give the same text in a code block, which has its own copy icon.
+   - Images (Step 5) appear inline at their places in the article.
+   - Before the article, one line: word count, number of tables and images, the reference followed.
+   - If the user asks for a file, also give a .docx (or a Google Doc where connected) with the same text and images.
 2. Under the article, separately, a short **operator checklist**: facts to verify, placeholders left (marked `[VERIFY: …]`), images to create, links to check.
 3. Ask what to change. Iterate section by section; keep everything the user did not ask to change.
 4. Suggest running `page-audit` on the final text before publishing — it sends the text to the independent auditor, so the page is not graded by the same context that wrote it.
