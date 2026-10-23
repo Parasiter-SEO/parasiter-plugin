@@ -2,6 +2,12 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.7.0 — 2026-10-23
+
+- **Bring the pages you already have.** Upload or paste your published pages — a list of links, CSV, Excel, any table. Each page goes into your journal with its platform, date, offer and program when the table has them; duplicates are skipped. Say *"here are my pages"*.
+- **Your own platform base.** Built from your pages automatically: every platform with pages, alive, indexed, gone, sales, score and state (active, testing, paused, dropped, dead). Say *"my platforms"*. Platform analysis writes its score into it, and platform search marks the ones you already use.
+- **One bulk check for imported pages** instead of hundreds of separate reminders.
+
 ## 0.6.4 — 2026-10-23
 
 - **Writer profile.** Fill it once (author block, photo, your affiliate links, disclosure, CTA and image style), save it in your Claude Project, and every article only asks what is new: product, link, deal, platform. Say *"set up my writer profile"* to start.

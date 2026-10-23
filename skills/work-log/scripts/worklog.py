@@ -18,6 +18,11 @@ Commands:
   effect         JOURNAL [--period ...] [--by page|platform|offer|program|content_type|month]
   due            JOURNAL [--today D]
   pages          JOURNAL [--platform P] [--today D]
+  import-pages   JOURNAL FILE [--date D] [--platform P] [--offer O] [--program P] [--campaign C]
+                 [--type T] [--map field=Header ...]   (CSV/TSV/TXT or any text with URLs)
+  platforms      JOURNAL [--today D]                  personal platform base with stats
+  platform-set   JOURNAL --platform P [--domain --type --language --links --account --score
+                 --state active|testing|paused|dropped|dead --note]
 
 Periods: today, yesterday, week, last-week, month, last-month, YYYY-MM, YYYY-MM-DD,
 YYYY-MM-DD..YYYY-MM-DD, all.  --sales-file FILE overrides the sales file path.
@@ -100,6 +105,69 @@ STATUS_MAP = {
 }
 
 
+PLATFORM_COLUMNS = ["platform", "domain", "type", "language", "links", "account", "score",
+                    "state", "added", "source", "note"]
+PAGE_ALIASES = {
+    "url": TRAFFIC_ALIASES["url"] + ["urls", "pages", "postlink", "publishedurl"],
+    "date": ["date", "published", "publishdate", "publishedat", "publicationdate", "datepublished",
+             "created", "createdat", "posted", "postdate", "added"],
+    "platform": ["platform", "site", "domain", "website"],
+    "offer": ["offer", "product", "brand", "productname"],
+    "program": ["program", "affiliateprogram", "affnetwork", "affiliatenetwork", "network", "partner"],
+    "campaign": ["campaign", "pack", "batch", "group", "project"],
+    "sub_id": SALE_ALIASES["sub_id"],
+    "main_query": ["query", "keyword", "mainquery", "mainkeyword", "kw", "targetkeyword"],
+    "content_type": ["type", "contenttype", "format", "articletype"],
+    "status": ["status", "state", "indexed"],
+    "note": ["note", "notes", "comment", "comments", "title", "headline"],
+}
+# known platforms: domain suffix -> (slug, type)
+KNOWN_PLATFORMS = {
+    "medium.com": ("medium", "article"), "linkedin.com": ("linkedin", "article"),
+    "substack.com": ("substack", "newsletter"), "reddit.com": ("reddit", "community"),
+    "quora.com": ("quora", "q&a"), "tumblr.com": ("tumblr", "blog"),
+    "blogspot.com": ("blogger", "site-builder"), "wordpress.com": ("wordpress-com", "site-builder"),
+    "wixsite.com": ("wix", "site-builder"), "weebly.com": ("weebly", "site-builder"),
+    "sites.google.com": ("google-sites", "site-builder"), "notion.site": ("notion", "page"),
+    "telegra.ph": ("telegraph", "page"), "github.io": ("github-pages", "site-builder"),
+    "hashnode.dev": ("hashnode", "article"), "dev.to": ("dev-to", "article"),
+    "vocal.media": ("vocal", "article"), "hubpages.com": ("hubpages", "article"),
+    "issuu.com": ("issuu", "document"), "scribd.com": ("scribd", "document"),
+    "slideshare.net": ("slideshare", "document"), "academia.edu": ("academia", "document"),
+    "facebook.com": ("facebook", "social"), "x.com": ("x", "social"), "twitter.com": ("x", "social"),
+    "pinterest.com": ("pinterest", "social"), "youtube.com": ("youtube", "video"),
+    "raisely.com": ("raisely", "fundraising"), "gofundme.com": ("gofundme", "fundraising"),
+    "eventbrite.com": ("eventbrite", "event"), "patreon.com": ("patreon", "creator"),
+    "behance.net": ("behance", "portfolio"), "dribbble.com": ("dribbble", "portfolio"),
+    "producthunt.com": ("producthunt", "community"), "steemit.com": ("steemit", "blog"),
+}
+FORUM_HINTS = ("/threads/", "/thread/", "/topic/", "/t/", "/forum", "/forums/", "showthread",
+               "viewtopic", "/community/", "/discussion")
+MULTI_TLD = ("co.uk", "com.au", "co.in", "com.br", "co.za", "com.mx", "co.nz", "com.ua", "org.uk",
+             "com.tr", "co.jp", "com.ar", "com.sg", "com.ph", "ac.uk", "gov.uk", "edu.au")
+
+
+def url_domain(url):
+    u = re.sub(r"^[a-z]+://", "", (url or "").strip().lower())
+    host = u.split("/")[0].split("?")[0].split(":")[0]
+    return re.sub(r"^(www|m)\.", "", host)
+
+
+def platform_of(url):
+    """(slug, domain, type guess) for a page URL."""
+    host = url_domain(url)
+    for suf, (slug, typ) in KNOWN_PLATFORMS.items():
+        if host == suf or host.endswith("." + suf):
+            return slug, suf, typ
+    parts = host.split(".")
+    n = 3 if any(host.endswith("." + t) for t in MULTI_TLD) else 2
+    base = ".".join(parts[-n:]) if len(parts) >= n else host
+    slug = parts[-n] if len(parts) >= n else parts[0]
+    low = url.lower()
+    typ = "forum" if any(h in low for h in FORUM_HINTS) or host.startswith(("forum.", "forums.", "community.")) else ""
+    return slug, base, typ
+
+
 # ---------- helpers ----------
 
 def norm(h):
@@ -141,6 +209,10 @@ def norm_url(u):
     u = re.sub(r"^www\.", "", u)
     u = u.split("#")[0].split("?")[0]
     return u.rstrip("/")
+
+
+def platforms_path(journal):
+    return os.path.join(os.path.dirname(os.path.abspath(journal)), "parasite-seo-platforms.csv")
 
 
 def sales_path(journal, override=None):
@@ -247,7 +319,8 @@ def page_states(rows, today):
                                    "sub_id": "", "query": "", "content_type": "",
                                    "published": None, "last_check": None, "status": "",
                                    "ever_indexed": False, "last_audit": None, "score": None,
-                                   "last_refresh": None, "moved": None, "first": r["_d"]})
+                                   "last_refresh": None, "moved": None, "first": r["_d"],
+                                   "imported": False})
         for k, col in (("platform", "platform"), ("offer", "offer"), ("program", "program"),
                        ("campaign", "campaign"),
                        ("sub_id", "sub_id"), ("query", "main_query"),
@@ -257,6 +330,7 @@ def page_states(rows, today):
         ev, st = r["event"], r["status"]
         if ev == "published" and p["published"] is None:
             p["published"] = r["_d"]
+            p["imported"] = (r.get("note") or "").startswith("imported from")
             if st:
                 p["status"] = st
         elif ev == "check" and st:
@@ -685,6 +759,9 @@ def due_lists(rows, sales, pages, today):
         if p["last_check"] and p["status"] in GONE:
             out["republish"].append((p, f"{p['status']} on {p['last_check']}"))
             continue
+        if p["imported"] and not p["last_check"]:
+            out["imported"].append((p, "imported, status unknown"))
+            continue
         nc = next_check(p)
         if nc <= today:
             late = (today - nc).days
@@ -706,7 +783,10 @@ def due_lists(rows, sales, pages, today):
 # ---------- commands ----------
 
 def counts(rows, s, e):
-    sel = [r for r in rows if s <= r["_d"] <= e]
+    # imported pages with an unknown date are inventory, not work done on the import day
+    sel = [r for r in rows if s <= r["_d"] <= e
+           and not (r["event"] == "published" and "publish date unknown" in (r.get("note") or ""))
+           and not (r["event"] == "note" and (r.get("note") or "").startswith("details from "))]
     return sel, Counter(r["event"] for r in sel)
 
 
@@ -887,6 +967,12 @@ def cmd_due(a):
             span = f"export from {frm} to {today}" if frm else "export everything since the first page"
             print(f"- **{name}** — {why} · {span}")
         print()
+    if due["imported"]:
+        n = len(due["imported"])
+        per = Counter(p["platform"] or "?" for p, _ in due["imported"])
+        print(f"## Imported pages, not checked yet ({n}) — one bulk alive / index check\n")
+        print("- " + ", ".join(f"{k} {v}" for k, v in per.most_common()))
+        print("- Run platform-monitor on the whole list (page-checker agent); statuses and the schedule start from that check.\n")
     sections = [
         ("republish", "Removed / noindex — republish from the saved copy"),
         ("not_indexed", "Not indexed 14+ days after publishing — resubmit, add links or move"),
@@ -1213,6 +1299,243 @@ def cmd_import_traffic(a):
         print("- Tip: pass --from and --to with the export's date range so the same period is never counted twice.")
 
 
+# ---------- inventory: existing pages and the personal platform base ----------
+
+def read_platforms(path):
+    return {r.get("platform", "").lower(): r for r in read_csv(path) if r.get("platform")}
+
+
+def write_platforms(path, reg):
+    cols = PLATFORM_COLUMNS[:]
+    for r in reg.values():
+        cols += [k for k in r if k not in cols]
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
+        w.writeheader()
+        for k in sorted(reg):
+            w.writerow(reg[k])
+
+
+def register_platforms(journal, found, source):
+    """Add platforms not yet in the base. found: {slug: (domain, type)}. Returns new slugs."""
+    path = platforms_path(journal)
+    reg = read_platforms(path)
+    new = []
+    for slug, (dom, typ) in found.items():
+        if not slug:
+            continue
+        r = reg.get(slug.lower())
+        if r is None:
+            reg[slug.lower()] = {"platform": slug, "domain": dom, "type": typ, "state": "active",
+                                 "added": date.today().isoformat(), "source": source}
+            new.append(slug)
+        else:
+            if not r.get("domain") and dom:
+                r["domain"] = dom
+            if not r.get("type") and typ:
+                r["type"] = typ
+    if new or reg:
+        write_platforms(path, reg)
+    return new
+
+
+def urls_from_text(path):
+    with open(path, encoding="utf-8-sig", errors="replace") as f:
+        text = f.read()
+    return text, re.findall(r"https?://[^\s,;\"'<>()\[\]]+", text)
+
+
+def cmd_import_pages(a):
+    text, loose = urls_from_text(a.file)
+    header, raw = ([], [])
+    if max(text[:3000].count(","), text[:3000].count(";"), text[:3000].count("\t")) > 0:
+        header, raw = sniff_rows(a.file)
+    cols = map_columns(header, PAGE_ALIASES, parse_map(a.map)) if header else {}
+    if "url" not in cols and header:
+        for i in range(len(header)):  # a column whose values are URLs
+            if raw and sum(1 for r in raw[:20] if i < len(r) and re.match(r"https?://", r[i].strip())) >= max(1, len(raw[:20]) // 2):
+                cols["url"] = i
+                break
+    get = lambda r, f: r[cols[f]].strip() if f in cols and cols[f] < len(r) else ""
+    items = []
+    if "url" in cols:
+        dates = parse_dates([get(r, "date") for r in raw]) if "date" in cols else [None] * len(raw)
+        for r, d in zip(raw, dates):
+            u = get(r, "url")
+            if re.match(r"https?://", u):
+                items.append((u, d, {f: get(r, f) for f in cols if f not in ("url", "date")}))
+    else:
+        items = [(u.rstrip(".,"), None, {}) for u in loose]
+    if not items:
+        if header:
+            print("Columns in the file: " + " | ".join(header))
+        sys.exit("No page URLs found. Give a list of links (one per line) or a table with a URL column (--map url=\"<header>\").")
+
+    rows = read_rows(a.journal)
+    known = page_states(rows, date.max)
+    have = {norm_url(u): p for u, p in known.items()}
+    default_d = pdate(a.date) if a.date else None
+    out, dup, seen, found, undated, filled = [], 0, set(), {}, 0, 0
+    for u, d, extra in items:
+        k = norm_url(u)
+        if k in have and k not in seen:  # page already in: add only details it is missing
+            p = have[k]
+            add = {f: v for f, v in (("offer", extra.get("offer") or a.offer),
+                                     ("program", extra.get("program") or a.program),
+                                     ("campaign", extra.get("campaign") or a.campaign),
+                                     ("sub_id", extra.get("sub_id")),
+                                     ("main_query", extra.get("main_query")),
+                                     ("content_type", extra.get("content_type") or a.type))
+                   if v and not p.get({"main_query": "query"}.get(f, f))}
+            if add:
+                out.append(journal_row(date=date.today().isoformat(), time="", event="note",
+                                       page_url=p["url"], platform=p["platform"],
+                                       note="details from " + os.path.basename(a.file), **add))
+                filled += 1
+        if not k or k in have or k in seen:
+            dup += 1
+            seen.add(k)
+            continue
+        seen.add(k)
+        slug, dom, typ = platform_of(u)
+        given = (a.platform or extra.get("platform") or "").strip()
+        if given:
+            slug = platform_of("https://" + given)[0] if "." in given and " " not in given else given
+        slug = (slug or "").lower().replace(" ", "-")
+        found.setdefault(slug, (dom, typ))
+        d = d or default_d
+        if not d:
+            undated += 1
+        st = (extra.get("status") or "").lower()
+        st = st if st in ALIVE | GONE | {"dead"} else ""
+        note = "imported from " + os.path.basename(a.file) + ("" if d else "; publish date unknown")
+        if extra.get("note"):
+            note += "; " + extra["note"]
+        out.append(journal_row(date=(d or date.today()).isoformat(), time="", event="published", page_url=u,
+                               platform=slug, offer=extra.get("offer") or a.offer,
+                               program=extra.get("program") or a.program,
+                               campaign=extra.get("campaign") or a.campaign,
+                               sub_id=extra.get("sub_id"), main_query=extra.get("main_query"),
+                               content_type=extra.get("content_type") or a.type, status=st, note=note))
+    if out:
+        append(a.journal, COLUMNS, out)
+    new = register_platforms(a.journal, found, "my pages")
+    added = [r for r in out if r["event"] == "published"]
+    per = Counter(r["platform"] for r in added)
+    print(f"Pages import {os.path.basename(a.file)}")
+    if cols:
+        print("- Columns used: " + ", ".join(f"{f} = “{header[i]}”" for f, i in cols.items()))
+    print(f"- {len(added)} pages added to the journal · {dup} already there or repeated"
+          + (f" · details added to {filled} of them" if filled else ""))
+    if per:
+        print(f"- Platforms ({len(per)}): " + ", ".join(f"{k} {v}" for k, v in per.most_common()))
+    if new:
+        print(f"- New in your platform base: {len(new)} ({', '.join(new[:15])}{'…' if len(new) > 15 else ''})")
+    if undated:
+        print(f"- {undated} pages without a publish date: dated today. Give dates (column or --date) for correct ages and check schedule.")
+    missing = [f for f in ("offer", "program") if not any(r[f] for r in added)]
+    if added and missing:
+        print(f"- No {' / '.join(missing)} on these pages: sales can't be counted per offer/program until you add them (re-import with columns, or --offer/--program per batch).")
+    if added:
+        print("- Next: check which pages are alive and indexed (platform-monitor / page-checker), then audit the ones that matter.")
+
+
+def platform_stats(rows, sales, pages, today):
+    st = defaultdict(lambda: {"pages": 0, "alive": 0, "indexed": 0, "gone": 0, "unchecked": 0,
+                              "first": None, "last": None, "sales": 0, "comm": 0.0, "views": 0.0,
+                              "score": None, "tested": None})
+    for p in pages.values():
+        if not p["platform"]:
+            continue
+        s = st[p["platform"].lower()]
+        s["pages"] += 1
+        h = health(p)
+        if h == "not checked yet":
+            s["unchecked"] += 1
+        elif h in ALIVE:
+            s["alive"] += 1
+        elif h in GONE or h == "moved":
+            s["gone"] += 1
+        if h in INDEXED:
+            s["indexed"] += 1
+        s["first"] = min(filter(None, [s["first"], p["published"]]))
+        s["last"] = max(filter(None, [s["last"], p["published"]]))
+    for r in sales:
+        if r["_page"] and counted(r) and r["_page"] in pages:
+            s = st[pages[r["_page"]]["platform"].lower()]
+            s["sales"] += 1 if r["_c"] > 0 else -1 if r["_c"] < 0 else 0
+            s["comm"] += r["_c"]
+    for r in rows:
+        pl = (r.get("platform") or "").lower()
+        if not pl:
+            continue
+        if r["event"] in ("traffic", "stats"):
+            st[pl]["views"] += num(r.get("views")) or 0
+        if r["event"] == "platform":
+            st[pl]["tested"] = r["_d"]
+            if num(r.get("score")) is not None:
+                st[pl]["score"] = num(r.get("score"))
+    return st
+
+
+def cmd_platforms(a):
+    today, rows, pages, sales = load(a)
+    reg = read_platforms(platforms_path(a.journal))
+    found = {}
+    for p in pages.values():  # pages logged one by one also feed the base
+        if p["platform"] and p["platform"].lower() not in reg:
+            _, dom, typ = platform_of(p["url"])
+            found[p["platform"]] = (dom, typ)
+    for r in rows:
+        if r["event"] == "platform" and r.get("platform") and r["platform"].lower() not in reg:
+            found[r["platform"]] = ("", "")
+    if found:
+        register_platforms(a.journal, found, "journal")
+        reg = read_platforms(platforms_path(a.journal))
+    st = platform_stats(rows, sales, pages, today)
+    print(f"# My platforms · {today} · {len(reg)} in the base\n")
+    if not reg:
+        print("No platforms yet. Import your pages (import-pages) or log one: add --event platform --platform <slug>.")
+        return
+    print("| Platform | Domain | Type | State | Pages | Alive | Indexed | Gone | Not checked | Last page | Sales | Commission | Score |")
+    print("|---|---|---|---|---|---|---|---|---|---|---|---|---|")
+    order = sorted(reg.values(), key=lambda r: (-st[r["platform"].lower()]["pages"], r["platform"]))
+    attention = []
+    for r in order:
+        s = st[r["platform"].lower()]
+        score = r.get("score") or (fmt(s["score"]) if s["score"] is not None else "")
+        print(f"| {r['platform']} | {r.get('domain') or '—'} | {r.get('type') or '?'} | {r.get('state') or 'active'} | "
+              f"{s['pages']} | {s['alive']} | {s['indexed']} | {s['gone']} | {s['unchecked']} | "
+              f"{s['last'] or '—'} | {s['sales']} | {money(s['comm'])} | {score or '—'} |")
+        checked = s["pages"] - s["unchecked"]
+        if checked >= 3 and s["gone"] / checked >= 0.5 and (r.get("state") or "active") == "active":
+            attention.append(f"{r['platform']}: {s['gone']} of {checked} checked pages gone — mark dropped or move pages")
+        if not r.get("type"):
+            attention.append(f"{r['platform']}: type unknown — run platform-analyzer once")
+    tot = sum(s["pages"] for s in st.values())
+    unchecked = sum(s["unchecked"] for s in st.values())
+    print(f"\n**Total:** {tot} pages on {sum(1 for r in reg.values() if st[r['platform'].lower()]['pages'])} platforms"
+          + (f" · {unchecked} not checked yet" if unchecked else ""))
+    if attention:
+        print("\n**Needs attention**")
+        for x in attention[:12]:
+            print("- " + x)
+
+
+def cmd_platform_set(a):
+    path = platforms_path(a.journal)
+    reg = read_platforms(path)
+    key = a.platform.lower()
+    r = reg.setdefault(key, {"platform": a.platform, "state": "active",
+                             "added": date.today().isoformat(), "source": "manual"})
+    for f in ("domain", "type", "language", "links", "account", "score", "state", "note"):
+        v = getattr(a, f)
+        if v is not None:
+            r[f] = v
+    write_platforms(path, reg)
+    print(f"Platform base: {r['platform']} · " + " · ".join(f"{f} {r[f]}" for f in PLATFORM_COLUMNS[1:] if r.get(f)))
+
+
 def main():
     ap = argparse.ArgumentParser(description="PARASITER work, traffic and sales journal")
     ap.add_argument("--sales-file", help="sales file (default: parasite-seo-sales.csv next to the journal)")
@@ -1268,6 +1591,22 @@ def main():
     it.add_argument("--from", dest="from_"); it.add_argument("--to")
     it.add_argument("--map", action="append")
     it.set_defaults(fn=cmd_import_traffic)
+
+    ip = sub.add_parser("import-pages"); common(ip, today=False)
+    ip.add_argument("file")
+    for opt in ("date", "platform", "offer", "program", "campaign", "type"):
+        ip.add_argument(f"--{opt}")
+    ip.add_argument("--map", action="append")
+    ip.set_defaults(fn=cmd_import_pages)
+
+    pl = sub.add_parser("platforms"); common(pl); pl.set_defaults(fn=cmd_platforms)
+
+    ps = sub.add_parser("platform-set"); common(ps, today=False)
+    ps.add_argument("--platform", required=True)
+    for opt in ("domain", "type", "language", "links", "account", "score", "note"):
+        ps.add_argument(f"--{opt}")
+    ps.add_argument("--state", choices=["active", "testing", "paused", "dropped", "dead"])
+    ps.set_defaults(fn=cmd_platform_set)
 
     a = ap.parse_args()
     a.sales_path_override = getattr(a, "sales_file", None)

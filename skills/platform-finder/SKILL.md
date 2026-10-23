@@ -18,7 +18,7 @@ Ask only what is missing:
 - Language and country.
 - Platform types wanted: forum/community, Q&A, article/blog, profile, document/PDF/flipbook, site builder, events/fundraising, audio/video, paid press release.
 - Must-haves: live links required? dofollow needed or nofollow is fine? free or paid OK? max moderation?
-- Platforms to exclude (already used, already banned).
+- Platforms to exclude (already used, already banned). Read the user's base (`work-log` `platforms`, file `parasite-seo-platforms.csv`): mark platforms already in it as "yours" with their state, skip `dropped` and `dead` ones unless asked.
 
 ## Step 2 — Database first (Pro)
 

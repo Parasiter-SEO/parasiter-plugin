@@ -41,7 +41,7 @@ No profile → first ask which language to work in (offer the language the user 
 1. Niche(s) and offer(s) — or "don't have one yet".
 2. Target country and the language of the pages you publish (can differ from the working language).
 3. How many hours per day or week they can give.
-4. Pages already live (links or a rough count) and where.
+4. Pages already live: if there are any, ask for the list of links (any file or paste) and import it with `work-log` Mode 0 before goals — the journal, the baseline and the user's platform base are built from it. A rough count is fine only if the list is not at hand.
 5. Tools they have: SEO service with API (Semrush, Ahrefs, Serpstat, DataForSEO), Search Console, affiliate network stats.
 
 Offer to save the answers as `parasite-seo-profile.md`.
@@ -53,7 +53,7 @@ First session of a new week with a goals file → run the `goals` weekly review 
 ## Step 2 — Check what changed
 
 - **Progress since last session**: ask in one line what was done if the journal has nothing new ("Published anything since Thursday? Any sales?"), and log it through the `work-log` skill.
-- **Check queue**: run `work-log` `due`. Sales reports to upload, pages that were removed, not indexed after 14 days, due an alive/index check or a conversion audit, scored under 70, or have no sub-ID become candidate tasks for today.
+- **Check queue**: run `work-log` `due`. Imported pages never checked → one bulk check is today's first task. Sales reports to upload, pages that were removed, not indexed after 14 days, due an alive/index check or a conversion audit, scored under 70, or have no sub-ID become candidate tasks for today.
 - **Sales upload**: on the first session of the week, if `due` lists programs without sales reported for 7 days, ask for those exports before planning ("Upload last week's sales from ClickBank and Impact — export from Oct 15 to today"). Then show last week's sales and commission in one line.
 - **Server, if connected** (`monitor_status`, `news_latest`, `account_info`): dead, noindexed or dropped pages; plan (Pro / Insider) and limits.
 - **What's new**: if `news_latest` has unseen items, show them in 2–4 lines ("Since your last session: 3 new platforms, PARASITER 0.5 — sales import from Excel"), turn the useful ones into candidate tasks, then `news_seen`. Full list on request through `platform-feed`.

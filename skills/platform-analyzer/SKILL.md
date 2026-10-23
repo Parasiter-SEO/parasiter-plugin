@@ -46,6 +46,8 @@ Best content type here: …
 How to post: [account, title, link placement, tone]
 ```
 
+Write the result into the user's platform base: `work-log` `platform-set --platform <slug> --domain … --type … --links … --score NN --state testing|active|dropped` and a journal row `add --event platform --platform <slug> --score NN --note "verdict: …"`.
+
 ## Rules
 
 - State what was checked live and what is assumed or from history.

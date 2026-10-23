@@ -3,9 +3,15 @@
 Each recipe: what the user says, what happens. Give the user only the recipe they asked for.
 
 ## Start for the first time
-1. Say "what should I do today?" — the navigator asks language, your role (affiliate, SEO specialist / agency, blogger, course author / own product), then — for affiliates — your stage, niche and offers, country, time per day, pages already live, tools. Saves the profile.
+1. Say "what should I do today?" — the navigator asks language, your role (affiliate, SEO specialist / agency, blogger, course author / own product), then — for affiliates — niche and offers, country, time per day, tools, and the list of pages you already have (imported into your journal and platform base). Saves the profile.
 2. It runs `goals`: baseline (how much you work, publish and earn now) → goals → reality check → weekly targets.
 3. You get 2–5 tasks for today. "Start with #1?" — each task opens the right skill.
+
+## Add the pages I already have
+"Here are my pages" + a file or a pasted list (text, CSV, Excel, any table with links) → `work-log` imports them: platform from each link, dates, offer and program if the table has them, duplicates skipped. Your platform base is built from them. Then "check them" → one bulk alive / index check of the whole list. Missing dates or offers: say them per batch ("these 40 are from September, KetoX on ClickBank").
+
+## See my platforms
+"My platforms" → your platform base: each platform with pages, alive, indexed, gone, sales, score and state. "Mark healthboards as dropped", "my account on X is …" updates it. `platform-analyzer` adds its score automatically.
 
 ## Pick a product or program
 "Which program should I promote for [niche]?" → `affiliate-finder` compares programs (commission, cookie, payout, traffic rules). Then "is [product] worth it?" → `niche-analysis` if you have an SEO tool API or exports.

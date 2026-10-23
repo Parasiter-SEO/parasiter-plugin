@@ -1,6 +1,6 @@
 ---
 name: work-log
-description: The user's parasite SEO journal of work, traffic and sales. Records every action the moment it happens (page published, sent to indexing, checked alive/indexed, audited, refreshed, moved, platform tested), every sale (logged by hand or imported from affiliate network exports) and traffic (platform views, affiliate clicks), ties sales to pages by sub-ID, and turns it all into reports for any day, week or month, effectiveness tables by page, platform, offer, program and content type, and a queue of pages due for checks plus sales reports due for upload. Use when the user reports work or a sale ("added an article", "indexed it", "made a sale"), uploads a sales or traffic export, asks "what did I do / earn this week", wants a weekly or monthly report, asks which pages, platforms or offers earn, or what needs checking.
+description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms. Imports the pages the user already published (a list of links or a table) and builds their own platform base from them. Records every action the moment it happens (page published, sent to indexing, checked alive/indexed, audited, refreshed, moved, platform tested), every sale (logged by hand or imported from affiliate network exports) and traffic (platform views, affiliate clicks), ties sales to pages by sub-ID, and turns it all into reports for any day, week or month, effectiveness tables by page, platform, offer, program and content type, and a queue of pages due for checks plus sales reports due for upload. Use when the user uploads or pastes a list of their existing pages, asks for "my platforms" / "my platform base", reports work or a sale ("added an article", "indexed it", "made a sale"), uploads a sales or traffic export, asks "what did I do / earn this week", wants a weekly or monthly report, asks which pages, platforms or offers earn, or what needs checking.
 ---
 
 # Work Log
@@ -16,10 +16,30 @@ Reply in the working language from `parasite-seo-profile.md`. Keep column names 
 In the user's project folder (formats in `references/log-format.md`):
 - `parasite-seo-progress.csv` — work journal: pages, checks, audits, traffic, imports (the same file `goals` reads).
 - `parasite-seo-sales.csv` — one row per sale, logged by hand or imported.
+- `parasite-seo-platforms.csv` — the user's own platform base: one row per platform they publish on (domain, type, language, link rules, account, score, state). Built automatically from their pages; the only file here whose rows are updated in place.
 
 One row per fact. Never edit or delete old rows; corrections and status changes are new rows. If a file has an older, shorter header, the script upgrades the header and keeps every value.
 
 The script `scripts/worklog.py` does all reading, writing and counting. Pass `--date` / `--time` in the user's local time when the machine clock may differ (cloud sandboxes run in UTC). Without code execution, append rows by hand and count the same way.
+
+## Mode 0 — Import pages you already have (inventory)
+
+Most users start with pages already live. The first job is to put all of them in the journal, so the system knows the user's inventory of posts and platforms and every page gets checked.
+
+The user uploads or pastes anything with links: a text list, a CSV / TSV, an Excel sheet (save as CSV or convert with the xlsx skill first), a Google Sheet export, notes with URLs mixed in.
+
+```
+python3 scripts/worklog.py import-pages parasite-seo-progress.csv my-pages.csv [--date 2026-09-01] [--offer ketox --program ClickBank --campaign keto-pack-sep] [--map url="Post link"]
+```
+
+- Columns are found by name: link/URL, published date, platform/site, offer/product, program/network, campaign/pack, sub-ID, keyword, content type, status, notes or title. A column full of URLs is used even without a known header. Plain text: every URL in it is taken.
+- The platform comes from the domain (medium.com → `medium`, `*.substack.com` → `substack`, forum.example.com → `example`); known platforms also get a type (article, community, q&a, forum, document, site-builder…).
+- Pages already in the journal are not added twice; uploading the list again with more columns (or with `--offer/--program`) fills in what they are missing.
+- No date → dated today and marked "publish date unknown"; ask once for an approximate date or month per batch (`--date`) so ages and checks are right.
+- No offer or program → sales can't be counted per offer or program for those pages. Ask per batch, not per page: "These 40 Medium pages — which offer and program?" and re-run the import on the same list with `--offer/--program`, or upload a fuller table: pages already in the journal get only the details they are missing (a `note` row), nothing is duplicated.
+- Every new platform goes into the user's platform base (Mode 7).
+
+After the import, report in 4–5 lines: pages added, per platform, new platforms in the base, what is missing (dates, offer/program). Then the next step is always the same: **one bulk alive/index check** of the imported pages (`platform-monitor` → `page-checker` agent), because the system knows nothing about their status yet. Imported pages wait in their own queue section until that first check; only then do they get the regular check and audit schedule (audits only for pages that matter: live and indexed, or earning).
 
 ## Mode 1 — Log work as you go
 
@@ -113,6 +133,20 @@ Checks of more than 3 URLs go to the `page-checker` agent (via platform-monitor)
 ## Mode 6 — Page registry
 
 `pages [--platform medium]` — every page with platform, offer, sub-ID, age, status, audit score, views, affiliate clicks, sales and commission.
+
+## Mode 7 — My platform base
+
+"My platforms", "where do I publish", "which platforms work for me": `platforms`. One row per platform the user has used: domain, type, state, pages, alive, indexed, gone, not checked, last page, sales, commission, score. It flags platforms where half or more of the checked pages are gone, and platforms with no type yet (→ `platform-analyzer` once).
+
+The base fills itself: from `import-pages`, from every `published` page logged later on a new platform, and from `platform` events. Facts the user or another skill learns go in with `platform-set`:
+
+```
+python3 scripts/worklog.py platform-set parasite-seo-progress.csv --platform healthboards --type forum --links nofollow --language en --account "rumer_k (aged 2y)" --score 72 --state active
+```
+
+States: `active` (publishing), `testing` (1–3 test posts), `paused`, `dropped` (stopped: died, cleaned up, no traffic), `dead` (platform gone). Never write logins or passwords here — an account name is enough.
+
+Other skills use the base: `platform-finder` excludes or marks platforms already in it, `platform-analyzer` writes its score and verdict back with `platform-set`, the navigator prefers `active` platforms with live, indexed pages for new posts.
 
 ## Rules
 

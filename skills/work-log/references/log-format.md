@@ -81,6 +81,30 @@ Counting rules:
 - Sales are attributed to a page by `page_url`, else by `sub_id` → the page whose `published` row has that sub-ID. Adding a sub-ID to a page later attributes its past sales too.
 - Sales without a page are normal. They count exactly in program and month totals. Page, platform, offer, content-type and campaign views add an **estimated share**: each untied sale is split over the pages of the same program published by the sale date and not moved before it, by affiliate clicks in the period, else views, else equally; pages with no traffic data get the average weight. Always shown as an estimate.
 
+## parasite-seo-platforms.csv — my platform base
+
+```
+platform,domain,type,language,links,account,score,state,added,source,note
+medium,medium.com,article,en,nofollow,@rumer,78,active,2026-10-23,my pages,
+healthboards,healthboards.com,forum,en,nofollow,rumer_k,72,testing,2026-10-23,my pages,first 3 posts
+```
+
+| Column | Meaning |
+|---|---|
+| `platform` | slug, the same as `platform` in the journal |
+| `domain` | registrable domain or known platform domain |
+| `type` | article · community · forum · q&a · document · site-builder · page · newsletter · social · video · event · fundraising · portfolio … |
+| `language` | main language the user publishes in there |
+| `links` | dofollow · nofollow · ugc · none · removed |
+| `account` | account name or note (never passwords) |
+| `score` | last platform-analyzer score 0–100 |
+| `state` | active · testing · paused · dropped · dead |
+| `added`, `source` | when and how it entered the base: my pages, journal, manual, analyzer |
+
+One row per platform, updated in place (`platform-set`). Page counts, statuses and sales are never stored here: `platforms` computes them from the journal and sales files.
+
+Imported pages (`import-pages`) are `published` rows with the note "imported from <file>"; until their first `check` they are listed in the check queue as one bulk check, not page by page.
+
 ## Schedules
 
 - Alive + index check: day 2, 7, 14 after publishing, then every 14 days; after `not-indexed`, in 3 days. Server (Pro) checks daily and its results come in as `check` rows.
