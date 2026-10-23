@@ -1,5 +1,8 @@
 # FAQ
 
+## Who is it for?
+Built for affiliate marketers who earn with parasite SEO, at any stage — they get the full system. SEO specialists and agencies, bloggers and course authors / own-product owners can use it with a smaller toolset that fits their work, without goals and the daily plan. The navigator asks once ("who are you and what for?"); say "I'm an affiliate now" (or another role) to change it.
+
 ## Plans and key
 <!-- Maintainer: keep this split identical to the pricing block on the site. -->
 - **Free, $0** — plugin without a key, 6 skills: goals, content-type-selector, sales-review-writer, page-audit, post-illustrations, help.

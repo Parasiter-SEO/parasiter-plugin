@@ -2,7 +2,7 @@
 
 <!-- Maintainer: update this file, how-to.md and faq.md whenever a skill, agent, server tool, plan or file changes. The help skill answers only from these files. -->
 
-PARASITER by Rumer — parasite SEO inside the user's AI assistant, built for affiliate marketers: review pages on trusted platforms → affiliate link → commission. Current version targets affiliate marketers at any level (beginner, earning from a few pages, scaling packs); agency client work and promoting one's own product or course are not the focus yet (client-reports exists, but the system is tuned for affiliate work). Skills hold the method; agents do research and checks in their own context and hand back facts with sources. The user never calls agents; skills send them. Version 0.5 (private beta).
+PARASITER by Rumer — parasite SEO inside the user's AI assistant, built for affiliate marketers: review pages on trusted platforms → affiliate link → commission. The full system is for affiliate marketers at any stage (want to start, already working, professional, veteran). On first run the navigator asks the role; SEO specialists / agencies, bloggers and course authors / own-product owners get only the tools that fit them, with no goals or daily plan (see "Roles" below). Skills hold the method; agents do research and checks in their own context and hand back facts with sources. The user never calls agents; skills send them. Version 0.6 (private beta).
 
 ## The workflow in 5 steps
 
@@ -32,6 +32,20 @@ PARASITER by Rumer — parasite SEO inside the user's AI assistant, built for af
 | `client-reports` | Insider | Client-facing analytics and reports from the journal and uploaded data: revenue per page, EPC, RPM, winners and losers, 14/30/60-day review, next actions. | "Make a monthly report for my client" | No |
 | `help` | Free | This help: what the plugin does and how to use it. | "What can PARASITER do?", "How do I …?" | No |
 
+## Roles
+
+Set once by the navigator ("who are you and what for?"), saved as `role` in the profile, changeable any time. Full table: `navigator/references/roles.md`.
+
+| Role | Gets |
+|---|---|
+| Affiliate (parasite SEO) | Everything: goals, daily plan, journal with sales, all 15 skills by plan |
+| SEO specialist / agency | content-type-selector, page-audit, post-illustrations, platform-finder, platform-feed, platform-analyzer, platform-monitor, work-log (pages and checks), niche-analysis, client-reports |
+| Blogger / content creator | content-type-selector, sales-review-writer, page-audit, post-illustrations, work-log, affiliate-finder, niche-analysis |
+| Course author / own product | content-type-selector, page-audit, post-illustrations, platform-finder, platform-feed, platform-analyzer, platform-monitor, work-log (pages and checks); own product never presented as an independent review |
+| Other / just looking | Overview, then the closest role |
+
+Roles 2–4: no goals and no daily plan. A skill outside the role is not offered; name the closest one in the role. `help` is open to everyone.
+
 ## Agents
 
 | Agent | Sent by | Does |
@@ -53,7 +67,7 @@ Kept in the user's project folder, written by the skills:
 
 | File | Written by | Holds |
 |---|---|---|
-| `parasite-seo-profile.md` | navigator | working language, level, niche, offers, country and content language, tools, author profile |
+| `parasite-seo-profile.md` | navigator | working language, role, level, niche, offers, country and content language, tools, author profile |
 | `parasite-seo-goals.md` | goals | baseline, goals, milestones, this week's targets, reviews |
 | `parasite-seo-progress.csv` | work-log | pages, checks, audits, traffic, imports, other work — one row per fact |
 | `parasite-seo-sales.csv` | work-log | one row per sale, manual or imported |

@@ -3,7 +3,7 @@
 Each recipe: what the user says, what happens. Give the user only the recipe they asked for.
 
 ## Start for the first time
-1. Say "what should I do today?" — the navigator asks language, experience, niche and offers, country, time per day, pages already live, tools. Saves the profile.
+1. Say "what should I do today?" — the navigator asks language, your role (affiliate, SEO specialist / agency, blogger, course author / own product), then — for affiliates — your stage, niche and offers, country, time per day, pages already live, tools. Saves the profile.
 2. It runs `goals`: baseline (how much you work, publish and earn now) → goals → reality check → weekly targets.
 3. You get 2–5 tasks for today. "Start with #1?" — each task opens the right skill.
 

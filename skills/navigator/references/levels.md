@@ -4,9 +4,9 @@
 |---|---|---|---|
 | Beginner | No live pages, or a few with no sales; unsure what an offer, indexing or nofollow is | One niche, one offer, one platform. First honest review that sells | Yes, one short "Tip" per new term |
 | Intermediate | 5–50 live pages, some clicks/sales, publishes regularly | Index checks, refreshing dropped pages, more content types, 2–4 platforms | Only new or advanced terms |
-| Advanced | 50+ live pages (the author keeps ~100 active), several offers, tracks EPC/revenue | Monitoring and moving content, testing new platforms early, best-of articles, client/team reports, niche analysis via API | No |
+| Advanced (incl. veteran) | 50+ live pages, or years in parasite SEO with a team or packs (the author keeps ~100 active), several offers, tracks EPC/revenue | Monitoring and moving content, testing new platforms early, best-of articles, client/team reports, niche analysis via API | No |
 
-The user can switch level any time ("treat me as advanced").
+Levels apply to the affiliate role only (`roles.md`). The user can switch level any time ("treat me as advanced").
 
 ## Terms to explain for beginners (one line each)
 

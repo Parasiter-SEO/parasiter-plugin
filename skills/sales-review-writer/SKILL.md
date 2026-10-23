@@ -73,4 +73,5 @@ Propose 3–6 images with a one-line purpose each: hero image, product in use, i
 - No invented tests, reviews, customer quotes, results, clinical claims or guaranteed outcomes. Health/money topics: describe limits honestly.
 - Show cons and say who the product is NOT for — that is what makes the recommendation believable.
 - Affiliate disclosure and last-checked date on every page.
+- Role from `parasite-seo-profile.md` (navigator `references/roles.md`): this skill is for affiliates and bloggers. For a course author / own product or an agency writing for a client, say it is not in their toolset; never present the user's own or a client's product as an independent review, test or ranking.
 - Length: at least 1,500–2,000 words on article platforms unless the platform format says otherwise.

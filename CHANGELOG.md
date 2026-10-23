@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.6.0 — 2026-10-23
+
+- **Choose who you are.** On first run the navigator asks: affiliate, SEO specialist / agency, blogger, course author / own product, or just looking. Affiliates (want to start, already working, professional, veteran) get the full system. Other roles get only the tools that fit their work, without goals and the daily plan. Say *"I'm an affiliate now"* to change your role.
+
 ## 0.5.0 — 2026-10-22
 
 - **News feed and Telegram.** New platforms, plugin updates, ideas, market analysis and polls from Rumer now appear in Claude at the start of your session and in Telegram: the PARASITER Pro channel, the PARASITER Insider channel and the private Insider group. Say *"what's new?"* or *"connect Telegram"*. *(Needs the server, in beta.)*

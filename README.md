@@ -2,11 +2,20 @@
 
 Parasite SEO inside your AI assistant, built for **affiliate marketers**: you publish review pages on platforms Google already trusts, readers click your affiliate link, you earn the commission. Skills and agents find platforms, pick the content type that sells, write the review, audit the page, track every sale, and tell you what to do next at your level.
 
-**Who it's for now:** affiliate marketers at any stage — starting out, earning from a few pages, or scaling packs of pages across platforms and offers. Agency client work and promoting your own product or course are not the focus of this version; they come later.
+**Who it's for:** affiliate marketers who earn with parasite SEO, at any stage — want to start, already working, professional or veteran. Only they get the full system.
+
+On first run the navigator asks who you are and what for. SEO specialists and agencies, bloggers and course authors (own product) get only the tools that fit their work, without goals and the daily plan:
+
+| Role | Tools |
+|---|---|
+| Affiliate (parasite SEO) | Everything |
+| SEO specialist / agency | content types, page audit, images, platform finder / feed / analyzer / monitor, journal of pages, niche analysis, client reports |
+| Blogger / content creator | content types, sales reviews, page audit, images, journal, affiliate programs, niche analysis |
+| Course author / own product | content types, page audit, images, platform finder / feed / analyzer / monitor, journal of pages |
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
-> **Status: private beta (v0.5.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.6.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
@@ -22,7 +31,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | Skill | What it does |
 |---|---|
 | `goals` | Baseline journal, goals over 1 week to 12 months, reality check, milestones, weekly targets, progress log, weekly review |
-| `navigator` | Entry point: today's plan from your goals, progress, time and level; routes each task |
+| `navigator` | Entry point: asks your role and offers the tools for it; for affiliates, today's plan from your goals, progress, time and level; routes each task |
 | `work-log` | Journal of work, traffic and sales: logs every page, action and sale; imports network and platform exports; ties sales to pages by sub-ID; reports for any day, week or month; effectiveness by page, platform, offer, program, content type; check queue and weekly sales upload reminder |
 | `content-type-selector` | Picks the content type and topic that sell before writing |
 | `sales-review-writer` | Writes the sales review / comparison for your platform |
