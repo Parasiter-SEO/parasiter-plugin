@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.8.1 — 2026-10-23
+
+- **Your platform order.** Say *"ResearchGate is my #2 platform"*: the order leads the advice. *"What topics are missing on my top platforms?"* lists, per platform, the topics you wrote elsewhere but skipped there.
+
 ## 0.8.0 — 2026-10-23
 
 - **What to write and where.** Your topics × platforms in one table, and the best gaps: a topic that is in the top 10 or earning on one platform but missing on your strong ones. Say *"what should I write next?"* or *"which topics are missing on Medium?"*

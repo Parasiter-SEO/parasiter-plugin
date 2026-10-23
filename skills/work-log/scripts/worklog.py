@@ -111,7 +111,7 @@ STATUS_MAP = {
 
 
 PLATFORM_COLUMNS = ["platform", "domain", "type", "language", "links", "account", "score",
-                    "state", "priority", "added", "source", "note"]
+                    "state", "priority", "rank", "added", "source", "note"]
 PAGE_ALIASES = {
     "url": TRAFFIC_ALIASES["url"] + ["urls", "pages", "postlink", "publishedurl"],
     "date": ["date", "published", "publishdate", "publishedat", "publicationdate", "datepublished",
@@ -1559,7 +1559,7 @@ def cmd_platforms(a):
                    if p["position"] is not None and p["position"] <= TOP and not p["moved"] and health(p) not in GONE)
     print(f"| Platform | Domain | Type | State | Prio | Pages | Alive | Indexed | Top {TOP} | Gone | Not checked | Last page | Sales | Commission | Score |")
     print("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
-    order = sorted(reg.values(), key=lambda r: (PRIORITIES.index(r.get("priority") or "normal"),
+    order = sorted(reg.values(), key=lambda r: (num(r.get("rank")) or 99, PRIORITIES.index(r.get("priority") or "normal"),
                                                 -st[r["platform"].lower()]["pages"], r["platform"]))
     attention = []
     for r in order:
@@ -1590,7 +1590,7 @@ def cmd_platform_set(a):
     key = a.platform.lower()
     r = reg.setdefault(key, {"platform": a.platform, "state": "active",
                              "added": date.today().isoformat(), "source": "manual"})
-    for f in ("domain", "type", "language", "links", "account", "score", "state", "priority", "note"):
+    for f in ("domain", "type", "language", "links", "account", "score", "state", "priority", "rank", "note"):
         v = getattr(a, f)
         if v is not None:
             r[f] = v
@@ -1685,8 +1685,9 @@ def cmd_coverage(a):
         idx = s["indexed"] / checked if checked else None
         strength = (3 if (r.get("priority") == "high") else 0) + top * 1.5 + (2 * idx if idx is not None else 0.5) \
             + (2 if s["comm"] > 0 else 0) + ((num(r.get("score")) or 0) / 50) - (2 if r.get("priority") == "low" else 0) \
-            - (3 * s["gone"] / checked if checked else 0)
-        plat[key] = {"name": r.get("platform") or key, "strength": strength, "top": top, "idx": idx,
+            - (3 * s["gone"] / checked if checked else 0) \
+            + (max(0, 11 - num(r.get("rank"))) if num(r.get("rank")) else 0)
+        plat[key] = {"name": r.get("platform") or key, "strength": strength, "rank": num(r.get("rank")), "top": top, "idx": idx,
                      "pages": s["pages"], "priority": r.get("priority") or "normal", "state": state,
                      "type": r.get("type") or ""}
     if a.platform:
@@ -1753,12 +1754,26 @@ def cmd_coverage(a):
                 why.append(f"{pl['name']} has {pl['top']} pages in the top {TOP}")
             elif pl["idx"] is not None:
                 why.append(f"{pl['name']} indexes {pl['idx'] * 100:.0f}%")
-            if pl["priority"] == "high":
+            if pl["rank"]:
+                why.append(f"{pl['name']} is your #{pl['rank']:.0f} platform")
+            elif pl["priority"] == "high":
                 why.append(f"{pl['name']} is a priority platform")
             if k in lost[t]:
                 why.append("your page there was removed — republish")
             gaps.append((score, t, pl["name"], best, why))
     gaps.sort(key=lambda g: -g[0])
+    if a.by_platform:
+        print("\n## Missing on each platform (topics you have elsewhere)\n")
+        for k in names:
+            miss = [(sc, t, best) for sc, t, pname, best, why in gaps if pname == plat[k]["name"]]
+            if not miss:
+                continue
+            rk = f"#{plat[k]['rank']:.0f} " if plat[k]["rank"] else ""
+            print(f"**{rk}{plat[k]['name']}** — {len(miss)} topics missing")
+            for sc, t, best in miss[: a.gaps]:
+                print(f"- {t} (have on {best['platform']})")
+            print()
+        return
     print(f"\n## What to write where — {min(len(gaps), a.gaps)} best gaps\n")
     if not gaps:
         print("No gaps: every named topic is on every active platform, or topics still need names (tag --topic).")
@@ -1850,6 +1865,7 @@ def main():
     cv.add_argument("--gaps", type=int, default=10)
     cv.add_argument("--max-platforms", type=int, default=8)
     cv.add_argument("--include-guessed", action="store_true")
+    cv.add_argument("--by-platform", action="store_true", help="list missing topics per platform")
     cv.set_defaults(fn=cmd_coverage)
 
     ps = sub.add_parser("platform-set"); common(ps, today=False)
@@ -1858,6 +1874,7 @@ def main():
         ps.add_argument(f"--{opt}")
     ps.add_argument("--state", choices=["active", "testing", "paused", "dropped", "dead"])
     ps.add_argument("--priority", choices=PRIORITIES)
+    ps.add_argument("--rank", help="your own order of platforms: 1 = best")
     ps.set_defaults(fn=cmd_platform_set)
 
     a = ap.parse_args()

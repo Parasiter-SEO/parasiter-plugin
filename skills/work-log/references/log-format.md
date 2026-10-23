@@ -103,6 +103,7 @@ healthboards,healthboards.com,forum,en,nofollow,rumer_k,72,testing,2026-10-23,my
 | `score` | last platform-analyzer score 0–100 |
 | `state` | active · testing · paused · dropped · dead |
 | `priority` | high · normal · low |
+| `rank` | the user's own order of platforms, 1 = best |
 | `added`, `source` | when and how it entered the base: my pages, journal, manual, analyzer |
 
 One row per platform, updated in place (`platform-set`). Page counts, statuses and sales are never stored here: `platforms` computes them from the journal and sales files.

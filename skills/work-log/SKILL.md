@@ -165,8 +165,9 @@ python3 scripts/worklog.py tag parasite-seo-progress.csv --urls-file batch.txt -
 
 **Coverage — what to write where.** `coverage` builds a matrix of topics × platforms (position, indexed, live, not indexed, lost, missing) and then lists the best gaps: a proven topic (top 10, earning, indexed or priority) missing on a strong platform (priority, pages in the top 10, high index rate, sales, analyzer score; platforms losing pages and dropped/dead/paused ones are pushed down or skipped). Each gap says why: "#4 on medium; healthboards has 2 pages in the top 10".
 ```
-python3 scripts/worklog.py coverage parasite-seo-progress.csv [--topic keto] [--platform quora] [--gaps 10]
+python3 scripts/worklog.py coverage parasite-seo-progress.csv [--topic keto] [--platform quora] [--gaps 10] [--by-platform]
 ```
+`--by-platform` answers "which of my topics are missing on each of my top platforms": per platform, in the user's own order, the topics they already have elsewhere. The user's order of platforms ("Medium is my #1") goes in with `platform-set --rank 1`; it outweighs every other signal.
 Read it to the user as 3–5 concrete suggestions: topic → platform → why → the content type to use there. A new page on a topic must be rewritten for the platform (new angle or content type, the platform's format), never copied — duplicates get filtered and hurt both pages. Hand the chosen gap to `content-type-selector` and `sales-review-writer`. The navigator uses this list for "new content" in the daily plan.
 
 ## Rules
