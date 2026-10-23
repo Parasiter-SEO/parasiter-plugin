@@ -37,8 +37,17 @@ New versions come through the same marketplace: update the plugin in Claude Code
 ## Languages
 Works in any language. The working language (plans, explanations) is set on first run; the content language of pages follows the target country. "Switch to …" changes it.
 
-## Levels
-Beginner, intermediate, advanced — from the baseline (live pages, sales). Sets task size and explanations. The user can change it any time.
+## Levels?
+There are none. The plan follows your role, goals, journal and the time you have today. Ask to explain any term, or ask for smaller or bigger tasks, any time.
+
+## Terms (explain in one line when asked)
+- **Offer** — a product an affiliate program pays you to sell.
+- **Parasite SEO** — publishing your page on a big trusted site so it ranks faster than a new site would.
+- **Indexing** — Google has added the page to its search database. No index, no traffic.
+- **noindex** — a tag that tells Google not to show the page. A platform that adds it is useless for search traffic.
+- **nofollow / ugc** — the link passes no SEO weight, but readers still click and buy. For sales that is enough.
+- **EPC** — earnings per click on your affiliate link.
+- **SERP** — the Google results page.
 
 ## Rules built in
 No fake reviews, tests, results, credentials, prices or deadlines. Personal experience only when real. Affiliate disclosure and last-checked date on every page. Only platforms where the user can legitimately post. No income guarantees: income goals are the user's; the system plans actions and tracks results.

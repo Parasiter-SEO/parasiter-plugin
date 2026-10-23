@@ -1,6 +1,6 @@
 # PARASITER by Rumer
 
-Parasite SEO inside your AI assistant, built for **affiliate marketers**: you publish review pages on platforms Google already trusts, readers click your affiliate link, you earn the commission. Skills and agents find platforms, pick the content type that sells, write the review, audit the page, track every sale, and tell you what to do next at your level.
+Parasite SEO inside your AI assistant, built for **affiliate marketers**: you publish review pages on platforms Google already trusts, readers click your affiliate link, you earn the commission. Skills and agents find platforms, pick the content type that sells, write the review, audit the page, track every sale, and tell you what to do next.
 
 **Who it's for:** affiliate marketers who earn with parasite SEO, at any stage — want to start, already working, professional or veteran. Only they get the full system.
 
@@ -15,13 +15,13 @@ On first run the navigator asks who you are and what for. SEO specialists and ag
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
-> **Status: private beta (v0.6.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.6.1).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
 1. **Fill in your baseline journal** with `goals`: how many hours you work now, how many pages you publish, on which platforms and offers, and what it earns per day, week or month. These are your starting settings: everything after is calculated from them.
 2. **Set your goals** from that starting point: pages, platforms, offers, time and the income you realistically expect, over 1 week to 12 months. The skill compares the goal with your real pace, breaks it into monthly milestones and weekly targets, and marks every number it had to assume.
-3. **Ask for today's plan** with `navigator`. It reads your goals, progress and level, checks what changed on your platforms, and gives you 2–5 tasks that fit today's time. You don't pick commands: each task goes to the right skill.
+3. **Ask for today's plan** with `navigator`. It reads your goals, progress and time, checks what changed on your platforms, and gives you 2–5 tasks that fit today's time. You don't pick commands: each task goes to the right skill.
 4. **Report what you did and what you sold** ("added an article: URL", "sent it to indexing", "made a sale, $42"). `work-log` writes it into your journal at once. Every page is queued for alive and index checks and a conversion audit, so nothing you published is forgotten.
 5. **Upload your sales and traffic exports** once a week (ClickBank, Impact, CJ, Amazon, platform stats). Sales are tied to pages by sub-ID, so you see which pages, platforms, offers and content types actually earn: EPC, conversion, commission per page. If you forget, the system asks. Ask "what did I do and earn this week?" or "report for September" any time.
 6. **Weekly review**: the goals skill compares plan and fact from the journal, replaces assumptions with your real numbers, and adjusts the next week.
@@ -31,7 +31,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | Skill | What it does |
 |---|---|
 | `goals` | Baseline journal, goals over 1 week to 12 months, reality check, milestones, weekly targets, progress log, weekly review |
-| `navigator` | Entry point: asks your role and offers the tools for it; for affiliates, today's plan from your goals, progress, time and level; routes each task |
+| `navigator` | Entry point: asks your role and offers the tools for it; for affiliates, today's plan from your goals, progress and time; routes each task |
 | `work-log` | Journal of work, traffic and sales: logs every page, action and sale; imports network and platform exports; ties sales to pages by sub-ID; reports for any day, week or month; effectiveness by page, platform, offer, program, content type; check queue and weekly sales upload reminder |
 | `content-type-selector` | Picks the content type and topic that sell before writing |
 | `sales-review-writer` | Writes the sales review / comparison for your platform |

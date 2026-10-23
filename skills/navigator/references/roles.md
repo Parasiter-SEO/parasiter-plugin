@@ -19,16 +19,7 @@ If the user already said it in their first message ("I'm an affiliate", "I'm a b
 
 ## 1. Affiliate — parasite SEO (the main route)
 
-Then ask the stage, one line:
-
-| Stage the user picks | Level (`levels.md`) |
-|---|---|
-| Want to start, no pages yet | Beginner |
-| Already working, a few pages / first sales | Intermediate |
-| Professional, many pages and offers | Advanced |
-| Veteran, years in parasite SEO, team or packs | Advanced (no explanations, short plans, batch tasks) |
-
-Every stage needs the same thing: a structure for the work and KPIs. So the route is always: profile → `goals` (baseline, goals) → today's plan (Step 3 of the navigator).
+Starting out or years in the game, no levels are assigned: the baseline (pages, sales, time) and the goals shape the plan. Everyone needs the same thing: a structure for the work and KPIs. So the route is always: profile → `goals` (baseline, goals) → today's plan (Step 3 of the navigator).
 
 **Tools:** all 15 skills, by plan (see `help/references/faq.md`).
 

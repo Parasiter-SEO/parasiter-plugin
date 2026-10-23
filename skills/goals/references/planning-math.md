@@ -24,13 +24,13 @@ hours for new pages = hours in horizon × share of time on new pages
 pages buildable    = hours for new pages ÷ hours per page
 ```
 
-Starting assumptions, only when the baseline has no pace (a beginner with no pages yet); replace with measured pace:
+Starting assumptions, only when the baseline has no pace; replace with measured pace as soon as there is one:
 
-| Level | Hours per page (research, writing, images, publishing, check) | Share of time on new pages |
+| Baseline | Hours per page (research, writing, images, publishing, check) | Share of time on new pages |
 |---|---|---|
-| Beginner | 2–3 | 70% (the rest is learning and checks) |
-| Intermediate | 1–1.5 | 50% (the rest is index checks, refreshes, moving pages) |
-| Advanced | 0.5–1 with batching and templates | 40% (the rest is monitoring, testing, reports) |
+| No pages yet | 2–3 | 70% (the rest is learning and checks) |
+| Some live pages | 1–1.5 | 50% (the rest is index checks, refreshes, moving pages) |
+| Many pages, batching and templates | 0.5–1 | 40% (the rest is monitoring, testing, reports) |
 
 Measured pace = pages published in the last 2 weeks ÷ hours worked (ask the user for hours once a week, or use their stated hours per day).
 
@@ -79,7 +79,7 @@ Team or VA in the business model adds their hours to capacity; ask for their hou
 
 ## 5. Breaking down
 
-- Monthly milestones grow, not flat: beginners ~50% of the average monthly pace in month 1, ~120% later. Intermediate and advanced start at the average.
+- Monthly milestones grow, not flat: with no pages yet ~50% of the average monthly pace in month 1, ~120% later; with live pages, start at the average.
 - Platforms: at least 3 by the end of month 1 for everyone, so no single platform carries more than ~40% of live pages.
 - Weekly targets = milestone delta ÷ weeks in the month, rounded up to whole pages.
 - Daily quota = weekly target ÷ working days; leftovers go to the first days of the week.

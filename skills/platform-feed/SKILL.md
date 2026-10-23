@@ -1,6 +1,6 @@
 ---
 name: platform-feed
-description: The PARASITER news feed from the author — new platforms, plugin updates, ideas, weekly market analysis, polls and announcements — from the server, turned into actions for the user's niche and level; also connects the user's Telegram for the Pro / Insider channels, the Insider group and personal notifications. Use when the user asks "what's new", "any updates", "new platforms", "top platforms this week", "market analysis", "what changed after the Google update", "poll results", "connect Telegram", "Telegram notifications", or the navigator reports unseen news.
+description: The PARASITER news feed from the author — new platforms, plugin updates, ideas, weekly market analysis, polls and announcements — from the server, turned into actions for the user's niche and time; also connects the user's Telegram for the Pro / Insider channels, the Insider group and personal notifications. Use when the user asks "what's new", "any updates", "new platforms", "top platforms this week", "market analysis", "what changed after the Google update", "poll results", "connect Telegram", "Telegram notifications", or the navigator reports unseen news.
 ---
 
 # PARASITER Feed
@@ -33,7 +33,7 @@ Poll: [question] — [results so far, or "vote in the Telegram channel"]
 ```
    New platforms as a table when there are more than 3:
    `| Platform | Type | Language | Indexing | Links | Note from Rumer | Found |`
-3. Make it actionable for this user's niche, language and level: beginner — one platform to try, with platform-analyzer first; intermediate/advanced — 2–3 platforms to test this week and which of their platforms to reduce after the latest changes. For an `update`, say what the user can now do and the phrase to start it.
+3. Make it actionable for this user's niche, language and time: no live pages yet — one platform to try, with platform-analyzer first; otherwise 2–3 platforms to test this week and which of their platforms to reduce after the latest changes. For an `update`, say what the user can now do and the phrase to start it.
 4. Call `news_seen` after showing, so the navigator does not repeat it.
 
 Plan shapes what comes back: Pro sees new platforms ~7 days after they are found, Insider the same day. On Pro you may mention once that Insider gets them first — no pressure.

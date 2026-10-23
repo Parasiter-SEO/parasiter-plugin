@@ -16,7 +16,7 @@ PARASITER by Rumer — parasite SEO inside the user's AI assistant, built for af
 
 | Skill | Plan | What it does | Say, for example | Needs the server? |
 |---|---|---|---|---|
-| `navigator` | Pro | Entry point. Asks level, niche, time and language once, reads goals and the journal, checks what changed, gives 2–5 tasks for today and routes each to the right skill. Asks for the week's sales exports on the first session of the week. | "What should I do today?", "Where do I start?" | No (with a key it also reads monitoring and the feed) |
+| `navigator` | Pro | Entry point. Asks role, niche, time and language once, reads goals and the journal, checks what changed, gives 2–5 tasks for today and routes each to the right skill. Asks for the week's sales exports on the first session of the week. | "What should I do today?", "Where do I start?" | No (with a key it also reads monitoring and the feed) |
 | `goals` | Free | Baseline journal (how much you work, publish and earn now), goals for 1 week to 12 months, reality check, monthly milestones, weekly targets, daily quota, weekly plan-vs-fact review. | "Set my goals for 6 months", "Am I on track?" | No |
 | `work-log` | Pro | Journal of work, traffic and sales. Logs every page and action as it happens, every sale (by hand or from a network export), platform views and affiliate clicks. Reports for any day, week, month or dates; effectiveness by page, platform, offer, program, campaign (pack), content type, month; check queue; weekly reminder to upload sales. | "Published: URL", "Made a sale, $42 ClickBank", "Here's my Impact export", "What did I do and earn this week?", "What earns?", "What needs checking?" | No |
 | `content-type-selector` | Free | Chooses what to write before writing: the content type and topic that sells for this product and query (A vs B, experience, doubts, packages and prices, discounts, discussions, tools, research, best-of), from SERP and buyer intent. | "What should I write about [product]?" | No |
@@ -67,7 +67,7 @@ Kept in the user's project folder, written by the skills:
 
 | File | Written by | Holds |
 |---|---|---|
-| `parasite-seo-profile.md` | navigator | working language, role, level, niche, offers, country and content language, tools, author profile |
+| `parasite-seo-profile.md` | navigator | working language, role, niche, offers, country and content language, tools, author profile |
 | `parasite-seo-goals.md` | goals | baseline, goals, milestones, this week's targets, reviews |
 | `parasite-seo-progress.csv` | work-log | pages, checks, audits, traffic, imports, other work — one row per fact |
 | `parasite-seo-sales.csv` | work-log | one row per sale, manual or imported |

@@ -47,8 +47,6 @@ Then ask in one message (skip what the profile already answers). Accept rough nu
 
 Save it as the **Baseline** section of `parasite-seo-goals.md`, dated, and add one `baseline` row to `parasite-seo-progress.csv`. Every number the user gave becomes a measured value in "Numbers used"; only the gaps get assumptions. Confirm in 3–4 lines what the baseline says (for example "you work 10 h a week, publish ~4 pages, ~30 live on 3 platforms, ~$400/month, one page takes you ~2 h").
 
-Level comes from the baseline: 0 live pages or no sales → beginner; 5–50 live pages with some sales → intermediate; 50+ live pages, tracked revenue → advanced (navigator `references/levels.md`). Tell the user the level and let them change it.
-
 The baseline is not edited later. If the user says it was wrong, add a correction line under it with the date.
 
 ## Mode 2 — Set goals
@@ -80,7 +78,7 @@ In `parasite-seo-goals.md`:
 - **Weekly targets** — action targets only, because actions are what the user controls: pages published, platforms tested, pages refreshed, pages moved off dead platforms. Income is tracked, not targeted weekly.
 - **Daily quota** — weekly targets divided over the user's working days, rounded to whole tasks.
 
-Ramp from the baseline, not from zero: week 1 starts near the user's current weekly pace and grows toward the target pace over 2–4 weeks. Beginners start below it while learning. Spread platforms early so one cleanup does not wipe the result.
+Ramp from the baseline, not from zero: week 1 starts near the user's current weekly pace and grows toward the target pace over 2–4 weeks. With no pages yet, week 1 starts below the target pace while the user learns the process. Spread platforms early so one cleanup does not wipe the result.
 
 ## Mode 5 — Log progress
 

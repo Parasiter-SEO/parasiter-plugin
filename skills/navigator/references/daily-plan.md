@@ -18,7 +18,6 @@ When `parasite-seo-goals.md` exists, build the day in this order:
 | Offers added | find and score programs | affiliate-finder → niche-analysis |
 
 5. **What is available** — prefer platforms from the server feed and top list (Pro / Insider) and the user's platforms that are alive and indexing; skip platforms the monitor marked dead or noindex.
-6. **Level** — cut tasks to the level's size (see time budget below).
 
 If the goals and today's time don't fit, keep the quota smaller and say what moves to tomorrow. If the week cannot be saved, flag it for the weekly review instead of overloading the day.
 
@@ -39,10 +38,10 @@ Order tasks by how directly they protect or create sales.
 - Check rankings after each Google update; move effort away from platforms that lost visibility.
 - 14 / 30 / 60-day review of each publication: update winners, reposition losers, don't clone them.
 
-## Time budget per level
+## Fitting the day to the time
 
-| Level | Typical day |
+| Time today | Typical day |
 |---|---|
-| Beginner | 1–2 hours: one task from steps 3–4 |
-| Intermediate | 2–4 hours: one task from 1–2, one from 3–4 |
-| Advanced | full day: 1–2 first, then batch 3–4, weekly step 5 |
+| 1–2 hours | one task from steps 3–4 (or 1 if something is losing money) |
+| 2–4 hours | one task from 1–2, one from 3–4 |
+| Full day | 1–2 first, then batch 3–4; weekly step 5 |

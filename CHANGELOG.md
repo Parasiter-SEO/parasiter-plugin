@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.6.1 — 2026-10-23
+
+- **No more levels.** Beginner / intermediate / advanced are gone. Your plan follows your role, goals, journal and today's time. Ask Claude to explain any term or to make tasks smaller or bigger, any time.
+
 ## 0.6.0 — 2026-10-23
 
 - **Choose who you are.** On first run the navigator asks: affiliate, SEO specialist / agency, blogger, course author / own product, or just looking. Affiliates (want to start, already working, professional, veteran) get the full system. Other roles get only the tools that fit their work, without goals and the daily plan. Say *"I'm an affiliate now"* to change your role.

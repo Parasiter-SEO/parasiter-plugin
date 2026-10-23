@@ -37,7 +37,7 @@ For a broad search, delegate to the `platform-scout` agent. Otherwise use web se
 ## Step 4 — Quick filter
 
 For each candidate check fast (details in platform-analyzer):
-- Can a new user register and post? (old-accounts-only = skip for beginners)
+- Can a new user register and post? (old-accounts-only = skip for users without aged accounts)
 - Is a fresh post indexed? (`site:domain` + recent posts; noindex meta/header)
 - Are links allowed and live?
 - Any sign of mass cleanup (empty threads, "removed", login wall)?

@@ -4,7 +4,7 @@
 
 ```markdown
 # Parasite SEO goals
-Level: intermediate · Last review: 2026-10-19
+Last review: 2026-10-19
 
 ## Baseline (2026-10-19, the user's words)
 How I work now

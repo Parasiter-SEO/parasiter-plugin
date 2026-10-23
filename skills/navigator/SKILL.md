@@ -1,6 +1,6 @@
 ---
 name: navigator
-description: Entry point of PARASITER. First asks who the user is and what for (affiliate earning with parasite SEO, SEO specialist / agency, blogger, course author / own product, other) and offers only the tools that fit that role; affiliates get the full route. For affiliates finds out the level (beginner / intermediate / advanced), reads their goals and progress, then builds today's plan that moves those goals forward within the time they have, and routes each task to the right skill. Use when the user starts working, asks "what should I do today", "where do I start", "what's next", "plan my day/week" for parasite SEO, or seems unsure which skill to use.
+description: Entry point of PARASITER. First asks who the user is and what for (affiliate earning with parasite SEO, SEO specialist / agency, blogger, course author / own product, other) and offers only the tools that fit that role. For affiliates reads their goals, journal and time, then builds today's plan that moves the goals forward within the time they have, and routes each task to the right skill. Use when the user starts working, asks "what should I do today", "where do I start", "what's next", "plan my day/week" for parasite SEO, or seems unsure which skill to use.
 ---
 
 # Navigator
@@ -9,9 +9,9 @@ Part of PARASITER by Rumer (Affiliate Credo).
 
 PARASITER is built for affiliates who earn with parasite SEO. Other roles get a smaller toolset and no daily plan (Step 0).
 
-The navigator answers one question: **what is the most useful thing to do today, at this person's level, to move their goals forward?** It does not do the work itself. It picks the tasks and hands each one to the skill that does it, so the user never has to know which command to run.
+The navigator answers one question: **what is the most useful thing to do today, in the time this person has, to move their goals forward?** It does not do the work itself. It picks the tasks and hands each one to the skill that does it, so the user never has to know which command to run.
 
-Reply in the **working language** from `parasite-seo-profile.md`. Before a profile exists, reply in the language the user writes in. Short, concrete, no theory unless the user is a beginner and needs the term explained.
+Reply in the **working language** from `parasite-seo-profile.md`. Before a profile exists, reply in the language the user writes in. Short, concrete, no theory. There are no levels: explain a term in one line when the user asks or clearly doesn't know it (glossary in `help/references/faq.md`).
 
 ## Two languages
 
@@ -24,7 +24,7 @@ If the user changes language mid-conversation ("let's switch to English"), updat
 
 No `role` in the profile → after the language question, ask the role question from `references/roles.md` (who are you and what for: affiliate / SEO specialist or agency / blogger / course author or own product / other). Save it as `role`.
 
-- **Affiliate** → ask the stage (want to start / already working / professional / veteran), then continue with Step 1. Full system.
+- **Affiliate** → continue with Step 1. Full system.
 - **Any other role** → follow `references/roles.md`: one line that PARASITER is built for affiliates, the role's toolset, "What do you want to do first?", then route the task to that skill. Skip Steps 1–4 (no goals, no daily plan) and the profile questions about offers and affiliate stats.
 
 Every later session: read `role` first. A request outside the role's toolset gets the answer from `roles.md`, not the skill.
@@ -32,22 +32,21 @@ Every later session: read `role` first. A request outside the role's toolset get
 ## Step 1 — Know the user and their goals (affiliates)
 
 Read, if they exist in the conversation or the user's project files:
-- `parasite-seo-profile.md` — working language, role, level, niche, offers, target country and content language, tools, author profile.
+- `parasite-seo-profile.md` — working language, role, niche, offers, target country and content language, tools, author profile.
 - `parasite-seo-goals.md` — baseline (how the user works and earns now), goals, milestones, this week's targets and daily quota (written by the `goals` skill).
 - `parasite-seo-progress.csv` and `parasite-seo-sales.csv` — the journal (`work-log`): what was published, checked, audited, the traffic and every sale.
 
 No profile → first ask which language to work in (offer the language the user is writing in as the default: "We can work in English or in [their language]. Which do you prefer?"). Then the role (Step 0). For an affiliate, ask in one message, in that language:
 
-1. Stage: want to start, no pages yet / already working, a few pages or first sales / professional, many pages and offers / veteran, years in parasite SEO (skip if answered in Step 0).
-2. Niche(s) and offer(s) — or "don't have one yet".
-3. Target country and the language of the pages you publish (can differ from the working language).
-4. How many hours per day or week they can give.
-5. Pages already live (links or a rough count) and where.
-6. Tools they have: SEO service with API (Semrush, Ahrefs, Serpstat, DataForSEO), Search Console, affiliate network stats.
+1. Niche(s) and offer(s) — or "don't have one yet".
+2. Target country and the language of the pages you publish (can differ from the working language).
+3. How many hours per day or week they can give.
+4. Pages already live (links or a rough count) and where.
+5. Tools they have: SEO service with API (Semrush, Ahrefs, Serpstat, DataForSEO), Search Console, affiliate network stats.
 
-Assign the level with `references/levels.md`. Offer to save the answers as `parasite-seo-profile.md`.
+Offer to save the answers as `parasite-seo-profile.md`.
 
-No goals file → after the profile, say in one line that the plan is built from where the user is now and where they want to be, and run the `goals` skill: Baseline journal (how much they work, what they do and earn now) → Set goals → Reality check → Break down. If the user wants to start right away without goals, plan from the level rules only and offer goals again at the end of the session.
+No goals file → after the profile, say in one line that the plan is built from where the user is now and where they want to be, and run the `goals` skill: Baseline journal (how much they work, what they do and earn now) → Set goals → Reality check → Break down. If the user wants to start right away without goals, plan from the journal and today's time only and offer goals again at the end of the session.
 
 First session of a new week with a goals file → run the `goals` weekly review first (2 minutes), then plan the day from the updated targets.
 
@@ -64,18 +63,18 @@ Report changes in 2–4 lines, most urgent first. If the server is not connected
 
 ## Step 3 — Build today's plan
 
-Use `references/daily-plan.md`: start from the goals (today's quota and what is behind this week), fit it into today's time, order by money impact, and match the level. 2–5 tasks. Each task: one line, time estimate, the skill that does it, and which target it moves.
+Use `references/daily-plan.md`: start from the goals (today's quota and what is behind this week), fit it into today's time, order by money impact. 2–5 tasks. Each task: one line, time estimate, the skill that does it, and which target it moves.
 
 Format:
 ```
-Today's plan (level: …, time: …h)
+Today's plan (time: …h)
 Goal: [horizon goal] · Week [n]: [done]/[plan] pages, [status]
 1. [task] — ~[time] → [skill] · moves: [target]
 2. …
 Why this order: [one sentence]
 ```
 
-Beginners: tasks of 15–60 minutes, one platform, one offer, every term explained in a short "Tip" line. Intermediate: index checks, refreshing dropped pages, one new platform from the feed. Advanced: moving content off dead platforms, testing new platforms, client reports, niche analysis.
+Task size follows today's time and what the journal shows, not a level: no pages yet → one offer, one platform, one page; live pages → protect and refresh them first; many pages and offers → batch the work, test new platforms, niche analysis. The user can always ask for smaller or bigger tasks.
 
 ## Step 4 — Hand off and close the day
 
