@@ -72,7 +72,7 @@ SALE_ALIASES = {
     "date": ["date", "transactiondate", "saledate", "orderdate", "conversiondate", "eventdate",
              "actiondate", "createdat", "created", "datetime", "time", "clickdate",
              "transactiontime", "dateofsale", "lockingdate"],
-    "order_id": ["orderid", "transactionid", "receipt", "receiptno", "actionid", "ordernumber",
+    "order_id": ["orderid", "order", "transactionid", "receipt", "receiptno", "actionid", "ordernumber",
                  "conversionid", "commissionid", "saleid", "id", "orderno", "transaction",
                  "orderref", "reference"],
     "commission": ["commission", "yourcommission", "publishercommission", "payout",
@@ -344,7 +344,7 @@ def page_states(rows, today):
                                    "last_refresh": None, "moved": None, "first": r["_d"],
                                    "imported": False, "topic": "", "priority": "normal",
                                    "position": None, "pos_date": None, "best_pos": None,
-                                   "prev_pos": None})
+                                   "prev_pos": None, "date_unknown": False})
         for k, col in (("platform", "platform"), ("offer", "offer"), ("program", "program"),
                        ("campaign", "campaign"),
                        ("sub_id", "sub_id"), ("query", "main_query"),
@@ -371,6 +371,7 @@ def page_states(rows, today):
         if ev == "published" and p["published"] is None:
             p["published"] = r["_d"]
             p["imported"] = (r.get("note") or "").startswith("imported from")
+            p["date_unknown"] = "publish date unknown" in (r.get("note") or "")
             if st:
                 p["status"] = st
         elif ev == "check" and st:
@@ -502,7 +503,7 @@ def month_bounds(y, m):
     return start, end
 
 
-def period_range(period, today, rows):
+def period_range(period, today, rows, sales=None):
     p = (period or "today").lower()
     if p == "today":
         return today, today, "today"
@@ -521,7 +522,7 @@ def period_range(period, today, rows):
         s, e = month_bounds(prev.year, prev.month)
         return s, e, "last month"
     if p == "all":
-        start = rows[0]["_d"] if rows else today
+        start = min([r["_d"] for r in rows[:1]] + [r["_d"] for r in (sales or [])] + [today])
         return start, today, "all time"
     if ".." in p:
         a, b = p.split("..", 1)
@@ -578,7 +579,7 @@ def estimate_shares(rows, sales, pages, s, e):
         prog = (r.get("program") or "").lower()
         off = (r.get("offer") or "").lower()
         cands = [p for p in pages.values()
-                 if p["published"] <= r["_d"] and not (p["moved"] and p["moved"] < r["_d"])
+                 if (p["published"] <= r["_d"] or p["date_unknown"]) and not (p["moved"] and p["moved"] < r["_d"])
                  and ((prog and (p["program"] or "").lower() == prog)
                       or (not prog and off and (p["offer"] or "").lower() == off))]
         if not cands:
@@ -686,6 +687,8 @@ def print_effect(groups, by, cur, limit=None):
         sales_n = g["sales"] + g["stats_sales"]
         out.append((k, g, com, sales_n))
     out.sort(key=lambda x: (-x[2], -x[1]["views"], str(x[0])))
+    if by == "month":
+        out.sort(key=lambda x: str(x[0]), reverse=True)
     if limit:
         out = out[:limit]
     head = "Page" if by == "page" else by.replace("_", " ").title()
@@ -695,6 +698,8 @@ def print_effect(groups, by, cur, limit=None):
         print("|---|---|---|---|---|---|---|---|---|---|---|---|")
         out.sort(key=lambda x: (-(x[2] + (0 if x[1].get("est_mark") else x[1]["est"].get(cur, 0))),
                                 -x[1]["views"], str(x[0])))
+        if by == "month":
+            out.sort(key=lambda x: str(x[0]), reverse=True)
         for k, g, com, n in out:
             unalloc_row = g.get("est_mark")
             add = g["est"].get(cur, 0.0)
@@ -896,7 +901,7 @@ def money_totals(sales, s, e):
 
 def cmd_summary(a):
     today, rows, pages, sales = load(a)
-    s, e, label = period_range(a.period, today, rows)
+    s, e, label = period_range(a.period, today, rows, sales)
     sel, c = counts(rows, s, e)
     minutes = sum(num(r.get("minutes")) or 0 for r in sel)
 
@@ -993,7 +998,7 @@ def cmd_summary(a):
 
 def cmd_effect(a):
     today, rows, pages, sales = load(a)
-    s, e, label = period_range(a.period, today, rows)
+    s, e, label = period_range(a.period, today, rows, sales)
     groups = effect_table(rows, sales, pages, s, e, a.by)
     groups = {k: g for k, g in groups.items()
               if g["pages"] or g["views"] or g["aff_clicks"] or g["commission"] or g["reversed"]
@@ -1011,6 +1016,7 @@ def cmd_effect(a):
           f" · {live} pages alive or unchecked at period end"
           + (f" · {money(tot.get(cur, 0) / live, cur)} per page" if live else ""))
     if n:
+        unattr = min(unattr, n)  # refunds lower the net count; never show a negative tied share
         exact = n - unattr
         print(f"\n**Attribution:** {exact} of {n} sales tied to a page exactly ({exact / n * 100:.0f}%), "
               f"{unattr} known only by program. Program and month totals count every sale; "
