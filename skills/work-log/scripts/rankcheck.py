@@ -16,6 +16,7 @@ import json
 import os
 import sys
 import time
+import urllib.error
 import urllib.request
 from collections import defaultdict
 from datetime import date
@@ -35,8 +36,16 @@ def call(method, path, login, password, body=None):
     tok = base64.b64encode(f"{login}:{password}".encode()).decode()
     req.add_header("Authorization", "Basic " + tok)
     req.add_header("Content-Type", "application/json")
-    with urllib.request.urlopen(req, timeout=120) as r:
-        data = json.loads(r.read().decode())
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r:
+            data = json.loads(r.read().decode())
+    except urllib.error.HTTPError as e:
+        try:
+            data = json.loads(e.read().decode())
+        except Exception:
+            sys.exit(f"DataForSEO HTTP {e.code}: {e.reason}")
+    except urllib.error.URLError as e:
+        sys.exit(f"Can't reach api.dataforseo.com ({e.reason}). Allow the domain in your assistant's network settings.")
     if data.get("status_code") != 20000:
         sys.exit(f"DataForSEO error {data.get('status_code')}: {data.get('status_message')}")
     return data
