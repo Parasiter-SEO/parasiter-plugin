@@ -1684,7 +1684,8 @@ def cmd_tag(a):
         if p["url"] in seen:
             continue
         seen.add(p["url"])
-        out.append(journal_row(date=a.date or date.today().isoformat(), time="", event="tag", page_url=p["url"],
+        out.append(journal_row(date=a.date or date.today().isoformat(),
+                               time="" if a.date else datetime.now().strftime("%H:%M"), event="tag", page_url=p["url"],
                                platform=p["platform"], topic=a.topic, priority=a.priority,
                                position=a.position, offer=a.offer, program=a.program, campaign=a.campaign,
                                main_query=a.query, content_type=a.type, note=a.note))
