@@ -184,7 +184,8 @@ python3 scripts/rankcheck.py parasite-seo-progress.csv [--country us] [--priorit
 - Standard queue by default (cheapest, results in a few minutes); `--live` answers at once for about 3× the price. Always show the `--dry-run` cost first on the first run.
 - Credentials: the user's API login and password (app.dataforseo.com → API Access) in the environment as `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD`. Never write them into any file, profile or journal. If the assistant's sandbox blocks the network, the user allows `api.dataforseo.com` in their assistant's settings.
 - Weekly is enough; after a Google update, run it the same day. With a scheduled task in the assistant it runs on its own every Monday.
-- No account: positions from any rank tracker export or the user's own notes go in with `tag --position` (or `add --event check --position`).
+- Any rank tracker instead (Ubersuggest, SE Ranking, ProRankTracker, SEO PowerSuite…): upload its CSV export — `import-ranks parasite-seo-progress.csv export.csv`. Rows are matched by URL, else by keyword to the page's query or topic. If the tracker shows another page of the same platform ranking (trackers follow a domain, and researchgate.net or medium.com is everyone's domain), the row is skipped, never credited to the user. Weekly export = weekly history.
+- Single positions from the user's own notes: `tag --position` (or `add --event check --position`).
 
 ## Rules
 

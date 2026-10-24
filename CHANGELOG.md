@@ -4,6 +4,7 @@ Each version's section is posted to the news feed and the Telegram channels when
 
 ## 0.9.0 — 2026-10-24
 
+- **Positions from any rank tracker.** Upload a CSV export from Ubersuggest, SE Ranking, ProRankTracker or any other tracker: positions are matched to your pages by URL or keyword. Rows where another page of the same platform ranks are skipped.
 - **Positions of all your pages, automatically.** Connect your own DataForSEO account (cents a month) and say *"check my positions"*: every page is checked in Google by its query, positions go into your journal with what changed — new in the top 10, up, down, out. Coverage advice and the page list update from it.
 
 ## 0.8.1 — 2026-10-23

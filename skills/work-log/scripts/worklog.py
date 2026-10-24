@@ -25,6 +25,7 @@ Commands:
                  --state active|testing|paused|dropped|dead --priority high|normal|low --note]
   tag            JOURNAL (--url U ... | --urls-file F | --platform P | --match TEXT)
                  [--topic --priority --position --offer --program --campaign --query --type]
+  import-ranks   JOURNAL EXPORT.csv [--date D] [--map field=Header]   positions from any rank tracker
   coverage       JOURNAL [--topic T] [--platform P] [--gaps N]   topics x platforms, what to write where
 
 Periods: today, yesterday, week, last-week, month, last-month, YYYY-MM, YYYY-MM-DD,
@@ -1790,6 +1791,73 @@ def cmd_coverage(a):
     print("\nRewrite for the new platform, don't copy: new angle or content type, the platform's format. Check the topic's SERP first (content-type-selector).")
 
 
+RANK_ALIASES = {
+    "url": TRAFFIC_ALIASES["url"] + ["rankingurl", "rankingpage", "foundurl", "targeturl", "landingurl", "urlfound"],
+    "query": ["keyword", "keywords", "query", "searchterm", "term", "kw"],
+    "position": ["position", "rank", "ranking", "currentposition", "currentrank", "pos", "googleposition",
+                 "positiontoday", "googlerank", "latestposition", "googleuspos", "serpposition"],
+}
+
+
+def cmd_import_ranks(a):
+    """Positions from any rank tracker export (Ubersuggest, SE Ranking, ProRankTracker, Rank Tracker…)."""
+    header, raw = sniff_rows(a.export)
+    if not raw:
+        sys.exit("The export has no data rows.")
+    cols = map_columns(header, RANK_ALIASES, parse_map(a.map))
+    if "position" not in cols or ("url" not in cols and "query" not in cols):
+        print("Columns in the file: " + " | ".join(header))
+        sys.exit("Need a position column and a URL or keyword column. Re-run with --map position=\"<header>\" url=\"<header>\".")
+    get = lambda r, f: r[cols[f]].strip() if f in cols and cols[f] < len(r) else ""
+    d = a.date or date.today().isoformat()
+    rows = read_rows(a.journal)
+    pages = page_states(rows, date.max)
+    by_url = {norm_url(u): p for u, p in pages.items()}
+    by_q = defaultdict(list)
+    for p in pages.values():
+        for q in {p["query"].lower(), p["topic_key"]} - {""}:
+            by_q[q].append(p)
+    out, unmatched, other_domain = [], [], 0
+    for r in raw:
+        pos_raw = get(r, "position")
+        pos = num(re.sub(r"[^0-9.,]", "", pos_raw)) if pos_raw and pos_raw not in ("-", "—", ">100", "100+") else None
+        u, q = get(r, "url"), get(r, "query")
+        targets = []
+        if u and norm_url(u) in by_url:
+            targets = [by_url[norm_url(u)]]
+        elif q and q.lower() in by_q:
+            cand = by_q[q.lower()]
+            if u:  # tracker shows a URL that is not the user's page: someone else ranks, not the user
+                dom = url_domain(u)
+                targets = [p for p in cand if url_domain(p["url"]) == dom and norm_url(p["url"]) == norm_url(u)]
+                if not targets:
+                    other_domain += 1
+                    continue
+            else:
+                targets = [p for p in cand if not a.platform or p["platform"].lower() == a.platform.lower()]
+        if not targets:
+            unmatched.append(u or q)
+            continue
+        for p in targets:
+            note = f"rank: {q or p['query'] or p['topic_key']} · {os.path.basename(a.export)}"
+            if pos is not None and pos > 0:
+                out.append(journal_row(date=d, time="", event="check", page_url=p["url"], platform=p["platform"],
+                                       status="indexed", position=f"{pos:.0f}", main_query=q, note=note))
+            else:
+                out.append(journal_row(date=d, time="", event="check", page_url=p["url"], platform=p["platform"],
+                                       main_query=q, note=note + " · not in top 100"))
+    if out:
+        append(a.journal, COLUMNS, out)
+    top = sum(1 for r in out if num(r["position"]) is not None and num(r["position"]) <= TOP)
+    print(f"Rank import {os.path.basename(a.export)} · {d}")
+    print("- Columns used: " + ", ".join(f"{f} = “{header[i]}”" for f, i in cols.items()))
+    print(f"- {len(out)} page positions logged · {top} in the top {TOP}")
+    if other_domain:
+        print(f"- {other_domain} rows show another page of the same platform ranking, not yours: skipped")
+    if unmatched:
+        print(f"- {len(unmatched)} rows not matched to your pages: " + ", ".join(short(x, 40) for x in unmatched[:10]))
+
+
 def main():
     ap = argparse.ArgumentParser(description="PARASITER work, traffic and sales journal")
     ap.add_argument("--sales-file", help="sales file (default: parasite-seo-sales.csv next to the journal)")
@@ -1856,6 +1924,11 @@ def main():
     ip.set_defaults(fn=cmd_import_pages)
 
     pl = sub.add_parser("platforms"); common(pl); pl.set_defaults(fn=cmd_platforms)
+
+    ir = sub.add_parser("import-ranks"); common(ir, today=False)
+    ir.add_argument("export"); ir.add_argument("--platform"); ir.add_argument("--date")
+    ir.add_argument("--map", action="append")
+    ir.set_defaults(fn=cmd_import_ranks)
 
     tg = sub.add_parser("tag"); common(tg, today=False)
     tg.add_argument("--url", action="append")
