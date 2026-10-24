@@ -226,6 +226,7 @@ def norm_url(u):
     u = re.sub(r"^https?://", "", u)
     u = re.sub(r"^www\.", "", u)
     u = u.split("#")[0]
+    u = re.sub(r"^open\.firstory\.me/", "open.firstory.fm/", u)  # same Firstory story on two domains
     path, _, q = u.partition("?")
     keep = sorted(x for x in q.split("&") if x and not TRACKING.match(x.split("=")[0]))
     path = path.rstrip("/")

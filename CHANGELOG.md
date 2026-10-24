@@ -2,6 +2,11 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.11.2 — 2026-10-24
+
+- **AI Overview and SERP blocks.** Position checks now see your pages cited in Google's AI Overview, "Discussions and forums", images and videos, not only the organic list.
+- Mobile or desktop check, top 30 by default (cheaper; that is where traffic is).
+
 ## 0.11.1 — 2026-10-24
 
 - **Sales with the referring site.** Network exports that show where the buyer came from (Everflow / FanFuel `referer`) now credit the estimated share to your pages on that platform. Repeat-customer offers are merged with the main offer and marked.

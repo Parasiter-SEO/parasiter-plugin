@@ -80,6 +80,27 @@ def serp_items(task):
     return out
 
 
+def urls_in(o):
+    if isinstance(o, dict):
+        for v in o.values():
+            yield from urls_in(v)
+    elif isinstance(o, list):
+        for v in o:
+            yield from urls_in(v)
+    elif isinstance(o, str) and o.startswith("http"):
+        yield o
+
+
+def serp_features(task):
+    """Non-organic blocks that cite pages: AI Overview, Discussions and forums, videos, PAA…"""
+    out = []
+    for res in task.get("result") or []:
+        for it in res.get("items") or []:
+            if it.get("type") != "organic":
+                out += [(it.get("type"), u) for u in set(urls_in(it))]
+    return out
+
+
 def match(page_url, serp_url):
     a, b = w.norm_url(page_url), w.norm_url(serp_url)
     return a == b or b.startswith(a + "/") or a.startswith(b + "/")
@@ -89,7 +110,8 @@ def main():
     ap = argparse.ArgumentParser(description="Position check of the user's pages (DataForSEO)")
     ap.add_argument("journal")
     ap.add_argument("--country", default="us"); ap.add_argument("--language", default="en")
-    ap.add_argument("--depth", type=int, default=100)
+    ap.add_argument("--depth", type=int, default=30, help="results to check; billed per 10, top 30 is enough to see traffic")
+    ap.add_argument("--device", default="desktop", choices=["desktop", "mobile"])
     ap.add_argument("--platform"); ap.add_argument("--topic")
     ap.add_argument("--priority", choices=w.PRIORITIES)
     ap.add_argument("--limit", type=int, default=200, help="max queries per run")
@@ -121,7 +143,7 @@ def main():
             continue
         (by_q[q.lower()].append(p) if q else skipped.append(p))
     queries = sorted(by_q, key=lambda q: min(w.PRIORITIES.index(p["priority"]) for p in by_q[q]))[: a.limit]
-    results = {}
+    results, feats = {}, {}
     loc = COUNTRIES.get(a.country.lower())
     if not loc:
         sys.exit("Unknown --country. Use one of: " + ", ".join(sorted(COUNTRIES)))
@@ -157,6 +179,7 @@ def main():
                 kw = ((tt.get("data") or {}).get("keyword") or "").lower()
                 if tt.get("result") and kw:
                     results[kw] = serp_items(tt)
+                    feats[kw] = serp_features(tt)
         queries = [q for q in by_q if q in results]
         print(f"- results for {len(queries)} of your queries")
     elif a.from_json:
@@ -168,12 +191,14 @@ def main():
         if not (login and password):
             sys.exit("No DataForSEO credentials: set DATAFORSEO_LOGIN and DATAFORSEO_PASSWORD (API login and password from app.dataforseo.com → API Access).")
         body = [{"keyword": q, "location_code": loc, "language_code": a.language, "depth": a.depth,
-                 "tag": q} for q in queries]
+                 "device": a.device, "tag": q} for q in queries]
         if a.live:
             for chunk in [body[i:i + 1] for i in range(len(body))]:  # live: one task per request
                 d = call("POST", "/live/advanced", login, password, chunk)
                 for t in d.get("tasks") or []:
-                    results[(t.get("data") or {}).get("keyword", "").lower()] = serp_items(t)
+                    k_ = (t.get("data") or {}).get("keyword", "").lower()
+                    results[k_] = serp_items(t)
+                    feats[k_] = serp_features(t)
         else:
             ids = {}
             for i in range(0, len(body), 100):
@@ -193,11 +218,12 @@ def main():
                             g = call("GET", f"/task_get/advanced/{tid}", login, password)
                             for tt in g.get("tasks") or []:
                                 results[ids[tid]] = serp_items(tt)
+                                feats[ids[tid]] = serp_features(tt)
                             ids.pop(tid)
             if ids:
                 print(f"- {len(ids)} tasks not ready yet: they are paid and kept 3 days. Later run with --collect 24 to download them for free.")
 
-    rows, found, top = [], 0, 0
+    rows, found, top, found_feat = [], 0, 0, []
     d = today.isoformat()
     for q in queries:
         if q not in results:
@@ -205,18 +231,28 @@ def main():
         items = results[q]
         for p in by_q[q]:
             pos = next((rk for rk, u in items if match(p["url"], u)), None)
-            note = f"rank: {q} · google {a.country}"
+            cited = sorted({ty for ty, u in feats.get(q, []) if match(p["url"], u)})
+            note = f"rank: {q} · google {a.country} {a.device}" + (f" · cited in {', '.join(cited)}" if cited else "")
+            if cited:
+                found_feat.append(f"{w.short(p['url'], 50)} · {q}: {', '.join(cited)}")
             if pos is not None:
                 found += 1
                 top += pos <= w.TOP
                 rows.append(w.journal_row(date=d, event="check", page_url=p["url"], platform=p["platform"],
                                           status="indexed", position=pos, main_query=q, note=note))
+            elif cited:  # not in organic results, but Google shows it in a SERP block: it is indexed
+                rows.append(w.journal_row(date=d, event="check", page_url=p["url"], platform=p["platform"],
+                                          status="indexed", main_query=q, note=note + f" · not in organic top {a.depth}"))
             else:
                 rows.append(w.journal_row(date=d, event="check", page_url=p["url"], platform=p["platform"],
                                           main_query=q, note=note + f" · not in top {a.depth}"))
     if rows:
         w.append(a.journal, w.COLUMNS, rows)
     print(f"- {len(rows)} pages checked · {found} found in the top {a.depth} · {top} in the top {w.TOP}")
+    if found_feat:
+        print("\n**Cited in SERP blocks (AI Overview, forums, videos…)**")
+        for line in found_feat[:25]:
+            print("- " + line)
     moves = []
     for r in rows:
         p = pages[r["page_url"]]

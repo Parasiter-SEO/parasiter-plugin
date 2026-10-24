@@ -205,6 +205,8 @@ python3 scripts/rankcheck.py parasite-seo-progress.csv --dry-run            # wh
 python3 scripts/rankcheck.py parasite-seo-progress.csv [--country us] [--priority high] [--platform researchgate]
 ```
 
+- Besides organic positions, every SERP block is read: a page cited in the **AI Overview**, "Discussions and forums", images or videos is logged as indexed with "cited in …" even when it is not in the organic list (parasite pages often live there). The output lists these citations.
+- Default: Google desktop, US, top 30 (billed per 10 results; top 30 is where traffic is). `--device mobile` for the mobile SERP, `--depth 100` for a full check, `--country uk` etc. Positions differ by country, device and exact wording (extender ≠ extenders): when the user sees a different position, check the exact query, country and device before doubting the tool.
 - One request per unique query covers every page of the user that ranks for it (two platforms on one query = one request). The query is the page's main query, else its named topic; pages with neither are listed — set them with `tag --query`.
 - Found pages get a `check` row with their position and status `indexed`; pages not in the top 100 get "not in top 100". The output lists changes since the last check: new in the top 10, up, down, out.
 - Standard queue by default (cheapest, results in a few minutes); `--live` answers at once for about 3× the price. DataForSEO bills per 10 results, so the top 100 costs 10× the top 10: use `--depth 10` (or 30) when only the top matters. Always show the `--dry-run` cost first on the first run.
