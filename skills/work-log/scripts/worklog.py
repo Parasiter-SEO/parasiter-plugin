@@ -225,7 +225,12 @@ def norm_url(u):
     u = u.split("#")[0]
     path, _, q = u.partition("?")
     keep = sorted(x for x in q.split("&") if x and not TRACKING.match(x.split("=")[0]))
-    return path.rstrip("/") + ("?" + "&".join(keep) if keep else "")
+    path = path.rstrip("/")
+    # Gamma: gamma.app/docs/<Title-Slug>-<id> and gamma.app/docs/<id> are the same document
+    m = re.match(r"(gamma\.app/(?:docs|public)/)(?:.*-)?([a-z0-9]{15})$", path)
+    if m:
+        path = "gamma.app/docs/" + m.group(2)
+    return path + ("?" + "&".join(keep) if keep else "")
 
 
 def platforms_path(journal):
