@@ -22,6 +22,9 @@ Each recipe: what the user says, what happens. Give the user only the recipe the
 ## Track positions of my pages
 Search Console can't see pages on other people's platforms. Connect your own DataForSEO account (pay per query, cents a month for dozens of pages): create it at dataforseo.com, copy the API login and password, and set them as `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD`. Then "check my positions" → every page with a query or topic is checked in Google, positions and "new in top 10 / up / down / out" go into your journal. Weekly is enough. Using Ubersuggest or another tracker: export the rankings as CSV and upload it — "here are my positions". Trackers follow a whole domain, so on shared platforms (ResearchGate, Medium) make sure the ranking URL is your page; PARASITER skips rows where someone else's page of the same platform ranks. Or just say them ("cortisol on Pressbooks is #8").
 
+## Start the day with my own plan
+Say what you plan: "today I add articles on ResearchGate and Pressbooks — give me topics I don't have there; and forum posts on thermaltake on topics where my sites rank". The navigator keeps your plan and fills each part with topics from your base (missing there, strongest first, with the page to learn from). No plan in mind? Say "give me a plan" and it builds one.
+
 ## What to write and where
 "What should I write next?", "which topics are missing on Medium?" → topic coverage: a table of your topics × platforms and the best gaps, e.g. *glp1 patch review → Medium: #7 and earning on the forum, Medium is your priority platform*. Pick one and it goes to content-type-selector and sales-review-writer (a new angle, never a copy).
 

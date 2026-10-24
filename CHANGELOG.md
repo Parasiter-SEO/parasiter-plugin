@@ -2,6 +2,12 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.10.0 — 2026-10-24
+
+- **Your plan for the day, filled with ideas.** Tell the navigator what you want to do today — "articles on ResearchGate and Pressbooks, topics I don't have there; forum posts on topics where my sites rank" — and get topics for each part from your own base: missing there, strongest first, with the page to learn from. New platforms work too. No plan? Say *"give me a plan"*.
+- **Your own sites as a source.** Register them in the platform base; topics where they rank in the top 10 become ideas for parasite platforms.
+- Position checks retry automatically and can download already-paid results for free.
+
 ## 0.9.0 — 2026-10-24
 
 - **Positions from any rank tracker.** Upload a CSV export from Ubersuggest, SE Ranking, ProRankTracker or any other tracker: positions are matched to your pages by URL or keyword. Rows where another page of the same platform ranks are skipped.

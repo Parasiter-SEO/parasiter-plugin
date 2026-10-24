@@ -26,6 +26,7 @@ Commands:
   tag            JOURNAL (--url U ... | --urls-file F | --platform P | --match TEXT)
                  [--topic --priority --position --offer --program --campaign --query --type]
   import-ranks   JOURNAL EXPORT.csv [--date D] [--map field=Header]   positions from any rank tracker
+  ideas          JOURNAL --to P1,P2 [--from P|own-site] [--top-only] [--n 8]   topics for the user's own plan
   coverage       JOURNAL [--topic T] [--platform P] [--gaps N]   topics x platforms, what to write where
 
 Periods: today, yesterday, week, last-week, month, last-month, YYYY-MM, YYYY-MM-DD,
@@ -1858,6 +1859,67 @@ def cmd_import_ranks(a):
         print(f"- {len(unmatched)} rows not matched to your pages: " + ", ".join(short(x, 40) for x in unmatched[:10]))
 
 
+def cmd_ideas(a):
+    """Topics for the user's own plan: what to publish on the target platforms today.
+    --to: target platforms (may be new, not yet in the base); --from: only topics proven there;
+    --top-only: only topics with a page in the top 10."""
+    today, rows, pages, sales = load(a)
+    reg = read_platforms(platforms_path(a.journal))
+    earned = defaultdict(float)
+    for r in sales:
+        if r["_page"] and counted(r):
+            earned[r["_page"]] += r["_c"]
+    src = {x.strip().lower() for x in (a.from_ or "").split(",") if x.strip()}
+    if src:  # accept types too: "own-site" = every platform of that type
+        src |= {k for k, r in reg.items() if (r.get("type") or "").lower() in src}
+    live = [p for p in pages.values() if p["platform"] and not p["moved"] and health(p) not in GONE]
+    topics = defaultdict(list)
+    for p in live:
+        topics[p["topic_key"]].append(p)
+    targets = [x.strip() for x in a.to.split(",") if x.strip()]
+    print(f"# Topics for your plan · {today}\n")
+    for tgt in targets:
+        key = tgt.lower()
+        r = reg.get(key)
+        state = (r or {}).get("state") or ("new — not in your base" if not r else "active")
+        have = {t for t, ps in topics.items() if any(p["platform"].lower() == key for p in ps)}
+        cands = []
+        for t, ps in topics.items():
+            if t in have or (t.startswith("~ ") and not a.include_guessed):
+                continue
+            pool = [p for p in ps if p["platform"].lower() != key and (not src or p["platform"].lower() in src)]
+            if a.top_only:
+                pool = [p for p in pool if p["position"] is not None and p["position"] <= TOP]
+            if not pool:
+                continue
+            best = max(pool, key=lambda p: page_strength(p, {u: [1, c] for u, c in earned.items()}))
+            nplat = len({p["platform"].lower() for p in ps})
+            sc = page_strength(best, {u: [1, c] for u, c in earned.items()}) + 0.3 * nplat
+            why = []
+            if best["position"] is not None:
+                why.append(f"#{best['position']:.0f} on {best['platform']}")
+            if earned.get(best["url"]):
+                why.append(f"earns {money(earned[best['url']])}")
+            if best["priority"] == "high":
+                why.append("★")
+            if nplat > 1:
+                why.append(f"on {nplat} platforms")
+            cands.append((sc, t, best, why))
+        cands.sort(key=lambda c: -c[0])
+        print(f"## {tgt} · {state} · {len(have)} of your topics already there\n")
+        if not cands:
+            print("No topics to add" + (" from those sources" if src else "") + (" with a top-10 page" if a.top_only else "")
+                  + ". " + ("Positions unknown yet: run the position check, or drop --top-only." if a.top_only else "") + "\n")
+            continue
+        for i, (sc, t, best, why) in enumerate(cands[: a.n], 1):
+            print(f"{i}. **{t}** — from {short(best['url'], 55)}" + (f" ({'; '.join(why)})" if why else ""))
+        if len(cands) > a.n:
+            print(f"… {len(cands) - a.n} more (--n {len(cands)})")
+        if not r:
+            print(f"\n{tgt} is new: check it once with platform-analyzer before the first post.")
+        print()
+
+
 def main():
     ap = argparse.ArgumentParser(description="PARASITER work, traffic and sales journal")
     ap.add_argument("--sales-file", help="sales file (default: parasite-seo-sales.csv next to the journal)")
@@ -1938,6 +2000,14 @@ def main():
         tg.add_argument(f"--{opt}")
     tg.add_argument("--priority", choices=PRIORITIES)
     tg.set_defaults(fn=cmd_tag)
+
+    idp = sub.add_parser("ideas"); common(idp)
+    idp.add_argument("--to", required=True, help="target platforms, comma-separated (new ones allowed)")
+    idp.add_argument("--from", dest="from_", help="source platforms or types (own-site), comma-separated")
+    idp.add_argument("--top-only", action="store_true", help="only topics with a page in the top 10")
+    idp.add_argument("--n", type=int, default=8)
+    idp.add_argument("--include-guessed", action="store_true")
+    idp.set_defaults(fn=cmd_ideas)
 
     cv = sub.add_parser("coverage"); common(cv)
     cv.add_argument("--topic"); cv.add_argument("--platform")

@@ -170,6 +170,15 @@ python3 scripts/worklog.py coverage parasite-seo-progress.csv [--topic keto] [--
 `--by-platform` answers "which of my topics are missing on each of my top platforms": per platform, in the user's own order, the topics they already have elsewhere. The user's order of platforms ("Medium is my #1") goes in with `platform-set --rank 1`; it outweighs every other signal.
 Read it to the user as 3–5 concrete suggestions: topic → platform → why → the content type to use there. A new page on a topic must be rewritten for the platform (new angle or content type, the platform's format), never copied — duplicates get filtered and hurt both pages. Hand the chosen gap to `content-type-selector` and `sales-review-writer`. The navigator uses this list for "new content" in the daily plan.
 
+## Mode 8b — Topics for the user's own plan
+
+When the user says what they will publish today and where, `ideas` answers per target platform:
+```
+python3 scripts/worklog.py ideas parasite-seo-progress.csv --to researchgate,pressbooks [--n 8]
+python3 scripts/worklog.py ideas parasite-seo-progress.csv --to thermaltake --from own-site --top-only
+```
+`--to` takes any platforms, including new ones not in the base. `--from` limits the source topics to platforms or types (`own-site` = the user's own sites, registered with `platform-set --type own-site`; their positions come from the position check, Search Console or a tracker export). `--top-only` keeps only topics with a page in the top 10.
+
 ## Mode 9 — Positions of every page, automatically (DataForSEO)
 
 Search Console and free webmaster tools only see sites the user owns, so they can't see parasite pages. PARASITER checks Google itself through the user's own DataForSEO account (pay per request, from about $0.0006 per query: 50 queries a week cost cents a month).
@@ -181,7 +190,8 @@ python3 scripts/rankcheck.py parasite-seo-progress.csv [--country us] [--priorit
 
 - One request per unique query covers every page of the user that ranks for it (two platforms on one query = one request). The query is the page's main query, else its named topic; pages with neither are listed — set them with `tag --query`.
 - Found pages get a `check` row with their position and status `indexed`; pages not in the top 100 get "not in top 100". The output lists changes since the last check: new in the top 10, up, down, out.
-- Standard queue by default (cheapest, results in a few minutes); `--live` answers at once for about 3× the price. Always show the `--dry-run` cost first on the first run.
+- Standard queue by default (cheapest, results in a few minutes); `--live` answers at once for about 3× the price. DataForSEO bills per 10 results, so the top 100 costs 10× the top 10: use `--depth 10` (or 30) when only the top matters. Always show the `--dry-run` cost first on the first run.
+- Tasks not downloaded in time (or after an error) are already paid: `--collect 24` downloads them for free; `--skip-today` re-runs only pages not checked today.
 - Credentials: the user's API login and password (app.dataforseo.com → API Access) in the environment as `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD`. Never write them into any file, profile or journal. If the assistant's sandbox blocks the network, the user allows `api.dataforseo.com` in their assistant's settings.
 - Weekly is enough; after a Google update, run it the same day. With a scheduled task in the assistant it runs on its own every Monday.
 - Any rank tracker instead (Ubersuggest, SE Ranking, ProRankTracker, SEO PowerSuite…): upload its CSV export — `import-ranks parasite-seo-progress.csv export.csv`. Rows are matched by URL, else by keyword to the page's query or topic. If the tracker shows another page of the same platform ranking (trackers follow a domain, and researchgate.net or medium.com is everyone's domain), the row is skipped, never credited to the user. Weekly export = weekly history.

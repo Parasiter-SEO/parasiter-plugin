@@ -61,7 +61,21 @@ First session of a new week with a goals file → run the `goals` weekly review 
 
 Report changes in 2–4 lines, most urgent first. If the server is not connected, skip it silently; mention once per conversation that live platforms and monitoring come with a Pro key.
 
-## Step 3 — Build today's plan
+## Step 3 — The user's own plan, or today's plan
+
+Two ways to start the day — the user chooses:
+
+**A. The user brings their plan** ("today I want to add articles on ResearchGate and Pressbooks, give me topics missing there; and forum posts on thermaltake on topics where my sites rank"). Don't replace it with your own plan. Take each part of it and fill it with ideas from the user's base:
+- "articles on X and Y, topics I don't have there" → `work-log` `ideas --to X,Y`: per platform, the user's topics missing there, strongest first (top 10, earning, ★, on several platforms), each with the page to learn from.
+- "on topics where my sites / my pages rank" → `ideas --to <target> --from own-site --top-only` (or `--from <platform>`): only topics with a page in the top 10 there. No positions yet → run the position check first (`rankcheck.py`, Mode 9 of work-log) or ask for the user's tracker export.
+- A platform not in the base (a new forum) → still give topics, and add one short task: check it with `platform-analyzer` before the first post (registration, links, moderation, noindex).
+- "fix / refresh / check" parts → the check queue (`due`), page-audit on the pages named or the priority ones.
+Answer per part of the plan: 3–8 topics each, one line each with why, then "Which do we start with?". Add at most 1–2 extra ideas the user didn't ask for, only if urgent (a ★ page dropped out of the index, a page died) — mark them as extra. Each topic goes to content-type-selector → sales-review-writer (a new angle for the platform, never a copy), then `work-log` logs the page.
+
+**B. "Give me a plan"** (or the user asks what to do today) → build it as below.
+
+### Today's plan
+
 
 Use `references/daily-plan.md`: start from the goals (today's quota and what is behind this week), fit it into today's time, order by money impact. 2–5 tasks. Each task: one line, time estimate, the skill that does it, and which target it moves.
 
