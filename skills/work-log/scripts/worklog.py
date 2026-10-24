@@ -213,12 +213,19 @@ def pdate(v):
         return None
 
 
+TRACKING = re.compile(r"^(utm_|_sg|_tp|fbclid|gclid|ref$|ref_|source$|sk$|si$|mc_|_hs|igsh|share)")
+
+
 def norm_url(u):
+    """Compare-key for a page URL: no scheme/www/fragment, tracking parameters dropped, but
+    meaningful query parameters kept (profile.php?member_id=…&blog_id=… is a different page)."""
     u = (u or "").strip().lower()
     u = re.sub(r"^https?://", "", u)
     u = re.sub(r"^www\.", "", u)
-    u = u.split("#")[0].split("?")[0]
-    return u.rstrip("/")
+    u = u.split("#")[0]
+    path, _, q = u.partition("?")
+    keep = sorted(x for x in q.split("&") if x and not TRACKING.match(x.split("=")[0]))
+    return path.rstrip("/") + ("?" + "&".join(keep) if keep else "")
 
 
 def platforms_path(journal):
