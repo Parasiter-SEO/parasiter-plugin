@@ -48,7 +48,7 @@ COLUMNS = ["date", "time", "event", "page_url", "platform", "offer", "program", 
            "main_query", "content_type", "status", "score", "views", "clicks", "aff_clicks",
            "sales", "revenue", "minutes", "note", "topic", "priority", "position"]
 SALE_COLUMNS = ["date", "program", "network", "offer", "sub_id", "page_url", "order_id",
-                "amount", "commission", "currency", "status", "source", "note"]
+                "amount", "commission", "currency", "status", "source", "note", "referer"]
 EVENTS = ["baseline", "published", "submitted", "check", "audit", "refreshed", "moved",
           "platform", "traffic", "stats", "import", "task", "note", "tag"]
 PRIORITIES = ["high", "normal", "low"]
@@ -91,7 +91,8 @@ SALE_ALIASES = {
     "offer": ["product", "productname", "offer", "offername", "item", "itemname", "brand",
               "advertiser", "advertisername", "merchant", "merchantname", "campaign",
               "campaignname", "productid"],
-    "currency": ["currency", "currencycode", "commissioncurrency"],
+    "currency": ["currency", "currencycode", "commissioncurrency", "currencyid", "payoutcurrency"],
+    "referer": ["referer", "referrer", "httpreferer", "refererdomain", "referringdomain", "referringurl", "sourceurl"],
 }
 TRAFFIC_ALIASES = {
     "url": ["url", "link", "page", "pageurl", "posturl", "landingpage", "address", "permalink",
@@ -473,6 +474,7 @@ def read_sales(path, pages):
         if not url and r.get("sub_id"):
             url = by_sub.get(r["sub_id"].lower(), "")
         r["_page"] = by_url.get(norm_url(url), url) if url else ""
+        r["_ref"] = (r.get("referer") or "").lower()
         latest[sale_key(r)] = r
     rows = list(latest.values())
     imported = [r for r in rows if r.get("source", "").startswith("import")]
@@ -584,6 +586,14 @@ def estimate_shares(rows, sales, pages, s, e):
                  if (p["published"] <= r["_d"] or p["date_unknown"]) and not (p["moved"] and p["moved"] < r["_d"])
                  and ((prog and (p["program"] or "").lower() == prog)
                       or (not prog and off and (p["offer"] or "").lower() == off))]
+        if r.get("_ref"):  # the network told us which site the buyer came from
+            ref = r["_ref"]
+            on_ref = [p for p in pages.values() if url_domain(p["url"]).endswith(ref) or ref.endswith(url_domain(p["url"]))]
+            on_ref = [p for p in on_ref if p["published"] <= r["_d"] or p["date_unknown"]]
+            narrowed = [p for p in cands if p in on_ref] or on_ref
+            if narrowed:
+                cands = narrowed
+                methods["referer (platform known)"] += 1
         if not cands:
             unalloc[cur] += r["_c"]
             methods["no matching pages"] += 1
@@ -1009,14 +1019,24 @@ def cmd_effect(a):
     if not groups:
         print("No pages, traffic or sales in this period.")
         return
-    cur = main_currency(groups)
-    print_effect(groups, a.by, cur)
+    curs = Counter()
+    for g in groups.values():
+        for c_, v in list(g["commission"].items()) + list(g["est"].items()):
+            curs[c_] += abs(v)
+    curs = [c_ for c_, _ in curs.most_common()] or [main_currency(groups)]
+    if getattr(a, "currency", None):
+        curs = [a.currency.upper()]
+    for cur in curs:  # money stays in its currency: one table per currency, never mixed
+        if len(curs) > 1:
+            print(f"\n## Commission in {cur}\n")
+        sub = {k: g for k, g in groups.items()
+               if g["commission"].get(cur) or g["est"].get(cur) or (cur == curs[0] and not g["commission"] and not g["est"])}
+        print_effect(sub or groups, a.by, cur)
     tot, pend, n, rev_n, unattr = money_totals(sales, s, e)
     live = sum(1 for p in pages.values() if p["published"] <= e and not p["moved"]
                and p["status"] not in GONE)
-    print(f"\n**Total:** {n} sales · {money(tot.get(cur, 0), cur)} commission"
-          f" · {live} pages alive or unchecked at period end"
-          + (f" · {money(tot.get(cur, 0) / live, cur)} per page" if live else ""))
+    print(f"\n**Total:** {n} sales · " + " + ".join(money(tot.get(c_, 0), c_) for c_ in curs) + " commission"
+          f" · {live} pages alive or unchecked at period end")
     if n:
         unattr = min(unattr, n)  # refunds lower the net count; never show a negative tied share
         exact = n - unattr
@@ -1274,7 +1294,11 @@ def cmd_import_sales(a):
                "commission": f"{c:.2f}",
                "currency": (get(r, "currency") or a.currency or "USD").upper(),
                "status": sale_status(get(r, "status"), c),
-               "source": f"import:{os.path.basename(a.export)}", "note": ""}
+               "source": f"import:{os.path.basename(a.export)}", "note": "",
+               "referer": url_domain(get(r, "referer")) if get(r, "referer") else ""}
+        if re.search(r"repeat customer", row["offer"], re.I):  # Everflow-style repeat-order offers
+            row["offer"] = re.sub(r"\s*[-–]\s*repeat customer tracking\s*$", "", row["offer"], flags=re.I)
+            row["note"] = "repeat customer"
         amt = num(row["amount"])
         row["amount"] = f"{amt:.2f}" if amt is not None else ""
         k = sale_key(row)
@@ -2074,7 +2098,7 @@ def main():
     s.add_argument("--period", default="today"); s.set_defaults(fn=cmd_summary)
 
     ef = sub.add_parser("effect"); common(ef)
-    ef.add_argument("--period", default="month")
+    ef.add_argument("--period", default="month"); ef.add_argument("--currency")
     ef.add_argument("--by", default="page",
                     choices=["page", "platform", "offer", "program", "campaign", "content_type", "month"])
     ef.set_defaults(fn=cmd_effect)

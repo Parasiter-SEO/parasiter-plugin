@@ -2,6 +2,11 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.11.1 — 2026-10-24
+
+- **Sales with the referring site.** Network exports that show where the buyer came from (Everflow / FanFuel `referer`) now credit the estimated share to your pages on that platform. Repeat-customer offers are merged with the main offer and marked.
+- **Several currencies** (EUR from one network, USD from another) are reported side by side, never mixed.
+
 ## 0.11.0 — 2026-10-24
 
 - **Your affiliate links library.** Part of the first setup: upload your links for every product (a list, a table or screenshots of your network's link page). Articles use the right link without asking, and *"which products have no pages yet?"* shows what to write next. Say *"here are my affiliate links"*.

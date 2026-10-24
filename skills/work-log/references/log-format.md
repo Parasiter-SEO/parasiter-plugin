@@ -76,6 +76,7 @@ date,program,network,offer,sub_id,page_url,order_id,amount,commission,currency,s
 | `currency` | ISO code |
 | `status` | `approved` · `pending` · `reversed` |
 | `source` | `manual` or `import:<file>` |
+| `referer` | domain the buyer came from, when the network export has it (Everflow `referer`); narrows the estimated share to pages on that platform |
 
 Counting rules:
 - Latest row per order wins (a later import with a new status updates the sale).
