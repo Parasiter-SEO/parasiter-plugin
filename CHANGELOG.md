@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.13.0 — 2026-10-24
+
+- **One topic → all your platforms.** After every new article the system shows which of your platforms don't have the topic yet and makes a version for each in its own format: book chapter, forum thread, podcast episode, Gamma guide, community post. New angle each time, never a copy. Say *"roll this topic out"*.
+
 ## 0.12.0 — 2026-10-24
 
 - **What each page ranks for — and what it lost.** Say *"which queries do my pages rank for?"* or *"what did my lymphatic page lose?"*: every page gets its Google queries with volume, position and estimated traffic, plus the queries it lost and when. Shows which pages really bring visitors and what dropped before a sales dip.

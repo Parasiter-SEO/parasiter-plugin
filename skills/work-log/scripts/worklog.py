@@ -27,6 +27,7 @@ Commands:
                  [--topic --priority --position --offer --program --campaign --query --type]
   import-ranks   JOURNAL EXPORT.csv [--date D] [--map field=Header]   positions from any rank tracker
   ideas          JOURNAL --to P1,P2 [--from P|own-site] [--top-only] [--n 8]   topics for the user's own plan
+  rollout        JOURNAL (--topic T | --url U)            where to publish this topic next
   import-links   JOURNAL FILE [--program P] [--commission 40%]   affiliate links library (parasite-seo-links.csv)
   links          JOURNAL [--program P]                 products, links, pages per product, products with no pages
   coverage       JOURNAL [--topic T] [--platform P] [--gaps N]   topics x platforms, what to write where
@@ -2085,6 +2086,43 @@ def cmd_links(a):
         print("Use `ideas` / coverage to pick the platform; the writer takes the link from this library.")
 
 
+FORMATS = {"book": "long chapter (2,000–3,500 words), full structure", "document": "analytical review document, clearly a buyer's comparison",
+           "forum": "native forum thread + 2–5 own replies, unique title", "community": "community post, ends with a question",
+           "podcast": "episode: description 800–1,500 words + short script", "presentation": "visual guide in 8–15 cards",
+           "article": "blog article 1,500–2,000+ words", "blog": "blog post 1,500+ words", "q&a": "answer to a real question",
+           "page": "single page article", "site-builder": "page article", "newsletter": "newsletter post"}
+
+
+def cmd_rollout(a):
+    """Where to publish a topic next: the user's active platforms that don't have it yet."""
+    today, rows, pages, sales = load(a)
+    reg = read_platforms(platforms_path(a.journal))
+    topic = (a.topic or "").lower()
+    if a.url:
+        p = next((p for u, p in pages.items() if norm_url(u) == norm_url(a.url)), None)
+        if not p:
+            sys.exit("That page is not in the journal: log it first (add --event published).")
+        topic = p["topic_key"]
+    if not topic:
+        sys.exit("Give --topic or --url.")
+    on = defaultdict(list)
+    for p in pages.values():
+        if topic in p["topic_key"] and not p["moved"] and health(p) not in GONE:
+            on[p["platform"].lower()].append(p)
+    rank = lambda r: (num(r.get("rank")) or 99, PRIORITIES.index(r.get("priority") or "normal"), r["platform"])
+    act = [r for r in reg.values() if (r.get("state") or "active") in ("active", "testing")]
+    missing = [r for r in sorted(act, key=rank) if r["platform"].lower() not in on]
+    print(f"# Rollout · “{topic}” · on {len(on)} platforms · missing on {len(missing)}\n")
+    if on:
+        print("**Already there:** " + ", ".join(f"{k} ({len(v)})" + (f" #{min(p['position'] for p in v if p['position']):.0f}" if any(p['position'] for p in v) else "") for k, v in on.items()))
+    if missing:
+        print("\n| Platform | Priority | Type | Format for this platform |\n|---|---|---|---|")
+        for r in missing:
+            prio = {"high": "★"}.get(r.get("priority") or "", "")
+            print(f"| {r['platform']} | {prio} | {r.get('type') or '?'} | {FORMATS.get((r.get('type') or '').lower(), 'check the platform format')} |")
+        print("\nEach version: new title and angle, the platform's format, same verified facts and your links. Never a copy.")
+
+
 def main():
     ap = argparse.ArgumentParser(description="PARASITER work, traffic and sales journal")
     ap.add_argument("--sales-file", help="sales file (default: parasite-seo-sales.csv next to the journal)")
@@ -2156,6 +2194,8 @@ def main():
     ir.add_argument("export"); ir.add_argument("--platform"); ir.add_argument("--date")
     ir.add_argument("--map", action="append")
     ir.set_defaults(fn=cmd_import_ranks)
+
+    ro = sub.add_parser("rollout"); common(ro); ro.add_argument("--topic"); ro.add_argument("--url"); ro.set_defaults(fn=cmd_rollout)
 
     il = sub.add_parser("import-links"); common(il, today=False)
     il.add_argument("file"); il.add_argument("--program"); il.add_argument("--commission")

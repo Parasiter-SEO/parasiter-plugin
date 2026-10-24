@@ -104,6 +104,15 @@ Without code execution, say once that the JPG cards appear automatically when th
 3. Ask what to change. Iterate section by section; keep everything the user did not ask to change.
 4. Suggest running `page-audit` on the final text before publishing — it sends the text to the independent auditor, so the page is not graded by the same context that wrote it.
 
+## Step 7 — Roll the topic out to the user's other platforms
+
+Rumer's way of working: once a topic is researched and written for one platform, it goes to **all** the user's priority platforms the same day, each in that platform's own format. One research, several pages, several chances to rank and to be in "Discussions and forums" or the AI Overview.
+
+1. Right after delivering the article, run `work-log` `rollout --topic "<topic>"` (or check the user's platform base yourself): it lists the user's active platforms that do **not** have this topic yet, priority platforms first, with the format each one needs.
+2. Offer in one line: "This topic is not on Firstory, Thermaltake and Gamma yet — make those versions now?" When the user agrees, produce each version in turn (or, if the user writes with another AI tool, a ready prompt per platform that carries the brief, the facts box, the links and the angle).
+3. **Every version is a new page, not a copy:** a different title and angle or content type per platform (best-of on the book, A vs B on the forum, "questions buyers ask" on the podcast, a visual comparison on Gamma), the platform's format from `references/platform-formats.md`, the same verified facts and the user's own links. Near-duplicates get filtered by Google and can pull each other down.
+4. After the user publishes each one, `work-log` logs it (`published` + the topic), so coverage, `ideas` and the check queue see the whole topic across platforms.
+
 ## Rules (always)
 
 - Facts only: prices, bundles, shipping, warranty, ingredients, specs come from the user or the merchant page (directly or via `product-researcher`). Unknown → `[VERIFY: …]`, never a guess.

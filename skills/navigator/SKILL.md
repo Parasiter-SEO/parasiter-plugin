@@ -91,6 +91,8 @@ Why this order: [one sentence]
 
 Task size follows today's time and what the journal shows, not a level: no pages yet → one offer, one platform, one page; live pages → protect and refresh them first; many pages and offers → batch the work, test new platforms, niche analysis. The user can always ask for smaller or bigger tasks.
 
+When a task produced a new page, follow it with the rollout (sales-review-writer Step 7): the same topic, in each platform's format, on the user's priority platforms that don't have it yet — usually the same day.
+
 ## Step 4 — Hand off and close the day
 
 Ask "Start with #1?" When the user agrees, follow the target skill. After each task, log the result with the `work-log` skill (one line) and come back with the next task. At the end of the session: today's work report from `work-log` (`summary --period today`), the week's numbers after today, and what is left for tomorrow.

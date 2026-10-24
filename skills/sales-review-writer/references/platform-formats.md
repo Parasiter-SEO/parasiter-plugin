@@ -11,6 +11,11 @@ Same sales logic everywhere (author → problem → solution → bridge → fact
 | Press release (GlobeNewswire, Access Newswire, etc.) | 2,000–3,000 words | Independent expert/journalist, educational | Neutral language, avoid "best"/hype; facts, comparisons, links to credible sources; images if the editor allows |
 | Raisely / fundraising CMS | 1,500+ words (article minimum) | Personal blog of an expert/user | Usually no inline images (use the cover image); emojis, lists, links; compact spacing; line-by-line comparisons |
 | Facebook page/group posts | Short | Brand fan / expert | Link + deal in the first lines; visuals; hashtags; series of posts on different benefits |
+| Pressbooks / open-book platforms | 2,000–3,500 words per chapter | Expert guide / buyer's research | One chapter = one topic; full structure, tables, TOC; chapter title is the page title |
+| ResearchGate-type document platforms | 2,000–3,000 words | Analytical review written as what it is: a buyer's comparison by the named author | Clean document look, headings, tables, references to real studies; affiliate disclosure stays; never present a promotional review as a peer-reviewed study or invent data |
+| Gamma (gamma.app) docs / presentations | 1,200–2,000 words in 8–15 cards | Visual guide | One idea per card: facts card, comparison table card, prices card, FAQ cards, CTA card; short text, big headings |
+| Podcast platforms (Audioboom, Firstory, Spotify via RSS) | Episode description 800–1,500 words + 5–10 min script | Host / reviewer voice | Title = the query; description carries quick facts, links and timestamps in the first lines; the same episode syndicated to Spotify is one piece of content, not two |
+| Skool / community posts | 1,000–2,000 words | Community member sharing a comparison | Native post, a question to the group at the end; links where the community allows |
 | YouTube description | 1,000–3,000 characters | Reviewer | Affiliate link + deal + key selling point in the first 3 lines; then full description, timestamps, hashtags |
 
 ## Titles that rank and get clicks

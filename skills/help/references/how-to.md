@@ -28,6 +28,9 @@ Search Console can't see pages on other people's platforms. Connect your own Dat
 ## Start the day with my own plan
 Say what you plan: "today I add articles on ResearchGate and Pressbooks — give me topics I don't have there; and forum posts on thermaltake on topics where my sites rank". The navigator keeps your plan and fills each part with topics from your base (missing there, strongest first, with the page to learn from). No plan in mind? Say "give me a plan" and it builds one.
 
+## Publish one topic on all my platforms
+Wrote a page? Say "roll this topic out" (or "where else should this go?"): you get your platforms that don't have the topic yet, ★ first, and a version for each in its own format — a book chapter, a forum thread, a podcast episode, a Gamma guide — new angle each time, same facts and your links.
+
 ## What to write and where
 "What should I write next?", "which topics are missing on Medium?" → topic coverage: a table of your topics × platforms and the best gaps, e.g. *glp1 patch review → Medium: #7 and earning on the forum, Medium is your priority platform*. Pick one and it goes to content-type-selector and sales-review-writer (a new angle, never a copy).
 

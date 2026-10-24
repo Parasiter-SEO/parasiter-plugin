@@ -204,6 +204,10 @@ python3 scripts/worklog.py ideas parasite-seo-progress.csv --to thermaltake --fr
 ```
 `--to` takes any platforms, including new ones not in the base. `--from` limits the source topics to platforms or types (`own-site` = the user's own sites, registered with `platform-set --type own-site`; their positions come from the position check, Search Console or a tracker export). `--top-only` keeps only topics with a page in the top 10.
 
+## Mode 8c — Roll a topic out to every platform
+
+`rollout --topic "lymphatic drainage drops"` (or `--url <page just published>`): the user's active platforms that don't have this topic yet, in the user's order (rank, ★ first), with the format each platform needs. Run it after every new page (sales-review-writer Step 7) and when the user says "I wrote about X".
+
 ## Mode 9 — Positions of every page, automatically (DataForSEO)
 
 Search Console and free webmaster tools only see sites the user owns, so they can't see parasite pages. PARASITER checks Google itself through the user's own DataForSEO account (pay per request, from about $0.0006 per query: 50 queries a week cost cents a month).
