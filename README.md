@@ -15,7 +15,7 @@ On first run the navigator asks who you are and what for. SEO specialists and ag
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
-> **Status: private beta (v0.11.2).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.12.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 

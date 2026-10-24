@@ -150,6 +150,14 @@ States: `active` (publishing), `testing` (1–3 test posts), `paused`, `dropped`
 
 Other skills use the base: `platform-finder` excludes or marks platforms already in it, `platform-analyzer` writes its score and verdict back with `platform-set`, the navigator prefers `active` platforms with live, indexed pages for new posts.
 
+## Mode 9b — What each page ranks for, and what it lost
+
+`scripts/pagekeywords.py` asks DataForSEO Labs, page by page (full URL, never the bare domain — a domain target returns the whole site), which queries the page ranks for, their volume and estimated traffic, and which queries it lost and when. One page ≈ $0.013–0.02.
+```
+python3 scripts/pagekeywords.py parasite-seo-progress.csv [--priority high] [--platform pressbooks] [--dry-run]
+```
+Results: `parasite-seo-keywords.csv` (page × keyword) and a `check` row per page (best position, "labs: N keywords, M in top 10, ~V visits/mo, L lost"). Use it to find the pages that really bring traffic, the queries lost before a sales drop, and proven topics for `ideas` / coverage. Labs is a crawl snapshot (each keyword shows when it was last seen); confirm today's positions for the main queries with `rankcheck.py`.
+
 ## Mode 10 — Affiliate links library (basic setup)
 
 Part of the first setup, together with the pages and platforms: the user's affiliate links for every product they promote. Articles take the link from here, so the writer never has to ask, and the library shows which products have no pages yet.

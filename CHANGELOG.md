@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.12.0 — 2026-10-24
+
+- **What each page ranks for — and what it lost.** Say *"which queries do my pages rank for?"* or *"what did my lymphatic page lose?"*: every page gets its Google queries with volume, position and estimated traffic, plus the queries it lost and when. Shows which pages really bring visitors and what dropped before a sales dip.
+
 ## 0.11.2 — 2026-10-24
 
 - **AI Overview and SERP blocks.** Position checks now see your pages cited in Google's AI Overview, "Discussions and forums", images and videos, not only the organic list.
