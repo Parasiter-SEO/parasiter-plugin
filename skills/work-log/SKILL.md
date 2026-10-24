@@ -170,6 +170,22 @@ python3 scripts/worklog.py coverage parasite-seo-progress.csv [--topic keto] [--
 `--by-platform` answers "which of my topics are missing on each of my top platforms": per platform, in the user's own order, the topics they already have elsewhere. The user's order of platforms ("Medium is my #1") goes in with `platform-set --rank 1`; it outweighs every other signal.
 Read it to the user as 3–5 concrete suggestions: topic → platform → why → the content type to use there. A new page on a topic must be rewritten for the platform (new angle or content type, the platform's format), never copied — duplicates get filtered and hurt both pages. Hand the chosen gap to `content-type-selector` and `sales-review-writer`. The navigator uses this list for "new content" in the daily plan.
 
+## Mode 9 — Positions of every page, automatically (DataForSEO)
+
+Search Console and free webmaster tools only see sites the user owns, so they can't see parasite pages. PARASITER checks Google itself through the user's own DataForSEO account (pay per request, from about $0.0006 per query: 50 queries a week cost cents a month).
+
+```
+python3 scripts/rankcheck.py parasite-seo-progress.csv --dry-run            # what will be checked and the cost
+python3 scripts/rankcheck.py parasite-seo-progress.csv [--country us] [--priority high] [--platform researchgate]
+```
+
+- One request per unique query covers every page of the user that ranks for it (two platforms on one query = one request). The query is the page's main query, else its named topic; pages with neither are listed — set them with `tag --query`.
+- Found pages get a `check` row with their position and status `indexed`; pages not in the top 100 get "not in top 100". The output lists changes since the last check: new in the top 10, up, down, out.
+- Standard queue by default (cheapest, results in a few minutes); `--live` answers at once for about 3× the price. Always show the `--dry-run` cost first on the first run.
+- Credentials: the user's API login and password (app.dataforseo.com → API Access) in the environment as `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD`. Never write them into any file, profile or journal. If the assistant's sandbox blocks the network, the user allows `api.dataforseo.com` in their assistant's settings.
+- Weekly is enough; after a Google update, run it the same day. With a scheduled task in the assistant it runs on its own every Monday.
+- No account: positions from any rank tracker export or the user's own notes go in with `tag --position` (or `add --event check --position`).
+
 ## Rules
 
 - Facts only. Never mark a page indexed or alive without a check result; never record a sale the user did not report or export.

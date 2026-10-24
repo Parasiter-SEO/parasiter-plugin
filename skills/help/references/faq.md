@@ -13,6 +13,9 @@ Built for affiliate marketers who earn with parasite SEO, at any stage — they 
 - The key is personal: one key, one person. It stops working when the subscription ends; skills keep working without server data.
 - Platform feed updates come as findings appear — several times a week, sometimes less. No daily promise.
 
+## Do I need a paid SEO tool for positions?
+No subscription. Search Console only sees your own sites, so for parasite pages PARASITER checks Google through your own DataForSEO account: you pay per query (from about $0.0006), dozens of pages weekly cost cents a month. Free alternatives: ProRankTracker's free plan (20 keywords) or any tracker export, uploaded to the journal.
+
 ## Telegram
 - **How to connect**: say "connect Telegram" in Claude, open the personal link, press Start. A username is not enough: Telegram bots cannot write to someone first.
 - **Notifications**: page alerts, Monday reminder to upload sales, daily news digest, billing. At most one message a day (billing aside), quiet at night. Turn any off: "turn off news notifications" in Claude, or /stop in the bot.

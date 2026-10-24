@@ -33,7 +33,7 @@ For each URL the user gives (with web fetch/search if available; otherwise give 
 - HTTP status: live / 404 / login wall / redirect.
 - noindex in meta or header.
 - Indexed: `site:` or the exact title in Google.
-- Position for the main query (if the user has a rank tracker or Search Console, ask for the number).
+- Position for the main query: with the user's DataForSEO account, `work-log` `scripts/rankcheck.py` checks all pages at once (Mode 9); otherwise ask for the number from their rank tracker.
 - Affiliate link still present and working.
 
 For more than 3 URLs, hand the list to the **`page-checker` agent** (URL, main query, platform, expected affiliate link, country) — split long lists into batches of about 15 — and build the summary from its tables.

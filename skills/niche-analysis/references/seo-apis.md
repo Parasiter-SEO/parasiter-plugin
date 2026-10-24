@@ -4,7 +4,7 @@ The plugin does not ship an SEO data key. Each user connects their own service.
 
 | Service | Typical use | Notes |
 |---|---|---|
-| DataForSEO | Pay per request; keyword volumes, SERP top 10 | Cheapest for occasional checks; has an MCP server |
+| DataForSEO | Pay per request; keyword volumes, SERP top 100 | Cheapest for occasional checks; has an MCP server. The same account powers weekly position checks of the user's pages (`work-log` `rankcheck.py`) |
 | Serpstat | Keywords, SERP, competitors | API on paid plans |
 | Semrush | Keywords, SERP features, competitors | API is a separate paid add-on |
 | Ahrefs | Keywords, SERP overview | API on higher plans |

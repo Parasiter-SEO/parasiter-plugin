@@ -29,7 +29,7 @@ Commands:
 
 Periods: today, yesterday, week, last-week, month, last-month, YYYY-MM, YYYY-MM-DD,
 YYYY-MM-DD..YYYY-MM-DD, all.  --sales-file FILE overrides the sales file path.
-Formats: references/log-format.md, references/sales-import.md. Standard library only.
+Positions: scripts/rankcheck.py (DataForSEO). Formats: references/log-format.md, references/sales-import.md. Standard library only.
 """
 import argparse
 import csv
@@ -329,7 +329,8 @@ def page_states(rows, today):
                                    "ever_indexed": False, "last_audit": None, "score": None,
                                    "last_refresh": None, "moved": None, "first": r["_d"],
                                    "imported": False, "topic": "", "priority": "normal",
-                                   "position": None, "pos_date": None, "best_pos": None})
+                                   "position": None, "pos_date": None, "best_pos": None,
+                                   "prev_pos": None})
         for k, col in (("platform", "platform"), ("offer", "offer"), ("program", "program"),
                        ("campaign", "campaign"),
                        ("sub_id", "sub_id"), ("query", "main_query"),
@@ -343,8 +344,11 @@ def page_states(rows, today):
         ev, st = r["event"], r["status"]
         pos = num(r.get("position"))
         if pos is not None and ev in ("check", "traffic", "note", "tag", "published"):
+            p["prev_pos"] = p["position"]
             p["position"], p["pos_date"] = pos, r["_d"]
             p["best_pos"] = pos if p["best_pos"] is None else min(p["best_pos"], pos)
+        elif ev == "check" and "· not in top" in (r.get("note") or ""):
+            p["prev_pos"], p["position"], p["pos_date"] = p["position"], None, r["_d"]
         if ev == "tag":
             for k, col in (("offer", "offer"), ("program", "program"), ("campaign", "campaign"),
                            ("sub_id", "sub_id"), ("query", "main_query"), ("content_type", "content_type")):
@@ -1071,6 +1075,9 @@ def cmd_pages(a):
         n, c = earned[p["url"]]
         v, ac = traffic[p["url"]]
         pos = "—" if p["position"] is None else (f"**{p['position']:.0f}**" if p["position"] <= TOP else f"{p['position']:.0f}")
+        if p["position"] is not None and p.get("prev_pos") is not None and p["prev_pos"] != p["position"]:
+            d = p["prev_pos"] - p["position"]
+            pos += f" ({'↑' if d > 0 else '↓'}{abs(d):.0f})"
         print(f"| {p['published']} | {short(p['url'], 45)} | {p['platform']} | {short(p['topic_key'], 30)} | "
               f"{'★' if p['priority'] == 'high' else ('low' if p['priority'] == 'low' else '')} | {p['offer']} | "
               f"{p['age']} d | {h} | {pos} | {fmt(p['score'])} | "

@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.9.0 — 2026-10-24
+
+- **Positions of all your pages, automatically.** Connect your own DataForSEO account (cents a month) and say *"check my positions"*: every page is checked in Google by its query, positions go into your journal with what changed — new in the top 10, up, down, out. Coverage advice and the page list update from it.
+
 ## 0.8.1 — 2026-10-23
 
 - **Your platform order.** Say *"ResearchGate is my #2 platform"*: the order leads the advice. *"What topics are missing on my top platforms?"* lists, per platform, the topics you wrote elsewhere but skipped there.

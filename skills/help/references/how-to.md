@@ -19,6 +19,9 @@ Each recipe: what the user says, what happens. Give the user only the recipe the
 ## Which pages are in the top
 "Which of my pages are in the top 10?" → your pages with positions (from checks, a rank tracker or Search Console). "Show only priority pages" filters the list.
 
+## Track positions of my pages
+Search Console can't see pages on other people's platforms. Connect your own DataForSEO account (pay per query, cents a month for dozens of pages): create it at dataforseo.com, copy the API login and password, and set them as `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD`. Then "check my positions" → every page with a query or topic is checked in Google, positions and "new in top 10 / up / down / out" go into your journal. Weekly is enough. Without an account: send positions from any rank tracker or say them ("cortisol on Pressbooks is #8").
+
 ## What to write and where
 "What should I write next?", "which topics are missing on Medium?" → topic coverage: a table of your topics × platforms and the best gaps, e.g. *glp1 patch review → Medium: #7 and earning on the forum, Medium is your priority platform*. Pick one and it goes to content-type-selector and sales-review-writer (a new angle, never a copy).
 
