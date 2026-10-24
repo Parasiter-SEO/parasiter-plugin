@@ -150,6 +150,21 @@ States: `active` (publishing), `testing` (1–3 test posts), `paused`, `dropped`
 
 Other skills use the base: `platform-finder` excludes or marks platforms already in it, `platform-analyzer` writes its score and verdict back with `platform-set`, the navigator prefers `active` platforms with live, indexed pages for new posts.
 
+## Mode 10 — Affiliate links library (basic setup)
+
+Part of the first setup, together with the pages and platforms: the user's affiliate links for every product they promote. Articles take the link from here, so the writer never has to ask, and the library shows which products have no pages yet.
+
+The user gives them any way: a list of links, a table (product, link, program, commission), screenshots of the network's "my links" page (read the links from the image and write them into a list first; ask about links cut off in the image), or one at a time ("my link for X is …").
+```
+python3 scripts/worklog.py import-links parasite-seo-progress.csv links.csv --program NUTRAHARMONY --commission 40%
+python3 scripts/worklog.py links parasite-seo-progress.csv [--program NUTRAHARMONY]
+```
+- One row per link in `parasite-seo-links.csv` (program, product, link, alt_links, commission, added, note). Product names come from a product column, else from the link (`/omega-3-fish-oil` → "omega 3 fish oil"); store and category pages are kept as "(store page) …" for "shop all" CTAs. Already known links are skipped.
+- Several links for one product (drops, softgels, bundle page) → give them the same product name; the first is the main link.
+- `links` lists every product with its link, how many live pages already cover it and on which platforms, and ends with **products with no pages yet** — the topics to write. Pick the platform with `ideas` / `coverage`.
+- After a new import, offer once: "N products have no pages — want a plan for them?"
+- These are the user's links: never replace them with other links, never shorten or cloak them; the platform's rules on affiliate links apply.
+
 ## Mode 8 — Topics, priorities, top positions and what to write where
 
 The base is not only a list: it tells the user where each topic stands and where it is missing.

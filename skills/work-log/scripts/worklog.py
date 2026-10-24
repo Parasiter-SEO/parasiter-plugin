@@ -27,6 +27,8 @@ Commands:
                  [--topic --priority --position --offer --program --campaign --query --type]
   import-ranks   JOURNAL EXPORT.csv [--date D] [--map field=Header]   positions from any rank tracker
   ideas          JOURNAL --to P1,P2 [--from P|own-site] [--top-only] [--n 8]   topics for the user's own plan
+  import-links   JOURNAL FILE [--program P] [--commission 40%]   affiliate links library (parasite-seo-links.csv)
+  links          JOURNAL [--program P]                 products, links, pages per product, products with no pages
   coverage       JOURNAL [--topic T] [--platform P] [--gaps N]   topics x platforms, what to write where
 
 Periods: today, yesterday, week, last-week, month, last-month, YYYY-MM, YYYY-MM-DD,
@@ -1150,7 +1152,8 @@ def sniff_rows(path):
     # skip title lines above the header (some exports start with a report title)
     best, start = 0, 0
     for i, ln in enumerate(lines[:15]):
-        n = max(ln.count(","), ln.count(";"), ln.count("\t"))
+        # fields outside quotes: a data row like "Vitamin D3 + K2 (drops, softgels)" must not win
+        n = max(len(next(csv.reader([ln], delimiter=d), [])) - 1 for d in (",", ";", "\t"))
         if n > best:
             best, start = n, i
     body = "\n".join(lines[start:])
@@ -1942,6 +1945,120 @@ def cmd_ideas(a):
         print()
 
 
+LINK_COLUMNS = ["program", "product", "link", "alt_links", "commission", "added", "note"]
+LINK_ALIASES = {
+    "link": ["link", "url", "affiliatelink", "shortenedlink", "shortlink", "trackinglink", "referrallink", "afflink"],
+    "product": ["product", "productname", "name", "offer", "item", "title"],
+    "program": ["program", "network", "brand", "merchant", "advertiser"],
+    "commission": ["commission", "rate", "payout", "commissionrate"],
+    "note": ["note", "notes", "comment"],
+}
+STORE_PAGES = {"faq", "all-products", "main-page", "home", "shop", "products", "collections", "about", "contact",
+               "herbal", "minerals", "daily-vitamins", "blog", "cart"}
+
+
+def links_path(journal):
+    return os.path.join(os.path.dirname(os.path.abspath(journal)), "parasite-seo-links.csv")
+
+
+def product_from_link(url):
+    path = re.sub(r"^[a-z]+://[^/]+", "", (url or "").lower()).split("?")[0].strip("/")
+    seg = path.split("/")[-1] if path else ""
+    if seg in STORE_PAGES or not seg:
+        return "", True
+    words = [x for x in re.split(r"[^a-z0-9]+", seg) if x and x not in ("usda", "organic", "supplement", "supplements", "products", "p", "go", "ref")]
+    return " ".join(words), False
+
+
+def cmd_import_links(a):
+    """The user's affiliate links library: one row per product, from any list, table or pasted text."""
+    text, loose = urls_from_text(a.file)
+    header, raw = ([], [])
+    if max(text[:3000].count(","), text[:3000].count(";"), text[:3000].count("\t")) > 0:
+        header, raw = sniff_rows(a.file)
+    cols = map_columns(header, LINK_ALIASES, parse_map(a.map)) if header else {}
+    get = lambda r, f: r[cols[f]].strip() if f in cols and cols[f] < len(r) else ""
+    items = []
+    if "link" in cols:
+        for r in raw:
+            if re.match(r"https?://", get(r, "link")):
+                items.append({f: get(r, f) for f in cols})
+    else:
+        items = [{"link": u.rstrip(".,")} for u in loose]
+    if not items:
+        sys.exit("No links found. Give a list of affiliate links (one per line), a table with a link column, or paste them.")
+    path = links_path(a.journal)
+    have = {norm_url(r["link"]): r for r in read_csv(path)}
+    rows = list(have.values())
+    added, dup, store = 0, 0, 0
+    for it in items:
+        k = norm_url(it["link"])
+        if k in have:
+            dup += 1
+            continue
+        prod, is_store = product_from_link(it["link"])
+        prod = it.get("product") or prod
+        if is_store and not it.get("product"):
+            store += 1
+            prod = "(store page) " + (re.sub(r"^[a-z]+://[^/]+/?", "", it["link"]).strip("/") or "home")
+        r = {"program": it.get("program") or a.program or url_domain(it["link"]), "product": prod, "link": it["link"],
+             "alt_links": "", "commission": it.get("commission") or a.commission or "",
+             "added": date.today().isoformat(), "note": it.get("note") or ""}
+        have[k] = r
+        rows.append(r)
+        added += 1
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        wr = csv.DictWriter(f, fieldnames=LINK_COLUMNS, extrasaction="ignore")
+        wr.writeheader()
+        for r in sorted(rows, key=lambda r: (r["program"].lower(), r["product"].startswith("("), r["product"])):
+            wr.writerow(r)
+    progs = Counter(r["program"] for r in rows)
+    print(f"Links library {os.path.basename(path)}: {added} added · {dup} already there · {store} store/category pages")
+    print("- Programs: " + ", ".join(f"{k} {v}" for k, v in progs.most_common()))
+    print("- Products are named from the link; rename any with a table that has a product column, or edit the file.")
+    print("- Next: `links` shows which products have no pages yet — your topics to write.")
+
+
+def cmd_links(a):
+    today, rows, pages, sales = load(a)
+    lib = read_csv(links_path(a.journal))
+    if a.program:
+        lib = [r for r in lib if r["program"].lower() == a.program.lower()]
+    if not lib:
+        sys.exit("No affiliate links yet. Import them: import-links <file> --program <name> [--commission 40%].")
+    live = [p for p in pages.values() if not p["moved"] and health(p) not in GONE]
+
+    def words(x):
+        return {w for w in re.split(r"[^a-z0-9]+", (x or "").lower())
+                if (len(w) > 2 or re.search(r"\d", w)) and w not in STOP and w not in
+                ("supplement", "supplements", "capsules", "drops", "liquid", "gummies", "softgels", "spray",
+                 "best", "usda", "organic", "extract", "support")}
+
+    def covers(page, link_words):
+        pw = words(page["topic_key"] + " " + page["offer"] + " " + page["url"])
+        need = min(2, len(link_words))
+        return need > 0 and len(link_words & pw) >= need
+    groups = defaultdict(list)
+    for r in lib:
+        if r["product"].startswith("("):
+            continue
+        groups[(r["program"], r["product"])].append(r)
+    print(f"# Affiliate links · {len(lib)} links · {len(groups)} products\n")
+    print("| Program | Product | Link | Pages | Platforms |")
+    print("|---|---|---|---|---|")
+    missing = []
+    for (prog, prod), rs in sorted(groups.items()):
+        lws = [words(product_from_link(r["link"])[0]) for r in rs]
+        hit = [p for p in live if any(covers(p, lw) for lw in lws)]
+        plats = sorted({p["platform"] for p in hit})
+        if not hit:
+            missing.append((prog, prod))
+        print(f"| {prog} | {prod} | {short(rs[0]['link'], 45)} | {len(hit) or '—'} | {', '.join(plats) or '—'} |")
+    if missing:
+        print(f"\n**No pages yet for {len(missing)} products** — topics to write: " + ", ".join(p for _, p in missing))
+        print("Use `ideas` / coverage to pick the platform; the writer takes the link from this library.")
+
+
 def main():
     ap = argparse.ArgumentParser(description="PARASITER work, traffic and sales journal")
     ap.add_argument("--sales-file", help="sales file (default: parasite-seo-sales.csv next to the journal)")
@@ -2013,6 +2130,12 @@ def main():
     ir.add_argument("export"); ir.add_argument("--platform"); ir.add_argument("--date")
     ir.add_argument("--map", action="append")
     ir.set_defaults(fn=cmd_import_ranks)
+
+    il = sub.add_parser("import-links"); common(il, today=False)
+    il.add_argument("file"); il.add_argument("--program"); il.add_argument("--commission")
+    il.add_argument("--map", action="append"); il.set_defaults(fn=cmd_import_links)
+
+    lk = sub.add_parser("links"); common(lk); lk.add_argument("--program"); lk.set_defaults(fn=cmd_links)
 
     tg = sub.add_parser("tag"); common(tg, today=False)
     tg.add_argument("--url", action="append")

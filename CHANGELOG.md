@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.11.0 — 2026-10-24
+
+- **Your affiliate links library.** Part of the first setup: upload your links for every product (a list, a table or screenshots of your network's link page). Articles use the right link without asking, and *"which products have no pages yet?"* shows what to write next. Say *"here are my affiliate links"*.
+
 ## 0.10.0 — 2026-10-24
 
 - **Your plan for the day, filled with ideas.** Tell the navigator what you want to do today — "articles on ResearchGate and Pressbooks, topics I don't have there; forum posts on topics where my sites rank" — and get topics for each part from your own base: missing there, strongest first, with the page to learn from. New platforms work too. No plan? Say *"give me a plan"*.

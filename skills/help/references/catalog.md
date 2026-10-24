@@ -71,6 +71,7 @@ Kept in the user's project folder, written by the skills:
 | `parasite-seo-goals.md` | goals | baseline, goals, milestones, this week's targets, reviews |
 | `parasite-seo-progress.csv` | work-log | pages, checks, audits, traffic, imports, other work — one row per fact |
 | `parasite-seo-sales.csv` | work-log | one row per sale, manual or imported |
+| `parasite-seo-links.csv` | work-log | your affiliate links library: program, product, link, alternative links, commission |
 | `parasite-seo-platforms.csv` | work-log, platform-analyzer | your platform base: domain, type, language, links, account, score, state; built from your pages |
 
 ## Telegram (Pro and Insider only)

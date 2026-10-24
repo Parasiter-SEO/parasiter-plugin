@@ -15,7 +15,7 @@ Reply to the user in their language. Write the article in the target language of
 
 ## Step 0 — Writer profile
 
-Look for the user's writer profile `parasite-seo-writer.md` (project files, folder, or pasted in the chat): author block, author photo, affiliate links library, disclosure, CTA style, image style, default platforms and country. If it exists, use it and ask only for what is new for this article. If not, offer the one-time setup once and give the filled file back ready to save. Template and where to keep it: `references/writer-profile.md`.
+Read the user's affiliate links library `parasite-seo-links.csv` (`work-log` Mode 10) first: for every product in the article that has a row there, use that link (and its bundle / alt link where the article talks about packages) and confirm in one line instead of asking. Then look for the user's writer profile `parasite-seo-writer.md` (project files, folder, or pasted in the chat): author block, author photo, affiliate links library, disclosure, CTA style, image style, default platforms and country. If it exists, use it and ask only for what is new for this article. If not, offer the one-time setup once and give the filled file back ready to save. Template and where to keep it: `references/writer-profile.md`.
 
 ## Step 1 — Inputs
 

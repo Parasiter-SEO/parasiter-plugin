@@ -15,11 +15,11 @@ On first run the navigator asks who you are and what for. SEO specialists and ag
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
-> **Status: private beta (v0.10.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.11.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
-0. **Already have pages? Upload the list** (any file or pasted links). `work-log` puts every page in your journal, builds your own platform base from them, and one bulk check shows which are alive and indexed.
+0. **Basic setup: your pages, platforms and affiliate links.** Upload your affiliate links for every product you sell (a list, a table or screenshots), so every article gets the right link and you see which products have no pages yet. Already have pages? Upload the list (any file or pasted links). `work-log` puts every page in your journal, builds your own platform base from them, and one bulk check shows which are alive and indexed.
 1. **Fill in your baseline journal** with `goals`: how many hours you work now, how many pages you publish, on which platforms and offers, and what it earns per day, week or month. These are your starting settings: everything after is calculated from them.
 2. **Set your goals** from that starting point: pages, platforms, offers, time and the income you realistically expect, over 1 week to 12 months. The skill compares the goal with your real pace, breaks it into monthly milestones and weekly targets, and marks every number it had to assume.
 3. **Ask for today's plan** with `navigator`. It reads your goals, progress and time, checks what changed on your platforms, and gives you 2–5 tasks that fit today's time. You don't pick commands: each task goes to the right skill.
@@ -62,7 +62,7 @@ Skills hold the method; agents do the heavy research and checking in their own c
 
 Call a skill by describing the task ("set my goals for 6 months", "what should I do today", "audit my article") or directly, e.g. `/parasiter:navigator`.
 
-Your files (kept in your project folder): `parasite-seo-profile.md`, `parasite-seo-goals.md`, `parasite-seo-progress.csv` (work and traffic journal), `parasite-seo-sales.csv` (sales), `parasite-seo-platforms.csv` (your platform base).
+Your files (kept in your project folder): `parasite-seo-profile.md`, `parasite-seo-goals.md`, `parasite-seo-progress.csv` (work and traffic journal), `parasite-seo-sales.csv` (sales), `parasite-seo-platforms.csv` (your platform base), `parasite-seo-links.csv` (your affiliate links).
 
 ## Language
 

@@ -7,6 +7,9 @@ Each recipe: what the user says, what happens. Give the user only the recipe the
 2. It runs `goals`: baseline (how much you work, publish and earn now) → goals → reality check → weekly targets.
 3. You get 2–5 tasks for today. "Start with #1?" — each task opens the right skill.
 
+## Add my affiliate links
+"Here are my affiliate links" + a list, a table or screenshots of your network's links page → they go into your links library (`parasite-seo-links.csv`), one row per product. Every article then uses your link without asking. "Which products have no pages yet?" → the list of products you sell but haven't written about.
+
 ## Add the pages I already have
 "Here are my pages" + a file or a pasted list (text, CSV, Excel, any table with links) → `work-log` imports them: platform from each link, dates, offer and program if the table has them, duplicates skipped. Your platform base is built from them. Then "check them" → one bulk alive / index check of the whole list. Missing dates or offers: say them per batch ("these 40 are from September, KetoX on ClickBank").
 

@@ -42,7 +42,8 @@ No profile → first ask which language to work in (offer the language the user 
 2. Target country and the language of the pages you publish (can differ from the working language).
 3. How many hours per day or week they can give.
 4. Pages already live: if there are any, ask for the list of links (any file or paste) and import it with `work-log` Mode 0 before goals — the journal, the baseline and the user's platform base are built from it. A rough count is fine only if the list is not at hand.
-5. Tools they have: SEO service with API (Semrush, Ahrefs, Serpstat, DataForSEO), Search Console, affiliate network stats.
+5. Affiliate links: the user's links for every product they sell (a list, a table, screenshots of the network's link page, or one by one). Import them with `work-log` Mode 10 into the links library `parasite-seo-links.csv`: every article then gets the right link without asking, and `links` shows which products have no pages yet. Programs paid per sale only; skip for roles without affiliate links.
+6. Tools they have: SEO service with API (Semrush, Ahrefs, Serpstat, DataForSEO), Search Console, affiliate network stats.
 
 Offer to save the answers as `parasite-seo-profile.md`.
 
