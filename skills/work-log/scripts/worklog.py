@@ -2111,7 +2111,10 @@ def cmd_rollout(a):
             on[p["platform"].lower()].append(p)
     rank = lambda r: (num(r.get("rank")) or 99, PRIORITIES.index(r.get("priority") or "normal"), r["platform"])
     act = [r for r in reg.values() if (r.get("state") or "active") in ("active", "testing")]
-    missing = [r for r in sorted(act, key=rank) if r["platform"].lower() not in on]
+    used = Counter(p["platform"].lower() for p in pages.values())
+    missing = [r for r in sorted(act, key=rank) if r["platform"].lower() not in on
+               and "mirror" not in (r.get("note") or "").lower()          # syndicated copies (Spotify ← Audioboom)
+               and (used[r["platform"].lower()] or r.get("priority") == "high")]  # platforms the user actually publishes on
     print(f"# Rollout · “{topic}” · on {len(on)} platforms · missing on {len(missing)}\n")
     if on:
         print("**Already there:** " + ", ".join(f"{k} ({len(v)})" + (f" #{min(p['position'] for p in v if p['position']):.0f}" if any(p['position'] for p in v) else "") for k, v in on.items()))
