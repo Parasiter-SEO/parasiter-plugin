@@ -138,6 +138,8 @@ Checks of more than 3 URLs go to the `page-checker` agent (via platform-monitor)
 
 "My platforms", "where do I publish", "which platforms work for me": `platforms`. One row per platform the user has used: domain, type, state, pages, alive, indexed, gone, not checked, last page, sales, commission, score. It flags platforms where half or more of the checked pages are gone, and platforms with no type yet (→ `platform-analyzer` once).
 
+The user can also give the list of all domains they publish on first (`platform-set` per domain): platforms with no pages yet are listed as "send their lists" in `platforms`, and the navigator reminds once per session until each list arrives or the platform is marked `paused`/`dropped`.
+
 The base fills itself: from `import-pages`, from every `published` page logged later on a new platform, and from `platform` events. Facts the user or another skill learns go in with `platform-set`:
 
 ```

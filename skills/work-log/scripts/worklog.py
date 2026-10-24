@@ -1570,7 +1570,7 @@ def cmd_platforms(a):
     print("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
     order = sorted(reg.values(), key=lambda r: (num(r.get("rank")) or 99, PRIORITIES.index(r.get("priority") or "normal"),
                                                 -st[r["platform"].lower()]["pages"], r["platform"]))
-    attention = []
+    attention, waiting = [], []
     for r in order:
         s = st[r["platform"].lower()]
         score = r.get("score") or (fmt(s["score"]) if s["score"] is not None else "")
@@ -1581,12 +1581,16 @@ def cmd_platforms(a):
         checked = s["pages"] - s["unchecked"]
         if checked >= 3 and s["gone"] / checked >= 0.5 and (r.get("state") or "active") == "active":
             attention.append(f"{r['platform']}: {s['gone']} of {checked} checked pages gone — mark dropped or move pages")
-        if not r.get("type"):
+        if s["pages"] == 0 and (r.get("state") or "active") in ("active", "testing"):
+            waiting.append(r["platform"])
+        elif not r.get("type"):
             attention.append(f"{r['platform']}: type unknown — run platform-analyzer once")
     tot = sum(s["pages"] for s in st.values())
     unchecked = sum(s["unchecked"] for s in st.values())
     print(f"\n**Total:** {tot} pages on {sum(1 for r in reg.values() if st[r['platform'].lower()]['pages'])} platforms"
           + (f" · {unchecked} not checked yet" if unchecked else ""))
+    if waiting:
+        print(f"\n**No pages yet on {len(waiting)} platforms — send their lists:** " + ", ".join(waiting))
     if attention:
         print("\n**Needs attention**")
         for x in attention[:12]:
