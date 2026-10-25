@@ -52,7 +52,7 @@ Your starting point (from your reports, [period])
 | Time | 10 h/week, 5 days · just you |
 | Pace | ~4 pages/week · ~2 h per page |
 | Live pages | 112 on 9 platforms |
-| Offers | QEP, CrazyBulk, … |
+| Offers | keto gummies, VPN, … |
 | Income | ~$2,000/month (your words) · $1,450 in reports |
 | Clicks → sales | 1,800 clicks/month · EPC $1.35 · conv. 1.8% |
 | Pages lost | 14 in 6 months, mostly on … |

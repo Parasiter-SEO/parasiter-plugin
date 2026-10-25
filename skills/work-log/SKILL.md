@@ -179,8 +179,8 @@ Part of the first setup, together with the pages and platforms: the user's affil
 
 The user gives them any way: a list of links, a table (product, link, program, commission), screenshots of the network's "my links" page (read the links from the image and write them into a list first; ask about links cut off in the image), or one at a time ("my link for X is …").
 ```
-python3 scripts/worklog.py import-links parasite-seo-progress.csv links.csv --program NUTRAHARMONY --commission 40%
-python3 scripts/worklog.py links parasite-seo-progress.csv [--program NUTRAHARMONY]
+python3 scripts/worklog.py import-links parasite-seo-progress.csv links.csv --program VitaBrand --commission 40%
+python3 scripts/worklog.py links parasite-seo-progress.csv [--program VitaBrand]
 ```
 - One row per link in `parasite-seo-links.csv` (program, product, link, alt_links, commission, added, note). Product names come from a product column, else from the link (`/omega-3-fish-oil` → "omega 3 fish oil"); store and category pages are kept as "(store page) …" for "shop all" CTAs. Already known links are skipped.
 - Several links for one product (drops, softgels, bundle page) → give them the same product name; the first is the main link.
@@ -221,7 +221,7 @@ python3 scripts/worklog.py ideas parasite-seo-progress.csv --to thermaltake --fr
 
 ## Mode 8c — Roll a topic out to every platform
 
-`rollout --topic "lymphatic drainage drops"` (or `--url <page just published>`): the user's active platforms that don't have this topic yet, in the user's order (rank, ★ first), with the format each platform needs. Run it after every new page (sales-review-writer Step 7) and when the user says "I wrote about X".
+`rollout --topic "keto gummies review"` (or `--url <page just published>`): the user's active platforms that don't have this topic yet, in the user's order (rank, ★ first), with the format each platform needs. Run it after every new page (sales-review-writer Step 7) and when the user says "I wrote about X".
 
 ## Mode 9 — Positions of every page, automatically (DataForSEO)
 

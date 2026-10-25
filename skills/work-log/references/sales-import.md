@@ -20,7 +20,7 @@ Give the user only the steps for the programs they named. Menus move: these are 
 | Digistore24 | Reports → Transactions → filter by date → Export (CSV or Excel) | Reports → Clicks / Affiliate statistics → export |
 | BuyGoods, MaxWeb, other nutra networks | Reports → Conversions / Sales → date range → Export CSV | Reports → Clicks → group by sub-ID or by referrer → export |
 | Everflow networks (FanFuel and many direct nutra programs) | Reporting → Conversions → date range → add columns Sub1–Sub5 and Referer → Export CSV | Reporting → Clicks (or Variance) → group by Sub1 or Referer → Export |
-| Post Affiliate Pro (many direct merchants, e.g. QEP) | Commissions (Transactions) → date filter → Export to CSV; turn on columns Data1–Data5, Channel, Referrer URL if offered | Reports → Raw clicks / Traffic → group by Referrer → Export |
+| Post Affiliate Pro (many direct merchants) | Commissions (Transactions) → date filter → Export to CSV; turn on columns Data1–Data5, Channel, Referrer URL if offered | Reports → Raw clicks / Traffic → group by Referrer → Export |
 | Impact | Reports → Action Listing (or "Performance by Action") → date range → Download CSV | Reports → Clicks / Performance by Sub ID → Download |
 | CJ | Reports → Commission Detail (or Transaction Detail) → date range → Download CSV | Reports → Performance by Link / by SID → Download |
 | ShareASale | Reports → Transaction Detail → date range → Download | Reports → Traffic / Click Report by Afftrack → Download |
