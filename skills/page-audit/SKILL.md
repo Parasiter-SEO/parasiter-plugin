@@ -32,11 +32,12 @@ If the page was written in this same conversation (for example by sales-review-w
 Run the checklist in `references/audit-checklist.md` in this order — the first screen decides most sales:
 
 1. **Snippet** — title and description: value, keyword, a reason to click after the AI answer.
-2. **First screen** — quick facts box (line-by-line specs + current deal + date + link), first image, one clear CTA.
+2. **First screen** — photo right under the title (for the snippet image; recommend one if missing), facts box for the main product (price, quality, my rating, offers, link), one clear CTA.
 3. **Author** — who, role, why trust, why listen; real, not a generic "expert".
 4. **Hook** — problem → solution → bridge → what the page gives.
 5. **TOC and headings** — headings alone tell the conclusion.
-6. **Structure** — all blocks of the content type (see sales-review-writer templates).
+6. **Structure and Rumer's blocks** — pains, facts → solution, life after, prices and offers, comparison + alternatives, 1,500+ words, plus the blocks of the content type (sales-review-writer templates).
+6b. **Copywriting** — useful on its own; problem opened and solved with the product; motivates the click and the purchase; images that support the text.
 7. **CTAs** — at decision points; why this product / this offer / now; best landing page.
 8. **Honesty** — no fake tests, reviews, results, prices, deadlines; disclosure; last-checked date.
 9. **Platform fit** — length, tone, formatting, link rules of the platform.
@@ -45,10 +46,11 @@ Run the checklist in `references/audit-checklist.md` in this order — the first
 
 ## Step 3 — Score and report
 
-Score with `references/scoring.md`. When the independent auditor ran, show both scores and explain any gap of more than 10 points. Report:
+Score with `references/scoring.md`: **two scores — Rumer's rules and Copywriting — and their average.** When the independent auditor ran, show its scores too and explain any gap of more than 10 points. Report:
 
 ```
 Page score NN/100 · [type] · [platform]
+Rumer's rules NN/100 · Copywriting NN/100
 Critical (fix first)
 • … — why it costs sales — exact fix
 Medium
@@ -57,6 +59,7 @@ Good
 • …
 Fastest win: [one change]
 ```
+If there is no photo under the title, it is always in the list: "Add a real or custom photo at the top — it is what Google takes for the snippet image" + a prompt via `post-illustrations`.
 
 Give rewritten fragments for the top 1–3 critical issues (new title, quick facts box, author intro, CTA) — ready to paste. Offer to rewrite the whole page with sales-review-writer.
 

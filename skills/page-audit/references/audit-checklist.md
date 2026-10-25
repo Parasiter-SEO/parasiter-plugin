@@ -9,9 +9,23 @@ Severity: **C** critical (directly loses sales), **M** medium, **L** low.
 - [L] Description/first sentence works as a snippet.
 
 ## First screen
-- [C] Quick facts box: key characteristics line by line + current deal/discount + last-checked date + main link.
+- [C] Photo right under the title: real or custom (product in hand, author, comparison card) — not stock. It is what Google tends to take for the snippet image; if missing, recommend one and give a prompt via `post-illustrations`.
+- [C] Facts box for the main product, up to 10 lines: price, quality, my rating x/10 (honest, explained in the text), special offers with checked date, guarantee, best for, key parameters — then the link.
 - [C] One clear CTA visible without scrolling (soft on forums/Reddit/PDF).
-- [M] First image: real or custom (author, product in hand, comparison) — not stock.
+
+## Rumer's mandatory blocks
+- [C] Pains: 3–5 concrete pains in the buyer's words.
+- [C] Product facts tied to each pain (pain → what the product does → why it works).
+- [M] Life after: concrete everyday picture, no guaranteed results.
+- [C] Prices and current offers block: packages, best value, deal, checked date, CTA to the package page.
+- [C] Comparison with 2–3 competitors + honest alternatives (other products/services, cheaper or free options; natural ones in health).
+- [M] 1,500+ words for article formats.
+
+## Copywriting
+- [C] The page is useful on its own: how to choose, what to avoid, which package, who it is not for.
+- [C] Problem → solution flow: the problem is opened and felt before the product appears; every product claim answers a pain.
+- [C] Motivation: why this product, why this offer, why now (real conditions only); doubts answered before each CTA.
+- [M] Images support the text: 3–6 (facts card, pains → solution, comparison, prices, verdict), each next to its section, facts and dates correct.
 
 ## Author and hook
 - [C] Author introduced: who, role/position, why trust, why listen. Not no-name.
