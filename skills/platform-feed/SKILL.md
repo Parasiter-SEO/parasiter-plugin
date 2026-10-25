@@ -21,7 +21,7 @@ Reply in the user's working language.
 
 ## Requires the server (Pro or Insider)
 
-Tools: `news_latest`, `news_seen`, `feed_latest`, `analysis_latest`, `account_info`, `telegram_link`, `telegram_status`, `telegram_settings`, `telegram_unlink`; for scheduled paid checks (work-log Mode 9) `paid_check_schedule`, `paid_check_pending`.
+Tools: `news_latest`, `news_seen`, `feed_latest`, `analysis_latest`, `account_info`, `telegram_link`, `telegram_status`, `telegram_settings`, `telegram_unlink`; for scheduled paid checks (work-log Mode 9) `paid_check_schedule`, `paid_check_pending`, `paid_check_report`.
 
 If they are not available, or the plan is Free: say in one line that the feed and Telegram channels come with Pro and Insider, what they contain, and offer platform-finder for a live search instead. Do not invent feed items, updates or poll results.
 
