@@ -5,7 +5,7 @@ Title → First image → Quick facts box (line-by-line specs + current deals + 
 
 Readers behave differently: some scan and buy from the top, some read everything, some research for days. The structure must sell to all of them, not filter them.
 
-Every template below contains the five mandatory blocks from SKILL.md: **pains → product facts and how it solves them → life after → prices and current offers → comparison and natural alternatives**. Minimum 1,500 words for every article.
+Every template below contains the five mandatory blocks from SKILL.md: **pains → product facts and how it solves them → life after → prices and current offers → comparison and honest alternatives**. Minimum 1,500 words for every article.
 
 ## Pains (how to write them)
 

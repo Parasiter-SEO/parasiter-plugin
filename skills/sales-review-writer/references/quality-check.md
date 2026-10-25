@@ -5,7 +5,7 @@ Run this on every draft. Fix what fails before showing the user; list anything t
 ## Structure
 - [ ] Title states the value and matches the page 100%.
 - [ ] First image planned (real or custom, not stock).
-- [ ] Quick facts box at the top: line-by-line characteristics + current deals + last-checked date + main link.
+- [ ] Quick facts box at the top for the main product: up to 10 lines — price, quality, my rating x/10 (honest, explained in the text), special offers with checked date, guarantee, best for, other key parameters — then the link.
 - [ ] Author intro: who, role/position, why trust, why listen — from the user's real profile.
 - [ ] Hook: problem → solution → bridge → what the article gives.
 - [ ] Table of contents present; headings alone tell the story and the conclusion.
@@ -15,7 +15,7 @@ Run this on every draft. Fix what fails before showing the user; list anything t
 - [ ] Product facts tied to each pain: how the product solves it.
 - [ ] Life after: concrete scenes of how the reader's life improves — no guaranteed results.
 - [ ] Dedicated prices and current offers block (packages, per unit, best value, deal, guarantee, date, CTA).
-- [ ] Comparison with 2–3 competing products + natural alternatives (or a note in the checklist why skipped).
+- [ ] Comparison with 2–3 competing products + honest alternatives (other products or services, cheaper or free options; natural ones in health topics) — in every article.
 - [ ] At least 1,500 words (counted).
 - [ ] Pros AND cons; who it is NOT for.
 - [ ] FAQ from real buyer questions.
