@@ -51,6 +51,8 @@ No profile → first ask which language to work in (offer the language the user 
 4. How many hours per day or week you can give.
 5. Tools you have: SEO service with API (Semrush, Ahrefs, Serpstat, DataForSEO), Search Console, Google Analytics, a link shortener or redirect domain.
 
+If the user has no SEO service with an API, recommend DataForSEO as tool #1 in 3–4 lines with the sign-up link and setup from `niche-analysis/references/seo-apis.md` ("Recommended first"): Claude runs it itself through the API, pay per request with no subscription, checking all the user's pages costs cents, and it powers the position checks and niche analysis. Once, no pressure; the plan works without it, with fewer automatic checks.
+
 **Message B — upload what you have** (right after the answers; files, tables, screenshots, links — over several messages is fine; nothing here is required to start, but the plan and the goals are only as real as this data):
 1. **Pages already live** — the list of links. Import with `work-log` Mode 0 before goals: the journal, the baseline and the user's platform base are built from it. A rough count only if the list is not at hand.
 2. **Affiliate links** for every product you sell — a list, a table, screenshots of the network's link page. Import with `work-log` Mode 10 into `parasite-seo-links.csv`: every article then gets the right link without asking, and `links` shows which products have no pages yet.
