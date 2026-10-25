@@ -88,6 +88,7 @@ A VA or team (baseline question 3) adds their hours to capacity; ask for their h
 
 - Monthly milestones grow, not flat: with no pages yet ~50% of the average monthly pace in month 1, ~120% later; with live pages, start at the average.
 - Platforms: at least 3 by the end of month 1 for everyone, so no single platform carries more than ~40% of live pages.
+- Posts in the top 3 as a milestone next to live posts: the author's experience is that earning starts at 10–15 posts in the top 3 (about $20–50/day for him) and his 20 platforms / ~400 posts bring about $6,000/month — use as the author's reference point only, never as a default in the income chain; the user's own income per top-3 post replaces it as soon as positions and sales are logged.
 - Rumer's rule as the minimum target: ~10 platforms and 100+ live posts. When the user is below it, milestones climb toward it first (platforms: 3 by month 1, then +2–3 a month to ~10); posts: whatever the time allows, toward 100 live.
 - Weekly targets = milestone delta ÷ weeks in the month, rounded up to whole pages.
 - Daily quota = weekly target ÷ working days; leftovers go to the first days of the week.

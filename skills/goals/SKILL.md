@@ -74,6 +74,8 @@ The baseline is not edited later. If the user says it was wrong, add a correctio
 - no pages yet → the rule is the first big milestone, reached step by step, never in week 1.
 Show it as "Rumer's rule", in the working language.
 
+**The second number: posts in the top 3.** Live posts are the base; sales start when posts reach the top of Google. In the author's experience, earning starts at **10–15 posts in the top 3**, which can be about $20–50 a day; his own base of 20 platforms and ~400 posts brings him about $6,000 a month. Say it as the author's experience, never as a forecast for the user: niche, offer, country and platforms change it many times over. Count the user's posts in the top 3 from `work-log` positions (`rankcheck.py`, Mode 9) and track it as a milestone next to live posts — it is the number that moves possible income.
+
 
 Ask in one message, showing the baseline number next to each question so the goal is set as a change ("now: ~4 pages a week"):
 
@@ -105,7 +107,7 @@ Show one table: baseline, goal, what the time allows, gap, and a line for Rumer'
 
 In `parasite-seo-goals.md`:
 
-- **Monthly milestones** (or one for a 1-week goal): live pages, platforms active, offers, possible income checkpoint.
+- **Monthly milestones** (or one for a 1-week goal): live pages, platforms active, offers, **posts in the top 3**, possible income checkpoint. With no positions data yet, the first milestone is "positions checked for every page".
 - **Weekly targets** — action targets only, because actions are what the user controls: pages published, platforms tested, pages refreshed, pages moved off dead platforms. Income is tracked, not targeted weekly.
 - **Daily quota** — weekly targets divided over the user's working days, rounded to whole tasks.
 

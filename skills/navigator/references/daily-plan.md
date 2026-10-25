@@ -33,7 +33,7 @@ Order tasks by how directly they protect or create sales.
 
 ## Rhythm the author uses (adapt to the user's time)
 
-- **Rumer's rule:** the minimum working base is about 10 platforms and at least 100 live posts. Below it, every week's plan includes testing a new platform (1–3 posts) until there are ~10, and new posts until 100 are live; mention the rule in the plan's goal line ("Rumer's rule: 6/10 platforms, 48/100 posts").
+- **Rumer's rule:** the minimum working base is about 10 platforms and at least 100 live posts. Below it, every week's plan includes testing a new platform (1–3 posts) until there are ~10, and new posts until 100 are live; mention the rule in the plan's goal line ("Rumer's rule: 6/10 platforms, 48/100 posts · top 3: 4/15"). The top-3 count is the one that starts sales (author's experience: 10–15 posts in the top 3); when positions are known, prefer tasks that push pages from 4–10 into the top 3 (refresh, page-audit, rollout of the same topic to a stronger platform).
 - Work in volume: many platforms, many posts; above the minimum, keep a pool of active posts and keep adding.
 - Re-post content where platforms clean up (forums especially) — keep every text saved.
 - Check rankings after each Google update; move effort away from platforms that lost visibility.

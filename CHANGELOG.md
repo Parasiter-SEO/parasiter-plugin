@@ -4,7 +4,7 @@ Each version's section is posted to the news feed and the Telegram channels when
 
 ## 0.16.0 — 2026-10-25
 
-- **Rumer's rule in your goals:** the minimum working base is about 10 platforms and 100 live posts. If your goal is below it, the plan says so and climbs toward it first; the daily plan shows where you are ("6/10 platforms, 48/100 posts").
+- **Rumer's rule in your goals:** the minimum working base is about 10 platforms and 100 live posts. If your goal is below it, the plan says so and climbs toward it first; the daily plan shows where you are ("6/10 platforms, 48/100 posts · top 3: 4/15"). Posts in the top 3 are tracked as a milestone: that is where sales start.
 - **Possible income, not promises.** Goal tables show "possible income" at your own numbers. Your goals start from your real data: what your reports show, plus your own word on what you earn, since reports rarely cover everything.
 
 - **First setup asks for your real numbers.** After a few short questions (niche, programs, country, time, tools) the navigator asks you to upload what you have: live pages, affiliate links, sales reports from every program and any traffic data. For each program you name you get the steps to export the report from its dashboard. Your goals start from these numbers, not from guesses.

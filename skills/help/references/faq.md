@@ -14,7 +14,7 @@ Built for affiliate marketers who earn with parasite SEO, at any stage — they 
 - Platform feed updates come as findings appear — several times a week, sometimes less. No daily promise.
 
 ## How many platforms and posts do I need?
-Rumer's rule: the minimum working base is about **10 platforms and at least 100 live posts**. Below that, one platform cleanup or Google update can take most of your income, and there is too little data to see what sells. It is the minimum goal, not the ceiling; `goals` builds your plan toward it first.
+Rumer's rule: the minimum working base is about **10 platforms and at least 100 live posts**. Below that, one platform cleanup or Google update can take most of your income, and there is too little data to see what sells. It is the minimum goal, not the ceiling; `goals` builds your plan toward it first. Sales start with posts in the top 3: in Rumer's own work, earning begins at 10–15 posts in the top 3 (about $20–50 a day for him), and his 20 platforms with ~400 posts bring about $6,000 a month. That is his experience, not a forecast — your niche, offers and country change it a lot.
 
 ## Do I need a paid SEO tool for positions?
 No subscription. Search Console only sees your own sites, so for parasite pages PARASITER checks Google through your own DataForSEO account: you pay per query (from about $0.0006), dozens of pages weekly cost cents a month. Free alternatives: ProRankTracker's free plan (20 keywords) or any tracker export, uploaded to the journal.
