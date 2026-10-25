@@ -2,13 +2,13 @@
 
 | Criterion | Points | Full points when |
 |---|---|---|
-| Fresh indexing | 25 | New posts indexed within ~48 h |
-| Ranking evidence | 20 | Domain ranks top 10 for buyer queries in this or a close niche |
-| Links | 15 | Live clickable links in the post (nofollow is fine for sales) |
-| Access | 10 | New account can register and post |
+| Affiliate reviews ranking there | 30 | Review pages of affiliate products (any niche, ideally the user's) are in the Google top 10 on this domain now |
+| Fresh indexing | 25 | New posts / pages indexed within ~48 h |
 | Lifespan / removal risk | 15 | Posts historically live for months, no cleanup waves |
+| Access | 10 | New account can register and post (free) — or a known price and way to buy (paid) |
 | Moderation friction | 10 | No pre-moderation, no keyword blacklist |
 | Fit | 5 | Format and audience suit the content type and offer |
+| Links | 5 | A link to the offer is possible somewhere (body, profile, signature, description). Link indexing and nofollow don't matter — the page being indexed does |
 
 Partial points for partial conditions. A platform with **noindex on new posts scores 0 for indexing and cannot exceed 40 total**.
 
@@ -19,4 +19,4 @@ Partial points for partial conditions. A platform with **noindex on new posts sc
 | 30–49 | Only if nothing better; low expectations |
 | 0–29 | Skip |
 
-Labels for the summary line: Indexing fast/medium/slow/none · Google trust high/medium/low · Links live-dofollow/live-nofollow/none · Removal risk low/medium/high.
+Labels for the summary line: Free / Paid · Affiliate reviews in top 10: yes (N found) / no · Indexing fast/medium/slow/none · Removal risk low/medium/high · Link: in body / profile only / none.

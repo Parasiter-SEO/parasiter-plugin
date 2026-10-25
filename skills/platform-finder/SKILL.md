@@ -42,7 +42,7 @@ If the server is not connected, say once: "Checked platforms from Rumer come wit
 1. **Products to probe** — `references/products-seed.md`: the user's own products first, then the current top of the marketplaces in their niche (ClickBank, Digistore24, BuyGoods…), the seed list only as a fallback. 20–50 names is a good scan.
 2. **Scan** — every affiliate review page has the same two words: *[product name] review*. Search them and collect every result that is not the product's own site or a store:
    ```
-   python3 scripts/platformscan.py products.txt --country us --dry-run   # the cost first (top 20 by default)
+   python3 scripts/platformscan.py products.txt --country us --dry-run   # the cost first (top 10 by default)
    python3 scripts/platformscan.py products.txt --country us --base parasite-seo-progress.csv
    ```
    Output: platforms grouped as **Free / Paid / To check**, each with how many different products have review pages there, the best position, the SERP blocks (Discussions and forums, AI Overview, videos), whether it is already the user's, and example pages. Saved as `platforms-scan.csv`. `--suffix reviews` / `complaints` for other probes; `--device mobile` for the mobile SERP.

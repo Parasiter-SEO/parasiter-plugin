@@ -13,7 +13,7 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-A platform is worth it when three things are true: **Google indexes and ranks fresh pages on it, readers can reach your offer from it, and your page survives long enough to sell.** Everything else is detail.
+A platform is worth it when **review pages of affiliate products already rank there in the Google top 10, fresh pages get indexed, and pages survive long enough to sell.** Whether links on it are indexed or followed doesn't matter — the page itself being indexed does. Every verdict says whether the platform is **free** (users post) or **paid** (news, PR, sponsored).
 
 Reply in the user's language.
 
@@ -32,8 +32,8 @@ Use web search / fetch where available; otherwise give the user each check as a 
 1. **Registration** — open for new users? Captcha, app, phone, invite, paid plan, old accounts only?
 2. **Fresh indexing** — are posts from the last 1–2 weeks indexed (`site:` + recent)? How fast?
 3. **noindex** — meta robots and X-Robots-Tag on new posts/profiles; some platforms noindex new accounts only.
-4. **Ranking** — does the platform rank for buyer queries in this or similar niches (top 10, "Discussions and forums", AI Overview citations)?
-5. **Links** — allowed? live and clickable? nofollow/ugc? outbound-link warning page (hurts CTR)? link only after N posts?
+4. **Affiliate reviews ranking there (the main check)** — search `site:domain review` and "[product] review" for a few affiliate products: are review pages on this domain in the Google top 10, in "Discussions and forums" or AI Overview? None → the platform is not proven, however good it looks.
+5. **Link to the offer** — possible anywhere (body, profile, signature, description)? Outbound warning page? Link only after N posts? Link indexing and nofollow don't matter.
 6. **Moderation** — pre-moderation, keyword blacklists (platforms block typical affiliate words), automatic AI spam removal, cleanup waves, bans.
 7. **Account needs** — warm-up (XenForo forums, Medium, LinkedIn need aged/active accounts), points systems, first-post limits.
 8. **Content format** — length/character limits, images, tables, editor (BBCode), title uniqueness.
@@ -46,7 +46,7 @@ Score with `references/scoring.md` (0–100) and show:
 
 ```
 [Platform] · score NN/100 · checked [date]
-Indexing: … | Google trust: … | Links: … | Removal risk: …
+Free / Paid · Affiliate reviews in top 10: … | Indexing: … | Removal risk: … | Link: …
 Verdict: [publish / test 1–3 posts / skip]
 Best content type here: …
 How to post: [account, title, link placement, tone]
