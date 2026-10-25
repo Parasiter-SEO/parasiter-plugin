@@ -38,9 +38,26 @@ Pull volumes for product + modifier queries; "[product] review" and "best [categ
 
 ## Step 3 — SERP composition
 
-For the top 20–50 queries get the top 10 and classify each result: brand/merchant, big review site, UGC/parasite platform (forum, Reddit, Quora, Medium, LinkedIn, Scribe, Google Sites, press release, PDF host…), video, other. Note AI Overview and the Discussions and forums block where data shows them.
+For the top 20–50 queries get the top 20 and classify each result: brand/merchant, big review site, UGC/parasite platform (forum, Reddit, Quora, Medium, LinkedIn, Scribe, Google Sites, press release, PDF host…), video, other. Note AI Overview and the Discussions and forums block where data shows them.
 
 When the SEO tool gives URLs but not page types, or the user has no tool, hand the queries to the `serp-analyst` agent in batches of up to 10 and merge its tables.
+
+## Step 3b — Entry score: how strong is the top 20?
+
+For each target query look at the **top 20** and sort every domain into three groups:
+- **Heavy** — hard to push out, usually not worth entering: marketplaces and big brands (Amazon, Walmart, the merchant), big cloud file hosts used by strong players (Amazon S3 / `s3.amazonaws.com`, `storage.googleapis.com`, `blob.core.windows.net`, CloudFront), news wires and major media (GlobeNewswire, PR Newswire, Yahoo, MarketWatch, national newspapers), big review and health sites (Healthline, WebMD, Forbes, NYTimes Wirecutter…), .gov / .edu.
+- **Ours** — platforms of the kind the user posts on: the user's own base (`work-log` `platforms`), the author's checked base (`platforms_search`), and any free UGC platform (forums, Reddit, Quora, Medium, Pressbooks, ResearchGate, Gamma, HackMD, podcast hosts, site builders…).
+- **Other** — small sites and blogs.
+
+**Entry score** per query:
+```
+Entry: [good / possible / hard] · ours in top 20: N (best #pos, which) · heavy: N
+```
+- **Good** — at least one of *our* platforms is in the top 20 (better: top 10): the niche is not locked by top domains and a parasite page has a real chance.
+- **Possible** — no ours, but heavy domains are less than half of the top 20.
+- **Hard** — top 20 mostly heavy and no ours: usually better not to enter; if the user still wants it, one test page only.
+
+The score is a starting estimate. **What decides is a test:** publish 1–3 pages on the platforms that are already in the top 20 and check their positions with the tracker after 7–14 days (`work-log` Mode 9, paid — with the user's yes).
 
 ## Step 4 — Competitor parasite pages
 
@@ -50,9 +67,9 @@ List the parasite pages already ranking: platform, URL, content type, what they 
 
 ```
 Niche: [x] · [country] · data: [source, date]
-| Keyword | Cluster | Volume | Difficulty | Platforms in top 10 | Opportunity |
+| Keyword | Cluster | Volume | Entry | Ours in top 20 (best pos.) | Heavy in top 20 | Opportunity |
 ```
-Opportunity = high when volume is real, buying intent is strong and ≥1 UGC/parasite platform is in the top 10.
+Opportunity = high when volume is real, buying intent is strong and the entry is **good** (≥1 of our platforms in the top 20).
 
 Then: top 5 keywords to target, which platforms rank for them in the top 10 (hand to platform-finder — those are proven platforms for this niche), and which content types fit, best-of lists first (hand to content-type-selector). Add a short note on oversaturation: products every affiliate pushes (heavy spam, refunds) convert worse no matter the ranking.
 
