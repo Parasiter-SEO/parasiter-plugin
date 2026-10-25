@@ -38,25 +38,25 @@ Guarantee: …
 → [CTA to the exact package page]
 ```
 
-## Comparison and natural alternatives
+## Comparison and alternatives
 
 - Table: [Product] vs 2–3 competitors — price, key feature, format, guarantee, best for.
 - "Choose [Product] if… / choose [Competitor] if…".
-- **Natural alternatives**: lifestyle changes, home or natural remedies, free tools or methods — what each realistically gives, when it is enough, and when the product is the better choice. Honest alternatives make the recommendation believable.
+- **Honest alternatives**: other products or services, cheaper or free options (free tools, free plans, methods), and in health topics natural ones (lifestyle, home remedies) — what each realistically gives, when it is enough, and when the product is the better choice. An unbiased alternatives block makes the recommendation believable.
 
 ## Quick facts box (line by line)
 
-Single product:
+Single product (up to 10 lines, then the link):
 ```
-[Product] at a glance (checked: [date])
-• What it is: …
-• Best for: …
-• Key feature: …
-• Format / size / plan: …
-• Price: from $… · best value: [bundle] at $…/unit
-• Current deal: [discount / bonus / free shipping] — until [date if stated]
-• Guarantee / refund: …
-→ [CTA to the order page]
+Product: [name] (linked)
+Price: from $… · best value: [bundle] at $…/unit
+Quality: [one honest line]
+My rating: [x]/10
+Special offers: [discount / coupon / bonus / free shipping] — checked [date]
+Guarantee / refund: …
+Best for: …
+[up to 3 more parameters that matter: format/size, key feature or ingredient, delivery, subscription terms…]
+👉 [Check today's price and offers](affiliate link)
 ```
 
 Best-of: the same box as a compact ranking — one line per product: position, name, best for, price from, current deal, link. #1 visually marked.
@@ -71,7 +71,7 @@ Best-of: the same box as a compact ranking — one line per product: position, n
 6. My experience or my research — what I checked and what I found.
 7. Pros and cons — honest; include real cons.
 8. Who it is for / who should not buy.
-9. Comparison and natural alternatives — 2–3 competing products (table + "choose X if…") and non-product options.
+9. Comparison and alternatives — 2–3 competing products (table + "choose X if…") and non-product options.
 10. Prices and current offers — every package, best value, current deal; CTA.
 11. FAQ — questions buyers really ask (SERP, "People also ask", support, forums).
 12. Verdict — the author's clear recommendation + main CTA.
@@ -89,7 +89,7 @@ Best-of: the same box as a compact ranking — one line per product: position, n
    - overview · key features / ingredients · benefits · pros and cons · my experience or research notes · best for · deal + CTA.
 5. Life after — what changes for the reader with the right pick.
 6. Choice scenarios: "Pick A if…, B if…, C if…".
-7. Natural alternatives — non-product options and when they are enough.
+7. Alternatives — other products or services, cheaper or free options (natural ones in health topics) and when they are enough.
 8. Prices and current offers for the top picks.
 9. FAQ.
 10. Verdict: #1 and why, runner-up, budget pick; CTA.
@@ -105,7 +105,7 @@ A less-known product with a strong commission can be placed high only if it is g
 4. Practical differences in setup and use.
 5. Weaknesses of each.
 6. Life after with the right pick.
-7. Scenarios: "Choose A if… / B if…" + natural alternatives.
+7. Scenarios: "Choose A if… / B if…" + honest alternatives.
 8. Prices and current offers for both; CTA next to each decision.
 9. FAQ, disclosure, last-checked date.
 
@@ -128,7 +128,7 @@ A less-known product with a strong commission can be placed high only if it is g
 4. Common causes of problems and how to check before buying.
 5. When NOT to buy.
 6. Prices, refund terms and safe place to buy.
-7. Comparison with 2–3 alternatives + natural alternatives, transparent links.
+7. Comparison with 2–3 alternatives + honest alternatives, transparent links.
 
 ## Packages / price guide
 
