@@ -26,21 +26,21 @@ Ask for what the user has (any subset works):
 4. **Affiliate stats** — clicks, conversions, commission by sub-ID/link or by day.
 5. Platform stats if available (views on Medium, forum views).
 
-Ask how links are tagged (sub-IDs per page). If they are not, recommend a sub-ID per page from now on — without it, revenue cannot be tied to pages.
+Sub-IDs are a bonus, not a requirement: many sales can't be tied to a page, and that is normal. Count every sale exactly by program, offer and pack, and spread untied sales over the pages as a labelled estimate (`work-log` Mode 2). Mention sub-IDs once, where the network supports them; never block the report on them.
 
 ## Step 2 — Join and compute
 
 Run `scripts/report.py` when code execution is available (CSV in → per-page and per-group tables out); otherwise compute in the conversation. Metrics (definitions in `references/metrics.md`):
 - Revenue per publication, EPC, conversion rate.
 - RPM_SERP = (clicks / impressions) × (sales / clicks) × avg commission × 1000 — only where impressions exist.
-- Age of each page, alive/indexed status (from platform-monitor if connected).
+- Age of each page, alive/indexed status (from platform-monitor if connected), position and how many pages are in the top 3 (where sales start).
 Group by platform, content type, offer, country.
 
 ## Step 3 — Read the numbers
 
 - **Winners**: top pages by revenue/EPC → refresh deal box and date, add comparison blocks, improve CTA (page-audit), republish the format on other platforms.
 - **Rank without sales**: page-audit — usually first screen, author, CTA or wrong intent.
-- **Dead or deindexed**: republish from saved copy elsewhere.
+- **Dead or deindexed**: `work-log` `republish` — the pages with their saved sources, rewritten for a new home.
 - **Losers after 60 days**: reposition topic/type, don't clone.
 - **Platforms**: reduce effort where visibility dropped (especially after Google updates).
 
@@ -51,6 +51,7 @@ Review points: 14, 30 and 60 days after publication.
 ```
 Report · [period] · [client/project]
 Summary: N live pages · X clicks · Y sales · $Z commission (from user data)
+Rumer's rule: N/10 platforms · N/100 live posts · top 3: N/15
 Top 5 pages | Platforms | Content types | Offers
 What worked / What didn't / Next 5 actions
 ```
