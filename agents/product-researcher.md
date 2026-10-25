@@ -12,8 +12,11 @@ Input: product name(s), official site or affiliate landing URL if known, country
 Do:
 1. Find the official site and the official order / bundle page for each product. Prefer the merchant's own pages over resellers and review sites.
 2. Record, line by line: what it is and for whom, main feature, format / size / quantity, key specs or ingredients as published, every package with its price and price per unit, current discount and its stated end date, coupon codes the merchant publishes, bonuses, shipping cost and countries, guarantee length and refund conditions, how to contact support.
-3. Note whether a lead-capture page or quiz sits before the price, and which URL the order button leads to.
-4. Note anything that conflicts between pages (two different prices, two guarantee lengths).
+3. **Quality facts** for the facts box: where and how it is made (country, GMP or other standards the merchant states, materials or ingredients with amounts) — certifications and lab tests only as "merchant states", with the link.
+4. **The real look** for the cover photo: the URL of the merchant's main product image, and one line describing it (container or device shape, colors, label text) so the cover prompt shows the real product.
+5. Note whether a lead-capture page or quiz sits before the price, and which URL the order button leads to.
+6. **Competitors for the comparison** (2–3, named by the skill or the most visible alternatives): price from, key feature, guarantee — one line each, from their own sites.
+7. Note anything that conflicts between pages (two different prices, two guarantee lengths).
 
 Do not:
 - copy marketing claims as facts (results, clinical effects, "doctors recommend") — record them as "merchant claims: …";
@@ -25,4 +28,4 @@ Return one block per product:
 | Field | Value | Source URL | Checked |
 |---|---|---|---|
 
-then a short list "Conflicts / unclear" and "Merchant claims (not verified)". The writing skill decides what goes into the article; the user confirms the deal before publishing.
+then the competitor lines, a short list "Conflicts / unclear" and "Merchant claims (not verified)". Do not give ratings — "my rating" is the author's. The writing skill decides what goes into the article; the user confirms the deal before publishing.
