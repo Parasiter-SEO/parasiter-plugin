@@ -15,6 +15,8 @@ Part of PARASITER by Rumer (Affiliate Credo).
 
 Measure commissions, not just positions. A page in the top 3 with no sales is a cost; a page on page two that sells is a winner to feed.
 
+**For an affiliate this is the review of their asset and the scaling plan**, not a client report. The method is volume, then focus: take many products, write reviews, see which ones take off and earn — then scale those (more platforms, more angles, more posts) and stop feeding the rest. The client report (Step 4b) is for the agency role only.
+
 Reply in the user's language. Reports for clients can be in the client's language.
 
 ## Step 1 — Collect
@@ -46,6 +48,23 @@ Group by platform, content type, offer, country.
 
 Review points: 14, 30 and 60 days after publication.
 
+## Step 3b — Scale what took off (affiliates)
+
+From the numbers, name the winners on three levels and turn each into concrete work:
+- **Products / offers that earn** → more pages on them: the same product on the user's other platforms (`work-log` `rollout`), new angles and content types (best-of for a new audience, A vs B against the next competitor, complaints, price/coupon page), new related products of the same merchant or niche.
+- **Platforms that earn or rank** → post more there first; platforms with no sales and no top-10 after 30–60 days get less time.
+- **Content types that convert** → make them the default for the next pages.
+Products that got pages on several platforms and earned nothing in 60 days: stop adding to them; refresh only the pages that rank.
+
+```
+Scale plan · [period]
+Winners: [product] — $N, pages on N platforms → +N pages: [platforms] · new angles: […]
+Platforms to do more: […] · less: […]
+Content types that convert: […]
+Stop: [products / platforms]
+```
+The navigator takes this plan into the daily tasks.
+
 ## Step 4 — Report
 
 ```
@@ -55,7 +74,11 @@ Rumer's rule: N/10 platforms · N/100 live posts · top 3: N/15
 Top 5 pages | Platforms | Content types | Offers
 What worked / What didn't / Next 5 actions
 ```
-For a client report, offer a clean document version; keep internal notes (platform sources, methods) out of client-facing text unless the user wants them in.
+For an affiliate, the report is their asset review: what the base is worth now (live pages, top-3 pages, what earns), followed by the scale plan from Step 3b.
+
+## Step 4b — Client report (agency role only)
+
+For the SEO specialist / agency role: a clean document version for the client; keep internal notes (platform sources, methods) out of client-facing text unless the user wants them in.
 
 ## Rules
 
