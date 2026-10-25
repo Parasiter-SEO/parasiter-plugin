@@ -5,6 +5,12 @@ description: Track which platforms and which of the user's parasite pages are al
 
 # Platform Monitor
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · platform-monitor`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · platform-monitor → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 Daily checking is a server job, not a chat job: the server checks tracked pages and platforms on a schedule; this skill reads the results and turns them into actions. Without the server it can run a one-off manual check.

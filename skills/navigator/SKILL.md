@@ -5,6 +5,12 @@ description: Entry point of PARASITER. First asks who the user is and what for (
 
 # Navigator
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · navigator`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · navigator → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 PARASITER is built for affiliates who earn with parasite SEO. Other roles get a smaller toolset and no daily plan (Step 0).

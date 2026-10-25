@@ -5,6 +5,12 @@ description: Break down one parasite SEO platform before investing time in it �
 
 # Platform Analyzer
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · platform-analyzer`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · platform-analyzer → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 A platform is worth it when three things are true: **Google indexes and ranks fresh pages on it, readers can reach your offer from it, and your page survives long enough to sell.** Everything else is detail.

@@ -5,6 +5,12 @@ description: The PARASITER news feed from the author — new platforms, plugin u
 
 # PARASITER Feed
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · platform-feed`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · platform-feed → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 The feed is the author's live work: new platforms as he finds them, plugin updates, ideas and tips, weekly market analysis (what died, what came back, what Google changed), polls and announcements. It is updated as findings appear — several times a week, sometimes less. **Never describe it as daily.**

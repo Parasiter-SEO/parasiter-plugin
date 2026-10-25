@@ -5,6 +5,12 @@ description: Built-in help for PARASITER itself — what the plugin is, which sk
 
 # PARASITER Help
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · help`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · help → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 This skill answers questions about the plugin. It knows the whole system: read the reference that fits the question before answering, and answer from it, not from memory.

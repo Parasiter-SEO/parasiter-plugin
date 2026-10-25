@@ -5,6 +5,12 @@ description: Build performance analytics and reports for parasite SEO work from 
 
 # Client Reports
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · client-reports`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · client-reports → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 Measure commissions, not just positions. A page in the top 3 with no sales is a cost; a page on page two that sells is a winner to feed.

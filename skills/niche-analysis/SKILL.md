@@ -5,6 +5,12 @@ description: Analyze a niche and competitors for parasite SEO through the user's
 
 # Niche Analysis
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · niche-analysis`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · niche-analysis → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 The key question is not "how big is the niche" but **"for which buyer queries do third-party platforms already rank?"** If forums, Medium, Reddit, LinkedIn or press releases sit in the top 10, a parasite page can get there too. If the top 10 is all brands and big review sites, look elsewhere.

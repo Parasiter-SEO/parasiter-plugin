@@ -5,6 +5,12 @@ description: Plan and write image-generator prompts for parasite SEO and affilia
 
 # Post Illustrations
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · post-illustrations`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · post-illustrations → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 The first image often becomes the Google snippet image and decides whether the page looks like a real author's work or another AI retelling. Stock photos say "nobody here". Custom images of the product, the comparison and the key facts say "someone actually did this".

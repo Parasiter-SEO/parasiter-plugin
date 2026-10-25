@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.15.0 — 2026-10-25
+
+- **You always see which part of PARASITER is working.** Every reply starts with a short label: the skill, and the agents it called (for example `▸ PARASITER · sales-review-writer → product-researcher`).
+
 ## 0.14.0 — 2026-10-25
 
 - **Your key now connects the plugin to the PARASITER server.** Checked platform database and feed (Insider the day a platform is found, Pro a week later), news and weekly analysis, daily checks of your pages (up, removed, noindex) with alerts in Telegram. Claude Code asks for the key when you enable the plugin; in Claude desktop and claude.ai add the personal connector URL from your welcome email. Say *"my PARASITER plan"* to check.

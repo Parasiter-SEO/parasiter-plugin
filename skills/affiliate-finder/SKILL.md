@@ -5,6 +5,12 @@ description: Find and compare affiliate programs and offers for a niche and traf
 
 # Affiliate Finder
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · affiliate-finder`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · affiliate-finder → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 Choose the offer before writing a word: a strong page for a bad offer earns nothing. The author's filter is simple — **real demand, strong commission, an offer page that converts, and a program that accepts traffic from public platforms.**

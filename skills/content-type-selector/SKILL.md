@@ -5,6 +5,12 @@ description: Choose WHAT to write before writing — the content type and topic 
 
 # Content Type Selector
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · content-type-selector`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · content-type-selector → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 Core principle: **do not publish one more retelling of the product. Publish the best answer to a specific doubt the buyer has right before purchase.**

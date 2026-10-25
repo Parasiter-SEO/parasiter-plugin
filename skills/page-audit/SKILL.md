@@ -5,6 +5,12 @@ description: Audit a parasite SEO or affiliate page by link or pasted text and f
 
 # Page Audit
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · page-audit`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · page-audit → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 Ranking is not the problem — conversion is. A page that ranks but does not sell usually fails in the first screen: no reason to trust the author, no clear offer, no decision help. This audit checks the page the way a buyer reads it.

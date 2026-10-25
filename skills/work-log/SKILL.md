@@ -1,9 +1,15 @@
 ---
 name: work-log
-description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms. Imports the pages the user already published (a list of links or a table) and builds their own platform base from them. Records every action the moment it happens (page published, sent to indexing, checked alive/indexed, audited, refreshed, moved, platform tested), every sale (logged by hand or imported from affiliate network exports) and traffic (platform views, affiliate clicks), ties sales to pages by sub-ID, and turns it all into reports for any day, week or month, effectiveness tables by page, platform, offer, program and content type, and a queue of pages due for checks plus sales reports due for upload. Use when the user uploads or pastes a list of their existing pages, asks for "my platforms" / "my platform base", marks pages or platforms as priority, names topics, asks which pages are in the top, "what should I write and where", "which topics are missing on X", reports work or a sale ("added an article", "indexed it", "made a sale"), uploads a sales or traffic export, asks "what did I do / earn this week", wants a weekly or monthly report, asks which pages, platforms or offers earn, or what needs checking.
+description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms. Imports pages they already published and builds their own platform base; records every action, sale (by hand or from affiliate network exports) and traffic; ties sales to pages by sub-ID; gives reports for any day, week or month, effectiveness by page, platform, offer, program and content type, and a queue of pages due for checks. Use when the user uploads or pastes their pages, asks for "my platforms", marks priority pages or platforms, asks which pages are in the top, "what should I write and where", "which topics are missing on X", reports work or a sale, uploads a sales or traffic export, asks "what did I do / earn this week", wants a report, or asks what needs checking.
 ---
 
 # Work Log
+
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · work-log`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · work-log → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
 
 Part of PARASITER by Rumer (Affiliate Credo).
 

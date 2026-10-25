@@ -5,6 +5,12 @@ description: Starts with a baseline journal of how the user works today — hour
 
 # Goals
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · goals`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · goals → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 Goals only make sense against a starting point. So this skill works in a fixed order: first the **baseline journal** — what the user did, does now and earns now — then the goals, built as a change from that baseline. From there it makes milestones and weekly targets, keeps the progress log, and tells the navigator what today has to move forward. The navigator builds the daily plan; this skill decides **what the plan is for**.

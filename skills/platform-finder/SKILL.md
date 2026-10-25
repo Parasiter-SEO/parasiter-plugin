@@ -5,6 +5,12 @@ description: Find platforms where a parasite SEO page can be published and rank 
 
 # Platform Finder
 
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
+`▸ PARASITER · platform-finder`
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · platform-finder → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 Platforms live days to months: they get spammed, cleaned up, noindexed or close registration. A list is only worth something if it is **fresh and checked**. This skill combines the author's database (server, Pro) with a live search the user can run with you.
