@@ -137,7 +137,8 @@ Read the table for the user in 3–5 lines: what earns most per page, what gets 
 - **Sales reports to upload** — per program, with the date range to export.
 - **Removed / noindex** — republish from the saved copy, log `moved`.
 - **Not indexed 14+ days** — resubmit, add links, or move.
-- **Alive / index check due** — 2, 7, 14 days after publishing, then every 14 days; `not-indexed` rechecked after 3 days.
+- **Alive check due** (free: page opens, no noindex, link in place) — 2, 7, 14 days after publishing, then every 14 days.
+- **Index / position check suggested** (paid) — new pages not yet indexed, ★ pages, earning pages, pages that dropped. The queue only *suggests* them; nothing paid runs from the queue on its own (see Rules: paid checks).
 - **Audit score under 70** — improve with page-audit, log `refreshed` + new `audit`.
 - **Audit due** — never audited, refreshed since, or 14/30/60-day review.
 - **Optional: no sub-ID** — shown only in the full queue; sales are still counted by program.
@@ -235,14 +236,17 @@ python3 scripts/rankcheck.py parasite-seo-progress.csv [--country us] [--priorit
 - Default: Google desktop, US, top 30 (billed per 10 results; top 30 is where traffic is). `--device mobile` for the mobile SERP, `--depth 100` for a full check, `--country uk` etc. Positions differ by country, device and exact wording (extender ≠ extenders): when the user sees a different position, check the exact query, country and device before doubting the tool.
 - One request per unique query covers every page of the user that ranks for it (two platforms on one query = one request). The query is the page's main query, else its named topic; pages with neither are listed — set them with `tag --query`.
 - Found pages get a `check` row with their position and status `indexed`; pages not in the top 100 get "not in top 100". The output lists changes since the last check: new in the top 10, up, down, out.
-- Standard queue by default (cheapest, results in a few minutes); `--live` answers at once for about 3× the price. DataForSEO bills per 10 results, so the top 100 costs 10× the top 10: use `--depth 10` (or 30) when only the top matters. Always show the `--dry-run` cost first on the first run.
+- Standard queue by default (cheapest, results in a few minutes); `--live` answers at once for about 3× the price. DataForSEO bills per 10 results, so the top 100 costs 10× the top 10: use `--depth 10` (or 30) when only the top matters. Before **every** run: ask which pages and how many, show the `--dry-run` cost, wait for a yes (Rules: paid checks).
 - Tasks not downloaded in time (or after an error) are already paid: `--collect 24` downloads them for free; `--skip-today` re-runs only pages not checked today.
 - Credentials: the user's API login and password (app.dataforseo.com → API Access) in the environment as `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD`. Never write them into any file, profile or journal. If the assistant's sandbox blocks the network, the user allows `api.dataforseo.com` in their assistant's settings.
-- Weekly is enough; after a Google update, run it the same day. With a scheduled task in the assistant it runs on its own every Monday.
+- Weekly is enough; after a Google update, suggest a run the same day. A scheduled weekly run only if the user asks for it, with the page set and the weekly cost shown when it is set up.
 - Any rank tracker instead (Ubersuggest, SE Ranking, ProRankTracker, SEO PowerSuite…): upload its CSV export — `import-ranks parasite-seo-progress.csv export.csv`. Rows are matched by URL, else by keyword to the page's query or topic. If the tracker shows another page of the same platform ranking (trackers follow a domain, and researchgate.net or medium.com is everyone's domain), the row is skipped, never credited to the user. Weekly export = weekly history.
 - Single positions from the user's own notes: `tag --position` (or `add --event check --position`).
 
 ## Rules
+
+- **Paid checks only with the user's yes, every time.** Index checks, position checks (Mode 9), page keywords (Mode 9b) and any other call that spends the user's SEO API balance: before each run ask **how many pages and which** — ★ pages, earning pages, new pages not yet indexed, one platform, or the user's own list — show the rough cost for that number (`--dry-run`), and run only after a clear yes. Never run them silently from the check queue, the daily plan or the weekly review, and never extend an earlier yes to a new run or a bigger set. A scheduled weekly run exists only if the user set it up themselves with the pages and the cost shown. The user must always know what they are paying for.
+- **★ pages.** Offer the user to star their main pages (`tag --priority high`) after the import; ★ pages are the default proposal for every paid check.
 
 - Facts only. Never mark a page indexed or alive without a check result; never record a sale the user did not report or export.
 - Commission is what counts; reversed sales are shown but not counted, refunds subtract. Pending is shown separately.

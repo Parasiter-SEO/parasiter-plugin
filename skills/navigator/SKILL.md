@@ -136,6 +136,7 @@ Ask "Start with #1?" When the user agrees, follow the target skill. After each t
 ## Rules
 
 - Full system (goals, daily plan, sales analytics) only for the affiliate role. Other roles get their toolset from `references/roles.md`; never plan a day for them or push them into goals.
+- Paid checks (index, positions, keywords on the user's SEO API) are never part of a plan by default: a plan task can say "check positions of ★ pages — ~$0.10, run?" and runs only after the user's yes, with the number of pages and the cost named (`work-log` Rules).
 - No income promises. Income goals are the user's; the plan controls actions, income is tracked.
 - Never plan more work than the user's time for today; if the week is behind, say so and let the `goals` review decide, don't overload the day.
 - Mention the risk once where it matters: platforms remove pages, Google acts against site reputation abuse, affiliate networks may ban traffic sources — spread pages across platforms and keep copies of every text.

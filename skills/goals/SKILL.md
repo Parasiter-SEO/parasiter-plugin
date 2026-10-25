@@ -143,7 +143,7 @@ When the user reports work ("published 3 pages on X", "2 sales today", "Medium d
 
 Once a week (the navigator triggers it on the user's first session of the week, or the user asks "am I on track"):
 
-1. Plan vs fact for the week: published, alive, indexed, platforms, **posts in the top 3**, clicks, sales, income. Posts in the top 3 come from this week's position check (`rankcheck.py`); if positions are older than 7 days, run the check first or say they are stale. Take the fact from `work-log`: `summary --period last-week` for work, sales and traffic, `effect --by platform` / `--by content_type` for what earns. If a program's sales are not uploaded for the week, ask for the export first — the review is only as good as the sales data.
+1. Plan vs fact for the week: published, alive, indexed, platforms, **posts in the top 3**, clicks, sales, income. Posts in the top 3 come from the latest position check (`rankcheck.py`); if positions are older than 7 days, say they are stale and offer a check of ★ and earning pages with its cost — run it only after the user's yes. Take the fact from `work-log`: `summary --period last-week` for work, sales and traffic, `effect --by platform` / `--by content_type` for what earns. If a program's sales are not uploaded for the week, ask for the export first — the review is only as good as the sales data.
 2. **Against the baseline** — what has changed since the start (pages per week, live pages, income).
 3. **Pace** — at the current rate, where will the horizon end? Use the measured pace once there are 2 weeks of data.
 4. Replace assumptions with real numbers and recalculate the income chain.
