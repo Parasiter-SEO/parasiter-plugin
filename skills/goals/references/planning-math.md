@@ -88,6 +88,7 @@ A VA or team (baseline question 3) adds their hours to capacity; ask for their h
 
 - Monthly milestones grow, not flat: with no pages yet ~50% of the average monthly pace in month 1, ~120% later; with live pages, start at the average.
 - Platforms: at least 3 by the end of month 1 for everyone, so no single platform carries more than ~40% of live pages.
+- Rumer's rule as the minimum target: ~10 platforms and 100+ live posts. When the user is below it, milestones climb toward it first (platforms: 3 by month 1, then +2–3 a month to ~10); posts: whatever the time allows, toward 100 live.
 - Weekly targets = milestone delta ÷ weeks in the month, rounded up to whole pages.
 - Daily quota = weekly target ÷ working days; leftovers go to the first days of the week.
 - Each week reserves time for refreshes and moving pages once the user has 20+ live pages: about 1 refresh per 10 live pages per week (assumption).

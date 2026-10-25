@@ -33,7 +33,8 @@ Order tasks by how directly they protect or create sales.
 
 ## Rhythm the author uses (adapt to the user's time)
 
-- Work in volume: many platforms, many posts; keep a minimum pool of active posts and keep adding.
+- **Rumer's rule:** the minimum working base is about 10 platforms and at least 100 live posts. Below it, every week's plan includes testing a new platform (1–3 posts) until there are ~10, and new posts until 100 are live; mention the rule in the plan's goal line ("Rumer's rule: 6/10 platforms, 48/100 posts").
+- Work in volume: many platforms, many posts; above the minimum, keep a pool of active posts and keep adding.
 - Re-post content where platforms clean up (forums especially) — keep every text saved.
 - Check rankings after each Google update; move effort away from platforms that lost visibility.
 - 14 / 30 / 60-day review of each publication: update winners, reposition losers, don't clone them.

@@ -68,10 +68,17 @@ The baseline is not edited later. If the user says it was wrong, add a correctio
 
 ## Mode 2 — Set goals
 
+**Rumer's rule — the minimum goal.** A parasite SEO base starts working as a business at **about 10 platforms and at least 100 live posts**. Below that, one platform cleanup or one Google update can wipe most of the income, and there is too little data to see what sells. It is the minimum, not the ceiling:
+- the user's goal is below it → say so in one line and offer to raise it, or keep their goal and add the rule as the next milestone after the horizon; never overwrite the goal;
+- the user already has it → the goal grows from there (more posts per platform, new offers, refreshing the winners);
+- no pages yet → the rule is the first big milestone, reached step by step, never in week 1.
+Show it as "Rumer's rule", in the working language.
+
+
 Ask in one message, showing the baseline number next to each question so the goal is set as a change ("now: ~4 pages a week"):
 
 1. **Horizon** — 1 week, or 1 to 12 months.
-2. **Build targets** — live pages by the end; platforms; offers / niches.
+2. **Build targets** — live pages by the end; platforms; offers / niches. Show **Rumer's rule** next to this question: *the minimum working base is about 10 platforms and at least 100 live posts*.
 3. **Income goal** — per day, week or month, in the user's own words, next to their current income ("now: ~$2,000/month"). Always asked: the user just says a number; "don't know yet" is a valid answer and is asked again after the first weekly review.
 4. **Time** — hours per day and days per week from now on (same as now, more, less).
 
@@ -86,7 +93,7 @@ Check the goal against the baseline with `references/planning-math.md`:
 3. **Survival** — pages likely still alive at the end, using the user's own past survival if the baseline has it.
 4. **Income chain** — target income → sales → clicks → live pages needed, from the user's own clicks and EPC (`work-log effect` once sales and traffic are logged). Where the baseline has none, use the labelled starting assumptions from `planning-math.md` and set the first milestone as "collect real data from the first 20 pages".
 
-Show one table: baseline, goal, what the time allows, gap. The income row is always labelled **possible income** (in the working language), never "income" or "you will earn": it is what the pages could bring at the user's own numbers, not a forecast. Example:
+Show one table: baseline, goal, what the time allows, gap, and a line for Rumer's rule (10 platforms / 100 live posts) when the goal or the baseline is below it. The income row is always labelled **possible income** (in the working language), never "income" or "you will earn": it is what the pages could bring at the user's own numbers, not a forecast. Example:
 ```
 | | Now | Goal | Time allows | Gap |
 | Pages per week | 4 | 10 | 6 | −4 |

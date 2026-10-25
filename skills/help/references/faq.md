@@ -13,6 +13,9 @@ Built for affiliate marketers who earn with parasite SEO, at any stage — they 
 - The key is personal: one key, one person. It stops working when the subscription ends; skills keep working without server data.
 - Platform feed updates come as findings appear — several times a week, sometimes less. No daily promise.
 
+## How many platforms and posts do I need?
+Rumer's rule: the minimum working base is about **10 platforms and at least 100 live posts**. Below that, one platform cleanup or Google update can take most of your income, and there is too little data to see what sells. It is the minimum goal, not the ceiling; `goals` builds your plan toward it first.
+
 ## Do I need a paid SEO tool for positions?
 No subscription. Search Console only sees your own sites, so for parasite pages PARASITER checks Google through your own DataForSEO account: you pay per query (from about $0.0006), dozens of pages weekly cost cents a month. Free alternatives: ProRankTracker's free plan (20 keywords) or any tracker export, uploaded to the journal.
 
