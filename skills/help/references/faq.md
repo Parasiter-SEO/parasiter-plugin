@@ -17,11 +17,23 @@ Built for affiliate marketers who earn with parasite SEO, at any stage — they 
 Rumer's rule: the minimum working base is about **10 platforms and at least 100 live posts**. Below that, one platform cleanup or Google update can take most of your income, and there is too little data to see what sells. It is the minimum goal, not the ceiling; `goals` builds your plan toward it first. Sales start with posts in the top 3: in Rumer's own work, earning begins at 10–15 posts in the top 3 (about $20–50 a day for him), and his 20 platforms with ~400 posts bring about $6,000 a month. That is his experience, not a forecast — your niche, offers and country change it a lot.
 
 ## Do I need a paid SEO tool for positions?
-No subscription. Search Console only sees your own sites, so for parasite pages PARASITER checks Google through your own DataForSEO account: you pay per query (from about $0.0006), dozens of pages weekly cost cents a month. Free alternatives: ProRankTracker's free plan (20 keywords) or any tracker export, uploaded to the journal.
+No subscription. Search Console only sees your own sites, so for parasite pages PARASITER checks Google through your own DataForSEO account (recommended first: Claude runs it itself, pay per request, minimum top-up $50 that doesn't expire): dozens of pages cost cents. Semrush, Ahrefs, Serpstat or Ubersuggest work too — connect them or upload their exports.
+
+## Will PARASITER spend my money without asking?
+No. Every paid check (index, positions, page keywords, platform scans, niche volumes on your SEO API) is named first — which pages, how many, the rough cost — and runs only after your yes, every time. A scheduled weekly check exists only if you set it up; on the day the bot warns you in Telegram with buttons: run as planned, only ★ pages, skip this time, change. No answer = it runs as planned; if the warning didn't reach you, it doesn't run. Free checks (page alive, noindex, link in place) run without asking.
+
+## I'm just starting — no pages, no sales
+That's a normal start. The navigator skips the reports, helps you pick a niche and one offer, and `goals` gives you a ladder: first posts and platforms → 15–20 indexed posts → first top-10 positions and clicks → toward 10 platforms / 100 posts and first sales. Possible income is calculated after your first clicks and sales; zero sales in the first 4–8 weeks is normal.
+
+## What platforms does PARASITER look for?
+Ones where review pages of affiliate products are published and indexed **right now** (top 10 in Google) — proven parasite platforms. It doesn't hunt for untested sites with no affiliate posts. Whether links there are followed or indexed doesn't matter; the page being indexed does. A platform in the top now goes to work now, even if it may not last; pages living 2+ weeks mark it as stable. Free platforms (you post yourself) and paid ones (news sites, PR wires) are always shown separately.
+
+## Saving my reviews
+After you publish a text you worked on yourself, say "save this .docx with the page": it is kept in `parasite-seo-sources/` linked to the page. If the page or the whole platform is removed, "which of my pages were on X?" lists them with their sources to republish. Plain AI drafts are not worth saving — quicker to write again.
 
 ## Telegram
 - **How to connect**: say "connect Telegram" in Claude, open the personal link, press Start. A username is not enough: Telegram bots cannot write to someone first.
-- **Notifications**: page alerts, Monday reminder to upload sales, daily news digest, billing. At most one message a day (billing aside), quiet at night. Turn any off: "turn off news notifications" in Claude, or /stop in the bot.
+- **Notifications**: one daily summary of your pages that got worse, Monday reminder to upload sales, news digest, billing, warnings before a scheduled paid check. Platform-wide news (new platforms, cleanups) comes in the channel only, never twice. Quiet at night. Turn any off: "turn off news notifications" in Claude, or /stop in the bot.
 - **Plan ends**: access to the channels and group ends with it and comes back on renewal.
 - The bot never asks for a password, phone number or login code.
 - Do not forward channel posts outside: they are for subscribers.
@@ -54,7 +66,8 @@ There are none. The plan follows your role, goals, journal and the time you have
 - **Parasite SEO** — publishing your page on a big trusted site so it ranks faster than a new site would.
 - **Indexing** — Google has added the page to its search database. No index, no traffic.
 - **noindex** — a tag that tells Google not to show the page. A platform that adds it is useless for search traffic.
-- **nofollow / ugc** — the link passes no SEO weight, but readers still click and buy. For sales that is enough.
+- **nofollow / ugc** — the link passes no SEO weight, but readers still click and buy. For parasite SEO it doesn't matter: what matters is that the page itself is indexed.
+- **Top 3** — where sales start: Rumer counts posts in the top 3 as a milestone.
 - **EPC** — earnings per click on your affiliate link.
 - **SERP** — the Google results page.
 
