@@ -5,6 +5,10 @@ Each version's section is posted to the news feed and the Telegram channels when
 ## 0.16.0 — 2026-10-25
 
 - **Rumer's rule in your goals:** the minimum working base is about 10 platforms and 100 live posts. If your goal is below it, the plan says so and climbs toward it first; the daily plan shows where you are ("6/10 platforms, 48/100 posts · top 3: 4/15"). Posts in the top 3 are tracked as a milestone: that is where sales start.
+- **Where reviews rank now.** Say *"where can I publish about [niche]?"*: a scan of "[product] review" for many affiliate products shows the platforms where review pages are in the top 10 today, free and paid separately. Paid scans and checks always show the cost first and run only after your yes.
+- **Your reviews are kept.** Save the .docx you worked on with its page; if a page or a whole platform is cleaned up, *"which of my pages were on X?"* lists them with their sources to republish. Cleanups seen across subscribers are posted in the channel.
+- **Two scores in every audit:** Rumer's rules and copywriting. Articles now open with a facts box (price, quality, my rating, special offers, link) and a real cover photo.
+- **What took off and where to scale:** the monthly review shows which products, platforms and content types earn and plans more pages for them.
 - **Possible income, not promises.** Goal tables show "possible income" at your own numbers. Your goals start from your real data: what your reports show, plus your own word on what you earn, since reports rarely cover everything.
 
 - **First setup asks for your real numbers.** After a few short questions (niche, programs, country, time, tools) the navigator asks you to upload what you have: live pages, affiliate links, sales reports from every program and any traffic data. For each program you name you get the steps to export the report from its dashboard. Your goals start from these numbers, not from guesses.
