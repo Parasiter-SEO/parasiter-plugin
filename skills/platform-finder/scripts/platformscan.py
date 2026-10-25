@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """PARASITER — find the platforms where affiliate review pages are published and indexed right now.
 
-  platformscan.py PRODUCTS [--suffix review] [--country us] [--depth 30] [--device desktop]
+  platformscan.py PRODUCTS [--suffix review] [--country us] [--depth 20] [--device desktop]
                   [--base parasite-seo-progress.csv] [--out platforms-scan.csv] [--dry-run] [--live]
 
 PRODUCTS: a text file with one affiliate product name per line (or a CSV with a product column),
@@ -111,7 +111,7 @@ def main():
     ap.add_argument("products")
     ap.add_argument("--suffix", default="review", help='added to each product: "review" (default), "reviews", "complaints"…')
     ap.add_argument("--country", default="us"); ap.add_argument("--language", default="en")
-    ap.add_argument("--depth", type=int, default=30); ap.add_argument("--device", default="desktop", choices=["desktop", "mobile"])
+    ap.add_argument("--depth", type=int, default=20, help="top 20 by default: deeper pages bring no traffic"); ap.add_argument("--device", default="desktop", choices=["desktop", "mobile"])
     ap.add_argument("--base", help="the user's journal: platforms already in their base are marked 'yours'")
     ap.add_argument("--out", default="platforms-scan.csv")
     ap.add_argument("--limit", type=int, default=100)
