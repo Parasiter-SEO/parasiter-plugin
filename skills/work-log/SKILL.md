@@ -109,11 +109,15 @@ Redirect links through the user's own domain count clicks per page, but some pla
 
 ## Mode 3 — Traffic
 
-Views and clicks are what turn sales into conversion. Two sources:
-- **Platform stats** (Medium stats, LinkedIn post analytics, forum views, YouTube, Search Console for own pages): export or screenshot → `import-traffic export.csv --platform medium --from 2026-10-01 --to 2026-10-21`. Matching is by page URL. From a screenshot, log per page: `add --event traffic --url … --views 1200 --date <period end> --note "traffic 2026-10-01..2026-10-21"`.
-- **Affiliate clicks** (network click / hop reports by sub-ID): the same `import-traffic`; matching is by sub-ID.
+Views and clicks are what turn sales into conversion. Take any traffic data the user has — file, screenshot or a number — at any level:
+- **Per page** — platform stats (Medium, LinkedIn, Gamma analytics, podcast plays, YouTube, forum views), Search Console, GA4 landing pages, network clicks by sub-ID: `import-traffic export.csv --platform medium --from 2026-10-01 --to 2026-10-21`. Matching by page URL or sub-ID.
+- **Per platform** — network click reports grouped by referrer (Post Affiliate Pro, Everflow `referer`), GA4 "Session source / medium", utm_source: the same `import-traffic`; a referrer that is a logged page credits that page, a referrer domain of one of the user's platforms credits the platform. A whole-platform total with no page column: `--platform gamma`.
+- **No referrer / direct** — reported in the import summary, not tied to anything.
+- From a screenshot: read it into a small table, show it to the user, then `add --event traffic --url … --views 1200 --date <period end> --note "traffic 2026-10-01..2026-10-21"` (or `--platform X` with no URL for a platform total).
 
-Always pass the export's date range: the same page and period are never counted twice. Traffic is dated at the end of its period.
+Sources the import does not recognise (a referrer domain that is not one of the user's platforms) are listed: offer to add them to the platform base — that is often a page or platform the user forgot to log. Where each network and platform keeps its reports: `references/sales-import.md`.
+
+Always pass the export's date range: the same page or platform and period are never counted twice. Traffic is dated at the end of its period.
 
 ## Mode 4 — Reports
 

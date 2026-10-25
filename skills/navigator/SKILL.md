@@ -42,14 +42,22 @@ Read, if they exist in the conversation or the user's project files:
 - `parasite-seo-goals.md` — baseline (how the user works and earns now), goals, milestones, this week's targets and daily quota (written by the `goals` skill).
 - `parasite-seo-progress.csv` and `parasite-seo-sales.csv` — the journal (`work-log`): what was published, checked, audited, the traffic and every sale.
 
-No profile → first ask which language to work in (offer the language the user is writing in as the default: "We can work in English or in [their language]. Which do you prefer?"). Then the role (Step 0). For an affiliate, ask in one message, in that language:
+No profile → first ask which language to work in (offer the language the user is writing in as the default: "We can work in English or in [their language]. Which do you prefer?"). Then the role (Step 0). For an affiliate, the basic setup comes in two messages, in that language.
 
+**Message A — about you** (short answers):
 1. Niche(s) and offer(s) — or "don't have one yet".
-2. Target country and the language of the pages you publish (can differ from the working language).
-3. How many hours per day or week they can give.
-4. Pages already live: if there are any, ask for the list of links (any file or paste) and import it with `work-log` Mode 0 before goals — the journal, the baseline and the user's platform base are built from it. A rough count is fine only if the list is not at hand.
-5. Affiliate links: the user's links for every product they sell (a list, a table, screenshots of the network's link page, or one by one). Import them with `work-log` Mode 10 into the links library `parasite-seo-links.csv`: every article then gets the right link without asking, and `links` shows which products have no pages yet. Programs paid per sale only; skip for roles without affiliate links.
-6. Tools they have: SEO service with API (Semrush, Ahrefs, Serpstat, DataForSEO), Search Console, affiliate network stats.
+2. Affiliate programs and networks you work with (ClickBank, Digistore24, Everflow / FanFuel, Impact, CJ, Awin, direct merchant programs…) and the commission if you know it.
+3. Target country and the language of the pages you publish (can differ from the working language).
+4. How many hours per day or week you can give.
+5. Tools you have: SEO service with API (Semrush, Ahrefs, Serpstat, DataForSEO), Search Console, Google Analytics, a link shortener or redirect domain.
+
+**Message B — upload what you have** (right after the answers; files, tables, screenshots, links — over several messages is fine; nothing here is required to start, but the plan and the goals are only as real as this data):
+1. **Pages already live** — the list of links. Import with `work-log` Mode 0 before goals: the journal, the baseline and the user's platform base are built from it. A rough count only if the list is not at hand.
+2. **Affiliate links** for every product you sell — a list, a table, screenshots of the network's link page. Import with `work-log` Mode 10 into `parasite-seo-links.csv`: every article then gets the right link without asking, and `links` shows which products have no pages yet.
+3. **Sales reports** from each program for as far back as you have (3–12 months is ideal) — one row per sale. Under the request, give the export steps **only for the programs named in Message A**, from `work-log/references/sales-import.md` ("Where the export is in each network"), with the date range to pick. Ask for the network's **click report by referrer or sub-ID** too, when it has one. Import with `work-log` `import-sales` / `import-traffic`.
+4. **Traffic reports — anything you know about traffic**: platform stats (Medium, LinkedIn, Gamma analytics, podcast plays, ResearchGate reads, YouTube), Google Analytics (UTM or source / medium, landing pages), Search Console, shortener clicks (Bitly, geni.us). Files or screenshots. Give the steps only for the sources the user has, from the "Traffic exports" table in the same reference. Import with `work-log` Mode 3.
+
+After the uploads, show in 3–5 lines what came in: pages and platforms, programs and links, sales and commission by month, traffic by platform, and what is missing (a program without a sales export, platforms with no traffic data). Then the baseline in `goals` starts from these numbers instead of asking the user to estimate them. If the user has nothing to upload yet, go on — ask again for the missing exports in the first weekly review.
 
 Offer to save the answers as `parasite-seo-profile.md`.
 

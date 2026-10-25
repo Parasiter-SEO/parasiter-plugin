@@ -97,10 +97,17 @@ SALE_ALIASES = {
 }
 TRAFFIC_ALIASES = {
     "url": ["url", "link", "page", "pageurl", "posturl", "landingpage", "address", "permalink",
-            "story", "storyurl", "articleurl"],
+            "story", "storyurl", "articleurl", "landingpagequerystring", "pagepath",
+            "pagepathandscreenclass", "fullpageurl"],
     "sub_id": SALE_ALIASES["sub_id"],
+    # where the visit or click came from: referrer domain / URL, GA4 source, utm_source
+    "source": ["referrer", "referer", "referringdomain", "referringsite", "referringurl",
+               "referrerurl", "referrerdomain", "pagereferrer", "sessionsource",
+               "sessionsourcemedium", "sourcemedium", "firstusersource", "firstusersourcemedium",
+               "source", "utmsource", "trafficsource", "refdomain"],
     "views": ["views", "pageviews", "reads", "visits", "sessions", "impressions", "uniqueviews",
-              "viewcount", "totalviews", "hits", "visitors", "plays"],
+              "viewcount", "totalviews", "hits", "visitors", "plays", "users", "activeusers",
+              "totalusers", "listens", "downloads"],
     "aff_clicks": ["clicks", "affclicks", "hops", "outboundclicks", "linkclicks", "rawclicks",
                    "uniqueclicks", "totalclicks", "clickthroughs"],
 }
@@ -1351,17 +1358,45 @@ def cmd_import_sales(a):
               "re-run with --map sub_id=\"<header>\" (duplicates are skipped).")
 
 
+NO_REFERRER = {"", "(direct)", "direct", "(none)", "none", "(not set)", "notset", "noreferrer",
+               "no referrer", "-", "unknown", "(direct) / (none)"}
+
+
+def source_platform(value, known):
+    """Platform slug for a referrer / source / utm_source value, or '' if it is not one of the
+    user's platforms. known: {slug or domain: slug}."""
+    v = (value or "").strip().lower()
+    if v in NO_REFERRER:
+        return ""
+    v = v.split(" / ")[0].strip()  # GA4 "source / medium"
+    if v in NO_REFERRER:
+        return ""
+    if v in known:
+        return known[v]
+    if "." in v:
+        slug, dom, _ = platform_of(v)
+        for k in (url_domain(v), dom, slug):
+            if k in known:
+                return known[k]
+    k = norm(v)
+    for name, slug in known.items():
+        if norm(name) == k:
+            return slug
+    return ""
+
+
 def cmd_import_traffic(a):
     header, raw = sniff_rows(a.export)
     if not raw:
         sys.exit("The export has no data rows.")
     cols = map_columns(header, TRAFFIC_ALIASES, parse_map(a.map))
-    if "url" not in cols and "sub_id" not in cols:
+    if not {"url", "sub_id", "source"} & set(cols) and not a.platform:
         print("Columns in the file: " + " | ".join(header))
-        sys.exit("No page URL or sub-ID column found. Re-run with --map url=\"<header>\".")
+        sys.exit("No page URL, sub-ID or referrer/source column found. Re-run with --map url=\"<header>\" "
+                 "or --map source=\"<header>\", or pass --platform for a whole-platform report.")
     if "views" not in cols and "aff_clicks" not in cols:
         print("Columns in the file: " + " | ".join(header))
-        sys.exit("No views or clicks column found. Re-run with --map views=\"<header>\".")
+        sys.exit("No views or clicks column found. Re-run with --map views=\"<header>\" or --map aff_clicks=\"<header>\".")
     get = lambda r, f: r[cols[f]].strip() if f in cols and cols[f] < len(r) else ""
     today = date.today()
     end = pdate(a.to) if a.to else today
@@ -1370,42 +1405,94 @@ def cmd_import_traffic(a):
     rows = read_rows(a.journal)
     pages = page_states(rows, end)
     by_sub, by_url = lookups(pages)
-    seen = {(r.get("page_url"), r.get("note")) for r in rows if r["event"] == "traffic"}
+    seen = {(r.get("page_url"), r.get("platform", "").lower(), r.get("note")) for r in rows
+            if r["event"] == "traffic"}
 
-    totals = defaultdict(lambda: [0.0, 0.0])
+    # the user's platforms: slugs and domains from logged pages and the platform base
+    known = {}
+    for p in pages.values():
+        slug, dom, _ = platform_of(p["url"])
+        pl = (p.get("platform") or slug).lower()
+        for k in (pl, slug, dom, url_domain(p["url"])):
+            known.setdefault(k, pl)
+    for slug, r in read_platforms(platforms_path(a.journal)).items():
+        known[slug] = slug
+        if r.get("domain"):
+            known[r["domain"].lower()] = slug
+    forced = (a.platform or "").lower()
+
+    totals = defaultdict(lambda: [0.0, 0.0])      # page url -> views, clicks
+    by_platform = defaultdict(lambda: [0.0, 0.0])  # platform slug -> views, clicks (no page match)
     unmatched = Counter()
+    direct = 0.0
     for r in raw:
+        v, c = num(get(r, "views")) or 0, num(get(r, "aff_clicks")) or 0
+        if not (v or c):
+            continue
         url = ""
         if "url" in cols:
             url = by_url.get(norm_url(get(r, "url")), "")
         if not url and "sub_id" in cols:
             url = by_sub.get(get(r, "sub_id").lower(), "")
-        v, c = num(get(r, "views")) or 0, num(get(r, "aff_clicks")) or 0
-        if not url:
-            if v or c:
-                unmatched[get(r, "url") or get(r, "sub_id")] += v + c
+        if not url and "source" in cols:  # a referrer that is the page itself
+            url = by_url.get(norm_url(get(r, "source")), "")
+        if url:
+            totals[url][0] += v
+            totals[url][1] += c
             continue
-        totals[url][0] += v
-        totals[url][1] += c
+        pl = ""
+        if "source" in cols:
+            pl = source_platform(get(r, "source"), known)
+        if not pl and "url" in cols and get(r, "url"):
+            pl = source_platform(get(r, "url"), known)
+        if not pl and forced and not ({"url", "sub_id", "source"} & set(cols)):
+            pl = forced
+        if pl:
+            by_platform[pl][0] += v
+            by_platform[pl][1] += c
+            continue
+        raw_src = get(r, "source") or get(r, "url") or get(r, "sub_id")
+        if "source" in cols and raw_src.strip().lower().split(" / ")[0] in NO_REFERRER:
+            direct += v + c
+        else:
+            unmatched[raw_src or "(empty)"] += v + c
+
+    fname = os.path.basename(a.export)
     out, skipped = [], 0
     for url, (v, c) in totals.items():
-        note = f"traffic {period} from {os.path.basename(a.export)}"
-        if (url, note) in seen or any(n.startswith(f"traffic {period}") for u, n in seen if u == url):
+        note = f"traffic {period} from {fname}"
+        if any(u == url and (n or "").startswith(f"traffic {period}") for u, _, n in seen):
             skipped += 1
             continue
         p = pages[url]
         out.append(journal_row(date=end.isoformat(), event="traffic", page_url=url,
-                               platform=a.platform or p["platform"], offer=p["offer"],
+                               platform=forced or p["platform"] or platform_of(url)[0], offer=p["offer"],
                                views=fmt(v) if v else "", aff_clicks=fmt(c) if c else "",
                                note=note))
+    plat_out = 0
+    for pl, (v, c) in by_platform.items():
+        note = f"traffic {period} platform total from {fname}"
+        if any(not u and s == pl and (n or "").startswith(f"traffic {period}") for u, s, n in seen):
+            skipped += 1
+            continue
+        out.append(journal_row(date=end.isoformat(), event="traffic", page_url="", platform=pl,
+                               views=fmt(v) if v else "", aff_clicks=fmt(c) if c else "",
+                               note=note))
+        plat_out += 1
     if out:
         append(a.journal, COLUMNS, out)
-    print(f"Traffic import {os.path.basename(a.export)} · period {period}")
+    print(f"Traffic import {fname} · period {period}")
     print(f"- Columns used: " + ", ".join(f"{f} = “{header[i]}”" for f, i in cols.items()))
-    print(f"- {len(out)} pages updated · {skipped} already imported for this period")
+    print(f"- {len(out) - plat_out} pages updated · {plat_out} platforms updated (whole-platform totals, "
+          f"no single page) · {skipped} already imported for this period")
+    if by_platform:
+        print("- By platform: " + ", ".join(f"{pl} {fmt(v + c)}" for pl, (v, c) in
+                                             sorted(by_platform.items(), key=lambda x: -sum(x[1]))))
+    if direct:
+        print(f"- {fmt(direct)} with no referrer (direct, apps, private browsing): counted in totals only, not tied to a platform")
     if unmatched:
-        print(f"- {len(unmatched)} rows not in the journal (not your logged pages or not published yet): "
-              + ", ".join(short(k, 40) for k, _ in unmatched.most_common(10)))
+        print(f"- {len(unmatched)} sources not among your pages or platforms (new platform? add it with `import-pages` or `platforms`): "
+              + ", ".join(f"{short(k, 40)} ({fmt(n)})" for k, n in unmatched.most_common(10)))
     if not a.from_:
         print("- Tip: pass --from and --to with the export's date range so the same period is never counted twice.")
 

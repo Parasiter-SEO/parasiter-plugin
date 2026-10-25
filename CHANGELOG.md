@@ -2,6 +2,11 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.16.0 — 2026-10-25
+
+- **First setup asks for your real numbers.** After a few short questions (niche, programs, country, time, tools) the navigator asks you to upload what you have: live pages, affiliate links, sales reports from every program and any traffic data. For each program you name you get the steps to export the report from its dashboard. Your goals start from these numbers, not from guesses.
+- **Traffic from anywhere.** Network click reports by referrer, Google Analytics (source / medium, UTM, landing pages), Gamma analytics, podcast plays, shortener clicks — by page when the page is known, by platform when it isn't. Say *"here is my traffic report"*.
+
 ## 0.15.0 — 2026-10-25
 
 - **You always see which part of PARASITER is working.** Every reply starts with a short label: the skill, and the agents it called (for example `▸ PARASITER · sales-review-writer → product-researcher`).

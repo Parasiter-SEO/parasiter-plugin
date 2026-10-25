@@ -7,6 +7,9 @@ Each recipe: what the user says, what happens. Give the user only the recipe the
 2. It runs `goals`: baseline (how much you work, publish and earn now) → goals → reality check → weekly targets.
 3. You get 2–5 tasks for today. "Start with #1?" — each task opens the right skill.
 
+## Upload my traffic
+"Here is my traffic report" + a file or screenshot: network click reports (by referrer or sub-ID), Google Analytics (source / medium, UTM, landing pages), Search Console, Gamma analytics, Medium / LinkedIn stats, podcast plays, shortener clicks. Traffic is credited to the page when the page is known, to the platform when only the referring site is known. "How do I export clicks from [network]?" → the steps for that network.
+
 ## Add my affiliate links
 "Here are my affiliate links" + a list, a table or screenshots of your network's links page → they go into your links library (`parasite-seo-links.csv`), one row per product. Every article then uses your link without asking. "Which products have no pages yet?" → the list of products you sell but haven't written about.
 
