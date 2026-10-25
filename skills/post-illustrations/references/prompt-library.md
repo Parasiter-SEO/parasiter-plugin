@@ -2,9 +2,30 @@
 
 ## Rumer's templates
 
-<!-- AUTHOR: paste the proven image prompts here (one per image type), with the generator they are tuned for. The skill uses this section first. -->
+The author's way: DALL·E, realistic photos, the real products the article is about; infographics carry the facts. Horizontal, 700 px JPG.
 
-_(to be added by the author)_
+**Cover — real product, realistic photo (DALL·E)**
+"Realistic photograph of [exact product: container shape, color, label colors and text as on the real product], standing on [real setting that fits the use: kitchen counter / gym bench / bathroom shelf / desk], natural daylight, shallow depth of field, sharp label, no people, no text overlay, horizontal 16:9, photorealistic, high detail."
+
+**Best-of cover — the real products together**
+"Realistic photograph of [N] supplement products side by side on a clean table: [product 1 look], [product 2 look], [product 3 look]… labels facing the camera, even soft light, editorial product photography, no people, no added text, horizontal 16:9, photorealistic."
+
+**Key facts / ingredients infographic**
+Heading: "[Product] at a glance". 4–6 rows, each: small icon + 2–4 words ("Turmeric 500 mg — joint comfort"). Small real product photo on the right. Clean light background, one accent color, large readable type. Horizontal 16:9.
+
+**Pains → solution**
+Two columns: left "The problem" with 3 short pains, right "What [Product] does" with the matching 3 answers, arrows between them. Horizontal 16:9.
+
+**Benefits in theses**
+Heading + 4–5 benefit lines, each with an icon, max 6 words per line. Horizontal 16:9.
+
+**Comparison card**
+Table: [Product] vs 2–3 competitors × 4–5 rows (price, key ingredient/feature, guarantee, best for), the winner column highlighted. Horizontal 16:9.
+
+**Prices and packages**
+3 package columns (1 / 3 / 6), price per unit, "Best value" tag on the best one, "checked [date]" in small type. Horizontal 16:9.
+
+Infographic text is exact and short — render with code where possible; from a generator, check every letter and number.
 
 ## Style blocks (pick one per series, reuse in every prompt)
 

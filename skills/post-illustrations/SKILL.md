@@ -13,35 +13,38 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-The first image often becomes the Google snippet image and decides whether the page looks like a real author's work or another AI retelling. Stock photos say "nobody here". Custom images of the product, the comparison and the key facts say "someone actually did this".
+**Images accompany the text and make it easier to take in.** They are not decoration and not text pasted into a picture: a useful image shows what the paragraph next to it is about — facts, the headline idea, ingredients or features, benefits in short theses, a comparison, the prices — as an infographic. "A person holding a bottle" helps nobody. An article without images is not finished; a missing cover photo is a problem because the first image often becomes the Google snippet image.
+
+Two kinds of images, every article:
+1. **Cover photo** — a realistic photo of the real product being discussed (the user's own photo first; otherwise the merchant's real product shot as the reference, or a realistic generated photo of that exact product). Right under the title.
+2. **Infographics** — 3–5 cards that carry the facts of the section they sit in: key facts / ingredients, pains → solution, benefits in theses, comparison table, prices and packages, verdict. Short text only (headings, theses, numbers), never paragraphs. `sales-review-writer` renders these with code as JPG when it can; otherwise this skill writes prompts for them.
+
+Every image: **horizontal, full article width, JPG ~700 px wide** (700×394), light. Sizes and hosting by link: `references/platform-sizes.md`.
 
 Reply in the user's language; write prompts in English (generators follow English best).
 
 ## Step 1 — Inputs
 
-- Article title and content type (single review, best-of, A vs B, experience, complaints, packages).
-- Platform (decides count, size and format — see `references/platform-sizes.md`).
-- Product name(s) and what they look like (bottle, device, app screen…). If the user has real product photos, use them as the base — real beats generated.
-- Style: the user's saved series style if they have one; otherwise propose one from `references/prompt-library.md` and save it for the series.
-- Generator they use (Midjourney, ChatGPT/DALL·E, Ideogram, Flux, Gemini, Canva…), so prompts fit its syntax.
+- Article title, content type and the sections (what each image will sit next to).
+- Platform (count, and whether images go by upload or by link).
+- Product name(s) and the real product photos: the user's own, or the merchant's product page (to describe the real look exactly).
+- Generator: **DALL·E (ChatGPT) by default**, realistic photo style; adapt the syntax if the user names another.
 
 ## Step 2 — Plan the set
 
-Propose 3–6 images, one line each: purpose + where it goes in the article.
-Default set for an article: hero/cover → product in use/in hand → key-facts infographic → comparison card (for comparisons) → price/bundle visual near the main CTA.
+One line per image: what it shows + the section it goes next to. Default: cover photo (real product) → key facts / ingredients infographic → pains → solution or benefits in theses → comparison card → prices and packages card near the main CTA → verdict card (best-of: ranking card with #1 marked).
 
 ## Step 3 — Write prompts
 
-For each image use the matching template from `references/prompt-library.md`. Each prompt: subject, composition, style, lighting/colors, text on image (short, exact, in quotes — or none if the generator garbles text), aspect ratio, negative instructions.
+- **Cover / product photos** — DALL·E, realistic photography: the exact product as it really looks (shape, color, label described from the real photo), real setting, natural light, horizontal 16:9, no added text, no people unless the user wants them.
+- **Infographics** — prefer rendering with code (exact text, exact numbers). If prompts are needed: clean horizontal infographic, a heading + 3–6 short theses or a small table, large readable type, the product photo as a small element; give the exact text in quotes and tell the user to check and fix the lettering in an editor (generators garble text).
 
 Output:
 ```
-1. Hero (16:9) — goes under the title
+1. Cover photo (700×394) — under the title
 Prompt: …
-Alt text: …
 ```
-
-Then tips: which image to generate first, how to keep the style consistent (same style block in every prompt, same seed/reference image where the tool supports it), and to add real numbers/text in an editor rather than in the generator.
+No alt text. Then one line on how to keep the style the same across the article (same style block, same reference photo).
 
 ## Rules
 
@@ -51,4 +54,4 @@ Then tips: which image to generate first, how to keep the style consistent (same
 - Prices and claims on images only from verified facts, with a date if the image shows a price.
 - Mark AI-generated images where the platform requires it.
 
-> Author's note: Rumer's proven prompt templates go into `references/prompt-library.md` (section "Rumer's templates"). Until filled, the generic templates there are used.
+- No decorative images without information ("person holding a bottle"); every image carries the facts of its section.

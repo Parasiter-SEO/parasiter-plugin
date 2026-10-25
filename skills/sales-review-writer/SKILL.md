@@ -99,7 +99,7 @@ Urgency only from real conditions (an offer that actually ends, limited stock th
 
 Every article comes with its images. Plan 3–6, one line each: what it shows and where it goes in the article.
 
-**Make the images yourself when code execution is available** — render them with code (HTML/SVG or Python imaging) and save as **JPG, 1200×675** (cover 1600×900), one consistent style per article, and show each one in the chat right where it belongs so the user can copy or save it directly:
+**Make the images yourself when code execution is available** — render them with code (HTML/SVG or Python imaging) and save as **horizontal JPG, ~700 px wide (700×394), light files**, full article width, one consistent style per article; images carry the section's facts in short theses, never paragraphs, and show each one in the chat right where it belongs so the user can copy or save it directly:
 - quick facts card (line-by-line characteristics + current deal);
 - pains → solution infographic;
 - comparison card / table image (product vs competitors);
@@ -107,7 +107,7 @@ Every article comes with its images. Plan 3–6, one line each: what it shows an
 - verdict / "choose X if…" card.
 Text on images only from verified facts, with the checked date on any price.
 
-**Photo-like images** (product in hand, lifestyle scene, author-style photo) cannot be made reliably with code: give a ready prompt for the user's image generator via the `post-illustrations` skill, and mark the spot in the article. Prefer the user's own real photos when they have them.
+**The cover photo** — a realistic photo of the real product — cannot be made with code: give a ready DALL·E prompt via `post-illustrations` and mark the spot under the title. Prefer the user's own real photos. No decorative images without information. Where the platform takes images only by link, say so and remind the user to host them (`post-illustrations` → platform-sizes).
 
 Without code execution, say once that the JPG cards appear automatically when the assistant's code execution / file creation is turned on (in Claude: Settings → Capabilities), and give all image prompts via `post-illustrations` meanwhile. Respect platform limits (PDF — few light images; Raisely — cover only; forums — external hosting). Never generate fake people presented as real users or experts, fake certificates or before/after results.
 
