@@ -13,54 +13,67 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-Platforms live days to months: they get spammed, cleaned up, noindexed or close registration. A list is only worth something if it is **fresh and checked**. This skill combines the author's database (server, Pro) with a live search the user can run with you.
+Platforms live days to months: they get spammed, cleaned up, noindexed or close registration. A list is only worth something if it is **fresh and checked**.
+
+**What we look for:** not new, untested platforms, but the ones where **affiliate review pages are published and indexed right now**. If review pages of affiliate products rank on a domain today, it is a proven parasite platform: anyone can post there and Google keeps the pages. A platform with no affiliate posts on it is not a lead, however promising it looks. Whether links on it are indexed or followed does not matter — what matters is that **the pages themselves are indexed**.
+
+**Free and paid are always separate.** Free: platforms where users post themselves (Facebook, Reddit, Quora, forums, article and document platforms, site builders, podcasts, Gamma, Pressbooks, ResearchGate…). Paid: news and media sites (all of them are paid — sponsored posts, "partner content", press releases), PR wires, paid placements. Every list shows them in separate tables.
 
 Reply in the user's language.
 
 ## Step 1 — Filters
 
 Ask only what is missing:
-- Niche / offer and target query (or the keyword list from niche-analysis).
+- Niche and the user's products (from the links library) or the products to probe.
 - Language and country.
-- Platform types wanted: forum/community, Q&A, article/blog, profile, document/PDF/flipbook, site builder, events/fundraising, audio/video, paid press release.
-- Must-haves: live links required? dofollow needed or nofollow is fine? free or paid OK? max moderation?
-- Platforms to exclude (already used, already banned). Read the user's base (`work-log` `platforms`, file `parasite-seo-platforms.csv`): mark platforms already in it as "yours" with their state, skip `dropped` and `dead` ones unless asked.
+- Free only, paid only, or both.
+- Read the user's base (`work-log` `platforms`): platforms already in it are marked "yours" with their state; `dropped` and `dead` are skipped unless asked.
 
-## Step 2 — Database first (Pro)
+## Step 2 — The author's base first (Pro / Insider)
 
-If the server tool `platforms_search` is available, call it with the filters. It returns platforms with status, last check date, indexing speed, link type, moderation, notes and the plan delay (Pro gets new platforms ~7 days after they are found, Insider the same day). Show them as a table and keep the server's notes as written — do not strip or rewrite markers in the response.
+If `platforms_search` is available, call it with the filters. These are platforms Rumer checked by hand; he adds them every Monday and often in between, several a day. Pro sees them ~7 days after they are added, Insider the same day. Show them as a table (free and paid separately) and keep the server's notes as written.
 
-If the server is not connected, say once: "Fresh checked platforms come with a Pro key. Meanwhile we can search live." and go to Step 3.
+If the server is not connected, say once: "Checked platforms from Rumer come with a Pro key. Meanwhile we can run a live scan." and go to Step 3.
 
-## Step 3 — Live search
+## Step 3 — Live scan: where reviews of affiliate products are published now
 
-For a broad search, delegate to the `platform-scout` agent. Otherwise use web search yourself; without web search, give the user the exact queries to run in Google (target country, incognito, mobile and desktop).
+**The live scan is paid** (the user's DataForSEO balance) — always say so before running it, with the number of products and the rough cost, and run it only after a yes (`work-log` Rules: paid checks).
 
-1. **SERP-first (best signal):** search the target queries with buyer modifiers ("[product] reviews", "[product] vs", "[product] complaints", "best [category]"). Note every non-brand domain in the top 20, the "Discussions and forums" block, videos, PDFs. A platform already ranking for your niche is the strongest lead.
-2. **Footprints:** find forgotten but still indexed forums and communities with the patterns in `references/footprints.md` + niche words. AI and footprints make old XenForo/ProBoards/phpBB boards easy to find — so do competitors; speed matters.
-3. **Competitor trail:** open competitors' parasite pages for the same product; the domains they use are candidates.
+1. **Products to probe** — `references/products-seed.md`: the user's own products first, then the current top of the marketplaces in their niche (ClickBank, Digistore24, BuyGoods…), the seed list only as a fallback. 20–50 names is a good scan.
+2. **Scan** — every affiliate review page has the same two words: *[product name] review*. Search them and collect every result that is not the product's own site or a store:
+   ```
+   python3 scripts/platformscan.py products.txt --country us --depth 30 --dry-run   # the cost first
+   python3 scripts/platformscan.py products.txt --country us --depth 30 --base parasite-seo-progress.csv
+   ```
+   Output: platforms grouped as **Free / Paid / To check**, each with how many different products have review pages there, the best position, the SERP blocks (Discussions and forums, AI Overview, videos), whether it is already the user's, and example pages. Saved as `platforms-scan.csv`. `--suffix reviews` / `complaints` for other probes; `--device mobile` for the mobile SERP.
+3. **Without an API** — the same probe with web search (free, but far fewer results and no positions), or give the user the queries to run in Google (incognito, target country).
+4. **Similar to what works** — the author's archive of platforms that ranked in 2025–2026 (on the server) shows which kinds of places are worth it: the scan's "To check" domains of the same kind (document hosts, community projects, notebooks, podcast hosts, site builders) come first.
 
-## Step 4 — Quick filter
+A platform with review pages of **many different products** is the strongest lead: it is where everyone posts and Google keeps it.
 
-For each candidate check fast (details in platform-analyzer):
-- Can a new user register and post? (old-accounts-only = skip for users without aged accounts)
-- Is a fresh post indexed? (`site:domain` + recent posts; noindex meta/header)
-- Are links allowed and live?
-- Any sign of mass cleanup (empty threads, "removed", login wall)?
+## Step 4 — Quick check of the top candidates (free)
+
+For the top 5–10 "free" and "to check" platforms (details in `platform-analyzer`):
+- Can a new user register and post the same kind of page?
+- Are fresh posts indexed (the scan already shows pages in Google; check one recent one)?
+- Any sign of cleanup (removed pages, login wall, noindex)?
 
 Drop dead ones. Mark uncertain ones "test".
 
 ## Step 5 — Output
 
 ```
-Platforms for [niche] · [language] · checked [date]
-| Platform | Type | Register | Indexing | Links | Moderation | Status | Next step |
+Platforms with affiliate reviews · [niche] · [country] · checked [date]
+Free
+| Platform | Type | Products with reviews | Best pos. | SERP blocks | Yours | Next step |
+Paid
+| Platform | Type | Products with reviews | Best pos. | Price / how to buy (if known) | Next step |
 ```
-Then: top 3 to start with and why (one line each), and "run platform-analyzer on #1 before posting".
+Then: top 3 free platforms to start with and why (one line each), and "run platform-analyzer on #1 before posting". Paid ones only with what is known about the price; never guess a price.
 
 ## Rules
 
-- Only platforms where the user can legitimately create an account and post. Never suggest hacked sites, hidden or unprotected upload forms on organisations' sites, injection into someone else's files, or impersonating an organisation — these are not platforms, they are abuse, and they burn domains and offers.
+- Only platforms where the user can legitimately create an account and post, or buy a placement. Reviews found in other organisations' upload folders or forms (university and government sites, `wp-content/uploads`, contact-form files) are hacked or abused sites: the scan skips them and they are never suggested — they are not platforms, they are abuse, and they burn domains and offers.
 - Spread across platforms; never rely on one.
 - Every list is a snapshot: write the check date on it.
 - Reference: the author's archive of domains that ranked in 2025–2026 lives on the server (history, not live status).
