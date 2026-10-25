@@ -53,5 +53,6 @@ Every check result goes into the work journal as a `check` row (`work-log`): `st
 ## Rules
 
 - Never claim a page is indexed or ranking without a check result; mark unknowns.
+- Index and position checks run on the user's own SEO data account (DataForSEO recommended; Semrush, Ahrefs, Serpstat or Ubersuggest via their connector or exports). They cost money: before a paid check say so, give the rough cost, and suggest a sample (★ pages, earning pages, the newest pack) instead of the whole base. Alive / noindex / link checks are free.
 - Remind to keep a copy of every published text — that is what makes fast republishing possible.
 - After a Google update: check all rankings, reduce work on platforms that lost visibility.

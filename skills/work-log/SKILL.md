@@ -41,11 +41,15 @@ python3 scripts/worklog.py import-pages parasite-seo-progress.csv my-pages.csv [
 - Columns are found by name: link/URL, published date, platform/site, offer/product, program/network, campaign/pack, sub-ID, keyword, content type, status, notes or title. A column full of URLs is used even without a known header. Plain text: every URL in it is taken.
 - The platform comes from the domain (medium.com → `medium`, `*.substack.com` → `substack`, forum.example.com → `example`); known platforms also get a type (article, community, q&a, forum, document, site-builder…).
 - Pages already in the journal are not added twice; uploading the list again with more columns (or with `--offer/--program`) fills in what they are missing.
-- No date → dated today and marked "publish date unknown"; ask once for an approximate date or month per batch (`--date`) so ages and checks are right.
+- Dates are not needed and never asked for. An imported base without dates is marked "publish date unknown": it counts as inventory, not as work done on the import day. If the user's file has dates, they are used. A fresh page logged as it is published (Mode 1) simply gets today's date.
 - No offer or program → sales can't be counted per offer or program for those pages. Ask per batch, not per page: "These 40 Medium pages — which offer and program?" and re-run the import on the same list with `--offer/--program`, or upload a fuller table: pages already in the journal get only the details they are missing (a `note` row), nothing is duplicated.
 - Every new platform goes into the user's platform base (Mode 7).
 
-After the import, report in 4–5 lines: pages added, per platform, new platforms in the base, what is missing (dates, offer/program). Then the next step is always the same: **one bulk alive/index check** of the imported pages (`platform-monitor` → `page-checker` agent), because the system knows nothing about their status yet. Imported pages wait in their own queue section until that first check; only then do they get the regular check and audit schedule (audits only for pages that matter: live and indexed, or earning).
+After the import, report in 4–5 lines: pages added, per platform, new platforms in the base, pages without offer/program. Then offer the first check, because the system knows nothing about the pages' status yet:
+
+- **Alive check** (page opens, not removed, no noindex, affiliate link in place) — free, runs through `platform-monitor` → `page-checker`.
+- **Index and position checks need the user's own SEO data account.** Say so plainly: "To check indexing and positions, connect your own SEO API — DataForSEO is recommended (pay per check, Claude runs it itself); if you already have Semrush, Ahrefs, Serpstat or Ubersuggest, connect that or upload its export." Setup: `niche-analysis/references/seo-apis.md`.
+- **Before any paid check, warn that it is not free and suggest a sample**: priority (★) pages, pages that earn or get clicks, the newest pack, or one page per topic — not the whole base. Give the rough cost for the chosen number of pages (from `seo-apis.md` and Mode 9 / 9b) and wait for the user's yes. Check the whole base only when the user asks for it after seeing the cost. Imported pages wait in their own queue section until that first check; only then do they get the regular check and audit schedule (audits only for pages that matter: live and indexed, or earning).
 
 ## Mode 1 — Log work as you go
 
