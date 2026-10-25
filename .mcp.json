@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "parasiter": {
+      "type": "http",
+      "url": "https://parasiter.affiliatecredo.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${user_config.parasiter_key}"
+      }
+    }
+  }
+}

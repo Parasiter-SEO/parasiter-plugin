@@ -37,6 +37,9 @@ Built for Claude (Claude Code plugin; install with `/plugin marketplace add Para
 ## Updates
 New versions come through the same marketplace: update the plugin in Claude Code. The feed and platform database update on the server without reinstalling.
 
+## Connecting the key
+Claude Code asks for the key when you enable the plugin. In Claude desktop and claude.ai, add a custom connector with the personal URL from your welcome email. Details: how-to, "Connect your key".
+
 ## Languages
 Works in any language. The working language (plans, explanations) is set on first run; the content language of pages follows the target country. "Switch to …" changes it.
 

@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.14.0 — 2026-10-25
+
+- **Your key now connects the plugin to the PARASITER server.** Checked platform database and feed (Insider the day a platform is found, Pro a week later), news and weekly analysis, daily checks of your pages (up, removed, noindex) with alerts in Telegram. Claude Code asks for the key when you enable the plugin; in Claude desktop and claude.ai add the personal connector URL from your welcome email. Say *"my PARASITER plan"* to check.
+
 ## 0.13.0 — 2026-10-24
 
 - **One topic → all your platforms.** After every new article the system shows which of your platforms don't have the topic yet and makes a version for each in its own format: book chapter, forum thread, podcast episode, Gamma guide, community post. New angle each time, never a copy. Say *"roll this topic out"*.
