@@ -66,7 +66,29 @@ Save it as the **Baseline** section of `parasite-seo-goals.md`, dated, and add o
 
 The baseline is not edited later. If the user says it was wrong, add a correction line under it with the date.
 
-## Mode 2 — Set goals
+## Starting from zero (no pages, no sales, no experience)
+
+Many users start here. Zeros are a normal baseline, not a problem to fix. When the setup shows no live pages and no sales (or the user says "I'm just starting"), every mode below runs in its **from-zero** form:
+
+- **Baseline:** ask only hours per day / days per week, and whether they have an offer yet. Save "0 pages, 0 platforms, no sales — starting [date]". No table of reports, no "is this right?".
+- **No offer yet:** the first goal step is choosing one — hand off to `affiliate-finder` (one offer, one program, paid per sale), then save the link with `work-log` Mode 10.
+- **Goals (Mode 2):** ask the horizon and the time. Instead of asking for build targets the user can't judge yet, propose the ladder below as the goal, sized to their hours, with Rumer's rule as the destination. Ask the income goal in their words, but say plainly that possible income can't be calculated until the first clicks and sales come in.
+- **Reality check (Mode 3):** only capacity — what their hours allow. No income row and no income chain until there is data; say "Possible income: after your first clicks and sales".
+- **Milestones (Mode 4):** the ladder, not income:
+
+| Step | Milestone | Proves |
+|---|---|---|
+| Week 1 | offer and link chosen · 1–2 platforms tested · first 2–3 posts live | the process works end to end |
+| Month 1 | 3 platforms · 15–20 live posts · every post indexed and checked | posts survive and get indexed |
+| Month 2 | 5–6 platforms · 40–50 live posts · first posts in the top 10 · first affiliate clicks | posts rank and get clicked |
+| Month 3+ | toward 10 platforms / 100 live posts · first posts in the top 3 · first sales | the base starts to sell |
+| Then | 10–15 posts in the top 3 | where earning starts (author's experience) |
+
+  The pace comes from the user's hours (`planning-math.md`, "No pages yet": 2–3 h per page at first); stretch the ladder for fewer hours, never compress it below 2–3 weeks per step.
+- **Weekly review (Mode 6):** plan vs fact on actions and on the learning signals — posts published, share indexed, first positions, first clicks. Zero sales in the first 4–8 weeks is normal: say it once, never mark the week "behind" for income. "Behind" only means fewer actions than planned. Every review names one thing learned (which platform indexed fastest, which topic got the first position).
+- Once there are first clicks and sales, switch to the normal modes: income chain from the user's own numbers, possible income in the tables.
+
+
 
 **Rumer's rule — the minimum goal.** A parasite SEO base starts working as a business at **about 10 platforms and at least 100 live posts**. Below that, one platform cleanup or one Google update can wipe most of the income, and there is too little data to see what sells. It is the minimum, not the ceiling:
 - the user's goal is below it → say so in one line and offer to raise it, or keep their goal and add the rule as the next milestone after the horizon; never overwrite the goal;
