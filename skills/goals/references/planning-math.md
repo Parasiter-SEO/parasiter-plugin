@@ -55,6 +55,13 @@ live pages needed   = clicks per day ÷ clicks per live page per day
 pages to build      = (live pages needed − baseline live pages × survival rate) ÷ survival rate
 ```
 
+**Shortcut when clicks are not tracked but income is known** (the usual case: the user states their income, reports cover only part of it):
+```
+income per live page per month = baseline income per month ÷ live pages now
+live pages needed              = monthly target ÷ income per live page per month
+```
+Use the user's own stated income, not the report total, and say which one was used. It is rougher than the click chain (old strong pages carry most of the income), so mark it **estimate from your income** and switch to the click chain once clicks and EPC are logged.
+
 EPC and clicks per page differ by niche, offer, country and platform by more than ten times, so there is **no default EPC or clicks per page**. In order of preference:
 
 1. The user's own data (affiliate network EPC, platform or Search Console clicks).
