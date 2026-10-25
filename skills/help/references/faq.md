@@ -3,6 +3,12 @@
 ## Who is it for?
 Built for affiliate marketers who earn with parasite SEO, at any stage — they get the full system. SEO specialists and agencies, bloggers and course authors / own-product owners can use it with a smaller toolset that fits their work, without goals and the daily plan. The navigator asks once ("who are you and what for?"); say "I'm an affiliate now" (or another role) to change it.
 
+## What do I need to work with PARASITER?
+- **Claude**: Pro (~$20/month) is the minimum; Max (from ~$100/month) recommended for daily work with the full system — many articles, rollouts, agents and reports without hitting limits.
+- **SEO data**: DataForSEO recommended (pay per request, $50 minimum top-up that doesn't expire, Claude runs it itself). Already have Serpstat Team (~$100/mo), Ahrefs Lite+ (~$129/mo) or Semrush with API — connect it instead. Ubersuggest works through exports.
+- **PARASITER**: Free, Pro $19 or Insider $39.
+Without an SEO service most things still work (journal, articles, audits, images, reports from your exports, free page checks); positions, keyword volumes and platform scans get limited, so many reports are thinner. Details: navigator `references/work-environment.md`. Prices change — check the vendors' sites.
+
 ## Plans and key
 <!-- Maintainer: keep this split identical to the pricing block on the site. -->
 - **Free, $0** — plugin without a key, 6 skills: goals, content-type-selector, sales-review-writer, page-audit, post-illustrations, help.
