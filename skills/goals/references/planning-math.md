@@ -75,7 +75,7 @@ If the gap is positive, show how each option closes it and let the user choose:
 - **Longer horizon**: extra weeks = gap × hours per page ÷ (hours for new pages per week).
 - **Lower target**: what the current time allows (pages buildable, and the income chain run forwards from it).
 
-Team or VA in the business model adds their hours to capacity; ask for their hours and pace separately.
+A VA or team (baseline question 3) adds their hours to capacity; ask for their hours and pace separately.
 
 ## 5. Breaking down
 

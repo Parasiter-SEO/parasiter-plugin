@@ -1,6 +1,6 @@
 ---
 name: goals
-description: Starts with a baseline journal of how the user works today — hours, what they publish, on which platforms and offers, and what it earns per day, week and month — then sets goals from that starting point (pages to build, platforms, offers, time, business model, expected income) over a horizon from one week to twelve months. Breaks goals into monthly milestones and weekly targets, logs progress, checks pace every week and feeds the navigator's daily plan. Use when the user says "set my goals", "my plan for the month/year", "how many pages do I need", "am I on track", "update my progress", "I published / got sales", or when the navigator finds no goals file.
+description: Starts with a baseline journal of how the user works today — hours, what they publish, on which platforms and offers, and what it earns per day, week and month — then sets goals from that starting point (pages to build, platforms, offers, time, expected income) over a horizon from one week to twelve months. Breaks goals into monthly milestones and weekly targets, logs progress, checks pace every week and feeds the navigator's daily plan. Use when the user says "set my goals", "my plan for the month/year", "how many pages do I need", "am I on track", "update my progress", "I published / got sales", or when the navigator finds no goals file.
 ---
 
 # Goals
@@ -41,6 +41,7 @@ The navigator's setup already asked about programs and traffic sources and colle
 2. How long one page takes you from topic to published.
 3. Who works: just you, or a VA / team, and their hours.
 4. Content types you mostly publish (reviews, comparisons, top lists, discount pages, other) — skip if the imported pages already show it.
+5. Your total income from parasite SEO now, per day, week or month — in your own words. Reports rarely cover everything (programs without an export, channels with no stats, reports the user prefers not to upload), so always ask. If reports were uploaded, show their number next to the question ("reports show ~$1,450/month — is that all of it?"). The user's number is the baseline income; the report number is kept beside it.
 
 Accept rough numbers and ranges; never make the user look anything up before continuing.
 
@@ -52,7 +53,7 @@ Your starting point (from your reports, [period])
 | Pace | ~4 pages/week · ~2 h per page |
 | Live pages | 112 on 9 platforms |
 | Offers | QEP, CrazyBulk, … |
-| Income | ~$1,450/month (last 3 months) |
+| Income | ~$2,000/month (your words) · $1,450 in reports |
 | Clicks → sales | 1,800 clicks/month · EPC $1.35 · conv. 1.8% |
 | Pages lost | 14 in 6 months, mostly on … |
 | Best / worst | Audioboom / … |
@@ -71,9 +72,10 @@ Ask in one message, showing the baseline number next to each question so the goa
 
 1. **Horizon** — 1 week, or 1 to 12 months.
 2. **Build targets** — live pages by the end; platforms; offers / niches.
-3. **Income expectation** — per day, week or month, in the user's own words. Optional: can be set after the first data.
+3. **Income goal** — per day, week or month, in the user's own words, next to their current income ("now: ~$2,000/month"). Always asked: the user just says a number; "don't know yet" is a valid answer and is asked again after the first weekly review.
 4. **Time** — hours per day and days per week from now on (same as now, more, less).
-5. **Business model** — own affiliate pages / SEO for clients / team or VA / volume (many short posts) or depth (fewer strong reviews), and countries.
+
+The business model is not asked: PARASITER is for affiliates building their own pages, and countries and offers are already in the profile.
 
 ## Mode 3 — Reality check
 
