@@ -77,7 +77,7 @@ Best-of: the same box as a compact ranking — one line per product: position, n
 12. Verdict — the author's clear recommendation + main CTA.
 13. Affiliate disclosure + last-checked date.
 
-## Best-of comparison (5, 7 or 10 products)
+## Best-of comparison (10, 14 or 15 products by default)
 
 "Best" articles usually sell several times more than single reviews: rankings simplify the decision. They work when they are a choice tool, not a list.
 
