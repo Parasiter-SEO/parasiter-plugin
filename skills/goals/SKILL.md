@@ -98,7 +98,7 @@ Show one table: baseline, goal, what the time allows, gap. The income row is alw
 
 In `parasite-seo-goals.md`:
 
-- **Monthly milestones** (or one for a 1-week goal): live pages, platforms active, offers, income checkpoint.
+- **Monthly milestones** (or one for a 1-week goal): live pages, platforms active, offers, possible income checkpoint.
 - **Weekly targets** — action targets only, because actions are what the user controls: pages published, platforms tested, pages refreshed, pages moved off dead platforms. Income is tracked, not targeted weekly.
 - **Daily quota** — weekly targets divided over the user's working days, rounded to whole tasks.
 
