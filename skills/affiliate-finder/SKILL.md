@@ -13,13 +13,24 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-Choose the offer before writing a word: a strong page for a bad offer earns nothing. The author's filter is simple — **real demand, strong commission, an offer page that converts, and a program that accepts traffic from public platforms.**
+Choose the offer before writing a word: a strong page for a bad offer earns nothing. The author's filter: **the offer is popular in search, the commission is at least 15%, and the program accepts traffic from public platforms.** Networks and direct programs are both fine.
 
 Reply in the user's language.
 
-## Step 1 — Inputs
+## Step 1 — Niche first
 
-Niche or product category, country/language, traffic type (parasite pages: forums, Medium, PDFs, press releases…), preferred models (CPA, RevShare, recurring), payout methods, networks the user already belongs to.
+If the user has no niche yet (beginner), show the niches and let them pick one — every niche is open to them; don't choose for them. Niches the author works with, then others that suit parasite SEO:
+
+| Niche | Typical offers | Notes |
+|---|---|---|
+| **Nutra / supplements** | weight loss, men's health, joints, sleep, sports nutrition | the author's main niche; direct programs pay 30–50% |
+| **Casino / gambling / betting** | casinos, sportsbooks, sweepstakes | high RevShare or CPA; legal only in some countries, many platforms ban these links — check GEO and the platform's rules first |
+| **Crypto** | exchanges, wallets, trading bots, prop firms | recurring RevShare; platforms and Google are strict — check rules |
+| **Roblox and gaming** | gift cards, game keys, gaming gear and accounts services | the audience is often under 18: only legitimate offers, never "free Robux" or gambling-style offers |
+| **Software / SaaS / AI tools** | VPN, hosting, AI writers, antivirus, SEO tools | recurring commissions, low refunds |
+| Others worth checking | dating, personal finance and loans, e-commerce and Amazon, online courses, pets, home and garden, travel | |
+
+Then the inputs: country / language, offers the user already runs, networks they belong to.
 
 ## Step 2 — Research
 
@@ -27,22 +38,24 @@ Delegate the search to the `affiliate-scout` agent (or do it yourself with web s
 
 ## Step 3 — Evaluate
 
-Score each program with `references/criteria.md`. Key checks:
-- **Demand** — the product is actually searched for (niche-analysis or the user's SEO tool).
-- **Commission** — rate and model; average order value; upsells that change the real payout.
-- **Traffic rules** — does the program allow content/SEO traffic from third-party platforms? Some big networks ban accounts for "low-quality" traffic sources; smaller programs and networks are usually glad of it. Ask the affiliate manager when unclear.
-- **Saturation** — products every affiliate pushes (spam-heavy marketplaces, constant refunds, aggressive price cuts) convert worse; prefer less crowded offers with real demand.
-- **Offer page** — converts? clear packages, guarantee? Red flags: lead-capture page before the sales page, pop-up forms, price on the page far below what the listing promised.
-- **Payout** — threshold reachable with the expected sales; network (one payout across many offers) vs many small direct programs (hard to reach minimums).
-- **Cookie and attribution** — longer cookie helps nofollow platforms where readers return later.
+**Search popularity comes first** — it is what the author looks at. For every candidate offer measure how often people search the product itself: "[product] review(s)", "[product] reviews complaints", "[product] vs …", "buy / coupon / discount [product]", "does [product] work". Popular in search = buyers already looking = a parasite page can catch them.
+- With the user's SEO API (DataForSEO recommended): monthly volume for these queries in the user's country. It is a paid call: name the number of offers and queries and the rough cost, and wait for a yes (`work-log` Rules: paid checks).
+- Without an API: free signals only — Google autocomplete for "[product] r…", Google Trends, "People also ask", how many review pages and videos exist — and mark the result "rough, no volumes".
+
+Then the filters:
+- **Commission at least 15%** of the sale (RevShare or CPA counted as a share of the average order). Below 15% → skip unless the user insists.
+- **Traffic rules** — content/SEO traffic from third-party platforms allowed? Unclear → "ask the manager".
+- **Payout** — threshold reachable; payment record.
+- **Country / legality** — for gambling, crypto, finance and supplements with medical claims: legal in the target country, allowed on the target platforms.
+Saturation, offer page quality and cookie are noted in the table but don't decide on their own.
 
 ## Step 4 — Output
 
 ```
 Programs for [niche] · checked [date]
-| Program | Network/direct | Model | Rate | Cookie | Min payout | Traffic rules | Saturation | Score |
+| Program | Network/direct | Searches/mo | Model | Rate | Cookie | Min payout | Traffic rules | Score |
 ```
-Recommend 1–3, one line why each. Suggest the content plan: high-commission lesser-known product → best-of comparison where it can be placed high **only if it genuinely fits**; known product with demand → single review + A vs B + packages page.
+Sort by search popularity. Recommend 1–3, one line why each ("~2,400 searches/mo for reviews, 40%, direct"). Suggest the content plan: high-commission lesser-known product → best-of comparison where it can be placed high **only if it genuinely fits**; known product with demand → single review + A vs B + packages page.
 
 ## Rules
 

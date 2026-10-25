@@ -2,8 +2,8 @@
 
 | Criterion | 0 | 1 | 2 |
 |---|---|---|---|
-| Search demand | none found | <100/mo | 100+/mo for product queries |
-| Commission | low | medium | strong for the niche |
+| Search popularity (weighs ×2) | none found | <100/mo | 100+/mo for product queries |
+| Commission | under 15% (skip) | 15–30% | over 30% or strong CPA |
 | Traffic rules | forbids content/SEO or third-party platforms | unclear | explicitly allowed |
 | Saturation | pushed by everyone, refund-heavy | moderate | few serious competitors |
 | Offer page | lead-capture first / broken / weak | average | clear packages, guarantee, converts |
@@ -13,7 +13,7 @@
 | Payment reliability | complaints of non-payment | unknown | good track record |
 | Support | none | slow | manager answers, gives creatives/coupons |
 
-15–20 promote · 10–14 test · <10 skip.
+Search popularity counts twice (max 22). 16+ promote · 11–15 test · ≤10 skip. Under 15% commission → skip regardless of score.
 
 ## Commission models
 - **CPA** — fixed payout per sale/lead.
