@@ -24,15 +24,17 @@ This skill needs keyword and SERP data. There are no free APIs that give it reli
 - If not, ask the user to export from their tool: keyword list with volume and difficulty, and the top-10 URLs for the main queries (CSV). Analyse the files.
 - With neither, run a limited manual version: send the main queries to the **`serp-analyst` agent** (SERP composition only, no volumes) and say so.
 
-Setup help for connectors: `references/seo-apis.md`.
+Setup help for connectors: `references/seo-apis.md` (DataForSEO recommended first).
+
+**API calls are paid** (the user's balance). Before pulling volumes or SERPs, say how many queries and the rough cost, and wait for a yes (`work-log` Rules: paid checks). Start small: the 20–50 most commercial queries, not every variation.
 
 ## Step 1 — Seed
 
-Product(s), category, competitors, country, language. Build seed queries with the 7 modifier clusters (comparison, distrust, purchase, package, experience, platform, evidence) — the same clusters the content-type-selector skill uses.
+Product(s), category, competitors, country, language. Build seed queries with the 7 modifier clusters (comparison, distrust, purchase, package, experience, platform, evidence) — the same clusters the content-type-selector skill uses. **Commercial intent only**: "best …", "[product] review(s)", "vs", "results", "legit / worth it", "complaints", "price / discount / coupon", "where to buy", "alternatives". Leave out "how to take / use", "what is", "dosage", "login", "customer service" — readers, not buyers.
 
 ## Step 2 — Demand
 
-Pull volumes for product + modifier queries. The author's rule: a product needs some real demand — even 100–500 searches/month confirms it. Completely unknown products only make sense inside a best-of comparison where they can be placed high honestly.
+Pull volumes for product + modifier queries; "[product] review" and "best [category]" are the first two to read — they show how popular the offer is in search (the author's main offer filter, see affiliate-finder). The author's rule: a product needs some real demand — even 100–500 searches/month confirms it. Completely unknown products only make sense inside a best-of comparison where they can be placed high honestly.
 
 ## Step 3 — SERP composition
 
@@ -52,7 +54,7 @@ Niche: [x] · [country] · data: [source, date]
 ```
 Opportunity = high when volume is real, buying intent is strong and ≥1 UGC/parasite platform is in the top 10.
 
-Then: top 5 keywords to target, which platforms rank for them (hand to platform-finder), and which content types fit (hand to content-type-selector). Add a short note on oversaturation: products every affiliate pushes (heavy spam, refunds) convert worse no matter the ranking.
+Then: top 5 keywords to target, which platforms rank for them in the top 10 (hand to platform-finder — those are proven platforms for this niche), and which content types fit, best-of lists first (hand to content-type-selector). Add a short note on oversaturation: products every affiliate pushes (heavy spam, refunds) convert worse no matter the ranking.
 
 ## Rules
 
