@@ -59,6 +59,8 @@ Sort by search popularity. Recommend 1–3, one line why each ("~2,400 searches/
 
 ## Rules
 
+- Recommend only programs found by public research for this user's niche (`affiliate-scout`, web search, the user's own networks). Never name programs, offers or numbers from the plugin author's own business, and never use a program name that appears only in the plugin's examples.
+
 - Only published, verifiable terms with source and date; unknown → "ask the manager".
 - No promoting products the user believes are scams; drop programs with clear deceptive funnels.
 - No earnings estimates presented as forecasts.
