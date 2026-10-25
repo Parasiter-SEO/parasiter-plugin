@@ -9,7 +9,8 @@
     {
       "name": "parasiter",
       "source": "./",
-      "description": "Parasite SEO workflow: platforms, content types that sell, sales reviews, page audits, post images, niches, affiliate programs, goals, a daily plan and a journal of work, traffic and sales with reports."
+      "description": "Parasite SEO for affiliate marketers, inside your AI assistant: find and analyze platforms, pick the content type that sells, write sales reviews, audit pages, create post images, analyze niches and affiliate programs, set goals, get a daily plan and keep a journal of work, traffic and sales with day/week/month reports, effectiveness by page, platform and offer, and a check queue for every page.",
+      "version": "0.16.0"
     }
   ]
 }
