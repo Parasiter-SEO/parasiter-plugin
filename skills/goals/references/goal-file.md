@@ -28,7 +28,6 @@ Corrections: —
 - Offers: 3 (VPN + two software tools)
 - Income expectation: $1,500/month by month 6
 - Time from now: 3 h/day, 5 days/week (15 h/week)
-- Model: own affiliate pages, depth over volume, US + UK
 
 ## Numbers used
 | Number | Value | Source |
