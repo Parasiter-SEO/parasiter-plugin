@@ -25,7 +25,9 @@ Read the user's affiliate links library `parasite-seo-links.csv` (`work-log` Mod
 
 ## Step 1 — Inputs
 
-If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for what is missing. Take everything the writer profile already answers from it (author, links, disclosure, style). Otherwise collect:
+If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for what is missing. Take everything the writer profile already answers from it (author, links, disclosure, style).
+
+**Ask at most 3–4 questions before writing, in one message** — the ones the profile, the brief, the links library and `product-researcher` can't answer (usually: product(s) and #1, link if missing, platform, and whether the user has used the product). Everything else gets a sensible default or a `[VERIFY: …]` mark listed in the operator checklist. What the article needs:
 
 1. **Product(s) and the affiliate link for each — always ask, before writing** (unless the profile's links library already has it; then confirm it in one line). "What is your affiliate link for [product]?" Do not start the article without it; if the user has no link yet, write `[AFFILIATE LINK: product]` placeholders and list them in the operator checklist. For "best of": 10, 14 or 15 products by default (fewer only if the user asks), the order, which one is #1, and a link for every product. Ask also whether a specific package/order page link converts better than the main one.
 2. **Content type**: single review, best-of comparison, A vs B, personal experience, complaints/doubts, packages/price guide.
@@ -53,7 +55,19 @@ Follow the template for the content type in `references/article-structure.md`. E
 
 1. **Title** — the value of the page, what the reader gets, a hint of the deal or decision. Must match what the page delivers 100%.
 2. **First image** — real or custom-generated (never stock): the author, the buyer, or the products in hand. It often becomes the Google snippet image.
-3. **Quick facts box, line by line** — the product's key characteristics one per line (what it is, for whom, main feature, format/size, price from, guarantee) **plus the current deals and discounts** with the last-checked date and the main link. For "best of": a line-by-line or table summary of all products with #1 marked. Many sales happen right here. Build it from the confirmed `product-researcher` table when there is one.
+3. **Quick facts box for the main product, line by line** — up to 10 lines, one parameter per line, then the link:
+   ```
+   Product: [name] (linked)
+   Price: from $49 (6-pack $39/bottle)
+   Quality: [one line — what it is made of / built on, the honest verdict on quality]
+   My rating: 9/10
+   Special offers: [current discount, coupon, bonus, free shipping — with "checked [date]"]
+   Guarantee: [refund days and terms]
+   Best for: [who]
+   [up to 3 more parameters that matter for this product: format/size, key ingredient or feature, delivery, subscription terms…]
+   👉 [Check today's price and offers](affiliate link)
+   ```
+   **My rating** is the author's honest score out of 10 with the reason in the review (what earned the points, what cost them); never 10/10 by default, and the same scale across the user's articles. Prices and offers from the confirmed `product-researcher` table or the user, with the last-checked date. For "best of": this box for #1, then a short table of all products with #1 marked. Many sales happen right here.
 4. **Author intro + hook** — who I am and why listen (Step 2), then the reader's problem → the solution → the bridge (how this product gets you there), then what this article will give them.
 5. **Table of contents** — headings that on their own tell the story of the article. Someone who reads only the TOC and the H2/H3 headings must understand the conclusion and why to buy.
 
@@ -67,7 +81,7 @@ Whatever the content type, the body always contains these five blocks. Templates
 2. **Product facts and how it solves the problem** — what the product is and how it works, fact by fact, each fact tied to the pain it answers ("Pain → what the product does about it → why that works"). Facts from the merchant or the user only.
 3. **Life after** — how the reader's day and life change once the problem is handled: concrete everyday scenes (mornings, work, money, relationships, confidence), what improves and why it matters. Write it as the picture the product is designed to deliver and what users typically report — never as a guaranteed result; health and money topics keep the honest limits.
 4. **Prices and current offers** — a dedicated block (in addition to the quick facts box): every package with price and price per unit, the best-value pick and why, current discount / coupon / bonus / free shipping / guarantee, last-checked date, CTA to the exact package page.
-5. **Comparison and alternatives** — almost every article compares the product with 2–3 competing products (table + "choose X if…") and gives **natural alternatives**: non-product or low-cost options (lifestyle changes, home and natural remedies, free tools or methods) with an honest note on when they are enough and when the product is the better choice. Skip the comparison only when the content type is a pure packages/price guide for one product, and say so in the operator checklist.
+5. **Comparison and alternatives** — every article, including single-product reviews, compares the product with 2–3 competing products or services (table + "choose X if…") and gives **honest alternatives**: other products or services, cheaper or free options, and in health topics also natural ones (lifestyle, home remedies) — with a plain note on when an alternative is enough and when the main product is the better choice. Readers trust this unbiased block, and it keeps them on the page instead of searching elsewhere.
 
 ## Step 4 — Conversion triggers
 
