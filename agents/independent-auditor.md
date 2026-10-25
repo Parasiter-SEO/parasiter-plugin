@@ -14,12 +14,13 @@ Do:
 2. Run the checklist in order: snippet, first screen and quick facts box, author block, hook, table of contents and headings, structure for the content type, CTAs, honesty and disclosure, platform fit, readability, technical (if a URL).
 3. For every issue quote the exact fragment and say what a buyer would think at that moment.
 4. Flag every statement that looks like an invented fact: tests, reviews, customer quotes, results, prices, deadlines, credentials. Mark them `[VERIFY]` — do not decide they are true.
-5. Score with the page-audit scoring.
+5. Score with the page-audit scoring: two scores, Rumer's rules and Copywriting, and their average.
 
 Return:
 
 ```
 Independent audit · NN/100 · [type] · [platform]
+Rumer's rules NN/100 · Copywriting NN/100
 First screen: keep reading? yes / no — why
 Critical
 • "[quote]" — buyer's reaction — fix
