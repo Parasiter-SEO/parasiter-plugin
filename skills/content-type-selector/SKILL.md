@@ -35,24 +35,34 @@ If the user does not know alternatives or modifiers, suggest them from the produ
 
 ## Step 2 — Generate topic candidates
 
-Use the 8 content types in `references/content-types.md` and the 7 query modifier clusters in `references/modifiers-and-serp.md`.
+**Commercial intent only.** Every topic must target a query people type when they are about to buy or choosing what to buy: "best …", "[product] review", "[product] vs …", "[product] results", "is [product] legit / worth it", "[product] complaints", "[product] price / discount / coupon", "where to buy [product]", "[product] alternatives". Drop informational queries — "how to take / how to use [brand]", "what is …", "dosage", "ingredients list", "login", "customer service", "cancel subscription": they bring readers, not buyers.
+
+Find the topics through the buyer's needs, not only the product name: what problem they want solved ("best … for men over 50", "best … for joint pain", "… that actually works") and what they search on the way to buying. Use web search: Google autocomplete for "best [category]" and "[product] r…/v…", People also ask, related searches, Reddit and forum questions — keep only the commercial ones.
+
+Use the 8 content types in `references/content-types.md` and the 7 query modifier clusters in `references/modifiers-and-serp.md`. The author's core formats, in this order:
+1. **Best-of lists** ("10 / 14 / 15 best … for …") — always offered, first in the list. At least 2 best-of topics in every set, each for a different need or audience.
+2. **Personal experience / my results** — when the user really used the product.
+3. **A vs B** — the product against its closest competitor or alternative.
+4. **Expert review** — the author's expertise and research, when there is no personal use.
+Then doubts ("legit", "complaints", "worth it") and purchase topics (packages, price, discount, shipping/warranty).
 
 Produce 8–12 concrete topic candidates. Default mix:
-- at least 3 comparisons (A vs B, alternatives, standard vs deluxe),
-- at least 2 doubts/complaints ("is it legit", "complaints", "worth it"),
-- at least 2 purchase topics (packages, price, discount, shipping/warranty/returns),
-- personal experience topics **only if the user actually has the experience**,
+- at least 2 best-of lists (first),
+- at least 2 comparisons (A vs B, alternatives, standard vs deluxe),
+- at least 2 doubts/complaints,
+- at least 1 purchase topic,
+- personal experience / my results **only if the user actually has the experience** — otherwise the expert-review angle,
 - research topics only if the user has (or will collect) real data.
 
-Each candidate = a working title + the content type + the buyer doubt it answers.
+Each candidate = a working title + the content type + the commercial query + the buyer doubt it answers.
 
 ## Step 3 — SERP gap check
 
-For the top candidates, run the SERP check in `references/modifiers-and-serp.md`: AI Overview, Reddit/forums, videos, shopping blocks, manufacturer pages — on mobile and desktop in the target country.
+For **every** candidate (web search is free), run the SERP check in `references/modifiers-and-serp.md`: AI Overview, Reddit/forums, videos, shopping blocks, manufacturer pages — on mobile and desktop in the target country.
 
-If web search is available, send the queries of the top 4–6 candidates to the **`serp-analyst` agent** in one batch (queries, country, language). It returns the top 10 per query, the SERP features, People also ask and the open gaps. If web search is not available, guide the user through the check step by step.
+If web search is available, send the queries of all candidates to the **`serp-analyst` agent** in one batch (queries, country, language). It returns the top 10 per query, the SERP features, People also ask and the open gaps. If web search is not available, guide the user through the check step by step.
 
-The question to answer for each topic: **which buyer question is still not answered well on this results page?** That gap is the topic. If there is no gap and no clear commercial action, drop it.
+The question to answer for each topic: **which buyer question is still not answered well on this results page?** That gap is the topic. Also check the intent: if the results page is mostly how-to guides, manufacturer FAQs or news, the query is not commercial — drop or reword it. If there is no gap and no clear commercial action, drop it.
 
 ## Step 4 — Score and pick
 
