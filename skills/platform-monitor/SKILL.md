@@ -31,7 +31,8 @@ Changed since [last check]:
 Platforms: [X] stopped indexing new posts · [Y] cleanup wave
 Alive: N of M pages
 ```
-3. Actions, most urgent first: republish removed pages elsewhere from the saved copy (platform-finder for a new home), refresh pages that dropped (page-audit), stop posting on platforms that stopped indexing.
+3. Actions, most urgent first: for removed pages, `work-log` `republish --url` (or `--platform X --gone-only` when several died on one platform) — it lists them with their saved sources, and each is rewritten for a new home (`rollout` / platform-finder); refresh pages that dropped (page-audit); stop posting on platforms that stopped indexing.
+4. **Platform cleanup** (a news item of kind `cleanup`, or several of the user's pages gone on one platform): `republish --platform X` at once — the user's pages there, which are already gone, and the source of each for republishing.
 
 ## Mode B — Manual check (Free)
 

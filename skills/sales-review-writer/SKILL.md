@@ -122,7 +122,8 @@ Without code execution, say once that the JPG cards appear automatically when th
    - If the user asks for a file, also give a .docx (or a Google Doc where connected) with the same text and images.
 2. Under the article, separately, a short **operator checklist**: facts to verify, placeholders left (marked `[VERIFY: …]`), images to create, links to check.
 3. Ask what to change. Iterate section by section; keep everything the user did not ask to change.
-4. Suggest running `page-audit` on the final text before publishing — it sends the text to the independent auditor, so the page is not graded by the same context that wrote it.
+4. When the user has worked the text over and publishes it, offer once to save the final .docx with the page (`work-log` Mode 11 `source`), so it can be republished if the page is removed.
+5. Suggest running `page-audit` on the final text before publishing — it sends the text to the independent auditor, so the page is not graded by the same context that wrote it.
 
 ## Step 7 — Roll the topic out to the user's other platforms
 

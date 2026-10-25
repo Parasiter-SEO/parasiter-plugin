@@ -72,7 +72,7 @@ python3 scripts/worklog.py add parasite-seo-progress.csv --event published --url
 
 **Program and campaign on every page.** `program` is the affiliate account the sales come from (must match the import's `--program`); `campaign` is the pack the page belongs to ("keto-pack-oct", 20 articles published together). These two are enough to count every sale. A **sub-ID** is a bonus: where the network supports it, it ties a sale to the exact page. Offer one (`md-1022-1`, see `references/sales-import.md`) but never block or nag — many programs, coupons and merchant sites cannot pass it.
 
-After a `published` row: offer page-audit if the page has no audit; with the server (Pro) call `monitor_track` (URL, main query, platform); remind once per session to keep a copy of the text. Confirm in one line ("Logged: Medium, sub-ID md-1022-1. Index check Oct 24. Audit now?").
+After a `published` row: offer page-audit if the page has no audit; with the server (Pro) call `monitor_track` (URL, main query, platform). If the user worked on the text themselves (edited, rewrote, added photos — not a plain AI draft), offer once to save its source with the page (Mode 11): "Save the .docx with this page so you can republish it if it's removed?" Confirm in one line ("Logged: Medium, sub-ID md-1022-1. Index check Oct 24. Audit now?").
 
 ## Mode 2 — Log sales
 
@@ -187,6 +187,18 @@ python3 scripts/worklog.py links parasite-seo-progress.csv [--program VitaBrand]
 - `links` lists every product with its link, how many live pages already cover it and on which platforms, and ends with **products with no pages yet** — the topics to write. Pick the platform with `ideas` / `coverage`.
 - After a new import, offer once: "N products have no pages — want a plan for them?"
 - These are the user's links: never replace them with other links, never shorten or cloak them; the platform's rules on affiliate links apply.
+
+## Mode 11 — My reviews: sources kept with their pages
+
+The user keeps the texts they really worked on (most people work in .docx) next to the published page, so a removed page or a whole platform cleanup costs minutes, not days.
+```
+python3 scripts/worklog.py source parasite-seo-progress.csv --url https://… --file "Flexotone review final.docx" [--note "v2 with my photos"]
+python3 scripts/worklog.py republish parasite-seo-progress.csv --platform pressbooks [--gone-only]
+python3 scripts/worklog.py republish parasite-seo-progress.csv --url https://…
+```
+- `source` copies the file into `parasite-seo-sources/` next to the journal (named date-platform-topic) and links it to the page. A newer source for the same page replaces the old one in lists; files are never deleted.
+- Only the user's own worked texts are worth saving. A plain AI draft is quicker to write again than to store — say so if the user asks to save every draft.
+- `republish` lists the user's pages on a platform (or one page) with status, topic, offer, position, earnings and the saved source; ★ and earning pages first. After a removal or a cleanup: each page is rewritten for its new home (new title and angle, the platform's format, current prices) from its source, or rebuilt from the topic and facts when there is none; pick the new home with `rollout --url` or platform-finder, then log the new page as `published` and the old one as `moved`.
 
 ## Mode 8 — Topics, priorities, top positions and what to write where
 

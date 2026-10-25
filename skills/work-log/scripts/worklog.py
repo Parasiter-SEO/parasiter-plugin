@@ -51,7 +51,7 @@ COLUMNS = ["date", "time", "event", "page_url", "platform", "offer", "program", 
 SALE_COLUMNS = ["date", "program", "network", "offer", "sub_id", "page_url", "order_id",
                 "amount", "commission", "currency", "status", "source", "note", "referer"]
 EVENTS = ["baseline", "published", "submitted", "check", "audit", "refreshed", "moved",
-          "platform", "traffic", "stats", "import", "task", "note", "tag"]
+          "platform", "traffic", "stats", "import", "task", "note", "tag", "source"]
 PRIORITIES = ["high", "normal", "low"]
 TOP = 10
 ALIVE = {"live", "indexed", "not-indexed", "dropped"}
@@ -68,7 +68,7 @@ LABELS = {"published": "published", "submitted": "sent to indexing", "check": "c
           "audit": "audits", "refreshed": "refreshed", "moved": "moved",
           "platform": "platforms tested", "traffic": "traffic entries",
           "stats": "stats entries", "import": "imports", "task": "other tasks",
-          "note": "notes", "baseline": "baseline", "tag": "tags"}
+          "note": "notes", "baseline": "baseline", "tag": "tags", "source": "sources saved"}
 
 # column aliases for exports (compared after normalising: lowercase, letters/digits only)
 SALE_ALIASES = {
@@ -2213,6 +2213,82 @@ def cmd_rollout(a):
         print("\nEach version: new title and angle, the platform's format, same verified facts and your links. Never a copy.")
 
 
+# ---------- sources: the user's own worked texts, kept to republish ----------
+
+def sources_dir(journal):
+    return os.path.join(os.path.dirname(os.path.abspath(journal)), "parasite-seo-sources")
+
+
+def page_sources(rows):
+    """page url -> latest saved source (relative path)."""
+    out = {}
+    for r in rows:
+        if r["event"] == "source" and r.get("page_url"):
+            note = r.get("note") or ""
+            if note.startswith("source: "):
+                out[r["page_url"]] = note[len("source: "):].split(" · ")[0]
+    return out
+
+
+def cmd_source(a):
+    """Save the source of a published page (the user's own .docx / .md / .txt) next to the journal."""
+    import shutil
+    rows = read_rows(a.journal)
+    pages = page_states(rows, date.today())
+    page = next((u for u in pages if norm_url(u) == norm_url(a.url)), None)
+    if not page:
+        sys.exit("That page is not in the journal: log it first (add --event published --url …).")
+    if not (a.file or a.text_file):
+        sys.exit("Give --file (the .docx / .md / .txt the user worked on).")
+    src = a.file or a.text_file
+    if not os.path.exists(src):
+        sys.exit(f"File not found: {src}")
+    d = sources_dir(a.journal)
+    os.makedirs(d, exist_ok=True)
+    plat = pages[page]["platform"] or platform_of(page)[0]
+    base = re.sub(r"[^a-z0-9]+", "-", " ".join(list(slug_words(page))[:6]).lower()).strip("-") or "page"
+    ext = os.path.splitext(src)[1].lower() or ".txt"
+    name = f"{date.today().isoformat()}-{plat}-{base}{ext}"
+    shutil.copyfile(src, os.path.join(d, name))
+    rel = f"parasite-seo-sources/{name}"
+    append(a.journal, COLUMNS, [journal_row(date=a.date or date.today().isoformat(), event="source", page_url=page,
+                                            platform=plat, note=f"source: {rel}" + (f" · {a.note}" if a.note else ""))])
+    print(f"Saved the source of {short(page)} → {rel}. If the page is removed, `republish --url` brings it back.")
+
+
+def cmd_republish(a):
+    """Pages to bring back after a removal or a platform cleanup, with their saved sources."""
+    today, rows, pages, sales = load(a)
+    srcs = page_sources(rows)
+    if a.url:
+        items = [p for u, p in pages.items() if norm_url(u) == norm_url(a.url)]
+    else:
+        pl = (a.platform or "").lower()
+        if not pl:
+            sys.exit("Give --platform or --url.")
+        items = [p for p in pages.values() if (p["platform"] or platform_of(p["url"])[0]).lower() == pl and not p["moved"]]
+        if a.gone_only:
+            items = [p for p in items if health(p) in GONE]
+    if not items:
+        print("No pages found for that platform or URL in the journal.")
+        return
+    earned = defaultdict(float)
+    for r in sales:
+        if r["_page"] and counted(r):
+            earned[r["_page"]] += r["_c"]
+    items.sort(key=lambda p: (PRIORITIES.index(p["priority"]), -earned[p["url"]], p["position"] or 999))
+    with_src = sum(1 for p in items if p["url"] in srcs)
+    print(f"# Republish · {a.platform or short(a.url)} · {len(items)} pages · {with_src} with a saved source\n")
+    print("| Page | Status | Topic | Offer | Pos. | Earned | Source |")
+    print("|---|---|---|---|---|---|---|")
+    for p in items:
+        print(f"| {short(p['url'], 50)} | {health(p)} | {p['topic_key']} | {p['offer'] or ''} | "
+              f"{p['position'] or ''} | {fmt(earned[p['url']]) if earned[p['url']] else ''} | {srcs.get(p['url'], 'none')} |")
+    print("\nOrder: ★ and earning pages first. With a source: rewrite it for the new platform (new title and angle, "
+          "the platform's format, current prices). Without one: rebuild from the topic and the facts box — "
+          "an AI draft is quicker to write again than to recover. Pick the new home with `rollout --url` or platform-finder.")
+
+
 def main():
     ap = argparse.ArgumentParser(description="PARASITER work, traffic and sales journal")
     ap.add_argument("--sales-file", help="sales file (default: parasite-seo-sales.csv next to the journal)")
@@ -2285,6 +2361,12 @@ def main():
     ir.add_argument("--map", action="append")
     ir.set_defaults(fn=cmd_import_ranks)
 
+    so = sub.add_parser("source"); common(so, today=False)
+    so.add_argument("--url", required=True); so.add_argument("--file"); so.add_argument("--text-file")
+    so.add_argument("--date"); so.add_argument("--note"); so.set_defaults(fn=cmd_source)
+    rp = sub.add_parser("republish"); common(rp)
+    rp.add_argument("--platform"); rp.add_argument("--url"); rp.add_argument("--gone-only", action="store_true")
+    rp.set_defaults(fn=cmd_republish)
     ro = sub.add_parser("rollout"); common(ro); ro.add_argument("--topic"); ro.add_argument("--url"); ro.set_defaults(fn=cmd_rollout)
 
     il = sub.add_parser("import-links"); common(il, today=False)

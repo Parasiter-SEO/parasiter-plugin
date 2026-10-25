@@ -15,7 +15,7 @@ Part of PARASITER by Rumer (Affiliate Credo).
 
 The feed is the author's live work: new platforms as he finds them, plugin updates, ideas and tips, weekly market analysis (what died, what came back, what Google changed), polls and announcements. It is updated as findings appear — several times a week, sometimes less. **Never describe it as daily.**
 
-The same news goes out in three places: here in Claude, in the Telegram channel of the user's plan (PARASITER Pro or PARASITER Insider), and — for Insider — the private group. Personal notifications (pages that died, weekly sales reminder, billing) come from the PARASITER bot.
+The same news goes out in three places: here in Claude, in the Telegram channel of the user's plan (PARASITER Pro or PARASITER Insider), and — for Insider — the private group. Personal notifications (the user's own pages that died — one summary a day, weekly sales reminder, billing) come from the PARASITER bot. Platform-wide news, including cleanups, goes to the channel only, never as personal messages, so nobody gets the same news twice.
 
 Reply in the user's working language.
 
@@ -39,8 +39,9 @@ Poll: [question] — [results so far, or "vote in the Telegram channel"]
 ```
    New platforms as a table when there are more than 3:
    `| Platform | Type | Language | Indexing | Links | Note from Rumer | Found |`
-3. Make it actionable for this user's niche, language and time: no live pages yet — one platform to try, with platform-analyzer first; otherwise 2–3 platforms to test this week and which of their platforms to reduce after the latest changes. For an `update`, say what the user can now do and the phrase to start it.
-4. Call `news_seen` after showing, so the navigator does not repeat it.
+3. **Cleanup items first** (kind `cleanup`: the server saw pages removed on a platform across many subscribers): if the user has pages there, run `work-log` `republish --platform X` and show their pages with the saved sources to republish; otherwise one line: don't post there for a few days.
+4. Make it actionable for this user's niche, language and time: no live pages yet — one platform to try, with platform-analyzer first; otherwise 2–3 platforms to test this week and which of their platforms to reduce after the latest changes. For an `update`, say what the user can now do and the phrase to start it.
+5. Call `news_seen` after showing, so the navigator does not repeat it.
 
 Plan shapes what comes back: Pro sees new platforms ~7 days after they are found, Insider the same day. On Pro you may mention once that Insider gets them first — no pressure.
 
