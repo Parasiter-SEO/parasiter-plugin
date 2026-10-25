@@ -86,7 +86,13 @@ Check the goal against the baseline with `references/planning-math.md`:
 3. **Survival** — pages likely still alive at the end, using the user's own past survival if the baseline has it.
 4. **Income chain** — target income → sales → clicks → live pages needed, from the user's own clicks and EPC (`work-log effect` once sales and traffic are logged). Where the baseline has none, use the labelled starting assumptions from `planning-math.md` and set the first milestone as "collect real data from the first 20 pages".
 
-Show one table: baseline, goal, what the time allows, gap. If there is a gap, offer three ways to close it and let the user pick: more time per week, a longer horizon, or a lower target. Never quietly lower the user's goal and never promise the income.
+Show one table: baseline, goal, what the time allows, gap. The income row is always labelled **possible income** (in the working language), never "income" or "you will earn": it is what the pages could bring at the user's own numbers, not a forecast. Example:
+```
+| | Now | Goal | Time allows | Gap |
+| Pages per week | 4 | 10 | 6 | −4 |
+| Live pages at the end | 112 | 250 | 190 | −60 |
+| Possible income / month | ~$2,000 | $5,000 | ~$3,400 (estimate) | −$1,600 |
+``` If there is a gap, offer three ways to close it and let the user pick: more time per week, a longer horizon, or a lower target. Never quietly lower the user's goal and never promise the income.
 
 ## Mode 4 — Break down
 

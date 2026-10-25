@@ -45,12 +45,12 @@ Corrections: —
 | New pages / week | 4 | — | ~3.75 on new pages + upkeep | — |
 | New pages in 6 months | — | ~158 needed for income | ~97 | −61 |
 | Live pages at the end | 30 | ~113 | ~76 | −37 |
-| Income / month | $400 | $1,500 | ~$1,000 at these numbers | −$500 |
+| Possible income / month | $400 | $1,500 | ~$1,000 at these numbers | −$500 |
 Options to close the gap: +9 h/week · or +4 months · or target ~$1,000/month
 Chosen: +4 months (horizon to 2027-08-19)
 
 ## Milestones
-| Month | Live pages | Platforms | Offers | Income checkpoint |
+| Month | Live pages | Platforms | Offers | Possible income checkpoint |
 |---|---|---|---|---|
 | 1 | 40 | 4 | 2 | measure clicks per page per platform |
 | 2 | 50 | 5 | 2 | … |
