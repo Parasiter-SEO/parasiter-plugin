@@ -10,7 +10,7 @@
 | Moderation | Read rules; look for removed threads; test a neutral post first | Post-moderation, light | Keyword blacklists, auto-removal, daily cleanups |
 | Account needs | Check others' successful posts: account age, post count | New accounts work | Warm-up needed (XenForo, Medium, LinkedIn: aged and active accounts) |
 | Format | Editor and limits | Full article, images, tables | Short character limit, no images, no links in first post |
-| Lifespan | Check how long competitors' posts lived (dates of indexed pages) | Months | Hours/days |
+| Stability (label only) | How long affiliate pages on it have lived (dates of indexed pages) | 2+ weeks = stable | Pages removed now = unstable; short life is still worth posting while it ranks |
 
 ## Patterns seen in 2025–2026 (from the author's group)
 

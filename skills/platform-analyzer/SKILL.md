@@ -1,6 +1,6 @@
 ---
 name: platform-analyzer
-description: Break down one parasite SEO platform before investing time in it — registration, indexing of fresh posts, noindex, link rules, moderation and keyword filters, account warm-up, content limits, SERP presence, lifespan and removal risk — and give a 0–100 score with a verdict on what to publish there. Use when the user asks "should I post on X", "is X still working", "analyze this platform/forum", or before the first post on a new platform.
+description: Break down one parasite SEO platform before investing time in it — affiliate reviews ranking in the top 10 there, registration, indexing of fresh pages, noindex, moderation and keyword filters, account warm-up, content limits, free or paid, stability — and give a 0–100 score with a verdict on what to publish there. Use when the user asks "should I post on X", "is X still working", "analyze this platform/forum", or before the first post on a new platform.
 ---
 
 # Platform Analyzer
@@ -13,7 +13,7 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-A platform is worth it when **review pages of affiliate products already rank there in the Google top 10, fresh pages get indexed, and pages survive long enough to sell.** Whether links on it are indexed or followed doesn't matter — the page itself being indexed does. Every verdict says whether the platform is **free** (users post) or **paid** (news, PR, sponsored).
+A platform is worth it when **review pages of affiliate products already rank there in the Google top 10 and fresh pages get indexed.** How long it will live doesn't decide anything: if it is in the top now, it goes to work now — even if it lives a day. A platform whose affiliate pages have lived 2+ weeks counts as **stable**. Whether links on it are indexed or followed doesn't matter — the page itself being indexed does. Every verdict says whether the platform is **free** (users post) or **paid** (news, PR, sponsored).
 
 Reply in the user's language.
 
@@ -37,7 +37,7 @@ Use web search / fetch where available; otherwise give the user each check as a 
 6. **Moderation** — pre-moderation, keyword blacklists (platforms block typical affiliate words), automatic AI spam removal, cleanup waves, bans.
 7. **Account needs** — warm-up (XenForo forums, Medium, LinkedIn need aged/active accounts), points systems, first-post limits.
 8. **Content format** — length/character limits, images, tables, editor (BBCode), title uniqueness.
-9. **Lifespan** — how long posts stayed in the past; cleanup history.
+9. **Stability label** (not a reason to skip) — how long affiliate pages on it have lived: 2+ weeks = stable, less or unknown = new, pages being removed now = unstable.
 10. **Fit** — does the platform's audience and format suit the content type and offer?
 
 ## Step 4 — Score
@@ -46,8 +46,8 @@ Score with `references/scoring.md` (0–100) and show:
 
 ```
 [Platform] · score NN/100 · checked [date]
-Free / Paid · Affiliate reviews in top 10: … | Indexing: … | Removal risk: … | Link: …
-Verdict: [publish / test 1–3 posts / skip]
+Free / Paid · Affiliate reviews in top 10: … | Indexing: … | Stability: stable / new / unstable | Link: …
+Verdict: [publish now / test 1–3 posts / skip] — affiliate reviews in the top 10 now = publish now
 Best content type here: …
 How to post: [account, title, link placement, tone]
 ```
