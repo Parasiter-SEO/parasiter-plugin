@@ -27,7 +27,7 @@ Read the user's affiliate links library `parasite-seo-links.csv` (`work-log` Mod
 
 If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for what is missing. Take everything the writer profile already answers from it (author, links, disclosure, style). Otherwise collect:
 
-1. **Product(s) and the affiliate link for each — always ask, before writing** (unless the profile's links library already has it; then confirm it in one line). "What is your affiliate link for [product]?" Do not start the article without it; if the user has no link yet, write `[AFFILIATE LINK: product]` placeholders and list them in the operator checklist. For "best of": 5, 7 or 10 products, the order, which one is #1, and a link for every product. Ask also whether a specific package/order page link converts better than the main one.
+1. **Product(s) and the affiliate link for each — always ask, before writing** (unless the profile's links library already has it; then confirm it in one line). "What is your affiliate link for [product]?" Do not start the article without it; if the user has no link yet, write `[AFFILIATE LINK: product]` placeholders and list them in the operator checklist. For "best of": 10, 14 or 15 products by default (fewer only if the user asks), the order, which one is #1, and a link for every product. Ask also whether a specific package/order page link converts better than the main one.
 2. **Content type**: single review, best-of comparison, A vs B, personal experience, complaints/doubts, packages/price guide.
 3. **Platform** where it will be published (decides length, tone and formatting — see `references/platform-formats.md`).
 4. **Author profile** — required, see Step 2.
