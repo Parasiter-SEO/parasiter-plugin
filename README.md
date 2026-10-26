@@ -100,3 +100,7 @@ No fake reviews, tests, results, credentials, prices or deadlines. Personal expe
 Google acts against site reputation abuse, platforms change moderation and remove pages, affiliate and payment networks can block traffic sources or niches. Spread pages across platforms, keep copies of every text, monitor.
 
 © Rumer / Affiliate Credo. Licensed for the subscriber's personal use; redistribution of the plugin or server data is not permitted.
+
+## Privacy
+
+Privacy policy: https://parasiter.affiliatecredo.com/privacy-en.html
