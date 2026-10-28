@@ -11,6 +11,10 @@ Start every reply produced by this skill with one line naming it, so the user al
 `▸ PARASITER · platform-analyzer`
 If you called agents for this reply, add them after an arrow: `▸ PARASITER · platform-analyzer → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
 
+## Next steps (end of every reply)
+
+The user should always see where to go next without asking. End each reply with one short line of 2–3 options that fit what just happened, each with the phrase to say, e.g. `Next: `content-type-selector` (what sells there) · `sales-review-writer` (write the first test post) · `platform-finder` (more like it).` Offer only what their plan includes; a Pro/Insider feature on Free is named once with its plan in brackets. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**." Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 A platform is worth it when **review pages of affiliate products already rank there in the Google top 10 and fresh pages get indexed.** How long it will live doesn't decide anything: if it is in the top now, it goes to work now — even if it lives a day. A platform whose affiliate pages have lived 2+ weeks counts as **stable**. Whether links on it are indexed or followed doesn't matter — the page itself being indexed does. Every verdict says whether the platform is **free** (users post) or **paid** (news, PR, sponsored).

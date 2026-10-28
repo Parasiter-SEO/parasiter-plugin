@@ -11,6 +11,10 @@ Start every reply produced by this skill with one line naming it, so the user al
 `▸ PARASITER · affiliate-finder`
 If you called agents for this reply, add them after an arrow: `▸ PARASITER · affiliate-finder → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
 
+## Next steps (end of every reply)
+
+The user should always see where to go next without asking. End each reply with one short line of 2–3 options that fit what just happened, each with the phrase to say, e.g. `Next: `niche-analysis` (is the niche open) · `content-type-selector` (first topic for the offer) · save your affiliate links to the profile.` Offer only what their plan includes; a Pro/Insider feature on Free is named once with its plan in brackets. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**." Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 Choose the offer before writing a word: a strong page for a bad offer earns nothing. The author's filter: **the offer is popular in search, the commission is at least 15%, and the program accepts traffic from public platforms.** Networks and direct programs are both fine.

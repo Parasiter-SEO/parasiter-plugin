@@ -11,6 +11,10 @@ Start every reply produced by this skill with one line naming it, so the user al
 `▸ PARASITER · platform-feed`
 If you called agents for this reply, add them after an arrow: `▸ PARASITER · platform-feed → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
 
+## Next steps (end of every reply)
+
+The user should always see where to go next without asking. End each reply with one short line of 2–3 options that fit what just happened, each with the phrase to say, e.g. `Next: `platform-analyzer` on a new platform · `content-type-selector` for it · connect Telegram for alerts.` Offer only what their plan includes; a Pro/Insider feature on Free is named once with its plan in brackets. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**." Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 The feed is the author's live work: new platforms as he finds them, plugin updates, ideas and tips, weekly market analysis (what died, what came back, what Google changed), polls and announcements. It is updated as findings appear — several times a week, sometimes less. **Never describe it as daily.**

@@ -2,6 +2,11 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.17.1 — 2026-10-28
+- Every page you log or import goes on daily server monitoring automatically (Pro / Insider) — no need to ask.
+- Every skill ends its reply with 2–3 next steps and what to say; "help" shows all functions.
+- client-reports: pages without data show "—", not $0; commission by program and month per currency; reversed orders excluded.
+
 ## 0.17.0 — 2026-10-28
 - client-reports: every report now also comes as a designed document — PDF (A4) and a private page with KPI tiles, charts, findings, next actions and a pages table (`scripts/visual_report.py`).
 - help: support via @parasiter_bot; public channel @parasiter_plugin.

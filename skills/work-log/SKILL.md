@@ -11,6 +11,10 @@ Start every reply produced by this skill with one line naming it, so the user al
 `▸ PARASITER · work-log`
 If you called agents for this reply, add them after an arrow: `▸ PARASITER · work-log → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
 
+## Next steps (end of every reply)
+
+The user should always see where to go next without asking. End each reply with one short line of 2–3 options that fit what just happened, each with the phrase to say, e.g. `Next: `client-reports` (what earns, with charts and PDF) · topics missing on your strong platforms (coverage / rollout) · position check of new pages (paid, cost shown first).` Offer only what their plan includes; a Pro/Insider feature on Free is named once with its plan in brackets. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**." Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 Parasite SEO is measured in sales, not positions. This skill keeps three things in one place: **what was done** (pages, checks, audits), **what traffic came** (views, affiliate clicks) and **what it earned** (every sale, tied to its page). A page that is in the journal gets checked — alive, still indexed, follows the conversion rules. A sale that is in the journal tells which page, platform, offer and content type actually pay.
@@ -72,7 +76,7 @@ python3 scripts/worklog.py add parasite-seo-progress.csv --event published --url
 
 **Program and campaign on every page.** `program` is the affiliate account the sales come from (must match the import's `--program`); `campaign` is the pack the page belongs to ("keto-pack-oct", 20 articles published together). These two are enough to count every sale. A **sub-ID** is a bonus: where the network supports it, it ties a sale to the exact page. Offer one (`md-1022-1`, see `references/sales-import.md`) but never block or nag — many programs, coupons and merchant sites cannot pass it.
 
-After a `published` row: offer page-audit if the page has no audit; with the server (Pro) call `monitor_track` (URL, main query, platform). If the user worked on the text themselves (edited, rewrote, added photos — not a plain AI draft), offer once to save its source with the page (Mode 11): "Save the .docx with this page so you can republish it if it's removed?" Confirm in one line ("Logged: Medium, sub-ID md-1022-1. Index check Oct 24. Audit now?").
+After a `published` row: offer page-audit if the page has no audit. **With the server (Pro / Insider), every page that enters the journal — published, imported (Mode 0) or added from a list — goes on daily monitoring automatically: call `monitor_track` (URL, main query, platform) without asking**, and say it in the confirmation line ("+ daily monitoring"). Removed or dropped pages come off it with `monitor_track` remove. If the user worked on the text themselves (edited, rewrote, added photos — not a plain AI draft), offer once to save its source with the page (Mode 11): "Save the .docx with this page so you can republish it if it's removed?" Confirm in one line ("Logged: Medium, sub-ID md-1022-1. Index check Oct 24. Audit now?").
 
 ## Mode 2 — Log sales
 

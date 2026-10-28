@@ -11,6 +11,10 @@ Start every reply produced by this skill with one line naming it, so the user al
 `▸ PARASITER · navigator`
 If you called agents for this reply, add them after an arrow: `▸ PARASITER · navigator → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
 
+## Next steps (end of every reply)
+
+The user should always see where to go next without asking. End each reply with one short line of 2–3 options that fit what just happened, each with the phrase to say, e.g. `Next: run the first task of the plan · `goals` (am I on track?) · `client-reports` (what earned this week).` Offer only what their plan includes; a Pro/Insider feature on Free is named once with its plan in brackets. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**." Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 PARASITER is built for affiliates who earn with parasite SEO. Other roles get a smaller toolset and no daily plan (Step 0).
@@ -76,7 +80,7 @@ First session of a new week with a goals file → run the `goals` weekly review 
 - **Progress since last session**: ask in one line what was done if the journal has nothing new ("Published anything since Thursday? Any sales?"), and log it through the `work-log` skill.
 - **Check queue**: run `work-log` `due`. Imported pages never checked → one bulk check is today's first task. Sales reports to upload, pages that were removed, not indexed after 14 days, due an alive/index check or a conversion audit, scored under 70, or have no sub-ID become candidate tasks for today.
 - **Sales upload**: on the first session of the week, if `due` lists programs without sales reported for 7 days, ask for those exports before planning ("Upload last week's sales from ClickBank and Impact — export from Oct 15 to today"). Then show last week's sales and commission in one line.
-- **Server, if connected** (`monitor_status`, `news_latest`, `account_info`): dead, noindexed or dropped pages; plan (Pro / Insider) and limits.
+- **Server, if connected** (`monitor_status`, `news_latest`, `account_info`): dead, noindexed or dropped pages; plan (Pro / Insider) and limits. If journal pages are missing from monitoring (first session after connecting the key, or pages logged without the server), add them with `monitor_track` silently and mention it in one line ("25 pages now on daily monitoring").
 - **What's new**: if `news_latest` has unseen items, show them in 2–4 lines ("Since your last session: 3 new platforms, PARASITER 0.5 — sales import from Excel"), turn the useful ones into candidate tasks, then `news_seen`. Full list on request through `platform-feed`.
 - **Telegram, once**: a Pro or Insider user whose `account_info` shows Telegram not linked gets one line, once per conversation and only until they decline: "Want news, page alerts and the [Pro / Insider] channel in Telegram? Say *connect Telegram*."
 

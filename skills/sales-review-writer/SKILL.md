@@ -11,6 +11,10 @@ Start every reply produced by this skill with one line naming it, so the user al
 `▸ PARASITER · sales-review-writer`
 If you called agents for this reply, add them after an arrow: `▸ PARASITER · sales-review-writer → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
 
+## Next steps (end of every reply)
+
+The user should always see where to go next without asking. End each reply with one short line of 2–3 options that fit what just happened, each with the phrase to say, e.g. `Next: `page-audit` (score before publishing) · `post-illustrations` (cover and infographic) · `work-log` (log the published URL — it goes on daily monitoring automatically) · roll the topic out to your other platforms.` Offer only what their plan includes; a Pro/Insider feature on Free is named once with its plan in brackets. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**." Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 Core idea: **you are not sending traffic, you are sending buyers.** Most reviews online are no-name, generic AI retellings of the product page. This article wins because a real author with a clear point of view leads the reader from the problem to the decision and to the purchase page, prepared to buy.

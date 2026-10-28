@@ -11,6 +11,10 @@ Start every reply produced by this skill with one line naming it, so the user al
 `▸ PARASITER · page-audit`
 If you called agents for this reply, add them after an arrow: `▸ PARASITER · page-audit → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
 
+## Next steps (end of every reply)
+
+The user should always see where to go next without asking. End each reply with one short line of 2–3 options that fit what just happened, each with the phrase to say, e.g. `Next: `sales-review-writer` (apply the fixes) · `independent-auditor` second opinion · `post-illustrations` (snippet photo).` Offer only what their plan includes; a Pro/Insider feature on Free is named once with its plan in brackets. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**." Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered.
+
 Part of PARASITER by Rumer (Affiliate Credo).
 
 Ranking is not the problem — conversion is. A page that ranks but does not sell usually fails in the first screen: no reason to trust the author, no clear offer, no decision help. This audit checks the page the way a buyer reads it.
