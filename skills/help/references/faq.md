@@ -88,3 +88,7 @@ Describe what happened; Claude tries the step again. If it still fails — Insid
 
 ## Can I share the plugin?
 No: licensed for the subscriber's personal use; redistribution of the plugin or server data is not permitted.
+
+## Where do I report a bug, send an idea or ask Rumer?
+
+Telegram bot @parasiter_bot (https://t.me/parasiter_bot), on any plan including Free: `/bug` what happened, what you asked and what you expected; `/idea` a feature or platform you want; `/feedback` a review; `/support` any other question. Rumer answers in the bot, usually within a day. Never send your key there. Billing and refunds: sales@affiliatecredo.com.
