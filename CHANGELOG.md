@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.17.0 — 2026-10-28
+- client-reports: every report now also comes as a designed document — PDF (A4) and a private page with KPI tiles, charts, findings, next actions and a pages table (`scripts/visual_report.py`).
+- help: support via @parasiter_bot; public channel @parasiter_plugin.
+
 ## 0.16.2 — 2026-10-28
 
 - **Plugin + connector explained.** The navigator now tells a paying user whose server isn't connected that PARASITER has two parts (plugin and connector), and gives the steps for Claude Code and for the Claude app. Help (how-to) explains the same.

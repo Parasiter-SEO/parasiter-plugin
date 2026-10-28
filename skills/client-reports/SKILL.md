@@ -76,9 +76,19 @@ What worked / What didn't / Next 5 actions
 ```
 For an affiliate, the report is their asset review: what the base is worth now (live pages, top-3 pages, what earns), followed by the scale plan from Step 3b.
 
+## Step 4a — Visual report (always, with every report)
+
+Every report also comes out as a designed document, not only text in the chat. After the numbers are computed:
+1. Write a JSON spec (format in the header of `scripts/visual_report.py`): title, client/project, period, prepared by, date; 4–6 KPI tiles; 2–4 charts (`bars` for money by month and program, `line` for a trend, `hbars` for platforms, content types or offers); "What worked", "What needs attention", "Next 5 actions"; a table of top or new pages with links; a footnote saying where the numbers come from.
+2. Run `python3 scripts/visual_report.py spec.json --out <name>`. It writes `<name>.html` (self-contained, inline charts, light and dark) and `<name>.pdf` (A4) when Playwright, WeasyPrint or Chrome is available.
+3. Deliver both: the PDF as a file, and the HTML as a private artifact/page when the session can publish one (Claude app). In Claude Code, give the file paths. No PDF engine? Say so in one line and tell the user to open the HTML and print to PDF.
+4. Open the PDF (or render a page image) and look at it before sending: no overlapping labels, no empty half-pages, every number matches the chat summary.
+
+Rules for the document: numbers only from the user's data, each currency labelled (never add $ and € together), partial periods marked (e.g. "October to the 28th"), pending vs approved commission named, estimates labelled. Keep the chat reply short: the headline numbers, the 3 main conclusions and the files.
+
 ## Step 4b — Client report (agency role only)
 
-For the SEO specialist / agency role: a clean document version for the client; keep internal notes (platform sources, methods) out of client-facing text unless the user wants them in.
+For the SEO specialist / agency role: the same visual report (Step 4a) addressed to the client: "Client" = the client's name, "Prepared by" = the agency, in the client's language. Keep internal notes (platform sources, methods, the user's other clients) out of client-facing text unless the user wants them in. Ask once for the agency name and logo text if unknown.
 
 ## Rules
 
