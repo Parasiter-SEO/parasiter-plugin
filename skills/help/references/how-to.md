@@ -88,7 +88,7 @@ First session of the week, or "am I on track?" → `goals` compares plan and fac
 "Make a report for my client for October" → `client-reports`, built from the journal; internal notes kept out unless you want them.
 
 ## Connect your key (Pro, Insider)
-The key comes in the welcome email after payment. It connects the plugin to the PARASITER server: checked platform database and feed, news, weekly analysis, daily page checks, Telegram.
+PARASITER has two parts, and paid plans need both: the **plugin** (skills and agents: the method, articles, audits, journal; works without a key as Free) and the **connector** (your key: the link to the server). The key comes in the welcome email after payment. It connects the plugin to the PARASITER server: checked platform database and feed, news, weekly analysis, daily page checks, Telegram. Install the plugin first, then connect the key. Lost the steps? The bot sends them again: /setup.
 - **Claude Code:** the plugin asks for "PARASITER key" when you enable it; paste the key. To change it later, reconfigure the plugin's options.
 - **Claude desktop / claude.ai:** add a custom connector named PARASITER with the personal URL from the email (`https://parasiter.affiliatecredo.com/mcp/<your key>`). The URL contains the key: never share it.
 Check: say "my PARASITER plan" → `account_info` shows the plan and until when. Never paste the key into the chat.

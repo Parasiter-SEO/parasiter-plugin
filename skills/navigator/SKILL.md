@@ -82,6 +82,12 @@ First session of a new week with a goals file → run the `goals` weekly review 
 
 Report changes in 2–4 lines, most urgent first. If the server is not connected, skip it silently; mention once per conversation that live platforms and monitoring come with a Pro key.
 
+**Bought a plan but the server isn't connected** (the user says they paid, has a key, or asks why the feed/monitoring don't work, and no PARASITER server tools are present): explain in 3–4 lines that PARASITER has two parts and both are needed. The **plugin** (skills and agents) is already working; the **connector** (their key) links it to the server. Then the steps for where they work:
+- **Claude Code:** reconfigure the plugin and paste the key when it asks for "PARASITER key".
+- **Claude desktop / claude.ai:** Settings → Connectors → Add custom connector, name PARASITER, URL `https://parasiter.affiliatecredo.com/mcp/<key>` (the full URL is in the welcome email), then turn it on in the chat ("+" → Connectors).
+- **Check:** "my PARASITER plan" → `account_info` shows the plan and end date.
+Never ask for the key or the URL in the chat.
+
 ## Step 3 — The user's own plan, or today's plan
 
 Two ways to start the day — the user chooses:

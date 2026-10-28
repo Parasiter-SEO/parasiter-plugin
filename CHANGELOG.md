@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.16.2 — 2026-10-28
+
+- **Plugin + connector explained.** The navigator now tells a paying user whose server isn't connected that PARASITER has two parts (plugin and connector), and gives the steps for Claude Code and for the Claude app. Help (how-to) explains the same.
+
 ## 0.16.0 — 2026-10-25
 
 - **Rumer's rule in your goals:** the minimum working base is about 10 platforms and 100 live posts. If your goal is below it, the plan says so and climbs toward it first; the daily plan shows where you are ("6/10 platforms, 48/100 posts · top 3: 4/15"). Posts in the top 3 are tracked as a milestone: that is where sales start.
