@@ -85,7 +85,7 @@ Kept in the user's project folder, written by the skills:
 | Insider group | Insider | discussion with Rumer and members, polls, questions |
 | PARASITER bot | Pro and Insider | linking, invites, personal notifications: one daily summary of your pages that got worse, Monday sales reminder, news digest, billing, warnings before a scheduled paid check (run / only ★ / skip / change) |
 
-Free: no server and no Telegram chats; the public channel @rumerparasiteseo is open to everyone.
+Free: no server and no Telegram chats; the public channel @parasiter_plugin (https://t.me/parasiter_plugin) is open to everyone: plugin news, new features and how-tos.
 
 ## What PARASITER does not do
 
