@@ -32,7 +32,7 @@ Sub-IDs are a bonus, not a requirement: many sales can't be tied to a page, and 
 
 ## Step 2 — Join and compute
 
-Run `scripts/report.py` when code execution is available (CSV in → per-page and per-group tables out); otherwise compute in the conversation. Metrics (definitions in `references/metrics.md`):
+Run `scripts/report.py log.csv --sales parasite-seo-sales.csv` when code execution is available (CSV in → per-page and per-group tables, plus commission by program and month per currency out); otherwise compute in the conversation. Pages without numbers stay "—" (unknown), never $0. Metrics (definitions in `references/metrics.md`):
 - Revenue per publication, EPC, conversion rate.
 - RPM_SERP = (clicks / impressions) × (sales / clicks) × avg commission × 1000 — only where impressions exist.
 - Age of each page, alive/indexed status (from platform-monitor if connected), position and how many pages are in the top 3 (where sales start).
