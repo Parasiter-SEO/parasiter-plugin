@@ -18,7 +18,8 @@ Spec (all keys optional except title):
              {"type": "line",  "title": "...", "labels": [...], "series": [...], "unit": "$"}],
   "tables": [{"title": "...", "columns": ["Page", "Platform"], "rows": [["<a href=...>..</a>", "..."]], "note": "..."}],
   "sections": [{"title": "What worked", "items": ["...", "..."]}],
-  "footnote": "Numbers come from ... Estimates are labelled."
+  "footnote": "Numbers come from ... Estimates are labelled.",
+  "pdf_link": "report.pdf"   (adds a "Download PDF" button; publish the PDF next to the page under this name)
 }
 Text is escaped except table cells that start with "<a " (links). Numbers in values must be plain numbers.
 """
@@ -162,6 +163,7 @@ h1{font-size:28px;line-height:1.15;margin:4px 0 4px;letter-spacing:-.02em}
 .sub{color:var(--ink2);margin:0}
 .meta{text-align:right;font-size:13px;color:var(--ink2)}
 .meta b{color:var(--ink);font-weight:600}
+.dl{display:inline-block;margin-top:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:7px 14px;border-radius:8px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:10px;margin-bottom:18px}
 .kpi{background:var(--soft);border-radius:10px;padding:12px 14px}
 .kpi .l{font-size:12px;color:var(--ink2)}
@@ -197,8 +199,18 @@ li{margin:4px 0}
 .foot{font-size:12px;color:var(--muted);margin-top:18px;border-top:1px solid var(--line);padding-top:10px}
 @media (max-width:640px){.grid2,.secs{grid-template-columns:1fr}.meta{text-align:left}.hb{grid-template-columns:1fr auto}.hl{grid-column:1/-1}}
 @page{size:A4;margin:14mm 12mm}
-@media print{:root{--paper:#fff}body{font-size:12.5px}main{padding:0;max-width:none}.card{border-color:#ddd}a{color:inherit}}
+@media print{.dl{display:none}:root{--paper:#fff}body{font-size:12.5px}main{padding:0;max-width:none}.card{border-color:#ddd}a{color:inherit}}
 """
+
+
+# In a published Claude artifact a plain download link does nothing: the "downloads" capability saves the file
+# (publish with capabilities {"downloads": true}). Opened as a local file, the normal link works.
+DL_JS = """<script>
+(function(){var a=document.querySelector('a.dl');if(!a||!window.claude||!claude.use)return;
+claude.use('downloads').then(function(d){if(!d)return;a.addEventListener('click',function(e){e.preventDefault();
+fetch(a.getAttribute('href')).then(function(r){if(!r.ok)throw 0;return r.blob()}).then(function(b){
+return d.save({filename:a.getAttribute('href').split('/').pop(),data:b})}).catch(function(){})})});})();
+</script>"""
 
 
 def render(spec):
@@ -206,13 +218,15 @@ def render(spec):
                  + (f'<div class="n">{E(k["note"])}</div>' if k.get("note") else "") + "</div>" for k in spec.get("kpis", []))
     secs = [section(s) for s in spec.get("sections", [])]
     blocks = [chart(c) for c in spec.get("charts", [])] + ([f'<div class="secs">{"".join(secs)}</div>'] if secs else []) + [table(t) for t in spec.get("tables", [])]
+    pdf = spec.get("pdf_link") or ""
+    dl = f'<a class="dl" href="{E(pdf)}" download>Download PDF</a>' if pdf else ""
     meta = "".join(f"<div>{E(a)}: <b>{E(spec[k])}</b></div>" for k, a in (("client", "Client"), ("period", "Period"), ("prepared_by", "Prepared by"), ("date", "Date")) if spec.get(k))
     foot = f'<p class="foot">{E(spec["footnote"])}</p>' if spec.get("footnote") else ""
     return (f'<!doctype html><html lang="{E(spec.get("lang", "en"))}"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(spec["title"])}</title><style>{CSS}</style></head>'
             f'<body><main><header class="top"><div><div class="eyebrow">{E(spec.get("eyebrow", "Report"))}</div><h1>{E(spec["title"])}</h1>'
-            f'<p class="sub">{E(spec.get("subtitle", ""))}</p></div><div class="meta">{meta}</div></header>'
-            f'<div class="kpis">{kp}</div><div class="grid2">{"".join(blocks)}</div>{foot}</main></body></html>')
+            f'<p class="sub">{E(spec.get("subtitle", ""))}</p></div><div class="meta">{meta}{dl}</div></header>'
+            f'<div class="kpis">{kp}</div><div class="grid2">{"".join(blocks)}</div>{foot}</main>{DL_JS if pdf else ""}</body></html>')
 
 
 def to_pdf(html_path: Path, pdf_path: Path) -> str:

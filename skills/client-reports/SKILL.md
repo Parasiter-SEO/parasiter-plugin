@@ -81,7 +81,11 @@ For an affiliate, the report is their asset review: what the base is worth now (
 Every report also comes out as a designed document, not only text in the chat. After the numbers are computed:
 1. Write a JSON spec (format in the header of `scripts/visual_report.py`): title, client/project, period, prepared by, date; 4–6 KPI tiles; 2–4 charts (`bars` for money by month and program, `line` for a trend, `hbars` for platforms, content types or offers); "What worked", "What needs attention", "Next 5 actions"; a table of top or new pages with links; a footnote saying where the numbers come from.
 2. Run `python3 scripts/visual_report.py spec.json --out <name>`. It writes `<name>.html` (self-contained, inline charts, light and dark) and `<name>.pdf` (A4) when Playwright, WeasyPrint or Chrome is available.
-3. Deliver both: the PDF as a file, and the HTML as a private artifact/page when the session can publish one (Claude app). In Claude Code, give the file paths. No PDF engine? Say so in one line and tell the user to open the HTML and print to PDF.
+3. Deliver both, every time:
+   - **Dashboard page**: when the session can publish an artifact/page (Claude app), set `"pdf_link": "<name>.pdf"` in the spec, run the script, and publish the HTML as a private artifact with the PDF attached next to it under that same name and the `downloads` capability declared (`{"downloads": true}`) — the page then has a working "Download PDF" button. Private until the user shares it.
+   - **PDF file**: also send the PDF itself.
+   - In Claude Code (no publishing): give both file paths; the HTML opens in any browser as the dashboard.
+   - No PDF engine? Say so in one line; the user opens the HTML and prints to PDF.
 4. Open the PDF (or render a page image) and look at it before sending: no overlapping labels, no empty half-pages, every number matches the chat summary.
 
 Rules for the document: numbers only from the user's data, each currency labelled (never add $ and € together), partial periods marked (e.g. "October to the 28th"), pending vs approved commission named, estimates labelled. Keep the chat reply short: the headline numbers, the 3 main conclusions and the files.
