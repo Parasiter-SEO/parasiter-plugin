@@ -2,20 +2,20 @@
 
 Parasite SEO inside your AI assistant, built for **affiliate marketers**: you publish review pages on platforms Google already trusts, readers click your affiliate link, you earn the commission. Skills and agents find platforms, pick the content type that sells, write the review, audit the page, track every sale, and tell you what to do next.
 
-**Who it's for:** affiliate marketers who earn with parasite SEO, at any stage — want to start, already working, professional or veteran. Only they get the full system.
+**Who it's for:** two full routes — **affiliate marketers** who earn with parasite SEO, at any stage, and **agencies** (SEO and marketing agencies, freelancers, in-house teams) running parasite SEO for clients.
 
-On first run the navigator asks who you are and what for. SEO specialists and agencies, bloggers and course authors (own product) get only the tools that fit their work, without goals and the daily plan:
+On first run the navigator asks who you are and what for. Agencies get their own route; bloggers and course authors (own product) get only the tools that fit their work, without goals and the daily plan:
 
 | Role | Tools |
 |---|---|
-| Affiliate (parasite SEO) | Everything |
-| SEO specialist / agency | content types, page audit, images, platform finder / feed / analyzer / monitor, journal of pages, niche analysis, client reports |
+| Affiliate (parasite SEO) | Goals, daily plan, journal with sales, every affiliate skill |
+| Agency (SEO / marketing, freelancers, in-house) | A folder per client, onboarding brief, brand and site audit, monthly content plan with client approval, brand-mode texts, images in the client's style, audits, brand-safe platforms, monitoring, positions, GA4 + Search Console traffic, monthly white-label reports |
 | Blogger / content creator | content types, sales reviews, page audit, images, journal, affiliate programs, niche analysis |
 | Course author / own product | content types, page audit, images, platform finder / feed / analyzer / monitor, journal of pages |
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
-> **Status: private beta (v0.13.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.18.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
@@ -45,6 +45,8 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | `niche-analysis` | Keywords and SERPs via your own SEO tool API |
 | `affiliate-finder` | Finds and scores affiliate programs (with agent) |
 | `client-reports` | Performance analytics and client reports from your data |
+| `client-workspace` | Agencies: clients, onboarding brief, Search Console / GA4 access, UTM, Month 0 baseline, content plan with approval, today's plan across clients, monthly report cycle |
+| `brand-presence` | Agencies: client site quick audit, brand profiles on socials and platforms, content audit, profiles plan (with agent) |
 | `help` | Built-in help: what each skill does, how to do any task step by step, plans, files, privacy. Ask "what can PARASITER do?" or "how do I …?" |
 
 ## Agents
@@ -58,6 +60,7 @@ Skills hold the method; agents do the heavy research and checking in their own c
 | `product-researcher` | `sales-review-writer` | Collects current specs, packages, prices, discounts, shipping and guarantee from the merchant's own pages for the quick facts box |
 | `serp-analyst` | `content-type-selector`, `niche-analysis` | Breaks down the top 10 for buyer queries: formats, parasite platforms, SERP features, open buyer questions |
 | `page-checker` | `platform-monitor`, `work-log` | Checks lists of your pages: live, noindex, indexed, affiliate link working, position |
+| `brand-auditor` | `brand-presence`, `client-workspace` | Finds and opens a client brand's profiles and key site pages: exist, complete, consistent, last activity, links; site quick checks; what the brand publishes |
 | `independent-auditor` | `page-audit` | Reads a page without the context that wrote it, like a doubtful buyer, and flags weak spots and facts to verify |
 
 Call a skill by describing the task ("set my goals for 6 months", "what should I do today", "audit my article") or directly, e.g. `/parasiter:navigator`.

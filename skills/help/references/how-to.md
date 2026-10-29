@@ -84,8 +84,17 @@ First session of the week, or "am I on track?" → `goals` compares plan and fac
 ## Republish after a removal or a cleanup
 "Which of my pages were on Pressbooks?", "republish my removed pages" → the list with status, earnings and your saved source for each, ★ and earning first. Each is rewritten for a new platform (new title and angle, the platform's format), never copied.
 
-## Client report (agencies)
-"Make a report for my client for October" → `client-reports`, built from the journal; internal notes kept out unless you want them.
+## Agencies: work for clients
+
+1. **Start:** "I'm an agency" (or pick it at the role question) → agency profile once: name, logo text, report colours, report language, white-label.
+2. **New client:** "New client: Acme" → two short messages (the business; access and data). You get a brief, a ready message to the client with the open questions, and the access steps: Search Console (add your Google account as Restricted user), GA4 (Viewer).
+3. **Baseline:** "Brand audit for Acme" → site quick audit, profiles on social networks and platforms, content audit, a plan of profiles to open or fix. Then Month 0: Search Console 3 months (brand queries separately), positions for the target queries.
+4. **Content plan:** "Content plan for Acme, November" → topics × platforms × format × dates × UTM links, sent to the client for approval; only approved rows are produced.
+5. **Every piece:** content type → text in brand mode (disclosed as the brand's) → images in the client's style (infographics by Claude; cover prompt for Gemini free, or ChatGPT / Midjourney / Canva) → audit on the brand scale (75+ goes to the client) → client approval → you publish → "published for Acme: URL" (monitoring switches on).
+6. **Every day:** "What do we do today for clients?" → today's plan across all clients, waiting approvals, broken pages, report dates.
+7. **Every month:** "Monthly report for Acme" → upload the GA4 export (traffic acquisition, `utm_medium = parasite`, with Session manual ad content for per-page numbers) and the Search Console export → PDF + dashboard in the agency's name, against Month 0, with next month's plan.
+
+Every client has its own folder (`clients/acme/`); nothing from one client appears in another's plan or report.
 
 ## Connect your key (Pro, Insider)
 PARASITER has two parts, and paid plans need both: the **plugin** (skills and agents: the method, articles, audits, journal; works without a key as Free) and the **connector** (your key: the link to the server). The key comes in the welcome email after payment. It connects the plugin to the PARASITER server: checked platform database and feed, news, weekly analysis, daily page checks, Telegram. Install the plugin first, then connect the key. Lost the steps? The bot sends them again: /setup.

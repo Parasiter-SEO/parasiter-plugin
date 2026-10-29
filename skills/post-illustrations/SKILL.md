@@ -1,6 +1,6 @@
 ---
 name: post-illustrations
-description: Plan and write image-generator prompts for parasite SEO and affiliate posts — hero/cover image, product-in-hand, comparison card, key-facts infographic, price/bundle visual, Facebook post series — matched to the content type and platform, in one consistent style. Use when the user needs images, a cover, an infographic or visuals for a review, comparison or post, or when sales-review-writer hands off image ideas.
+description: Plan and write image-generator prompts for parasite SEO and affiliate posts — hero/cover image, product-in-hand, comparison card, key-facts infographic, price/bundle visual, Facebook post series — matched to the content type and platform, in one consistent style — for agencies in the client's brand style (logo, colours, fonts, real product photos). Infographics are drawn by Claude for free; for the cover it gives one ready prompt and where to make it (Gemini free by default, ChatGPT, Midjourney, Canva). Use when the user needs images, a cover, an infographic or visuals for a review, comparison or post, or when sales-review-writer hands off image ideas.
 ---
 
 # Post Illustrations
@@ -32,7 +32,23 @@ Reply in the user's language; write prompts in English (generators follow Englis
 - Article title, content type and the sections (what each image will sit next to).
 - Platform (count, and whether images go by upload or by link).
 - Product name(s) and the real product photos: the user's own, or the merchant's product page (to describe the real look exactly).
-- Generator: **DALL·E (ChatGPT) by default**, realistic photo style; adapt the syntax if the user names another.
+- Generator for the cover — see "Where to make the cover" below.
+- **Agency role:** the client's brand kit from `clients/<slug>/client-brief.md` (logo, colours, fonts, real product photos, approved claims). Every infographic uses the client's colours and fonts; the logo only where the client allows it; real product photos first.
+
+## How we work with images (say it once, short)
+
+"Infographics I draw myself in the chat — free, exact text and numbers. The cover is a realistic photo: your own or the real product photo first; if we need a generated one, I give you one prompt and you make it in 30 seconds."
+
+### Where to make the cover — offer the choice
+
+| Tool | Cost | Best for |
+|---|---|---|
+| **Gemini** (gemini.google.com) — default | free, about 20 images a day on a free Google account | realistic product and scene photos; enough for most articles and clients |
+| ChatGPT (image generation) | needs a paid ChatGPT plan for regular use | if the user already pays for it; good with text on images |
+| Midjourney | paid subscription | brand campaigns, a very consistent art style |
+| Canva (Magic Media + templates) | free tier, more on Pro | agencies that finish covers with the client's logo and fonts in a template |
+
+Give **one** ready prompt (in a code block, so it has the copy icon) and the link to open the tool; the same prompt works in all of them. Never insist on a paid tool; name the free one first.
 
 ## Step 2 — Plan the set
 
@@ -40,7 +56,7 @@ One line per image: what it shows + the section it goes next to. Default: cover 
 
 ## Step 3 — Write prompts
 
-- **Cover / product photos** — DALL·E, realistic photography: the exact product as it really looks (shape, color, label described from the real photo), real setting, natural light, horizontal 16:9, no added text, no people unless the user wants them.
+- **Cover / product photos** — realistic photography (Gemini by default, the same prompt for the other tools): the exact product as it really looks (shape, color, label described from the real photo), real setting, natural light, horizontal 16:9, no added text, no people unless the user wants them.
 - **Infographics** — prefer rendering with code (exact text, exact numbers). If prompts are needed: clean horizontal infographic, a heading + 3–6 short theses or a small table, large readable type, the product photo as a small element; give the exact text in quotes and tell the user to check and fix the lettering in an editor (generators garble text).
 
 Output:

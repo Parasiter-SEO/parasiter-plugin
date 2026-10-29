@@ -2,9 +2,9 @@
 
 ## Rumer's templates
 
-The author's way: DALL·E, realistic photos, the real products the article is about; infographics carry the facts. Horizontal, 700 px JPG.
+The author's way: realistic photos of the real products the article is about; infographics carry the facts. Horizontal, 700 px JPG. Prompts are written for Gemini (free) and work the same in ChatGPT, Midjourney (add `--ar 16:9`) and Canva Magic Media.
 
-**Cover — real product, realistic photo (DALL·E)**
+**Cover — real product, realistic photo**
 "Realistic photograph of [exact product: container shape, color, label colors and text as on the real product], standing on [real setting that fits the use: kitchen counter / gym bench / bathroom shelf / desk], natural daylight, shallow depth of field, sharp label, no people, no text overlay, horizontal 16:9, photorealistic, high detail."
 
 **Best-of cover — the real products together**
@@ -63,3 +63,13 @@ One style block, 5–10 images each on one benefit or tip: "[benefit] illustrate
 - Text on image: short and in quotes, or none.
 - Negative instructions for hands, extra logos, watermarks.
 - Same style block across the whole article/series.
+
+
+## Brand covers and banners (agency role)
+
+**Brand cover — the client's real product in use**
+"Realistic photograph of [client product, exact look from the client's photo], used by [the client's audience in a real setting], natural light, colour palette with [brand colour 1] and [brand colour 2] accents in the scene, clean modern composition, no logos, no text overlay, horizontal 16:9, photorealistic."
+Add the logo and title afterwards in Canva or the client's template — generators distort logos.
+
+**Profile banner (LinkedIn 1584×396, YouTube 2560×1440 safe area 1546×423)**
+"Wide minimal banner background for [industry] brand, [brand colour 1] to [brand colour 2] soft gradient, subtle [industry-relevant] shapes on the right, empty space on the left for text, no text, no logos, high resolution."

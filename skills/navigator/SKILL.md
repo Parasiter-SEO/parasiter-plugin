@@ -1,6 +1,6 @@
 ---
 name: navigator
-description: Entry point of PARASITER. First asks who the user is and what for (affiliate earning with parasite SEO, SEO specialist / agency, blogger, course author / own product, other) and offers only the tools that fit that role. For affiliates reads their goals, journal and time, then builds today's plan that moves the goals forward within the time they have, and routes each task to the right skill. Use when the user starts working, asks "what should I do today", "where do I start", "what's next", "plan my day/week" for parasite SEO, or seems unsure which skill to use.
+description: Entry point of PARASITER. First asks who the user is and what for (affiliate earning with parasite SEO, agency / SEO or marketing specialist working for clients, blogger, course author / own product, other) and offers the route that fits that role. For affiliates reads their goals, journal and time, then builds today's plan that moves the goals forward within the time they have; for agencies hands over to client-workspace (clients, content plans, today's plan across clients, monthly reports); routes each task to the right skill. Use when the user starts working, asks "what should I do today", "where do I start", "what's next", "plan my day/week" for parasite SEO, or seems unsure which skill to use.
 ---
 
 # Navigator
@@ -17,7 +17,7 @@ The user should always see where to go next without asking. End each reply with 
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-PARASITER is built for affiliates who earn with parasite SEO. Other roles get a smaller toolset and no daily plan (Step 0).
+PARASITER has two full routes: affiliates who earn with parasite SEO, and agencies running parasite SEO for clients (`client-workspace`). Bloggers and course authors get a smaller toolset and no daily plan (Step 0).
 
 The navigator answers one question: **what is the most useful thing to do today, in the time this person has, to move their goals forward?** It does not do the work itself. It picks the tasks and hands each one to the skill that does it, so the user never has to know which command to run.
 
@@ -32,10 +32,11 @@ If the user changes language mid-conversation ("let's switch to English"), updat
 
 ## Step 0 — Who is the user
 
-No `role` in the profile → after the language question, ask the role question from `references/roles.md` (who are you and what for: affiliate / SEO specialist or agency / blogger / course author or own product / other). Save it as `role`.
+No `role` in the profile → after the language question, ask the role question from `references/roles.md` (who are you and what for: affiliate / agency or SEO-marketing specialist / blogger / course author or own product / other). Save it as `role`.
 
 - **Affiliate** → continue with Step 1. Full system.
-- **Any other role** → follow `references/roles.md`: one line that PARASITER is built for affiliates, the role's toolset, "What do you want to do first?", then route the task to that skill. Skip Steps 1–4 (no goals, no daily plan) and the profile questions about offers and affiliate stats.
+- **Agency** → one line on what PARASITER does for agencies (`references/roles.md`), the work environment block (agency lines), then `client-workspace`: agency profile, first client onboarding. Skip Steps 1–4 here: the agency's day, plans and reports live in `client-workspace`.
+- **Blogger, course author, other** → follow `references/roles.md`: one line that PARASITER is built for affiliates, the role's toolset, "What do you want to do first?", then route the task to that skill. Skip Steps 1–4 (no goals, no daily plan) and the profile questions about offers and affiliate stats.
 
 Every later session: read `role` first. A request outside the role's toolset gets the answer from `roles.md`, not the skill.
 
@@ -127,7 +128,7 @@ When a task produced a new page, follow it with the rollout (sales-review-writer
 
 Ask "Start with #1?" When the user agrees, follow the target skill. After each task, log the result with the `work-log` skill (one line) and come back with the next task. At the end of the session: today's work report from `work-log` (`summary --period today`), the week's numbers after today, and what is left for tomorrow.
 
-## Skill map (affiliates; other roles — `references/roles.md`)
+## Skill map (affiliates; agencies and other roles — `references/roles.md`)
 
 | Need | Skill |
 |---|---|
@@ -147,7 +148,7 @@ Ask "Start with #1?" When the user agrees, follow the target skill. After each t
 
 ## Rules
 
-- Full system (goals, daily plan, sales analytics) only for the affiliate role. Other roles get their toolset from `references/roles.md`; never plan a day for them or push them into goals.
+- The affiliate system (goals, affiliate daily plan, sales analytics) only for the affiliate role. Agencies get their own full route in `client-workspace` (today's plan across clients, content plans, reports) — never affiliate goals or commission targets. Bloggers and course authors get their toolset from `references/roles.md`; never plan a day for them or push them into goals.
 - Paid checks (index, positions, keywords on the user's SEO API) are never part of a plan by default: a plan task can say "check positions of ★ pages — ~$0.10, run?" and runs only after the user's yes, with the number of pages and the cost named (`work-log` Rules).
 - No income promises. Income goals are the user's; the plan controls actions, income is tracked.
 - Never plan more work than the user's time for today; if the week is behind, say so and let the `goals` review decide, don't overload the day.

@@ -86,7 +86,9 @@ SALE_ALIASES = {
                "itemprice", "price", "orderamountusd", "totalamount", "grossamount", "total"],
     "sub_id": ["subid", "subid1", "sid", "tid", "trackingid", "sharedid", "affsub", "affsub1",
                "clickref", "customid", "afftrack", "campaignkey", "subtracking", "trackingcode",
-               "tag", "s1", "label", "subaffiliateid", "trackingtag"],
+               "tag", "s1", "label", "subaffiliateid", "trackingtag",
+               # GA4 / UTM: agencies set utm_content = the page's sub-ID
+               "utmcontent", "sessionmanualadcontent", "manualadcontent", "firstusermanualadcontent"],
     "status": ["status", "actionstatus", "state", "commissionstatus", "transactionstatus",
                "paymentstatus", "approvalstatus", "type", "transactiontype"],
     "offer": ["product", "productname", "offer", "offername", "item", "itemname", "brand",

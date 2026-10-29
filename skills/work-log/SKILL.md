@@ -32,6 +32,15 @@ One row per fact. Never edit or delete old rows; corrections and status changes 
 
 The script `scripts/worklog.py` does all reading, writing and counting. Pass `--date` / `--time` in the user's local time when the machine clock may differ (cloud sandboxes run in UTC). Without code execution, append rows by hand and count the same way.
 
+## Agency role — one journal per client
+
+For agencies every client has its own folder and journal: `clients/<slug>/parasite-seo-progress.csv` (with its own platforms and links files next to it). Pass that path to every command; the scripts work the same. Never log two clients in one journal.
+- **Links library (Mode 10)** holds the client's destination pages with the UTM base (`client-workspace/references/measurement.md`), not affiliate links.
+- **Every client page gets a sub-ID equal to its `utm_content`** (`--sub-id md-best-crm`): GA4 exports with "Session manual ad content" then credit visits to the exact page; exports by "Session source / medium" credit the platform.
+- **Traffic (Mode 3)** = GA4 visits to the client's site from our pages, platform stats (views, reads, plays) and the client's own channel stats. Search Console exports of the client's site are kept in `clients/<slug>/reports/` for `client-reports`, not imported as page traffic (they describe the client's site, not our pages).
+- **Sales** are optional: only when the client shares leads or orders by source. Reports read "—" for sales otherwise.
+- Paid checks, monitoring, the check queue and Rules below apply per client.
+
 ## Mode 0 — Import pages you already have (inventory)
 
 Most users start with pages already live. The first job is to put all of them in the journal, so the system knows the user's inventory of posts and platforms and every page gets checked.

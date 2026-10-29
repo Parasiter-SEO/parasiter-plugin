@@ -25,6 +25,14 @@ Platforms live days to months: they get spammed, cleaned up, noindexed or close 
 
 Reply in the user's language.
 
+## Agency role — brand-safe platforms for a client
+
+For a client the question is the same — where do pages rank now — with three changes:
+- **Probe the client's niche, not affiliate products:** "best [category]", "[category] review", "[competitor] alternatives", "[competitor] vs", "how to choose [category]" for the client's target queries, plus "[competitor] review" for 5–10 competitors (`platformscan.py` with those terms and `--suffix ""` / your own suffixes). Platforms where the category's pages rank are the client's candidates.
+- **Brand-safe filter:** keep platforms whose rules allow declared brand or company content (LinkedIn, Medium, YouTube, Pressbooks, Gamma, podcast hosts, document hosts, industry communities with brand accounts, Reddit / Quora only where the community allows brand participation). Drop or mark "not for brands" places full of spam, adult or gambling neighbours, or whose rules forbid promotion. Mark each row brand-safe yes / with conditions / no.
+- **The client's own profiles first** (from `brand-presence`): a platform where the brand already has a complete profile is the cheapest place to start.
+Read and write the client's platform base (`clients/<slug>/parasite-seo-progress.csv` → `parasite-seo-platforms.csv`). Paid placements (news sites, PR wires) go to the client as an option with a known price only — the client decides on paid media.
+
 ## Step 1 — Filters
 
 Ask only what is missing:

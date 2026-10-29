@@ -2,11 +2,11 @@
 
 <!-- Maintainer: update this file, how-to.md and faq.md whenever a skill, agent, server tool, plan or file changes. The help skill answers only from these files. -->
 
-PARASITER by Rumer — parasite SEO inside the user's AI assistant, built for affiliate marketers: review pages on trusted platforms → affiliate link → commission. The full system is for affiliate marketers at any stage (want to start, already working, professional, veteran). On first run the navigator asks the role; SEO specialists / agencies, bloggers and course authors / own-product owners get only the tools that fit them, with no goals or daily plan (see "Roles" below). Skills hold the method; agents do research and checks in their own context and hand back facts with sources. The user never calls agents; skills send them. Version 0.16 (private beta).
+PARASITER by Rumer — parasite SEO inside the user's AI assistant, built for affiliate marketers: review pages on trusted platforms → affiliate link → commission. The full system is for affiliate marketers at any stage (want to start, already working, professional, veteran). On first run the navigator asks the role. **Agencies** (SEO and marketing agencies, freelancers, in-house teams running parasite SEO for clients) get their own full route: a folder per client, brand audit, content plan with client approval, positions and traffic to the client, monthly white-label reports. Bloggers and course authors / own-product owners get only the tools that fit them, with no goals or daily plan (see "Roles" below). Skills hold the method; agents do research and checks in their own context and hand back facts with sources. The user never calls agents; skills send them. Version 0.18 (private beta).
 
 ## The workflow in 5 steps
 
-1. **Plan** — `navigator` (today's plan) and `goals` (baseline, goals, weekly review).
+1. **Plan** — `navigator` (today's plan) and `goals` (baseline, goals, weekly review); for agencies `client-workspace` (clients, content plans, today's plan across clients) and `brand-presence` (brand and site audit).
 2. **Find** — `affiliate-finder` (what to promote), `niche-analysis` (keywords and SERPs), `platform-finder` / `platform-feed` (where to publish), `platform-analyzer` (is this platform worth it).
 3. **Write** — `content-type-selector` (what to write), `sales-review-writer` (the article), `post-illustrations` (images), `page-audit` (check before publishing).
 4. **Publish and log** — the user publishes; `work-log` records the page and queues checks; `platform-monitor` checks alive / indexed.
@@ -22,14 +22,16 @@ PARASITER by Rumer — parasite SEO inside the user's AI assistant, built for af
 | `content-type-selector` | Free | Chooses what to write before writing: commercial-intent topics only (best, review, vs, results, legit, complaints, price, alternatives), found through buyer needs and live search. Rumer's formats first: best-of lists of 10–15, personal experience / my results, A vs B, expert review. SERP check of every candidate. | "What should I write about [product]?" | No |
 | `sales-review-writer` | Free | Writes the conversion review or comparison (1,500+ words) after 3–4 questions: facts box for the main product (price, quality, my rating x/10, special offers, link), author, TOC, pains → facts → life after → prices → comparison and honest alternatives, CTAs, images, disclosure. Then rolls the topic out to your other platforms and offers to save your worked .docx with the page. | "Write a review of X for Medium" | No |
 | `page-audit` | Free | Audits a page by link or text with two scores — Rumer's rules and copywriting — and their average, critical / medium issues, ready-to-paste fixes; always flags a missing cover photo (the snippet image). Uses the independent-auditor agent for a fresh read. | "Audit my article: URL", "Why no sales?" | No |
-| `post-illustrations` | Free | Images that carry the facts of the text: a realistic cover photo of the real product (DALL·E by default) and 3–5 infographics (facts, pains → solution, benefits, comparison, prices). Horizontal JPG ~700 px; hosting by link where the platform asks for a URL. | "Make images for this review" | No |
+| `post-illustrations` | Free | Images that carry the facts of the text: a realistic cover photo of the real product (one prompt, made free in Gemini by default, or ChatGPT / Midjourney / Canva) and 3–5 infographics (facts, pains → solution, benefits, comparison, prices). Horizontal JPG ~700 px; hosting by link where the platform asks for a URL. | "Make images for this review" | No |
 | `platform-finder` | Pro | Finds platforms where affiliate review pages are published and indexed now — Rumer's checked base first, then a live scan of "[product] review" for many affiliate products in the top 10 (paid, on your DataForSEO account, cost shown first). Free and paid platforms always separate; abused sites skipped. | "Where can I publish about VPNs in Spanish?" | Database: Pro |
 | `platform-analyzer` | Pro | Breaks down one platform: are affiliate reviews in the top 10 there now (the main check), fresh-page indexing, registration, moderation, free or paid; 0–100 score. Reviews in the top 10 now = publish now; lifespan is only a stability label (2+ weeks = stable). | "Should I post on X?" | No |
 | `platform-feed` | Pro | Rumer's news feed: new platforms, plugin updates, ideas, weekly market analysis, polls — turned into actions for the user's niche. Connects Telegram: plan channel, Insider group, personal notifications. | "What's new?", "Connect Telegram" | Pro (Insider: same-day platforms, Insider channel and group) |
 | `platform-monitor` | Pro | Alive / removed, noindex, affiliate link (free, daily on the server with a key); index and positions on your own SEO account (paid, only with your yes). Removed pages and platform cleanups go straight to the republish list with your saved sources. | "Are my pages alive?", "Check my links" | Scheduled: Pro. Manual: no |
 | `niche-analysis` | Insider | Commercial keywords and their volumes, an entry score from the top 20 (heavy domains vs platforms like yours — one of ours in the top 20 means a chance), competitor parasite pages and their gaps; a test page with the tracker decides. Through your SEO API (paid, cost shown first) or exports. | "Is this niche worth it?", "Find keywords for X" | Needs the user's own SEO API key or exports |
 | `affiliate-finder` | Insider | Niche first (nutra, gambling, crypto, gaming, software and more), then programs from networks and direct merchants, sorted by how popular the offer is in search; commission 15%+; traffic rules, payout, legality — via the affiliate-scout agent. | "Which program should I promote for keto?" | No |
-| `client-reports` | Insider | For affiliates: the review of your asset and a scale plan — which products, platforms and content types took off and earn, where to add pages and angles, what to stop. For agencies: a client report. | "What took off and where do I scale?", "Report for my client" (agency) | No |
+| `client-reports` | Insider | For affiliates: the review of your asset and a scale plan — which products, platforms and content types took off and earn, where to add pages and angles, what to stop. For agencies: the monthly white-label client report against Month 0 — positions, visits from our pages (GA4 + UTM), Search Console brand queries, delivered vs plan. | "What took off and where do I scale?", "Monthly report for Acme" (agency) | No |
+| `client-workspace` | Pro | Agency desk: a folder per client, onboarding brief (business, target queries, where traffic goes — site and channels, voice, limits, KPIs), Search Console and GA4 access, UTM links, Month 0 baseline, monthly content plan with client approval, today's plan across all clients, the monthly report cycle. | "New client: Acme", "Content plan for Acme, November", "What do we do today for clients?" | No |
+| `brand-presence` | Insider | Agency: quick audit of the client's site (indexing, landing pages for the target queries, titles, speed, tracking, trust), the brand's profiles on social networks and platforms (exist, complete, consistent, active), the content they publish; a plan of profiles to open or fix and topics nobody covers. Uses the brand-auditor agent. | "Brand audit for Acme", "Which profiles should they have?" | No |
 | `help` | Free | This help: what the plugin does and how to use it. | "What can PARASITER do?", "How do I …?" | No |
 
 ## Roles
@@ -38,13 +40,13 @@ Set once by the navigator ("who are you and what for?"), saved as `role` in the 
 
 | Role | Gets |
 |---|---|
-| Affiliate (parasite SEO) | Everything: goals, daily plan, journal with sales, all 15 skills by plan |
-| SEO specialist / agency | content-type-selector, page-audit, post-illustrations, platform-finder, platform-feed, platform-analyzer, platform-monitor, work-log (pages and checks), niche-analysis, client-reports |
+| Affiliate (parasite SEO) | Everything for affiliates: goals, daily plan, journal with sales, the skills by plan |
+| Agency (SEO / marketing, freelancers, in-house) | Full agency route: client-workspace, brand-presence, content-type-selector, sales-review-writer (brand mode), post-illustrations (brand style), page-audit (brand scale), platform-finder (brand-safe), platform-feed, platform-analyzer, platform-monitor, work-log (a journal per client), niche-analysis, client-reports (monthly white-label) |
 | Blogger / content creator | content-type-selector, sales-review-writer, page-audit, post-illustrations, work-log, affiliate-finder, niche-analysis |
 | Course author / own product | content-type-selector, page-audit, post-illustrations, platform-finder, platform-feed, platform-analyzer, platform-monitor, work-log (pages and checks); own product never presented as an independent review |
 | Other / just looking | Overview, then the closest role |
 
-Roles 2–4: no goals and no daily plan. A skill outside the role is not offered; name the closest one in the role. `help` is open to everyone.
+Roles 3–4: no goals and no daily plan. Agencies have their own day plan across clients in `client-workspace`. A skill outside the role is not offered; name the closest one in the role. `help` is open to everyone.
 
 ## Agents
 
@@ -55,6 +57,7 @@ Roles 2–4: no goals and no daily plan. A skill outside the role is not offered
 | `product-researcher` | sales-review-writer | Current specs, packages, prices, discounts, guarantee from the merchant's pages |
 | `serp-analyst` | content-type-selector, niche-analysis | What ranks for buyer queries, which platforms are in the top 10, unanswered buyer doubts |
 | `page-checker` | platform-monitor, work-log | Checks lists of pages: live, noindex, indexed, affiliate link, position |
+| `brand-auditor` | brand-presence, client-workspace | Finds and opens the client brand's profiles and key site pages: exist, complete, consistent, last activity, links; site quick checks; content the brand publishes |
 | `independent-auditor` | page-audit | Reads a page without the writing context, like a doubtful buyer; gives the same two scores |
 
 ## Server tools (Pro / Insider key)
@@ -74,6 +77,8 @@ Kept in the user's project folder, written by the skills:
 | `parasite-seo-links.csv` | work-log | your affiliate links library: program, product, link, alternative links, commission |
 | `parasite-seo-platforms.csv` | work-log, platform-analyzer | your platform base: domain, type, language, links, account, score, state; built from your pages |
 | `parasite-seo-sources/` | work-log | the .docx / texts you worked on, each linked to its published page, for republishing |
+| `clients/<slug>/…` | client-workspace and every skill in agency mode | per client: `client-brief.md`, `content-plan.md`, `brand-presence.md`, the client's own journal / platforms / links files, `reports/` |
+| `clients/_agency.md` | client-workspace | agency name, logo text, report colours, report language, white-label |
 | `platforms-scan.csv` | platform-finder | the latest live scan: platforms with affiliate reviews, free / paid |
 
 ## Telegram (Pro and Insider only)

@@ -23,6 +23,8 @@ AI answers now cover the basics ("what is it", "how it works", "pros and cons").
 
 Reply in the user's language. Keep questions short; ask only what you cannot infer.
 
+**Agency role:** the product, competitors, queries, country and voice come from `clients/<slug>/client-brief.md`; ideas come from the client's content plan and `brand-presence` gaps. The same buyer-doubt logic applies, in formats a brand can publish honestly: how to choose, best-of with the brand disclosed as one of the options, [brand] vs [competitor] by the brand's team, alternatives to [competitor], price / plans explained, case study, problem → solution. "Personal experience" and "my rating" formats need a real person at the client who used it — otherwise drop them. The brief goes to `sales-review-writer` brand mode.
+
 ## Step 1 — Get the inputs
 
 If the user doesn't know what or where to write, start from their own base: `work-log` `coverage` lists proven topics (top 10, earning, priority) missing on their strong platforms. Offer the top 3 gaps ("glp1 patch review → Medium: #7 and earning on the forum, Medium is your priority platform"); the chosen gap gives the product, the platform and the page to learn from. The new page takes a different angle or content type from the existing one.

@@ -2,6 +2,20 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.18.0 — 2026-10-29
+
+**PARASITER for agencies** — a full route for SEO and marketing agencies, freelancers and in-house teams running parasite SEO for clients. Say *"I'm an agency"*.
+- **A desk for every client** (`client-workspace`). Say *"New client: Acme"*: two short messages make the brief — business, target queries, where the traffic goes (site, YouTube, LinkedIn, socials), voice and limits, KPIs — plus a ready message to the client with the open questions and the access steps for Search Console and GA4. Each client has its own folder, journal, plan and reports; nothing mixes.
+- **Month 0.** Search Console for the last 3 months (brand queries separately), positions for the target queries and the brand audit are recorded before work starts, so every report shows growth from day one.
+- **Brand and site audit** (`brand-presence`, new agent `brand-auditor`). Say *"brand audit for Acme"*: which profiles the brand has on LinkedIn, YouTube, Medium, Reddit, Quora, X, Facebook, Instagram, Pinterest, TikTok and directories — complete, consistent, active — a quick site audit (indexing, landing pages, titles, speed, tracking, trust) and what the brand already publishes. You get a plan of profiles to open or fix and topics nobody covers.
+- **Monthly content plan with client approval.** *"Content plan for Acme, November"*: topics × platforms × format × dates × UTM links; only approved rows go to production.
+- **Today's plan across all clients.** *"What do we do today for clients?"*: due pieces, waiting approvals, broken pages, report dates.
+- **Brand mode** in the writer: expert guides, honest comparisons, case studies, LinkedIn / Medium articles, YouTube descriptions, press releases and profile bios — disclosed as the brand's, with UTM links. Page audit scores client pages on a brand scale (disclosure, voice, UTM, design in the client's style); 75+ goes to the client.
+- **Images:** infographics in the client's colours drawn by Claude for free; for the cover one prompt and a choice where to make it — Gemini free by default, or ChatGPT, Midjourney, Canva.
+- **Traffic to the client:** every link carries UTM (`utm_medium=parasite`); GA4 exports credit visits per platform, and per page through the page's sub-ID (= `utm_content`). Search Console shows the client's own site and its brand queries.
+- **Monthly white-label report** against Month 0: positions, visits from our pages, brand-query clicks, delivered vs plan, next month's plan — PDF + dashboard in the agency's name.
+- Platform finder for clients: probes the client's category and competitors, marks brand-safe platforms, starts from the brand's own profiles.
+
 ## 0.17.1 — 2026-10-28
 - Every page you log or import goes on daily server monitoring automatically (Pro / Insider) — no need to ask.
 - Every skill ends its reply with 2–3 next steps and what to say; "help" shows all functions.

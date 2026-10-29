@@ -32,4 +32,12 @@ Free $0 · Pro $19/month · Insider $39/month (see help `faq.md` for what each i
 - **Limited without an SEO service:** no automatic positions of your pages (Search Console only sees your own sites) — positions only from a free tracker (ProRankTracker free: 20 keywords), manual Google checks or what you type in; no keyword volumes in niche analysis and offer popularity only from free signals; platform scans only through web search, without positions. Many reports (top 3 count, what pages rank for, lost queries, scale plan by position) get thinner.
 - **Without a PARASITER key (Free plan):** no checked platform base, no feed, no daily server monitoring, no Telegram.
 
+## For agencies (agency role)
+
+- **Claude Max** — several clients mean many articles, audits and reports a day; Pro hits the limits early.
+- **DataForSEO** — positions of every client's pages and target queries, cents per check; the cost goes into the client's budget.
+- **PARASITER Insider** — client reports, brand audit and niche analysis are Insider; Pro covers clients, content plans, platforms and monitoring.
+- **From the client, free:** Search Console (Restricted user) and GA4 (Viewer) access for the agency's Google account — the monthly report's traffic numbers come from there.
+- **Images: $0** — infographics are drawn by Claude; covers are generated free in Gemini by PARASITER's prompt (or in ChatGPT / Midjourney / Canva if the agency already pays for them).
+
 Say it as the user's investment in their work environment, once, short; never push — the system works at every level, and the user chooses.

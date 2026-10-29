@@ -36,11 +36,27 @@ A page can follow every rule and still read flat, or read well and miss the rule
 | **Trust and honesty** — cons, who it's not for, disclosure, last-checked date, no invented tests / reviews / results / deadlines | 10 |
 | **Readability and platform fit** — short paragraphs, lists, tables that fit on mobile, the platform's tone and link rules | 10 |
 
+## 1b. Brand rules (agency role, replaces score 1 for client pages)
+
+| Rule | Points |
+|---|---|
+| **Photo at the top** — the client's real product or a realistic cover in the brand's style, not stock | 10 |
+| **Brand facts box** — what it is, price from / plans, who it is for, what makes it different, trial or guarantee, link; facts from the brief or the client's site | 10 |
+| **Who is behind the page** — the brand's real expert or team, role shown, plus the brand disclosure ("Written by the Acme team" / "Prepared with Acme") | 10 |
+| **Pains → facts → how the product solves them**, life after (no guarantees) | 15 |
+| **Comparison and honest alternatives** — competitors described fairly; the brand not crowned by a fake test | 10 |
+| **Prices / plans block** where the client publishes prices | 5 |
+| **Brand voice and approved claims only** — tone and words from the brief; regulated claims only as approved | 10 |
+| **Looks great** — consistent design: images in the client's colours and fonts, infographics with exact facts, clean formatting, tables that fit on mobile — the page the client is proud to show | 10 |
+| **Links** — UTM on every link to the client (`utm_medium=parasite`, right source and content), landing on the brief's destination, product name linked about once per section | 10 |
+| **TOC with telling headings; 1,500+ words** for article formats | 10 |
+
 ## Caps
 
 - Each critical issue caps its line at half its points.
 - Any fabricated claim (fake review, test, result, deadline, "my experience" the user doesn't have) caps **both** scores at 50 until removed.
-- No affiliate disclosure → Copywriting capped at 70.
+- No affiliate disclosure → Copywriting capped at 70. Client pages: no brand disclosure → both scores capped at 70.
+- Client pages: the client's product presented as an independent review, test or ranking → both scores capped at 50.
 
 ## Reading the total
 
@@ -51,4 +67,4 @@ A page can follow every rule and still read flat, or read well and miss the rule
 | 50–69 | Losing sales; fix critical items first |
 | 0–49 | Rewrite with sales-review-writer |
 
-The same scale is used by `work-log` (audit under 70 → back in the queue).
+The same scale is used by `work-log` (audit under 70 → back in the queue). Client pages go to the client at 75 or more.

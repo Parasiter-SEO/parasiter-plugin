@@ -1,6 +1,6 @@
 ---
 name: page-audit
-description: Audit a parasite SEO or affiliate page by link or pasted text and find why it does not get clicks or sales — snippet and title, first screen, quick facts and deals box, author block, table of contents and headings, structure for the content type, CTAs, honesty and disclosure, platform fit, readability, indexing — with a 0–100 score and a prioritized fix list. Use when the user asks to check, review, audit or improve a page, article or post, asks "why no sales", or before publishing a draft.
+description: Audit a parasite SEO or affiliate page by link or pasted text and find why it does not get clicks or sales — snippet and title, first screen, quick facts and deals box, author block, table of contents and headings, structure for the content type, CTAs, honesty and disclosure, platform fit, readability, indexing — with a 0–100 score and a prioritized fix list; for agencies, client pages are scored on the brand scale (disclosure, brand voice, UTM links, design in the client's style) before the client sees them. Use when the user asks to check, review, audit or improve a page, article or post, asks "why no sales", or before publishing a draft.
 ---
 
 # Page Audit
@@ -26,6 +26,7 @@ Reply in the user's language; quote page fragments in the page's language.
 - **Link**: fetch it if possible. If the platform blocks fetching or needs login, ask the user to paste the text (and a screenshot of the first screen if they can).
 - **Text**: use as given.
 Ask: target query, content type (if unclear), platform, offer/affiliate link, country.
+**Agency role:** read the client's brief (`clients/<slug>/client-brief.md`) instead of asking — query, destination, voice, approved claims and brand kit are there. Score with **Brand rules** (scoring 1b) in place of Rumer's rules, plus Copywriting. A client page goes to the client only at 75+; log the audit in the client's journal.
 
 ## Step 1b — Independent reader
 
@@ -54,7 +55,7 @@ Score with `references/scoring.md`: **two scores — Rumer's rules and Copywriti
 
 ```
 Page score NN/100 · [type] · [platform]
-Rumer's rules NN/100 · Copywriting NN/100
+Rumer's rules NN/100 (client pages: Brand rules NN/100) · Copywriting NN/100
 Critical (fix first)
 • … — why it costs sales — exact fix
 Medium

@@ -1,6 +1,6 @@
 ---
 name: sales-review-writer
-description: Write a conversion-focused review or comparison article for parasite SEO and affiliate sales — single-product review, "best of" comparison, A vs B, personal experience, complaints/doubts or purchase guide — adapted to the target platform (Medium/LinkedIn, forum, PDF, press release, Raisely, Reddit/Quora, Facebook, YouTube description). Use whenever the user wants to write, draft, rewrite or improve a review or sales article, or after content-type-selector hands off a content brief.
+description: Write a conversion-focused review or comparison article for parasite SEO and affiliate sales — single-product review, "best of" comparison, A vs B, personal experience, complaints/doubts or purchase guide — adapted to the target platform (Medium/LinkedIn, forum, PDF, press release, Raisely, Reddit/Quora, Facebook, YouTube description). Brand mode for agencies writes the same quality of page for a client brand — expert guide, honest comparison, case study, LinkedIn / Medium article, YouTube description, press release, profile bio — disclosed as the brand's, with UTM links to the client. Use whenever the user wants to write, draft, rewrite or improve a review or sales article, or after content-type-selector hands off a content brief.
 ---
 
 # Sales Review Writer
@@ -111,7 +111,7 @@ Every article comes with its images. Plan 3–6, one line each: what it shows an
 - verdict / "choose X if…" card.
 Text on images only from verified facts, with the checked date on any price.
 
-**The cover photo** — a realistic photo of the real product — cannot be made with code: give a ready DALL·E prompt via `post-illustrations` and mark the spot under the title. Prefer the user's own real photos. No decorative images without information. Where the platform takes images only by link, say so and remind the user to host them (`post-illustrations` → platform-sizes).
+**The cover photo** — a realistic photo of the real product — cannot be made with code: give one ready cover prompt via `post-illustrations` (Gemini free by default, with the other generators to choose from) and mark the spot under the title. Prefer the user's own real photos. No decorative images without information. Where the platform takes images only by link, say so and remind the user to host them (`post-illustrations` → platform-sizes).
 
 Without code execution, say once that the JPG cards appear automatically when the assistant's code execution / file creation is turned on (in Claude: Settings → Capabilities), and give all image prompts via `post-illustrations` meanwhile. Respect platform limits (PDF — few light images; Raisely — cover only; forums — external hosting). Never generate fake people presented as real users or experts, fake certificates or before/after results.
 
@@ -138,12 +138,28 @@ Rumer's way of working: once a topic is researched and written for one platform,
 3. **Every version is a new page, not a copy:** a different title and angle or content type per platform (best-of on the book, A vs B on the forum, "questions buyers ask" on the podcast, a visual comparison on Gamma), the platform's format from `references/platform-formats.md`, the same verified facts and the user's own links. Near-duplicates get filtered by Google and can pull each other down.
 4. After the user publishes each one, `work-log` logs it (`published` + the topic), so coverage, `ideas` and the check queue see the whole topic across platforms.
 
+## Brand mode (agency role)
+
+When the role is agency (or the user writes for a client brand), the same craft serves the brand instead of an affiliate offer. Read `clients/<slug>/client-brief.md` and the client's links library first; the client name goes into the work label.
+
+What changes:
+- **Who speaks.** The author is the brand's real expert or team ("Anna Kovalenko, product lead at Acme"), or the agency writing with disclosure. The author block shows the real role at the brand. Never a made-up independent reviewer.
+- **Disclosure** instead of the affiliate disclosure, at the top or under the author: "Written by the Acme team" / "Prepared in cooperation with Acme". Platforms that need a sponsored or brand label get it.
+- **Formats:** expert guide ("How to choose [category]: 7 questions"), best-of where the brand is one of the options and the page says it is the brand's (the competitors fairly described, the brand not crowned by a fake test), Acme vs [competitor] by Acme's team with real differences, case study (real client, real numbers the client approved), problem → solution article, LinkedIn article from the brand's expert, Medium guide, YouTube video description (with timestamps and links), press release, profile bios and "About" texts (`brand-presence` plan).
+- **Facts box** = the client's product facts from the brief and the client's own pages (`product-researcher` on the client's site): what it is, price from, who it is for, what makes it different, guarantee or trial — no "my rating x/10" for the brand's own product.
+- **Rumer's blocks stay:** pains, facts → how it solves them, life after, prices and plans, comparison with honest alternatives (including when a competitor fits better). This honesty is what makes brand content believable.
+- **Links:** the destination from the brief with the UTM rule (`client-workspace/references/measurement.md`), product name linked about once per section, CTAs to the right page (trial, booking, product). Links to the brand's channels (YouTube, LinkedIn page) where they help the reader.
+- **Voice and limits** from the brief: tone, words to avoid, only approved claims in regulated niches. Anything not in the brief or on the client's site → `[VERIFY WITH CLIENT: …]`.
+- **Length:** articles 1,500+ words as always; LinkedIn posts, bios, YouTube descriptions and answers follow the platform.
+- **Approval:** under the operator checklist add "For client approval: [claims, numbers, quotes to confirm]". The user sends it to the client; the status in the content plan becomes `client-approved` before publishing.
+- **Rollout (Step 7)** uses the client's platform base and content plan, not the user's own platforms.
+
 ## Rules (always)
 
 - Facts only: prices, bundles, shipping, warranty, ingredients, specs come from the user or the merchant page (directly or via `product-researcher`). Unknown → `[VERIFY: …]`, never a guess.
 - Personal experience only if the user really has it. Otherwise: research-based expert angle.
 - No invented tests, reviews, customer quotes, results, clinical claims or guaranteed outcomes. Health/money topics: describe limits honestly.
 - Show cons and say who the product is NOT for — that is what makes the recommendation believable.
-- Affiliate disclosure and last-checked date on every page.
-- Role from `parasite-seo-profile.md` (navigator `references/roles.md`): this skill is for affiliates and bloggers. For a course author / own product or an agency writing for a client, say it is not in their toolset; never present the user's own or a client's product as an independent review, test or ranking.
+- Affiliate disclosure (brand mode: brand disclosure) and last-checked date on every page.
+- Role from `parasite-seo-profile.md` (navigator `references/roles.md`): affiliates and bloggers get the review mode; agencies get brand mode (above). For a course author / own product, say it is not in their toolset. Never present the user's own or a client's product as an independent review, test or ranking.
 - Length: **every article is at least 1,500 words** (count before handing over; if short, deepen pains, facts, life after, comparison and FAQ — never pad with filler). Longer where the platform wants it (PDF ~3,000, press release 2,000–3,000). Only non-article formats are shorter: Facebook posts, YouTube descriptions, Reddit/Quora answers.

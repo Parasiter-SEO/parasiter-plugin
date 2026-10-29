@@ -1,7 +1,7 @@
 # FAQ
 
 ## Who is it for?
-Built for affiliate marketers who earn with parasite SEO, at any stage — they get the full system. SEO specialists and agencies, bloggers and course authors / own-product owners can use it with a smaller toolset that fits their work, without goals and the daily plan. The navigator asks once ("who are you and what for?"); say "I'm an affiliate now" (or another role) to change it.
+Two full routes: **affiliate marketers** who earn with parasite SEO, at any stage, and **agencies** — SEO and marketing agencies, freelancers and in-house teams running parasite SEO for clients (a folder per client, brand audit, content plans with approval, positions and traffic to the client, monthly white-label reports). Bloggers and course authors / own-product owners use a smaller toolset that fits their work, without goals and the daily plan. The navigator asks once ("who are you and what for?"); say "I'm an affiliate now" (or another role) to change it.
 
 ## What do I need to work with PARASITER?
 - **Claude**: Pro (~$20/month) is the minimum; Max (from ~$100/month) recommended for daily work with the full system — many articles, rollouts, agents and reports without hitting limits.
@@ -9,11 +9,17 @@ Built for affiliate marketers who earn with parasite SEO, at any stage — they 
 - **PARASITER**: Free, Pro $19 or Insider $39.
 Without an SEO service most things still work (journal, articles, audits, images, reports from your exports, free page checks); positions, keyword volumes and platform scans get limited, so many reports are thinner. Details: navigator `references/work-environment.md`. Prices change — check the vendors' sites.
 
+## I run an agency. What do I get?
+A desk for every client (`client-workspace`): onboarding brief, where traffic goes, Search Console and GA4 access, UTM links, a Month 0 baseline, a monthly content plan the client approves, today's plan across all clients. A brand and site audit (`brand-presence`): which profiles the brand should have and what is broken. Brand texts written by Claude and disclosed as the brand's, images in the client's style, audits before the client sees a page, fresh brand-safe platforms, monitoring, positions, and a monthly white-label report (PDF + dashboard). Client reports and the brand audit need Insider.
+
+## Why UTM for clients but not for affiliates?
+An affiliate never sees the merchant's analytics, so UTM tags are wasted. An agency sees the client's GA4: with UTM (`utm_medium=parasite`, the platform as source, the page's sub-ID as content) every visit from our pages is counted per platform and per page. Search Console shows only the client's own site in Google — the brand queries that grow when people meet the brand on platforms.
+
 ## Plans and key
 <!-- Maintainer: keep this split identical to the pricing block on the site. -->
 - **Free, $0** — plugin without a key, 6 skills: goals, content-type-selector, sales-review-writer, page-audit, post-illustrations, help.
-- **Pro, $19/month** — 12 skills: Free + navigator, platform-finder, platform-analyzer, platform-feed, platform-monitor, work-log. Personal key: checked platform database, feed and weekly market analysis, scheduled monitoring, navigator updates; new platforms about 7 days after they are found.
-- **Insider, $39/month** — all 15 skills: Pro + niche-analysis, affiliate-finder, client-reports; extra features, new platforms the day they are found, PARASITER Insider channel and the private Insider group.
+- **Pro, $19/month** — 13 skills: Free + navigator, client-workspace (agencies), platform-finder, platform-analyzer, platform-feed, platform-monitor, work-log. Personal key: checked platform database, feed and weekly market analysis, scheduled monitoring, navigator updates; new platforms about 7 days after they are found.
+- **Insider, $39/month** — all 17 skills and 7 agents: Pro + niche-analysis, affiliate-finder, client-reports, brand-presence (agencies); extra features, new platforms the day they are found, PARASITER Insider channel and the private Insider group.
 - Pro includes the PARASITER Pro channel and personal notifications from the bot. Telegram is for paid plans only.
 - Annual billing about 20% less. Prices are preliminary — current terms on the official site.
 - The key is personal: one key, one person. It stops working when the subscription ends; skills keep working without server data.

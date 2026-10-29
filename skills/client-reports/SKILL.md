@@ -1,6 +1,6 @@
 ---
 name: client-reports
-description: Build performance analytics and reports for parasite SEO work from the user's uploaded data — publications log, Google Search Console exports, rank tracker, affiliate network stats — computing revenue per publication, EPC, RPM per 1000 impressions, winners and losers by platform, content type and offer, with a 14/30/60-day review and next actions. Use when the user uploads reports or stats, asks what is working, which platforms or pages earn, wants a client or weekly report, or asks what to update next.
+description: Build performance analytics and reports for parasite SEO work from the user's uploaded data — publications log, Google Search Console exports, rank tracker, affiliate network stats — computing revenue per publication, EPC, RPM per 1000 impressions, winners and losers by platform, content type and offer, with a 14/30/60-day review and next actions; for agencies a monthly white-label client report against Month 0 — positions, visits to the client's site from GA4 by UTM, Search Console brand queries, delivered vs plan. Use when the user uploads reports or stats, asks what is working, which platforms or pages earn, wants a client or weekly report, or asks what to update next.
 ---
 
 # Client Reports
@@ -94,9 +94,27 @@ Every report also comes out as a designed document, not only text in the chat. A
 
 Rules for the document: numbers only from the user's data, each currency labelled (never add $ and € together), partial periods marked (e.g. "October to the 28th"), pending vs approved commission named, estimates labelled. Keep the chat reply short: the headline numbers, the 3 main conclusions and the files.
 
-## Step 4b — Client report (agency role only)
+## Step 4b — Client report (agency role) — monthly, against Month 0
 
-For the SEO specialist / agency role: the same visual report (Step 4a) addressed to the client: "Client" = the client's name, "Prepared by" = the agency, in the client's language. Keep internal notes (platform sources, methods, the user's other clients) out of client-facing text unless the user wants them in. Ask once for the agency name and logo text if unknown.
+For agencies the report is the product the client pays for. One per client per month, from that client's folder only (`clients/<slug>/`), in the client's language, against **Month 0** (the baseline from `client-workspace` Step 2) and the previous month.
+
+**Collect** (steps for each export: `client-workspace/references/measurement.md`):
+- the client journal: pages published, live / indexed / removed, audits, positions (work-log `pages`, `summary --period <month>`, `effect --by platform|content_type`);
+- positions for target queries and our pages (DataForSEO with the user's yes, or a tracker export), incl. AI Overview and "Discussions and forums";
+- GA4: visits from our pages (`utm_medium = parasite`) by platform and by page, key events if the client tracks them;
+- Search Console of the client's site: clicks, impressions, average position, **brand-query clicks**, vs Month 0;
+- the content plan: planned vs delivered, profiles opened (`brand-presence` before / after).
+
+**Spec for `visual_report.py`** (Step 4a) — "Client" = the client, "Prepared by" = the agency from `clients/_agency.md`; with white-label on, no PARASITER mention anywhere:
+- KPI tiles (4–6): target queries in the top 10 (now vs Month 0) · our pages in the top 10 / top 3 · visits to the site from our pages (GA4) · brand-query clicks in Search Console (vs Month 0) · pages live / published this month · profiles live.
+- Charts: visits from our pages by platform (`hbars`) · brand-query clicks by month since Month 0 (`line`) · queries in the top 10 by month (`bars`).
+- Tables: pages published this month (link, platform, query, position, visits) · target queries (position Month 0 → now).
+- Sections: "What we did" (delivered vs plan) · "Results" (only what the numbers show) · "What needs attention" (removed pages and how they were replaced, queries that dropped) · "Plan for next month" (the draft content plan).
+- Footnote: where every number comes from (GA4 property, Search Console, DataForSEO / tracker, dates), partial periods marked, and that Search Console shows the client's own site while visits from platforms are measured in GA4 by UTM.
+
+Keep internal notes (platform sources, methods, costs, other clients) out of client-facing text unless the user wants them in. Ask once for the agency name, logo text and colours if `_agency.md` is missing. Save the PDF, HTML and the exports used to `clients/<slug>/reports/<yyyy-mm>/`.
+
+**Weekly status** (optional, when the contract asks for it): 5 lines in the chat or a message to the client — published this week, waiting for approval, positions that moved, anything removed and replaced.
 
 ## Rules
 
