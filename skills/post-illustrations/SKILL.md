@@ -43,7 +43,7 @@ Reply in the user's language; write prompts in English (generators follow Englis
 
 | Tool | Cost | Best for |
 |---|---|---|
-| **Gemini** (gemini.google.com) — default | free, about 20 images a day on a free Google account | realistic product and scene photos; enough for most articles and clients |
+| **Gemini** (gemini.google.com) — default | free, about 20 images a day on a free Google account (Google's limits change) | realistic product and scene photos; enough for most articles and clients |
 | ChatGPT (image generation) | needs a paid ChatGPT plan for regular use | if the user already pays for it; good with text on images |
 | Midjourney | paid subscription | brand campaigns, a very consistent art style |
 | Canva (Magic Media + templates) | free tier, more on Pro | agencies that finish covers with the client's logo and fonts in a template |

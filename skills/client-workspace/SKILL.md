@@ -66,7 +66,7 @@ Say: "New client: Acme". Create the folder and fill `client-brief.md` from `refe
 5. Brand assets: logo, colours, fonts, real product photos, approved claims → used by `post-illustrations` and `sales-review-writer` (brand mode).
 
 Then set up, without asking again:
-- **UTM rule** for every link to the client (`references/measurement.md`): `utm_source=<platform>&utm_medium=parasite&utm_campaign=<client>-<yyyy-mm>&utm_content=<page sub-ID>` (the page is logged with the same sub-ID, so GA4 visits land on the exact page). Save the client's landing pages in `parasite-seo-links.csv` (work-log Mode 10) with the UTM base, so every article gets the right link without asking.
+- **UTM rule** for every link to the client (`references/measurement.md`): `utm_source=<platform>&utm_medium=parasite&utm_campaign=<client>-<yyyy-mm>&utm_content=<page sub-ID>` (the page is logged with the same sub-ID, so GA4 visits land on the exact page). Save the client's landing pages in `parasite-seo-links.csv` (work-log Mode 10) with the UTM base (`utm_medium` and `utm_campaign`); the writer adds `utm_source` (the platform) and `utm_content` (the page's sub-ID) for each piece. Register the same landing pages with their target queries in the client journal as `own-site` pages (`references/measurement.md`, Positions), so positions of the client's site are tracked from Month 0.
 - **Platform base** from the platforms the client already has profiles on (work-log `platform-set`).
 
 Close with a 4–6 line onboarding summary (what we know, what we still need from the client, first actions) and offer a ready message to send the client with the open `[ASK CLIENT]` items and the access steps.
@@ -74,7 +74,7 @@ Close with a 4–6 line onboarding summary (what we know, what we still need fro
 ## Step 2 — Baseline (before any work, so growth can be shown later)
 
 The first report is only convincing if month 0 is recorded. In one pass:
-1. **Brand presence and site** → `brand-presence` (site quick audit, profiles, content): what exists, what is missing, what is broken.
+1. **Brand presence and site** → `brand-presence` (site quick audit, profiles, content): what exists, what is missing, what is broken. On Pro (brand-presence is Insider): go through `brand-presence/references/profiles.md` and `site-audit.md` with the user by hand — the same checklist, without the agent.
 2. **Search Console, last 3 months** (export or connector): clicks, impressions, average position for the site; **brand queries** (queries that contain the brand name) separately; top pages. Log the totals as a `baseline` row in the client journal and keep the export in `reports/`.
 3. **Positions** for the client's target queries: who ranks now, which platforms are in the top 10 for them (`serp-analyst` agent; DataForSEO checks only with the user's yes and the cost shown — the same paid-check rule as everywhere in PARASITER).
 4. **GA4**: sessions by source for the last month, so new UTM traffic stands out.
@@ -121,7 +121,7 @@ For each approved row, in order, keeping the client name in every step:
 On the report day (or "monthly report for Acme"):
 1. Ask for this month's exports, with the steps from `references/measurement.md`: Search Console (site, brand queries, pages), GA4 traffic acquisition filtered to `utm_medium = parasite`, platform stats where the platform has them.
 2. Import traffic into the client journal (`work-log import-traffic`), positions from DataForSEO (with the user's yes) or the tracker export.
-3. `client-reports` Step 4b — the agency monthly report against Month 0.
+3. `client-reports` Step 4b — the agency monthly report against Month 0 (Insider). On Pro: a plain report from the client journal (`work-log summary --period <month>` and `effect --by platform`) plus the Search Console and GA4 numbers, as text the user can send; mention once that the designed white-label PDF and dashboard come with Insider.
 4. Next month's content plan draft goes out together with the report: the report ends with what we do next.
 
 ## Rules
@@ -129,6 +129,6 @@ On the report day (or "monthly report for Acme"):
 - **Honest brand content only.** Pages say who is behind them (the brand, its expert, or "prepared with [Brand]"). Never present the client's product as an independent review, test or ranking, never fake customers, reviews, ratings or engagement, never post from fake personal accounts. Profiles on platforms are the brand's real, declared accounts.
 - Platform rules decide: if a platform forbids brand promotion or links, the piece goes elsewhere or carries no link.
 - Paid checks only with the user's yes, the page count and the cost shown, every time.
-- Client data stays in the client's folder and the conversation; nothing goes to the PARASITER server except what monitoring needs (page URL, main query, platform).
+- Client data stays in the client's folder and the conversation; nothing goes to the PARASITER server except what monitoring needs (page URL, main query, platform). If the client's NDA forbids even that, write `Server monitoring: off` in the brief: that client's pages are not sent to `monitor_track`, and checks run only locally through `platform-monitor`.
 - No guaranteed rankings or traffic in any client-facing text. Forecasts are labelled as assumptions.
 - Mention the risk once per client, where it matters: platforms remove pages, Google acts against site reputation abuse; spread pages across platforms, keep every text, monitor.

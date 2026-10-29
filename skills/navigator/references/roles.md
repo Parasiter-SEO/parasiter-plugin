@@ -12,7 +12,7 @@ Ask once, before the profile questions, in the working language:
 
 > Who are you, and what do you want PARASITER for?
 > 1. **Affiliate** — I earn (or want to earn) commissions with parasite SEO pages
-> 2. **Agency / SEO or marketing specialist** — I do SEO or marketing for clients (or my company's brand)
+> 2. **Agency / SEO or marketing specialist** — I do SEO or marketing for clients (an in-house team works its own company as one client)
 > 3. **Blogger / content creator** — I run my own blog, channel or newsletter
 > 4. **Course author / own product** — I want traffic to my own course, product or service
 > 5. **Something else / just looking**
@@ -23,11 +23,13 @@ If the user already said it in their first message ("I'm an affiliate", "I'm a b
 
 Starting out or years in the game, no levels are assigned: the baseline (pages, sales, time) and the goals shape the plan. Everyone needs the same thing: a structure for the work and KPIs. So the route is always: profile → `goals` (baseline, goals) → today's plan (Step 3 of the navigator).
 
-**Tools:** all 15 skills, by plan (see `help/references/faq.md`).
+**Tools:** every affiliate skill, by plan (see `help/references/faq.md`).
 
 ## 2. Agency — SEO and marketing agencies, freelancers, in-house teams (full route)
 
 Uses: getting client brands and pages into the top of Google, AI Overviews and "Discussions and forums" through trusted platforms, sending visitors to the client's site and channels, proving it every month with a report. Agency KPIs are rankings, traffic to the client and delivered work — never affiliate commission.
+
+**Plans:** the route runs on Pro (clients, brief, content plan, production, journals, monitoring, positions, a plain monthly report from the journal). Insider adds the full brand and site audit with the agent, the white-label client report against Month 0 and niche analysis. On Pro, `client-workspace` uses the manual profile checklist and the plain report instead (its Step 2 and Step 6 say how).
 
 Route: agency profile → new client onboarding → baseline (brand-presence + Search Console Month 0 + positions) → monthly content plan with client approval → production → publish and log per client → monthly report. Run by `client-workspace`; the daily question "what do we do today?" goes to its Step 4 (today's plan across clients), not to the affiliate daily plan.
 
@@ -81,8 +83,9 @@ Uses: bringing buyers to their own course, product or service through pages on t
 | Check one platform | platform-analyzer | Pro |
 | Are the pages alive / indexed | platform-monitor | Pro |
 | Log pages and checks | work-log (pages and checks) | Pro |
+| Texts about their own product, disclosed as theirs | sales-review-writer (brand mode) | Free |
 
-**Not offered:** goals and the daily plan, affiliate-finder, niche-analysis, client-reports, sales-review-writer.
+**Not offered:** goals and the daily plan, affiliate-finder, niche-analysis, client-reports, the review mode of sales-review-writer.
 
 **Rule:** the user's own product is never presented as an independent review, test or "best of" ranking. Pages say who the author is and that it is their product.
 

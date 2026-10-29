@@ -26,7 +26,7 @@ Reply in the user's language; quote page fragments in the page's language.
 - **Link**: fetch it if possible. If the platform blocks fetching or needs login, ask the user to paste the text (and a screenshot of the first screen if they can).
 - **Text**: use as given.
 Ask: target query, content type (if unclear), platform, offer/affiliate link, country.
-**Agency role:** read the client's brief (`clients/<slug>/client-brief.md`) instead of asking — query, destination, voice, approved claims and brand kit are there. Score with **Brand rules** (scoring 1b) in place of Rumer's rules, plus Copywriting. A client page goes to the client only at 75+; log the audit in the client's journal.
+**Agency role:** read the client's brief (`clients/<slug>/client-brief.md`) instead of asking — query, destination, voice, approved claims and brand kit are there. Score with **Brand rules** (scoring 1b) in place of Rumer's rules, plus Copywriting. A client page goes to the client only at 75+ (the journal's check queue flags under 70, so 70–74 is yours to catch before sending); log the audit in the client's journal. When the independent auditor runs, pass it the role and the brief.
 
 ## Step 1b — Independent reader
 

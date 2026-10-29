@@ -105,7 +105,7 @@ For agencies the report is the product the client pays for. One per client per m
 - Search Console of the client's site: clicks, impressions, average position, **brand-query clicks**, vs Month 0;
 - the content plan: planned vs delivered, profiles opened (`brand-presence` before / after).
 
-**Spec for `visual_report.py`** (Step 4a) — "Client" = the client, "Prepared by" = the agency from `clients/_agency.md`; with white-label on, no PARASITER mention anywhere:
+**Spec for `visual_report.py`** (Step 4a) — "Client" = the client, "Prepared by" = the agency from `clients/_agency.md`, `logo_text` and `accent` = the agency's wordmark and report colour; with white-label on, no PARASITER mention anywhere:
 - KPI tiles (4–6): target queries in the top 10 (now vs Month 0) · our pages in the top 10 / top 3 · visits to the site from our pages (GA4) · brand-query clicks in Search Console (vs Month 0) · pages live / published this month · profiles live.
 - Charts: visits from our pages by platform (`hbars`) · brand-query clicks by month since Month 0 (`line`) · queries in the top 10 by month (`bars`).
 - Tables: pages published this month (link, platform, query, position, visits) · target queries (position Month 0 → now).

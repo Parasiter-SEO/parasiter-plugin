@@ -1,6 +1,6 @@
 # PARASITER by Rumer
 
-Parasite SEO inside your AI assistant, built for **affiliate marketers**: you publish review pages on platforms Google already trusts, readers click your affiliate link, you earn the commission. Skills and agents find platforms, pick the content type that sells, write the review, audit the page, track every sale, and tell you what to do next.
+Parasite SEO inside your AI assistant for **affiliate marketers** and **agencies**: you publish pages on platforms Google already trusts — affiliates earn the commission, agencies send the client's buyers to the client's site. Skills and agents find platforms, pick the content type that sells, write the review, audit the page, track every sale, and tell you what to do next.
 
 **Who it's for:** two full routes — **affiliate marketers** who earn with parasite SEO, at any stage, and **agencies** (SEO and marketing agencies, freelancers, in-house teams) running parasite SEO for clients.
 
@@ -94,9 +94,11 @@ claude plugin install parasiter@parasiter
 
 Or inside Claude Code: `/plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `/plugin install parasiter@parasiter`.
 
+Agency route: Pro; brand and site audit, white-label client reports: Insider.
+
 ## Rules built into every skill
 
-No fake reviews, tests, results, credentials, prices or deadlines. Personal experience only when real. Affiliate disclosure and last-checked date on every page. Only platforms where you can legitimately post. No income guarantees: income goals are yours, the system plans actions and tracks results.
+No fake reviews, tests, results, credentials, prices or deadlines. Personal experience only when real. Affiliate disclosure (client pages: brand disclosure) and last-checked date on every page. Only platforms where you can legitimately post. No income guarantees: income goals are yours, the system plans actions and tracks results.
 
 ## Risks
 

@@ -19,12 +19,15 @@ Spec (all keys optional except title):
   "tables": [{"title": "...", "columns": ["Page", "Platform"], "rows": [["<a href=...>..</a>", "..."]], "note": "..."}],
   "sections": [{"title": "What worked", "items": ["...", "..."]}],
   "footnote": "Numbers come from ... Estimates are labelled.",
-  "pdf_link": "report.pdf"   (adds a "Download PDF" button; publish the PDF next to the page under this name)
+  "pdf_link": "report.pdf",  (adds a "Download PDF" button; publish the PDF next to the page under this name)
+  "accent": "#0f766e",       (agency report colour, hex; replaces the default blue for headings, links and KPI accents)
+  "logo_text": "Northwind Digital"  (agency wordmark at the top of the report)
 }
 Text is escaped except table cells that start with "<a " (links). Numbers in values must be plain numbers.
 """
 import html
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -222,9 +225,12 @@ def render(spec):
     dl = f'<a class="dl" href="{E(pdf)}" download>Download PDF</a>' if pdf else ""
     meta = "".join(f"<div>{E(a)}: <b>{E(spec[k])}</b></div>" for k, a in (("client", "Client"), ("period", "Period"), ("prepared_by", "Prepared by"), ("date", "Date")) if spec.get(k))
     foot = f'<p class="foot">{E(spec["footnote"])}</p>' if spec.get("footnote") else ""
+    acc = spec.get("accent", "")
+    acc_css = f":root{{--accent:{acc}}}" if re.fullmatch(r"#[0-9a-fA-F]{6}", acc or "") else ""
+    logo = f'<div class="logo-text" style="font-weight:700;letter-spacing:-.01em;color:var(--accent);margin-bottom:6px">{E(spec["logo_text"])}</div>' if spec.get("logo_text") else ""
     return (f'<!doctype html><html lang="{E(spec.get("lang", "en"))}"><head><meta charset="utf-8">'
-            f'<meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(spec["title"])}</title><style>{CSS}</style></head>'
-            f'<body><main><header class="top"><div><div class="eyebrow">{E(spec.get("eyebrow", "Report"))}</div><h1>{E(spec["title"])}</h1>'
+            f'<meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(spec["title"])}</title><style>{CSS}{acc_css}</style></head>'
+            f'<body><main><header class="top"><div>{logo}<div class="eyebrow">{E(spec.get("eyebrow", "Report"))}</div><h1>{E(spec["title"])}</h1>'
             f'<p class="sub">{E(spec.get("subtitle", ""))}</p></div><div class="meta">{meta}{dl}</div></header>'
             f'<div class="kpis">{kp}</div><div class="grid2">{"".join(blocks)}</div>{foot}</main>{DL_JS if pdf else ""}</body></html>')
 

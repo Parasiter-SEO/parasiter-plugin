@@ -43,6 +43,7 @@ Language of reports: [en] · Content language: [en] · Country: [US]
 ## KPIs and reporting
 - KPIs: [queries in top 10 · visits from our pages · brand-query clicks · pages live · profiles live]
 - Reporting day: [1st working day of the month] · format: PDF + dashboard page
+- Server monitoring: on (default) / off (NDA: pages are not sent to the PARASITER server)
 - Contract volume: [N pieces / month, N profiles]
 
 ## Changes

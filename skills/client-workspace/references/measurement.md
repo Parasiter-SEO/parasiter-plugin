@@ -29,8 +29,8 @@ Search Console only sees the client's own site in Google. It does not see visits
 ## GA4 — visits from our pages
 
 - Access: GA4 **Admin → Property access management → + → Add users** → the agency's account → role **Viewer**.
-- Monthly export: **Reports → Acquisition → Traffic acquisition**, dimension **Session source / medium**, filter `medium = parasite` (or add the secondary dimension **Session manual campaign name**), date range = the month → **Share → Download file → CSV**.
-- Import into the client journal: `python3 scripts/worklog.py import-traffic clients/acme/parasite-seo-progress.csv ga4-nov.csv --from 2026-11-01 --to 2026-11-30` (work-log Mode 3). `Session source / medium` (utm_source = platform) credits the platform's total.
+- Monthly export: **Reports → Acquisition → Traffic acquisition**, dimension **Session source / medium**, filter **Session medium exactly matches `parasite`** — required: without it the client's own referrals from LinkedIn, Reddit or Medium get counted as ours, date range = the month → **Share → Download file → CSV**.
+- Import into the client journal: `python3 skills/work-log/scripts/worklog.py import-traffic clients/acme/parasite-seo-progress.csv ga4-nov.csv --from 2026-11-01 --to 2026-11-30` (work-log Mode 3). `Session source / medium` (utm_source = platform) credits the platform's total.
 - **Per page:** export with **Session manual ad content** (= `utm_content`) as the dimension next to Session source. Each page is logged with its sub-ID equal to its `utm_content` (`work-log add … --sub-id pb-how-to-choose-crm`), so GA4 visits land on the exact page.
 - Key events (leads, sign-ups, purchases) — report them only if the client tracks them in GA4; never estimate conversions the client doesn't measure.
 
@@ -48,6 +48,7 @@ Search Console only sees the client's own site in Google. It does not see visits
 
 ## Positions
 
-- Client target queries and every published page's main query, through `work-log` Mode 9 on the user's DataForSEO account — always with the user's yes, the number of pages and the cost shown.
+- **Client target queries:** register each of the client's landing pages in the client journal as a page of the platform `own-site` with its target query — `worklog.py add clients/acme/parasite-seo-progress.csv --event baseline --url https://acme.com/product --platform own-site --query "best crm for startups"` (and `platform-set --platform own-site --type own-site` once). Then the same position check covers the client's site and our pages, and Month 0 is the first check.
+- Every published page's main query, through `work-log` Mode 9 on the user's DataForSEO account — always with the user's yes, the number of pages and the cost shown.
 - Also record: AI Overview citations, "Discussions and forums", image and video blocks (Mode 9 sees them).
 - Without DataForSEO: the user's tracker export (Ubersuggest, SE Ranking, Semrush…) imported with work-log.

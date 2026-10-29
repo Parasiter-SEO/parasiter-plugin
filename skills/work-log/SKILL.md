@@ -39,6 +39,8 @@ For agencies every client has its own folder and journal: `clients/<slug>/parasi
 - **Every client page gets a sub-ID equal to its `utm_content`** (`--sub-id md-best-crm`): GA4 exports with "Session manual ad content" then credit visits to the exact page; exports by "Session source / medium" credit the platform.
 - **Traffic (Mode 3)** = GA4 visits to the client's site from our pages, platform stats (views, reads, plays) and the client's own channel stats. Search Console exports of the client's site are kept in `clients/<slug>/reports/` for `client-reports`, not imported as page traffic (they describe the client's site, not our pages).
 - **Sales** are optional: only when the client shares leads or orders by source. Reports read "—" for sales otherwise.
+- The client's own landing pages are journal pages of the platform `own-site` with their target query (`client-workspace/references/measurement.md`), so the position check covers them too.
+- Automatic server monitoring is skipped for a client whose brief says `Server monitoring: off`.
 - Paid checks, monitoring, the check queue and Rules below apply per client.
 
 ## Mode 0 — Import pages you already have (inventory)

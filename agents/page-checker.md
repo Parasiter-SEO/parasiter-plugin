@@ -13,7 +13,7 @@ For each URL:
 1. Open it. Status: live / 404 / removed by platform / login wall / redirect (to where).
 2. Look for noindex in the meta robots tag or response headers; note canonical pointing elsewhere.
 3. Indexed (only when the skill asks for it): search `site:` with the URL, or the exact title in quotes. Result: indexed / not found / unknown. Paid index or position checks on the user's SEO API are not yours — the skill runs them after the user's yes.
-4. Affiliate link: present? Same URL as expected? Does it open and land on the merchant page?
+4. Affiliate link: present? Same URL as expected? Does it open and land on the merchant page? **Client page** (the skill passes the client's destination instead of an affiliate link): the link to the client's page is present, its `utm_source`, `utm_medium` and `utm_content` are as expected (compare the raw URL, do not normalise it), and it lands on that page.
 5. Position for the main query only if the skill asks and it can be seen in the top 10; otherwise "unknown".
 6. Platform-wide signals you notice: several of the user's pages on one platform removed or noindexed, other users' recent posts gone, a cleanup notice, new login walls. Link nofollow doesn't matter — don't report it as a problem.
 

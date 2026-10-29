@@ -161,5 +161,5 @@ What changes:
 - No invented tests, reviews, customer quotes, results, clinical claims or guaranteed outcomes. Health/money topics: describe limits honestly.
 - Show cons and say who the product is NOT for — that is what makes the recommendation believable.
 - Affiliate disclosure (brand mode: brand disclosure) and last-checked date on every page.
-- Role from `parasite-seo-profile.md` (navigator `references/roles.md`): affiliates and bloggers get the review mode; agencies get brand mode (above). For a course author / own product, say it is not in their toolset. Never present the user's own or a client's product as an independent review, test or ranking.
+- Role from `parasite-seo-profile.md` (navigator `references/roles.md`): affiliates and bloggers get the review mode; agencies and course authors / own-product owners get brand mode (above), disclosed as the brand's or the author's own product. Never present the user's own or a client's product as an independent review, test or ranking.
 - Length: **every article is at least 1,500 words** (count before handing over; if short, deepen pains, facts, life after, comparison and FAQ — never pad with filler). Longer where the platform wants it (PDF ~3,000, press release 2,000–3,000). Only non-article formats are shorter: Facebook posts, YouTube descriptions, Reddit/Quora answers.

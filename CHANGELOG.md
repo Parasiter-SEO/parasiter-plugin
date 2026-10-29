@@ -15,6 +15,11 @@ Each version's section is posted to the news feed and the Telegram channels when
 - **Traffic to the client:** every link carries UTM (`utm_medium=parasite`); GA4 exports credit visits per platform, and per page through the page's sub-ID (= `utm_content`). Search Console shows the client's own site and its brand queries.
 - **Monthly white-label report** against Month 0: positions, visits from our pages, brand-query clicks, delivered vs plan, next month's plan — PDF + dashboard in the agency's name.
 - Platform finder for clients: probes the client's category and competitors, marks brand-safe platforms, starts from the brand's own profiles.
+- The client's own landing pages are tracked with their target queries, so the client's site positions are in every report from Month 0.
+- Reports in the agency's colour with its wordmark (`accent`, `logo_text`).
+- NDA clients: `Server monitoring: off` in the brief keeps their pages off the PARASITER server.
+- Plans: the agency route runs on Pro (plain monthly report, manual brand checklist); Insider adds the brand audit agent and the white-label client report.
+- Course authors / own-product owners can now write about their product in brand mode (disclosed as theirs).
 
 ## 0.17.1 — 2026-10-28
 - Every page you log or import goes on daily server monitoring automatically (Pro / Insider) — no need to ask.
