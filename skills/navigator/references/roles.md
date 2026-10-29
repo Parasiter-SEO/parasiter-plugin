@@ -1,12 +1,10 @@
 # Roles — who the user is and what PARASITER gives them
 
-PARASITER has **three full routes**:
+PARASITER has **four full routes**:
 - **Affiliate** — the marketer who earns commissions with parasite SEO: baseline and goals, the daily plan, the journal with sales by sub-ID, weekly sales reminders, the check queue.
 - **Agency** — SEO and marketing agencies, freelancers and in-house teams who run parasite SEO for clients: a folder per client, onboarding brief, brand and site audit, monthly content plan with client approval, today's plan across clients, positions and traffic to the client (Search Console, GA4 with UTM), monthly white-label reports. Run by `client-workspace`.
-
 - **Site owner** — the owner of a site, shop, service or course who builds parasite pages around it: rankings, traffic with CTAs, dofollow links, paid placements, sales measured on the site. Run by `client-workspace` in own-site mode.
-
-Bloggers get the tools from the set that honestly fit their work, with no goals and no daily plan — those are tuned for affiliate income and would give wrong numbers.
+- **Blogger / creator** — free SEO through their own channels: optimized channels, a posting model, findable videos and posts, indexing, tracking in Google, monetization. Run by `creator-channels`.
 
 ## The question (Step 0 of the navigator)
 
@@ -15,7 +13,7 @@ Ask once, before the profile questions, in the working language:
 > Who are you, and what do you want PARASITER for?
 > 1. **Affiliate** — I earn (or want to earn) commissions with parasite SEO pages
 > 2. **Agency / SEO or marketing specialist** — I do SEO or marketing for clients (an in-house team works its own company as one client)
-> 3. **Blogger / content creator** — I run my own blog, channel or newsletter
+> 3. **Blogger / content creator** — I grow my own channels (YouTube, Instagram, TikTok, Pinterest, blog…) without an ad budget
 > 4. **Site owner / own product** — I promote my own site: shop, products, services or course
 > 5. **Something else / just looking**
 
@@ -55,23 +53,26 @@ Route: agency profile → new client onboarding → baseline (brand-presence + S
 
 **Rule:** a client's product is never presented as an independent review, test or ranking. Pages say who is behind them — the brand, its expert, or "prepared with [Brand]". Profiles are the brand's real, declared accounts.
 
-## 3. Blogger / content creator
+## 3. Blogger / content creator (full route, free)
 
-Uses: monetizing their own blog, channel or newsletter with affiliate links, and better reviews.
+Uses: no ad budget — free SEO through their own channels. Their YouTube videos and Shorts, Reels, TikToks, Facebook posts, pins and blog posts can rank in Google (video results, the "Short videos" block, images, "Discussions and forums") and in each app's search. The route makes every channel and every piece findable, turns one idea into many pieces, gets fresh content indexed, tracks it in Google, and turns audience growth into income (sponsors with a media kit, affiliate links, own offer). The message to the creator: ads are expensive — your content can rank for free.
+
+Route: run by `creator-channels` — creator profile ("digitize yourself") and every channel connected → channel audit and optimization (`video-seo-checker` agent) → search-based content plan and the posting model (one idea → long video, shorts, pins, text post) → each piece through `video-seo` (package before, check after) → indexing (free first) → tracking in Google → monetization.
 
 | Need | Skill | Plan |
 |---|---|---|
-| What to write about a product | content-type-selector | Free |
-| The review or comparison itself | sales-review-writer | Free |
-| Audit a post | page-audit | Free |
-| Images for posts | post-illustrations | Free |
-| Log posts and sales | work-log | Pro |
-| Find an affiliate program | affiliate-finder | Insider |
-| Keywords and SERP via their API | niche-analysis | Insider |
+| Creator profile, channels, audit and optimization, content plan, posting model, indexing, media kit | creator-channels (+ video-seo-checker agent) | Free |
+| Video and post package: title, description, chapters, spoken and on-screen keywords, captions, hashtags, cover, CTA; check after publishing | video-seo (+ video-seo-checker agent) | Free |
+| What to make about a product or a buyer question | content-type-selector | Free |
+| Reviews and text posts in the creator's voice, with disclosed links | sales-review-writer (review mode for products they review, brand mode for their own offer) | Free |
+| Thumbnails, covers, pins | post-illustrations | Free |
+| Audit a post or a blog article | page-audit | Free |
+| Journal of pieces, positions in Google incl. video blocks, channel stats | work-log | Pro |
+| Pieces alive / indexed | platform-monitor | Pro |
+| Affiliate programs for their niche | affiliate-finder | Insider |
+| Keywords and SERP through their API | niche-analysis | Insider |
 
-**Not offered:** goals and the daily plan, the platform skills (finder, analyzer, feed, monitor), client-reports.
-
-If the blogger wants to earn by publishing pages on other platforms, that is role 1: say so in one line and offer to switch.
+**Not offered:** goals as affiliate income planning (a creator's goals are audience and pieces that rank — set in `creator-channels`), client-workspace. If the creator starts publishing review pages on other platforms for commissions, that is role 1; if they build a site around their offer, role 4 — say so in one line and offer to switch.
 
 ## 4. Site owner — own site, shop, services, course (full route)
 
@@ -112,9 +113,9 @@ Give the 5-step overview from `help` in a few lines, say who it is built for, an
 - First run: one line — "PARASITER for your site: pages on trusted platforms that rank for your queries, send buyers to your site and give it links; paid placements when they pay off; sales measured on your site." — then `client-workspace` in own-site mode: Step 1 (brief about the site), Step 2 (Month 0).
 - Every session: `client-workspace` Step 4 for today's plan.
 
-## How to talk to the blogger
+## How to talk to the creator
 
-- One line, once: "PARASITER is built for affiliates who earn with parasite SEO. For bloggers you get these tools:" — then the table for the role, as a short list, and "What do you want to do first?"
-- Route each request to the role's skills. A request for a skill outside the role: say it is built for affiliate work and is not part of their toolset; name the closest skill they do have.
-- No daily plan and no goals for these roles. "What should I do today?" → show their toolset and ask which task.
+- First run: two lines — "Ads are expensive; your content can rank in Google for free. PARASITER makes your channels and every video findable, turns one idea into many pieces and tracks them in Google." — then `creator-channels` Step 1 (profile and channels).
+- "What should I do today?" → the next pieces from the creator's content plan (`creator-channels` Step 3), sized to their time.
+- A request outside the role: name the closest skill they have.
 - The plan still decides what works: a role's Pro or Insider skill needs that plan.

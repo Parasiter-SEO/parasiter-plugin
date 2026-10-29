@@ -1,7 +1,7 @@
 # FAQ
 
 ## Who is it for?
-Three full routes: **affiliate marketers** who earn with parasite SEO, at any stage, **site owners** building parasite pages around their own site, and **agencies** — SEO and marketing agencies, freelancers and in-house teams running parasite SEO for clients (a folder per client, brand audit, content plans with approval, positions and traffic to the client, monthly white-label reports). Bloggers use a smaller toolset that fits their work, without goals and the daily plan. The navigator asks once ("who are you and what for?"); say "I'm an affiliate now" (or another role) to change it.
+Four full routes: **affiliate marketers** who earn with parasite SEO, at any stage, **site owners** building parasite pages around their own site, **bloggers and creators** growing their own channels for free, and **agencies** — SEO and marketing agencies, freelancers and in-house teams running parasite SEO for clients (a folder per client, brand audit, content plans with approval, positions and traffic to the client, monthly white-label reports).  The navigator asks once ("who are you and what for?"); say "I'm an affiliate now" (or another role) to change it.
 
 ## What do I need to work with PARASITER?
 - **Claude**: Pro (~$20/month) is the minimum; Max (from ~$100/month) recommended for daily work with the full system — many articles, rollouts, agents and reports without hitting limits.
@@ -11,6 +11,9 @@ Without an SEO service most things still work (journal, articles, audits, images
 
 ## I run an agency. What do I get?
 A desk for every client (`client-workspace`): onboarding brief, where traffic goes, Search Console and GA4 access, UTM links, a Month 0 baseline, a monthly content plan the client approves, today's plan across all clients. A brand and site audit (`brand-presence`): which profiles the brand should have and what is broken. Brand texts written by Claude and disclosed as the brand's, images in the client's style, audits before the client sees a page, fresh brand-safe platforms, monitoring, positions, and a monthly white-label report (PDF + dashboard). Client reports and the brand audit need Insider.
+
+## I'm a creator with no ad budget. What do I get?
+Free SEO through your own channels. Google shows creators' content in its results — YouTube videos and Shorts, short videos from TikTok, Instagram and Facebook, Pinterest pins, posts in "Discussions and forums". `creator-channels` audits and optimizes every channel, plans content from what people search, turns one idea into a long video, shorts, pins and a text post, gets fresh pieces indexed (free ways first) and tracks them in Google; `video-seo` writes the title, description, chapters, spoken and on-screen keywords, captions, hashtags and cover for every video, then checks it after publishing. Then a media kit for sponsors and affiliate links. Both skills are on the Free plan; tracking positions and the journal are Pro.
 
 ## I promote my own site. What do I get?
 A workspace for your site (`client-workspace`, own-site mode): a brief about what the site sells, Search Console and GA4, UTM on every link, Month 0, a monthly content and link plan, today's plan. Pages on trusted platforms rank for your queries sooner than the site can, send buyers with CTAs, and give links where platforms allow dofollow. Paid placements (`paid-placements`): wires and sponsored articles with prices, link policy and how to order. The journal logs every link (target, dofollow / nofollow, anchor, cost) and closes the loop on your site: visits, conversions and revenue per page and platform against spend (`site-roi`, `backlinks`). Site audit and landing-page audits by Rumer's rules (`brand-presence`, `page-audit`).
@@ -23,9 +26,9 @@ An affiliate never sees the merchant's analytics, so UTM tags are wasted. An age
 
 ## Plans and key
 <!-- Maintainer: keep this split identical to the pricing block on the site. -->
-- **Free, $0** — plugin without a key, 6 skills: goals, content-type-selector, sales-review-writer, page-audit, post-illustrations, help.
-- **Pro, $19/month** — 14 skills: Free + navigator, client-workspace (agencies and site owners), paid-placements, platform-finder, platform-analyzer, platform-feed, platform-monitor, work-log. Personal key: checked platform database, feed and weekly market analysis, scheduled monitoring, navigator updates; new platforms about 7 days after they are found.
-- **Insider, $39/month** — all 18 skills and 8 agents: Pro + niche-analysis, affiliate-finder, client-reports, brand-presence (agencies); extra features, new platforms the day they are found, PARASITER Insider channel and the private Insider group.
+- **Free, $0** — plugin without a key, 8 skills: goals, content-type-selector, sales-review-writer, page-audit, post-illustrations, creator-channels, video-seo, help.
+- **Pro, $19/month** — 16 skills: Free + navigator, client-workspace (agencies and site owners), paid-placements, platform-finder, platform-analyzer, platform-feed, platform-monitor, work-log. Personal key: checked platform database, feed and weekly market analysis, scheduled monitoring, navigator updates; new platforms about 7 days after they are found.
+- **Insider, $39/month** — all 20 skills and 9 agents: Pro + niche-analysis, affiliate-finder, client-reports, brand-presence (agencies); extra features, new platforms the day they are found, PARASITER Insider channel and the private Insider group.
 - Pro includes the PARASITER Pro channel and personal notifications from the bot. Telegram is for paid plans only.
 - Annual billing about 20% less. Prices are preliminary — current terms on the official site.
 - The key is personal: one key, one person. It stops working when the subscription ends; skills keep working without server data.

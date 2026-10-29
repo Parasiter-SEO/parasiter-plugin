@@ -96,6 +96,16 @@ First session of the week, or "am I on track?" → `goals` compares plan and fac
 
 Every client has its own folder (`clients/acme/`); nothing from one client appears in another's plan or report.
 
+## Creators: get your videos and posts into Google for free
+
+1. "I'm a creator" → your profile (niche, who you are, audience, how you earn) and the links to all your channels.
+2. "Audit my channels" → each channel checked for Google and in-app search, with ready texts: name line, bio, About, playlist titles, and the settings to turn on.
+3. "Content plan for 2 weeks" → topics people search for, and the posting model: one idea → long video, shorts, pins, text post — sized to your time.
+4. Before filming: "video package for [topic]" → title, hook, chapters, description, spoken and on-screen keywords, captions, hashtags, cover prompt (free in Gemini), pinned comment.
+5. After publishing: "check my video: URL" → what's missing, indexed or not, does it show for the query in Google. Fix the title, description, chapters or captions if needed.
+6. Not in Google after 7–14 days → "index my video" → free ways first, a low-cost indexer only if you want it.
+7. Every month: which videos rank in Google, what to make more of; "make my media kit" for sponsors.
+
 ## Site owners: grow your own site
 
 1. "I promote my own site" → a brief about the site: what it sells, top pages, queries each page should win, what a conversion is.

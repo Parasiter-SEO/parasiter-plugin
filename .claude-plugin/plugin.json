@@ -1,8 +1,8 @@
 {
   "name": "parasiter",
   "displayName": "PARASITER by Rumer",
-  "version": "0.19.0",
-  "description": "Parasite SEO inside your AI assistant, for affiliate marketers, agencies and site owners: find and analyze platforms, pick the content type that sells, write sales reviews and brand content, audit pages and sites, create post images, analyze niches and affiliate programs, plan paid placements (wires, sponsored articles), set goals and get a daily plan, run clients or your own site (brief, content and link plans, positions, GA4 and Search Console, backlinks, revenue vs spend, monthly reports), and keep a journal with reports and a check queue for every page.",
+  "version": "0.20.0",
+  "description": "Parasite SEO inside your AI assistant, for affiliate marketers, creators, site owners and agencies: find and analyze platforms, pick the content type that sells, write reviews and brand content, make videos and posts findable in Google (video SEO, channel audits, indexing), audit pages and sites, create images, analyze niches and programs, plan paid placements, set goals and get a daily plan, run clients or your own site (content and link plans, positions, GA4 and Search Console, backlinks, revenue vs spend, reports), and keep a journal with a check queue for every page.",
   "author": {
     "name": "Rumer (Affiliate Credo)",
     "url": "https://affiliatecredo.com"
@@ -22,7 +22,10 @@
     "client reports",
     "link building",
     "press release",
-    "site owner"
+    "site owner",
+    "creators",
+    "video seo",
+    "youtube seo"
   ],
   "userConfig": {
     "parasiter_key": {

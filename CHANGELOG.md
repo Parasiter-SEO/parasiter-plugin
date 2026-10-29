@@ -2,6 +2,16 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.20.0 — 2026-10-29
+
+**PARASITER for creators** — a free route for bloggers and content creators with no ad budget. Ads are expensive; your content can rank in Google for free. Say *"I'm a creator"*.
+- **Your channels as parasite SEO** (`creator-channels`): creator profile, every channel connected (YouTube, Instagram, TikTok, Facebook, Pinterest, LinkedIn, X, blog, podcast), an audit of each for Google and in-app search with ready texts (name line, bio, About, playlists) and the settings to turn on — e.g. Instagram's "appear in search engine results" for professional accounts.
+- **Content plan from search** and the posting model: one idea → long video, 3–5 shorts, pins, a text post with the video embedded — sized to your time.
+- **Video SEO** (`video-seo`): before filming — query, title, hook, chapters (Google Key moments), description, spoken and on-screen keywords, captions, hashtags, cover prompt, pinned comment; after publishing — a check by the new `video-seo-checker` agent: what's missing, indexed or not, does it show in Google's video and Short videos results.
+- **Indexing:** free ways first (links from crawled pages, your hub, Search Console and IndexNow for your own site); a low-cost indexer only if you choose it, tested on a few URLs first.
+- **Tracking and income:** positions in Google incl. video blocks, monthly review, a media kit for sponsors from your real numbers, disclosed affiliate links.
+- Free plan now has 8 skills (creator-channels and video-seo added).
+
 ## 0.19.0 — 2026-10-29
 
 **PARASITER for site owners** — a full route for owners of a site, shop, services or course who build parasite pages around their own site. Say *"I promote my own site"*.
