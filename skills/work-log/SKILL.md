@@ -1,6 +1,6 @@
 ---
 name: work-log
-description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms. Imports pages they already published and builds their own platform base; records every action, sale (by hand or from affiliate network exports) and traffic; ties sales to pages by sub-ID; gives reports for any day, week or month, effectiveness by page, platform, offer, program and content type, and a queue of pages due for checks. Use when the user uploads or pastes their pages, asks for "my platforms", marks priority pages or platforms, asks which pages are in the top, "what should I write and where", "which topics are missing on X", reports work or a sale, uploads a sales or traffic export, asks "what did I do / earn this week", wants a report, or asks what needs checking.
+description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms. Imports pages they already published and builds their own platform base; records every action, sale (by hand or from affiliate network exports) and traffic; ties sales to pages by sub-ID; gives reports for any day, week or month, effectiveness by page, platform, offer, program and content type, and a queue of pages due for checks. Use when the user uploads or pastes their pages, asks for "my platforms", marks priority pages or platforms, asks which pages are in the top, wants to see or download their base of posts ("open my base", "my posts in Excel"), "what should I write and where", "which topics are missing on X", reports work or a sale, uploads a sales or traffic export, asks "what did I do / earn this week", wants a report, or asks what needs checking.
 ---
 
 # Work Log
@@ -165,6 +165,32 @@ Checks of more than 3 URLs go to the `page-checker` agent (via platform-monitor)
 ## Mode 6 — Page registry
 
 `pages [--platform medium]` — every page with platform, offer, sub-ID, age, status, audit score, views, affiliate clicks, sales and commission.
+
+## Mode 6b — My base: open it and download it
+
+The base is the user's asset, so they can look at it nicely and take it with them. Three ways, picked by the words they use:
+
+| User says | Give |
+|---|---|
+| "show my posts", "my pages on Medium", "which pages are in the top" | a short answer in the chat: `pages` (filters `--platform`, `--topic`, `--priority`), 10–20 rows, the rest summed up |
+| "open my base", "show my base nicely", "dashboard of my posts", "I want to see all my posts" | the dashboard page |
+| "download / export / send me my posts", "my base in Excel", "a table of my posts" | the Excel file (the dashboard too, unless they only asked for the file) |
+
+```
+python3 scripts/mybase.py parasite-seo-progress.csv --lang ru [--out parasite-seo-base] [--platform medium] [--priority high] [--topic keto]
+```
+Writes, next to the journal:
+- `parasite-seo-base.xlsx` — sheets **Summary** (totals, status by platform), **Posts** (one row per page as it stands today: published, link, platform, topic, ★, offer, program, campaign, sub-ID, main query, content type, status, position, best position, last check, audit, views, affiliate clicks, sales, commission, age, saved source; plus link target and rel when pages link to the user's own site), **Platforms**, **Sales**, **Links**, **Journal** (every event as logged). Header frozen, filters on, links clickable, dates and numbers are real Excel values, top-10 positions highlighted. Opens in Excel, Google Sheets (File → Import), Numbers and LibreOffice.
+- `parasite-seo-base.html` — the dashboard: totals (posts, ★, platforms, alive, indexed, top 10, need attention, sales and commission per currency), status of posts by platform, and tabs Posts · Platforms · Sales · Links with search, filters (platform, status, topic, offer, ★ only, top 10 only) and sorting by any column. Buttons **Download Excel** (the workbook is inside the page) and **CSV of this view** (exactly the rows the filters show). Light and dark, works on a phone.
+
+`--lang` = the working language from `parasite-seo-profile.md` (en, ru, uk, es, pt; other languages get English labels). Labels and statuses are translated, the data never is. `--xlsx` or `--html` writes only one of them; `--platform / --priority / --topic` narrow the Posts sheet and the page table. The script only reads the journal files.
+
+Delivering:
+- **Claude app / claude.ai** (can publish pages): publish the `.html` as a private artifact with `capabilities: {"downloads": true}` — without it the download buttons are hidden. Keep the same artifact for the user's base and republish it to the same URL when they ask again, so the link stays. Also send the `.xlsx` as a file when they asked for Excel.
+- **Claude Code** (no publishing): give both file paths; the `.html` opens in any browser with working buttons.
+- Agencies: run it on the client's journal (`clients/<slug>/parasite-seo-progress.csv`) with `--out clients/<slug>/reports/<yyyy-mm>/base`; never mix clients in one base. It is the full inventory, so it can go to the client as an attachment to the monthly report.
+
+Reply in 2–3 lines: what the base holds now (posts, platforms, alive, top 10, need attention) and one thing to act on from it (for example "4 pages not checked yet — check them now?"). Never retype the table in the chat.
 
 ## Mode 7 — My platform base
 

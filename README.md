@@ -33,7 +33,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 |---|---|
 | `goals` | Baseline journal, goals over 1 week to 12 months, reality check, milestones, weekly targets, progress log, weekly review |
 | `navigator` | Entry point: asks your role and offers the tools for it; for affiliates, today's plan from your goals, progress and time; routes each task |
-| `work-log` | Journal of work, traffic and sales, and your inventory: imports pages you already have and builds your own platform base; topics, priorities, top-10 positions and what to write where; logs every page, action and sale; imports network and platform exports; ties sales to pages by sub-ID; reports for any day, week or month; effectiveness by page, platform, offer, program, content type; check queue and weekly sales upload reminder |
+| `work-log` | Journal of work, traffic and sales, and your inventory: imports pages you already have and builds your own platform base; topics, priorities, top-10 positions and what to write where; logs every page, action and sale; imports network and platform exports; ties sales to pages by sub-ID; reports for any day, week or month; effectiveness by page, platform, offer, program, content type; check queue and weekly sales upload reminder; your whole base as a dashboard page and an Excel file |
 | `content-type-selector` | Picks the content type and topic that sell before writing |
 | `sales-review-writer` | Writes the sales review / comparison for your platform |
 | `page-audit` | Audits a page by link or text, 0–100 score, fixes |
@@ -70,7 +70,7 @@ Skills hold the method; agents do the heavy research and checking in their own c
 
 Call a skill by describing the task ("set my goals for 6 months", "what should I do today", "audit my article") or directly, e.g. `/parasiter:navigator`.
 
-Your files (kept in your project folder): `parasite-seo-profile.md`, `parasite-seo-goals.md`, `parasite-seo-progress.csv` (work and traffic journal), `parasite-seo-sales.csv` (sales), `parasite-seo-platforms.csv` (your platform base), `parasite-seo-links.csv` (your affiliate links).
+Your files (kept in your project folder): `parasite-seo-profile.md`, `parasite-seo-goals.md`, `parasite-seo-progress.csv` (work and traffic journal), `parasite-seo-sales.csv` (sales), `parasite-seo-platforms.csv` (your platform base), `parasite-seo-links.csv` (your affiliate links); `parasite-seo-base.xlsx` / `.html` (your base to view and download, rebuilt on request).
 
 ## Language
 

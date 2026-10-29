@@ -26,6 +26,9 @@ Each recipe: what the user says, what happens. Give the user only the recipe the
 ## Which pages are in the top
 "Which of my pages are in the top 10?" → your pages with positions (from checks, a rank tracker or Search Console). "Show only priority pages" filters the list.
 
+## See or download my base of posts
+"Open my base" → a dashboard page with all your posts: totals, status by platform, search and filters (platform, status, topic, offer, ★, top 10), sorting by any column. "My posts in Excel", "download my base" → an Excel file with sheets Summary, Posts, Platforms, Sales, Links and the full Journal; filters, clickable links and real dates are ready. On the dashboard, **Download Excel** gives the same file and **CSV of this view** gives exactly the rows you filtered. "Show my posts on Medium" in the chat gives a short list instead.
+
 ## Track positions of my pages
 Search Console can't see pages on other people's platforms. Connect your own DataForSEO account (pay per query, cents a month for dozens of pages): create it at dataforseo.com, copy the API login and password, and set them as `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD`. Then "check my positions" → you choose which pages (★, earning, new, all) and see the cost; after your yes they are checked in Google (top 10–30), positions and "new in top 10 / up / down / out" go into your journal. Weekly is enough; "check ★ pages every Monday" sets a scheduled check with a Telegram warning before each run. Using Ubersuggest or another tracker: export the rankings as CSV and upload it — "here are my positions". Trackers follow a whole domain, so on shared platforms (ResearchGate, Medium) make sure the ranking URL is your page; PARASITER skips rows where someone else's page of the same platform ranks. Or just say them ("cortisol on Pressbooks is #8").
 

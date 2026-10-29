@@ -2,6 +2,11 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.21.0 — 2026-10-29
+
+- **Your base of posts, open and in Excel.** Say *"open my base"*: a dashboard page with every post you logged — totals (posts, ★, platforms, alive, indexed, top 10, need attention, sales), the status of your posts on each platform, and a table you can search, filter by platform, status, topic and offer, show only ★ or only top-10 pages, and sort by any column. Light and dark, works on a phone.
+- **Download it any time.** *"My posts in Excel"* or the **Download Excel** button gives a workbook with Summary, Posts (one row per page as it stands today), Platforms, Sales, Links and your full Journal: filters on, links clickable, dates and numbers as real values. **CSV of this view** saves exactly the rows you filtered. Labels in English, Russian, Ukrainian, Spanish and Portuguese.
+
 ## 0.20.0 — 2026-10-29
 
 **PARASITER for creators** — a free route for bloggers and content creators with no ad budget. Ads are expensive; your content can rank in Google for free. Say *"I'm a creator"*.
