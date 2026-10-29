@@ -2,6 +2,16 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.19.0 — 2026-10-29
+
+**PARASITER for site owners** — a full route for owners of a site, shop, services or course who build parasite pages around their own site. Say *"I promote my own site"*.
+- **A workspace for your site** (`client-workspace`, own-site mode): brief about what the site sells, Search Console and GA4, UTM on every link, Month 0, a monthly content **and link** plan, today's plan. No client approvals, no white-label.
+- **Links tracked.** Log the link each page gives your site — target page, dofollow / nofollow, anchor, cost: *"my backlinks"* shows links live, dofollow per target page, anchors (warns when one money anchor dominates) and spend per live dofollow link. Platforms are marked by the link rel they give.
+- **Sales closed on the site.** GA4 exports with Key events and Purchase revenue (by Session source and Session manual ad content) are imported per page and platform; *"how did my pages pay off?"* gives visits, conversions, conversion rate, revenue, spend and return. `--medium parasite` counts only our traffic.
+- **Site and landing pages audited** by Rumer's content rules before links point to them (`brand-presence`, `page-audit`).
+- **Paid placements** (`paid-placements`, new agent `placement-scout`), for site owners and agencies: a base of press-release wires (EIN Presswire, ACCESS Newswire, GlobeNewswire, XPR Media, Newswire.com, PR Newswire, Business Wire) and sponsored-article marketplaces (prnews.io, Collaborator, Adsy, WhitePress) with prices or how to request a quote, link policy, distribution and niche limits; a plan for your goal and budget, a fresh check and a marketplace shortlist, the release or article written, logged with its cost, and judged by return after 30 and 60 days. Honest about links: wire links are usually nofollow; dofollow comes from chosen marketplace sites.
+- Site owner monthly report: revenue from our pages, conversions, spend and return, live dofollow links, target queries in the top 10 vs Month 0.
+
 ## 0.18.0 — 2026-10-29
 
 **PARASITER for agencies** — a full route for SEO and marketing agencies, freelancers and in-house teams running parasite SEO for clients. Say *"I'm an agency"*.

@@ -1,6 +1,6 @@
 ---
 name: client-workspace
-description: The agency desk of PARASITER for SEO and marketing agencies, freelancers and in-house teams running parasite SEO for clients — client list and switching, onboarding brief, where traffic goes (site, socials, YouTube, LinkedIn), KPIs, Search Console and GA4 access, UTM links, baseline, monthly content plan with client approval, today's plan across all clients, and the monthly report cycle. Use when the role is agency, or the user says "new client", "switch to client X", "client brief", "content plan for [client]", "what do we do today for clients", "connect Search Console", "UTM links", or "monthly report for [client]".
+description: The workspace of PARASITER for agencies (SEO and marketing agencies, freelancers, in-house teams running parasite SEO for clients) and for site owners promoting their own site, shop, services or course (own-site mode) — client list and switching, onboarding brief, where traffic goes (site, socials, YouTube, LinkedIn), KPIs, Search Console and GA4 access, UTM links, baseline, monthly content plan with client approval, today's plan across all clients, and the monthly report cycle. Use when the role is agency or site owner, or the user says "new client", "switch to client X", "client brief", "content plan for [client]", "what do we do today for clients", "connect Search Console", "UTM links", or "monthly report for [client]".
 ---
 
 # Client Workspace
@@ -41,6 +41,16 @@ clients/
 Every `work-log`, `platform-monitor` and `client-reports` call for a client gets that client's journal path: `clients/<slug>/parasite-seo-progress.csv`. Never mix two clients in one journal, one report or one content plan. Never mention one client's data, results or platforms to another client.
 
 The active client is set by "switch to Acme" (or by naming the client in the request) and shown in the work label. A request without a client name while several clients exist → ask "Which client?" in one line, listing them.
+
+## Own-site mode (site owner role)
+
+For a site owner the site is the one "client": `clients/<site-slug>/` with the same files. Everything below applies, with these differences:
+- **No agency profile, no client approvals, no white-label.** Step 0 is skipped; statuses go `idea → approved → written → published → checked` (the owner approves their own plan). Reports are for the owner.
+- **The brief is about the site:** what it sells, top products / services and their pages, prices, the queries each page should win, what a conversion is (order, lead form, booking, sign-up) and its value.
+- **The plan is a content and link plan.** Every row also says the link the page gives the site: target page, the rel the platform allows (dofollow / nofollow / ugc / sponsored), anchor (vary it: brand, URL, natural phrases — never the same money anchor everywhere), and the cost for paid placements. Free platforms first; paid placements (`paid-placements`) as a budget line where a dofollow link or a strong media page pays off.
+- **Every page has calls to action to the site** (product, booking, lead form) with UTM — traffic that doesn't reach a product or form is wasted.
+- **The site itself is part of the work:** `brand-presence` site audit and `page-audit` on the landing pages our links point to (first screen, offer, CTA, trust, speed) — a parasite page can't sell through a landing page that doesn't.
+- **Results are closed on the site:** GA4 (or the shop's export) by source and `utm_content` gives visits, conversions and revenue per page (`work-log import-traffic --medium parasite`, `site-roi`); `work-log backlinks` shows links live, dofollow, anchors and spend. Search Console shows the site's own growth: target queries, brand queries, impressions.
 
 ## Step 0 — Agency profile (once)
 
@@ -88,6 +98,7 @@ Output: a one-screen "Month 0" card (site clicks, brand-query clicks, queries in
 2. **Platforms** from `platform-feed` / `platform-finder` (fresh, checked, brand-safe — `platform-finder` agency filter) plus the client's own profiles (LinkedIn page and articles, Medium, YouTube descriptions, Reddit / Quora brand accounts where allowed).
 3. **One row per piece:** topic, target query, platform, format, destination link (UTM), owner, date, status `idea → approved → written → client-approved → published → checked`.
 4. **Profiles to open or fix** from `brand-presence`, as rows of their own.
+4b. **Paid placements** (wires, sponsored articles) from `paid-placements` when the budget allows, as rows with their price — the client (or the owner) approves the spend row by row.
 5. Volume: what the contract says; otherwise ask once. Spread the month evenly; the most important queries go first.
 
 Send the plan for client approval as a ready message (or a shareable page when the session can publish). Only `approved` rows go to production. Changes from the client are new rows or new statuses, never silent edits.
@@ -119,8 +130,8 @@ For each approved row, in order, keeping the client name in every step:
 ## Step 6 — Month close and report
 
 On the report day (or "monthly report for Acme"):
-1. Ask for this month's exports, with the steps from `references/measurement.md`: Search Console (site, brand queries, pages), GA4 traffic acquisition filtered to `utm_medium = parasite`, platform stats where the platform has them.
-2. Import traffic into the client journal (`work-log import-traffic`), positions from DataForSEO (with the user's yes) or the tracker export.
+1. Ask for this month's exports, with the steps from `references/measurement.md`: Search Console (site, brand queries, pages), GA4 traffic acquisition with Session source / medium, Session manual ad content, Sessions, Key events and Purchase revenue (or the shop's orders by source), platform stats where the platform has them.
+2. Import traffic into the client journal (`work-log import-traffic … --medium parasite` — visits, conversions and revenue per page and platform), positions from DataForSEO (with the user's yes) or the tracker export; `work-log site-roi` and `backlinks` give results against spend and the links in place.
 3. `client-reports` Step 4b — the agency monthly report against Month 0 (Insider). On Pro: a plain report from the client journal (`work-log summary --period <month>` and `effect --by platform`) plus the Search Console and GA4 numbers, as text the user can send; mention once that the designed white-label PDF and dashboard come with Insider.
 4. Next month's content plan draft goes out together with the report: the report ends with what we do next.
 

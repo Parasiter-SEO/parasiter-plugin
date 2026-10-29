@@ -30,9 +30,10 @@ Search Console only sees the client's own site in Google. It does not see visits
 
 - Access: GA4 **Admin → Property access management → + → Add users** → the agency's account → role **Viewer**.
 - Monthly export: **Reports → Acquisition → Traffic acquisition**, dimension **Session source / medium**, filter **Session medium exactly matches `parasite`** — required: without it the client's own referrals from LinkedIn, Reddit or Medium get counted as ours, date range = the month → **Share → Download file → CSV**.
-- Import into the client journal: `python3 skills/work-log/scripts/worklog.py import-traffic clients/acme/parasite-seo-progress.csv ga4-nov.csv --from 2026-11-01 --to 2026-11-30` (work-log Mode 3). `Session source / medium` (utm_source = platform) credits the platform's total.
+- Import into the client journal: `python3 skills/work-log/scripts/worklog.py import-traffic clients/acme/parasite-seo-progress.csv ga4-nov.csv --from 2026-11-01 --to 2026-11-30` (work-log Mode 3) with `--medium parasite`, so only our traffic is counted. `Session source / medium` (utm_source = platform) credits the platform's total.
 - **Per page:** export with **Session manual ad content** (= `utm_content`) as the dimension next to Session source. Each page is logged with its sub-ID equal to its `utm_content` (`work-log add … --sub-id pb-how-to-choose-crm`), so GA4 visits land on the exact page.
-- Key events (leads, sign-ups, purchases) — report them only if the client tracks them in GA4; never estimate conversions the client doesn't measure.
+- **Conversions and revenue:** add **Key events** (leads, sign-ups, purchases) and **Purchase revenue** as metrics to the same export — the import stores them per page and platform, and `worklog.py site-roi` shows visits, conversions, revenue, spend and return. Report them only if the site tracks them; never estimate conversions the site doesn't measure. A shop's own order export works too when it has the order's source or UTM.
+- **Links:** for site owners every page is logged with the link it gives the site (`--link-target`, `--link-rel`, `--anchor`, `--cost` for paid placements); `worklog.py backlinks` shows links live, dofollow per target page, anchors and spend per live dofollow link.
 
 ## UTM rule — every link to the client
 

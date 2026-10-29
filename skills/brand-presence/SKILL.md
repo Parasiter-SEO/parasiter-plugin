@@ -19,7 +19,7 @@ Part of PARASITER by Rumer (Affiliate Credo).
 
 **Parasite pages work better for a brand that is visibly real.** When a reader meets the brand on Medium or Reddit, clicks through and finds a complete LinkedIn page, a YouTube channel and a site that loads fast and answers the query, they trust the page they came from. When they find nothing, or a dead profile from 2021, the page loses them. Search engines and AI answers also read the brand's footprint across platforms. This skill finds what is missing and turns it into work.
 
-For the agency role (navigator `references/roles.md`). Reply in the working language; the client-facing summary in the client's language. Read `clients/<slug>/client-brief.md` first; if it is missing, run `client-workspace` onboarding first (at least Message A).
+For the agency and site owner roles (navigator `references/roles.md`); for a site owner the "client" is their own site. Reply in the working language; the client-facing summary in the client's language. Read `clients/<slug>/client-brief.md` first; if it is missing, run `client-workspace` onboarding first (at least Message A).
 
 ## Step 1 — What to audit
 
@@ -34,6 +34,8 @@ From the agent's facts and `references/site-audit.md`:
 4. **Speed:** PageSpeed Insights for the main landing page (mobile score, LCP) — link the report.
 5. **Tracking:** GA4 tag present, key events the client tracks (form, purchase); without them, the monthly report can show visits but not leads — say so now.
 6. **Trust basics:** contacts, about page, real address or company details, reviews widget only if real.
+
+Then the **landing pages our links will point to** go through `page-audit` (brand scale): first screen, offer, CTA, trust, images — Rumer's content rules applied to the site itself. A parasite page can't sell through a landing page that doesn't.
 
 This is a quick audit for the parasite SEO work, not a full technical SEO audit. For a full crawl suggest Screaming Frog or the client's SEO tool; say it once.
 

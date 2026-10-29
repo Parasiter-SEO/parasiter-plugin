@@ -1,21 +1,21 @@
 # PARASITER by Rumer
 
-Parasite SEO inside your AI assistant for **affiliate marketers** and **agencies**: you publish pages on platforms Google already trusts — affiliates earn the commission, agencies send the client's buyers to the client's site. Skills and agents find platforms, pick the content type that sells, write the review, audit the page, track every sale, and tell you what to do next.
+Parasite SEO inside your AI assistant for **affiliate marketers**, **site owners** and **agencies**: you publish pages on platforms Google already trusts — affiliates earn the commission, site owners and agencies send buyers (and links, where platforms allow) to the site. Skills and agents find platforms, pick the content type that sells, write the review, audit the page, track every sale, and tell you what to do next.
 
-**Who it's for:** two full routes — **affiliate marketers** who earn with parasite SEO, at any stage, and **agencies** (SEO and marketing agencies, freelancers, in-house teams) running parasite SEO for clients.
+**Who it's for:** three full routes — **site owners** building parasite pages around their own site, and **affiliate marketers** who earn with parasite SEO, at any stage, and **agencies** (SEO and marketing agencies, freelancers, in-house teams) running parasite SEO for clients.
 
-On first run the navigator asks who you are and what for. Agencies get their own route; bloggers and course authors (own product) get only the tools that fit their work, without goals and the daily plan:
+On first run the navigator asks who you are and what for. Agencies and site owners get their own routes; bloggers and course authors (own product) get only the tools that fit their work, without goals and the daily plan:
 
 | Role | Tools |
 |---|---|
 | Affiliate (parasite SEO) | Goals, daily plan, journal with sales, every affiliate skill |
 | Agency (SEO / marketing, freelancers, in-house) | A folder per client, onboarding brief, brand and site audit, monthly content plan with client approval, brand-mode texts, images in the client's style, audits, brand-safe platforms, monitoring, positions, GA4 + Search Console traffic, monthly white-label reports |
 | Blogger / content creator | content types, sales reviews, page audit, images, journal, affiliate programs, niche analysis |
-| Course author / own product | content types, page audit, images, platform finder / feed / analyzer / monitor, journal of pages |
+| Site owner (own site, shop, services, course) | A workspace for the site, site and landing-page audits, content and link plan, brand-mode texts, platforms with link rules, paid placements (wires, sponsored articles), backlinks and site results — visits, conversions, revenue vs spend |
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
-> **Status: private beta (v0.18.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.19.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
@@ -47,6 +47,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | `client-reports` | Performance analytics and client reports from your data |
 | `client-workspace` | Agencies: clients, onboarding brief, Search Console / GA4 access, UTM, Month 0 baseline, content plan with approval, today's plan across clients, monthly report cycle |
 | `brand-presence` | Agencies: client site quick audit, brand profiles on socials and platforms, content audit, profiles plan (with agent) |
+| `paid-placements` | Paid publications: wires and sponsored-article marketplaces with prices, link policy, how to order; plan for a budget; did it pay off (with agent) |
 | `help` | Built-in help: what each skill does, how to do any task step by step, plans, files, privacy. Ask "what can PARASITER do?" or "how do I …?" |
 
 ## Agents
@@ -61,6 +62,7 @@ Skills hold the method; agents do the heavy research and checking in their own c
 | `serp-analyst` | `content-type-selector`, `niche-analysis` | Breaks down the top 10 for buyer queries: formats, parasite platforms, SERP features, open buyer questions |
 | `page-checker` | `platform-monitor`, `work-log` | Checks lists of your pages: live, noindex, indexed, affiliate link working, position |
 | `brand-auditor` | `brand-presence`, `client-workspace` | Finds and opens a client brand's profiles and key site pages: exist, complete, consistent, last activity, links; site quick checks; what the brand publishes |
+| `placement-scout` | `paid-placements` | Checks paid offers and link policy on published pieces; shortlists marketplace sites for a niche and budget |
 | `independent-auditor` | `page-audit` | Reads a page without the context that wrote it, like a doubtful buyer, and flags weak spots and facts to verify |
 
 Call a skill by describing the task ("set my goals for 6 months", "what should I do today", "audit my article") or directly, e.g. `/parasiter:navigator`.
@@ -94,7 +96,7 @@ claude plugin install parasiter@parasiter
 
 Or inside Claude Code: `/plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `/plugin install parasiter@parasiter`.
 
-Agency route: Pro; brand and site audit, white-label client reports: Insider.
+Agency and site owner routes: Pro (incl. paid placements); brand and site audit, client and site owner reports: Insider.
 
 ## Rules built into every skill
 

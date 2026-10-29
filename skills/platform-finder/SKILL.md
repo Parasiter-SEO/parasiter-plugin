@@ -33,6 +33,10 @@ For a client the question is the same — where do pages rank now — with three
 - **The client's own profiles first** (from `brand-presence`): a platform where the brand already has a complete profile is the cheapest place to start.
 Read and write the client's platform base (`clients/<slug>/parasite-seo-progress.csv` → `parasite-seo-platforms.csv`). Paid placements (news sites, PR wires) go to the client as an option with a known price only — the client decides on paid media.
 
+## Site owner role — links matter
+
+For an affiliate a link's rel doesn't matter (only the page's indexing does). For a site owner it does: every candidate platform is marked **dofollow / nofollow / ugc / sponsored** for links to their site (check a recent post's link in the page source), and dofollow platforms with indexed pages come first for link building. Probe the site's category like the agency mode above. Paid platforms (news sites, press-release wires, sponsored-article marketplaces) go to `paid-placements`, which keeps their prices, packages and how to order.
+
 ## Step 1 — Filters
 
 Ask only what is missing:

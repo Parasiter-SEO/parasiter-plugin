@@ -30,6 +30,8 @@ Commands:
   rollout        JOURNAL (--topic T | --url U)            where to publish this topic next
   import-links   JOURNAL FILE [--program P] [--commission 40%]   affiliate links library (parasite-seo-links.csv)
   links          JOURNAL [--program P]                 products, links, pages per product, products with no pages
+  site-roi       JOURNAL [--period P] [--by platform|page] visits, conversions, revenue on the site vs spend
+  backlinks      JOURNAL [--period P] [--target URL]   links our pages give to the own / client site: dofollow, live, anchors, cost
   coverage       JOURNAL [--topic T] [--platform P] [--gaps N]   topics x platforms, what to write where
 
 Periods: today, yesterday, week, last-week, month, last-month, YYYY-MM, YYYY-MM-DD,
@@ -47,7 +49,8 @@ from datetime import date, datetime, timedelta
 
 COLUMNS = ["date", "time", "event", "page_url", "platform", "offer", "program", "campaign", "sub_id",
            "main_query", "content_type", "status", "score", "views", "clicks", "aff_clicks",
-           "sales", "revenue", "minutes", "note", "topic", "priority", "position"]
+           "sales", "revenue", "minutes", "note", "topic", "priority", "position",
+           "link_target", "link_rel", "anchor", "cost"]
 SALE_COLUMNS = ["date", "program", "network", "offer", "sub_id", "page_url", "order_id",
                 "amount", "commission", "currency", "status", "source", "note", "referer"]
 EVENTS = ["baseline", "published", "submitted", "check", "audit", "refreshed", "moved",
@@ -110,6 +113,11 @@ TRAFFIC_ALIASES = {
     "views": ["views", "pageviews", "reads", "visits", "sessions", "impressions", "uniqueviews",
               "viewcount", "totalviews", "hits", "visitors", "plays", "users", "activeusers",
               "totalusers", "listens", "downloads"],
+    # site owners / agencies: conversions and revenue on the site from GA4 or the shop (by source or utm_content)
+    "conversions": ["conversions", "keyevents", "transactions", "purchases", "ecommercepurchases", "orders",
+                    "leads", "goalcompletions", "signups"],
+    "site_revenue": ["purchaserevenue", "totalrevenue", "ecommercerevenue", "itemrevenue", "orderrevenue",
+                     "salesrevenue"],
     "aff_clicks": ["clicks", "affclicks", "hops", "outboundclicks", "linkclicks", "rawclicks",
                    "uniqueclicks", "totalclicks", "clickthroughs"],
 }
@@ -358,7 +366,13 @@ def page_states(rows, today):
                                    "last_refresh": None, "moved": None, "first": r["_d"],
                                    "imported": False, "topic": "", "priority": "normal",
                                    "position": None, "pos_date": None, "best_pos": None,
-                                   "prev_pos": None, "date_unknown": False})
+                                   "prev_pos": None, "date_unknown": False,
+                                   "link_target": "", "link_rel": "", "anchor": "", "cost": 0.0})
+        for k in ("link_target", "link_rel", "anchor"):
+            if r.get(k):
+                p[k] = r[k].strip().lower() if k == "link_rel" else r[k].strip()
+        if num(r.get("cost")):
+            p["cost"] += num(r.get("cost"))
         for k, col in (("platform", "platform"), ("offer", "offer"), ("program", "program"),
                        ("campaign", "campaign"),
                        ("sub_id", "sub_id"), ("query", "main_query"),
@@ -1144,7 +1158,8 @@ def cmd_add(a):
                       content_type=a.type, status=a.status, score=a.score, views=a.views,
                       clicks=a.clicks, aff_clicks=a.aff_clicks, sales=a.sales,
                       revenue=a.revenue, minutes=a.minutes, note=a.note, topic=a.topic,
-                      priority=a.priority, position=a.position)
+                      priority=a.priority, position=a.position,
+                      link_target=a.link_target, link_rel=a.link_rel, anchor=a.anchor, cost=a.cost)
     if a.date:
         row["date"] = a.date
     if a.time:
@@ -1153,6 +1168,107 @@ def cmd_add(a):
         sys.exit("--date must be YYYY-MM-DD")
     append(a.journal, COLUMNS, [row])
     print(f"Logged: {row['date']} {row['event']} {row['page_url'] or row['note']}".strip())
+
+
+def cmd_site_roi(a):
+    """Site owners / agencies: what our pages brought to the site — visits, conversions, revenue — against spend."""
+    today, rows, pages, sales = load(a)
+    s_, e_, label = period_range(a.period, today, rows)
+    agg = defaultdict(lambda: {"pages": set(), "visits": 0.0, "conv": 0.0, "rev": 0.0, "cost": 0.0, "dofollow": 0})
+    for r in rows:
+        if r["event"] != "traffic" or not (s_ <= r["_d"] <= e_):
+            continue
+        url = r.get("page_url") or ""
+        key = url if a.by == "page" else (r.get("platform") or (pages[url]["platform"] if url in pages else "?"))
+        if a.by == "page" and not url:
+            key = f"{r.get('platform') or '?'} (platform total)"
+        g = agg[key]
+        g["visits"] += num(r.get("views")) or 0
+        g["conv"] += num(r.get("sales")) or 0
+        g["rev"] += num(r.get("revenue")) or 0
+    for p in pages.values():
+        if not (s_ <= p["published"] <= e_) or p["url"].startswith(("http://own-site", "https://own-site")):
+            continue
+        if p["platform"] == "own-site":
+            continue
+        key = p["url"] if a.by == "page" else (p["platform"] or "?")
+        g = agg[key]
+        g["pages"].add(p["url"])
+        g["cost"] += p["cost"]
+        if p["link_rel"] in ("dofollow", "follow") and health(p) not in GONE:
+            g["dofollow"] += 1
+    print(f"# Site results from parasite pages · {label} · by {a.by}\n")
+    if not agg:
+        print("No pages or traffic in this period. Import GA4 / shop data with `import-traffic … --medium parasite`.")
+        return
+    print(f"| {'Page' if a.by == 'page' else 'Platform'} | Pages | Visits | Conversions | Conv. rate | Revenue | Spend | Return | Live dofollow |")
+    print("|---|---|---|---|---|---|---|---|---|")
+    tot = defaultdict(float)
+    for k, g in sorted(agg.items(), key=lambda x: (-x[1]["rev"], -x[1]["visits"])):
+        cr = f"{100 * g['conv'] / g['visits']:.1f}%" if g["visits"] and g["conv"] else "—"
+        ret = g["rev"] - g["cost"]
+        print(f"| {short(k, 45)} | {len(g['pages']) or '—'} | {fmt(g['visits']) if g['visits'] else '—'} | "
+              f"{fmt(g['conv']) if g['conv'] else '—'} | {cr} | {money(g['rev']) if g['rev'] else '—'} | "
+              f"{money(g['cost']) if g['cost'] else '—'} | {money(ret) if (g['rev'] or g['cost']) else '—'} | {g['dofollow'] or '—'} |")
+        for f in ("visits", "conv", "rev", "cost", "dofollow"):
+            tot[f] += g[f]
+    print(f"\n**Total:** {fmt(tot['visits'])} visits · {fmt(tot['conv'])} conversions · revenue {money(tot['rev'])} · "
+          f"spend {money(tot['cost'])} · return {money(tot['rev'] - tot['cost'])} · live dofollow links {int(tot['dofollow'])}")
+    print("Revenue and conversions come from the site's own data (GA4 or shop export by source / utm_content); "
+          "a dash means not measured, not zero.")
+
+
+# ---------- backlinks (site owners and agencies) ----------
+
+def cmd_backlinks(a):
+    """Links our pages give to the user's (or client's) site: dofollow / nofollow, live or gone, cost."""
+    today, rows, pages, sales = load(a)
+    s_, e_, label = period_range(a.period, today, rows)
+    items = [p for p in pages.values() if p["link_target"] and s_ <= p["published"] <= e_
+             and (not a.target or a.target.lower() in p["link_target"].lower())]
+    traffic = defaultdict(float)
+    for r in rows:
+        if r["event"] in ("traffic", "stats") and r.get("page_url"):
+            traffic[r["page_url"]] += num(r.get("views")) or 0
+    print(f"# Backlinks · {label} · {len(items)} pages with a link to the site\n")
+    if not items:
+        print("No pages with a link target yet. Log one: add --event published --url … --link-target https://site/page "
+              "--link-rel dofollow --anchor \"best crm\" [--cost 150]")
+        return
+    def alive(p):
+        return health(p) not in GONE and health(p) != "moved"
+    print("| Published | Page | Platform | Links to | Rel | Anchor | Status | Cost | Visits |")
+    print("|---|---|---|---|---|---|---|---|---|")
+    for p in sorted(items, key=lambda p: p["published"], reverse=True):
+        print(f"| {p['published']} | {short(p['url'], 40)} | {p['platform']} | {short(p['link_target'], 35)} | "
+              f"{p['link_rel'] or '?'} | {short(p['anchor'], 25) or '—'} | {health(p)} | "
+              f"{money(p['cost']) if p['cost'] else 'free'} | {fmt(traffic[p['url']]) if traffic[p['url']] else '—'} |")
+    live = [p for p in items if alive(p)]
+    dof = [p for p in live if p["link_rel"] in ("dofollow", "follow")]
+    spent = sum(p["cost"] for p in items)
+    paid = [p for p in items if p["cost"]]
+    print(f"\n**Total:** {len(items)} links · live {len(live)} · live dofollow {len(dof)} · "
+          f"nofollow/ugc/sponsored {sum(1 for p in live if p['link_rel'] and p['link_rel'] not in ('dofollow', 'follow'))} · "
+          f"gone {len(items) - len(live)} · rel unknown {sum(1 for p in items if not p['link_rel'])}")
+    if spent:
+        print(f"**Spend:** {money(spent)} on {len(paid)} paid placements · per live dofollow link "
+              f"{money(spent / len(dof)) if dof else '—'} · visits from paid pages "
+              f"{fmt(sum(traffic[p['url']] for p in paid)) or 0}")
+    by_t = defaultdict(list)
+    for p in live:
+        by_t[p["link_target"].split("?")[0].rstrip("/")].append(p)
+    print("\n## By target page (live links)\n")
+    print("| Target | Live links | Dofollow | Anchors |")
+    print("|---|---|---|---|")
+    for t, ps in sorted(by_t.items(), key=lambda x: -len(x[1])):
+        anchors = Counter(p["anchor"] for p in ps if p["anchor"])
+        print(f"| {short(t, 50)} | {len(ps)} | {sum(1 for p in ps if p['link_rel'] in ('dofollow', 'follow'))} | "
+              + ", ".join(f"{k} ×{v}" for k, v in anchors.most_common(4)) + " |")
+    same = [t for t, ps in by_t.items() if ps and Counter(p["anchor"] for p in ps if p["anchor"]).most_common(1)
+            and Counter(p["anchor"] for p in ps if p["anchor"]).most_common(1)[0][1] >= max(3, 0.6 * len(ps))]
+    if same:
+        print("\n**Attention:** one exact anchor on most links to " + ", ".join(short(t, 40) for t in same)
+              + " — vary anchors (brand, URL, natural phrases) so the profile looks natural.")
 
 
 def cmd_sale(a):
@@ -1396,7 +1512,7 @@ def cmd_import_traffic(a):
         print("Columns in the file: " + " | ".join(header))
         sys.exit("No page URL, sub-ID or referrer/source column found. Re-run with --map url=\"<header>\" "
                  "or --map source=\"<header>\", or pass --platform for a whole-platform report.")
-    if "views" not in cols and "aff_clicks" not in cols:
+    if "views" not in cols and "aff_clicks" not in cols and "conversions" not in cols and "site_revenue" not in cols:
         print("Columns in the file: " + " | ".join(header))
         sys.exit("No views or clicks column found. Re-run with --map views=\"<header>\" or --map aff_clicks=\"<header>\".")
     get = lambda r, f: r[cols[f]].strip() if f in cols and cols[f] < len(r) else ""
@@ -1423,14 +1539,23 @@ def cmd_import_traffic(a):
             known[r["domain"].lower()] = slug
     forced = (a.platform or "").lower()
 
-    totals = defaultdict(lambda: [0.0, 0.0])      # page url -> views, clicks
-    by_platform = defaultdict(lambda: [0.0, 0.0])  # platform slug -> views, clicks (no page match)
+    totals = defaultdict(lambda: [0.0, 0.0, 0.0, 0.0])      # page url -> views, clicks, conversions, revenue
+    by_platform = defaultdict(lambda: [0.0, 0.0, 0.0, 0.0])  # platform slug -> same (no page match)
+    medium = (getattr(a, "medium", None) or "").strip().lower()
+    skipped_medium = 0
     unmatched = Counter()
     direct = 0.0
     for r in raw:
         v, c = num(get(r, "views")) or 0, num(get(r, "aff_clicks")) or 0
-        if not (v or c):
+        cv, rv = num(get(r, "conversions")) or 0, num(get(r, "site_revenue")) or 0
+        if not (v or c or cv or rv):
             continue
+        if medium:
+            src = get(r, "source").lower()
+            row_medium = src.split(" / ", 1)[1].strip() if " / " in src else ""
+            if row_medium != medium:
+                skipped_medium += 1
+                continue
         url = ""
         if "url" in cols:
             url = by_url.get(norm_url(get(r, "url")), "")
@@ -1439,8 +1564,8 @@ def cmd_import_traffic(a):
         if not url and "source" in cols:  # a referrer that is the page itself
             url = by_url.get(norm_url(get(r, "source")), "")
         if url:
-            totals[url][0] += v
-            totals[url][1] += c
+            for i, x in enumerate((v, c, cv, rv)):
+                totals[url][i] += x
             continue
         pl = ""
         if "source" in cols:
@@ -1450,8 +1575,8 @@ def cmd_import_traffic(a):
         if not pl and forced and not ({"url", "sub_id", "source"} & set(cols)):
             pl = forced
         if pl:
-            by_platform[pl][0] += v
-            by_platform[pl][1] += c
+            for i, x in enumerate((v, c, cv, rv)):
+                by_platform[pl][i] += x
             continue
         raw_src = get(r, "source") or get(r, "url") or get(r, "sub_id")
         if "source" in cols and raw_src.strip().lower().split(" / ")[0] in NO_REFERRER:
@@ -1461,7 +1586,7 @@ def cmd_import_traffic(a):
 
     fname = os.path.basename(a.export)
     out, skipped = [], 0
-    for url, (v, c) in totals.items():
+    for url, (v, c, cv, rv) in totals.items():
         note = f"traffic {period} from {fname}"
         if any(u == url and (n or "").startswith(f"traffic {period}") for u, _, n in seen):
             skipped += 1
@@ -1470,15 +1595,17 @@ def cmd_import_traffic(a):
         out.append(journal_row(date=end.isoformat(), event="traffic", page_url=url,
                                platform=forced or p["platform"] or platform_of(url)[0], offer=p["offer"],
                                views=fmt(v) if v else "", aff_clicks=fmt(c) if c else "",
+                               sales=fmt(cv) if cv else "", revenue=f"{rv:.2f}" if rv else "",
                                note=note))
     plat_out = 0
-    for pl, (v, c) in by_platform.items():
+    for pl, (v, c, cv, rv) in by_platform.items():
         note = f"traffic {period} platform total from {fname}"
         if any(not u and s == pl and (n or "").startswith(f"traffic {period}") for u, s, n in seen):
             skipped += 1
             continue
         out.append(journal_row(date=end.isoformat(), event="traffic", page_url="", platform=pl,
                                views=fmt(v) if v else "", aff_clicks=fmt(c) if c else "",
+                               sales=fmt(cv) if cv else "", revenue=f"{rv:.2f}" if rv else "",
                                note=note))
         plat_out += 1
     if out:
@@ -1488,8 +1615,11 @@ def cmd_import_traffic(a):
     print(f"- {len(out) - plat_out} pages updated · {plat_out} platforms updated (whole-platform totals, "
           f"no single page) · {skipped} already imported for this period")
     if by_platform:
-        print("- By platform: " + ", ".join(f"{pl} {fmt(v + c)}" for pl, (v, c) in
-                                             sorted(by_platform.items(), key=lambda x: -sum(x[1]))))
+        print("- By platform: " + ", ".join(f"{pl} {fmt(x[0] + x[1])}" + (f" · {fmt(x[2])} conv." if x[2] else "")
+                                             + (f" · {x[3]:.2f} revenue" if x[3] else "") for pl, x in
+                                             sorted(by_platform.items(), key=lambda x: -sum(x[1][:2]))))
+    if skipped_medium:
+        print(f"- {skipped_medium} rows skipped: medium is not “{medium}” (only our pages' traffic is counted)")
     if direct:
         print(f"- {fmt(direct)} with no referrer (direct, apps, private browsing): counted in totals only, not tied to a platform")
     if unmatched:
@@ -2321,7 +2451,8 @@ def main():
     ad.add_argument("--event", required=True, choices=EVENTS)
     for opt in ("url", "platform", "offer", "program", "campaign", "sub-id", "query", "type", "status",
                 "score", "views", "clicks", "aff-clicks", "sales", "revenue", "minutes",
-                "note", "date", "time", "topic", "position"):
+                "note", "date", "time", "topic", "position",
+                "link-target", "link-rel", "anchor", "cost"):
         ad.add_argument(f"--{opt}")
     ad.add_argument("--priority", choices=PRIORITIES)
     ad.set_defaults(fn=cmd_add)
@@ -2347,7 +2478,12 @@ def main():
     it.add_argument("--platform")
     it.add_argument("--from", dest="from_"); it.add_argument("--to")
     it.add_argument("--map", action="append")
+    it.add_argument("--medium", help="count only rows whose source / medium has this medium, e.g. parasite")
     it.set_defaults(fn=cmd_import_traffic)
+
+    sr = sub.add_parser("site-roi"); common(sr)
+    sr.add_argument("--period", default="month"); sr.add_argument("--by", default="platform", choices=["platform", "page"])
+    sr.set_defaults(fn=cmd_site_roi)
 
     ip = sub.add_parser("import-pages"); common(ip, today=False)
     ip.add_argument("file")
@@ -2376,6 +2512,9 @@ def main():
     il.add_argument("--map", action="append"); il.set_defaults(fn=cmd_import_links)
 
     lk = sub.add_parser("links"); common(lk); lk.add_argument("--program"); lk.set_defaults(fn=cmd_links)
+
+    bl = sub.add_parser("backlinks"); common(bl)
+    bl.add_argument("--period", default="all"); bl.add_argument("--target"); bl.set_defaults(fn=cmd_backlinks)
 
     tg = sub.add_parser("tag"); common(tg, today=False)
     tg.add_argument("--url", action="append")

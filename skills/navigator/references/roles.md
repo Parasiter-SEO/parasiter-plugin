@@ -1,10 +1,12 @@
 # Roles — who the user is and what PARASITER gives them
 
-PARASITER has **two full routes**:
+PARASITER has **three full routes**:
 - **Affiliate** — the marketer who earns commissions with parasite SEO: baseline and goals, the daily plan, the journal with sales by sub-ID, weekly sales reminders, the check queue.
 - **Agency** — SEO and marketing agencies, freelancers and in-house teams who run parasite SEO for clients: a folder per client, onboarding brief, brand and site audit, monthly content plan with client approval, today's plan across clients, positions and traffic to the client (Search Console, GA4 with UTM), monthly white-label reports. Run by `client-workspace`.
 
-Bloggers and course authors / own-product owners get the tools from the set that honestly fit their work, with no goals and no daily plan — those are tuned for affiliate income and would give wrong numbers.
+- **Site owner** — the owner of a site, shop, service or course who builds parasite pages around it: rankings, traffic with CTAs, dofollow links, paid placements, sales measured on the site. Run by `client-workspace` in own-site mode.
+
+Bloggers get the tools from the set that honestly fit their work, with no goals and no daily plan — those are tuned for affiliate income and would give wrong numbers.
 
 ## The question (Step 0 of the navigator)
 
@@ -14,7 +16,7 @@ Ask once, before the profile questions, in the working language:
 > 1. **Affiliate** — I earn (or want to earn) commissions with parasite SEO pages
 > 2. **Agency / SEO or marketing specialist** — I do SEO or marketing for clients (an in-house team works its own company as one client)
 > 3. **Blogger / content creator** — I run my own blog, channel or newsletter
-> 4. **Course author / own product** — I want traffic to my own course, product or service
+> 4. **Site owner / own product** — I promote my own site: shop, products, services or course
 > 5. **Something else / just looking**
 
 If the user already said it in their first message ("I'm an affiliate", "I'm a blogger"), don't ask — confirm in one line and go on. Save the answer as `role` in `parasite-seo-profile.md`. The user can change it any time ("I'm actually an affiliate now").
@@ -42,6 +44,7 @@ Route: agency profile → new client onboarding → baseline (brand-presence + S
 | Images in the client's brand style: infographics by Claude, cover prompt with a choice of generator | post-illustrations | Free |
 | Audit a page before the client sees it and after publishing | page-audit (agency scale) | Free |
 | Fresh checked platforms, brand-safe | platform-feed, platform-finder (agency filter) | Pro |
+| Paid placements for clients: wires, sponsored articles, marketplaces (prnews.io…) — prices, packages, links, how to order | paid-placements (+ placement-scout agent) | Pro |
 | Check one platform | platform-analyzer | Pro |
 | Pages alive / indexed / ranking per client | platform-monitor | Pro |
 | A journal per client: pages, checks, positions, GA4 / platform traffic | work-log (`clients/<slug>/` journal; sales optional) | Pro |
@@ -70,24 +73,30 @@ Uses: monetizing their own blog, channel or newsletter with affiliate links, and
 
 If the blogger wants to earn by publishing pages on other platforms, that is role 1: say so in one line and offer to switch.
 
-## 4. Course author / own product or service
+## 4. Site owner — own site, shop, services, course (full route)
 
-Uses: bringing buyers to their own course, product or service through pages on trusted platforms.
+Uses: the site is the centre. Many pages on trusted platforms around it rank for the site's queries (sooner than the site itself can), send buyers to the site with clear calls to action, and — where the platform allows — give the site **dofollow links** (link building). Bought articles and press releases on media sites are part of the investment. The goal is not visits but **sales and leads on the site**, measured end to end: page → visit (UTM) → order / lead → revenue against spend.
+
+Route: run by `client-workspace` in **own-site mode** — the user's site is the one "client" (`clients/<site-slug>/`), no client approvals, no white-label. Onboarding brief → baseline (site audit + Search Console Month 0 + positions of the site's target queries) → monthly content and link plan (free platforms + paid placements) → production → publish and log with link target, rel, anchor and cost → monthly results: positions, visits, conversions and revenue from our pages, links live, spend and return.
 
 | Need | Skill | Plan |
 |---|---|---|
-| What content type fits the query | content-type-selector | Free |
-| Audit a page | page-audit | Free |
-| Images for posts | post-illustrations | Free |
-| Find platforms | platform-finder (+ platform-feed) | Pro |
-| Check one platform | platform-analyzer | Pro |
-| Are the pages alive / indexed | platform-monitor | Pro |
-| Log pages and checks | work-log (pages and checks) | Pro |
-| Texts about their own product, disclosed as theirs | sales-review-writer (brand mode) | Free |
+| The site's workspace: brief, Search Console / GA4, UTM, Month 0, monthly content and link plan, today's plan | client-workspace (own-site mode) | Pro |
+| Site audit (indexing, landing pages, titles, speed, tracking, trust), profiles on socials and platforms, content audit | brand-presence (+ brand-auditor agent) | Insider |
+| Landing pages checked by Rumer's content rules (first screen, offer, CTA, trust) | page-audit (brand scale) | Free |
+| What content type fits the query and platform | content-type-selector | Free |
+| Texts about their own product or service, disclosed as theirs, with CTAs to the site | sales-review-writer (brand mode) | Free |
+| Images in the site's style | post-illustrations | Free |
+| Free platforms, with link rules (dofollow / nofollow) marked | platform-finder, platform-feed, platform-analyzer | Pro |
+| Paid placements: press-release wires, sponsored articles on media sites, marketplaces — prices, packages, dofollow, how to order | paid-placements (+ placement-scout agent) | Pro |
+| Journal: pages, links given to the site (target, rel, anchor, cost), traffic, conversions and revenue from GA4 or the shop | work-log (`backlinks`, `site-roi`) | Pro |
+| Pages alive / indexed / ranking, links still in place | platform-monitor | Pro |
+| Keywords, SERP, competitors through their SEO API | niche-analysis | Insider |
+| Monthly results report against Month 0 | client-reports (Step 4c) | Insider |
 
-**Not offered:** goals and the daily plan, affiliate-finder, niche-analysis, client-reports, the review mode of sales-review-writer.
+**Not offered:** goals as affiliate income planning, affiliate-finder, the review mode of sales-review-writer.
 
-**Rule:** the user's own product is never presented as an independent review, test or "best of" ranking. Pages say who the author is and that it is their product.
+**Rule:** the user's own product is never presented as an independent review, test or "best of" ranking. Pages say who is behind them and that it is their product. Paid articles carry the label the publisher requires ("sponsored", "partner content"); links on paid pages are whatever the publisher gives — never ask a publisher to hide that a placement is paid.
 
 ## 5. Something else / just looking
 
@@ -98,9 +107,14 @@ Give the 5-step overview from `help` in a few lines, say who it is built for, an
 - First run: one line — "PARASITER for agencies: one folder per client, brand audit, content plan with client approval, positions and traffic to the client, monthly white-label reports." — then hand over to `client-workspace` Step 0 (agency profile) and Step 1 (first client).
 - Every session: read `clients/` — which clients exist, which is active — then `client-workspace` Step 4 when the user asks what to do today.
 
-## How to talk to roles 3–4
+## How to talk to the site owner
 
-- One line, once: "PARASITER is built for affiliates who earn with parasite SEO. For [role] you get these tools:" — then the table for the role, as a short list, and "What do you want to do first?"
+- First run: one line — "PARASITER for your site: pages on trusted platforms that rank for your queries, send buyers to your site and give it links; paid placements when they pay off; sales measured on your site." — then `client-workspace` in own-site mode: Step 1 (brief about the site), Step 2 (Month 0).
+- Every session: `client-workspace` Step 4 for today's plan.
+
+## How to talk to the blogger
+
+- One line, once: "PARASITER is built for affiliates who earn with parasite SEO. For bloggers you get these tools:" — then the table for the role, as a short list, and "What do you want to do first?"
 - Route each request to the role's skills. A request for a skill outside the role: say it is built for affiliate work and is not part of their toolset; name the closest skill they do have.
 - No daily plan and no goals for these roles. "What should I do today?" → show their toolset and ask which task.
 - The plan still decides what works: a role's Pro or Insider skill needs that plan.

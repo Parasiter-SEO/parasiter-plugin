@@ -96,6 +96,16 @@ First session of the week, or "am I on track?" → `goals` compares plan and fac
 
 Every client has its own folder (`clients/acme/`); nothing from one client appears in another's plan or report.
 
+## Site owners: grow your own site
+
+1. "I promote my own site" → a brief about the site: what it sells, top pages, queries each page should win, what a conversion is.
+2. "Audit my site" → site quick audit, profiles, and page audits of the landing pages your links will point to.
+3. Month 0: Search Console 3 months, positions of the site's target queries (its landing pages are logged with their queries).
+4. "Content and link plan for November" → topics × platforms × link target, rel and anchor × free or paid (price).
+5. Paid placements: "where can I buy an article for my site?" → wires and marketplaces with prices and link policy, a plan for your budget, the press release or article written, then "published: URL, cost $149".
+6. Every page: CTA to the site with UTM; logged with its link (`--link-target --link-rel --anchor --cost`).
+7. Every month: upload GA4 (Session source / medium, Session manual ad content, Sessions, Key events, Purchase revenue) → "how did my pages pay off?" (`site-roi`), "my backlinks" (`backlinks`), and the site owner report.
+
 ## Connect your key (Pro, Insider)
 PARASITER has two parts, and paid plans need both: the **plugin** (skills and agents: the method, articles, audits, journal; works without a key as Free) and the **connector** (your key: the link to the server). The key comes in the welcome email after payment. It connects the plugin to the PARASITER server: checked platform database and feed, news, weekly analysis, daily page checks, Telegram. Install the plugin first, then connect the key. Lost the steps? The bot sends them again: /setup.
 - **Claude Code:** the plugin asks for "PARASITER key" when you enable it; paste the key. To change it later, reconfigure the plugin's options.

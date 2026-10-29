@@ -32,7 +32,7 @@ One row per fact. Never edit or delete old rows; corrections and status changes 
 
 The script `scripts/worklog.py` does all reading, writing and counting. Pass `--date` / `--time` in the user's local time when the machine clock may differ (cloud sandboxes run in UTC). Without code execution, append rows by hand and count the same way.
 
-## Agency role — one journal per client
+## Agency and site owner roles — one journal per client or site
 
 For agencies every client has its own folder and journal: `clients/<slug>/parasite-seo-progress.csv` (with its own platforms and links files next to it). Pass that path to every command; the scripts work the same. Never log two clients in one journal.
 - **Links library (Mode 10)** holds the client's destination pages with the UTM base (`client-workspace/references/measurement.md`), not affiliate links.
@@ -41,6 +41,8 @@ For agencies every client has its own folder and journal: `clients/<slug>/parasi
 - **Sales** are optional: only when the client shares leads or orders by source. Reports read "—" for sales otherwise.
 - The client's own landing pages are journal pages of the platform `own-site` with their target query (`client-workspace/references/measurement.md`), so the position check covers them too.
 - Automatic server monitoring is skipped for a client whose brief says `Server monitoring: off`.
+- **Links to the site** (site owners, and agencies doing link building): log the link each page gives — `add --event published --url … --link-target https://site/page --link-rel dofollow --anchor "acme crm" --cost 150` (`--cost` for paid placements). `backlinks [--period P] [--target URL]`: links live, dofollow per target page, anchors (warns when one exact anchor dominates), spend per live dofollow link. A check that finds the page removed or noindexed takes its link out of "live". Linking rules of each platform go into the platform base: `platform-set --links dofollow|nofollow|ugc|sponsored`.
+- **Results on the site:** `import-traffic ga4.csv --from … --to … --medium parasite` takes Sessions, Key events (or Conversions, Transactions) and Purchase revenue per page (Session manual ad content = sub-ID) or platform (Session source); `site-roi [--period month] [--by platform|page]` gives visits, conversions, conversion rate, revenue, spend and return. Revenue is the site's own revenue, not a commission; a dash means not measured.
 - Paid checks, monitoring, the check queue and Rules below apply per client.
 
 ## Mode 0 — Import pages you already have (inventory)

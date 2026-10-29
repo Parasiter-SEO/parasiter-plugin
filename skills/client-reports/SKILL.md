@@ -1,6 +1,6 @@
 ---
 name: client-reports
-description: Build performance analytics and reports for parasite SEO work from the user's uploaded data — publications log, Google Search Console exports, rank tracker, affiliate network stats — computing revenue per publication, EPC, RPM per 1000 impressions, winners and losers by platform, content type and offer, with a 14/30/60-day review and next actions; for agencies a monthly white-label client report against Month 0 — positions, visits to the client's site from GA4 by UTM, Search Console brand queries, delivered vs plan. Use when the user uploads reports or stats, asks what is working, which platforms or pages earn, wants a client or weekly report, or asks what to update next.
+description: Build performance analytics and reports for parasite SEO work from the user's uploaded data — publications log, Google Search Console exports, rank tracker, affiliate network stats — computing revenue per publication, EPC, RPM per 1000 impressions, winners and losers by platform, content type and offer, with a 14/30/60-day review and next actions; for agencies a monthly white-label client report against Month 0 — positions, visits to the client's site from GA4 by UTM, Search Console brand queries, delivered vs plan; for site owners the results closed on the site — visits, conversions, revenue, links and spend per platform and page. Use when the user uploads reports or stats, asks what is working, which platforms or pages earn, wants a client or weekly report, or asks what to update next.
 ---
 
 # Client Reports
@@ -113,6 +113,10 @@ For agencies the report is the product the client pays for. One per client per m
 - Footnote: where every number comes from (GA4 property, Search Console, DataForSEO / tracker, dates), partial periods marked, and that Search Console shows the client's own site while visits from platforms are measured in GA4 by UTM.
 
 Keep internal notes (platform sources, methods, costs, other clients) out of client-facing text unless the user wants them in. Ask once for the agency name, logo text and colours if `_agency.md` is missing. Save the PDF, HTML and the exports used to `clients/<slug>/reports/<yyyy-mm>/`.
+
+## Step 4c — Site owner report (own-site mode)
+
+The same Month 0 comparison, written for the owner, with the money closed on the site: from `work-log site-roi --period <month>` (visits, conversions, revenue, spend, return by platform and page), `backlinks --period <month>` (links live, dofollow per target page, anchors, spend per live dofollow link), positions of the site's target queries and of our pages, Search Console of the site (target and brand queries, impressions). KPI tiles: revenue from our pages · conversions · spend and return · live dofollow links · target queries in the top 10 (now vs Month 0) · our pages in the top 10. Charts: revenue by platform (`hbars`), visits and conversions by month (`line`). Sections: what paid off (platforms and placements with return), what didn't (spend with no visits or links lost), next month's content and link plan. Paid placements are judged by return and links, never by "exposure" alone.
 
 **Weekly status** (optional, when the contract asks for it): 5 lines in the chat or a message to the client — published this week, waiting for approval, positions that moved, anything removed and replaced.
 

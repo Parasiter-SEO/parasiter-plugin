@@ -28,7 +28,7 @@ Reply in the working language from `parasite-seo-profile.md`; before a profile e
 1. **Answer the question first**, short: which skill, what it does, what to say to start it. Mobile-friendly: a few lines or a short list, not the whole catalog.
 2. **Give the exact phrase** the user can type ("Say: *log a sale, $42 from ClickBank*") and, when useful, the direct command (`/parasiter:work-log`). Skills start from plain requests; nobody has to remember commands.
 3. **Offer to do it now** in one line ("Want me to set up your journal now?"). If the user agrees, follow that skill.
-4. **Overview questions** ("what can it do?"): give the 5-step workflow from `catalog.md` (Plan → Find → Write → Publish and log → Measure) with one line per step, then ask what they want to start with. Do not dump all 17 skills unless asked.
+4. **Overview questions** ("what can it do?"): give the 5-step workflow from `catalog.md` (Plan → Find → Write → Publish and log → Measure) with one line per step, then ask what they want to start with. Do not dump all 18 skills unless asked.
 5. **Lost user** ("I don't know where to start"): hand over to `navigator` — it asks a few questions and builds today's plan.
 
 ## Rules
