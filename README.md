@@ -15,7 +15,7 @@ On first run the navigator asks who you are and what for. Agencies, site owners 
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
-> **Status: private beta (v0.22.0).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.22.1).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
@@ -42,7 +42,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | `platform-analyzer` | Breaks down one platform, 0–100 score, verdict |
 | `platform-feed` | News from Rumer: new platforms, plugin updates, ideas, weekly market analysis, polls; connects Telegram (key required) |
 | `platform-monitor` | Alive / indexed / ranking status of your pages; scheduled with a key |
-| `indexing` | Gets your pages into Google: blocker check, free ways, Rumer's comparison of the top indexers, sends by API with your key (with agent), logs and rechecks every submission, indexing stats per service and platform |
+| `indexing` | Gets your pages into Google: blocker check (with agent), free ways, Rumer's comparison of the top indexers and which to use or mix, the clean list to send, logs and rechecks every submission, indexing stats per service, mix and platform |
 | `niche-analysis` | Keywords and SERPs via your own SEO tool API |
 | `affiliate-finder` | Finds and scores affiliate programs (with agent) |
 | `client-reports` | Performance analytics and client reports from your data |
@@ -67,7 +67,7 @@ Skills hold the method; agents do the heavy research and checking in their own c
 | `brand-auditor` | `brand-presence`, `client-workspace` | Finds and opens a client brand's profiles and key site pages: exist, complete, consistent, last activity, links; site quick checks; what the brand publishes |
 | `placement-scout` | `paid-placements` | Checks paid offers and link policy on published pieces; shortlists marketplace sites for a niche and budget |
 | `video-seo-checker` | `video-seo`, `creator-channels` | Checks a channel or a published video / post: what search reads, indexed, appears for its query in Google's video and short-video results |
-| `index-runner` | `indexing` | Checks pages for indexing blockers and sends the clean ones to your indexer by API (SpeedyIndex built in), reports accepted URLs, task and charge |
+| `index-checker` | `indexing` | Checks pages for what blocks indexing and whether they are already indexed; returns the clean list to send |
 | `independent-auditor` | `page-audit` | Reads a page without the context that wrote it, like a doubtful buyer, and flags weak spots and facts to verify |
 
 Call a skill by describing the task ("set my goals for 6 months", "what should I do today", "audit my article") or directly, e.g. `/parasiter:navigator`.

@@ -124,7 +124,7 @@ Why this order: [one sentence]
 
 Task size follows today's time and what the journal shows, not a level: no pages yet → one offer, one platform, one page; live pages → protect and refresh them first; many pages and offers → batch the work, test new platforms, niche analysis. The user can always ask for smaller or bigger tasks.
 
-When a task produced a new page, it goes to indexing right after logging, by the user's `indexing:` setting (`instant` → sent at once, `after-check` → free ways now and a recheck; no setting → `indexing` Step 0 once). Then follow it with the rollout (sales-review-writer Step 7): the same topic, in each platform's format, on the user's priority platforms that don't have it yet — usually the same day.
+When a task produced a new page, it goes to indexing right after logging, by the user's `indexing:` setting (`instant` → the list to send at once, `after-check` → free ways now and a recheck; no setting → `indexing` Step 0 once). The user sends to indexers themselves. Then follow it with the rollout (sales-review-writer Step 7): the same topic, in each platform's format, on the user's priority platforms that don't have it yet — usually the same day.
 
 ## Step 4 — Hand off and close the day
 

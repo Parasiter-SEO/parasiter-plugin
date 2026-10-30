@@ -437,9 +437,13 @@ STOP = {"the", "a", "an", "and", "or", "of", "for", "to", "in", "on", "my", "you
 
 
 def index_service(note):
-    """Service a page was sent to indexing with: `--note "via SpeedyIndex"` → speedyindex."""
+    """Service(s) a page was sent to indexing with: `--note "via SpeedyIndex"` → speedyindex;
+    a mix `--note "via SpeedyIndex + Rapid URL Indexer"` → rapidurlindexer+speedyindex."""
     m = re.search(r"\bvia\s+([^,;·]+)", note or "", re.I)
-    return re.sub(r"[^a-z0-9]+", "", m.group(1).lower()) if m else "unknown"
+    if not m:
+        return "unknown"
+    parts = [re.sub(r"[^a-z0-9]+", "", x.lower()) for x in re.split(r"\s*(?:\+|&|/|\band\b)\s*", m.group(1), flags=re.I)]
+    return "+".join(sorted({x for x in parts if x})) or "unknown"
 
 
 def slug_words(url):
@@ -1155,7 +1159,7 @@ def cmd_index_stats(a):
                 g["pending"] += 1
     print(f"# Indexing · {today}\n")
     if svc:
-        print("## By indexing service\n")
+        print("## By indexing service (a mix of services is its own line)\n")
         print("| Service | Sent | Indexed | Rate | Waiting / not rechecked | Median days | Spent | Per indexed page |")
         print("|---|---|---|---|---|---|---|---|")
         for name, g in sorted(svc.items(), key=lambda x: -x[1]["sent"]):

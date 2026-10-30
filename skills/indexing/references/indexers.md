@@ -11,8 +11,8 @@ Prices and rates change. Vendor home pages could not be opened on the check date
 
 ## Rumer's picks
 
-1. **Rapid URL Indexer** — default pick. Cheap (from ~$0.05 per URL), credits back automatically for URLs not indexed in 14 days, top-two results in both 2026 tests, WordPress plugin, REST API, Make / Zapier. API documentation is not public: the user sends by hand (dashboard / plugin) unless they give Claude the API docs from their account.
-2. **SpeedyIndex** — best for automation. You pay only for indexed URLs (tokens back on day 7), Telegram bot, a documented API Claude can run (`index-runner`), its own index checker. Weaker results in one test (55%).
+1. **Rapid URL Indexer** — default pick. Cheap (from ~$0.05 per URL), credits back automatically for URLs not indexed in 14 days, top-two results in both 2026 tests, WordPress plugin, REST API, Make / Zapier. Send via the dashboard or the WordPress plugin.
+2. **SpeedyIndex** — the easiest to use: you pay only for indexed URLs (tokens back on day 7), send a list straight to its Telegram bot, built-in index checker, documented API for those who automate. Weaker results in one test (55%).
 3. **Indexceptional** — highest rates in both 2026 tests (99.4% / 77.5%), but ~$0.25 per credit. For ★ and earning pages, or as the second try when the first service failed.
 
 ## Comparison
@@ -30,7 +30,7 @@ Prices and rates change. Vendor home pages could not be opened on the check date
 
 **Unverified or dead (don't recommend):** OneHourIndexing, Indexification, Elite Link Indexer, IndexJump (no 2026 evidence or no updates) [15][16][17][18]; Sinbyte (plugin abandoned 5 years) [19]; Colinkri, TheIndexer (no 2025–26 trace). Other 2026 names (Speed Indexing, IndexBolt, IndexPro, UltraIndexer) appear only on vendor or affiliate pages.
 
-## Where the user sends pages by hand
+## Where the user sends pages
 
 - Rapid URL Indexer: dashboard → new project → paste URLs (one per line); or the WordPress plugin for their own site.
 - SpeedyIndex: Telegram @SpeedyIndexBot → send the list as a message or a .txt file; or the dashboard.
@@ -38,16 +38,9 @@ Prices and rates change. Vendor home pages could not be opened on the check date
 
 Always give the clean list (one URL per line, no tracking parameters unless the page needs them), the count and the price.
 
-## API keys (environment variables)
+## Mixing services
 
-| Service | Variable | Claude can send by API |
-|---|---|---|
-| SpeedyIndex | `SPEEDYINDEX_API_KEY` | yes — `index-runner` |
-| Rapid URL Indexer | `RAPIDURLINDEXER_API_KEY` | only if the user provides the API docs from their account, or connects its MCP server |
-| IndexMeNow | `INDEXMENOW_API_KEY` | only with the docs from their account |
-| Omega Indexer | `OMEGA_INDEXER_API_KEY` | only with the docs from their account, or its MCP server |
-
-Never invent an endpoint. No docs → by hand.
+Users often mix: one cheap service for every page, a strong one for ★ and earning pages, or a different service per platform. Fine — log each submission with all the services it went to (`--note "via A + B"`); `index-stats` shows each mix as its own line. Sent to two services the same day, the result can't be credited to either one alone; sending to the second only after the first one's refund window shows which service worked.
 
 ## Sources
 [1] charlesfloate.com/best-backlink-indexing-tools · [2] onfolio.com/reviewed/best-backlink-indexer · [3] searchlogistics.com/seo/tools/backlink-indexers-test · [4] indexcheckr.com/resources/success-rate-analysis-of-indexing-tools (sells index checking) · [5] en.speedyindex.com/api.html · [6] sostav.ru/blogs/282180/96178 · [7] junia.ai/blog/website-indexing-tools · [8] speedindexing.com/en/alternatives/rapid-url-indexer-alternative (a competitor) · [9] wordpress.org/plugins/botsubmit · [10] wordpress.org/plugins/rapidurlindexer-wp · [11] glama.ai/mcp/servers/rollounden/rapid-indexer-mcp · [12] earnperinstall.com/best-backlink-indexing-tools · [13] fatrank.transistor.fm/504/transcript · [14] indexpro.app/blog/top-10-link-indexing-services-compared-2025-review (sells indexing) · [15] bloggersneed.com/best-website-indexing-services · [16] indiehackers.com (anonymous 2026 test) · [17] fatrank.com/elitelinkindexer-review · [18] plugins.wpmayor.com/plugin/indexjump-submitter · [19] wordpress.org/plugins/sinbyte-indexer

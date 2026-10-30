@@ -2,6 +2,12 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.22.1 — 2026-10-30
+
+- **Indexing is advice and tracking; you send.** PARASITER no longer sends pages to indexers or asks for indexer keys. You get the clean list for each of your services and send it yourself — to one indexer or several.
+- **Mix indexers freely:** say *"sent to SpeedyIndex and Rapid"* — the page is logged with both, and *"my indexing stats"* shows every mix as its own line next to each single service.
+- The agent is now `index-checker`: it checks what blocks indexing and whether pages are already in Google, and returns the list worth paying for.
+
 ## 0.22.0 — 2026-10-30
 
 **Indexing** (`indexing`, Pro) — a page that isn't in Google can't rank. Say *"index this page"*, *"which indexer should I use?"* or *"my indexing stats"*.
