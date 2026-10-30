@@ -1,5 +1,7 @@
 # Indexing fresh content (checked 2026-10-29)
 
+On Pro, the `indexing` skill runs this for every page: setup once, blocker check, free ways, the chosen indexer by API, recheck and per-service stats. Its `references/indexers.md` is the full, newer comparison; this file is the short creator version.
+
 Google finds most YouTube videos by itself; Instagram, TikTok, Facebook posts and pins are found more slowly or not at all. A piece not in Google can't rank. Check first (search the exact title in quotes, or `site:` + URL), wait a few days, then act — free ways first.
 
 ## Free ways (always first)

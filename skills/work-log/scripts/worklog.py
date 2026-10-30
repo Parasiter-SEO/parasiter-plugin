@@ -63,6 +63,7 @@ GONE = {"removed", "dead", "noindex"}
 CHECK_POINTS = [2, 7, 14]
 CHECK_EVERY = 14
 RECHECK_NOT_INDEXED = 3
+RECHECK_AFTER_SUBMIT = 4
 AUDIT_POINTS = [14, 30, 60]
 AUDIT_MIN = 70
 SALES_EVERY = 7
@@ -367,7 +368,8 @@ def page_states(rows, today):
                                    "imported": False, "topic": "", "priority": "normal",
                                    "position": None, "pos_date": None, "best_pos": None,
                                    "prev_pos": None, "date_unknown": False,
-                                   "link_target": "", "link_rel": "", "anchor": "", "cost": 0.0})
+                                   "link_target": "", "link_rel": "", "anchor": "", "cost": 0.0,
+                                   "submits": [], "first_indexed": None, "checks": []})
         for k in ("link_target", "link_rel", "anchor"):
             if r.get(k):
                 p[k] = r[k].strip().lower() if k == "link_rel" else r[k].strip()
@@ -403,9 +405,15 @@ def page_states(rows, today):
             if st:
                 p["status"] = st
         elif ev == "check" and st:
+            p["checks"].append(r["_d"])
             p["last_check"], p["status"] = r["_d"], st
             if st in INDEXED:
                 p["ever_indexed"] = True
+                if p["first_indexed"] is None:
+                    p["first_indexed"] = r["_d"]
+        elif ev == "submitted":
+            p["submits"].append({"date": r["_d"], "service": index_service(r.get("note")),
+                                 "cost": num(r.get("cost")) or 0.0})
         elif ev == "audit" and num(r.get("score")) is not None:
             p["last_audit"], p["score"] = r["_d"], num(r.get("score"))
         elif ev == "refreshed":
@@ -415,6 +423,7 @@ def page_states(rows, today):
     for p in pages.values():
         if p["published"] is None:
             p["published"] = p["first"]
+        p["last_submitted"] = p["submits"][-1]["date"] if p["submits"] else None
         p["age"] = (today - p["published"]).days
         p["topic_key"] = topic_key(p)
     return pages
@@ -425,6 +434,12 @@ STOP = {"the", "a", "an", "and", "or", "of", "for", "to", "in", "on", "my", "you
         "2027", "what", "how", "why", "which", "who", "really", "work", "works", "guide", "p", "pulse",
         "post", "posts", "threads", "thread", "topic", "t", "answer", "view", "home", "html", "htm",
         "php", "blog", "article", "s", "i", "you", "we", "this", "that", "should", "can", "about"}
+
+
+def index_service(note):
+    """Service a page was sent to indexing with: `--note "via SpeedyIndex"` → speedyindex."""
+    m = re.search(r"\bvia\s+([^,;·]+)", note or "", re.I)
+    return re.sub(r"[^a-z0-9]+", "", m.group(1).lower()) if m else "unknown"
 
 
 def slug_words(url):
@@ -799,6 +814,9 @@ def print_effect(groups, by, cur, limit=None):
 
 def next_check(p):
     pub, last = p["published"], p["last_check"]
+    sub = p.get("last_submitted")
+    if sub and (last is None or sub >= last) and not p["ever_indexed"]:
+        return sub + timedelta(days=RECHECK_AFTER_SUBMIT)
     if last is None:
         return pub + timedelta(days=CHECK_POINTS[0])
     if p["status"] == "not-indexed":
@@ -876,7 +894,9 @@ def due_lists(rows, sales, pages, today):
             late = (today - nc).days
             out["check"].append((p, f"due {nc}" + (f" ({late} d late)" if late else "")))
         if p["age"] >= 14 and not p["ever_indexed"]:
-            out["not_indexed"].append((p, f"{p['age']} days, " + (p["status"] or "never checked")))
+            sent = (f", sent via {p['submits'][-1]['service']} on {p['last_submitted']}"
+                    f" ({len(p['submits'])}x)" if p["submits"] else ", never sent to indexing")
+            out["not_indexed"].append((p, f"{p['age']} days, " + (p["status"] or "never checked") + sent))
         if p["score"] is not None and p["score"] < AUDIT_MIN and not (
                 p["last_refresh"] and p["last_refresh"] >= p["last_audit"]):
             out["improve"].append((p, f"score {p['score']:.0f} on {p['last_audit']}"))
@@ -1111,6 +1131,71 @@ def cmd_due(a):
             star = "★ " if p["priority"] == "high" else ""
             print(f"- {star}{short(p['url'])} · {p['platform'] or '?'} · {p['age']} d{q} — {why}")
         print()
+
+
+def cmd_index_stats(a):
+    """Indexing results: per service (sent → indexed, rate, days, cost per indexed page) and per platform."""
+    today, rows, pages, sales = load(a)
+    items = [p for p in pages.values() if not p["date_unknown"] or p["submits"]]
+    if a.platform:
+        items = [p for p in items if p["platform"] == a.platform]
+    svc = defaultdict(lambda: {"sent": 0, "indexed": 0, "pending": 0, "days": [], "cost": 0.0})
+    for p in items:
+        for i, sub in enumerate(p["submits"]):
+            nxt = p["submits"][i + 1]["date"] if i + 1 < len(p["submits"]) else None
+            g = svc[sub["service"]]
+            g["sent"] += 1
+            g["cost"] += sub["cost"]
+            fi = p["first_indexed"]
+            if fi and fi >= sub["date"] and (nxt is None or fi < nxt):
+                g["indexed"] += 1
+                g["days"].append((fi - sub["date"]).days)
+            elif not fi and ((today - sub["date"]).days < 14
+                             or not any(c >= sub["date"] + timedelta(days=RECHECK_AFTER_SUBMIT) for c in p["checks"])):
+                g["pending"] += 1
+    print(f"# Indexing · {today}\n")
+    if svc:
+        print("## By indexing service\n")
+        print("| Service | Sent | Indexed | Rate | Waiting / not rechecked | Median days | Spent | Per indexed page |")
+        print("|---|---|---|---|---|---|---|---|")
+        for name, g in sorted(svc.items(), key=lambda x: -x[1]["sent"]):
+            done = g["sent"] - g["pending"]
+            rate = pct(g["indexed"] / done) if done else "—"
+            med = f"{sorted(g['days'])[len(g['days']) // 2]}" if g["days"] else "—"
+            per = money(g["cost"] / g["indexed"]) if g["indexed"] and g["cost"] else "—"
+            print(f"| {name} | {g['sent']} | {g['indexed']} | {rate} | {g['pending']} | {med} | "
+                  f"{money(g['cost']) if g['cost'] else '—'} | {per} |")
+        print("\nRate counts submissions that are indexed, or 14+ days old and rechecked after sending. "
+              "Log the service with `--note \"via <service>\"` and the price with `--cost`.\n")
+    else:
+        print("No pages sent to indexing yet. Log them: `add --event submitted --url … --note \"via <service>\" --cost 0.05`.\n")
+    plat = defaultdict(lambda: {"pages": 0, "checked": 0, "indexed": 0, "organic": 0, "days": []})
+    for p in items:
+        g = plat[p["platform"] or "?"]
+        g["pages"] += 1
+        if p["last_check"]:
+            g["checked"] += 1
+        if p["first_indexed"]:
+            g["indexed"] += 1
+            first_sub = p["submits"][0]["date"] if p["submits"] else None
+            if first_sub is None or p["first_indexed"] < first_sub:
+                g["organic"] += 1
+            if not p["date_unknown"]:
+                g["days"].append((p["first_indexed"] - p["published"]).days)
+    print("## By platform\n")
+    print("| Platform | Pages | Checked | Indexed | Rate | Without an indexer | Median days to index |")
+    print("|---|---|---|---|---|---|---|")
+    for name, g in sorted(plat.items(), key=lambda x: -x[1]["pages"]):
+        rate = pct(g["indexed"] / g["checked"]) if g["checked"] else "—"
+        med = f"{sorted(g['days'])[len(g['days']) // 2]}" if g["days"] else "—"
+        print(f"| {name} | {g['pages']} | {g['checked']} | {g['indexed']} | {rate} | {g['organic']} | {med} |")
+    waiting = [p for p in items if p["last_submitted"] and not p["ever_indexed"]]
+    if waiting:
+        print(f"\n## Sent, not indexed yet ({len(waiting)})\n")
+        for p in sorted(waiting, key=lambda p: p["last_submitted"]):
+            d = (today - p["last_submitted"]).days
+            print(f"- {short(p['url'])} · {p['platform'] or '?'} · via {p['submits'][-1]['service']} "
+                  f"{d} d ago ({len(p['submits'])}x)" + (" — recheck due" if d >= RECHECK_AFTER_SUBMIT else ""))
 
 
 def cmd_pages(a):
@@ -2442,6 +2527,9 @@ def main():
     ef.set_defaults(fn=cmd_effect)
 
     d = sub.add_parser("due"); common(d); d.set_defaults(fn=cmd_due)
+
+    ix = sub.add_parser("index-stats"); common(ix)
+    ix.add_argument("--platform"); ix.set_defaults(fn=cmd_index_stats)
 
     p = sub.add_parser("pages"); common(p)
     p.add_argument("--platform"); p.add_argument("--topic")

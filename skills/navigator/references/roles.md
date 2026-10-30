@@ -45,6 +45,7 @@ Route: agency profile → new client onboarding → baseline (brand-presence + S
 | Paid placements for clients: wires, sponsored articles, marketplaces (prnews.io…) — prices, packages, links, how to order | paid-placements (+ placement-scout agent) | Pro |
 | Check one platform | platform-analyzer | Pro |
 | Pages alive / indexed / ranking per client | platform-monitor | Pro |
+| Get client pages into Google, indexer results | indexing | Pro |
 | A journal per client: pages, checks, positions, GA4 / platform traffic | work-log (`clients/<slug>/` journal; sales optional) | Pro |
 | Keywords, SERP, competitors through their SEO API | niche-analysis | Insider |
 | Monthly client report against Month 0, white-label PDF + dashboard | client-reports (Step 4b) | Insider |
@@ -92,6 +93,7 @@ Route: run by `client-workspace` in **own-site mode** — the user's site is the
 | Paid placements: press-release wires, sponsored articles on media sites, marketplaces — prices, packages, dofollow, how to order | paid-placements (+ placement-scout agent) | Pro |
 | Journal: pages, links given to the site (target, rel, anchor, cost), traffic, conversions and revenue from GA4 or the shop | work-log (`backlinks`, `site-roi`) | Pro |
 | Pages alive / indexed / ranking, links still in place | platform-monitor | Pro |
+| Get pages into Google, indexer results | indexing | Pro |
 | Keywords, SERP, competitors through their SEO API | niche-analysis | Insider |
 | Monthly results report against Month 0 | client-reports (Step 4c) | Insider |
 

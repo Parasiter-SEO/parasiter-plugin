@@ -75,7 +75,7 @@ Whenever the user reports work, or another skill finishes a step, add the row ri
 | User says / skill finishes | Row (`add --event …`) |
 |---|---|
 | "Published / added an article: URL" | `published` + platform, offer, program, campaign (pack), sub-ID if any, main query, content type |
-| "Sent it to indexing" | `submitted` |
+| "Sent it to indexing" | `submitted` + `--note "via <service>"` + `--cost <price per URL>` (the recheck comes 4 days later; `index-stats` counts results per service) |
 | platform-monitor / page-checker result | `check` + status live · indexed · not-indexed · noindex · dropped · removed |
 | page-audit result | `audit` + score 0–100 |
 | "Updated the page" | `refreshed` |
@@ -89,7 +89,7 @@ python3 scripts/worklog.py add parasite-seo-progress.csv --event published --url
 
 **Program and campaign on every page.** `program` is the affiliate account the sales come from (must match the import's `--program`); `campaign` is the pack the page belongs to ("keto-pack-oct", 20 articles published together). These two are enough to count every sale. A **sub-ID** is a bonus: where the network supports it, it ties a sale to the exact page. Offer one (`md-1022-1`, see `references/sales-import.md`) but never block or nag — many programs, coupons and merchant sites cannot pass it.
 
-After a `published` row: offer page-audit if the page has no audit. **With the server (Pro / Insider), every page that enters the journal — published, imported (Mode 0) or added from a list — goes on daily monitoring automatically: call `monitor_track` (URL, main query, platform) without asking**, and say it in the confirmation line ("+ daily monitoring"). Removed or dropped pages come off it with `monitor_track` remove. If the user worked on the text themselves (edited, rewrote, added photos — not a plain AI draft), offer once to save its source with the page (Mode 11): "Save the .docx with this page so you can republish it if it's removed?" Confirm in one line ("Logged: Medium, sub-ID md-1022-1. Index check Oct 24. Audit now?").
+After a `published` row: hand the page to `indexing` by the user's `indexing:` setting in the profile (`instant` → sent now; `after-check` → free ways now, indexer only if still out at the recheck; no setting yet → `indexing` Step 0 once). Then offer page-audit if the page has no audit. **With the server (Pro / Insider), every page that enters the journal — published, imported (Mode 0) or added from a list — goes on daily monitoring automatically: call `monitor_track` (URL, main query, platform) without asking**, and say it in the confirmation line ("+ daily monitoring"). Removed or dropped pages come off it with `monitor_track` remove. If the user worked on the text themselves (edited, rewrote, added photos — not a plain AI draft), offer once to save its source with the page (Mode 11): "Save the .docx with this page so you can republish it if it's removed?" Confirm in one line ("Logged: Medium, sub-ID md-1022-1. Index check Oct 24. Audit now?").
 
 ## Mode 2 — Log sales
 

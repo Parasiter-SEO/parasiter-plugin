@@ -27,8 +27,8 @@ An affiliate never sees the merchant's analytics, so UTM tags are wasted. An age
 ## Plans and key
 <!-- Maintainer: keep this split identical to the pricing block on the site. -->
 - **Free, $0** — plugin without a key, 8 skills: goals, content-type-selector, sales-review-writer, page-audit, post-illustrations, creator-channels, video-seo, help.
-- **Pro, $19/month** — 16 skills: Free + navigator, client-workspace (agencies and site owners), paid-placements, platform-finder, platform-analyzer, platform-feed, platform-monitor, work-log. Personal key: checked platform database, feed and weekly market analysis, scheduled monitoring, navigator updates; new platforms about 7 days after they are found.
-- **Insider, $39/month** — all 20 skills and 9 agents: Pro + niche-analysis, affiliate-finder, client-reports, brand-presence (agencies); extra features, new platforms the day they are found, PARASITER Insider channel and the private Insider group.
+- **Pro, $19/month** — 17 skills: Free + navigator, client-workspace (agencies and site owners), paid-placements, platform-finder, platform-analyzer, platform-feed, platform-monitor, indexing, work-log. Personal key: checked platform database, feed and weekly market analysis, scheduled monitoring, navigator updates; new platforms about 7 days after they are found.
+- **Insider, $39/month** — all 21 skills and 10 agents: Pro + niche-analysis, affiliate-finder, client-reports, brand-presence (agencies); extra features, new platforms the day they are found, PARASITER Insider channel and the private Insider group.
 - Pro includes the PARASITER Pro channel and personal notifications from the bot. Telegram is for paid plans only.
 - Annual billing about 20% less. Prices are preliminary — current terms on the official site.
 - The key is personal: one key, one person. It stops working when the subscription ends; skills keep working without server data.

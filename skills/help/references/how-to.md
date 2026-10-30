@@ -99,6 +99,15 @@ First session of the week, or "am I on track?" → `goals` compares plan and fac
 
 Every client has its own folder (`clients/acme/`); nothing from one client appears in another's plan or report.
 
+## Get a page into Google (Pro)
+
+1. First time: "set up indexing" → pick your indexer (or free ways only), when to send (every new page at once, or only pages still out after a few days) and how (by API with your key, or a list you paste). Saved once.
+2. After you publish and log a page, it is sent by that setting — nothing to say. Or ask: "index these pages" + links.
+3. Before any money is spent, each page is checked for what blocks indexing (noindex, canonical, login wall, a platform that stopped indexing). Blocked pages are fixed or moved, not paid for.
+4. You see the price for the list before sending. Each page is logged with the service and price; the recheck comes in 4 days.
+5. Still not indexed: a new link from one of your indexed pages and a resend via the other service; after a second miss the page itself is the problem → audit or move it.
+6. "My indexing stats" → per service: sent, indexed, rate, days, cost per indexed page; per platform: which index on their own (don't pay there).
+
 ## Creators: get your videos and posts into Google for free
 
 1. "I'm a creator" → your profile (niche, who you are, audience, how you earn) and the links to all your channels.
