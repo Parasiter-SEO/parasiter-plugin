@@ -59,20 +59,21 @@ High-value pages (★, earning, a pack for a new offer) can go to two services, 
 Rechecks come from the journal's queue (`work-log` `due`) and run through `platform-monitor` (page-checker; DataForSEO checks only with the user's yes, as there). Each result is logged as `check` with indexed / not-indexed.
 
 Still out after the recheck:
-1. 4–7 days after sending → wait, it's normal for most services (`indexers.md` has typical days).
-2. 14 days → one more free way (a new link from a crawled page) and resend once, preferably via the other service.
+1. Before the service's refund window closes (SpeedyIndex 7 days, GIGA 9, IndexMeNow 10, Rapid URL Indexer 14 — `indexers.md`) → wait; resending now pays twice.
+2. After the window → one more free way (a new link from a crawled page) and resend once, preferably via another service (Indexceptional is the strong second try for ★ pages).
 3. Still out after the second round → the page is the problem, not the indexer: `page-audit` (thin, duplicate, AI-looking text) or move it to a stronger platform (`work-log` `republish`). Say it in one line; don't keep paying.
 
 ## Step 5 — Indexing stats ("my indexing stats", "which indexer works")
 
 ```
-python3 ../work-log/scripts/worklog.py index-stats parasite-seo-progress.csv [--platform medium]
+python3 skills/work-log/scripts/worklog.py index-stats parasite-seo-progress.csv [--platform medium]
 ```
 Shows per service: sent, indexed, rate, median days, money spent, cost per indexed page; per platform: rate, how many were indexed without an indexer, median days to index; and the pages sent but not indexed yet. Read it out as 3–4 lines: which service works best for *this user's* platforms, which platforms index on their own (don't pay there), where to stop paying. Suggest switching the default service only when the numbers say so (10+ checked submissions).
 
 ## Rules
 
 - Never say a page is indexed without a check result.
+- Don't recommend ping services, the Google Indexing API or IndexNow for Google (`methods.md` says why).
 - Never claim a service guarantees indexing or "uses Google's API officially". Prices, rates and speeds in `indexers.md` are as published or tested on the date shown; say "about" and that they change.
 - No CAPTCHA solving, no account creation, no payment on the user's behalf: buying credits is the user's step.
 - The user's API keys stay in the environment. If they paste one into the chat, tell them to rotate it.

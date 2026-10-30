@@ -2,6 +2,17 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.22.0 — 2026-10-30
+
+**Indexing** (`indexing`, Pro) — a page that isn't in Google can't rank. Say *"index this page"*, *"which indexer should I use?"* or *"my indexing stats"*.
+- **The best indexers for parasite SEO, compared:** Rapid URL Indexer, SpeedyIndex, Indexceptional, IndexMeNow, Omega Indexer, GIGA Indexer and newcomers — price per URL, what happens to URLs that don't get indexed, 2026 test results, API, Telegram bot. Rumer's picks first; dead and weak services marked.
+- **Set it once:** your indexer, and when to send — every new page right after you log it, or only pages still out after a few days.
+- **No money wasted:** before sending, every page is checked for what blocks indexing (noindex, canonical, robots.txt, login wall, a platform that stopped indexing). Blocked pages are fixed or moved, not paid for.
+- **Free ways first:** links from your own indexed pages and profile, inside the platform, socials; Search Console and IndexNow only for your own site.
+- **Sent for you:** the new `index-runner` agent sends pages to SpeedyIndex by API with your key; for other services you get a clean list and where to paste it. The price is shown before anything is sent.
+- **Every submission counted:** logged with the service and price, rechecked 4 days later, resent via another service only after the refund window. *"My indexing stats"*: per service — sent, indexed, rate, days, cost per indexed page; per platform — which ones index on their own, so you stop paying there.
+- Pro now has 17 skills; the full system 21 skills and 10 agents.
+
 ## 0.21.0 — 2026-10-29
 
 - **Your base of posts, open and in Excel.** Say *"open my base"*: a dashboard page with every post you logged — totals (posts, ★, platforms, alive, indexed, top 10, need attention, sales), the status of your posts on each platform, and a table you can search, filter by platform, status, topic and offer, show only ★ or only top-10 pages, and sort by any column. Light and dark, works on a phone.
