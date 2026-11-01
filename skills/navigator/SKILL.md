@@ -13,7 +13,22 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 ## Next steps (end of every reply)
 
-The user should always see where to go next without asking. End each reply with one short line of 2–3 options that fit what just happened, each with the phrase to say, e.g. `Next: run the first task of the plan · `goals` (am I on track?) · `client-reports` (what earned this week).` Offer only what their plan includes; a Pro/Insider feature on Free is named once with its plan in brackets. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**." Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered.
+The user must always know what to type next. End every reply with a short numbered block — ready phrases, not skill names:
+
+**What's next? Reply with a number or the phrase:**
+1. "<ready phrase>" — <what happens after it, a few words>
+2. "<ready phrase>" — <what happens>
+
+- 2–3 options that fit what just happened, the recommended next step first. "1", "yes", "ok", "go" means option 1. Any free wording of the same wish works too ("give me the offers").
+- Each option is a complete phrase in the user's working language that they can copy, plus what it does. Never show skill or agent names here: the work label at the top already names the part that is working.
+- Offer only what the user's plan includes (`account_info`, once per session). A Pro or Insider feature on a lower plan appears at most once as the last option, marked "(Insider)" or "(Pro)" with one line on what it gives.
+- **During first setup** (a step in the profile's `setup:` is still open — not `done`, `skipped` or `not needed`): option 1 is the current setup step, and the setup footer from `navigator` ("First setup checklist") goes under the options — step N of 12, what is done, now, next.
+- Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**."
+
+Options that usually fit after this part (adapt to the user's products and words):
+- "start the first task"
+- "am I on track?"
+- "what earned this week?"
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
@@ -41,6 +56,43 @@ No `role` in the profile → after the language question, ask the role question 
 - **Other** → follow `references/roles.md`: one line that PARASITER is built for affiliates, the role's toolset, "What do you want to do first?", then route the task to that skill. Skip Steps 1–4 (no goals, no daily plan) and the profile questions about offers and affiliate stats.
 
 Every later session: read `role` first. A request outside the role's toolset gets the answer from `roles.md`, not the skill.
+
+## First setup checklist (affiliates)
+
+The first setup is a fixed route of 12 steps. The user always sees where they are, how many steps are left and what to do next — in every reply, whichever skill answers, until the setup is finished.
+
+| # | Step | Done by |
+|---|---|---|
+| 1 | Language and role | navigator Step 0 |
+| 2 | Your work environment | navigator (block from `references/work-environment.md`) |
+| 3 | About you: niche, offers, programs, country, hours, tools | navigator Message A |
+| 4 | Upload your base and reports: live pages, sales, traffic | navigator Message B → `work-log` |
+| 5 | Goals | `goals` |
+| 6 | Offers to promote | your offers from step 3; on Insider `affiliate-finder` can find new ones |
+| 7 | Affiliate links, or applications where a program needs approval | `work-log` Mode 10 / `affiliate-finder` approval rules |
+| 8 | Indexing: which services you use and when you send | `indexing` Step 0 |
+| 9 | Telegram | `platform-feed` (Pro and Insider; on Free: not needed) |
+| 10 | First topic | `content-type-selector` |
+| 11 | First article with images | `sales-review-writer` + `post-illustrations` |
+| 12 | Publish and log → setup done, first plan for today | `work-log` → navigator Step 3 |
+
+**Saved, never lost.** Keep the status of every step in the profile (`parasite-seo-profile.md`) under `setup:` — `done`, `skipped`, `not needed` or `now` — and update it right after each step, in the same reply. A new chat, a break of days or a Claude usage limit changes nothing: the navigator reads `setup:` first and continues from the current step ("Continuing your setup: step 7 of 12 — affiliate links."). Numbers never shift: a step that doesn't apply stays in the list as `not needed` (starting from zero: step 4; Free plan: step 9).
+
+**Setup footer — under every reply while a step is not done** (any skill adds it, after its own work):
+
+```
+First setup · step 7 of 12
+✓ Language · ✓ Environment · ✓ About you · ✓ Base · ✓ Goals · ✓ Offers → now: Affiliate links · next: Indexing, Telegram, First topic, First article, Publish
+Now: send your affiliate links for VigRX Plus and D-Bal Max (text or a screenshot). No links yet? Say "skip" — we come back to it after approval.
+```
+
+- One main action under "Now:", concrete for this user (product names, the file to upload), and how to skip it. Other options go below it as "You can also:", never as equals.
+- After a skill finishes its step, control comes back to the navigator: mark the step `done`, name the next one and start it. A skill never ends the setup conversation on its own.
+- "skip" / "later" → the step becomes `skipped`, the next one starts; skipped steps are offered again after step 12 and in the first weekly review, never forgotten.
+- "Where am I?", "what's left?", "what's next?" → show the whole list with ✓, `now` and what is left, then the current step.
+- A program that needs approval turns step 7 into "apply" (approval rules in `affiliate-finder`); the setup goes on without waiting for the answer.
+- After step 12: one line "Setup done" with what the user now has (pages, links, goals, indexing, Telegram), then the first plan for today (Step 3). The footer disappears; from then on replies end with the normal Next steps block.
+- Agencies, site owners and creators follow their own routes (`client-workspace`, `creator-channels`); this footer is for affiliates.
 
 ## Step 1 — Know the user and their goals (affiliates)
 

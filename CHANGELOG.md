@@ -2,6 +2,13 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.25.0 — 2026-11-01
+
+**You always know what to do next.**
+- **First setup with a progress bar:** 12 fixed steps, from language to your first published page. Every reply shows "step N of 12", what is done and the one thing to do now. Progress is saved — a new chat or a break picks up at the same step. Say *"skip"* to leave a step for later, *"where am I?"* to see the list.
+- **Ready phrases at the end of every reply:** numbered options you can copy, or just answer "1". No more internal names to guess.
+- **Plan-aware suggestions:** features outside your plan are marked (Pro) or (Insider) instead of being offered as the next step.
+
 ## 0.24.0 — 2026-11-01
 
 **Your pages stay yours.** The PARASITER server no longer receives or stores your page addresses.

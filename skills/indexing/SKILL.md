@@ -13,7 +13,22 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 ## Next steps (end of every reply)
 
-The user should always see where to go next without asking. End each reply with one short line of 2–3 options that fit what just happened, each with the phrase to say, e.g. `Next: "my indexing stats" · `platform-monitor` (recheck in 4 days) · `page-audit` for pages that stay out.` Offer only what their plan includes. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**." Things that need no decision (logging, scheduling the recheck, monitoring) are done automatically, not offered.
+The user must always know what to type next. End every reply with a short numbered block — ready phrases, not skill names:
+
+**What's next? Reply with a number or the phrase:**
+1. "<ready phrase>" — <what happens after it, a few words>
+2. "<ready phrase>" — <what happens>
+
+- 2–3 options that fit what just happened, the recommended next step first. "1", "yes", "ok", "go" means option 1. Any free wording of the same wish works too ("give me the offers").
+- Each option is a complete phrase in the user's working language that they can copy, plus what it does. Never show skill or agent names here: the work label at the top already names the part that is working.
+- Offer only what the user's plan includes (`account_info`, once per session). A Pro or Insider feature on a lower plan appears at most once as the last option, marked "(Insider)" or "(Pro)" with one line on what it gives.
+- **During first setup** (a step in the profile's `setup:` is still open — not `done`, `skipped` or `not needed`): option 1 is the current setup step, and the setup footer from `navigator` ("First setup checklist") goes under the options — step N of 12, what is done, now, next.
+- Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**."
+
+Options that usually fit after this part (adapt to the user's products and words):
+- "my indexing stats" — which service works best
+- "recheck my pages" — after the waiting time
+- "audit the pages that stay out of the index"
 
 Part of PARASITER by Rumer (Affiliate Credo). Plan: **Pro**. Reply in the user's language.
 
