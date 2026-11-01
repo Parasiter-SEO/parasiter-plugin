@@ -145,7 +145,7 @@ Check: say "my PARASITER plan" → `account_info` shows the plan and until when.
 
 ## Get news and notifications in Telegram (Pro, Insider)
 Say "connect Telegram" → open the personal link → press Start. The bot sends invites to your plan's channel (and the Insider group). "What's new?" shows the same news in Claude.
-After linking the bot pins a start guide with every command and sends it as a designed PDF (also linked in the welcome email: parasiter.affiliatecredo.com/guides/); `/help` sends both again. Bot commands: `/help` start guide · `/status` your plan and until when · `/skills` what you can say to PARASITER (the same list as in the welcome email) · `/invites` new invites to your chats · `/setup` how to install the plugin and connect the key · `/checkin on|off` Monday check-in · `/cancel` turn off auto-renewal · `/support`, `/bug`, `/idea`, `/feedback` write to Rumer.
+After linking the bot pins a start guide with every command and sends it as a designed PDF, plus a web version with phrase search and tap-to-copy (both linked in the welcome email: parasiter.affiliatecredo.com/guides/pro-en.html, insider-en.html, -uk for Ukrainian); `/help` sends both again. Bot commands: `/help` start guide · `/status` your plan and until when · `/skills` what you can say to PARASITER (the same list as in the welcome email) · `/invites` new invites to your chats · `/setup` how to install the plugin and connect the key · `/checkin on|off` Monday check-in · `/cancel` turn off auto-renewal · `/support`, `/bug`, `/idea`, `/feedback` write to Rumer.
 
 ## Change language
 "Switch to Spanish" — plans and explanations change; pages keep the content language of your target country unless you change it too.
