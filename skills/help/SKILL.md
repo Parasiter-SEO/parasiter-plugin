@@ -1,6 +1,6 @@
 ---
 name: help
-description: Built-in help for PARASITER itself — what the plugin is, which skills and agents it has, what each one does, which features need a Pro or Insider key, how to do a task step by step (first start, write and publish a page, log a sale, upload a network export, get a weekly report, check pages, find platforms), where the user's files live, plans, privacy and limits. Use when the user asks about the plugin rather than asking it to do work - "what can PARASITER do", "how does it work", "which skill does X", "how do I log a sale / import a report", "what do I get on Pro", "is there a skill for Y", "help", or seems lost in the system.
+description: Built-in help for PARASITER itself — what the plugin is, which skills and agents it has, what each one does, which features need a Pro or Insider key, how to do a task step by step (first start, write and publish a page, log a sale, upload a network export, the Monday check-in from the Telegram bot, get a weekly report, check pages, find platforms), where the user's files live, plans, privacy and limits. Use when the user asks about the plugin rather than asking it to do work - "what can PARASITER do", "how does it work", "which skill does X", "how do I log a sale / import a report", "what is the Monday check-in", "which bot commands are there", "what do I get on Pro", "is there a skill for Y", "help", or seems lost in the system.
 ---
 
 # PARASITER Help

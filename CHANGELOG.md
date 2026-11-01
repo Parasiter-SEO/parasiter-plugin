@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.23.1 — 2026-11-01
+
+- Help: step-by-step Monday check-in and the full list of bot commands.
+
 ## 0.23.0 — 2026-11-01
 
 **Monday check-in** (Pro and Insider, Telegram linked) — every Monday at 10:00 Kyiv the PARASITER bot asks for last week's numbers, so your journal and goals stay true.
@@ -9,6 +13,7 @@ Each version's section is posted to the news feed and the Telegram channels when
 - **Then say *"weekly check-in"* in your PARASITER project:** everything is logged, sales are tied to pages, and you see what earned, what grew and what dropped against your goals.
 - **Position check:** one tap shows how to check how your keywords and posts moved — on your own SEO API, with the pages and cost shown before anything is spent, or every week on a schedule.
 - **Buttons:** Done · Remind me at 19:00 · Position check · Skip this week · Turn off. `/checkin on|off` in the bot, or *"turn off Monday check-ins"* in Claude. A week you already logged gets no reminder. Your data stays in Claude: the bot never asks for exports or keys.
+- **Help knows it:** say *"help: Monday check-in"* or *"bot commands"* for the steps and every command of the bot.
 
 ## 0.22.1 — 2026-10-30
 

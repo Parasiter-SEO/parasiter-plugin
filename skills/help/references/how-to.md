@@ -78,8 +78,17 @@ Normal. It counts exactly in program, month and pack totals; page tables show an
 ## Check my pages
 "What needs checking?" → check queue (sales to upload, removed pages, not indexed after 14 days, checks and audits due, low audit scores). "Check them" → `platform-monitor` runs the checks and logs results. With a key, checks run on the server automatically.
 
+## Monday check-in: report last week (Pro, Insider)
+Every Monday at 10:00 (Kyiv time) the PARASITER bot asks for last week's numbers (Monday–Sunday). Needs Telegram linked ("connect Telegram").
+1. Collect what you have: **sales** — the export from every affiliate network you promote (CSV, Excel or a screenshot); **traffic** — views and clicks from your platforms' stats and the network click report; **UTM / analytics** — GA4, utm_source reports or Search Console, if you use them. Only sales are needed; the rest makes the report better.
+2. In your PARASITER project say **"weekly check-in"** and upload the files.
+3. You get: everything logged, sales tied to pages, what earned, what grew and what dropped against the week before and your goals.
+4. Then PARASITER offers a **position check** of your keywords and posts (paid on your own SEO API: pages and cost shown first, runs only after your yes) — once, or every week on a schedule.
+5. The week is marked logged, so the bot doesn't remind you again.
+Buttons in the bot: **Done** · **Remind me at 19:00** · **Position check** · **Skip this week** · **Turn off**. Turn it off or on: `/checkin off` / `/checkin on` in the bot, or say "turn off Monday check-ins" in Claude. Your exports stay in Claude: never send files or keys to the bot.
+
 ## Weekly review
-First session of the week, or "am I on track?" → `goals` compares plan and fact from the journal, replaces assumptions with your numbers, sets next week.
+First session of the week, or "am I on track?" → `goals` compares plan and fact from the journal, replaces assumptions with your numbers, sets next week. After a Monday check-in it runs on the fresh numbers.
 
 ## What took off and where to scale
 "What took off this month?", "where do I scale?" → `client-reports`: the review of your asset (live pages, top 3, what earns) and a scale plan — products that earn get pages on more platforms and new angles, platforms that sell get more posts, what earns nothing in 60 days stops. The navigator puts it into your daily tasks.
@@ -136,6 +145,7 @@ Check: say "my PARASITER plan" → `account_info` shows the plan and until when.
 
 ## Get news and notifications in Telegram (Pro, Insider)
 Say "connect Telegram" → open the personal link → press Start. The bot sends invites to your plan's channel (and the Insider group). "What's new?" shows the same news in Claude.
+Bot commands: `/status` your plan and until when · `/invites` new invites to your chats · `/setup` how to install the plugin and connect the key · `/checkin on|off` Monday check-in · `/cancel` turn off auto-renewal · `/support`, `/bug`, `/idea`, `/feedback` write to Rumer.
 
 ## Change language
 "Switch to Spanish" — plans and explanations change; pages keep the content language of your target country unless you change it too.
