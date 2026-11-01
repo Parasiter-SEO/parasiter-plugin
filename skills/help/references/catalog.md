@@ -97,7 +97,7 @@ Kept in the user's project folder, written by the skills:
 | Insider group | Insider | discussion with Rumer and members, polls, questions |
 | PARASITER bot | Pro and Insider | linking, invites, personal notifications: one daily summary of your pages that got worse, Monday check-in (sales, traffic, UTM; Done · Remind at 19:00 · Position check · Skip · Off), news digest, billing, warnings before a scheduled paid check (run / only ★ / skip / change) |
 
-Bot commands: `/status` · `/invites` · `/setup` · `/checkin on|off` (Monday check-in) · `/cancel` (auto-renewal off) · `/support`, `/bug`, `/idea`, `/feedback` (to Rumer, any plan).
+Bot commands: `/status` · `/skills` (what to say for each skill of your plan) · `/invites` · `/setup` · `/checkin on|off` (Monday check-in) · `/cancel` (auto-renewal off) · `/support`, `/bug`, `/idea`, `/feedback` (to Rumer, any plan).
 
 Free: no server and no Telegram chats; the public channel @parasiter_plugin (https://t.me/parasiter_plugin) is open to everyone: plugin news, new features and how-tos.
 
