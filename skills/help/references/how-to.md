@@ -3,6 +3,7 @@
 Each recipe: what the user says, what happens. Give the user only the recipe they asked for.
 
 ## Start for the first time
+The whole start, step by step for each plan (Free, Pro, Insider), with what to say and what comes after: https://parasiter.affiliatecredo.com/start.html (Ukrainian: /start-uk.html). Bought a plan? Your key came in the welcome email right after the purchase (starts with psr_); the bot's /help sends your plan's guide again.
 1. Say "what should I do today?" — the navigator asks the language and your role, then a few short questions: niche and offers, affiliate programs, country and page language, hours, tools (no SEO API yet → it recommends DataForSEO).
 2. Then it asks you to upload what you have: live pages (any list of links), affiliate links, sales reports from each program (with the export steps for the networks you named) and any traffic data (network clicks by referrer, Google Analytics, Gamma or Medium stats…). Nothing is required; the more real data, the more real the plan. Just starting? Uploads are skipped.
 3. `goals` shows your starting point from these numbers, asks your hours, pace and income in your words, then sets goals with Rumer's rule (10 platforms / 100 live posts) as the minimum.
