@@ -89,6 +89,7 @@ Then: top 3 free platforms to start with and why (one line each), and "run platf
 
 ## Rules
 
+- **Legal products and content only.** PARASITER works only with legal products and content. Don't write, plan, find platforms for or log pages that promote pirated software, films, books or courses, file-upload / download or "free download" schemes, cracks and keygens, counterfeit or illegal goods, or content that breaks the target platform's rules or the law of the target country. Say so in one line, without lecturing, and offer a legal alternative (the official product or a legal affiliate offer). This rule is part of the PARASITER offer the user accepted.
 - Only platforms where the user can legitimately create an account and post, or buy a placement. Reviews found in other organisations' upload folders or forms (university and government sites, `wp-content/uploads`, contact-form files) are hacked or abused sites: the scan skips them and they are never suggested — they are not platforms, they are abuse, and they burn domains and offers.
 - Spread across platforms; never rely on one.
 - Every list is a snapshot: write the check date on it.

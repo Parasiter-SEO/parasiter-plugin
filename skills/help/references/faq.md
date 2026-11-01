@@ -62,7 +62,9 @@ After you publish a text you worked on yourself, say "save this .docx with the p
 ## Where is my data?
 - Profile, goals, journal and sales files are in the user's own project folder. PARASITER does not upload them anywhere.
 - Sales exports often contain customer data; the import keeps only date, program, product, sub-ID, order ID, amount, commission, currency and status.
-- With a key, only what monitoring needs (page URL, main query, platform) goes to the PARASITER server. Linking Telegram stores your Telegram ID with your key. Sales and the journal never go to the server or to Telegram.
+- **The PARASITER server never receives your page URLs, journal, sales, affiliate links or texts.** Page checks run in your own Claude; the server only gets counts ("40 checked, 2 removed") and the platform domain where pages were lost, for your Telegram summary and to spot platform cleanups across subscribers (kept 7 days, without your name). Rumer as administrator cannot see your posts.
+- What the server does keep: your email, plan and payment dates (orders are kept for accounting), your Telegram ID if you link it, your notification settings and scheduled paid checks (described in words, never URLs). 30 days after your subscription ends, everything except email, plan dates and orders is deleted. Want everything deleted now? Write to sales@affiliatecredo.com. Full details: the privacy policy on the site.
+- **Legal content only.** PARASITER works with legal products and content. It doesn't help with pirated files, file-upload or download schemes, counterfeit or illegal goods, and doesn't add such pages to your base.
 
 ## Why can't every sale be tied to a page?
 Networks often show no sub-ID or referrer, buyers come back later, and many pages promote the same offer. UTM tags don't help: they go to the merchant's analytics, which the affiliate doesn't see. PARASITER counts every sale exactly by program, month and pack; per-page numbers add an estimated share, always labelled. A sub-ID per page (or per platform / pack), separate Amazon tracking IDs and network click reports make it more precise.

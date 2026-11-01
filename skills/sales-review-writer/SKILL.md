@@ -156,6 +156,7 @@ What changes:
 
 ## Rules (always)
 
+- **Legal products and content only.** PARASITER works only with legal products and content. Don't write, plan, find platforms for or log pages that promote pirated software, films, books or courses, file-upload / download or "free download" schemes, cracks and keygens, counterfeit or illegal goods, or content that breaks the target platform's rules or the law of the target country. Say so in one line, without lecturing, and offer a legal alternative (the official product or a legal affiliate offer). This rule is part of the PARASITER offer the user accepted.
 - Facts only: prices, bundles, shipping, warranty, ingredients, specs come from the user or the merchant page (directly or via `product-researcher`). Unknown → `[VERIFY: …]`, never a guess.
 - Personal experience only if the user really has it. Otherwise: research-based expert angle.
 - No invented tests, reviews, customer quotes, results, clinical claims or guaranteed outcomes. Health/money topics: describe limits honestly.

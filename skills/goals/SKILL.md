@@ -141,7 +141,7 @@ Ramp from the baseline, not from zero: week 1 starts near the user's current wee
 
 ## Mode 5 — Log progress
 
-When the user reports work ("published 3 pages on X", "2 sales today", "Medium deleted my post") or uploads a sales or traffic export, log it with the `work-log` skill: it keeps the work and sales journal, ties each sale to its page by sub-ID, queues each new page for alive/index checks and a conversion audit, and makes day/week/month reports. If the server is connected, also pull `monitor_status` so alive / indexed / dropped statuses come in as `check` rows without the user typing them. Confirm in one line what was logged and what it changes in this week's numbers.
+When the user reports work ("published 3 pages on X", "2 sales today", "Medium deleted my post") or uploads a sales or traffic export, log it with the `work-log` skill: it keeps the work and sales journal, ties each sale to its page by sub-ID, queues each new page for alive/index checks and a conversion audit, and makes day/week/month reports. The latest page check results (`platform-monitor`, run in the user's Claude) are already `check` rows in the journal. Confirm in one line what was logged and what it changes in this week's numbers.
 
 ## Mode 6 — Weekly review
 

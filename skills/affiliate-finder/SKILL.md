@@ -63,6 +63,7 @@ Sort by search popularity. Recommend 1–3, one line why each ("~2,400 searches/
 
 ## Rules
 
+- **Legal products and content only.** PARASITER works only with legal products and content. Don't write, plan, find platforms for or log pages that promote pirated software, films, books or courses, file-upload / download or "free download" schemes, cracks and keygens, counterfeit or illegal goods, or content that breaks the target platform's rules or the law of the target country. Say so in one line, without lecturing, and offer a legal alternative (the official product or a legal affiliate offer). This rule is part of the PARASITER offer the user accepted.
 - Recommend only programs found by public research for this user's niche (`affiliate-scout`, web search, the user's own networks). Never name programs, offers or numbers from the plugin author's own business, and never use a program name that appears only in the plugin's examples.
 
 - Only published, verifiable terms with source and date; unknown → "ask the manager".

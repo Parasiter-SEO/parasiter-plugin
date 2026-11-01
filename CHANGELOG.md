@@ -2,6 +2,15 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.24.0 — 2026-11-01
+
+**Your pages stay yours.** The PARASITER server no longer receives or stores your page addresses.
+- **Page checks run in your own Claude:** say *"are my pages alive?"*, or *"check my pages every morning"* (or every Monday) to set it on your own schedule. The check queue still plans them for you; results go to your journal.
+- **Telegram gets counts only:** "40 checked · 2 removed · 1 noindex" — the list stays in your project. Platform cleanups are still spotted across subscribers, from platform domains and counts only, without names, kept 7 days.
+- **Nothing to set up:** pages are no longer sent to the server when you log them; addresses stored by earlier versions were deleted.
+- **Legal products and content only:** PARASITER doesn't write, plan or log pages for pirated files, file-upload or "free download" schemes, cracks or illegal goods, and offers a legal alternative.
+- Privacy policy and offer updated: what the server keeps, for how long (settings are deleted 30 days after a subscription ends), and how to ask for deletion.
+
 ## 0.23.1 — 2026-11-01
 
 - Help: step-by-step Monday check-in and the full list of bot commands.

@@ -1,6 +1,6 @@
 ---
 name: platform-monitor
-description: Track which platforms and which of the user's parasite pages are alive — page up or removed, indexed or noindexed, still ranking — and tell the user what to move or republish. Uses the server's scheduled checks on Pro, or runs a manual check on a list of URLs. Use when the user asks "are my pages alive", "is X still working", "check my links", "what died", or after a Google update.
+description: Track which platforms and which of the user's parasite pages are alive — page up or removed, indexed or noindexed, still ranking — and tell the user what to move or republish. Checks run in the user's own Claude (on request, from the check queue or on the user's own schedule); page URLs never go to the server, only counts for a Telegram summary. Use when the user asks "are my pages alive", "is X still working", "check my links", "what died", or after a Google update.
 ---
 
 # Platform Monitor
@@ -17,39 +17,37 @@ The user should always see where to go next without asking. End each reply with 
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-Daily checking is a server job, not a chat job: the server checks tracked pages and platforms on a schedule; this skill reads the results and turns them into actions. Without the server it can run a one-off manual check.
+Page checks run **in the user's own Claude**, never on the PARASITER server: the server never receives the user's page addresses (privacy rule). The pages come from the user's journal (`parasite-seo-progress.csv`), the `page-checker` agent opens them, and every result is logged in the journal. Only counts and bare platform domains may go to the server (`pages_report`), so the user gets a Telegram summary and platform cleanups can be spotted across subscribers.
 
 Reply in the user's language.
 
-## Mode A — Server (Pro)
+## When checks run
 
-Tools: `monitor_status` (status of tracked pages and platforms, changes since a date), `monitor_track` (add/remove the user's URLs with their main query).
+- **On request:** "are my pages alive?", "check my pages", "what died?", after a Google update.
+- **From the check queue:** the navigator puts due alive checks into today's plan (`work-log` `due`: 2, 7, 14 days after publishing, then every 14 days; ★ pages first).
+- **On the user's schedule (recommended once the base has 20+ pages):** offer once — "Want me to check your pages every morning (or every Monday)? It runs in your Claude, costs nothing but Claude usage, and you get a short summary in Telegram." On yes, create a scheduled task in the user's Claude with the session's scheduling tools (the user's own task; it uses their Claude limits): prompt "PARASITER: check my pages due today (platform-monitor, free checks only), log the results, send pages_report". On Claude Pro suggest weekly, not daily. If the session can't schedule tasks, say so and keep the check queue.
 
-1. Tracking is automatic, never a question: compare `monitor_status` with the journal (`parasite-seo-progress.csv`) and add every journal page that is not tracked yet with `monitor_track` (URL + main query + platform), skipping pages marked removed. Say how many were added in one line. No journal yet → ask for the list of URLs once, then track them.
-2. `monitor_status` → show changes first:
+## The check (free: alive, noindex, link)
+
+1. Take the pages from the journal: due ones (`work-log` `due`), or all live pages on request, or the ones the user names. Skip pages marked removed.
+2. For each URL: HTTP status (live / 404 / login wall / redirect), noindex in meta or header, affiliate link present and working. For more than 3 URLs hand them to the **`page-checker` agent** (URL, main query, platform, expected affiliate link, country) in batches of about 15.
+3. Index and positions are **paid** checks on the user's own SEO account — never part of the free check (see Rules).
+4. Summary, changes first:
 ```
-Monitoring · [date]
+Page check · [date]
 Changed since [last check]:
 ▼ [page] — removed / noindex / dropped from top N
 ▲ [page] — now indexed / entered top 10
-Platforms: [X] stopped indexing new posts · [Y] cleanup wave
+Platforms: [X] — 3 of your pages gone this week
 Alive: N of M pages
 ```
-3. Actions, most urgent first: not indexed → `indexing` (Step 4: wait, resend via another service, or fix / move the page — by days since sending); for removed pages, `work-log` `republish --url` (or `--platform X --gone-only` when several died on one platform) — it lists them with their saved sources, and each is rewritten for a new home (`rollout` / platform-finder); refresh pages that dropped (page-audit); stop posting on platforms that stopped indexing.
-4. **Platform cleanup** (a news item of kind `cleanup`, or several of the user's pages gone on one platform): `republish --platform X` at once — the user's pages there, which are already gone, and the source of each for republishing.
+5. **With a key:** call `pages_report` with ONLY the numbers and the bare platform domains that lost pages — `checked`, `removed`, `noindex`, `not_indexed`, `dropped`, `domains: [{domain: "researchgate.net", removed: 2}]`. Never send page URLs, titles, queries or sub-IDs: the tool rejects them. The user's Telegram gets the counts; the list stays here.
 
-## Mode B — Manual check (Free)
+## Actions
 
-For each URL the user gives (with web fetch/search if available; otherwise give the user the steps):
-- HTTP status: live / 404 / login wall / redirect.
-- noindex in meta or header.
-- Indexed: `site:` or the exact title in Google.
-- Position for the main query: with the user's DataForSEO account, `work-log` `scripts/rankcheck.py` checks all pages at once (Mode 9); otherwise ask for the number from their rank tracker.
-- Affiliate link still present and working.
+Most urgent first: not indexed → `indexing` (Step 4: wait, resend via another service, or fix / move the page — by days since sending); removed pages → `work-log` `republish --url` (or `--platform X --gone-only` when several died on one platform) — it lists them with their saved sources, and each is rewritten for a new home (`rollout` / platform-finder); refresh pages that dropped (page-audit); stop posting on platforms that stopped indexing.
 
-For more than 3 URLs, hand the list to the **`page-checker` agent** (URL, main query, platform, expected affiliate link, country) — split long lists into batches of about 15 — and build the summary from its tables.
-
-Output the same summary table, marked "manual check, [date]". Suggest the server for ongoing tracking only once.
+**Platform cleanup** (a news item of kind `cleanup` in `news_latest`, or several of the user's pages gone on one platform): `republish --platform X` at once — the user's pages there that are already gone, and the source of each for republishing.
 
 ## Log every result
 
@@ -58,6 +56,7 @@ Every check result goes into the work journal as a `check` row (`work-log`): `st
 ## Rules
 
 - Never claim a page is indexed or ranking without a check result; mark unknowns.
+- **Privacy:** page URLs never go to the PARASITER server or to Telegram. `pages_report` gets counts and platform domains only. If the user asks the bot or the server to check a URL, explain that checks run in their Claude.
 - Index and position checks run on the user's own SEO data account (DataForSEO recommended; Semrush, Ahrefs, Serpstat or Ubersuggest via their connector or exports). They cost money: before a paid check say so, give the rough cost, and suggest a sample (★ pages, earning pages, the newest pack) instead of the whole base. Alive / noindex / link checks are free.
 - Remind to keep a copy of every published text — that is what makes fast republishing possible.
 - After a Google update: check all rankings, reduce work on platforms that lost visibility.

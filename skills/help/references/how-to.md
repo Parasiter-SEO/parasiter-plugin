@@ -76,7 +76,7 @@ Export per-post stats from the platform (Medium, LinkedIn, Search Console) or a 
 Normal. It counts exactly in program, month and pack totals; page tables show an estimated share. Say "which pages probably sold?" for the estimate.
 
 ## Check my pages
-"What needs checking?" → check queue (sales to upload, removed pages, not indexed after 14 days, checks and audits due, low audit scores). "Check them" → `platform-monitor` runs the checks and logs results. With a key, checks run on the server automatically.
+"What needs checking?" → check queue (sales to upload, removed pages, not indexed after 14 days, checks and audits due, low audit scores). "Check them" → `platform-monitor` runs the checks in your Claude and logs results. Automatically: "check my pages every morning" (or every Monday) sets a scheduled task in your own Claude; with Telegram linked you get the counts there. Your page URLs never go to the PARASITER server.
 
 ## Monday check-in: report last week (Pro, Insider)
 Every Monday at 10:00 (Kyiv time) the PARASITER bot asks for last week's numbers (Monday–Sunday). Needs Telegram linked ("connect Telegram").

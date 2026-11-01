@@ -15,7 +15,9 @@ On first run the navigator asks who you are and what for. Agencies, site owners 
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
-> **Status: private beta (v0.22.1).** Skills and agents work without a key. The server part (platform database, feed, monitoring) is in development; skills that need it say so and fall back to a live search.
+> **Privacy:** the PARASITER server never receives your page URLs, journal, sales, affiliate links or texts — they stay in your Claude project. Page checks run in your own Claude. **Legal products and content only.**
+
+> **Status: private beta (v0.22.1).** Skills and agents work without a key. The server part (platform database, feed, Telegram alerts) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
@@ -81,7 +83,7 @@ The plugin is written in English and works in any language. On first run the nav
 ## Plans
 
 - **Free, $0** — the plugin without a key.
-- **Pro, $19/month** — personal key: platform database, feed and weekly analysis, monitoring, navigator updates; new platforms about 7 days after they are found. **PARASITER Pro** Telegram channel and personal notifications from the bot.
+- **Pro, $19/month** — personal key: platform database, feed and weekly analysis, Telegram alerts, navigator updates; new platforms about 7 days after they are found. **PARASITER Pro** Telegram channel and personal notifications from the bot.
 - **Insider, $39/month** — everything in Pro, the full skill set and extra features, new platforms the day they are found. **PARASITER Insider** Telegram channel (platforms a week earlier, extra posts) and the private Insider group (discussion, polls).
 
 Annual billing saves about 20%. First members from the group keep their early price for life. Prices are preliminary.

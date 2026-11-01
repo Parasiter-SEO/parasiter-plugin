@@ -30,7 +30,7 @@ Free $0 · Pro $19/month · Insider $39/month (see help `faq.md` for what each i
 
 - **Works with Claude Pro and no SEO service:** profile and goals, the journal (pages, sales, traffic from your exports), reports and effectiveness tables, choosing what to write, writing articles, images, page audits, live research with web search (offers, platforms — fewer results), free page checks (alive, noindex, link).
 - **Limited without an SEO service:** no automatic positions of your pages (Search Console only sees your own sites) — positions only from a free tracker (ProRankTracker free: 20 keywords), manual Google checks or what you type in; no keyword volumes in niche analysis and offer popularity only from free signals; platform scans only through web search, without positions. Many reports (top 3 count, what pages rank for, lost queries, scale plan by position) get thinner.
-- **Without a PARASITER key (Free plan):** no checked platform base, no feed, no daily server monitoring, no Telegram.
+- **Without a PARASITER key (Free plan):** no checked platform base, no feed, no Telegram alerts (page checks still run in your Claude).
 
 ## For agencies and site owners
 

@@ -125,7 +125,7 @@ For each approved row, in order, keeping the client name in every step:
 2. `sales-review-writer` in **brand mode** — the text for the brand, disclosed, with the client's facts and UTM links.
 3. `post-illustrations` with the client's brand kit — infographics rendered by Claude, a cover prompt with the generator choice.
 4. `page-audit` (agency scale) — score before the client sees it; under 75 → fix first.
-5. Client approval → the user publishes (PARASITER never posts) → `work-log` logs the page in the client journal (monitoring switches on automatically with a key) → status `published`.
+5. Client approval → the user publishes (PARASITER never posts) → `work-log` logs the page in the client journal (alive checks come from the check queue) → status `published`.
 
 ## Step 6 — Month close and report
 
@@ -140,6 +140,6 @@ On the report day (or "monthly report for Acme"):
 - **Honest brand content only.** Pages say who is behind them (the brand, its expert, or "prepared with [Brand]"). Never present the client's product as an independent review, test or ranking, never fake customers, reviews, ratings or engagement, never post from fake personal accounts. Profiles on platforms are the brand's real, declared accounts.
 - Platform rules decide: if a platform forbids brand promotion or links, the piece goes elsewhere or carries no link.
 - Paid checks only with the user's yes, the page count and the cost shown, every time.
-- Client data stays in the client's folder and the conversation; nothing goes to the PARASITER server except what monitoring needs (page URL, main query, platform). If the client's NDA forbids even that, write `Server monitoring: off` in the brief: that client's pages are not sent to `monitor_track`, and checks run only locally through `platform-monitor`.
+- Client data stays in the client's folder and the conversation; nothing goes to the PARASITER server: page checks run locally through `platform-monitor`, and the server sees no client URLs, names or data (only counts for the user's Telegram summary).
 - No guaranteed rankings or traffic in any client-facing text. Forecasts are labelled as assumptions.
 - Mention the risk once per client, where it matters: platforms remove pages, Google acts against site reputation abuse; spread pages across platforms, keep every text, monitor.
