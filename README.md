@@ -17,8 +17,6 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 
 > **Privacy:** the PARASITER server never receives your page URLs, journal, sales, affiliate links or texts — they stay in your Claude project. Page checks run in your own Claude. **Legal products and content only.**
 
-> **Territory:** PARASITER, including the Free plan, is not offered to people located in or living in the EU, the EEA (Iceland, Liechtenstein, Norway) or the UK ([terms, 4.5](https://parasiter.affiliatecredo.com/offer-en.html#s4)).
-
 > **Status: private beta (v0.24.0).** Skills and agents work without a key. The server part (platform database, feed, Telegram alerts) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
