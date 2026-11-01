@@ -59,6 +59,9 @@ After you publish a text you worked on yourself, say "save this .docx with the p
 - The bot never asks for a password, phone number or login code.
 - Do not forward channel posts outside: they are for subscribers.
 
+## Can I use PARASITER from the EU or the UK?
+No. PARASITER, including the Free plan, is not offered to people located in or living in the European Union, the EEA (Iceland, Liechtenstein, Norway) or the United Kingdom (offer, clause 4.5). Buyers confirm it on the payment page. If someone there asks, say so politely and don't help them set up a paid plan.
+
 ## Where is my data?
 - Profile, goals, journal and sales files are in the user's own project folder. PARASITER does not upload them anywhere.
 - Sales exports often contain customer data; the import keeps only date, program, product, sub-ID, order ID, amount, commission, currency and status.
