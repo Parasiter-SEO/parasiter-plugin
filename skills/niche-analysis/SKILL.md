@@ -50,7 +50,7 @@ When the SEO tool gives URLs but not page types, or the user has no tool, hand t
 
 For each target query look at the **top 20** and sort every domain into three groups:
 - **Heavy** — hard to push out, usually not worth entering: marketplaces and big brands (Amazon, Walmart, the merchant), big cloud file hosts used by strong players (Amazon S3 / `s3.amazonaws.com`, `storage.googleapis.com`, `blob.core.windows.net`, CloudFront), news wires and major media (GlobeNewswire, PR Newswire, Yahoo, MarketWatch, national newspapers), big review and health sites (Healthline, WebMD, Forbes, NYTimes Wirecutter…), .gov / .edu.
-- **Ours** — platforms of the kind the user posts on: the user's own base (`work-log` `platforms`), the author's checked base (`platforms_search`), and any free UGC platform (forums, Reddit, Quora, Medium, Pressbooks, ResearchGate, Gamma, HackMD, podcast hosts, site builders…).
+- **Ours** — platforms of the kind the user posts on: the user's own base (`work-log` `platforms`), the author's checked base (`platforms_search`), and any free UGC platform (forums, Reddit, Quora, Medium, Gamma, HackMD, podcast hosts, site builders…).
 - **Other** — small sites and blogs.
 
 **Entry score** per query:

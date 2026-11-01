@@ -2421,7 +2421,7 @@ def cmd_rollout(a):
     act = [r for r in reg.values() if (r.get("state") or "active") in ("active", "testing")]
     used = Counter(p["platform"].lower() for p in pages.values())
     missing = [r for r in sorted(act, key=rank) if r["platform"].lower() not in on
-               and "mirror" not in (r.get("note") or "").lower()          # syndicated copies (Spotify ← Audioboom)
+               and "mirror" not in (r.get("note") or "").lower()          # syndicated copies (Spotify ← podcast host)
                and (used[r["platform"].lower()] or r.get("priority") == "high")]  # platforms the user actually publishes on
     print(f"# Rollout · “{topic}” · on {len(on)} platforms · missing on {len(missing)}\n")
     if on:

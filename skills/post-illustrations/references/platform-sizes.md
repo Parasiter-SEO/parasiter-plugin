@@ -4,7 +4,7 @@
 
 | Platform | Images | Notes |
 |---|---|---|
-| Medium / LinkedIn / Pressbooks / blog platforms | cover + 3–6 | 700 px horizontal; upload the file |
+| Medium / LinkedIn / blog platforms | cover + 3–6 | 700 px horizontal; upload the file |
 | Forums | cover + 2–5 | most forums take images only by link: host the image (see below) and paste the URL |
 | Gamma, document hosts, PDF | 2–4 | keep the file small; infographics carry the facts |
 | Reddit | 0–2 | native, unpolished look; no ad-style banners |

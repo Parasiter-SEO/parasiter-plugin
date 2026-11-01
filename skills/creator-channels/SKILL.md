@@ -38,7 +38,7 @@ For every channel, the checklist in `references/channels.md`: findable name (nam
 
 Send the channel URLs, niche and target topics to the **`video-seo-checker` agent** for a fresh read of what is public (what the profile shows, the last 10 uploads' titles and descriptions, whether the channel or its videos appear in Google for its name and topics). Score each channel 0–100 with the checklist, list fixes in order of impact, and give the rewritten texts ready to paste (name line, bio, About, playlist titles). Save to `creator-channels.md`.
 
-**Hub:** the creator needs one page Google can index that links every channel and the money links — their own site or blog, or at least a Linktree-type page, Medium / Substack profile, or a Pressbooks / Gamma page. New videos are also embedded or linked there: an indexed page linking fresh content helps it get found.
+**Hub:** the creator needs one page Google can index that links every channel and the money links — their own site or blog, or at least a Linktree-type page, Medium / Substack profile, or a Gamma page. New videos are also embedded or linked there: an indexed page linking fresh content helps it get found.
 
 ## Step 3 — Search-based content plan and the posting model
 

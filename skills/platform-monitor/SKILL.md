@@ -41,7 +41,7 @@ Changed since [last check]:
 Platforms: [X] — 3 of your pages gone this week
 Alive: N of M pages
 ```
-5. **With a key:** call `pages_report` with ONLY the numbers and the bare platform domains that lost pages — `checked`, `removed`, `noindex`, `not_indexed`, `dropped`, `domains: [{domain: "researchgate.net", removed: 2}]`. Never send page URLs, titles, queries or sub-IDs: the tool rejects them. The user's Telegram gets the counts; the list stays here.
+5. **With a key:** call `pages_report` with ONLY the numbers and the bare platform domains that lost pages — `checked`, `removed`, `noindex`, `not_indexed`, `dropped`, `domains: [{domain: "example.com", removed: 2}]`. Never send page URLs, titles, queries or sub-IDs: the tool rejects them. The user's Telegram gets the counts; the list stays here.
 
 ## Actions
 

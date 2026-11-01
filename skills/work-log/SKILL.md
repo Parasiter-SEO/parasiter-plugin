@@ -227,7 +227,7 @@ Other skills use the base: `platform-finder` excludes or marks platforms already
 
 `scripts/pagekeywords.py` asks DataForSEO Labs, page by page (full URL, never the bare domain — a domain target returns the whole site), which queries the page ranks for, their volume and estimated traffic, and which queries it lost and when. One page ≈ $0.013–0.02.
 ```
-python3 scripts/pagekeywords.py parasite-seo-progress.csv [--priority high] [--platform pressbooks] [--dry-run]
+python3 scripts/pagekeywords.py parasite-seo-progress.csv [--priority high] [--platform medium] [--dry-run]
 ```
 Results: `parasite-seo-keywords.csv` (page × keyword) and a `check` row per page (best position, "labs: N keywords, M in top 10, ~V visits/mo, L lost"). Use it to find the pages that really bring traffic, the queries lost before a sales drop, and proven topics for `ideas` / coverage. Labs is a crawl snapshot (each keyword shows when it was last seen); confirm today's positions for the main queries with `rankcheck.py`.
 
@@ -251,7 +251,7 @@ python3 scripts/worklog.py links parasite-seo-progress.csv [--program VitaBrand]
 The user keeps the texts they really worked on (most people work in .docx) next to the published page, so a removed page or a whole platform cleanup costs minutes, not days.
 ```
 python3 scripts/worklog.py source parasite-seo-progress.csv --url https://… --file "Flexotone review final.docx" [--note "v2 with my photos"]
-python3 scripts/worklog.py republish parasite-seo-progress.csv --platform pressbooks [--gone-only]
+python3 scripts/worklog.py republish parasite-seo-progress.csv --platform medium [--gone-only]
 python3 scripts/worklog.py republish parasite-seo-progress.csv --url https://…
 ```
 - `source` copies the file into `parasite-seo-sources/` next to the journal (named date-platform-topic) and links it to the page. A newer source for the same page replaces the old one in lists; files are never deleted.
@@ -284,7 +284,7 @@ Read it to the user as 3–5 concrete suggestions: topic → platform → why �
 
 When the user says what they will publish today and where, `ideas` answers per target platform:
 ```
-python3 scripts/worklog.py ideas parasite-seo-progress.csv --to researchgate,pressbooks [--n 8]
+python3 scripts/worklog.py ideas parasite-seo-progress.csv --to medium,linkedin [--n 8]
 python3 scripts/worklog.py ideas parasite-seo-progress.csv --to thermaltake --from own-site --top-only
 ```
 `--to` takes any platforms, including new ones not in the base. `--from` limits the source topics to platforms or types (`own-site` = the user's own sites, registered with `platform-set --type own-site`; their positions come from the position check, Search Console or a tracker export). `--top-only` keeps only topics with a page in the top 10.
@@ -299,7 +299,7 @@ Search Console and free webmaster tools only see sites the user owns, so they ca
 
 ```
 python3 scripts/rankcheck.py parasite-seo-progress.csv --dry-run            # what will be checked and the cost
-python3 scripts/rankcheck.py parasite-seo-progress.csv [--country us] [--priority high] [--platform researchgate]
+python3 scripts/rankcheck.py parasite-seo-progress.csv [--country us] [--priority high] [--platform medium]
 ```
 
 - Besides organic positions, every SERP block is read: a page cited in the **AI Overview**, "Discussions and forums", images or videos is logged as indexed with "cited in …" even when it is not in the organic list (parasite pages often live there). The output lists these citations.
@@ -313,7 +313,7 @@ python3 scripts/rankcheck.py parasite-seo-progress.csv [--country us] [--priorit
 - **Scheduled paid check** — only if the user asks for it. Set it up with the user: day and time, which pages (★, earning, new not yet indexed, a platform, a list), how many, and the cost per run from a `--dry-run`; if the user has ★ pages, also the "only ★" count and cost. Register it with `paid_check_schedule` (action=set; list / cancel to review or stop it). The server warns the user in Telegram ahead of every run (the day before, or that morning — always 6+ hours): *"Tomorrow at 10:00: position check of 61 earning pages, ~$0.12 from your SEO API balance"* with buttons **Run as planned · Only ★ · Skip this time · Change** (after Change, a text message sets the new pages).
   The assistant's scheduled task calls `paid_check_pending` (id) right before the run and does exactly what it returns: `run: true` → run that set; `run: false` → don't run, say why in the next session; `run: "if_within_cost"` → work out the pages the user wrote, dry-run, and run only if the cost is not above `cost_limit_usd`, else wait for a yes. No answer in Telegram = run as planned; a run the user was not warned about never runs. After the run, `paid_check_report` sends the result and the real cost to the user's Telegram.
   Without the server or a linked Telegram there is no way to warn the user, so scheduled paid checks are not offered: the check is suggested in the next session and runs after a yes.
-- Any rank tracker instead (Ubersuggest, SE Ranking, ProRankTracker, SEO PowerSuite…): upload its CSV export — `import-ranks parasite-seo-progress.csv export.csv`. Rows are matched by URL, else by keyword to the page's query or topic. If the tracker shows another page of the same platform ranking (trackers follow a domain, and researchgate.net or medium.com is everyone's domain), the row is skipped, never credited to the user. Weekly export = weekly history.
+- Any rank tracker instead (Ubersuggest, SE Ranking, ProRankTracker, SEO PowerSuite…): upload its CSV export — `import-ranks parasite-seo-progress.csv export.csv`. Rows are matched by URL, else by keyword to the page's query or topic. If the tracker shows another page of the same platform ranking (trackers follow a domain, and medium.com or linkedin.com is everyone's domain), the row is skipped, never credited to the user. Weekly export = weekly history.
 - Single positions from the user's own notes: `tag --position` (or `add --event check --position`).
 
 ## Rules

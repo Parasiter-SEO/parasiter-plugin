@@ -142,7 +142,7 @@ Each version's section is posted to the news feed and the Telegram channels when
 
 ## 0.10.0 — 2026-10-24
 
-- **Your plan for the day, filled with ideas.** Tell the navigator what you want to do today — "articles on ResearchGate and Pressbooks, topics I don't have there; forum posts on topics where my sites rank" — and get topics for each part from your own base: missing there, strongest first, with the page to learn from. New platforms work too. No plan? Say *"give me a plan"*.
+- **Your plan for the day, filled with ideas.** Tell the navigator what you want to do today — "articles on Medium and a document platform, topics I don't have there; forum posts on topics where my sites rank" — and get topics for each part from your own base: missing there, strongest first, with the page to learn from. New platforms work too. No plan? Say *"give me a plan"*.
 - **Your own sites as a source.** Register them in the platform base; topics where they rank in the top 10 become ideas for parasite platforms.
 - Position checks retry automatically and can download already-paid results for free.
 
@@ -153,7 +153,7 @@ Each version's section is posted to the news feed and the Telegram channels when
 
 ## 0.8.1 — 2026-10-23
 
-- **Your platform order.** Say *"ResearchGate is my #2 platform"*: the order leads the advice. *"What topics are missing on my top platforms?"* lists, per platform, the topics you wrote elsewhere but skipped there.
+- **Your platform order.** Say *"Medium is my #2 platform"*: the order leads the advice. *"What topics are missing on my top platforms?"* lists, per platform, the topics you wrote elsewhere but skipped there.
 
 ## 0.8.0 — 2026-10-23
 

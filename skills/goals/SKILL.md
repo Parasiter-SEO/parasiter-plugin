@@ -60,7 +60,7 @@ Your starting point (from your reports, [period])
 | Income | ~$2,000/month (your words) · $1,450 in reports |
 | Clicks → sales | 1,800 clicks/month · EPC $1.35 · conv. 1.8% |
 | Pages lost | 14 in 6 months, mostly on … |
-| Best / worst | Audioboom / … |
+| Best / worst | Medium / … |
 ```
 The user corrects only what is wrong. Mark each number's source: *from reports* or *your estimate*.
 

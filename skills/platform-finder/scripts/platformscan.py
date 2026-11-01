@@ -81,8 +81,8 @@ def is_brand_site(url, product):
 
 
 EXTRA_TYPES = {"hackmd.io": "page", "zooniverse.org": "community", "corada.com": "community",
-               "pressbooks.pub": "document", "researchgate.net": "document", "gamma.app": "page",
-               "audioboom.com": "podcast", "firstory.me": "podcast", "spotify.com": "podcast",
+               "gamma.app": "page",
+               "firstory.me": "podcast", "spotify.com": "podcast",
                "bigcartel.com": "site-builder", "bandcamp.com": "creator", "soundcloud.com": "podcast",
                "kaggle.com": "community", "huggingface.co": "community", "gitlab.io": "site-builder",
                "pastebin.com": "page", "justpaste.it": "page", "rentry.co": "page", "glitch.me": "site-builder",

@@ -86,9 +86,9 @@ Anything the user knows about traffic helps: a file, a screenshot, or a number p
 | Search Console (own pages) | Performance → Pages, export: clicks, impressions | page URL (`--map views=Impressions`) |
 | Link shorteners and redirect services (Bitly, geni.us, own redirect domain) | clicks per short link for the period → export or screenshot | log each link's clicks on its page (`add --event traffic --url <page> --aff-clicks N`) |
 | Gamma | open the gamma → Share / ⋯ menu → **View analytics**: views and viewers per gamma (paid plan); no CSV → screenshot | page URL; or `--platform gamma` for the account total |
-| Medium, Substack, LinkedIn articles, Pressbooks, blog platforms | per-post stats: URL + views/reads for a period (Medium: Stats page; LinkedIn: post analytics) — export or screenshot | page URL |
-| ResearchGate, Academia, document hosts (Scribd, Issuu, SlideShare) | Stats / reads per item — usually a screenshot | page URL |
-| Podcasts (Audioboom, Spotify for Creators, Firstory) | plays / listens per episode for the period → export or screenshot | page URL |
+| Medium, Substack, LinkedIn articles, blog platforms | per-post stats: URL + views/reads for a period (Medium: Stats page; LinkedIn: post analytics) — export or screenshot | page URL |
+| Academia, document hosts (Scribd, Issuu, SlideShare) | Stats / reads per item — usually a screenshot | page URL |
+| Podcasts (Spotify for Creators, Firstory) | plays / listens per episode for the period → export or screenshot | page URL |
 | YouTube | Studio → Analytics → Advanced mode → content × views → Export (CSV) | video URL |
 | Forums, Reddit, Quora | views shown on the post; usually a screenshot → log by hand | page URL |
 

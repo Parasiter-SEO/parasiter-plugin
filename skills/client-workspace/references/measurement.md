@@ -40,7 +40,7 @@ Search Console only sees the client's own site in Google. It does not see visits
 ```
 ?utm_source=<platform>&utm_medium=parasite&utm_campaign=<client-slug>-<yyyy-mm>&utm_content=<page sub-ID>
 ```
-- `utm_source` — the platform slug as in the journal (medium, linkedin, pressbooks, reddit…).
+- `utm_source` — the platform slug as in the journal (medium, linkedin, reddit…).
 - `utm_medium=parasite` — the same for every piece, so one filter shows all our traffic. The client may prefer `referral-content`; use their name if they ask, and keep it constant.
 - `utm_campaign` — client and month of publishing.
 - `utm_content` — the page's sub-ID, short and unique (`pb-how-to-choose-crm`): the same value is logged as the page's sub-ID in the client journal, so GA4 visits are credited to the exact page.

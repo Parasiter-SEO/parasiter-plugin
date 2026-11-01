@@ -17,8 +17,8 @@ Where a brand should have a declared, complete profile, and what each one does f
 | Google Business Profile | local businesses | Maps and local pack | category, hours, photos, real reviews only |
 | Crunchbase / G2 / Capterra / Trustpilot / Clutch | SaaS, agencies, services | Listing pages rank for brand + "reviews" | claimed listing, description, link; reviews only from real customers, never seeded |
 | Industry directories and associations | by niche | Listing pages | name, link, category |
-| Podcast hosts (Spotify, Apple via Audioboom / RSS) | B2B, experts | Episode pages rank | show page, episode notes with links |
-| Document / slide hosts (Gamma, SlideShare-like, Pressbooks, Issuu) | guides, research, B2B | Yes — guides and chapters | author shows the brand |
+| Podcast hosts (Spotify, Apple via RSS) | B2B, experts | Episode pages rank | show page, episode notes with links |
+| Document / slide hosts (Gamma, SlideShare-like, Issuu) | guides, research, B2B | Yes — guides and chapters | author shows the brand |
 
 ## Consistency (the same everywhere)
 

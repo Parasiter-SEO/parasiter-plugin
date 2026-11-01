@@ -30,7 +30,7 @@ Search Console URL Inspection → Request indexing (capped per day; use for the 
 3. Canonical pointing to another URL (common on imported or syndicated posts).
 4. Login wall, 4xx / 5xx, soft 404.
 5. Thin or duplicate text — duplication across sites is one of Google's site reputation abuse review factors [32]; thin pages end up "crawled, not indexed" [30].
-6. The platform: cleanup waves or "stopped indexing new posts" in the platform base. Site reputation abuse is enforced by manual action on sections of host sites; since 30 Aug 2026 those actions no longer affect rankings for users in the EEA, but still do elsewhere [32][33]. No credible source confirms a full deindex of Medium, LinkedIn, Google Sites, Reddit or Pressbooks; ignore unsourced "50% deindexed" claims.
+6. The platform: cleanup waves or "stopped indexing new posts" in the platform base. Site reputation abuse is enforced by manual action on sections of host sites; since 30 Aug 2026 those actions no longer affect rankings for users in the EEA, but still do elsewhere [32][33]. No credible source confirms a full deindex of Medium, LinkedIn, Google Sites or Reddit; ignore unsourced "50% deindexed" claims.
 Nofollow outbound links don't block the page's own indexing.
 
 ## Checking

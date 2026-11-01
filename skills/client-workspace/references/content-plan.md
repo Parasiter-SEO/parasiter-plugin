@@ -11,7 +11,7 @@ Focus: [the 2–3 queries / products this month moves]
 |---|---|---|---|---|---|---|---|---|
 | 1 | Nov 3 | Best [category] for [audience] in 2026 — Acme among 8 options, disclosed | best [category] | Medium (brand account) | best-of guide 1,800 words | /product?utm_source=medium&utm_medium=parasite&utm_campaign=acme-2026-11&utm_content=md-best-category | Anna | approved |
 | 2 | Nov 4 | Acme vs [competitor]: honest comparison by Acme's team | acme vs competitor | LinkedIn article | A vs B | /compare?… | Anna | idea |
-| 3 | Nov 6 | How to choose [category]: 7 questions buyers ask | how to choose [category] | Pressbooks chapter | guide | /guide?… | Max | idea |
+| 3 | Nov 6 | How to choose [category]: 7 questions buyers ask | how to choose [category] | Document guide | guide | /guide?… | Max | idea |
 | P1 | Nov 2 | Open brand profile | — | Quora (brand account) | profile + 2 answers | site | Max | approved |
 
 Statuses: idea → approved → written → client-approved → published → checked

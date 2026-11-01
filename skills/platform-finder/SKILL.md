@@ -21,7 +21,7 @@ Platforms live days to months: they get spammed, cleaned up, noindexed or close 
 
 **What we look for:** not new, untested platforms, but the ones where **affiliate review pages are published and indexed right now**. If review pages of affiliate products rank on a domain today, it is a proven parasite platform: anyone can post there and Google keeps the pages. A platform with no affiliate posts on it is not a lead, however promising it looks. Whether links on it are indexed or followed does not matter — what matters is that **the pages themselves are indexed**.
 
-**Free and paid are always separate.** Free: platforms where users post themselves (Facebook, Reddit, Quora, forums, article and document platforms, site builders, podcasts, Gamma, Pressbooks, ResearchGate…). Paid: news and media sites (all of them are paid — sponsored posts, "partner content", press releases), PR wires, paid placements. Every list shows them in separate tables.
+**Free and paid are always separate.** Free: platforms where users post themselves (Facebook, Reddit, Quora, forums, article and document platforms, site builders, podcasts, Gamma…). Paid: news and media sites (all of them are paid — sponsored posts, "partner content", press releases), PR wires, paid placements. Every list shows them in separate tables.
 
 Reply in the user's language.
 
@@ -29,7 +29,7 @@ Reply in the user's language.
 
 For a client the question is the same — where do pages rank now — with three changes:
 - **Probe the client's niche, not affiliate products:** "best [category]", "[category] review", "[competitor] alternatives", "[competitor] vs", "how to choose [category]" for the client's target queries, plus "[competitor] review" for 5–10 competitors (`platformscan.py` with those terms and `--suffix ""` / your own suffixes, `--base clients/<slug>/parasite-seo-progress.csv` so the client's platforms are marked). Platforms where the category's pages rank are the client's candidates.
-- **Brand-safe filter:** keep platforms whose rules allow declared brand or company content (LinkedIn, Medium, YouTube, Pressbooks, Gamma, podcast hosts, document hosts, industry communities with brand accounts, Reddit / Quora only where the community allows brand participation). Drop or mark "not for brands" places full of spam, adult or gambling neighbours, or whose rules forbid promotion. Mark each row brand-safe yes / with conditions / no.
+- **Brand-safe filter:** keep platforms whose rules allow declared brand or company content (LinkedIn, Medium, YouTube, Gamma, podcast hosts, document hosts, industry communities with brand accounts, Reddit / Quora only where the community allows brand participation). Drop or mark "not for brands" places full of spam, adult or gambling neighbours, or whose rules forbid promotion. Mark each row brand-safe yes / with conditions / no.
 - **The client's own profiles first** (from `brand-presence`): a platform where the brand already has a complete profile is the cheapest place to start.
 Read and write the client's platform base (`clients/<slug>/parasite-seo-progress.csv` → `parasite-seo-platforms.csv`). Paid placements (news sites, PR wires) go to the client as an option with a known price only — the client decides on paid media.
 

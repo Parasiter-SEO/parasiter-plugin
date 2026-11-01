@@ -47,7 +47,7 @@ Score each platform **0–3** (0 missing, 1 exists but empty or broken, 2 comple
 
 ## Step 4 — Content audit
 
-For the 3–5 most active profiles and the site's blog: what the brand publishes (topics, formats, frequency, last 90 days), what gets engagement (views, comments, reactions where public), which target queries no content covers, and what can be reused as parasite pages (a webinar → a LinkedIn article and a Medium guide; a YouTube video → a Pressbooks chapter with the video embedded). Only what is visible on the profiles; never guess the client's private stats.
+For the 3–5 most active profiles and the site's blog: what the brand publishes (topics, formats, frequency, last 90 days), what gets engagement (views, comments, reactions where public), which target queries no content covers, and what can be reused as parasite pages (a webinar → a LinkedIn article and a Medium guide; a YouTube video → a document guide with the video embedded). Only what is visible on the profiles; never guess the client's private stats.
 
 ## Step 5 — Plan and save
 
