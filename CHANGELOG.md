@@ -2,6 +2,14 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.23.0 — 2026-11-01
+
+**Monday check-in** (Pro and Insider, Telegram linked) — every Monday at 10:00 Kyiv the PARASITER bot asks for last week's numbers, so your journal and goals stay true.
+- **What to bring:** sales from your affiliate networks (export, Excel or screenshot), traffic from your platforms' stats and the network click report, and your UTM / GA4 / Search Console data if you use them.
+- **Then say *"weekly check-in"* in your PARASITER project:** everything is logged, sales are tied to pages, and you see what earned, what grew and what dropped against your goals.
+- **Position check:** one tap shows how to check how your keywords and posts moved — on your own SEO API, with the pages and cost shown before anything is spent, or every week on a schedule.
+- **Buttons:** Done · Remind me at 19:00 · Position check · Skip this week · Turn off. `/checkin on|off` in the bot, or *"turn off Monday check-ins"* in Claude. A week you already logged gets no reminder. Your data stays in Claude: the bot never asks for exports or keys.
+
 ## 0.22.1 — 2026-10-30
 
 - **Indexing is advice and tracking; you send.** PARASITER no longer sends pages to indexers or asks for indexer keys. You get the clean list for each of your services and send it yourself — to one indexer or several.

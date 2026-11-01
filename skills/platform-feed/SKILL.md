@@ -25,7 +25,7 @@ Reply in the user's working language.
 
 ## Requires the server (Pro or Insider)
 
-Tools: `news_latest`, `news_seen`, `feed_latest`, `analysis_latest`, `account_info`, `telegram_link`, `telegram_status`, `telegram_settings`, `telegram_unlink`; for scheduled paid checks (work-log Mode 9) `paid_check_schedule`, `paid_check_pending`, `paid_check_report`.
+Tools: `news_latest`, `news_seen`, `feed_latest`, `analysis_latest`, `account_info`, `telegram_link`, `telegram_status`, `telegram_settings`, `telegram_unlink`; for scheduled paid checks (work-log Mode 9) `paid_check_schedule`, `paid_check_pending`, `paid_check_report`; for the Monday sales check-in (work-log) `weekly_checkin`.
 
 If they are not available, or the plan is Free: say in one line that the feed and Telegram channels come with Pro and Insider, what they contain, and offer platform-finder for a live search instead. Do not invent feed items, updates or poll results.
 
@@ -57,7 +57,7 @@ Plan shapes what comes back: Pro sees new platforms ~7 days after they are found
    "Open this link and press **Start**: [link] (valid 30 minutes). The bot will confirm and send you invites to [PARASITER Pro channel] / [PARASITER Insider channel and the Insider group]."
    Telegram bots cannot write to someone first, so this link is the only way — a username is not enough.
 3. Explain the personal notifications in 5 short lines (page alerts, Monday sales reminder, news digest, billing, warnings before a scheduled paid check with buttons to run, narrow or skip it), at most one message a day, quiet at night, and that any type can be turned off.
-4. "Turn off X" → `telegram_settings`. "Disconnect Telegram" → `telegram_unlink` (channel access also ends; reconnect any time).
+4. "Turn off X" → `telegram_settings` (`alerts`, `digest`, `checkin` for the Monday check-in). "Disconnect Telegram" → `telegram_unlink` (channel access also ends; reconnect any time).
 
 ## Rules
 

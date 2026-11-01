@@ -54,7 +54,7 @@ After you publish a text you worked on yourself, say "save this .docx with the p
 
 ## Telegram
 - **How to connect**: say "connect Telegram" in Claude, open the personal link, press Start. A username is not enough: Telegram bots cannot write to someone first.
-- **Notifications**: one daily summary of your pages that got worse, Monday reminder to upload sales, news digest, billing, warnings before a scheduled paid check. Platform-wide news (new platforms, cleanups) comes in the channel only, never twice. Quiet at night. Turn any off: "turn off news notifications" in Claude, or /stop in the bot.
+- **Notifications**: one daily summary of your pages that got worse, Monday check-in at 10:00 Kyiv (bring last week's sales, traffic and UTM data to Claude and say "weekly check-in"; buttons for a 19:00 reminder, a position check, skip or off), news digest, billing, warnings before a scheduled paid check. Platform-wide news (new platforms, cleanups) comes in the channel only, never twice. Quiet at night. Turn any off: "turn off news notifications" in Claude, or in the bot (`/checkin off` for the Monday check-in).
 - **Plan ends**: access to the channels and group ends with it and comes back on renewal.
 - The bot never asks for a password, phone number or login code.
 - Do not forward channel posts outside: they are for subscribers.

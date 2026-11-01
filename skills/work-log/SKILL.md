@@ -111,6 +111,22 @@ After an import, report in 3–4 lines: new sales, commission, pending, refunds.
 
 The check queue (Mode 5) lists every program with live pages whose sales were not imported or logged for 7 days, and asks for a monthly export even when sales are logged by hand (exports catch refunds and missed sales). The navigator raises it on the first session of the week. Ask plainly: "Upload this week's export from ClickBank and Impact: [date] to today." How to export: `references/sales-import.md`.
 
+### Monday check-in (from the Telegram bot)
+
+Every Monday at 10:00 (Kyiv) the PARASITER bot asks Pro and Insider users with Telegram linked to bring last week's numbers here. The user says **"weekly check-in"** (or "Monday check-in", "here are my sales for the week", or just uploads exports on a Monday). Run it as one short flow:
+
+1. `weekly_checkin` (action `status`) gives the period to log (last Monday–Sunday). Without a key or Telegram, use last Monday–Sunday in the user's time zone.
+2. Ask for what they have, in one message, all optional except sales:
+   - **Sales** — the export from every program with live pages (`due` lists them), for that period → `import-sales` (Mode 2). Screenshot or PDF → read and log with `sale`.
+   - **Traffic** — platform stats (views, plays, clicks) and the network click report → `import-traffic` with `--from/--to` = the period (Mode 3).
+   - **UTM / analytics** — GA4 "Session source / medium", utm_source reports, Search Console pages → `import-traffic` the same way.
+   Take whatever comes; never block the check-in on a missing file — name what is missing in one line and go on.
+3. Report the week: `summary --period last-week` and `effect --period last-week --by platform`, 4–6 lines: sales and commission vs the week before, best page and platform, traffic without sales (→ page-audit), pages that dropped or died (from monitoring). With a goals file, add the pace line from the `goals` weekly review. Charts and PDF as always (client-reports style) when the user wants the full report.
+4. **Offer a position check** to see how keywords and posts moved: "Check positions of ★ / earning / new pages? N pages ≈ $X on your DataForSEO." It is paid — ask which pages and show the cost first, run only after a yes (Mode 9, Rules). If they want it every Monday, set it up with `paid_check_schedule` (they choose pages and cost once; the bot warns before each run).
+5. `weekly_checkin` action `done` — the bot then stops nudging for this week. Only the fact "logged" goes to the server, never sales or traffic.
+
+"Turn off Monday check-ins" → `telegram_settings` checkin `off` (or `/checkin off` in the bot); "turn them on" → `on`.
+
 ### Sales without a page are normal
 
 Often a sale cannot be tied to an article: the network shows no sub-ID or referrer, the buyer came back days later, or 20 articles of a pack promote the same offer. UTM tags don't solve it either — they land in the merchant's analytics, which the affiliate never sees. So the journal works on three levels and never treats an untied sale as an error:

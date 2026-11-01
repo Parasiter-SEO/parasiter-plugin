@@ -69,7 +69,7 @@ Agencies and site owners plan in `client-workspace`, creators in `creator-channe
 
 ## Server tools (Pro / Insider key)
 
-`account_info` (plan, limits, Telegram linked) · `platforms_search` (checked platform database) · `feed_latest`, `analysis_latest` (platforms and weekly analysis) · `news_latest`, `news_seen` (news feed) · `telegram_link`, `telegram_status`, `telegram_settings`, `telegram_unlink` (Telegram) · `monitor_track`, `monitor_status` (scheduled page checks) · `paid_check_schedule`, `paid_check_pending`, `paid_check_report` (scheduled paid checks on your own SEO API, warned in Telegram before each run). Skills say when they need one and fall back to live search or manual checks without a key. The server is in beta.
+`account_info` (plan, limits, Telegram linked) · `platforms_search` (checked platform database) · `feed_latest`, `analysis_latest` (platforms and weekly analysis) · `news_latest`, `news_seen` (news feed) · `telegram_link`, `telegram_status`, `telegram_settings`, `telegram_unlink` (Telegram) · `monitor_track`, `monitor_status` (scheduled page checks) · `paid_check_schedule`, `paid_check_pending`, `paid_check_report` (scheduled paid checks on your own SEO API, warned in Telegram before each run) · `weekly_checkin` (Monday check-in: marks the week's sales and traffic logged). Skills say when they need one and fall back to live search or manual checks without a key. The server is in beta.
 
 ## The user's files
 
@@ -95,7 +95,7 @@ Kept in the user's project folder, written by the skills:
 | PARASITER Pro channel | Pro and Insider | news, updates, ideas, polls, platform cleanups seen across subscribers; new platforms ~7 days after found |
 | PARASITER Insider channel | Insider | everything the same day, plus Insider-only posts |
 | Insider group | Insider | discussion with Rumer and members, polls, questions |
-| PARASITER bot | Pro and Insider | linking, invites, personal notifications: one daily summary of your pages that got worse, Monday sales reminder, news digest, billing, warnings before a scheduled paid check (run / only ★ / skip / change) |
+| PARASITER bot | Pro and Insider | linking, invites, personal notifications: one daily summary of your pages that got worse, Monday check-in (sales, traffic, UTM; Done · Remind at 19:00 · Position check · Skip · Off), news digest, billing, warnings before a scheduled paid check (run / only ★ / skip / change) |
 
 Free: no server and no Telegram chats; the public channel @parasiter_plugin (https://t.me/parasiter_plugin) is open to everyone: plugin news, new features and how-tos.
 
