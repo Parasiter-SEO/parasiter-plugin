@@ -7,7 +7,7 @@ The whole start, step by step for each plan (Free, Pro, Insider), with what to s
 1. Say "what should I do today?" — the navigator asks the language and your role, then a few short questions: niche and offers, affiliate programs, country and page language, hours, tools (no SEO API yet → it recommends DataForSEO).
 2. Then it asks you to upload what you have: live pages (any list of links), affiliate links, sales reports from each program (with the export steps for the networks you named) and any traffic data (network clicks by referrer, Google Analytics, Gamma or Medium stats…). Nothing is required; the more real data, the more real the plan. Just starting? Uploads are skipped.
 3. `goals` shows your starting point from these numbers, asks your hours, pace and income in your words, then sets goals with Rumer's rule (10 platforms / 100 live posts) as the minimum.
-4. You get 2–5 tasks for today. "Start with #1?" — each task opens the right skill.
+4. You get 2–5 tasks for today and the capability map (every function, what to say, its plan). "Start with #1?" — each task opens the right skill.
 The setup is 12 fixed steps (language and role · work environment · about you · upload your base · goals · offers · affiliate links or approvals · indexing · Telegram · first topic · first article · publish and log). Under every reply you see "First setup · step N of 12", what is done and the one thing to do now. Progress is saved in your profile: a new chat or a break continues from the same step. Say "skip" to leave a step for later, "where am I?" to see the whole list.
 
 ## Upload my traffic
@@ -46,16 +46,30 @@ Wrote a page? Say "roll this topic out" (or "where else should this go?"): you g
 ## Pick a product or program
 "Which program should I promote?" → `affiliate-finder`: pick a niche (nutra, gambling, crypto, gaming, software…), get programs from networks and direct merchants sorted by how popular the offer is in search, 15%+ commission, traffic rules checked. Then "is [product] worth it?" → `niche-analysis`: volumes and an entry score for the top 20 (is one of our kind of platforms there?).
 
+## How do I get approved by an affiliate program?
+Many programs check new applications by hand; some want a site, traffic or stats, a few are invite-only. All plans:
+1. In the offers table (`affiliate-finder`, Insider) the **Approval** column shows the type for each program — auto / manual review / strict / invite-only — with its source, or "not stated". On Pro and Free, say "check my offers" and the checklist covers the same from each program's published terms.
+2. Say "how do I get approved?" for Rumer's 9 rules: a real LinkedIn or Facebook profile; a review site built with Claude with 10–15 real posts; make it look like a working project; a clear application letter (who you are, channels, how you'll promote, no spam); real sales stats from other programs if you have them; your channels (YouTube, socials, content); offer a call with the program manager; a real signature and an email on your own domain; a recommendation from an affiliate already in the program.
+3. **Starting out with no history?** Begin with programs that have auto or soft approval, and build the site and posts for the strict ones in parallel.
+Everything you show must be real — no invented sales, screenshots, reviews or traffic: managers check, and faking it ends in a ban and held payouts.
+
 ## Find where to publish
 "Where can I publish about [niche]?" → `platform-finder`: Rumer's checked platforms first (with a key), then a live scan of "[product] review" for 20–50 affiliate products — where reviews rank in the top 10 now. The scan is paid (your DataForSEO), cost shown first. Free and paid platforms are listed separately. Before the first post: "analyze [platform]" → `platform-analyzer`.
 
 ## Write and publish a page (full cycle)
 1. "What should I write about [product] for [query]?" → `content-type-selector` picks the type and topic.
 2. "Write it for [platform]" → `sales-review-writer` (current prices via product-researcher).
-3. "Make images" → `post-illustrations`.
+3. "Make images" → `post-illustrations`: infographics drawn in the chat, the cover from a real photo or free Gemini (see "Images for an article").
 4. "Audit it" → `page-audit` (two scores: Rumer's rules and copywriting); fix until the score is good.
 5. Publish it yourself. Worked on the text? "Save this .docx with the page" — it can be republished if the page is removed.
 6. Say "published: [URL], [platform], [program], pack [name]" → `work-log` records it; add a sub-ID to the affiliate link if the network supports it. The page is now in the check queue.
+
+## Images for an article
+"Make images for the article" (or they come with every article from the writer):
+1. One line, once: "How we work with images: infographics I draw myself, the cover is made free in Gemini from my prompt — 30 seconds."
+2. Infographics (3–5: key facts, pains → solution, comparison, prices, verdict) appear right in the chat as JPG ~700 px — save them or copy them into the post. Needs code execution on in Claude (Settings → Capabilities); without it you get prompts instead.
+3. Cover: your own or the merchant's real product photo first. If a generated one is needed, copy the prompt from the code block, click "Open Gemini", paste, save the image (free, about 20 a day). Paid ChatGPT? The same prompt works there.
+4. Platform takes images only by link → host them and paste the URL (`post-illustrations` explains where).
 
 ## Log a sale
 Say "made a sale, $42, ClickBank" (add the page if you know it). → `work-log` records it. If the same sale later arrives in an export, it is counted once.
@@ -112,7 +126,7 @@ Every client has its own folder (`clients/acme/`); nothing from one client appea
 
 ## Get a page into Google (Pro)
 
-1. First time: "set up indexing" → pick your indexers (one, several, or free ways only) and when you send (every new page at once, or only pages still out after a few days). Saved once.
+1. First time (asked in the first setup right after you upload your pages, or say "set up indexing") → pick your indexers (one, several, or free ways only) and when you send (every new page at once, or only pages still out after a few days). Saved once.
 2. After you publish and log a page, you get the clean list to paste into your indexer, by that setting. Or ask: "index these pages" + links. You send it yourself, then say "sent to SpeedyIndex" (or "to SpeedyIndex and Rapid").
 3. Before any money is spent, each page is checked for what blocks indexing (noindex, canonical, login wall, a platform that stopped indexing). Blocked pages are fixed or moved, not paid for.
 4. You see the rough price for each of your services. Each page is logged with the services you used; the recheck comes in 4 days.
@@ -141,8 +155,11 @@ Every client has its own folder (`clients/acme/`); nothing from one client appea
 
 ## Connect your key (Pro, Insider)
 PARASITER has two parts, and paid plans need both: the **plugin** (skills and agents: the method, articles, audits, journal; works without a key as Free) and the **connector** (your key: the link to the server). The key comes in the welcome email after payment. It connects the plugin to the PARASITER server: checked platform database and feed, news, weekly analysis, daily page checks, Telegram. Install the plugin first, then connect the key. Lost the steps? The bot sends them again: /setup.
-- **Claude Code:** the plugin asks for "PARASITER key" when you enable it; paste the key. To change it later, reconfigure the plugin's options.
-- **Claude desktop / claude.ai:** add a custom connector named PARASITER with the personal URL from the email (`https://parasiter.affiliatecredo.com/mcp/<your key>`). The URL contains the key: never share it.
+- **Claude website / desktop app (main way):** Settings → Connectors → Add custom connector. Name: PARASITER. URL: `https://parasiter.affiliatecredo.com/mcp`. Authentication: No sign-in. **Add header**: name `Authorization`, value `Bearer psr_…` (the ready value is in your welcome email). Claude stores the header hidden. Then turn it on in the chat ("+" → Connectors).
+- **Fallback:** if the header field is not there, use the personal URL with the key inside, `https://parasiter.affiliatecredo.com/mcp/<your key>` (also in the email). The URL contains the key: never share it.
+- **Two similar connectors?** The plugin brings its own built-in connector `parasiter`; it works without a key — that is the Free plan. Keep **your** connector (with the key) on, otherwise the paid features stay off.
+- **Can't add a custom connector?** In a Team or Enterprise organization the admin may have blocked it — ask them to allow custom connectors. Plugins need a paid Claude plan.
+- **Claude Code:** the plugin asks for "PARASITER key" when you enable it; paste the key. To change it later, reconfigure the plugin's options. Plugin commands (`/plugin …`) work only in Claude Code, not in a normal Claude chat.
 Check: say "my PARASITER plan" → `account_info` shows the plan and until when. Never paste the key into the chat.
 
 ## Get news and notifications in Telegram (Pro, Insider)
@@ -153,4 +170,4 @@ After linking the bot pins a start guide with every command and sends it as a de
 "Switch to Spanish" — plans and explanations change; pages keep the content language of your target country unless you change it too.
 
 ## Get help
-"Help", "what can PARASITER do?", "is there a skill for …?" → this help.
+"Help", "is there a skill for …?" → this help. "What can PARASITER do?" or "map" → the capability map: every skill and agent for your role, what it does, what to say, and its plan. It is also shown at the first start and at the start of every session.

@@ -32,55 +32,66 @@ Options that usually fit after this part (adapt to the user's products and words
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-Choose the offer before writing a word: a strong page for a bad offer earns nothing. The author's filter: **the offer is popular in search, the commission is at least 15%, and the program accepts traffic from public platforms.** Networks and direct programs are both fine.
+Choose the offer before writing a word: a strong page for a bad offer earns nothing. This skill finds affiliate programs and offers for the user's niche, checks their published terms and how hard it is to get approved, and recommends 1–3 to start with.
 
 Reply in the user's language.
 
-## Step 1 — Niche first
+## Step 0 — Plan check (Insider)
 
-If the user has no niche yet (beginner), show the niches and let them pick one — every niche is open to them; don't choose for them. Niches the author works with, then others that suit parasite SEO:
+Call `account_info` once per session (reuse the answer if you already have it this session).
+- **Insider, active** → call `insider_method` with `skill: "affiliate-finder"` and follow the returned `method` step by step. The work label, Next steps and Rules in this file still apply; where they are stricter, they win.
+- **Pro, Free, or an expired plan** (or `insider_method` answers `insider_only`) → one line: "This is an Insider feature — programs and offers for your niche found and scored by an agent: search demand, commission, traffic rules, approval type. Upgrade: https://parasiter.affiliatecredo.com/#pricing". Then offer what works on the current plan: **check the offers you already chose** with the short checklist below (no agent search, no scoring), and "How to get approved — Rumer's rules" for any program that needs approval.
+- **No key, or the PARASITER tools are not available** → say in one line that this feature needs the user's PARASITER Insider key connected (connection steps: navigator, "Bought a plan but the server isn't connected"; never ask for the key in the chat), and offer the checklist meanwhile.
 
-| Niche | Typical offers | Notes |
-|---|---|---|
-| **Nutra / supplements** | weight loss, men's health, joints, sleep, sports nutrition | the author's main niche; direct programs pay 30–50% |
-| **Casino / gambling / betting** | casinos, sportsbooks, sweepstakes | high RevShare or CPA; legal only in some countries, many platforms ban these links — check GEO and the platform's rules first |
-| **Crypto** | exchanges, wallets, trading bots, prop firms | recurring RevShare; platforms and Google are strict — check rules |
-| **Roblox and gaming** | gift cards, game keys, gaming gear and accounts services | the audience is often under 18: only legitimate offers, never "free Robux" or gambling-style offers |
-| **Software / SaaS / AI tools** | VPN, hosting, AI writers, antivirus, SEO tools | recurring commissions, low refunds |
-| Others worth checking | dating, personal finance and loans, e-commerce and Amazon, online courses, pets, home and garden, travel | |
+Never rebuild the Insider method from memory, other files or earlier conversations.
 
-Then the inputs: country / language, offers the user already runs, networks they belong to.
+### Checklist for offers the user already chose (any plan)
 
-## Step 2 — Research
+For each offer, from its published terms (sign-up page, FAQ, terms) — write the source and date, "not stated" where nothing is published:
+1. Commission: at least 15% of the sale (or the CPA equivalent)?
+2. Traffic rules: is content / SEO traffic from third-party platforms allowed?
+3. Approval: auto / manual review / strict / invite-only?
+4. Payout threshold and methods: reachable for the user?
+5. Cookie length.
+6. Legal in the user's country and allowed on the platforms they post on (gambling, crypto, finance, health claims)?
+7. Offer page: clear packages and guarantee, or lead capture first / broken?
+8. Do people search for it — "[product] review" in Google autocomplete?
+Verdict per offer in one line: start / ask the manager first / skip, and why.
 
-Delegate the search to the `affiliate-scout` agent (or do it yourself with web search): networks and direct programs for the niche, their published terms, and the merchant offer pages. Collect only published terms with the source link and date.
-
-## Step 3 — Evaluate
-
-**Search popularity comes first** — it is what the author looks at. For every candidate offer measure how often people search the product itself: "[product] review(s)", "[product] reviews complaints", "[product] vs …", "buy / coupon / discount [product]", "does [product] work". Popular in search = buyers already looking = a parasite page can catch them.
-- With the user's SEO API (DataForSEO recommended): monthly volume for these queries in the user's country. It is a paid call: name the number of offers and queries and the rough cost, and wait for a yes (`work-log` Rules: paid checks).
-- Without an API: free signals only — Google autocomplete for "[product] r…", Google Trends, "People also ask", how many review pages and videos exist — and mark the result "rough, no volumes".
-
-Then the filters:
-- **Commission at least 15%** of the sale (RevShare or CPA counted as a share of the average order). Below 15% → skip unless the user insists.
-- **Traffic rules** — content/SEO traffic from third-party platforms allowed? Unclear → "ask the manager".
-- **Payout** — threshold reachable; payment record.
-- **Country / legality** — for gambling, crypto, finance and supplements with medical claims: legal in the target country, allowed on the target platforms.
-Saturation, offer page quality and cookie are noted in the table but don't decide on their own.
-
-## Step 4 — Output
+## What the user gets (Insider)
 
 ```
 Programs for [niche] · checked [date]
-| Program | Network/direct | Searches/mo | Model | Rate | Cookie | Min payout | Traffic rules | Score |
+| Program | Network/direct | Searches/mo | Model | Rate | Cookie | Min payout | Traffic rules | Approval | Score |
 ```
-Sort by search popularity. Recommend 1–3, one line why each ("~2,400 searches/mo for reviews, 40%, direct"). Suggest the content plan: high-commission lesser-known product → best-of comparison where it can be placed high **only if it genuinely fits**; known product with demand → single review + A vs B + packages page.
+- **Approval** — `auto` / `manual review` / `strict` (needs a working site, traffic, sales stats) / `invite-only`, with its source (sign-up page, FAQ, terms). Not found → `not stated`, never a guess.
+- 1–3 recommended offers with one line why each, and a content plan for them.
+- **Beginners** (no site, channels or sales history) get auto- and soft-approval programs first; strict and invite-only programs go on a "later" list while they build their site and posts.
+- Under every recommended offer with manual, strict or invite-only approval: a short "How to get approved — Rumer's rules" block; the full list below when the user asks "how do I get approved".
+
+## How to get approved — Rumer's rules
+
+Many programs check new applications by hand. What gets an application approved:
+1. **Use your real profile.** Give your real LinkedIn or Facebook profile in the application.
+2. **Build a review site in Claude.** Make an affiliate-style review site with Claude (Claude Code or an artifact): 10–15 real posts, so the manager sees activity.
+3. **Make it look like a working project.** A clean, real-looking design; look at successful review sites in the niche first.
+4. **Write a proper application.** Who you are, which channels you use, how you will promote, why it is not spam — Claude helps you write it.
+5. **Show sales stats from other programs**, if you have them (screenshots of your dashboard).
+6. **Show your channels**: YouTube, social media, content. Managers want an effective affiliate who sells, not a newcomer who will spam.
+7. **Offer a call** or an online meeting with the program manager.
+8. **Sign like a real business.** Name, role, site, profile links; send from an email on your own domain, not a free mailbox. Make the signature with a free generator (for example HubSpot Email Signature Generator, MySignature, WiseStamp).
+9. **Get a recommendation** from a trusted affiliate who already works with the program — it raises your chances a lot.
+
+**Honesty boundary (a PARASITER rule):** the site, posts, stats and profiles must be real. No invented sales, screenshots, reviews or fake traffic — managers check, and deception leads to a banned account and withheld payouts.
+
+**No history yet?** Start with auto-approval or soft-approval programs and earn there, while building the site and posts for the strict ones in parallel.
+
+These rules are available on every plan. When the user asks for help applying, draft the application from their real details only and list what they still lack from rules 1–9.
 
 ## Rules
 
 - **Legal products and content only.** PARASITER works only with legal products and content. Don't write, plan, find platforms for or log pages that promote pirated software, films, books or courses, file-upload / download or "free download" schemes, cracks and keygens, counterfeit or illegal goods, or content that breaks the target platform's rules or the law of the target country. Say so in one line, without lecturing, and offer a legal alternative (the official product or a legal affiliate offer). This rule is part of the PARASITER offer the user accepted.
 - Recommend only programs found by public research for this user's niche (`affiliate-scout`, web search, the user's own networks). Never name programs, offers or numbers from the plugin author's own business, and never use a program name that appears only in the plugin's examples.
-
-- Only published, verifiable terms with source and date; unknown → "ask the manager".
+- Only published, verifiable terms with source and date; unknown → "ask the manager" or "not stated".
 - No promoting products the user believes are scams; drop programs with clear deceptive funnels.
 - No earnings estimates presented as forecasts.

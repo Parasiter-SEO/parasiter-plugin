@@ -18,9 +18,13 @@ Do:
 6. **Competitors for the comparison** (2–3, named by the skill or the most visible alternatives): price from, key feature, guarantee — one line each, from their own sites.
 7. Note anything that conflicts between pages (two different prices, two guarantee lengths).
 
+**Prices, packages, discounts and guarantee come only from the merchant's own pages** (official site, its order / checkout / bundle page, its terms or refund page). Third-party reviews, blogs, marketplaces and press releases are never a source for these fields, not even as a fallback.
+- **The merchant page will not open** (blocked, a quiz or lead form before the price, region redirect, script-only page): say so plainly in the report — "Merchant page did not open for me: <URL> — <what happened>" — leave those fields as "not confirmed — open the page" and ask the calling skill to have the user open it and paste or screenshot the prices and guarantee (or open it with a browser tool if one is connected). Never fill the gap from other sites.
+- **Sources disagree** (two prices, "60 or 180 days"): report the value on the merchant's own page with its URL; if the merchant's own pages disagree with each other, write "not confirmed — merchant pages differ: X on <URL>, Y on <URL>". Never present a range or "sources differ" as a fact.
+
 Do not:
 - copy marketing claims as facts (results, clinical effects, "doctors recommend") — record them as "merchant claims: …";
-- take prices or terms from third-party reviews;
+- take prices, packages or terms from third-party reviews or resellers;
 - guess any number. If a term is not published, write "not published".
 
 Return one block per product:
@@ -28,4 +32,4 @@ Return one block per product:
 | Field | Value | Source URL | Checked |
 |---|---|---|---|
 
-then the competitor lines, a short list "Conflicts / unclear" and "Merchant claims (not verified)". Do not give ratings — "my rating" is the author's. The writing skill decides what goes into the article; the user confirms the deal before publishing.
+then the competitor lines, a short list "Conflicts / unclear", "Pages that did not open (user to check)" and "Merchant claims (not verified)". Do not give ratings — "my rating" is the author's. The writing skill decides what goes into the article; the user confirms the deal before publishing.

@@ -1,6 +1,6 @@
 ---
 name: post-illustrations
-description: Plan and write image-generator prompts for parasite SEO and affiliate posts — hero/cover image, product-in-hand, comparison card, key-facts infographic, price/bundle visual, Facebook post series — matched to the content type and platform, in one consistent style — for agencies in the client's brand style (logo, colours, fonts, real product photos). Infographics are drawn by Claude for free; for the cover it gives one ready prompt and where to make it (Gemini free by default, ChatGPT, Midjourney, Canva). Use when the user needs images, a cover, an infographic or visuals for a review, comparison or post, or when sales-review-writer hands off image ideas.
+description: Plan and write image-generator prompts for parasite SEO and affiliate posts — hero/cover image, product-in-hand, comparison card, key-facts infographic, price/bundle visual, Facebook post series — matched to the content type and platform, in one consistent style — for agencies in the client's brand style (logo, colours, fonts, real product photos). Images cost $0: infographics are drawn by Claude in the chat; the cover is the real product photo or one ready prompt for free Gemini (ChatGPT / DALL·E only for users who already pay for it). Use when the user needs images, a cover, an infographic or visuals for a review, comparison or post, or when sales-review-writer hands off image ideas.
 ---
 
 # Post Illustrations
@@ -45,24 +45,30 @@ Reply in the user's language; write prompts in English (generators follow Englis
 
 - Article title, content type and the sections (what each image will sit next to).
 - Platform (count, and whether images go by upload or by link).
-- Product name(s) and the real product photos: the user's own, or the merchant's product page (to describe the real look exactly).
-- Generator for the cover — see "Where to make the cover" below.
+- Product name(s) and the real product photos: the user's own, or the merchant's product shot (link from `product-researcher`) — used as the cover and to describe the real look exactly. A generated cover only if no real photo fits — Gemini by default (below).
 - **Agency role:** the client's brand kit from `clients/<slug>/client-brief.md` (logo, colours, fonts, real product photos, approved claims). Every infographic uses the client's colours and fonts; the logo only where the client allows it; real product photos first.
 
 ## How we work with images (say it once, short)
 
-"Infographics I draw myself in the chat — free, exact text and numbers. The cover is a realistic photo: your own or the real product photo first; if we need a generated one, I give you one prompt and you make it in 30 seconds."
+Images cost the user nothing. Explain it **once** per user (first article, or when they ask about images), in one line in the working language, then save `images_explained: yes` in `parasite-seo-profile.md` and don't repeat it:
 
-### Where to make the cover — offer the choice
+> "How we work with images: infographics I draw myself, the cover is made free in Gemini from my prompt — 30 seconds."
 
-| Tool | Cost | Best for |
+1. **Infographics** (key facts, pains → solution, comparison, prices, verdict) — Claude draws them with code right in the chat: JPG ~700 px, exact text and numbers, $0. The only requirement is code execution turned on in Claude (Settings → Capabilities). Without it, say so once and give infographic prompts meanwhile.
+2. **Cover** (a realistic photo of the product), in this order:
+   1. the **real product photo** — the user's own, or the merchant's product shot (the link comes from `product-researcher` in `sales-review-writer`; otherwise ask the user for the product page);
+   2. if a generated cover is needed — **one** ready prompt in a code block (it has the copy icon) and the link **[Open Gemini](https://gemini.google.com)**: the user makes it there for free (about 20 images a day on a free Google account; Google's limits change) and saves it.
+3. **DALL·E / ChatGPT** — only as the alternative for users who already pay for ChatGPT. Never the default, never a reason to buy anything.
+
+### Where to make the cover
+
+| Tool | Cost | When |
 |---|---|---|
-| **Gemini** (gemini.google.com) — default | free, about 20 images a day on a free Google account (Google's limits change) | realistic product and scene photos; enough for most articles and clients |
-| ChatGPT (image generation) | needs a paid ChatGPT plan for regular use | if the user already pays for it; good with text on images |
-| Midjourney | paid subscription | brand campaigns, a very consistent art style |
-| Canva (Magic Media + templates) | free tier, more on Pro | agencies that finish covers with the client's logo and fonts in a template |
+| **Gemini** (gemini.google.com) — default | free, ~20 images a day | every user, every article |
+| ChatGPT (DALL·E / image generation) | paid ChatGPT plan for regular use | only if the user already pays for it; good with text on images |
+| Midjourney, Canva (Magic Media + templates) | paid / free tier | only if the user or the agency already uses them (Canva for finishing covers with a client's logo and fonts) |
 
-Give **one** ready prompt (in a code block, so it has the copy icon) and the link to open the tool; the same prompt works in all of them. Never insist on a paid tool; name the free one first.
+The same prompt works in all of them. Name Gemini first; mention the others only if the user asks or already has them.
 
 ## Step 2 — Plan the set
 
@@ -70,14 +76,15 @@ One line per image: what it shows + the section it goes next to. Default: cover 
 
 ## Step 3 — Write prompts
 
-- **Cover / product photos** — realistic photography (Gemini by default, the same prompt for the other tools): the exact product as it really looks (shape, color, label described from the real photo), real setting, natural light, horizontal 16:9, no added text, no people unless the user wants them.
+- **Cover / product photos** — the real photo first; otherwise one prompt for Gemini (default; the same prompt works in ChatGPT / DALL·E): the exact product as it really looks (shape, color, label described from the real photo), real setting, natural light, horizontal 16:9, no added text, no people unless the user wants them.
 - **Infographics** — prefer rendering with code (exact text, exact numbers). If prompts are needed: clean horizontal infographic, a heading + 3–6 short theses or a small table, large readable type, the product photo as a small element; give the exact text in quotes and tell the user to check and fix the lettering in an editor (generators garble text).
 
 Output:
 ```
 1. Cover photo (700×394) — under the title
-Prompt: …
+Real photo: <merchant product image URL> — or, if none fits:
 ```
+then the prompt in its own code block (copy icon) and the link [Open Gemini](https://gemini.google.com). Infographics 2–6: drawn in the chat as JPG (one line each in the plan, no prompt needed).
 No alt text. Then one line on how to keep the style the same across the article (same style block, same reference photo).
 
 ## Rules

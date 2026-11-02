@@ -9,7 +9,7 @@ Severity: **C** critical (directly loses sales), **M** medium, **L** low.
 - [L] Description/first sentence works as a snippet.
 
 ## First screen
-- [C] Photo right under the title: real or custom (product in hand, author, comparison card) — not stock. It is what Google tends to take for the snippet image; if missing, recommend one and give a prompt via `post-illustrations`.
+- [C] Photo right under the title: real or custom (product in hand, author, comparison card) — not stock. It is what Google tends to take for the snippet image; if missing, recommend the real product photo (own or merchant's) first, otherwise one cover prompt for free Gemini via `post-illustrations` (never a paid tool as the default).
 - [C] Facts box for the main product, up to 10 lines: price, quality, my rating x/10 (honest, explained in the text), special offers with checked date, guarantee, best for, key parameters — then the link.
 - [C] One clear CTA visible without scrolling (soft on forums/Reddit/PDF).
 

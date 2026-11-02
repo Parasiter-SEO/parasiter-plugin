@@ -36,6 +36,10 @@ Page checks run **in the user's own Claude**, never on the PARASITER server: the
 
 Reply in the user's language.
 
+## Step 0 — Plan check (Pro)
+
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — checks of every page in your journal — alive, removed, noindex, affiliate link — on request or on your own schedule, with the republish list. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (open each page yourself in a private window (it opens, isn't removed, the affiliate link works), or audit one page by link — say "audit my article: <link>"), and stop.
+
 ## When checks run
 
 - **On request:** "are my pages alive?", "check my pages", "what died?", after a Google update.

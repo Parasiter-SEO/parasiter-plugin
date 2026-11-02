@@ -12,12 +12,13 @@ When `parasite-seo-goals.md` exists, build the day in this order:
 | Weekly target | Tasks it becomes | Skills |
 |---|---|---|
 | Pages published | pick topic → write → images → audit → publish → log | content-type-selector → sales-review-writer → post-illustrations → page-audit → goals |
-| Platforms tested | find → check → 1–3 test posts | platform-finder / platform-feed → platform-analyzer |
+| Platforms tested | candidates → the user picks by number → check → 1–3 test posts (the goal gives the count, the user picks which) | platform-finder / platform-feed → platform-analyzer |
 | Pages refreshed | audit → update deal box, prices, date, CTA | page-audit → sales-review-writer |
 | Pages moved off dead platforms | status → pick new platform → repost from saved copy | platform-monitor → platform-finder → goals |
 | Offers added | find and score programs | affiliate-finder → niche-analysis |
 
-5. **What is available** — prefer platforms from the server feed and top list (Pro / Insider) and the user's platforms that are alive and indexing; skip platforms the monitor marked dead or noindex.
+5. **What is available** — plan tasks only on platforms with priority `high` in the user's base (the ones the user chose); new ones from the server feed and top list (Pro / Insider) are offered as candidates to choose from, never put into the plan on their own. Skip platforms the monitor marked dead or noindex. Too few chosen platforms for the goal → say how many there are and offer the candidate list (platform-finder Step 5).
+6. **Written, not published** — profile `topics:` entries with status `written` give one plan line: "Not published yet: N articles (ready since DD.MM) — send the links when you publish." No task, no nagging; the links may come in a batch.
 
 If the goals and today's time don't fit, keep the quota smaller and say what moves to tomorrow. If the week cannot be saved, flag it for the weekly review instead of overloading the day.
 

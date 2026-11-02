@@ -38,6 +38,10 @@ The affiliate route (goals, sales by sub-ID, Rumer's rule as an income plan) doe
 
 Reply in the working language from `parasite-seo-profile.md`. Client-facing texts (brief summaries, plans, reports) in the client's language from their brief.
 
+## Plan check (Pro) — before anything else
+
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — a folder per client or your own site: brief, Month 0 baseline, monthly content plan with approval, today's plan across clients and monthly reports. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (pick buyer topics for the brand — say "what should I write about <brand>?" — then write and check each piece — say "write a brand article for Medium", "audit this page: <link>"), and stop.
+
 ## Files — one folder per client
 
 ```

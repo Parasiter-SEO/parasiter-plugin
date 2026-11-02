@@ -13,10 +13,41 @@ Same sales logic everywhere (author → problem → solution → bridge → fact
 | Facebook page/group posts | Short | Brand fan / expert | Link + deal in the first lines; visuals; hashtags; series of posts on different benefits |
 | Open-book / long-guide platforms | 2,000–3,500 words per chapter | Expert guide / buyer's research | One chapter = one topic; full structure, tables, TOC; chapter title is the page title |
 | Document platforms | 2,000–3,000 words | Analytical review written as what it is: a buyer's comparison by the named author | Clean document look, headings, tables, references to real studies; affiliate disclosure stays; never present a promotional review as a peer-reviewed study or invent data |
-| Gamma (gamma.app) docs / presentations | 1,200–2,000 words in 8–15 cards | Visual guide | One idea per card: facts card, comparison table card, prices card, FAQ cards, CTA card; short text, big headings |
+| Gamma (gamma.app) docs / presentations | 1,200–2,000 words in 8–15 cards | Visual guide | One idea per card: facts card, comparison table card, prices card, FAQ cards, CTA card; short text (40–120 words per card), big headings; Gamma pages render real text, so cards are indexed; links on the product names and the CTA card |
+| Prezi (prezi.com) | 800–1,500 words over 10–20 slides | Visual guide / buyer's briefing | **Check indexing first:** a crawler often sees only the page menu and title, not the slide text — search `site:prezi.com "<exact phrase from a slide>"` on a live example before investing; don't recommend Prezi to a user until that check passes. Put the full title, the main query and a 2–3 sentence summary with the link in the **description field** (that part is indexed). 20–40 words per slide; links on the facts, prices and CTA slides and in the description |
+| Canva (public design / website links) | 600–1,200 words over 8–15 pages | Visual guide | Text is often rendered as images — check indexing the same way; real text boxes, not text baked into pictures; the title page carries the main query; links on text elements (CTA and prices pages) |
+| PDF slides (deck exported to PDF and uploaded to a document host) | 1,200–2,500 words over 12–25 slides | Analytical briefing | Text stays selectable (export from a text editor, not as images); slide 1 = title with the query + one-line summary; a link on the facts, prices and CTA slides (clickable in the PDF); a short text summary in the host's description field |
 | Podcast platforms (Firstory, Spotify via RSS) | Episode description 800–1,500 words + 5–10 min script | Host / reviewer voice | Title = the query; description carries quick facts, links and timestamps in the first lines; the same episode syndicated to Spotify is one piece of content, not two |
 | Community posts | 1,000–2,000 words | Community member sharing a comparison | Native post, a question to the group at the end; links where the community allows |
 | YouTube description | 1,000–3,000 characters | Reviewer | Affiliate link + deal + key selling point in the first 3 lines; then full description, timestamps, hashtags |
+
+## Delivery format by platform
+
+The file the user gets depends on what the platform's editor accepts — never a default `.md`. Say in one line why ("Prezi doesn't read Markdown — here is a doc by slides").
+
+| Editor | Platforms (examples) | Deliver |
+|---|---|---|
+| Markdown | HackMD, Dev.to, GitHub, Reddit, forums with a Markdown editor | Formatted article in chat + Markdown in a code block; a `.md` file if asked |
+| BBCode | Most classic forums (phpBB, vBulletin, XenForo with BBCode) | Formatted article in chat + BBCode in a code block |
+| Visual (WYSIWYG) | Medium, LinkedIn, WordPress, Raisely, Google Sites, community editors | Formatted article in chat to copy + a Claude doc (exports to Word / Google Docs) when the docs tool is available; no Markdown source |
+| Presentation | Prezi, Gamma, Canva, PDF slides | Claude doc "by slides", plain text, no Markdown marks: `Slide N — Title / Text / Image / Link`; each table becomes its own slide as an infographic image |
+| Document | PDF and document hosts | Claude doc or .docx laid out as a clean document, exported to PDF |
+| Plain text / short | Facebook, YouTube description, Quora, podcast description | Plain text in chat, links written out in full |
+
+Not sure which editor the platform uses? Check the platform's own post editor or a live example (`platform-analyzer`), then pick the row.
+
+Slide doc template (presentations):
+```
+Slide 1 — Title: A vs B: Which One to Buy in 2026
+Text: one-line promise of the deck
+Image: cover (product photo)
+Link: —
+Slide 2 — Title: Quick facts
+Text: price from … · guarantee … · best for … (checked 02.11.2026)
+Image: quick facts card
+Link: "See today's price" → affiliate link
+…
+```
 
 ## Titles that rank and get clicks
 

@@ -2,10 +2,10 @@
 
 | Check | How | Good | Bad |
 |---|---|---|---|
-| Registration | Try the sign-up page | Open, email only | App/phone/invite only; "old accounts only"; paid plan required |
+| Registration | Find and open the sign-up page (home page link, /register, /signup, /join, /user/register, /create-account) | Open, email only; link works | App/phone/invite only; "old accounts only"; paid plan required; no sign-up page found |
 | Fresh indexing | `site:domain.com` + Tools → past week; or search the exact title of a recent post | Posts from days ago indexed | Only old pages in the index |
 | noindex | View source: `<meta name="robots" content="noindex">`; response header `X-Robots-Tag`; browser extension (e.g. robots exclusion checker) | index | noindex on new posts or new accounts |
-| Ranking | Buyer queries in the niche; "Discussions and forums" block; AI Overview sources | Pages from the domain in top 10 for similar products | Never appears |
+| Ranking | Buyer queries in the niche; "Discussions and forums" block; AI Overview sources; then open each page found | Pages from the domain in top 10 for similar products, and they open | Never appears; or shown in Google but removed (404/410, "removed" text, redirect to home/login, empty, noindex) |
 | Links | Publish a test or inspect others' posts | Live, clickable, direct | Removed, plain text, behind a warning page, only after N posts |
 | Moderation | Read rules; look for removed threads; test a neutral post first | Post-moderation, light | Keyword blacklists, auto-removal, daily cleanups |
 | Account needs | Check others' successful posts: account age, post count | New accounts work | Warm-up needed (XenForo, Medium, LinkedIn: aged and active accounts) |

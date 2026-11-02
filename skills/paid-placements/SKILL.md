@@ -38,6 +38,10 @@ Who uses it: site owners and agencies first. Affiliates can use it too (paid new
 
 Reply in the working language; the press release or article itself in the content language.
 
+## Step 0 — Plan check (Pro)
+
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — a base of press-release wires and sponsored-article sites with packages, prices, link types and how to order, checked by an agent. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (write the press release or sponsored article itself, ready to send to any outlet you choose — say "write a press release about <news>"), and stop.
+
 ## Step 1 — Goal and budget
 
 Ask only what the brief (`clients/<slug>/client-brief.md`) doesn't answer:

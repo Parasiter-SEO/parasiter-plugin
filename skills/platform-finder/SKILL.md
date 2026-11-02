@@ -26,6 +26,7 @@ The user must always know what to type next. End every reply with a short number
 - Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**."
 
 Options that usually fit after this part (adapt to the user's products and words):
+- After a candidate list, option 1 is always the choice itself: "1, 3" — take these platforms (see Step 5)
 - "analyze <platform>" — score one before posting
 - "what should I write there?"
 - "add it to my platforms"
@@ -38,7 +39,22 @@ Platforms live days to months: they get spammed, cleaned up, noindexed or close 
 
 **Free and paid are always separate.** Free: platforms where users post themselves (Facebook, Reddit, Quora, forums, article and document platforms, site builders, podcasts, Gamma…). Paid: news and media sites (all of them are paid — sponsored posts, "partner content", press releases), PR wires, paid placements. Every list shows them in separate tables.
 
+**The user picks the platforms, not PARASITER.** A goal says *how many* platforms (for example 2 in the first week, 10 by the end), never *which*. This skill shows candidates, may star the ones it recommends with the reason, and the user chooses by number. Never say "post here" about a platform the user has not chosen.
+
+**Never shown:** stop types and blacklisted sites (`references/exclusions.md`, the live list comes from the server), platforms whose example pages are removed, and the author's own posts as examples (filtered by the server). The author's private platforms are never named, not even as "skipped".
+
 Reply in the user's language.
+
+## Step 0 — Plan check (Pro)
+
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — Rumer's checked platform base and the live scan of where affiliate reviews rank in the top 10 now, checked live, with sign-up links. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (the ready Google queries to run yourself ("<product> review", "<product> forum") and what to look for on each result — say "give me the search queries"; or score a platform you already found by hand with the checklist from the analyzer), and stop.
+
+## Exclusions and the private filter (every step)
+
+- **Exclusions.** With a PARASITER key, call `exclusions_get` once per session and save the answer as `exclusions.json` (pass it to `platformscan.py --exclusions exclusions.json`). Without a key or if the tool fails, use `references/exclusions.md` (the script always reads it). Apply the same list to the author's base, to web-search results and to `platform-scout`'s results: a match is never shown or checked, only counted as "skipped by stop / black list: N". Domains in `dead` are skipped before any paid scan or check. The user's own exclusions (profile) go in with `--exclude domain[/path],…`.
+- **PDFs are allowed** as normal findings (type "document / PDF", the PDF's host is the platform), except abuse: PDFs in other organisations' upload folders and PDFs on S3.
+- **Example posts** shown to the user must pass `examples_filter` when a key is connected (the server hides posts by the author — his accounts, topics, products). If a platform has no example left, show it without one: "example: find your own with \"[product] review\"". Without a key, show the examples as found.
+- **Dead platforms found by a scan** (`platforms-scan-dead.txt`) are sent with `dead_report(domains)` when a key is connected — domain and date only, nothing about the user. Do it automatically and mention it in one line.
 
 ## Agency role — brand-safe platforms for a client
 
@@ -62,7 +78,7 @@ Ask only what is missing:
 
 ## Step 2 — The author's base first (Pro / Insider)
 
-If `platforms_search` is available, call it with the filters. These are platforms Rumer checked by hand; he adds them every Monday and often in between, several a day. Pro sees them ~7 days after they are added, Insider the same day. Show them as a table (free and paid separately) and keep the server's notes as written.
+If `platforms_search` is available, call it with the filters. These are platforms Rumer checked by hand; he adds them every Monday and often in between, several a day. Pro sees them ~7 days after they are added, Insider the same day. Each row carries `examples` (live posts, best position first, already filtered) and `signup_url`. Drop rows that match the exclusions, then show them post-first in the Step 5 format and keep the server's notes as written.
 
 If the server is not connected, say once: "Checked platforms from Rumer come with a Pro key. Meanwhile we can run a live scan." and go to Step 3.
 
@@ -76,31 +92,51 @@ If the server is not connected, say once: "Checked platforms from Rumer come wit
    python3 scripts/platformscan.py products.txt --country us --dry-run   # the cost first (top 10 by default)
    python3 scripts/platformscan.py products.txt --country us --base parasite-seo-progress.csv
    ```
-   Output: platforms grouped as **Free / Paid / To check**, each with how many different products have review pages there, the best position, the SERP blocks (Discussions and forums, AI Overview, videos), whether it is already the user's, and example pages. Saved as `platforms-scan.csv`. `--suffix reviews` / `complaints` for other probes; `--device mobile` for the mobile SERP.
-3. **Without an API** — the same probe with web search (free, but far fewer results and no positions), or give the user the queries to run in Google (incognito, target country).
+   **With a PARASITER key** run it in two steps so the author's posts never reach the user:
+   ```
+   python3 scripts/platformscan.py products.txt --country us --exclusions exclusions.json --collect-only
+   # examples_filter(urls from platforms-scan.examples.txt) → save {"allowed": [...]} as allowed.json
+   python3 scripts/platformscan.py --from-raw platforms-scan.raw.json --allowed allowed.json --exclusions exclusions.json --base parasite-seo-progress.csv
+   ```
+   After the paid search everything is free: excluded and known-dead domains are dropped and counted; up to 3 example pages per platform are **opened live** (404/410, "page removed" text, redirect to the home or login page, empty page, noindex meta or X-Robots-Tag = removed) and a platform passes only if at least one example is alive; a sign-up link is looked up (home page, /register, /signup, /join, /user/register, /create-account…) and opened to check it works, otherwise "sign-up link not found" + the home page.
+   Output: the summary line **"found N platforms · live M · removed K · skipped by stop / black list L"**, then **Free / Paid / To check** tables post-first: `Post · Product · Pos. · Platform · Type · Free/Paid · Sign-up` (best post first, 1–2 more under it); then "in Google, but the pages are removed: …" (never in the working list) and platforms that could not be verified automatically. Saved as `platforms-scan.csv`, dead domains in `platforms-scan-dead.txt` (send with `dead_report`). `--suffix reviews` / `complaints` for other probes; `--device mobile` for the mobile SERP; `--self-test` checks the script offline.
+3. **Without an API** — the same probe with web search or the `platform-scout` agent (free, but far fewer results and no positions), with the same exclusions, live check and sign-up lookup; or give the user the queries to run in Google (incognito, target country).
 4. **Similar to what works** — the author's archive of platforms that ranked in 2025–2026 (on the server) shows which kinds of places are worth it: the scan's "To check" domains of the same kind (document hosts, community projects, notebooks, podcast hosts, site builders) come first.
 
 A platform with review pages of **many different products** is the strongest lead: it is where everyone posts and Google keeps it.
 
 ## Step 4 — Quick check of the top candidates (free)
 
-For the top 5–10 "free" and "to check" platforms (details in `platform-analyzer`):
-- Can a new user register and post the same kind of page?
-- Are fresh posts indexed (the scan already shows pages in Google; check one recent one)?
-- Any sign of cleanup (removed pages, login wall, noindex)?
+The scan already opened the examples and looked for the sign-up page. For the top 5–10 "free" and "to check" platforms add (details in `platform-analyzer`):
+- Can a new user register and post the same kind of page (the sign-up link opens; invite, phone or paid plan?)
+- Are fresh posts indexed (check one recent one)?
+- Moderation and signs of cleanup (several removed examples, login wall, noindex)?
 
-Drop dead ones. Mark uncertain ones "test".
+A platform with no live example is never a candidate. Mark uncertain ones "test".
 
-## Step 5 — Output
+## Step 5 — Candidates: the user chooses
+
+Show **5–10 candidates** when there are that many (free and paid in separate tables), numbered, post-first:
 
 ```
-Platforms with affiliate reviews · [niche] · [country] · checked [date]
+Platform candidates · [niche] · [country] · checked [date]
+Found N · live M · removed K · skipped by stop / black list L
 Free
-| Platform | Type | Products with reviews | Best pos. | SERP blocks | Yours | Next step |
+| # | Post (live example) | Product | Pos. | Platform | Type | Free/Paid | Score | Indexing | Moderation | Pros / risks | Sign-up |
 Paid
-| Platform | Type | Products with reviews | Best pos. | Price / how to buy (if known) | Next step |
+| # | Post | Product | Pos. | Platform | Type | Price / how to buy (if known) | Sign-up / contact |
+Already in your base: [platforms from the user's base that fit, with their state and priority]
 ```
-Then: top 3 free platforms to start with and why (one line each), and "run platform-analyzer on #1 before posting". Paid ones only with what is known about the price; never guess a price.
+- **Score** = the `platform-analyzer` score 0–100 if there is one (server or the user's base), otherwise "not checked". Indexing speed and moderation from the server, the analyzer or the quick check; "unknown" when not checked. Pros / risks in a few words each.
+- **Sign-up** = the checked sign-up link, or "sign-up link not found" + the home page.
+- **Post** = a live, filtered example; if none is left after the filter: "example: find your own with \"[product] review\"".
+- You may star recommended ones: "★ I'd start with #1 and #3 — [why, one line each]". A star is advice, not a decision; never drop the others or pick for the user, even when a goal says how many platforms are needed this week ("your goal this week: 2 platforms — pick any 2").
+- Paid ones only with what is known about the price; never guess a price.
+- **Few candidates** (fewer than 5): say exactly how many were found and why (for example: the author's base is still empty on your plan, no DataForSEO key, the niche is narrow) and how to get more — a live DataForSEO scan with more products, the feed (on Pro new platforms arrive ~7 days after the author adds them, on Insider the same day), other probes (`--suffix reviews`, `complaints`). Never narrow the list silently.
+
+End the list with: **"Which ones do we take? Reply with numbers (e.g. 1, 3)"** — this is option 1 of the Next steps block.
+
+**Saving the choice.** When the user replies with numbers, save each chosen platform in their platform base as a priority platform (work-log): `platform-set --platform <slug> --domain <domain> --type <type> --state testing --priority high --note "chosen <date> from candidates; sign-up: <link or not found>"` (add `--score NN` when known; for a platform already in the base keep its state and only set `--priority high`). Not-chosen candidates are not written. Confirm in one line ("Saved as your priority platforms: …") — the navigator builds the day plan only from chosen platforms. Then offer `platform-analyzer` on the first chosen one, or writing the first post there.
 
 ## Rules
 

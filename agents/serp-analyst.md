@@ -23,4 +23,4 @@ Intent: commercial / informational · Ours in top N: n (best #pos) · Heavy: n
 | # | Domain | Group | Free / paid | Page type | Format | Notes |
 |---|---|---|---|---|---|---|
 
-then "SERP features", "People also ask", "Open gaps". Write the date of the check. Do not score topics and do not estimate traffic — the calling skill does that.
+then "SERP features", "People also ask", "Open gaps". Write the date of the check. Do not score topics and do not estimate traffic — the calling skill does that (Rumer's 12-point filter). Your "Intent" line and "Open gaps" are the evidence it cites for criteria 1 and 2, so keep each gap concrete and tied to a ranking page ("#3 forum thread: no prices, no comparison").

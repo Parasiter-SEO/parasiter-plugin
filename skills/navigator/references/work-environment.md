@@ -26,6 +26,22 @@ Already have one with API access? Connect it — no need for a second service.
 
 Free $0 · Pro $19/month · Insider $39/month (see help `faq.md` for what each includes).
 
+**Images: $0** — infographics are drawn by Claude in the chat (needs code execution turned on in Claude); the cover is the real product photo or is made in free Gemini from PARASITER's prompt (ChatGPT / DALL·E only if you already pay for it).
+
+## 4. Indexing
+
+A page that is not in Google's index can't rank and can't sell — so every new page needs a way in.
+- **Free ways first:** a link from your pages Google already crawls (older indexed posts, profile, your site), links inside the platform, a share on X / Pinterest / a community. Often enough on strong platforms.
+- **Paid indexers — Rumer's top** (about; prices change, details and tests in `indexing/references/indexers.md`):
+
+| Service | Price per URL | Unindexed URLs |
+|---|---|---|
+| Rapid URL Indexer — default pick | from ~$0.05 | credits back after 14 days |
+| SpeedyIndex — easiest (Telegram bot) | ~$0.03–0.10, pay only for indexed | tokens back on day 7 |
+| Indexceptional — strongest, for ★ pages | from ~$0.25 per credit | refunds not published |
+
+**PARASITER doesn't send URLs itself — you send them; we pick the service, give you a clean list and count the result** (which service and platform index best). Set it up once in the first setup (step 8, `indexing` Step 0) — or right after you upload your pages.
+
 ## Without paid tools — what works and what doesn't
 
 - **Works with Claude Pro and no SEO service:** profile and goals, the journal (pages, sales, traffic from your exports), reports and effectiveness tables, choosing what to write, writing articles, images, page audits, live research with web search (offers, platforms — fewer results), free page checks (alive, noindex, link).

@@ -38,6 +38,10 @@ The same news goes out in three places: here in Claude, in the Telegram channel 
 
 Reply in the user's working language.
 
+## Step 0 — Plan check (Pro)
+
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — Rumer's feed: new checked platforms with live example posts, weekly market analysis, news and the Pro / Insider Telegram channels. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (the public channel @parasiter_plugin (https://t.me/parasiter_plugin) with plugin news and how-tos, open to everyone), and stop.
+
 ## Requires the server (Pro or Insider)
 
 Tools: `news_latest`, `news_seen`, `feed_latest`, `analysis_latest`, `account_info`, `telegram_link`, `telegram_status`, `telegram_settings`, `telegram_unlink`; for scheduled paid checks (work-log Mode 9) `paid_check_schedule`, `paid_check_pending`, `paid_check_report`; for the Monday sales check-in (work-log) `weekly_checkin`.
@@ -56,10 +60,11 @@ Idea from Rumer: [one line]
 Analysis: [3–4 lines in your words]
 Poll: [question] — [results so far, or "vote in the Telegram channel"]
 ```
-   New platforms as a table when there are more than 3:
-   `| Platform | Type | Language | Indexing | Links | Note from Rumer | Found |`
+   New platforms as a table when there are more than 3, post-first:
+   `| Post (live example) | Product | Pos. | Platform | Type | Free/Paid | Sign-up | Note from Rumer | Found |`
+   Post = the first of the row's `examples` (best position; 1–2 more under it); none → "example: find your own with \"[product] review\"". Sign-up = `signup_url`, or "sign-up link not found" + the home page. Examples come already filtered by the server; never add posts from elsewhere. Drop any platform that matches the exclusions (`exclusions_get`, else `../platform-finder/references/exclusions.md`) or is in its `dead` list.
 3. **Cleanup items first** (kind `cleanup`: the server saw pages removed on a platform across many subscribers): if the user has pages there, run `work-log` `republish --platform X` and show their pages with the saved sources to republish; otherwise one line: don't post there for a few days.
-4. Make it actionable for this user's niche, language and time: no live pages yet — one platform to try, with platform-analyzer first; otherwise 2–3 platforms to test this week and which of their platforms to reduce after the latest changes. For an `update`, say what the user can now do and the phrase to start it.
+4. Make it actionable for this user's niche, language and time: new platforms are **candidates** — number them, star the ones you'd suggest with one line why, and end with "Which ones do we take? Reply with numbers (e.g. 1, 3)"; the chosen ones are saved as priority platforms exactly as in platform-finder Step 5. Never pick for the user. Also say which of their platforms to reduce after the latest changes. For an `update`, say what the user can now do and the phrase to start it.
 5. Call `news_seen` after showing, so the navigator does not repeat it.
 
 Plan shapes what comes back: Pro sees new platforms ~7 days after they are found, Insider the same day. On Pro you may mention once that Insider gets them first — no pressure.

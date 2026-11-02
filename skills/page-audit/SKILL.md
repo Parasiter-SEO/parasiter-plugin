@@ -26,6 +26,7 @@ The user must always know what to type next. End every reply with a short number
 - Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**."
 
 Options that usually fit after this part (adapt to the user's products and words):
+- If the article already carries the writer's self-check line ("Check by Rumer's rules: N/100 …"), don't offer an audit first: option 1 is "write the next one" (the next topic of the approved list) or "I published" (send the links), and a full audit only as the last option.
 - "apply the fixes" — rewrite with every fix
 - "second opinion" — a fresh-eyes review
 - "make the snippet photo"
@@ -79,7 +80,7 @@ Good
 • …
 Fastest win: [one change]
 ```
-If there is no photo under the title, it is always in the list: "Add a real or custom photo at the top — it is what Google takes for the snippet image" + a prompt via `post-illustrations`.
+If there is no photo under the title, it is always in the list: "Add a real product photo at the top — it is what Google takes for the snippet image." Then the free way, in this order (from `post-illustrations`, "How we work with images"): the user's own or the merchant's real product photo; otherwise one ready cover prompt in a code block with the link [Open Gemini](https://gemini.google.com) — free, about 30 seconds (ChatGPT / DALL·E only if the user already pays for it). Missing infographics: Claude draws them in the chat as JPG for free. If the user hasn't heard it yet, add the one line once: "How we work with images: infographics I draw myself, the cover is made free in Gemini from my prompt — 30 seconds."
 
 Give rewritten fragments for the top 1–3 critical issues (new title, quick facts box, author intro, CTA) — ready to paste. Offer to rewrite the whole page with sales-review-writer.
 

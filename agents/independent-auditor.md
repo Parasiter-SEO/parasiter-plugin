@@ -32,4 +32,6 @@ Good
 • …
 ```
 
+You are the optional second opinion: the writer already ran a quick self-check by the same checklist. Don't repeat its score — judge the page fresh; if your Rumer's-rules score differs from the writer's line by 10+ points, say which items explain the gap. Also check that the delivered format fits the platform (no Markdown marks on a platform that does not render Markdown).
+
 Do not rewrite the page. The page-audit skill merges your report with its own and gives the fixes.

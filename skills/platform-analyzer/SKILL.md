@@ -36,22 +36,28 @@ A platform is worth it when **review pages of affiliate products already rank th
 
 Reply in the user's language.
 
+## Step 0 — Plan check (Pro)
+
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — one platform scored 0–100: affiliate reviews in the top 10 now (checked live), indexing of fresh pages, registration, moderation, free or paid. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (a short manual checklist to run yourself: search `site:<domain> review`, open 2–3 results, check they are live, indexed and not noindexed — say "how do I check a platform myself?"), and stop.
+
 ## Step 1 — Inputs
 
 Platform domain (or a URL of a post on it), the niche/offer, language, and whether the user already has an account (age, activity).
 
-## Step 2 — Server data (Pro)
+## Step 2 — Exclusions and server data (Pro)
 
-If `platform_get` is available, call it: last status, history (when it ranked, cleanups), the author's notes, indexing speed. Use it as the starting point and say how fresh it is. Without the server, do the checks below live.
+First check the platform against the exclusions: `exclusions_get` with a key, else `../platform-finder/references/exclusions.md` (match: host equals or ends with the domain; a path in the entry must prefix the URL path). A stop type or blacklisted site: say so with the reason, score nothing, and offer to find other platforms. A domain in `dead`: say it was found dead on [date] and analyze only if the user insists (then check live — it may have come back).
+
+If `platform_get` is available, call it: last status, history (when it ranked, cleanups), the author's notes, indexing speed, `signup_url` and `examples` (live posts, already filtered). Use it as the starting point and say how fresh it is. Without the server, do the checks below live.
 
 ## Step 3 — Checks
 
 Use web search / fetch where available; otherwise give the user each check as a short instruction. Details and how to read results: `references/checks.md`.
 
-1. **Registration** — open for new users? Captcha, app, phone, invite, paid plan, old accounts only?
+1. **Registration** — open for new users? Captcha, app, phone, invite, paid plan, old accounts only? Give the **sign-up link**: `signup_url` from the server, or find it (sign-up / register / create account link on the home page, else /register, /signup, /join, /user/register, /create-account) and open it to confirm the form loads; else "sign-up link not found" + the home page.
 2. **Fresh indexing** — are posts from the last 1–2 weeks indexed (`site:` + recent)? How fast?
 3. **noindex** — meta robots and X-Robots-Tag on new posts/profiles; some platforms noindex new accounts only.
-4. **Affiliate reviews ranking there (the main check)** — search `site:domain review` and "[product] review" for a few affiliate products: are review pages on this domain in the Google top 10, in "Discussions and forums" or AI Overview? None → the platform is not proven, however good it looks.
+4. **Affiliate reviews ranking there (the main check)** — search `site:domain review` and "[product] review" for a few affiliate products: are review pages on this domain in the Google top 10, in "Discussions and forums" or AI Overview? None → the platform is not proven, however good it looks. **Open each review page found (up to 3, free): it counts only if it is alive** — 404 / 410, "page removed" text, redirect to the home or login page, an empty page or noindex (meta robots / X-Robots-Tag) = removed, however high Google still shows it. All found pages removed → verdict "skip — pages are being removed", and with a key send the domain with `dead_report`. Pages shown to the user as examples pass `examples_filter` first (with a key); the author's posts are never shown.
 5. **Link to the offer** — possible anywhere (body, profile, signature, description)? Outbound warning page? Link only after N posts? Link indexing and nofollow don't matter.
 6. **Moderation** — pre-moderation, keyword blacklists (platforms block typical affiliate words), automatic AI spam removal, cleanup waves, bans.
 7. **Account needs** — warm-up (XenForo forums, Medium, LinkedIn need aged/active accounts), points systems, first-post limits.
@@ -65,7 +71,8 @@ Score with `references/scoring.md` (0–100) and show:
 
 ```
 [Platform] · score NN/100 · checked [date]
-Free / Paid · Affiliate reviews in top 10: … | Indexing: … | Stability: stable / new / unstable | Link: …
+Free / Paid · Affiliate reviews in top 10 (live): … | Indexing: … | Stability: stable / new / unstable | Link: …
+Live example: [post URL] · [product] · pos. N   |   Sign-up: [link] (or "sign-up link not found" + home page)
 Verdict: [publish now / test 1–3 posts / skip] — affiliate reviews in the top 10 now = publish now
 Best content type here: …
 How to post: [account, title, link placement, tone]

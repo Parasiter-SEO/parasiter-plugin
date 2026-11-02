@@ -2,6 +2,23 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.26.0 — 2026-11-02
+
+**You choose the platforms; PARASITER shows only what works.**
+- **Candidates, not orders:** a goal says how many platforms, never which. You get 5–10 candidates with live example posts, sign-up links and risks, a ★ on the ones worth starting with, and pick by number ("1, 3"). Your daily plan uses only the platforms you chose.
+- **Cleaner platform lists:** a stop list (YouTube, S3 files, Q&A sites) and a blacklist of platforms that stopped accepting posts are skipped in every scan; PDFs on normal hosts are back as findings.
+- **Example posts checked live:** every platform shows a real post first (best position on top), opened and checked before it's listed. Platforms whose posts are all removed are listed apart and skipped in everyone's next scans, so you don't pay to scan them again.
+- **Direct sign-up links** instead of bare domains.
+- **Images at $0:** infographics drawn by Claude in the chat, the cover from a real product photo or one free Gemini prompt (ChatGPT / DALL·E only if you already pay for it). Explained once.
+- **Capability map** at the first start and every session: every skill and agent for your role, what to say, and its plan. Say *"map"*.
+- **Indexing from day one:** set up right after you upload your pages; pages out of Google become your first task.
+- **Topics picked by Rumer's rules:** every topic carries its "Rumer filter score (of 12)"; ask *"why 9?"* for the breakdown.
+- **Write in batches, publish later:** after an article the first option is the next topic, not an audit — the writer already checked it ("Check by Rumer's rules: N/100"). Say *"I published"* with one or many links: they are logged, checked, sent to indexing as one list and queued (index in 3–7 days, positions in 14). Unpublished articles show up as one line in your daily plan.
+- **The right file for each platform:** Markdown only where the platform reads it; visual editors get formatted text and a doc; presentations get a slide-by-slide doc.
+- **Plan check:** Pro and Insider features check your plan first and offer what works on yours. Insider skills load their method from the server with an Insider key; on Pro, *"check my offers"* checks the offers you already chose.
+- **Affiliate approval:** the offers table has an Approval column (auto / manual / strict / invite-only, with source); say *"how do I get approved?"* for Rumer's 9 rules. Beginners start with auto-approval programs.
+- **Help:** installing from the Claude website, connecting your key with a hidden header, and why to keep your own connector on.
+
 ## 0.25.0 — 2026-11-01
 
 **You always know what to do next.**

@@ -26,7 +26,7 @@ The user must always know what to type next. End every reply with a short number
 - Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**."
 
 Options that usually fit after this part (adapt to the user's products and words):
-- "plan for today" — tasks from these goals
+- "plan for today" — tasks from these goals (Pro; on Free offer "what should I write about <product>?" instead)
 - "am I on track?" — the weekly pace check
 
 Part of PARASITER by Rumer (Affiliate Credo).
@@ -147,6 +147,7 @@ Show one table: baseline, goal, what the time allows, gap, and a line for Rumer'
 
 In `parasite-seo-goals.md`:
 
+- **Platforms are counts, never names.** Platform milestones and targets say how many ("2 platforms in week 1", "5 by month 2"); never name the platforms in a goal, a milestone or the goals file. The user picks which ones in platform-finder (candidates, then "Which ones do we take? Reply with numbers"), and the daily plan uses only the platforms they chose.
 - **Monthly milestones** (or one for a 1-week goal): live pages, platforms active, offers, **posts in the top 3**, possible income checkpoint. With no positions data yet, the first milestone is "positions checked for every page".
 - **Weekly targets** — action targets only, because actions are what the user controls: pages published, platforms tested, pages refreshed, pages moved off dead platforms. Income is tracked, not targeted weekly.
 - **Daily quota** — weekly targets divided over the user's working days, rounded to whole tasks.

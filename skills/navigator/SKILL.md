@@ -38,6 +38,10 @@ The navigator answers one question: **what is the most useful thing to do today,
 
 Reply in the **working language** from `parasite-seo-profile.md`. Before a profile exists, reply in the language the user writes in. Short, concrete, no theory. There are no levels: explain a term in one line when the user asks or clearly doesn't know it (glossary in `help/references/faq.md`).
 
+## Plan check (Pro)
+
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — today's plan built from your goals, journal and page checks. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (set goals and track pace — say "set my goals"; pick buyer topics and write the article — say "what should I write about <product>?"), and stop. What still runs on every plan, so a Free user knows where to start: the language and role questions (Step 0), the capability map and the first setup checklist (steps that need Pro become `not needed`). The Pro part is today's plan and the session checks (Steps 2–4).
+
 ## Two languages
 
 - **Working language** — the language of the conversation: plans, explanations, reviews, reports, and the user's own files (`parasite-seo-goals.md`, profile). Asked once, saved in the profile, used by every skill in the plugin.
@@ -57,6 +61,13 @@ No `role` in the profile → after the language question, ask the role question 
 
 Every later session: read `role` first. A request outside the role's toolset gets the answer from `roles.md`, not the skill.
 
+## Capability map (first run and every session)
+
+The user always sees everything PARASITER can do. Show the map from `references/capability-map.md` — in its approved format, translated into the working language, with only the rows of the user's role and the plan of each skill marked against the user's plan:
+- **first run** — right after the language and role (setup step 1), before the work environment block;
+- **start of every new session** — after today's plan (Step 3), or after the setup footer while the first setup is open;
+- **any time** the user says "map", "show all functions", "what can PARASITER do".
+
 ## First setup checklist (affiliates)
 
 The first setup is a fixed route of 12 steps. The user always sees where they are, how many steps are left and what to do next — in every reply, whichever skill answers, until the setup is finished.
@@ -72,7 +83,7 @@ The first setup is a fixed route of 12 steps. The user always sees where they ar
 | 7 | Affiliate links, or applications where a program needs approval | `work-log` Mode 10 / `affiliate-finder` approval rules |
 | 8 | Indexing: which services you use and when you send | `indexing` Step 0 |
 | 9 | Telegram | `platform-feed` (Pro and Insider; on Free: not needed) |
-| 10 | First topic | `content-type-selector` |
+| 10 | First topic — what to write: topics picked by Rumer's rules, every topic scored by the 12-point filter (column "Rumer filter score (of 12)") | `content-type-selector` |
 | 11 | First article with images | `sales-review-writer` + `post-illustrations` |
 | 12 | Publish and log → setup done, first plan for today | `work-log` → navigator Step 3 |
 
@@ -103,7 +114,7 @@ Read, if they exist in the conversation or the user's project files:
 
 No profile → first ask which language to work in (offer the language the user is writing in as the default: "We can work in English or in [their language]. Which do you prefer?"). Then the role (Step 0). For an affiliate, the basic setup comes in two messages, in that language.
 
-**Before the questions — your work environment** (once, at the first start, 6–8 lines from `references/work-environment.md`): what a full setup takes and roughly what it costs — the Claude plan (Pro is the minimum, Max recommended for daily work with the full system), an SEO data service (DataForSEO recommended: pay per request; others if the user already has one with API access, with their prices) and the PARASITER plan — and what works without each one, so the user knows from the start which reports will be thinner. Then go on; never make the questions wait for a purchase.
+**Before the questions — your work environment** (once, at the first start, 6–8 lines from `references/work-environment.md`): what a full setup takes and roughly what it costs — the Claude plan (Pro is the minimum, Max recommended for daily work with the full system), an SEO data service (DataForSEO recommended: pay per request; others if the user already has one with API access, with their prices), the PARASITER plan, **images: $0** (infographics drawn by Claude, the cover in free Gemini from PARASITER's prompt) and **indexing** (why it matters, free ways, Rumer's top indexers with price per URL and refunds; PARASITER doesn't send URLs — the user does, we pick the service, give a clean list and count the result) — and what works without each one, so the user knows from the start which reports will be thinner. Then go on; never make the questions wait for a purchase.
 
 **Message A — about you** (short answers):
 1. Niche(s) and offer(s) — or "don't have one yet".
@@ -122,7 +133,9 @@ If the user has no SEO service with an API (and the environment block didn't alr
 
 **Starting from zero** (the answers to Message A are "no offer yet", no pages, no programs): don't send Message B — there is nothing to upload yet, and a list of reports to export would only confuse a beginner. Say in one line that this is a normal start and the system will guide the first steps, then go to `goals` (its "Starting from zero" form). With no offer yet, the first task is `affiliate-finder`. Explain any term the user may not know in one line (offer, EPC, sub-ID, indexed). Message B comes later, piece by piece, as the first pages and sales appear.
 
-After the uploads, show in 3–5 lines what came in: pages and platforms, programs and links, sales and commission by month, traffic by platform, and what is missing (a program without a sales export, platforms with no traffic data). Then the baseline in `goals` starts from these numbers instead of asking the user to estimate them. If the user has nothing to upload yet, go on — ask again for the missing exports in the first weekly review.
+After the uploads, show in 3–5 lines what came in: pages and platforms, programs and links, sales and commission by month, traffic by platform, and what is missing (a program without a sales export, platforms with no traffic data). Then the baseline in `goals` starts from these numbers instead of asking the user to estimate them.
+
+**Indexing right after the base is uploaded** (pages imported with `work-log` Mode 0): don't wait for step 8 or the first new page. In the same reply ask `indexing` Step 0 in short — which indexers the user already uses (or Rumer's top from `indexing/references/indexers.md`, price per URL and refunds) and when they send (`instant` / `after-check` / `manual`) — and save `indexing:` in the profile; step 8 is then `done`. If the imported base has pages known to be out of Google (marked in the user's table or export, or found by an index check the user agreed to — index checks are paid, ask first), offer them as the first task: "N of your pages are not in Google — here is the clean list for your indexer." The user sends it; PARASITER never does. If the user has nothing to upload yet, go on — ask again for the missing exports in the first weekly review.
 
 Offer to save the answers as `parasite-seo-profile.md`.
 
@@ -144,7 +157,7 @@ Report changes in 2–4 lines, most urgent first. If the server is not connected
 
 **Bought a plan but the server isn't connected** (the user says they paid, has a key, or asks why the feed or alerts don't work, and no PARASITER server tools are present): explain in 3–4 lines that PARASITER has two parts and both are needed. The **plugin** (skills and agents) is already working; the **connector** (their key) links it to the server. Then the steps for where they work:
 - **Claude Code:** reconfigure the plugin and paste the key when it asks for "PARASITER key".
-- **Claude desktop / claude.ai:** Settings → Connectors → Add custom connector, name PARASITER, URL `https://parasiter.affiliatecredo.com/mcp/<key>` (the full URL is in the welcome email), then turn it on in the chat ("+" → Connectors).
+- **Claude website / desktop app:** Settings → Connectors → Add custom connector, name PARASITER, URL `https://parasiter.affiliatecredo.com/mcp`, Authentication: No sign-in, Add header `Authorization` = `Bearer psr_…` (ready value in the welcome email; fallback: the personal URL with the key from the same email), then turn it on in the chat ("+" → Connectors). The plugin's built-in `parasiter` connector is the Free plan — keep the user's own connector on. An organization admin may have blocked custom connectors.
 - **Check:** "my PARASITER plan" → `account_info` shows the plan and end date.
 Never ask for the key or the URL in the chat.
 
@@ -175,6 +188,12 @@ Goal: [horizon goal] · Week [n]: [done]/[plan] pages, [status]
 Why this order: [one sentence]
 ```
 
+**Platforms: the goal sets how many, never which.** When the plan needs platforms the user hasn't chosen yet, run platform-finder Step 5: candidates (5–10 when there are that many), an optional ★ on the ones you recommend with the reason, then "Which ones do we take? Reply with numbers (e.g. 1, 3)". Never write "post here" about a platform the user didn't pick. Build the day plan only from platforms with priority `high` in the user's base (`parasite-seo-platforms.csv`). If fewer candidates were found than the goal needs, say how many were found and how to get more (a live scan with the user's DataForSEO, the feed's new platforms) — never narrow the list silently.
+
+**Written but not published:** if the profile's `topics:` has entries with status `written`, add one line to the plan: "Not published yet: N articles (ready since DD.MM) — send the links when you publish." The links may come in a batch; `work-log` logs them all and hands them to indexing together.
+
+Under the plan, show the capability map (see "Capability map" above) as the session's reminder of everything PARASITER can do.
+
 Task size follows today's time and what the journal shows, not a level: no pages yet → one offer, one platform, one page; live pages → protect and refresh them first; many pages and offers → batch the work, test new platforms, niche analysis. The user can always ask for smaller or bigger tasks.
 
 When a task produced a new page, it goes to indexing right after logging, by the user's `indexing:` setting (`instant` → the list to send at once, `after-check` → free ways now and a recheck; no setting → `indexing` Step 0 once). The user sends to indexers themselves. Then follow it with the rollout (sales-review-writer Step 7): the same topic, in each platform's format, on the user's priority platforms that don't have it yet — usually the same day.
@@ -202,10 +221,13 @@ Ask "Start with #1?" When the user agrees, follow the target skill. After each t
 | What earns, what to fix | client-reports |
 | Questions about PARASITER itself: what it does, how to …, plans | help |
 
+All skills and agents for the user, by role and plan: `references/capability-map.md`.
+
 ## Rules
 
 - **Legal products and content only.** PARASITER works only with legal products and content. Don't write, plan, find platforms for or log pages that promote pirated software, films, books or courses, file-upload / download or "free download" schemes, cracks and keygens, counterfeit or illegal goods, or content that breaks the target platform's rules or the law of the target country. Say so in one line, without lecturing, and offer a legal alternative (the official product or a legal affiliate offer). This rule is part of the PARASITER offer the user accepted.
 - The affiliate system (goals, affiliate daily plan, sales analytics) only for the affiliate role. Agencies get their own full route in `client-workspace` (today's plan across clients, content plans, reports) — never affiliate goals or commission targets. Site owners run in `client-workspace` own-site mode, creators in `creator-channels`; never plan a day for them or push them into goals.
+- **The user picks the platforms.** A goal sets how many platforms, never which; the navigator never assigns platforms on its own (see "Today's plan").
 - Paid checks (index, positions, keywords on the user's SEO API) are never part of a plan by default: a plan task can say "check positions of ★ pages — ~$0.10, run?" and runs only after the user's yes, with the number of pages and the cost named (`work-log` Rules).
 - No income promises. Income goals are the user's; the plan controls actions, income is tracked.
 - Never plan more work than the user's time for today; if the week is behind, say so and let the `goals` review decide, don't overload the day.

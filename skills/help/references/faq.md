@@ -7,6 +7,8 @@ Four full routes: **affiliate marketers** who earn with parasite SEO, at any sta
 - **Claude**: Pro (~$20/month) is the minimum; Max (from ~$100/month) recommended for daily work with the full system — many articles, rollouts, agents and reports without hitting limits.
 - **SEO data**: DataForSEO recommended (pay per request, $50 minimum top-up that doesn't expire, Claude runs it itself). Already have Serpstat Team (~$100/mo), Ahrefs Lite+ (~$129/mo) or Semrush with API — connect it instead. Ubersuggest works through exports.
 - **PARASITER**: Free, Pro $19 or Insider $39.
+- **Images: $0** — infographics are drawn by Claude, the cover is made in free Gemini from the plugin's prompt.
+- **Indexing**: free ways first; a paid indexer is optional, from about $0.05 per URL (Rumer's top in the `indexing` skill). You send the pages yourself.
 Without an SEO service most things still work (journal, articles, audits, images, reports from your exports, free page checks); positions, keyword volumes and platform scans get limited, so many reports are thinner. Details: navigator `references/work-environment.md`. Prices change — check the vendors' sites.
 
 ## I run an agency. What do I get?
@@ -33,6 +35,9 @@ An affiliate never sees the merchant's analytics, so UTM tags are wasted. An age
 - Annual billing about 20% less. Prices are preliminary — current terms on the official site.
 - The key is personal: one key, one person. It stops working when the subscription ends; skills keep working without server data.
 - Platform feed updates come as findings appear — several times a week, sometimes less. No daily promise.
+
+## Do images cost anything?
+No. How we work with images: **infographics** (key facts, pains → solution, comparison, prices, verdict) Claude draws itself right in the chat as JPG ~700 px — just keep code execution turned on in Claude (Settings → Capabilities). The **cover** is a realistic product photo: the real one first (yours or the merchant's product shot); if a generated one is needed, PARASITER gives you one ready prompt with a copy icon and an "Open Gemini" link — you make it free at gemini.google.com (about 20 images a day on a free Google account) in about 30 seconds and save it. ChatGPT / DALL·E works with the same prompt if you already pay for it — never needed.
 
 ## How many platforms and posts do I need?
 Rumer's rule: the minimum working base is about **10 platforms and at least 100 live posts**. Below that, one platform cleanup or Google update can take most of your income, and there is too little data to see what sells. It is the minimum goal, not the ceiling; `goals` builds your plan toward it first. Sales start with posts in the top 3: in Rumer's own work, earning begins at 10–15 posts in the top 3 (about $20–50 a day for him), and his 20 platforms with ~400 posts bring about $6,000 a month. That is his experience, not a forecast — your niche, offers and country change it a lot.
@@ -70,13 +75,15 @@ After you publish a text you worked on yourself, say "save this .docx with the p
 Networks often show no sub-ID or referrer, buyers come back later, and many pages promote the same offer. UTM tags don't help: they go to the merchant's analytics, which the affiliate doesn't see. PARASITER counts every sale exactly by program, month and pack; per-page numbers add an estimated share, always labelled. A sub-ID per page (or per platform / pack), separate Amazon tracking IDs and network click reports make it more precise.
 
 ## Which AI does it work with?
-Built for Claude (Claude Code plugin; install with `/plugin marketplace add Parasiter-SEO/parasiter-plugin` then `/plugin install parasiter@parasiter`). Other assistants are not supported yet.
+Built for Claude; plugins need a paid Claude plan. Other assistants are not supported yet.
+- **Claude website or desktop app (main way):** Customize (left panel) → Plugins → Add → Add marketplace → Add from a repository → `Parasiter-SEO/parasiter-plugin` → PARASITER → turn it on.
+- **Claude Code:** `/plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `/plugin install parasiter@parasiter`. These commands work only in Claude Code — typed into a normal Claude chat they answer "isn't available in this environment".
 
 ## Updates
 New versions come through the same marketplace: update the plugin in Claude Code. The feed and platform database update on the server without reinstalling.
 
 ## Connecting the key
-Claude Code asks for the key when you enable the plugin. In Claude desktop and claude.ai, add a custom connector with the personal URL from your welcome email. Details: how-to, "Connect your key".
+Free needs no key: the plugin works as soon as it is on. Pro and Insider: on the Claude website or desktop app add your own connector — Settings → Connectors → Add custom connector, name PARASITER, URL `https://parasiter.affiliatecredo.com/mcp`, Authentication: No sign-in, **Add header** `Authorization` = `Bearer psr_…` (the ready value is in your welcome email; Claude keeps the header hidden). The plugin's built-in `parasiter` connector works without a key — that is the Free plan; keep your own connector on. Claude Code asks for the key when you enable the plugin. If your organization's admin has blocked custom connectors, ask them to allow it. Details: how-to, "Connect your key".
 
 ## Languages
 Works in any language. The working language (plans, explanations) is set on first run; the content language of pages follows the target country. "Switch to …" changes it.

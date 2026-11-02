@@ -17,7 +17,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 
 > **Privacy:** the PARASITER server never receives your page URLs, journal, sales, affiliate links or texts — they stay in your Claude project. Page checks run in your own Claude. **Legal products and content only.**
 
-> **Status: private beta (v0.24.0).** Skills and agents work without a key. The server part (platform database, feed, Telegram alerts) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.26.0).** Skills and agents work without a key. The server part (platform database, feed, Telegram alerts) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
@@ -94,14 +94,31 @@ Updates to the platform feed come as findings appear — several times a week, s
 
 Every new platform, plugin update, idea, market analysis and poll from Rumer appears in three places at once: in Claude at the start of your session ("what's new?"), in the Telegram channel of your plan, and — for Insider — in the private group. To link Telegram, say **"connect Telegram"** in Claude: you get a personal link, press Start in the bot, and it sends your channel invites. The bot also sends personal notifications — pages that died, a Monday reminder to upload sales, a daily news digest, billing — at most one a day, any type can be turned off. What changed in each version: `CHANGELOG.md`.
 
-## Install (Claude Code)
+## Install
+
+Plugins need a paid Claude plan (Pro, Max, Team or Enterprise).
+
+**On claude.ai or in the Claude desktop app (main way):** Customize (left panel) → Plugins → Add → Add marketplace → Add from a repository → `Parasiter-SEO/parasiter-plugin` → pick **PARASITER** → turn it on. No key is asked: without a key the plugin works as Free.
+
+**In Claude Code** (type these in Claude Code, not in a normal Claude chat):
 
 ```
-claude plugin marketplace add Parasiter-SEO/parasiter-plugin
-claude plugin install parasiter@parasiter
+/plugin marketplace add Parasiter-SEO/parasiter-plugin
+/plugin install parasiter@parasiter
 ```
 
-Or inside Claude Code: `/plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `/plugin install parasiter@parasiter`.
+From a terminal: `claude plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `claude plugin install parasiter@parasiter`.
+
+## Connect your key (Pro and Insider)
+
+Your key (`psr_…`) comes in the welcome email right after payment.
+
+- **claude.ai or the Claude app:** Settings → Connectors → Add custom connector. Name: `PARASITER`. URL: `https://parasiter.affiliatecredo.com/mcp`. Authentication: No sign-in. **Add header:** `Authorization` = `Bearer psr_…` (the email gives the ready value). Claude keeps the header hidden. Then turn it on in the chat: "+" → Connectors. Fallback if there is no header field: the URL with the key inside, `https://parasiter.affiliatecredo.com/mcp/<your key>` (also in the email; never share it).
+- **Claude Code:** paste the key when the plugin asks for "PARASITER key". No separate connector needed.
+- **Two similar connectors?** The plugin brings its own built-in connector `parasiter`. On the Claude website it has no key, so it works as Free. Your Pro or Insider access comes through the `PARASITER` connector you added from the email: keep that one on. If "my PARASITER plan" shows Free, turn the built-in one off in the chat.
+- On Claude Team or Enterprise an organization admin can turn off **Add custom connector**. Ask your admin, or use Claude Code.
+
+Check: say "my PARASITER plan". It shows your plan and its end date.
 
 Agency and site owner routes: Pro (incl. paid placements); brand and site audit, client and site owner reports: Insider.
 

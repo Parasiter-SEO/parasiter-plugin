@@ -1,6 +1,6 @@
 ---
 name: indexing
-description: Help the user get parasite pages into Google and keep score — check what blocks indexing first, the free ways, Rumer's comparison of the top indexers (prices, refunds, speed, test results) and which to use or mix, a clean list to paste into the services the user sends to themselves, then log every submission, recheck on schedule and show which service, mix and platform index best. Use when the user publishes a page, says "index this / these", "not indexed", "which indexer", "how do I index faster", "sent to SpeedyIndex / Omega", or the check queue lists pages not indexed.
+description: Help the user get parasite pages into Google and keep score — check what blocks indexing first, the free ways, Rumer's comparison of the top indexers (prices, refunds, speed, test results) and which to use or mix, a clean list to paste into the services the user sends to themselves, then log every submission, recheck on schedule and show which service, mix and platform index best. Use when the user publishes a page, says "index this / these", "not indexed", "which indexer", "how do I index faster", "sent to SpeedyIndex / Omega", the user uploads their base of pages, or the check queue lists pages not indexed.
 ---
 
 # Indexing
@@ -36,13 +36,25 @@ A page that is not in Google can't rank and can't earn. On parasite pages the us
 
 Files: `references/indexers.md` (top services, prices, refunds, API, test results, checked date), `references/methods.md` (free ways, own-site ways, what Google says, how to check). Settings live in the user's profile `parasite-seo-profile.md` under `indexing:` (the services they use, alone or mixed, and when they send).
 
+## Plan check (Pro) — before anything else
+
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — what blocks indexing, Rumer's comparison of the top indexers, a clean list for your indexer, rechecks and stats by service. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (the free ways that cost nothing: link the new page from your pages Google already shows, from your profile on the platform, and share it on X or Pinterest — say "free ways to index my page"), and stop.
+
 ## Step 0 — First time: pick the setup (once, then saved)
+
+**When:** in the first setup — right after the user's base is uploaded (navigator Message B, `work-log` Mode 0), or at setup step 8 if nothing was uploaded; later, at the first new page, whenever there is still no `indexing:` in the profile. Don't wait for the first logged publication or for a page "not indexed 14+ days".
 
 No `indexing:` in the profile → ask in one message, with the short table from `indexers.md` (top 5 rows: service, price per URL, refund of unindexed credits, test result):
 1. **Which indexers** — the ones they already use (one or several), or Rumer's picks from `indexers.md` (say why in one line). "None, free ways only" is a valid answer. Mixing is fine (see Step 3).
 2. **When they send:** `instant` — every new page right after publishing (Rumer's way for pages that matter: costs cents, saves days) · `after-check` — free ways first, the indexer only for pages still out after the platform's usual indexing time (cheapest) · `manual` — only when the user asks.
 
-Save the answers under `indexing:` in the profile. Change them any time the user says so.
+Save the answers under `indexing:` in the profile (first setup: mark step 8 `done`). Change them any time the user says so.
+
+**Imported base with pages out of the index** (marked so in the user's table or export, or found by a check the user agreed to): offer them as the first task right away — Step 1 on those pages, then the clean list for the chosen indexer (Step 3).
+
+## Batch from "I published"
+
+Links often come in a batch after the user publishes several articles (`work-log` Mode 1, sales-review-writer Step 8). Accept the whole batch at once — plain URLs, a list, a message or a screenshot — run Step 1 on all of them and return **one clean list** (one URL per line, duplicates and blocked pages removed, blockers listed under it). The check queue gets every page: **index check at 3–7 days, positions at 14 days** — say the dates in one line.
 
 ## Step 1 — Before paying: is the page indexable?
 

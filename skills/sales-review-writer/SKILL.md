@@ -25,10 +25,11 @@ The user must always know what to type next. End every reply with a short number
 - **During first setup** (a step in the profile's `setup:` is still open — not `done`, `skipped` or `not needed`): option 1 is the current setup step, and the setup footer from `navigator` ("First setup checklist") goes under the options — step N of 12, what is done, now, next.
 - Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**."
 
-Options that usually fit after this part (adapt to the user's products and words):
-- "audit it before publishing"
-- "make the images" — cover and infographic
-- "published: <link>" — logged and put on checks automatically
+Options after an article — in this order (adapt to the user's products and words; the article was already checked by Rumer's rules in Step 6, so a full audit is never option 1):
+1. "Write the next one" — #N of the approved list: <title> (<score>/12). Only when the profile's `topics:` has a topic still `todo`; otherwise "pick the next topics".
+2. "I published" — send the links whenever you publish, one or several, in any form (a screenshot works too); then the after-publish steps run (Step 8; logging, indexing and the check queue need Pro — on Free, say "I published" anyway and get the open / links / noindex check).
+3. "Full independent audit" — optional, a second reader scores the page (only as the last option).
+"1", "yes", "ok", "go" = write the next topic right away.
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
@@ -44,7 +45,7 @@ Read the user's affiliate links library `parasite-seo-links.csv` (`work-log` Mod
 
 ## Step 1 — Inputs
 
-If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for what is missing. Take everything the writer profile already answers from it (author, links, disclosure, style).
+If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for what is missing. If the user says "write the next one" (or "1" after an article), take the first `todo` topic of the approved list in the profile's `topics:` (test-first ones first) and reuse the brief data that is the same (product, links, author, country). Take everything the writer profile already answers from it (author, links, disclosure, style).
 
 **Ask at most 3–4 questions before writing, in one message** — the ones the profile, the brief, the links library and `product-researcher` can't answer (usually: product(s) and #1, link if missing, platform, and whether the user has used the product). Everything else gets a sensible default or a `[VERIFY: …]` mark listed in the operator checklist. What the article needs:
 
@@ -52,7 +53,7 @@ If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for 
 2. **Content type**: single review, best-of comparison, A vs B, personal experience, complaints/doubts, packages/price guide.
 3. **Platform** where it will be published (decides length, tone and formatting — see `references/platform-formats.md`).
 4. **Author profile** — required, see Step 2.
-5. **Current offer**: real prices, bundles, discounts, bonuses, free shipping, guarantee, and until when the offer runs. If web access is available, send the product name(s), known URLs, country and currency to the **`product-researcher` agent**: it returns the specs, packages, prices, discounts, shipping and guarantee from the merchant's own pages, each with a source and date, plus conflicts and unverified merchant claims. Show the user that table and ask them to confirm the deal on the merchant page before publishing. Without web access, ask the user to open the merchant page and give the terms. Record the date it was checked.
+5. **Current offer**: real prices, bundles, discounts, bonuses, free shipping, guarantee, and until when the offer runs. If web access is available, send the product name(s), known URLs, country and currency to the **`product-researcher` agent**: it returns the specs, packages, prices, discounts, shipping and guarantee from the merchant's own pages, each with a source and date, plus conflicts and unverified merchant claims. Show the user that table and ask them to confirm the deal on the merchant page before publishing. If the agent could not open the merchant page, say so and ask the user to open it and paste or screenshot the prices and guarantee — never take them from third-party sites; disagreeing values stay `[VERIFY: …]` until the merchant page confirms one. Without web access, ask the user to open the merchant page and give the terms. Record the date it was checked.
 6. **Unique assets**: own use of the product, photos, notes, measurements, screenshots, data.
 7. **Target query and country.**
 
@@ -118,6 +119,8 @@ Urgency only from real conditions (an offer that actually ends, limited stock th
 
 Every article comes with its images. Plan 3–6, one line each: what it shows and where it goes in the article.
 
+**Images cost the user nothing.** Say it **once per user**, in one line: "How we work with images: I draw the infographics myself right here; the cover you make free in Gemini with my prompt — 30 seconds." Then save `images_explained: yes` in `parasite-seo-profile.md`; if it is already there, don't repeat it in later articles or sessions.
+
 **Make the images yourself when code execution is available** — render them with code (HTML/SVG or Python imaging) and save as **horizontal JPG, ~700 px wide (700×394), light files**, full article width, one consistent style per article; images carry the section's facts in short theses, never paragraphs, and show each one in the chat right where it belongs so the user can copy or save it directly:
 - quick facts card (line-by-line characteristics + current deal);
 - pains → solution infographic;
@@ -126,23 +129,38 @@ Every article comes with its images. Plan 3–6, one line each: what it shows an
 - verdict / "choose X if…" card.
 Text on images only from verified facts, with the checked date on any price.
 
-**The cover photo** — a realistic photo of the real product — cannot be made with code: give one ready cover prompt via `post-illustrations` (Gemini free by default, with the other generators to choose from) and mark the spot under the title. Prefer the user's own real photos. No decorative images without information. Where the platform takes images only by link, say so and remind the user to host them (`post-illustrations` → platform-sizes).
+**The cover photo** — a realistic photo of the real product — cannot be made with code. Order: real photo → Gemini prompt → DALL·E only if the user pays for ChatGPT. First choice: the merchant's real product photo (the image URL `product-researcher` returns) or the user's own photo. If a generated one is needed, give **one** ready cover prompt via `post-illustrations` with a copy icon and the link "Open Gemini" (gemini.google.com — free, about 20 images a day), and mark the spot under the title. DALL·E / ChatGPT only as an alternative for users who already pay for ChatGPT. No decorative images without information. Where the platform takes images only by link, say so and remind the user to host them (`post-illustrations` → platform-sizes).
 
 Without code execution, say once that the JPG cards appear automatically when the assistant's code execution / file creation is turned on (in Claude: Settings → Capabilities), and give all image prompts via `post-illustrations` meanwhile. Respect platform limits (PDF — few light images; Raisely — cover only; forums — external hosting). Never generate fake people presented as real users or experts, fake certificates or before/after results.
 
 ## Step 6 — Deliver
 
-1. Output the full article **right in the chat, fully formatted, ready to copy** — no file to download unless the user asks for one. The article only, from title to disclosure, with no comments, notes or questions inside it.
+**Before handing over — the built-in check.** Run `references/quality-check.md` and the page-audit checklist (`../page-audit/references/audit-checklist.md`, scored with the Rumer's-rules table in `../page-audit/references/scoring.md`) on the draft yourself, silently, and fix what fails. It is part of writing, not a separate step and not extra text. In the reply it is one line: "Check by Rumer's rules: 92/100, fixed: prices block, CTA in the verdict" — or, if something needs the user: "Check by Rumer's rules: 85/100 — 2 notes: no own photo yet; guarantee not confirmed [VERIFY]". The full audit with the independent auditor stays optional (last Next steps option).
+
+**Delivery format comes from the platform** (`references/platform-formats.md`, "Delivery format by platform"), never a default file. One line before the article says which format and why ("Prezi doesn't read Markdown — here is a doc by slides").
+
+| Platform kind | What the user gets |
+|---|---|
+| Markdown platforms (HackMD, Dev.to, GitHub, Reddit, Markdown forums) | the formatted article in chat + the same text as Markdown in a code block; a `.md` file only here |
+| BBCode forums | formatted article in chat + BBCode source in a code block |
+| Visual editors (Medium, LinkedIn, WordPress, Raisely, Google Sites and similar) | the formatted article in chat, ready to copy (headings, lists, links, tables survive the paste) + a **Claude doc** with the same text and images when the docs tool is available — the user exports it to Word or Google Docs. No Markdown source, no `.md` |
+| Presentations (Prezi, Gamma, Canva, PDF slides) | a **Claude doc "by slides"**: "Slide 1 — Title / Text / Image / Link", plain text, no Markdown marks; each table becomes its own slide as an image (infographic card, Step 5) |
+| PDF upload platforms | a Claude doc (or .docx) laid out as a clean document, exported to PDF |
+
+Without the docs tool: formatted text in chat, and a .docx when the user asks for a file. Never hand a `.md` file to a platform that does not render Markdown — its `#`, `**` and `|` land on the page as junk.
+
+1. Output the full article **right in the chat, fully formatted, ready to copy**. The article only, from title to disclosure, with no comments, notes or questions inside it.
    - **Formatting is required:** one H1 title; H2 sections and H3 subsections; a **table of contents** with anchor links to the H2 sections right after the author intro; bullet and numbered lists; bold for key facts; short paragraphs (2–4 lines on mobile).
-   - **Tables often** — wherever they help the decision: quick facts, pain → solution, comparison with competitors, prices and packages, pros and cons, "choose X if…". A typical article has 3–5 tables.
-   - Render it as formatted text (not inside a code block), so copying it into Medium, LinkedIn, WordPress, Raisely and similar editors keeps headings, lists, links and tables. For platforms that need Markdown or BBCode source (Dev.to, Reddit, many forums), **also** give the same text in a code block, which has its own copy icon.
+   - **Tables often** — wherever they help the decision: quick facts, pain → solution, comparison with competitors, prices and packages, pros and cons, "choose X if…". A typical article has 3–5 tables (presentations: table slides as images).
+   - Render it as formatted text (not inside a code block); the source block or doc is added per the table above.
    - Images (Step 5) appear inline at their places in the article.
-   - Before the article, one line: word count, number of tables and images, the reference followed.
-   - If the user asks for a file, also give a .docx (or a Google Doc where connected) with the same text and images.
+   - Before the article, three short lines: word count, tables and images, the reference followed · the delivery format and why · "Check by Rumer's rules: N/100, fixed: …".
 2. Under the article, separately, a short **operator checklist**: facts to verify, placeholders left (marked `[VERIFY: …]`), images to create, links to check.
-3. Ask what to change. Iterate section by section; keep everything the user did not ask to change.
-4. When the user has worked the text over and publishes it, offer once to save the final .docx with the page (`work-log` Mode 11 `source`), so it can be republished if the page is removed.
-5. Suggest running `page-audit` on the final text before publishing — it sends the text to the independent auditor, so the page is not graded by the same context that wrote it.
+3. **Mark the topic written and show the batch progress.** If the article came from the approved list, set its `topics:` status to `written YYYY-MM-DD` in the profile and add one line: "Written 1 of 3 'test first' topics · next: #2 7 Best … for Bulking (10/12)".
+4. Ask what to change. Iterate section by section; keep everything the user did not ask to change.
+5. When the user has worked the text over and publishes it, offer once to save the final .docx with the page (`work-log` Mode 11 `source`), so it can be republished if the page is removed.
+
+Then the Next steps above: next topic first, "I published" second, the full audit only last.
 
 ## Step 7 — Roll the topic out to the user's other platforms
 
@@ -152,6 +170,22 @@ Rumer's way of working: once a topic is researched and written for one platform,
 2. Offer in one line: "This topic is not on Firstory, Thermaltake and Gamma yet — make those versions now?" When the user agrees, produce each version in turn (or, if the user writes with another AI tool, a ready prompt per platform that carries the brief, the facts box, the links and the angle).
 3. **Every version is a new page, not a copy:** a different title and angle or content type per platform (best-of on the book, A vs B on the forum, "questions buyers ask" on the podcast, a visual comparison on Gamma), the platform's format from `references/platform-formats.md`, the same verified facts and the user's own links. Near-duplicates get filtered by Google and can pull each other down.
 4. After the user publishes each one, `work-log` logs it (`published` + the topic), so coverage, `ideas` and the check queue see the whole topic across platforms.
+
+Rollout is offered after the user's links come back (Step 8, point 5), not before the next article of the batch — users write a batch first and publish later.
+
+## Step 8 — "I published": links come in a batch
+
+Users write several articles, publish them later and send the links together — one or many, as plain URLs, a list, a message or a screenshot. Never wait for a link before writing the next topic. When the links arrive, match each to its topic in `topics:` (by platform, title or slug; ask once only for the ones that don't match), then in one reply:
+
+1. **Log** every page in the work log: link, platform, topic, offer, program, content type, date, sub-ID (suggest one if the user has none; never block on it). Set the topic to `published <URL>`.
+2. **Check** each page opens, the affiliate links are there and work, and there is no noindex.
+3. **Indexing** by the user's `indexing:` setting: the clean list of URLs for their indexer, or the free ways now and the indexer at the recheck.
+4. **Check queue:** index in 3–7 days, positions in 14 days — say the dates.
+5. **Rollout:** offer the same topics on the other platforms the user chose (Step 7) — a new angle per platform.
+
+Report it as a short table (page · platform · live · links · noindex · sent to indexing · next check) and the Next steps.
+
+If articles were written but no links came, the daily plan carries one line: "Not published yet: 2 articles (ready since 02.11) — send the links when you publish."
 
 ## Brand mode (agency role)
 

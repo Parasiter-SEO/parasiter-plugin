@@ -26,8 +26,9 @@ The user must always know what to type next. End every reply with a short number
 - Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**."
 
 Options that usually fit after this part (adapt to the user's products and words):
-- "write it now" — the article for this topic
-- "check the platform first" — is it worth posting there
+- "write #1 now" — the article for the first test-first topic (name it and its score)
+- "why 9?" — the score broken down by Rumer's 6 criteria and how to raise it
+- "check the platform first" — is it worth posting there (Pro)
 - "make the images" — cover and infographic
 
 Part of PARASITER by Rumer (Affiliate Credo).
@@ -87,16 +88,34 @@ The question to answer for each topic: **which buyer question is still not answe
 
 ## Step 4 — Score and pick
 
-Score each surviving topic with the 12-point filter in `references/scoring.md` (6 criteria × 0/1/2). Show a compact table: topic, type, score, decision.
+Score each surviving topic with Rumer's 12-point filter in `references/scoring.md` (6 criteria × 0/1/2). The user must see that every topic passed a method, not that an AI listed ideas. Show it exactly in this layout (translated to the working language):
 
-- 10–12 → test first
-- 7–9 → publish when there is time
-- 4–6 → reposition the topic
-- 0–3 → do not publish
-
-Say clearly: the score is a filter for ideas, not a ranking prediction.
+1. **Header and one line above the table:** "**Topics picked by Rumer's rules**" — then one line: commercial queries only; best-of lists and comparisons first, then doubts and purchase topics; every topic passed Rumer's 12-point filter.
+2. **The table:** # · Topic · Content type · Platform · **Rumer filter score (of 12)** · Decision. Sorted by score, best-of and comparisons first on equal scores.
+3. **Decisions cite a rule, not an opinion.** The Decision cell is the scale band plus, where something shaped it, the rule behind it: "test first", "when there is time — no own data yet (criterion 3)", "reword: no 'discount' / 'coupon' in the title — the platform's keyword filter", "dropped: informational query (commercial intent rule)". Rules come from `references/scoring.md`, the platform's rules in the user's base or the platform analysis, and the honesty rules below.
+4. **Under the table — the legend, short:** the 6 criteria (buying intent · unresolved doubt in the SERP · own data / experience · one clear CTA · platform fit · can be updated and rolled out), each 0/1/2; and the decision scale: **10–12 test first · 7–9 when there is time · 4–6 reword the topic · 0–3 do not publish**. One line: the score is a filter for ideas, not a ranking prediction.
+5. **Per-topic breakdown on request.** When the user asks "why 9?", "break down #3" or "how do I raise it", show that topic's 6 criteria with their 0/1/2 and a few words each, where it loses points, and the concrete change that would raise it (format in `references/scoring.md`). Keep the breakdowns ready but do not print them for every topic unless asked.
 
 Recommend the top 1–2 topics and explain in one sentence each why they are closest to the money.
+
+### Save the approved list
+
+When the user approves topics ("ok", "take 1, 2, 4", "all test-first ones"), save them in the user's profile `parasite-seo-profile.md` under `topics:` — the same file and convention as `setup:` and `indexing:`, so a new chat or another skill continues from it. One entry per topic:
+
+```
+topics:
+  - n: 1
+    title: "A vs B: Which One to Buy in 2026"
+    type: ab-comparison
+    query: "a vs b"
+    platform: hackmd
+    score: 11
+    decision: test-first
+    approved: 2026-11-02
+    status: todo            # todo → written YYYY-MM-DD → published <URL>
+```
+
+The writer marks a topic `written` when it hands the article over and the work log marks it `published` with the URL when the user sends the link. Add new approved topics at the end with the next number; never renumber. Without file access, give the block back ready to save, once.
 
 ## Step 5 — Hand off a content brief
 
@@ -116,10 +135,11 @@ Products to recommend + when each is the right choice: …
 Main CTA: … (one)
 Must include: (table, scenarios, FAQ, disclosure, last-checked date…)
 Must NOT include: invented tests, reviews, results, prices, warranty terms or clinical claims
-Score: …/12
+Rumer filter score: …/12 (intent · doubt · own data · CTA · platform · reuse = …)
+Topic list: #N of the approved list (profile `topics:`)
 ```
 
-Then ask: "Write it now?" — and pass the brief to the content writing skill.
+Then ask: "Write it now?" — and pass the brief to the content writing skill. When the user approved several topics, the writer takes them in order of the list, test-first ones first.
 
 ## Honesty rules (always)
 

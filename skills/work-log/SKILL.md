@@ -36,6 +36,10 @@ Parasite SEO is measured in sales, not positions. This skill keeps three things 
 
 Reply in the working language from `parasite-seo-profile.md`. Keep column names and `event` / `status` values in English so the files stay machine-readable.
 
+## Step 0 — Plan check (Pro)
+
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — the journal of your pages, sales and traffic, your platform base, sales imports from networks, reports and the check queue. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (tell the goals tracker what you did — say "I published 3 pages" or "2 sales today" — and it counts them in your weekly plan-vs-fact; keep the page links in your own table meanwhile), and stop.
+
 ## Files
 
 In the user's project folder (formats in `references/log-format.md`):
@@ -101,9 +105,11 @@ Whenever the user reports work, or another skill finishes a step, add the row ri
 python3 scripts/worklog.py add parasite-seo-progress.csv --event published --url https://… --platform medium --offer nordvpn --program "NordVPN (Impact)" --sub-id md-1022-1 --query "nordvpn vs surfshark" --type ab-comparison
 ```
 
+**Topics from the approved list.** When a `published` page matches a topic in the profile's `topics:` (by platform, title or slug), set that topic to `published <URL>`. Links may arrive in a batch — plain URLs, a list, a message or a screenshot: log them all in one reply, then hand all of them to `indexing` together (one clean list), and put each on the check queue (index at 3–7 days, positions at 14 days).
+
 **Program and campaign on every page.** `program` is the affiliate account the sales come from (must match the import's `--program`); `campaign` is the pack the page belongs to ("keto-pack-oct", 20 articles published together). These two are enough to count every sale. A **sub-ID** is a bonus: where the network supports it, it ties a sale to the exact page. Offer one (`md-1022-1`, see `references/sales-import.md`) but never block or nag — many programs, coupons and merchant sites cannot pass it.
 
-After a `published` row: hand the page to `indexing` by the user's `indexing:` setting in the profile (`instant` → the clean list to send now; `after-check` → free ways now, indexer only if still out at the recheck; no setting yet → `indexing` Step 0 once). The user sends to indexers themselves. Then offer page-audit if the page has no audit. Every page that enters the journal — published, imported (Mode 0) or added from a list — gets its alive checks from the check queue (2, 7, 14 days, then every 14 days); the checks run in the user's Claude (`platform-monitor`), and the page's URL never leaves the project. If the user worked on the text themselves (edited, rewrote, added photos — not a plain AI draft), offer once to save its source with the page (Mode 11): "Save the .docx with this page so you can republish it if it's removed?" Confirm in one line ("Logged: Medium, sub-ID md-1022-1. Alive check Oct 24. Audit now?").
+After a `published` row: hand the page to `indexing` by the user's `indexing:` setting in the profile (`instant` → the clean list to send now; `after-check` → free ways now, indexer only if still out at the recheck; no setting yet → `indexing` Step 0 once). The user sends to indexers themselves. Every page that enters the journal — published, imported (Mode 0) or added from a list — gets its alive checks from the check queue (2, 7, 14 days, then every 14 days); the checks run in the user's Claude (`platform-monitor`), and the page's URL never leaves the project. If the user worked on the text themselves (edited, rewrote, added photos — not a plain AI draft), offer once to save its source with the page (Mode 11): "Save the .docx with this page so you can republish it if it's removed?" Confirm in one line ("Logged: Medium, sub-ID md-1022-1. Alive check Oct 24, index check Oct 26."); for a batch, one short table (page · platform · topic · next check).
 
 ## Mode 2 — Log sales
 
