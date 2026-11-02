@@ -1,7 +1,7 @@
 {
   "name": "parasiter",
   "displayName": "PARASITER by Rumer",
-  "version": "0.26.1",
+  "version": "0.27.0",
   "description": "Parasite SEO inside your AI assistant, for affiliate marketers, creators, site owners and agencies: find and analyze platforms, pick the content type that sells, write reviews and brand content, make videos and posts findable in Google (video SEO, channel audits, indexing), audit pages and sites, create images, analyze niches and programs, plan paid placements, set goals and get a daily plan, run clients or your own site (content and link plans, positions, GA4 and Search Console, backlinks, revenue vs spend, reports), and keep a journal with a check queue for every page.",
   "author": {
     "name": "Rumer (Affiliate Credo)",
@@ -31,8 +31,8 @@
   "userConfig": {
     "parasiter_key": {
       "type": "string",
-      "title": "PARASITER key (Pro or Insider)",
-      "description": "Your personal key from the PARASITER welcome email. Leave empty on the Free plan.",
+      "title": "PARASITER key (Free, Pro or Insider)",
+      "description": "Your personal key from the PARASITER email (starts with psr_). Free key by email, no card: parasiter.affiliatecredo.com/free.html. Leave empty to use only the content skills.",
       "required": false,
       "sensitive": true
     }

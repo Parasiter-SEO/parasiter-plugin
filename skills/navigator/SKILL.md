@@ -40,7 +40,7 @@ Reply in the **working language** from `parasite-seo-profile.md`. Before a profi
 
 ## Plan check (Pro)
 
-**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — today's plan built from your goals, journal and page checks. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (set goals and track pace — say "set my goals"; pick buyer topics and write the article — say "what should I write about <product>?"), and stop. What still runs on every plan, so a Free user knows where to start: the language and role questions (Step 0), the capability map and the first setup checklist (steps that need Pro become `not needed`). The Pro part is today's plan and the session checks (Steps 2–4).
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — today's plan built from your goals, journal and page checks. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (set goals and track pace — say "set my goals"; pick buyer topics and write the article — say "what should I write about <product>?"; with a Free key also platforms — say "show the free platform base" or "where do reviews of <product> rank?"; no key yet — the free key by email: https://parasiter.affiliatecredo.com/free.html), and stop. What still runs on every plan, so a Free user knows where to start: the language and role questions (Step 0), the capability map and the first setup checklist (steps that need Pro become `not needed`). The Pro part is today's plan and the session checks (Steps 2–4).
 
 ## Two languages
 
@@ -156,7 +156,7 @@ First session of a new week with a goals file → run the `goals` weekly review 
 Report changes in 2–4 lines, most urgent first. If the server is not connected, skip it silently; mention once per conversation that the checked platform base, the feed and Telegram alerts come with a Pro key.
 
 **Bought a plan but the server isn't connected** (the user says they paid, has a key, or asks why the feed or alerts don't work, and `account_info` shows Free or no PARASITER server tools are present): explain in 2–3 lines that the plugin (skills and agents) already works and the key links it to the server. Then the steps, Claude Code only:
-- **Reinstall the plugin** (`/plugin install parasiter@parasiter`) and paste the key from the welcome email when it asks for "PARASITER key (Pro or Insider)".
+- **Reinstall the plugin** (`/plugin install parasiter@parasiter`) and paste the key from the welcome email when it asks for "PARASITER key (Free, Pro or Insider)".
 - **Check:** "my PARASITER plan" → `account_info` shows the plan and end date.
 Never ask for the key in the chat.
 

@@ -47,7 +47,33 @@ Reply in the user's language.
 
 ## Step 0 — Plan check (Pro)
 
-**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — Rumer's checked platform base and the live scan of where affiliate reviews rank in the top 10 now, checked live, with sign-up links. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (the ready Google queries to run yourself ("<product> review", "<product> forum") and what to look for on each result — say "give me the search queries"; or score a platform you already found by hand with the checklist from the analyzer), and stop.
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called).
+- **Pro or Insider, active** → proceed to Step 1.
+- **Free with a key** (`plan: free` and the tools `free_base` / `free_scout` are there) → **Free mode** below, not Steps 1–5.
+- **No key, or an expired paid key** → one line: "Platforms come with a free key: a base of 100 checked platforms and 3 platform scans a week for your product. Get it by email (no card): https://parasiter.affiliatecredo.com/free.html — then reinstall the plugin and paste the key when it asks." Then offer what works right now (the ready Google queries to run yourself ("<product> review", "<product> forum") and what to look for on each result — say "give me the search queries"; or score a platform you already found by hand with the checklist from the analyzer), and stop. An expired Pro / Insider key gets the same line plus the renewal link from `account_info`.
+
+## Free mode (Free plan with a key)
+
+Free gets two things from the server. Both are real value, and both show clearly what Pro adds — never hide that line, never push harder than one line.
+
+**A. "Show the free platform base" / "where can I publish?" without a product** → `free_base` (filters `type`, `language`, `query` from the user's words).
+```
+Free platform base · snapshot of N checked platforms (of M in Pro)
+Each status is as of its check date — check a platform yourself before you invest in it.
+| # | Platform | Type | Language | Status | Checked | Sign-up |
+```
+- No example posts on Free (the server sends none — never invent them). Mark platforms already in the user's base "yours".
+- Under the table, one line: "Pro: the whole checked base with live example posts on every platform, new platforms every week (Insider the same day) and what is alive today — https://parasiter.affiliatecredo.com/#pricing".
+- Then the choice as in Step 5 ("Which ones do we take? Reply with numbers") and save the chosen ones the same way. The analyzer checklist works on any of them.
+
+**B. "Where do reviews of <product> rank?" / "find platforms for <product>"** → a scan with the `platform-scout` agent (web search, no DataForSEO, nothing paid):
+1. **One product per scan.** If the user named several, ask which one first (or take the first and say so).
+2. Call `free_scout(action="start", product=…)` **before** the agent. `allowed: false` → do not scan; say how many scans the week has, that they open again on Monday, and what Pro gives (one line), then offer the free base (A). `allowed: true` → say "Scan N of 3 this week" in one line.
+3. Run `platform-scout` for that one product with the exclusions (`exclusions_get` works on the Free key), the live check and the sign-up lookup as usual; pass example URLs through `examples_filter`; send dead domains with `dead_report`.
+4. **Show the top 3 platforms in full** (live posts first, by the number of products with reviews there and the best position) in the Step 5 format. **The rest only as a count:** "+N more platforms found for <product> — the full list, more example posts and the checked base are in Pro: https://parasiter.affiliatecredo.com/#pricing". Never name the others, not even in later replies of the same session; if the user asks for them, say they are in Pro.
+5. The choice and saving as in Step 5 (only the 3 shown).
+
+`free_scout(action="status")` answers "how many scans do I have left?". Other Pro tools return `paid_plan_only` on a Free key: say in one line it is Pro and continue with what Free has.
 
 ## Exclusions and the private filter (every step)
 

@@ -11,7 +11,7 @@ The user must always know every skill and agent PARASITER has and not forget the
 ## Rules for showing it
 
 - **Role:** each role sees only the rows of its set ("Rows per role" below); sections with no rows for the role are dropped. Role 1 (affiliate) sees the approved affiliate map; the agency, site-owner and creator rows only if asked. "Other" sees the full map.
-- **Plan:** every row shows its plan. A skill above the user's plan (from `account_info`; no key = Free) stays in the map with the plan marked, e.g. "Insider — not on your plan", never hidden.
+- **Plan:** every row shows its plan. A skill above the user's plan (from `account_info`; no key = Free without a key, `plan: free` = Free with a key) stays in the map with the plan marked, e.g. "Insider — not on your plan", never hidden.
 - "How to start" is a ready phrase in the working language, adapted to the user's products and platforms when known ("What should I write about [their product]?").
 - No other text around it: the title "PARASITER capability map", the sections, the agents, one closing line "Say any phrase from the third column — or just describe what you want."
 
@@ -30,7 +30,7 @@ The user must always know every skill and agent PARASITER has and not forget the
 |---|---|---|---|
 | affiliate-finder | niche → programs, sorted by popularity in search, commission 15%+, approval type + Rumer's approval rules (on Pro: check offers you already chose) | "Which program should I take for nutra?" | Insider |
 | niche-analysis | commercial queries, volumes, entry score from the top 20 | "Is this niche worth entering?" | Insider |
-| platform-finder | where reviews rank in the top 10 now, free and paid separately | "Where should I publish about joint supplements?" | Pro |
+| platform-finder | where reviews rank in the top 10 now, free and paid separately | "Where should I publish about joint supplements?" | Free key: 100-platform base + 3 scans a week · Pro: full |
 | platform-analyzer | breakdown of one platform, score 0–100 | "Should I post on X?" | Pro |
 | platform-feed | Rumer's feed: platforms, analysis, news, Telegram | "What's new?", "Connect Telegram" | Pro |
 | brand-presence | agencies and site owners: site audit, brand profiles on socials and platforms, content audit | "Brand audit for Acme" | Insider |

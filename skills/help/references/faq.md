@@ -28,7 +28,7 @@ An affiliate never sees the merchant's analytics, so UTM tags are wasted. An age
 
 ## Plans and key
 <!-- Maintainer: keep this split identical to the pricing block on the site. -->
-- **Free, $0** — plugin without a key, 8 skills: goals, content-type-selector, sales-review-writer, page-audit, post-illustrations, creator-channels, video-seo, help.
+- **Free, $0** — 8 skills without any key: goals, content-type-selector, sales-review-writer, page-audit, post-illustrations, creator-channels, video-seo, help. **Free key** (by email, no card — parasiter.affiliatecredo.com/free.html) adds platform-finder in Free mode: a snapshot of 100 checked platforms (type, language, status, check date, sign-up link; no example posts) and 3 platform scans a week for your product (top 3 platforms in full).
 - **Pro, $19/month** — 17 skills: Free + navigator, client-workspace (agencies and site owners), paid-placements, platform-finder, platform-analyzer, platform-feed, platform-monitor, indexing, work-log. Personal key: checked platform database, feed and weekly market analysis, scheduled monitoring, navigator updates; new platforms about 7 days after they are found.
 - **Insider, $39/month** — all 21 skills and 10 agents: Pro + niche-analysis, affiliate-finder, client-reports, brand-presence (agencies); extra features, new platforms the day they are found, PARASITER Insider channel and the private Insider group.
 - Pro includes the PARASITER Pro channel and personal notifications from the bot. Telegram is for paid plans only.
@@ -83,7 +83,7 @@ It runs in Claude Code:
 New versions come through the same marketplace: update the plugin in Claude Code. The feed and platform database update on the server without reinstalling.
 
 ## Connecting the key
-Free needs no key. Pro and Insider: during install the plugin asks for "PARASITER key (Pro or Insider)" — paste the key from your welcome email (it starts with `psr_`). Need to change it later? Reinstall the plugin and paste the key when asked. Details: how-to, "Connect your key".
+The content skills need no key. During install the plugin asks for "PARASITER key (Free, Pro or Insider)" — paste the key from your email (it starts with `psr_`): the Free key from parasiter.affiliatecredo.com/free.html, or the Pro / Insider key from your welcome email. Need to change it later? Reinstall the plugin and paste the key when asked. Details: how-to, "Connect your key".
 
 ## Languages
 Works in any language. The working language (plans, explanations) is set on first run; the content language of pages follows the target country. "Switch to …" changes it.

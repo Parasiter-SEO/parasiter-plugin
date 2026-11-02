@@ -17,7 +17,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 
 > **Privacy:** the PARASITER server never receives your page URLs, journal, sales, affiliate links or texts — they stay in your Claude project. Page checks run in your own Claude. **Legal products and content only.**
 
-> **Status: private beta (v0.26.0).** Skills and agents work without a key. The server part (platform database, feed, Telegram alerts) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.27.0).** Skills and agents work without a key. The server part (platform database, feed, Telegram alerts) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 
@@ -82,7 +82,7 @@ The plugin is written in English and works in any language. On first run the nav
 
 ## Plans
 
-- **Free, $0** — the plugin without a key.
+- **Free, $0** — the plugin without a key: topics, articles, images, page audit, goals, help. **Free key** (by email, no card — [parasiter.affiliatecredo.com/free.html](https://parasiter.affiliatecredo.com/free.html)): a snapshot of 100 checked platforms and 3 platform scans a week for your product.
 - **Pro, $19/month** — personal key: platform database, feed and weekly analysis, Telegram alerts, navigator updates; new platforms about 7 days after they are found. **PARASITER Pro** Telegram channel and personal notifications from the bot.
 - **Insider, $39/month** — everything in Pro, the full skill set and extra features, new platforms the day they are found. **PARASITER Insider** Telegram channel (platforms a week earlier, extra posts) and the private Insider group (discussion, polls).
 
@@ -105,7 +105,7 @@ PARASITER runs in Claude Code (needs a paid Claude plan that includes Claude Cod
 /plugin install parasiter@parasiter
 ```
 
-2. During install the plugin asks for **"PARASITER key (Pro or Insider)"**. Pro / Insider: paste the key from your welcome email (it starts with `psr_`). Free: leave it empty.
+2. During install the plugin asks for **"PARASITER key (Free, Pro or Insider)"**. Pro / Insider: paste the key from your welcome email (it starts with `psr_`). Free: leave it empty.
 3. Check: say "my PARASITER plan". It shows your plan and its end date.
 
 Need to change the key later? Reinstall the plugin and paste the key when asked. Never paste the key into a chat.
