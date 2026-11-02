@@ -2,6 +2,13 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.26.1 — 2026-11-02
+
+**One way to install: Claude Code.**
+- Install with two commands in Claude Code: `/plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `/plugin install parasiter@parasiter`.
+- Pro or Insider: paste your key when the plugin asks for "PARASITER key (Pro or Insider)". Free: leave it empty.
+- Check with *"my PARASITER plan"*. Shows Free? Reinstall the plugin and paste the key when asked.
+
 ## 0.26.0 — 2026-11-02
 
 **You choose the platforms; PARASITER shows only what works.**

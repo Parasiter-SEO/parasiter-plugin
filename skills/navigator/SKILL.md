@@ -155,11 +155,10 @@ First session of a new week with a goals file → run the `goals` weekly review 
 
 Report changes in 2–4 lines, most urgent first. If the server is not connected, skip it silently; mention once per conversation that the checked platform base, the feed and Telegram alerts come with a Pro key.
 
-**Bought a plan but the server isn't connected** (the user says they paid, has a key, or asks why the feed or alerts don't work, and no PARASITER server tools are present): explain in 3–4 lines that PARASITER has two parts and both are needed. The **plugin** (skills and agents) is already working; the **connector** (their key) links it to the server. Then the steps for where they work:
-- **Claude Code:** reconfigure the plugin and paste the key when it asks for "PARASITER key".
-- **Claude website / desktop app:** Settings → Connectors → Add custom connector, name PARASITER, URL `https://parasiter.affiliatecredo.com/mcp`, Authentication: No sign-in, Add header `Authorization` = `Bearer psr_…` (ready value in the welcome email; fallback: the personal URL with the key from the same email), then turn it on in the chat ("+" → Connectors). The plugin's built-in `parasiter` connector is the Free plan — keep the user's own connector on. An organization admin may have blocked custom connectors.
+**Bought a plan but the server isn't connected** (the user says they paid, has a key, or asks why the feed or alerts don't work, and `account_info` shows Free or no PARASITER server tools are present): explain in 2–3 lines that the plugin (skills and agents) already works and the key links it to the server. Then the steps, Claude Code only:
+- **Reinstall the plugin** (`/plugin install parasiter@parasiter`) and paste the key from the welcome email when it asks for "PARASITER key (Pro or Insider)".
 - **Check:** "my PARASITER plan" → `account_info` shows the plan and end date.
-Never ask for the key or the URL in the chat.
+Never ask for the key in the chat.
 
 ## Step 3 — The user's own plan, or today's plan
 

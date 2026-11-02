@@ -154,13 +154,11 @@ Every client has its own folder (`clients/acme/`); nothing from one client appea
 7. Every month: upload GA4 (Session source / medium, Session manual ad content, Sessions, Key events, Purchase revenue) → "how did my pages pay off?" (`site-roi`), "my backlinks" (`backlinks`), and the site owner report.
 
 ## Connect your key (Pro, Insider)
-PARASITER has two parts, and paid plans need both: the **plugin** (skills and agents: the method, articles, audits, journal; works without a key as Free) and the **connector** (your key: the link to the server). The key comes in the welcome email after payment. It connects the plugin to the PARASITER server: checked platform database and feed, news, weekly analysis, daily page checks, Telegram. Install the plugin first, then connect the key. Lost the steps? The bot sends them again: /setup.
-- **Claude website / desktop app (main way):** Settings → Connectors → Add custom connector. Name: PARASITER. URL: `https://parasiter.affiliatecredo.com/mcp`. Authentication: No sign-in. **Add header**: name `Authorization`, value `Bearer psr_…` (the ready value is in your welcome email). Claude stores the header hidden. Then turn it on in the chat ("+" → Connectors).
-- **Fallback:** if the header field is not there, use the personal URL with the key inside, `https://parasiter.affiliatecredo.com/mcp/<your key>` (also in the email). The URL contains the key: never share it.
-- **Two similar connectors?** The plugin brings its own built-in connector `parasiter`; it works without a key — that is the Free plan. Keep **your** connector (with the key) on, otherwise the paid features stay off.
-- **Can't add a custom connector?** In a Team or Enterprise organization the admin may have blocked it — ask them to allow custom connectors. Plugins need a paid Claude plan.
-- **Claude Code:** the plugin asks for "PARASITER key" when you enable it; paste the key. To change it later, reconfigure the plugin's options. Plugin commands (`/plugin …`) work only in Claude Code, not in a normal Claude chat.
-Check: say "my PARASITER plan" → `account_info` shows the plan and until when. Never paste the key into the chat.
+The key comes in the welcome email after payment (it starts with `psr_`). It links the plugin to the PARASITER server: checked platform database and feed, news, weekly analysis, daily page checks, Telegram. Lost the steps? The bot sends them again: /setup.
+1. Open Claude Code and type `/plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `/plugin install parasiter@parasiter`.
+2. During install the plugin asks for "PARASITER key (Pro or Insider)": paste the key. Free: leave it empty.
+3. Check: say "my PARASITER plan" → `account_info` shows the plan and until when.
+Need to change the key? Reinstall the plugin and paste the key when asked. Never paste the key into the chat.
 
 ## Get news and notifications in Telegram (Pro, Insider)
 Say "connect Telegram" → open the personal link → press Start. The bot sends invites to your plan's channel (and the Insider group). "What's new?" shows the same news in Claude.

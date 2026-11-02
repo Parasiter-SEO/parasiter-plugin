@@ -96,29 +96,19 @@ Every new platform, plugin update, idea, market analysis and poll from Rumer app
 
 ## Install
 
-Plugins need a paid Claude plan (Pro, Max, Team or Enterprise).
+PARASITER runs in Claude Code (needs a paid Claude plan that includes Claude Code).
 
-**On claude.ai or in the Claude desktop app (main way):** Customize (left panel) → Plugins → Add → Add marketplace → Add from a repository → `Parasiter-SEO/parasiter-plugin` → pick **PARASITER** → turn it on. No key is asked: without a key the plugin works as Free.
-
-**In Claude Code** (type these in Claude Code, not in a normal Claude chat):
+1. Open Claude Code and type two commands:
 
 ```
 /plugin marketplace add Parasiter-SEO/parasiter-plugin
 /plugin install parasiter@parasiter
 ```
 
-From a terminal: `claude plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `claude plugin install parasiter@parasiter`.
+2. During install the plugin asks for **"PARASITER key (Pro or Insider)"**. Pro / Insider: paste the key from your welcome email (it starts with `psr_`). Free: leave it empty.
+3. Check: say "my PARASITER plan". It shows your plan and its end date.
 
-## Connect your key (Pro and Insider)
-
-Your key (`psr_…`) comes in the welcome email right after payment.
-
-- **claude.ai or the Claude app:** Settings → Connectors → Add custom connector. Name: `PARASITER`. URL: `https://parasiter.affiliatecredo.com/mcp`. Authentication: No sign-in. **Add header:** `Authorization` = `Bearer psr_…` (the email gives the ready value). Claude keeps the header hidden. Then turn it on in the chat: "+" → Connectors. Fallback if there is no header field: the URL with the key inside, `https://parasiter.affiliatecredo.com/mcp/<your key>` (also in the email; never share it).
-- **Claude Code:** paste the key when the plugin asks for "PARASITER key". No separate connector needed.
-- **Two similar connectors?** The plugin brings its own built-in connector `parasiter`. On the Claude website it has no key, so it works as Free. Your Pro or Insider access comes through the `PARASITER` connector you added from the email: keep that one on. If "my PARASITER plan" shows Free, turn the built-in one off in the chat.
-- On Claude Team or Enterprise an organization admin can turn off **Add custom connector**. Ask your admin, or use Claude Code.
-
-Check: say "my PARASITER plan". It shows your plan and its end date.
+Need to change the key later? Reinstall the plugin and paste the key when asked. Never paste the key into a chat.
 
 Agency and site owner routes: Pro (incl. paid placements); brand and site audit, client and site owner reports: Insider.
 

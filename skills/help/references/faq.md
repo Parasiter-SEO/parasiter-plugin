@@ -75,15 +75,15 @@ After you publish a text you worked on yourself, say "save this .docx with the p
 Networks often show no sub-ID or referrer, buyers come back later, and many pages promote the same offer. UTM tags don't help: they go to the merchant's analytics, which the affiliate doesn't see. PARASITER counts every sale exactly by program, month and pack; per-page numbers add an estimated share, always labelled. A sub-ID per page (or per platform / pack), separate Amazon tracking IDs and network click reports make it more precise.
 
 ## Which AI does it work with?
-Built for Claude; plugins need a paid Claude plan. Other assistants are not supported yet.
-- **Claude website or desktop app (main way):** Customize (left panel) → Plugins → Add → Add marketplace → Add from a repository → `Parasiter-SEO/parasiter-plugin` → PARASITER → turn it on.
-- **Claude Code:** `/plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `/plugin install parasiter@parasiter`. These commands work only in Claude Code — typed into a normal Claude chat they answer "isn't available in this environment".
+Built for Claude Code; it needs a paid Claude plan that includes Claude Code. Other assistants are not supported yet.
+It runs in Claude Code:
+- Open Claude Code and type `/plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `/plugin install parasiter@parasiter`.
 
 ## Updates
 New versions come through the same marketplace: update the plugin in Claude Code. The feed and platform database update on the server without reinstalling.
 
 ## Connecting the key
-Free needs no key: the plugin works as soon as it is on. Pro and Insider: on the Claude website or desktop app add your own connector — Settings → Connectors → Add custom connector, name PARASITER, URL `https://parasiter.affiliatecredo.com/mcp`, Authentication: No sign-in, **Add header** `Authorization` = `Bearer psr_…` (the ready value is in your welcome email; Claude keeps the header hidden). The plugin's built-in `parasiter` connector works without a key — that is the Free plan; keep your own connector on. Claude Code asks for the key when you enable the plugin. If your organization's admin has blocked custom connectors, ask them to allow it. Details: how-to, "Connect your key".
+Free needs no key. Pro and Insider: during install the plugin asks for "PARASITER key (Pro or Insider)" — paste the key from your welcome email (it starts with `psr_`). Need to change it later? Reinstall the plugin and paste the key when asked. Details: how-to, "Connect your key".
 
 ## Languages
 Works in any language. The working language (plans, explanations) is set on first run; the content language of pages follows the target country. "Switch to …" changes it.
