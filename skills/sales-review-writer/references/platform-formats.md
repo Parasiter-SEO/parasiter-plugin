@@ -23,15 +23,15 @@ Same sales logic everywhere (author → problem → solution → bridge → fact
 
 ## Delivery format by platform
 
-The file the user gets depends on what the platform's editor accepts — never a default `.md`. Say in one line why ("Prezi doesn't read Markdown — here is a doc by slides").
+The article always goes **in the chat, formatted, for the copy button** — no file unless the user asks. The editor decides only what is added in the chat next to it. Say in one line why ("Prezi doesn't read Markdown — the text goes by slides").
 
 | Editor | Platforms (examples) | Deliver |
 |---|---|---|
-| Markdown | HackMD, Dev.to, GitHub, Reddit, forums with a Markdown editor | Formatted article in chat + Markdown in a code block; a `.md` file if asked |
+| Markdown | HackMD, Dev.to, GitHub, Reddit, forums with a Markdown editor | Formatted article in chat + Markdown in a code block; a `.md` file only if asked |
 | BBCode | Most classic forums (phpBB, vBulletin, XenForo with BBCode) | Formatted article in chat + BBCode in a code block |
-| Visual (WYSIWYG) | Medium, LinkedIn, WordPress, Raisely, Google Sites, community editors | Formatted article in chat to copy + a Claude doc (exports to Word / Google Docs) when the docs tool is available; no Markdown source |
-| Presentation | Prezi, Gamma, Canva, PDF slides | Claude doc "by slides", plain text, no Markdown marks: `Slide N — Title / Text / Image / Link`; each table becomes its own slide as an infographic image |
-| Document | PDF and document hosts | Claude doc or .docx laid out as a clean document, exported to PDF |
+| Visual (WYSIWYG) | Medium, LinkedIn, WordPress, Raisely, Google Sites, community editors | Formatted article in chat to copy — nothing else; Word / doc only if asked |
+| Presentation | Prezi, Gamma, Canva, PDF slides | The text "by slides" in the chat, plain text, no Markdown marks: `Slide N — Title / Text / Image / Link`; each table becomes its own slide as an infographic image; a doc only if asked |
+| Document | PDF and document hosts | Formatted article in chat; the PDF / .docx file only when the user asks |
 | Plain text / short | Facebook, YouTube description, Quora, podcast description | Plain text in chat, links written out in full |
 
 Not sure which editor the platform uses? Check the platform's own post editor or a live example (`platform-analyzer`), then pick the row.

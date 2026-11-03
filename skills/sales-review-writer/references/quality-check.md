@@ -26,8 +26,8 @@ Run this on every draft. Fix what fails before showing the user; list anything t
 - [ ] H1 title, H2 sections, H3 subsections; table of contents with anchor links.
 - [ ] Lists and bold key facts; short paragraphs.
 - [ ] 3–5 tables where they help the decision (quick facts, pain → solution, comparison, prices, pros/cons).
-- [ ] Article rendered formatted in the chat, ready to copy; code-block version for Markdown/BBCode platforms.
-- [ ] **Delivery format matches the platform** (`platform-formats.md`, "Delivery format by platform"): `.md` / Markdown source only for Markdown platforms; visual editors get formatted text + a Claude doc; presentations (Prezi, Gamma, Canva, PDF slides) get a doc by slides with no Markdown marks. One line in the reply says why this format.
+- [ ] **FIRST: the whole article is in the reply, formatted, ready for the copy button — no file** (.docx, Claude doc, .md, artifact) unless the user asked for one. Long article → "Part 1 of 2…", never files.
+- [ ] **What is added in the chat matches the platform** (`platform-formats.md`, "Delivery format by platform"): Markdown / BBCode source in a code block only for those platforms; presentations get the text by slides with no Markdown marks; visual editors get nothing extra. One line in the reply says why this format.
 - [ ] Self-check by the page-audit checklist done and fixed; the reply carries one line "Check by Rumer's rules: N/100, fixed: …".
 - [ ] Topic from the approved list marked `written`; batch progress line shown ("Written 1 of 3 'test first' topics · next: …").
 - [ ] 3–6 images placed in the article: JPG cards made with code where possible; cover = merchant or own photo, else one free Gemini prompt (DALL·E only as an alternative).

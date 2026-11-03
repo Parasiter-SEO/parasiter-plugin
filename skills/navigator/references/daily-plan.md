@@ -1,5 +1,7 @@
 # Daily plan priorities
 
+**How the plan looks (№25):** a branded page from `../scripts/dayplan.py` (artifact where the environment publishes artifacts, `plan-today.html` opened in the browser in Claude Code) plus a short formatted list in the chat. Never a code block. Check before sending: no ``` around the plan; every task has time, who, "moves" and a ready phrase.
+
 ## Plan from goals
 
 When `parasite-seo-goals.md` exists, build the day in this order:

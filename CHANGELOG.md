@@ -2,6 +2,12 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.28.0 — 2026-11-03
+
+**Your day plan as a page, articles ready to copy.**
+- **Plan for today looks like a dashboard:** goal and week progress, task cards with time, what each task moves, a phrase to copy and a "done" checkbox. An artifact in the Claude app; in Claude Code `plan-today.html` in your PARASITER folder opens in the browser. In the chat — a short clean list, no more code block. Say *"plan for today"*. *"Am I on track?"* — the weekly review the same way.
+- **Articles come right in the chat:** press the copy button under the reply and paste into the platform's editor — headings, lists, tables and links keep their look. No file by default; say *"file"* for a Word copy. Markdown / BBCode platforms also get the source in a code block, presentations get the text by slides. Long articles come in parts.
+
 ## 0.27.1 — 2026-11-03
 
 - The Free key opens **50 checked platforms** (was announced as 100): a hand-picked snapshot, each with its check date and sign-up link.

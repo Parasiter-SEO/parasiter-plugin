@@ -102,7 +102,7 @@ Now: send your affiliate links for VigRX Plus and D-Bal Max (text or a screensho
 - "skip" / "later" → the step becomes `skipped`, the next one starts; skipped steps are offered again after step 12 and in the first weekly review, never forgotten.
 - "Where am I?", "what's left?", "what's next?" → show the whole list with ✓, `now` and what is left, then the current step.
 - A program that needs approval turns step 7 into "apply" (approval rules in `affiliate-finder`); the setup goes on without waiting for the answer.
-- After step 12: one line "Setup done" with what the user now has (pages, links, goals, indexing, Telegram), then the first plan for today (Step 3). The footer disappears; from then on replies end with the normal Next steps block.
+- After step 12: one line "Setup done" with what the user now has (pages, links, goals, indexing, Telegram), then the first plan for today (Step 3) — as the visual plan page (`"kind": "setup"` on the first one, so its header says "Setup done"). The footer disappears; from then on replies end with the normal Next steps block.
 - Agencies, site owners and creators follow their own routes (`client-workspace`, `creator-channels`); this footer is for affiliates.
 
 ## Step 1 — Know the user and their goals (affiliates)
@@ -176,16 +176,22 @@ Answer per part of the plan: 3–8 topics each, one line each with why, then "Wh
 ### Today's plan
 
 
-Use `references/daily-plan.md`: start from the goals (today's quota and what is behind this week), fit it into today's time, order by money impact. 2–5 tasks. Each task: one line, time estimate, the skill that does it, and which target it moves.
+Use `references/daily-plan.md`: start from the goals (today's quota and what is behind this week), fit it into today's time, order by money impact. 2–5 tasks. Each task: time estimate, who does it (in plain words — "the article writer", "you + the journal", not skill names), which target it moves, and the ready phrase to start it.
 
-Format:
-```
-Today's plan (time: …h)
-Goal: [horizon goal] · Week [n]: [done]/[plan] pages, [status]
-1. [task] — ~[time] → [skill] · moves: [target]
-2. …
-Why this order: [one sentence]
-```
+**Show it visually — RULE (№25).** The plan is never a code block. It goes out in two forms in the same reply:
+
+1. **The visual plan** — a branded page made by `scripts/dayplan.py` (format of its JSON in the script's header): date, time today, goal and week status (colour by state: behind / ok / good), KPI tiles (week pages x/y, platforms x/y, Rumer's rule, articles ready), the "not published yet" callout, task cards (number, task, time, who, "moves", the phrase with a copy button, a "done" checkbox), "why this order", what to say next. All text in the user's working language.
+   ```
+   python3 scripts/dayplan.py plan.json      # run in the user's PARASITER folder (script path from this skill's folder) → plan-today.html + plans/YYYY-MM-DD.html
+   ```
+   - **If the environment can publish artifacts** (the Claude app or claude.ai: an Artifact / publish tool is available) → publish `plan-today.html` as a private artifact titled "PARASITER · plan for <date>" (one artifact per day; update the same one when the plan changes during the day).
+   - **Otherwise (Claude Code)** → open the file in the browser (`open` on macOS, `start ""` on Windows, `xdg-open` on Linux) and say where it is: "Your plan: plan-today.html in your PARASITER folder (opened in the browser)."
+   - Code execution off and no artifacts → skip the page; the chat version below is enough.
+2. **The short chat version** — normal formatting, never inside ``` :
+   - **Plan for today · 4 h** — one bold line; under it one line: goal · week status.
+   - a numbered list, one task per item: **task in bold** — ~time · moves: target
+   - one line "Not published yet: …" if any; one line *Why this order: …*
+   - then the Next steps block (option 1 = the first task's phrase).
 
 **Platforms: the goal sets how many, never which.** When the plan needs platforms the user hasn't chosen yet, run platform-finder Step 5: candidates (5–10 when there are that many), an optional ★ on the ones you recommend with the reason, then "Which ones do we take? Reply with numbers (e.g. 1, 3)". Never write "post here" about a platform the user didn't pick. Build the day plan only from platforms with priority `high` in the user's base (`parasite-seo-platforms.csv`). If fewer candidates were found than the goal needs, say how many were found and how to get more (a live scan with the user's DataForSEO, the feed's new platforms) — never narrow the list silently.
 

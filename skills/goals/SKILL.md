@@ -169,16 +169,9 @@ Once a week (the navigator triggers it on the user's first session of the week, 
 5. Adjust next week's targets. If the goal is out of reach, say it plainly and offer the same three options as in Mode 3.
 6. Name one thing that worked and one to drop (platform, content type, offer).
 
-Format:
-```
-Week [n] of [N] — [on track / behind / ahead]
-| | Baseline | Plan | Fact |
-...
-Rumer's rule: [x]/10 platforms, [y]/100 live posts · top 3: [z]/15
-Pace: at this rate → [result] by [date]
-Next week: [targets]
-Changed: [what was adjusted and why]
-```
+**Show it visually (№25)** — the same way as the navigator's day plan, never as a code block:
+- **The page:** `../navigator/scripts/dayplan.py week.json --out week-review.html` with `"kind": "week"`: title "Week [n] of [N]", status pill on track / behind / ahead (state good / behind / ok), KPI tiles plan vs fact (pages, alive, indexed, platforms, top 3, sales, income) and Rumer's rule ([x]/10 platforms, [y]/100 posts, top 3 [z]/15); next week's targets as tasks; "what changed and why" as the why block; one thing that worked and one to drop as callouts. Publish as a private artifact where artifacts exist, otherwise open the file in the browser.
+- **In the chat:** **Week [n] of [N] — status** in bold, a normal Markdown table Baseline | Plan | Fact, then lines: Rumer's rule · Pace: at this rate → [result] by [date] · Next week: [targets] · Changed: [what and why].
 
 ## What the navigator gets
 

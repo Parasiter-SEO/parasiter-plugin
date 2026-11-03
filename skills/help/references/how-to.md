@@ -61,6 +61,7 @@ Everything you show must be real — no invented sales, screenshots, reviews or 
 2. "Write it for [platform]" → `sales-review-writer` (current prices via product-researcher).
 3. "Make images" → `post-illustrations`: infographics drawn in the chat, the cover from a real photo or free Gemini (see "Images for an article").
 4. "Audit it" → `page-audit` (two scores: Rumer's rules and copywriting); fix until the score is good.
+The article comes right in the chat, formatted: press the copy button under the reply and paste it into the platform's editor (headings, lists, tables and links keep their look). No file by default — say "file" if you want a Word copy. Markdown and BBCode platforms also get the source in a code block; presentations get the text by slides.
 5. Publish it yourself. Worked on the text? "Save this .docx with the page" — it can be republished if the page is removed.
 6. Say "published: [URL], [platform], [program], pack [name]" → `work-log` records it; add a sub-ID to the affiliate link if the network supports it. The page is now in the check queue.
 
@@ -152,6 +153,9 @@ Every client has its own folder (`clients/acme/`); nothing from one client appea
 5. Paid placements: "where can I buy an article for my site?" → wires and marketplaces with prices and link policy, a plan for your budget, the press release or article written, then "published: URL, cost $149".
 6. Every page: CTA to the site with UTM; logged with its link (`--link-target --link-rel --anchor --cost`).
 7. Every month: upload GA4 (Session source / medium, Session manual ad content, Sessions, Key events, Purchase revenue) → "how did my pages pay off?" (`site-roi`), "my backlinks" (`backlinks`), and the site owner report.
+
+## Your plan for the day as a page
+Say "plan for today". The plan opens as a page in PARASITER's style: goal and week progress, task cards with time, what each moves, a phrase to copy and a "done" checkbox. In the Claude app it is an artifact; in Claude Code it is `plan-today.html` in your PARASITER folder, opened in the browser (older days: `plans/`). The same short list is in the chat. "Am I on track?" gives the weekly review the same way.
 
 ## Get a free key (Free)
 On parasiter.affiliatecredo.com/free.html enter your email (no card). The Free key comes by email within a minute (it starts with `psr_`; one new key per address a day). It opens a snapshot of 50 checked platforms ("show the free platform base") and 3 platform scans a week, one product each ("where do reviews of <product> rank?") — the top 3 platforms in full, the rest as a count. Connect it like any key (next section). "How many scans do I have left?" shows the week.

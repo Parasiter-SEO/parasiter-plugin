@@ -137,28 +137,32 @@ Without code execution, say once that the JPG cards appear automatically when th
 
 **Before handing over — the built-in check.** Run `references/quality-check.md` and the page-audit checklist (`../page-audit/references/audit-checklist.md`, scored with the Rumer's-rules table in `../page-audit/references/scoring.md`) on the draft yourself, silently, and fix what fails. It is part of writing, not a separate step and not extra text. In the reply it is one line: "Check by Rumer's rules: 92/100, fixed: prices block, CTA in the verdict" — or, if something needs the user: "Check by Rumer's rules: 85/100 — 2 notes: no own photo yet; guarantee not confirmed [VERIFY]". The full audit with the independent auditor stays optional (last Next steps option).
 
-**Delivery format comes from the platform** (`references/platform-formats.md`, "Delivery format by platform"), never a default file. One line before the article says which format and why ("Prezi doesn't read Markdown — here is a doc by slides").
+**The article lives in the chat, not in a file — RULE.** The user copies it with the copy button under your reply and pastes it into the platform's editor: headings, lists, tables, bold and links survive that paste better than from any file. So by default the whole article is output **in the reply itself, fully formatted**, and **no file is made** — no `.docx`, no Claude doc, no `.md`, no artifact. A file only when the user asks for one ("file", "Word", "doc", "PDF").
 
-| Platform kind | What the user gets |
+The platform decides only what is added **in the chat** next to the article (`references/platform-formats.md`, "Delivery format by platform"). One line before the article says which format and why ("Prezi doesn't read Markdown — the text goes by slides").
+
+| Platform kind | What the user gets (all in the chat) |
 |---|---|
-| Markdown platforms (HackMD, Dev.to, GitHub, Reddit, Markdown forums) | the formatted article in chat + the same text as Markdown in a code block; a `.md` file only here |
-| BBCode forums | formatted article in chat + BBCode source in a code block |
-| Visual editors (Medium, LinkedIn, WordPress, Raisely, Google Sites and similar) | the formatted article in chat, ready to copy (headings, lists, links, tables survive the paste) + a **Claude doc** with the same text and images when the docs tool is available — the user exports it to Word or Google Docs. No Markdown source, no `.md` |
-| Presentations (Prezi, Gamma, Canva, PDF slides) | a **Claude doc "by slides"**: "Slide 1 — Title / Text / Image / Link", plain text, no Markdown marks; each table becomes its own slide as an image (infographic card, Step 5) |
-| PDF upload platforms | a Claude doc (or .docx) laid out as a clean document, exported to PDF |
+| Visual editors (Medium, LinkedIn, WordPress, Raisely, Google Sites and similar) | the formatted article, ready to copy — nothing else |
+| Markdown platforms (HackMD, Dev.to, GitHub, Reddit, Markdown forums) | the formatted article + the same text as Markdown in a code block (its own copy button) |
+| BBCode forums | the formatted article + the BBCode source in a code block |
+| Presentations (Prezi, Gamma, Canva, PDF slides) | the text **by slides** in the chat: "Slide 1 — Title / Text / Image / Link", plain text, no Markdown marks; each table becomes its own slide as an image (infographic card, Step 5) |
+| PDF / document hosts | the formatted article in the chat; the PDF only when the user asks for the file |
 
-Without the docs tool: formatted text in chat, and a .docx when the user asks for a file. Never hand a `.md` file to a platform that does not render Markdown — its `#`, `**` and `|` land on the page as junk.
+**Long article:** never cut it into files. If it doesn't fit one reply, output it in parts — "Part 1 of 2", "Part 2 of 2" — each a complete block to copy, split at an H2 boundary.
+
+**After the article, one line only:** "Need a backup copy as a file (Word) in case the page is removed? Say **file**." Never a `.md` for a platform that does not render Markdown — its `#`, `**` and `|` land on the page as junk.
 
 1. Output the full article **right in the chat, fully formatted, ready to copy**. The article only, from title to disclosure, with no comments, notes or questions inside it.
    - **Formatting is required:** one H1 title; H2 sections and H3 subsections; a **table of contents** with anchor links to the H2 sections right after the author intro; bullet and numbered lists; bold for key facts; short paragraphs (2–4 lines on mobile).
    - **Tables often** — wherever they help the decision: quick facts, pain → solution, comparison with competitors, prices and packages, pros and cons, "choose X if…". A typical article has 3–5 tables (presentations: table slides as images).
-   - Render it as formatted text (not inside a code block); the source block or doc is added per the table above.
-   - Images (Step 5) appear inline at their places in the article.
+   - Render it as formatted text in the reply (not inside a code block, not in a file); the source code block is added only per the table above.
+   - Images (Step 5) are files shown separately; in the article text mark where each goes: "[Image 2: price comparison — insert here]".
    - Before the article, three short lines: word count, tables and images, the reference followed · the delivery format and why · "Check by Rumer's rules: N/100, fixed: …".
 2. Under the article, separately, a short **operator checklist**: facts to verify, placeholders left (marked `[VERIFY: …]`), images to create, links to check.
 3. **Mark the topic written and show the batch progress.** If the article came from the approved list, set its `topics:` status to `written YYYY-MM-DD` in the profile and add one line: "Written 1 of 3 'test first' topics · next: #2 7 Best … for Bulking (10/12)".
 4. Ask what to change. Iterate section by section; keep everything the user did not ask to change.
-5. When the user has worked the text over and publishes it, offer once to save the final .docx with the page (`work-log` Mode 11 `source`), so it can be republished if the page is removed.
+5. When the user publishes it, offer once to save the final text with the page in the journal (`work-log` Mode 11 `source`; a .docx only if they want one), so it can be republished if the page is removed.
 
 Then the Next steps above: next topic first, "I published" second, the full audit only last.
 
