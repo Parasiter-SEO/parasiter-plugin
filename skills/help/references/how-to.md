@@ -54,7 +54,7 @@ Many programs check new applications by hand; some want a site, traffic or stats
 Everything you show must be real — no invented sales, screenshots, reviews or traffic: managers check, and faking it ends in a ban and held payouts.
 
 ## Find where to publish
-"Where can I publish about [niche]?" → `platform-finder`. Free key: the 100-platform snapshot, or a scan for one product (3 a week, top 3 in full). Pro: Rumer's checked platforms first, then a live scan of "[product] review" for 20–50 affiliate products — where reviews rank in the top 10 now. The scan is paid (your DataForSEO), cost shown first. Free and paid platforms are listed separately. Before the first post: "analyze [platform]" → `platform-analyzer`.
+"Where can I publish about [niche]?" → `platform-finder`. Free key: the 50-platform snapshot, or a scan for one product (3 a week, top 3 in full). Pro: Rumer's checked platforms first, then a live scan of "[product] review" for 20–50 affiliate products — where reviews rank in the top 10 now. The scan is paid (your DataForSEO), cost shown first. Free and paid platforms are listed separately. Before the first post: "analyze [platform]" → `platform-analyzer`.
 
 ## Write and publish a page (full cycle)
 1. "What should I write about [product] for [query]?" → `content-type-selector` picks the type and topic.
@@ -154,7 +154,7 @@ Every client has its own folder (`clients/acme/`); nothing from one client appea
 7. Every month: upload GA4 (Session source / medium, Session manual ad content, Sessions, Key events, Purchase revenue) → "how did my pages pay off?" (`site-roi`), "my backlinks" (`backlinks`), and the site owner report.
 
 ## Get a free key (Free)
-On parasiter.affiliatecredo.com/free.html enter your email (no card). The Free key comes by email within a minute (it starts with `psr_`; one new key per address a day). It opens a snapshot of 100 checked platforms ("show the free platform base") and 3 platform scans a week, one product each ("where do reviews of <product> rank?") — the top 3 platforms in full, the rest as a count. Connect it like any key (next section). "How many scans do I have left?" shows the week.
+On parasiter.affiliatecredo.com/free.html enter your email (no card). The Free key comes by email within a minute (it starts with `psr_`; one new key per address a day). It opens a snapshot of 50 checked platforms ("show the free platform base") and 3 platform scans a week, one product each ("where do reviews of <product> rank?") — the top 3 platforms in full, the rest as a count. Connect it like any key (next section). "How many scans do I have left?" shows the week.
 
 ## Connect your key (Free, Pro, Insider)
 The Pro / Insider key comes in the welcome email after payment, the Free key in the Free email (both start with `psr_`). It links the plugin to the PARASITER server: checked platform database and feed, news, weekly analysis, daily page checks, Telegram. Lost the steps? The bot sends them again: /setup.

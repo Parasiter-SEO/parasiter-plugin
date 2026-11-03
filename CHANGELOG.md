@@ -2,11 +2,15 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.27.1 — 2026-11-03
+
+- The Free key opens **50 checked platforms** (was announced as 100): a hand-picked snapshot, each with its check date and sign-up link.
+
 ## 0.27.0 — 2026-11-03
 
 **Free key: platforms on the Free plan.**
 - **Get a free key by email, no card:** parasiter.affiliatecredo.com/free.html. Paste it when the plugin asks for "PARASITER key (Free, Pro or Insider)" (reinstall the plugin if it was installed without a key).
-- **100 checked platforms:** say *"show the free platform base"* — type, language, status, check date and sign-up link for each. It is a snapshot: check a platform before you invest in it.
+- **50 checked platforms:** say *"show the free platform base"* — type, language, status, check date and sign-up link for each. It is a snapshot: check a platform before you invest in it.
 - **3 platform scans a week:** say *"where do reviews of <product> rank?"* — one product per scan, the top 3 platforms in full with live example posts. *"How many scans do I have left?"* shows the week.
 - **Pro adds** the whole checked base with live example posts, new platforms every week, what is alive today, cleanup alerts, the journal and the daily plan.
 

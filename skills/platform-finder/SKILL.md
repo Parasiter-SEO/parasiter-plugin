@@ -50,7 +50,7 @@ Reply in the user's language.
 **Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called).
 - **Pro or Insider, active** → proceed to Step 1.
 - **Free with a key** (`plan: free` and the tools `free_base` / `free_scout` are there) → **Free mode** below, not Steps 1–5.
-- **No key, or an expired paid key** → one line: "Platforms come with a free key: a base of 100 checked platforms and 3 platform scans a week for your product. Get it by email (no card): https://parasiter.affiliatecredo.com/free.html — then reinstall the plugin and paste the key when it asks." Then offer what works right now (the ready Google queries to run yourself ("<product> review", "<product> forum") and what to look for on each result — say "give me the search queries"; or score a platform you already found by hand with the checklist from the analyzer), and stop. An expired Pro / Insider key gets the same line plus the renewal link from `account_info`.
+- **No key, or an expired paid key** → one line: "Platforms come with a free key: a base of 50 checked platforms and 3 platform scans a week for your product. Get it by email (no card): https://parasiter.affiliatecredo.com/free.html — then reinstall the plugin and paste the key when it asks." Then offer what works right now (the ready Google queries to run yourself ("<product> review", "<product> forum") and what to look for on each result — say "give me the search queries"; or score a platform you already found by hand with the checklist from the analyzer), and stop. An expired Pro / Insider key gets the same line plus the renewal link from `account_info`.
 
 ## Free mode (Free plan with a key)
 
