@@ -2,6 +2,15 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.29.0 — 2026-11-03
+
+**Every function under a number — jump anywhere, come back.**
+- Say **"menu"** or **0** any time: all 21 skills under fixed numbers by section, ✓ tried / ○ not yet, and "Explored: N of 21 skills · M of 10 agents". Reply with a number to start that skill at once.
+- **Jump and return:** ask for an audit or offers in the middle of anything — it runs right away; your plan, setup step or draft waits, and **1 — back** takes you there.
+- **No pressure:** publishing, reports and setup steps are offers you can skip; "behind" only shows when you work by goals you set.
+- **Exploring mode:** "I want to try all the skills" walks you through the untried ones on short examples; "plan for today" switches back.
+- The panel as a page (or an artifact) with a copy button for each number.
+
 ## 0.28.0 — 2026-11-03
 
 **Your day plan as a page, articles ready to copy.**

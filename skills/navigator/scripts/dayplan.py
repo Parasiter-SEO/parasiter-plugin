@@ -4,6 +4,7 @@
 Usage:
   python3 dayplan.py plan.json                 # writes plan-today.html (+ plans/YYYY-MM-DD.html), prints the path
   python3 dayplan.py plan.json --out week.html # any other page with the same layout (weekly review, setup done)
+  python3 dayplan.py panel.json                # "kind": "panel" → parasiter-panel.html (all skills under numbers, №26)
   python3 dayplan.py --self-test
 
 plan.json (all text in the user's working language; only "title", "tasks" are required):
@@ -21,7 +22,10 @@ plan.json (all text in the user's working language; only "title", "tasks" are re
              "say": "Я опубликовал: <ссылка>", "note": "необязательная строка"}],
   "callouts": [{"text": "Не опубликовано: 2 статьи (готовы с 02.11) — пришлите ссылки", "state": "ok"}],
   "why": "Пока ничего не опубликовано: одна живая страница сегодня даёт больше, чем три в черновиках.",
-  "next": [{"say": "Напиши профиль автора", "what": "начнём с задачи 1"}]
+  "next": [{"say": "Напиши профиль автора", "what": "начнём с задачи 1"}],
+  "explored": "Освоено: 8 из 21 скилов · 4 из 10 агентов",         # №26 panel (optional; "kind": "panel" = panel only)
+  "panel": [{"name": "План", "items": [{"n": 1, "skill": "navigator", "what": "план на сегодня", "plan": "Pro",
+                                         "tried": "03.11", "locked": false}, …]}, …]
 }
 Checkboxes are remembered in this browser only (localStorage); the plan itself stays in the user's folder.
 """
@@ -32,14 +36,14 @@ import sys
 from datetime import date
 
 L = {
-    "en": {"plan": "TODAY'S PLAN", "week": "WEEKLY REVIEW", "setup": "SETUP DONE", "time": "Time today", "goal": "Goal",
+    "en": {"panel": "PARASITER PANEL", "panel_h": "All functions — reply with a number", "menu0": "this menu any time", "tried": "tried", "untried": "not yet", "locked": "not on your plan", "plan": "TODAY'S PLAN", "week": "WEEKLY REVIEW", "setup": "SETUP DONE", "time": "Time today", "goal": "Goal",
            "tasks": "Tasks", "why": "Why this order", "next": "What's next — say", "copy": "Copy", "copied": "Copied",
            "done": "done", "by": "who", "moves": "moves", "of": "of", "foot": "PARASITER by Rumer · your plan stays in your folder"},
-    "ru": {"plan": "ПЛАН НА СЕГОДНЯ", "week": "ОБЗОР НЕДЕЛИ", "setup": "НАСТРОЙКА ГОТОВА", "time": "Время сегодня", "goal": "Цель",
+    "ru": {"panel": "ПУЛЬТ PARASITER", "panel_h": "Все функции — ответьте номером", "menu0": "это меню в любой момент", "tried": "пробовал", "untried": "ещё нет", "locked": "не в вашем тарифе", "plan": "ПЛАН НА СЕГОДНЯ", "week": "ОБЗОР НЕДЕЛИ", "setup": "НАСТРОЙКА ГОТОВА", "time": "Время сегодня", "goal": "Цель",
            "tasks": "Задачи", "why": "Почему такой порядок", "next": "Что дальше — скажите", "copy": "Копировать",
            "copied": "Скопировано", "done": "сделано", "by": "кто", "moves": "двигает", "of": "из",
            "foot": "PARASITER by Rumer · план хранится в вашей папке"},
-    "uk": {"plan": "ПЛАН НА СЬОГОДНІ", "week": "ОГЛЯД ТИЖНЯ", "setup": "НАЛАШТУВАННЯ ГОТОВЕ", "time": "Час сьогодні", "goal": "Ціль",
+    "uk": {"panel": "ПУЛЬТ PARASITER", "panel_h": "Усі функції — відповідайте номером", "menu0": "це меню будь-коли", "tried": "пробував", "untried": "ще ні", "locked": "не у вашому тарифі", "plan": "ПЛАН НА СЬОГОДНІ", "week": "ОГЛЯД ТИЖНЯ", "setup": "НАЛАШТУВАННЯ ГОТОВЕ", "time": "Час сьогодні", "goal": "Ціль",
            "tasks": "Завдання", "why": "Чому такий порядок", "next": "Що далі — скажіть", "copy": "Копіювати",
            "copied": "Скопійовано", "done": "зроблено", "by": "хто", "moves": "рухає", "of": "з",
            "foot": "PARASITER by Rumer · план зберігається у вашій папці"},
@@ -81,6 +85,16 @@ label.chk{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--m);
 .why{background:var(--s);border-left:3px solid var(--k);border-radius:0 12px 12px 0;padding:12px 16px;color:var(--fg)}
 .next{display:grid;gap:8px}.next .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--s);border:1px solid var(--l);border-radius:12px;padding:10px 12px}
 .next .row .w{color:var(--m);font-size:14px}
+.explored{margin:14px 0 0;font-size:14px;color:var(--k)}
+.psec{margin:14px 0 6px;font-size:12px;letter-spacing:.12em;color:var(--m)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.tile{background:var(--s);border:1px solid var(--l);border-radius:12px;padding:10px 12px;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:start}
+.tile .n{font-weight:700;color:var(--a);font-size:18px;min-width:26px}
+.tile .sk{font-weight:600;font-size:14px;word-break:break-word}.tile .w{grid-column:2;color:var(--m);font-size:13px;line-height:1.35}
+.tile .st{grid-column:2;display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:4px;font-size:11px}
+.tile .st .ok{color:var(--ok)}.tile .st .no{color:var(--m)}.tile .st .pl{border:1px solid var(--l);border-radius:5px;padding:0 5px;color:var(--m)}
+.tile.lock{opacity:.55}.tile.tried{border-color:color-mix(in srgb,var(--ok) 35%,var(--l))}
+.tile button{grid-column:2;justify-self:start;margin-top:4px;padding:3px 8px}
 footer{margin-top:32px;color:var(--m);font-size:12px;border-top:1px solid var(--l);padding-top:12px}
 @media (max-width:560px){.meta{text-align:left}}
 @media print{.say button,label.chk{display:none}}"""
@@ -148,11 +162,37 @@ def build(p: dict) -> str:
         rows = "".join(f'<div class="row"><code class="mono">{e(n.get("say"))}</code><button data-copy="{e(n.get("say"))}" data-ok="{e(lab["copied"])}">'
                        f'{e(lab["copy"])}</button><span class="w">{e(n.get("what"))}</span></div>' for n in p["next"])
         parts.append(f'<h2 class="mono">{e(lab["next"]).upper()}</h2><div class="next">{rows}</div>')
+    if p.get("panel"):
+        if kind != "panel":
+            parts.append(f'<h2 class="mono">{e(lab["panel"])}</h2>')
+        parts.append(f'<div class="why" style="border-left-color:var(--a)">{e(lab["panel_h"])} · <b class="mono">0</b> — {e(lab["menu0"])}</div>')
+        if p.get("explored"):
+            parts.append(f'<div class="explored mono">{e(p["explored"])}</div>')
+        for sec in p["panel"]:
+            tiles = []
+            for it in sec.get("items", []):
+                tried = it.get("tried")
+                st = (f'<span class="ok">✓ {e(lab["tried"])} {e(tried)}</span>' if tried else f'<span class="no">○ {e(lab["untried"])}</span>')
+                pl = f'<span class="pl">{e(it.get("plan"))}</span>' if it.get("plan") else ""
+                lk = f'<span class="no">{e(lab["locked"])}</span>' if it.get("locked") else ""
+                cls = "tile" + (" tried" if tried else "") + (" lock" if it.get("locked") else "")
+                tiles.append(f'<div class="{cls}"><div class="n mono">{e(it.get("n"))}</div><div class="sk mono">{e(it.get("skill"))}</div>'
+                             f'<div class="w">{e(it.get("what"))}</div><div class="st">{st}{pl}{lk}</div>'
+                             f'<button data-copy="{e(it.get("n"))}" data-ok="{e(lab["copied"])}">{e(lab["copy"])} {e(it.get("n"))}</button></div>')
+            parts.append(f'<div class="psec mono">{e(sec.get("name", "")).upper()}</div><div class="tiles">{"".join(tiles)}</div>')
     parts.append(f'<footer class="mono">{e(lab["foot"])}</footer>')
     key = e(f"{kind}-{day}")
     return (f'<!doctype html><html lang="{e(p.get("lang", "en"))}"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(p.get("title"))} · {e(day)}</title>'
             f'<style>{CSS}</style></head><body data-key="{key}"><div class="wrap">{"".join(parts)}</div><script>{JS}</script></body></html>')
+
+
+def p_kind(src):
+    try:
+        with open(src, encoding="utf-8") as f:
+            return json.load(f).get("kind", "plan")
+    except (OSError, ValueError):
+        return "plan"
 
 
 def main(argv):
@@ -163,7 +203,13 @@ def main(argv):
                   "tasks": [{"title": "Опубликовать статью", "time": "~45 мин", "by": "вы + журнал", "moves": "пост 1/3", "say": "Я опубликовал: <ссылка>"}],
                   "callouts": [{"text": "Не опубликовано: 2 статьи", "state": "ok"}], "why": "Одна живая страница важнее трёх черновиков.",
                   "next": [{"say": "План на сегодня", "what": "обновить план"}]}
+        sample["explored"] = "Освоено: 1 из 21 скилов"
+        sample["panel"] = [{"name": "План", "items": [{"n": 1, "skill": "navigator", "what": "план", "plan": "Pro", "tried": "03.11"},
+                                                      {"n": 3, "skill": "affiliate-finder", "what": "офферы", "plan": "Insider", "locked": True}]}]
         out = build(sample)
+        assert "ПУЛЬТ PARASITER" in out and "✓ пробовал 03.11" in out and "не в вашем тарифе" in out
+        panel_only = build({"lang": "en", "kind": "panel", "title": "PARASITER panel", "panel": sample["panel"]})
+        assert "PARASITER PANEL" in panel_only and "Copy 1" in panel_only
         assert "Опубликовать статью" in out and "0/3" in out and "<script>" in out and "Копировать" in out
         assert "&lt;ссылка&gt;" in out                       # user text is escaped
         print("self-test ok")
@@ -172,13 +218,14 @@ def main(argv):
         print(__doc__)
         return 2
     src = argv[0]
-    out = argv[argv.index("--out") + 1] if "--out" in argv else "plan-today.html"
+    default = "parasiter-panel.html" if p_kind(src) == "panel" else "plan-today.html"
+    out = argv[argv.index("--out") + 1] if "--out" in argv else default
     with open(src, encoding="utf-8") as f:
         p = json.load(f)
     page = build(p)
     with open(out, "w", encoding="utf-8") as f:
         f.write(page)
-    if "--out" not in argv:                               # keep a dated copy of each day's plan
+    if "--out" not in argv and p.get("kind", "plan") == "plan":   # keep a dated copy of each day's plan
         os.makedirs("plans", exist_ok=True)
         day = p.get("date") or date.today().isoformat()
         with open(os.path.join("plans", f"{day}.html"), "w", encoding="utf-8") as f:

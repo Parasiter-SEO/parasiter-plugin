@@ -18,6 +18,7 @@ This skill answers questions about the plugin. It knows the whole system: read t
 | Question | Read |
 |---|---|
 | What can PARASITER do, show all functions / skills, "map" | `navigator/references/capability-map.md` (the approved map) |
+| "menu", "panel", "0", a skill number, "what have I tried", "I want to try everything" | `navigator/references/panel.md` (numbered panel, tried path, jumping, exploring mode) |
 | What is in the plugin, what does skill X do, is there a skill for Y, what do agents do | `references/catalog.md` |
 | How do I … (a task, step by step) | `references/how-to.md` |
 | Plans and key, files, privacy, languages, attribution, risks, limits, install and updates | `references/faq.md` |
@@ -30,7 +31,8 @@ Reply in the working language from `parasite-seo-profile.md`; before a profile e
 2. **Give the exact phrase** the user can type ("Say: *log a sale, $42 from ClickBank*") and, when useful, the direct command (`/parasiter:work-log`). Skills start from plain requests; nobody has to remember commands.
 3. **Offer to do it now** in one line ("Want me to set up your journal now?"). If the user agrees, follow that skill.
 4. **Overview questions** ("what can PARASITER do?", "show all functions"): show the capability map from `navigator/references/capability-map.md` exactly in its format — translated into the working language, only the rows of the user's role, each skill's plan marked against the user's plan — then ask what they want to start with. A one-line answer about one skill comes from `catalog.md`.
-5. **Lost user** ("I don't know where to start"): hand over to `navigator` — it asks a few questions and builds today's plan.
+5. **Menu and numbers:** "menu" / "0" / a bare number follow `navigator/references/panel.md` — show the panel or start the skill with that number. Every help reply ends with "**0** — menu of all functions", and marks `help` as tried (`tried:` in the profile).
+6. **Lost user** ("I don't know where to start"): hand over to `navigator` — it asks a few questions and builds today's plan.
 
 ## Rules
 

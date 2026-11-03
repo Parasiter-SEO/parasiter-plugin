@@ -1,6 +1,6 @@
 ---
 name: navigator
-description: Entry point of PARASITER. First asks who the user is and what for (affiliate earning with parasite SEO, agency / SEO or marketing specialist working for clients, site owner promoting their own site / shop / services / course, blogger or content creator growing their own channels, other) and offers the route that fits that role. For affiliates reads their goals, journal and time, then builds today's plan that moves the goals forward within the time they have; for agencies and site owners hands over to client-workspace (clients or the own site, content and link plans, today's plan, monthly reports); routes each task to the right skill. Use when the user starts working, asks "what should I do today", "where do I start", "what's next", "plan my day/week" for parasite SEO, or seems unsure which skill to use.
+description: Entry point of PARASITER. First asks who the user is and what for (affiliate earning with parasite SEO, agency / SEO or marketing specialist working for clients, site owner promoting their own site / shop / services / course, blogger or content creator growing their own channels, other) and offers the route that fits that role. For affiliates reads their goals, journal and time, then builds today's plan that moves the goals forward within the time they have; for agencies and site owners hands over to client-workspace (clients or the own site, content and link plans, today's plan, monthly reports); routes each task to the right skill. Also the PARASITER panel: every skill under a fixed number to jump to any time ("menu", "panel", "0", a bare number like "12"), the path already tried, and an exploring mode for trying all skills. Use when the user starts working, asks "what should I do today", "where do I start", "what's next", "plan my day/week" for parasite SEO, says "menu", "panel", "show all skills", "0" or a skill number, "I want to explore / try all the skills", "back", or seems unsure which skill to use.
 ---
 
 # Navigator
@@ -23,7 +23,9 @@ The user must always know what to type next. End every reply with a short number
 - Each option is a complete phrase in the user's working language that they can copy, plus what it does. Never show skill or agent names here: the work label at the top already names the part that is working.
 - Offer only what the user's plan includes (`account_info`, once per session). A Pro or Insider feature on a lower plan appears at most once as the last option, marked "(Insider)" or "(Pro)" with one line on what it gives.
 - **During first setup** (a step in the profile's `setup:` is still open — not `done`, `skipped` or `not needed`): option 1 is the current setup step, and the setup footer from `navigator` ("First setup checklist") goes under the options — step N of 12, what is done, now, next.
-- Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**."
+- Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered.
+- **0 — menu (№26):** the last option is always "**0** — menu of all functions". If something is paused (`paused:` in the profile: a day-plan task, a setup step, a draft), option 1 is "**back** to <it>". Never make an option a condition ("first publish…") — every option is an offer.
+- **Mark tried:** on this skill's first real run in the session, add or update its line under `tried:` in `parasite-seo-profile.md` (`- <skill> · YYYY-MM-DD · <what, 3–6 words>`; agents too, marked `agent`). When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**."
 
 Options that usually fit after this part (adapt to the user's products and words):
 - "start the first task"
@@ -33,6 +35,15 @@ Options that usually fit after this part (adapt to the user's products and words
 Part of PARASITER by Rumer (Affiliate Credo).
 
 PARASITER has four full routes: affiliates who earn with parasite SEO, agencies running parasite SEO for clients and site owners building parasite pages around their own site (both in `client-workspace`), and creators growing their own channels for free (`creator-channels`).
+
+## Panel, jumping and exploring — RULE (№26)
+
+**Offer, never demand.** You don't know how the user wants to work today. Publishing, uploading reports and setup steps are offers they may skip; never block a request because the setup is open or nothing is published, never write "first publish…".
+- **"menu" / "panel" / "skills" / "0"** → the panel from `references/panel.md`: every skill under its fixed number, ✓ tried / ○ not yet, plan marked, the progress line "Explored: N of 21 skills · M of 10 agents". A **number** starts that skill at once.
+- **Jump any time:** any request mid-plan, mid-setup or mid-article goes straight to its skill; what was in progress goes to `paused:` in the profile, and after the task option 1 is "back to <it>", the last option "0 — menu".
+- **Tried path:** every skill marks itself under `tried:` in the profile on its first real run (format in `panel.md`). Progress shows what the user has explored, not what they "owe".
+- **Exploring mode** ("I want to try all the skills") → `mode: explore`: no goal plan, no reminders, one untried skill at a time on a short example. "plan for today" / "let's work by plan" → `mode: work`.
+- Session start: read `mode`, `paused`, `tried`. Something paused → first line "Paused: <what> — say **back** to continue". In explore mode → the panel and the next untried skill instead of today's plan.
 
 The navigator answers one question: **what is the most useful thing to do today, in the time this person has, to move their goals forward?** It does not do the work itself. It picks the tasks and hands each one to the skill that does it, so the user never has to know which command to run.
 
@@ -65,12 +76,12 @@ Every later session: read `role` first. A request outside the role's toolset get
 
 The user always sees everything PARASITER can do. Show the map from `references/capability-map.md` — in its approved format, translated into the working language, with only the rows of the user's role and the plan of each skill marked against the user's plan:
 - **first run** — right after the language and role (setup step 1), before the work environment block;
-- **start of every new session** — after today's plan (Step 3), or after the setup footer while the first setup is open;
+- **start of every new session** — after today's plan (Step 3), or after the setup footer while the first setup is open; every row carries its panel number from `references/panel.md` (first column "#") so the user can answer with a number;
 - **any time** the user says "map", "show all functions", "what can PARASITER do".
 
 ## First setup checklist (affiliates)
 
-The first setup is a fixed route of 12 steps. The user always sees where they are, how many steps are left and what to do next — in every reply, whichever skill answers, until the setup is finished.
+The first setup is a fixed route of 12 steps — an **offer**, not a gate. The user sees where they are and what is next under replies while it is open, can skip any step, and can jump to any other skill at any moment (the setup step goes to `paused:` and is offered again after). In exploring mode the footer is not shown; "where am I in setup?" still shows it.
 
 | # | Step | Done by |
 |---|---|---|
@@ -99,6 +110,7 @@ Now: send your affiliate links for VigRX Plus and D-Bal Max (text or a screensho
 
 - One main action under "Now:", concrete for this user (product names, the file to upload), and how to skip it. Other options go below it as "You can also:", never as equals.
 - After a skill finishes its step, control comes back to the navigator: mark the step `done`, name the next one and start it. A skill never ends the setup conversation on its own.
+- A request that is not the current step (an audit, offers, a platform) → do it now; the step stays `now`, comes back as "1 — back to setup: step N" after the task.
 - "skip" / "later" → the step becomes `skipped`, the next one starts; skipped steps are offered again after step 12 and in the first weekly review, never forgotten.
 - "Where am I?", "what's left?", "what's next?" → show the whole list with ✓, `now` and what is left, then the current step.
 - A program that needs approval turns step 7 into "apply" (approval rules in `affiliate-finder`); the setup goes on without waiting for the answer.

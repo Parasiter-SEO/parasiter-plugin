@@ -154,6 +154,9 @@ Every client has its own folder (`clients/acme/`); nothing from one client appea
 6. Every page: CTA to the site with UTM; logged with its link (`--link-target --link-rel --anchor --cost`).
 7. Every month: upload GA4 (Session source / medium, Session manual ad content, Sessions, Key events, Purchase revenue) → "how did my pages pay off?" (`site-roi`), "my backlinks" (`backlinks`), and the site owner report.
 
+## Jump between functions: the panel (menu)
+Say **"menu"** or **0** at any moment: every skill under a fixed number, by section, with ✓ what you have tried and ○ what not yet, and "Explored: N of 21 skills · M of 10 agents". Reply with a **number** ("12", or "12 https://your-page") and that skill starts at once. Whatever you were doing (today's plan, a setup step, a draft) is paused: after the task, **1 — back** returns you there, **0** opens the menu again. Nothing is required first: publishing and reports are offers. Want to try everything? Say **"I want to try all the skills"** — exploring mode walks you through the untried ones on short examples, without plans or reminders; "plan for today" switches back. The panel also comes as a page (`parasiter-panel.html` or an artifact) with a copy button for each number.
+
 ## Your plan for the day as a page
 Say "plan for today". The plan opens as a page in PARASITER's style: goal and week progress, task cards with time, what each moves, a phrase to copy and a "done" checkbox. In the Claude app it is an artifact; in Claude Code it is `plan-today.html` in your PARASITER folder, opened in the browser (older days: `plans/`). The same short list is in the chat. "Am I on track?" gives the weekly review the same way.
 
