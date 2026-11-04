@@ -69,7 +69,7 @@ Every video or post goes through `video-seo`: the package before filming or publ
 
 ## Step 5 — Get it indexed
 
-Fresh content that Google hasn't found can't rank. `references/indexing.md`: free ways first (the hub page linking the new piece, sharing to crawled platforms, the creator's own site sitemap and Search Console, IndexNow for Bing), then one recommended low-cost indexer for URLs that stay unindexed after 7–14 days — with its price per URL named, and only with the user's yes. Log `submitted` in the journal.
+Fresh content that Google hasn't found can't rank. `references/indexing.md`: no free tricks (links and shares don't get pieces indexed); the only free way is the creator's own site in Search Console; then one recommended low-cost indexer for URLs that stay unindexed after 7–14 days — with its price per URL named, and only with the user's yes. Log `submitted` in the journal.
 
 ## Step 6 — Track the top and the growth
 

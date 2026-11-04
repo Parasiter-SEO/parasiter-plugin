@@ -39,7 +39,9 @@ Two kinds of images, every article:
 1. **Cover photo** — a realistic photo of the real product being discussed (the user's own photo first; otherwise the merchant's real product shot as the reference, or a realistic generated photo of that exact product). Right under the title.
 2. **Infographics** — 3–5 cards that carry the facts of the section they sit in: key facts / ingredients, pains → solution, benefits in theses, comparison table, prices and packages, verdict. Short text only (headings, theses, numbers), never paragraphs. `sales-review-writer` renders these with code as JPG when it can; otherwise this skill writes prompts for them.
 
-Every image: **horizontal, full article width, JPG ~700 px wide** (700×394), light. Sizes and hosting by link: `references/platform-sizes.md`.
+Every image: **horizontal, full article width, JPG 700 px wide** (700×394), light. Sizes and hosting by link: `references/platform-sizes.md`.
+
+**Infographic files — RULE (№30).** Each infographic is a **separate `.jpg` file, exactly 700 px wide** (cards 700×394; a tall table 700 px wide, height by content), JPEG quality ~85, under ~150 KB, named in article order: `01-quick-facts.jpg`, `02-ingredients.jpg`, `03-which-one-fits.jpg`… Saved in the user's folder under `images/<article-slug>/` and handed over as files (download / open), each also shown in the chat. **Never** a `.md` file with images, never a small PNG preview, never a screenshot of the chat. Before handing over, check every file with code (format JPEG, width = 700) and fix it if not. In the article text mark where each goes: "[Image 2: 02-ingredients.jpg — insert here]".
 
 Reply in the user's language; write prompts in English (generators follow English best).
 
@@ -59,18 +61,22 @@ Images cost the user nothing. Explain it **once** per user (first article, or wh
 1. **Infographics** (key facts, pains → solution, comparison, prices, verdict) — Claude draws them with code right in the chat: JPG ~700 px, exact text and numbers, $0. The only requirement is code execution turned on in Claude (Settings → Capabilities). Without it, say so once and give infographic prompts meanwhile.
 2. **Cover** (a realistic photo of the product), in this order:
    1. the **real product photo** — the user's own, or the merchant's product shot (the link comes from `product-researcher` in `sales-review-writer`; otherwise ask the user for the product page);
-   2. if a generated cover is needed — **one** ready prompt in a code block (it has the copy icon) and the link **[Open Gemini](https://gemini.google.com)**: the user makes it there for free (about 20 images a day on a free Google account; Google's limits change) and saves it.
-3. **DALL·E / ChatGPT** — only as the alternative for users who already pay for ChatGPT. Never the default, never a reason to buy anything.
+   2. if a generated cover is needed — **one** ready prompt in a code block (it has the copy icon) and the link **[Open Gemini](https://gemini.google.com)**, made free there.
+   **The reference photo is a screenshot, not a saved file:** product photos on shops are usually page backgrounds, so saving them is slow or impossible. Say: "Open the product page, take a screenshot of the product photo (Windows: **Win+Shift+S**, Mac: **Cmd+Shift+4**) and paste it straight into Gemini with **Ctrl+V** / **Cmd+V** — no need to save the file. Attach a screenshot of each product, then paste the prompt." Saving the image is the fallback.
+3. Other generators — the user chooses from the table below; never a reason to buy anything.
 
 ### Where to make the cover
 
-| Tool | Cost | When |
-|---|---|---|
-| **Gemini** (gemini.google.com) — default | free, ~20 images a day | every user, every article |
-| ChatGPT (DALL·E / image generation) | paid ChatGPT plan for regular use | only if the user already pays for it; good with text on images |
-| Midjourney, Canva (Magic Media + templates) | paid / free tier | only if the user or the agency already uses them (Canva for finishing covers with a client's logo and fonts) |
+Show this table once (with the check date) so the user can choose; terms change — say "as checked on <date>":
 
-The same prompt works in all of them. Name Gemini first; mention the others only if the user asks or already has them.
+| Tool | Free | Paid | Good for |
+|---|---|---|---|
+| **Gemini** (gemini.google.com) — default | yes; Google doesn't publish a daily number — the limit is compute-based, resets every 5 hours, with a weekly cap | Google AI Plus $4.99/mo (2× the limit), AI Pro $19.99/mo (4×) | every article; understands a pasted product screenshot as the reference |
+| **ChatGPT** (image generation) | about 2–3 images per 24 h | Plus $20/mo — far more | text on images |
+| **Canva** (Canva AI / Dream Lab + templates) | up to 20 AI uses a month (shared allowance) | Canva Pro about $15/mo ($144/yr): image generation without a separate cap (fair use) | finishing covers with a logo and fonts (agencies) |
+| **Midjourney** | no free plan | Basic $10/mo (~200 fast minutes ≈ 200+ images) | the most "photo" look |
+
+Checked 21–25 Oct 2026 (Gemini: compute-based limits, plans AI Plus / AI Pro; ChatGPT free ~2–3 / 24 h; Canva Free 20 AI uses / month, Pro $144 / yr; Midjourney Basic $10, no free plan). Never quote "20 images a day" for Gemini — Google publishes no such number. The same prompt works in all of them.
 
 ## Step 2 — Plan the set
 

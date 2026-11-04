@@ -123,7 +123,7 @@ Every article comes with its images. Plan 3–6, one line each: what it shows an
 
 **Images cost the user nothing.** Say it **once per user**, in one line: "How we work with images: I draw the infographics myself right here; the cover you make free in Gemini with my prompt — 30 seconds." Then save `images_explained: yes` in `parasite-seo-profile.md`; if it is already there, don't repeat it in later articles or sessions.
 
-**Make the images yourself when code execution is available** — render them with code (HTML/SVG or Python imaging) and save as **horizontal JPG, ~700 px wide (700×394), light files**, full article width, one consistent style per article; images carry the section's facts in short theses, never paragraphs, and show each one in the chat right where it belongs so the user can copy or save it directly:
+**Make the images yourself when code execution is available** — render them with code (HTML/SVG or Python imaging) and save each as a **separate `.jpg` file, exactly 700 px wide** (700×394 cards; tall tables 700 px wide), quality ~85, named in order (`01-quick-facts.jpg`…) in `images/<article-slug>/`, checked with code before handing over — never `.md` files or small previews (post-illustrations, "Infographic files — RULE"), full article width, one consistent style per article; images carry the section's facts in short theses, never paragraphs, and show each one in the chat right where it belongs so the user can copy or save it directly:
 - quick facts card (line-by-line characteristics + current deal);
 - pains → solution infographic;
 - comparison card / table image (product vs competitors);
@@ -131,7 +131,7 @@ Every article comes with its images. Plan 3–6, one line each: what it shows an
 - verdict / "choose X if…" card.
 Text on images only from verified facts, with the checked date on any price.
 
-**The cover photo** — a realistic photo of the real product — cannot be made with code. Order: real photo → Gemini prompt → DALL·E only if the user pays for ChatGPT. First choice: the merchant's real product photo (the image URL `product-researcher` returns) or the user's own photo. If a generated one is needed, give **one** ready cover prompt via `post-illustrations` with a copy icon and the link "Open Gemini" (gemini.google.com — free, about 20 images a day), and mark the spot under the title. DALL·E / ChatGPT only as an alternative for users who already pay for ChatGPT. No decorative images without information. Where the platform takes images only by link, say so and remind the user to host them (`post-illustrations` → platform-sizes).
+**The cover photo** — a realistic photo of the real product — cannot be made with code. Order: real photo → Gemini prompt → DALL·E only if the user pays for ChatGPT. First choice: the merchant's real product photo (the image URL `product-researcher` returns) or the user's own photo. If a generated one is needed, give **one** ready cover prompt via `post-illustrations` with a copy icon and the link "Open Gemini" (gemini.google.com — free), tell the user to paste a **screenshot** of the product photo as the reference (Win+Shift+S / Cmd+Shift+4, then Ctrl+V — no saving), and mark the spot under the title. Other generators and their terms: the table in `post-illustrations`. DALL·E / ChatGPT only as an alternative for users who already pay for ChatGPT. No decorative images without information. Where the platform takes images only by link, say so and remind the user to host them (`post-illustrations` → platform-sizes).
 
 Without code execution, say once that the JPG cards appear automatically when the assistant's code execution / file creation is turned on (in Claude: Settings → Capabilities), and give all image prompts via `post-illustrations` meanwhile. Respect platform limits (PDF — few light images; Raisely — cover only; forums — external hosting). Never generate fake people presented as real users or experts, fake certificates or before/after results.
 
@@ -185,7 +185,7 @@ Users write several articles, publish them later and send the links together —
 
 1. **Log** every page in the work log: link, platform, topic, offer, program, content type, date, sub-ID (suggest one if the user has none; never block on it). Set the topic to `published <URL>`.
 2. **Check** each page opens, the affiliate links are there and work, and there is no noindex.
-3. **Indexing** by the user's `indexing:` setting: the clean list of URLs for their indexer, or the free ways now and the indexer at the recheck.
+3. **Indexing** by the user's `indexing:` setting: the clean list of URLs for their indexer now, or at the recheck for pages still out (no free tricks — only the own-site way when the user has a site in Search Console).
 4. **Check queue:** index in 3–7 days, positions in 14 days — say the dates.
 5. **Rollout:** offer the same topics on the other platforms the user chose (Step 7) — a new angle per platform.
 

@@ -13,8 +13,9 @@ Do:
 1. **Offer.** From the service's own pages (pricing, FAQ, packages, contact): packages and prices with currency, what each includes (word count, links, images, distribution list), turnaround, add-ons. Price not published → "price on request" plus the exact way to ask (form URL, sales email, chat).
 2. **Links.** What the service states about links (dofollow / nofollow / sponsored, how many). Then look at 1–2 recent published releases or articles on the outlets it lists: open them, read the link's `rel` in the source. Report both: "stated" and "seen on [URL]".
 3. **Distribution and ranking.** Which outlets carry it, Google News, Yahoo Finance and similar; whether those pages are indexed (site: search of one published URL); whether pages of the outlet appear in the top 10 for the user's queries or "[category] review / best [category]" in the niche (search, note positions you see).
-4. **Restrictions.** Niches refused (gambling, crypto, CBD, adult, nutra, finance), content rules, required "sponsored" or "press release" labels, refund terms.
-5. **Marketplace shortlist** (prnews.io or similar, when asked): use the catalog's public filters — niche, country, price, traffic, Google News, dofollow — and return 5–10 sites per budget with price, stated traffic, link policy, and one recent article URL checked for indexing and rel. Never create an account, never order, never contact sales.
+4. **Who they work with.** Contract required or not; private persons accepted or companies only (company / sole-trader details, invoice); minimum package and minimum term; one-off article possible or packages only. "Not published" if the site doesn't say.
+5. **Restrictions.** Niches refused (gambling, crypto, CBD, adult, nutra, finance), content rules, required "sponsored" or "press release" labels, refund terms.
+6. **Marketplace shortlist** (prnews.io or similar, when asked): use the catalog's public filters — niche, country, price, traffic, Google News, dofollow — and return 5–10 sites per budget with price, stated traffic, link policy, and one recent article URL checked for indexing and rel. Never create an account, never order, never contact sales.
 
 Do not:
 - guess a price, a traffic number or a link type — "not published" / "not seen";
@@ -22,6 +23,6 @@ Do not:
 - recommend — the skill compares and the user decides.
 
 Return:
-1. Per service: | Field | Value | Source | Checked | — offer and packages, how to order or request a quote, links stated / seen, distribution, indexed example, ranks for niche queries (yes / no / not seen), restrictions, turnaround, refund.
+1. Per service: | Field | Value | Source | Checked | — offer and packages, how to order or request a quote, work format (one-off / package / contract with a company, private persons yes/no, minimum package and term), links stated / seen, distribution, indexed example, ranks for niche queries (yes / no / not seen), restrictions, turnaround, refund.
 2. Marketplace shortlist table when asked: Site · Price · Stated traffic · Google News · Rel (stated / seen) · Indexed example · Notes.
 3. "Conflicts / unclear" and sources.

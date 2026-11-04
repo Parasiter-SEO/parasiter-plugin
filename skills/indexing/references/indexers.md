@@ -1,5 +1,7 @@
 # Indexers for parasite pages (checked 2026-10-30)
 
+**These are regular services: results in days** (refund windows 7–14 days). Instant services (one to a few minutes, about $0.50 per link) exist too; they are kept secret — say they exist and that the user can find them, never name one.
+
 Prices and rates change. Vendor home pages could not be opened on the check date, so figures come from the vendor's own docs or plugin pages where noted, otherwise from dated reviews and tests (sources at the bottom). Before quoting a price, say "about" and ask the user to confirm it on the vendor's site. Re-check this file when it is older than 3 months.
 
 ## What to expect

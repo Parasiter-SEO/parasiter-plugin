@@ -6,22 +6,17 @@
 - The Indexing API is only for job postings and livestream videos, needs Search Console ownership (so it can't be used for pages on someone else's platform), runs spam checks on every submission, and abuse can get access revoked. Since 16 Oct 2026: 200 publish requests per project per day, no form to ask for more [24][25][26]. Don't recommend it for parasite pages.
 - Many pages "crawled / discovered – currently not indexed" on one site is a quality signal for that site, not a bug to fix page by page (Mueller, Jul 2026) [30].
 
-## Free ways for pages the user doesn't own
+## No free ways for parasite pages — RULE (Rumer, №27)
 
-| Way | Google | Notes |
-|---|---|---|
-| **Link from a page Google already indexed** (the user's indexed parasite pages, profile / hub, own site) | yes | The main way Google finds URLs. Strongest free option. A link from the user's own site can be added, the host page re-requested in Search Console, and the link removed once the target is indexed [20]. |
-| **Links inside the platform** (older indexed posts there, profile, collections, tags, related posts) | yes | Same logic; costs nothing on the platform you already use. |
-| **X / Twitter post** with the URL | maybe | Practitioners rate it highly, no test data [20]. |
-| Reddit / community answer (where self-links are allowed), Pinterest pin, LinkedIn, Quora, YouTube description | discovery only | Mostly nofollow; helps Google find the URL, not proven to get it indexed [20]. |
-| Google Sites / Blogger page linking to it | if that page itself gets indexed | No test evidence it is faster [20]. |
-| RSS feeds and aggregators | weak, unproven | No 2025–26 evidence. |
-| Ping services | **no** for Google | Google shut its sitemap ping at the end of 2023 [21]. Don't recommend. |
-| IndexNow | **no** for Google | Bing, Yandex, Naver, Seznam only, and only for domains where you can put the key file [22]. |
+Links from indexed pages, links inside the platform, posts on X / Reddit / Pinterest / LinkedIn / Quora, YouTube descriptions, Google Sites or Blogger pages, RSS, pings: in Rumer's experience none of them gets parasite pages indexed. Never offer them. The only free way is the user's **own site in Search Console** (below); everything else is a paid indexing service.
 
-## Own site only
+## Instant indexing (say it, never name the tools)
 
-Search Console URL Inspection → Request indexing (capped per day; use for the few pages that matter), the sitemap (for many URLs), IndexNow for Bing and others, internal links from the home page or a hub page.
+"There are instant indexing services: a page usually gets into the index within one to a few minutes. They are paid — one link can cost about $0.50. The specific tools are kept secret, but you can find them yourself."
+
+## Own site only — the one free way
+
+For a new parasite page: link it from a page of the user's own site (a post, a hub page, the home page), then Search Console → URL Inspection → **Request indexing for that own page** (capped per day; use it for the pages that matter). Google follows the link. The link can be removed once the target is indexed. For the user's own pages: the same Request indexing, the sitemap, internal links. IndexNow reaches Bing and others, not Google.
 
 ## Before paying: blockers
 

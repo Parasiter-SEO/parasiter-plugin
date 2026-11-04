@@ -31,8 +31,9 @@ Free $0 · Pro $19/month · Insider $39/month (see help `faq.md` for what each i
 ## 4. Indexing
 
 A page that is not in Google's index can't rank and can't sell — so every new page needs a way in.
-- **Free ways first:** a link from your pages Google already crawls (older indexed posts, profile, your site), links inside the platform, a share on X / Pinterest / a community. Often enough on strong platforms.
-- **Paid indexers — Rumer's top** (about; prices change, details and tests in `indexing/references/indexers.md`):
+- **No free tricks:** links from other pages, posts on X / Pinterest / communities don't get parasite pages indexed (Rumer's experience). The only free way: your own site verified in Google Search Console — link the new page from your site and request indexing of your page.
+- **Instant indexing:** there are instant indexing services — a page usually gets into the index within one to a few minutes; they are paid, one link can cost about $0.50. The specific tools are kept secret, but you can find them yourself.
+- **Regular paid indexers (results in days) — Rumer's top** (about; prices change, details and tests in `indexing/references/indexers.md`):
 
 | Service | Price per URL | Unindexed URLs |
 |---|---|---|

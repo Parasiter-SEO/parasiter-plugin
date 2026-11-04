@@ -1,17 +1,19 @@
 # Indexing fresh content (checked 2026-10-29)
 
-On Pro, the `indexing` skill runs this for every page: setup once, blocker check, free ways, the chosen indexer by API, recheck and per-service stats. Its `references/indexers.md` is the full, newer comparison; this file is the short creator version.
+On Pro, the `indexing` skill runs this for every page: setup once, blocker check, the own-site way, the chosen indexer, recheck and per-service stats. Its `references/indexers.md` is the full, newer comparison; this file is the short creator version.
 
-Google finds most YouTube videos by itself; Instagram, TikTok, Facebook posts and pins are found more slowly or not at all. A piece not in Google can't rank. Check first (search the exact title in quotes, or `site:` + URL), wait a few days, then act — free ways first.
+Google finds most YouTube videos by itself; Instagram, TikTok, Facebook posts and pins are found more slowly or not at all. A piece not in Google can't rank. Check first (search the exact title in quotes, or `site:` + URL), wait a few days, then act. No free tricks (links, social posts, pings) — they don't get pages indexed (Rumer's rule); the only free way is your own site in Search Console.
 
-## Free ways (always first)
+## Free: your own site only
 
-1. **Link it from pages Google already crawls.** Google prefers finding new URLs through links over manual submission (John Mueller). The creator's hub (own site, blog, Medium / Substack, link page), a text post that embeds the video, a pin linking the post, a community answer where self-links are allowed.
-2. **Own site:** Search Console → URL Inspection → Request indexing (works only for the creator's own verified site, a small daily quota); the sitemap; an embedded video on a page where the video is the main content (that page can appear in video results).
-3. **IndexNow** for the creator's own site — Bing, Yandex, Naver, Seznam (Google does not take part).
-4. **Instagram:** the account must be professional and the "appear in search engine results" setting on — otherwise no submission helps.
+1. **Own site in Search Console:** embed or link the piece on a page of your site, then Search Console → URL Inspection → Request indexing for that page (a small daily quota). A page where the video is the main content can appear in video results.
+2. **Instagram:** the account must be professional and the "appear in search engine results" setting on — otherwise nothing helps.
 
-## Paid indexer (optional, only with the user's yes)
+No other free ways: links from other pages, posts on X / Pinterest / communities don't get pieces indexed.
+
+## Paid indexer (only with the user's yes)
+
+Instant services (one to a few minutes, about $0.50 per link) exist; the tools are kept secret — say so, never name one. Regular services below:
 
 For URLs still not indexed after 7–14 days — third-party pages the creator can't put in Search Console. Google says there is no "premium" indexing and supports its Indexing API only for job postings and livestreams; indexers work in ways Google doesn't endorse and results vary. None confirms support for YouTube, Instagram or TikTok URLs — **test with 5–10 URLs first**.
 

@@ -68,8 +68,8 @@ The article comes right in the chat, formatted: press the copy button under the 
 ## Images for an article
 "Make images for the article" (or they come with every article from the writer):
 1. One line, once: "How we work with images: infographics I draw myself, the cover is made free in Gemini from my prompt — 30 seconds."
-2. Infographics (3–5: key facts, pains → solution, comparison, prices, verdict) appear right in the chat as JPG ~700 px — save them or copy them into the post. Needs code execution on in Claude (Settings → Capabilities); without it you get prompts instead.
-3. Cover: your own or the merchant's real product photo first. If a generated one is needed, copy the prompt from the code block, click "Open Gemini", paste, save the image (free, about 20 a day). Paid ChatGPT? The same prompt works there.
+2. Infographics (3–5: key facts, pains → solution, comparison, prices, verdict) come as separate JPG files, exactly 700 px wide, named in order (`01-quick-facts.jpg`…) in `images/<article>/` — download them and insert where the text says. Needs code execution on in Claude (Settings → Capabilities); without it you get prompts instead.
+3. Cover: your own or the merchant's real product photo first. If a generated one is needed: take a **screenshot** of the product photo on the shop page (Win+Shift+S / Cmd+Shift+4), open Gemini, paste it (Ctrl+V), then paste the prompt from the code block — free. ChatGPT, Canva or Midjourney work with the same prompt; their free and paid terms are in the table `post-illustrations` shows.
 4. Platform takes images only by link → host them and paste the URL (`post-illustrations` explains where).
 
 ## Log a sale
@@ -127,11 +127,11 @@ Every client has its own folder (`clients/acme/`); nothing from one client appea
 
 ## Get a page into Google (Pro)
 
-1. First time (asked in the first setup right after you upload your pages, or say "set up indexing") → pick your indexers (one, several, or free ways only) and when you send (every new page at once, or only pages still out after a few days). Saved once.
+1. First time (asked in the first setup right after you upload your pages, or say "set up indexing") → pick your indexers (one or several; or "none yet") and when you send (every new page at once, or only pages still out after a few days). Saved once.
 2. After you publish and log a page, you get the clean list to paste into your indexer, by that setting. Or ask: "index these pages" + links. You send it yourself, then say "sent to SpeedyIndex" (or "to SpeedyIndex and Rapid").
 3. Before any money is spent, each page is checked for what blocks indexing (noindex, canonical, login wall, a platform that stopped indexing). Blocked pages are fixed or moved, not paid for.
 4. You see the rough price for each of your services. Each page is logged with the services you used; the recheck comes in 4 days.
-5. Still not indexed: a new link from one of your indexed pages and a resend to another service; after a second miss the page itself is the problem → audit or move it.
+5. Still not indexed after the service's refund window: one resend to another service; after a second miss the page itself is the problem → audit or move it.
 6. "My indexing stats" → per service and per mix: sent, indexed, rate, days, cost per indexed page; per platform: which index on their own (don't pay there).
 
 ## Creators: get your videos and posts into Google for free
@@ -141,7 +141,7 @@ Every client has its own folder (`clients/acme/`); nothing from one client appea
 3. "Content plan for 2 weeks" → topics people search for, and the posting model: one idea → long video, shorts, pins, text post — sized to your time.
 4. Before filming: "video package for [topic]" → title, hook, chapters, description, spoken and on-screen keywords, captions, hashtags, cover prompt (free in Gemini), pinned comment.
 5. After publishing: "check my video: URL" → what's missing, indexed or not, does it show for the query in Google. Fix the title, description, chapters or captions if needed.
-6. Not in Google after 7–14 days → "index my video" → free ways first, a low-cost indexer only if you want it.
+6. Not in Google after 7–14 days → "index my video" → your own site in Search Console if you have one, otherwise a low-cost indexer if you want it.
 7. Every month: which videos rank in Google, what to make more of; "make my media kit" for sponsors.
 
 ## Site owners: grow your own site
@@ -155,7 +155,7 @@ Every client has its own folder (`clients/acme/`); nothing from one client appea
 7. Every month: upload GA4 (Session source / medium, Session manual ad content, Sessions, Key events, Purchase revenue) → "how did my pages pay off?" (`site-roi`), "my backlinks" (`backlinks`), and the site owner report.
 
 ## Jump between functions: the panel (menu)
-Say **"menu"** or **0** at any moment: every skill under a fixed number, by section, with ✓ what you have tried and ○ what not yet, and "Explored: N of 21 skills · M of 10 agents". Reply with a **number** ("12", or "12 https://your-page") and that skill starts at once. Whatever you were doing (today's plan, a setup step, a draft) is paused: after the task, **1 — back** returns you there, **0** opens the menu again. Nothing is required first: publishing and reports are offers. Want to try everything? Say **"I want to try all the skills"** — exploring mode walks you through the untried ones on short examples, without plans or reminders; "plan for today" switches back. The panel also comes as a page (`parasiter-panel.html` or an artifact) with a copy button for each number.
+Say **"menu"** or **0** at any moment: your role's working desk — its skills under fixed numbers (affiliate: 16), by section, with ✓ what you have tried and ○ what not yet, and "Explored: N of 16 skills · M of 7 agents". Other roles' functions: say **all functions**. Reply with a **number** ("12", or "12 https://your-page") and that skill starts at once. Whatever you were doing (today's plan, a setup step, a draft) is paused: after the task, **1 — back** returns you there, **0** opens the menu again. Nothing is required first: publishing and reports are offers. Want to try everything? Say **"I want to try all the skills"** — exploring mode walks you through the untried ones on short examples, without plans or reminders; "plan for today" switches back. The panel also comes as a page (`parasiter-panel.html` or an artifact) with a copy button for each number.
 
 ## Your plan for the day as a page
 Say "plan for today". The plan opens as a page in PARASITER's style: goal and week progress, task cards with time, what each moves, a phrase to copy and a "done" checkbox. In the Claude app it is an artifact; in Claude Code it is `plan-today.html` in your PARASITER folder, opened in the browser (older days: `plans/`). The same short list is in the chat. "Am I on track?" gives the weekly review the same way.

@@ -1,6 +1,6 @@
 ---
 name: indexing
-description: Help the user get parasite pages into Google and keep score — check what blocks indexing first, the free ways, Rumer's comparison of the top indexers (prices, refunds, speed, test results) and which to use or mix, a clean list to paste into the services the user sends to themselves, then log every submission, recheck on schedule and show which service, mix and platform index best. Use when the user publishes a page, says "index this / these", "not indexed", "which indexer", "how do I index faster", "sent to SpeedyIndex / Omega", the user uploads their base of pages, or the check queue lists pages not indexed.
+description: Help the user get parasite pages into Google and keep score — check what blocks indexing first, the only free way (your own site + Search Console), Rumer's comparison of the top indexers (prices, refunds, speed, test results) and which to use or mix, a clean list to paste into the services the user sends to themselves, then log every submission, recheck on schedule and show which service, mix and platform index best. Use when the user publishes a page, says "index this / these", "not indexed", "which indexer", "how do I index faster", "sent to SpeedyIndex / Omega", the user uploads their base of pages, or the check queue lists pages not indexed.
 ---
 
 # Indexing
@@ -34,21 +34,24 @@ Options that usually fit after this part (adapt to the user's products and words
 
 Part of PARASITER by Rumer (Affiliate Credo). Plan: **Pro**. Reply in the user's language.
 
-A page that is not in Google can't rank and can't earn. On parasite pages the user can't use Search Console (they don't own the site), so speed comes from three things: the platform itself, links from pages Google already crawls, and a paid indexer. This skill advises on all three in order and remembers what worked. **The user sends pages to indexers themselves** (their dashboard, Telegram bot or plugin), to one service or several; PARASITER never sends, never holds indexer keys and never buys credits.
+A page that is not in Google can't rank and can't earn. **There are no free tricks — RULE (Rumer, №27).** Links from indexed pages, links inside the platform, posts on X, Pinterest, Reddit, YouTube descriptions, pings: in Rumer's experience none of it gets parasite pages indexed, so never offer them. Two ways only:
+1. **Your own site + Google Search Console (free)** — only for users with their own site verified in Search Console: link the new page from a page of their site and request indexing of *that own page* in Search Console. No own site → don't mention this way.
+2. **An indexing service (paid)** — the main way: regular services (results in days, about $0.03–0.25 per URL, `references/indexers.md`) and instant services (see "Instant indexing" below).
+This skill picks the service, gives the clean list, logs what was sent and remembers what worked. **The user sends pages to indexers themselves** (their dashboard, Telegram bot or plugin), to one service or several; PARASITER never sends, never holds indexer keys and never buys credits.
 
-Files: `references/indexers.md` (top services, prices, refunds, API, test results, checked date), `references/methods.md` (free ways, own-site ways, what Google says, how to check). Settings live in the user's profile `parasite-seo-profile.md` under `indexing:` (the services they use, alone or mixed, and when they send).
+Files: `references/indexers.md` (top services, prices, refunds, API, test results, checked date), `references/methods.md` (the own-site way, what Google says, blockers, how to check). Settings live in the user's profile `parasite-seo-profile.md` under `indexing:` (the services they use, alone or mixed, and when they send).
 
 ## Plan check (Pro) — before anything else
 
-**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — what blocks indexing, Rumer's comparison of the top indexers, a clean list for your indexer, rechecks and stats by service. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (the free ways that cost nothing: link the new page from your pages Google already shows, from your profile on the platform, and share it on X or Pinterest — say "free ways to index my page"), and stop.
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — what blocks indexing, Rumer's comparison of the top indexers, a clean list for your indexer, rechecks and stats by service. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer what works on their plan (the indexing services and prices from Rumer's list — say "which indexer should I use?"; with your own site in Search Console, the own-site way), and stop.
 
 ## Step 0 — First time: pick the setup (once, then saved)
 
 **When:** in the first setup — right after the user's base is uploaded (navigator Message B, `work-log` Mode 0), or at setup step 8 if nothing was uploaded; later, at the first new page, whenever there is still no `indexing:` in the profile. Don't wait for the first logged publication or for a page "not indexed 14+ days".
 
 No `indexing:` in the profile → ask in one message, with the short table from `indexers.md` (top 5 rows: service, price per URL, refund of unindexed credits, test result):
-1. **Which indexers** — the ones they already use (one or several), or Rumer's picks from `indexers.md` (say why in one line). "None, free ways only" is a valid answer. Mixing is fine (see Step 3).
-2. **When they send:** `instant` — every new page right after publishing (Rumer's way for pages that matter: costs cents, saves days) · `after-check` — free ways first, the indexer only for pages still out after the platform's usual indexing time (cheapest) · `manual` — only when the user asks.
+1. **Which indexers** — the ones they already use (one or several), or Rumer's picks from `indexers.md` (say why in one line). "None yet" is a valid answer (then: the own-site way if they have a verified site, otherwise the list waits until they pick a service). Mixing is fine (see Step 3).
+2. **When they send:** `instant` — every new page right after publishing (Rumer's way for pages that matter: costs cents, saves days) · `after-check` — the indexer only for pages still out after the platform's usual indexing time (cheapest; some platforms index on their own) · `manual` — only when the user asks.
 
 Save the answers under `indexing:` in the profile (first setup: mark step 8 `done`). Change them any time the user says so.
 
@@ -64,14 +67,11 @@ Never send a page that can't be indexed — it wastes money and hides the real p
 
 Report blockers as: `[URL] — noindex on the page · fix: … / move to …`.
 
-## Step 2 — Free ways (always, they cost nothing)
+## Step 2 — Own site (free) and instant indexing
 
-From `references/methods.md`, pick the 2–3 that fit what the user has, and name the exact page to use:
-- **A link from a page Google already crawls**: the user's indexed pages on strong platforms (their own base — `work-log` `pages` shows indexed ones), their profile or hub page, their own site.
-- **Inside the platform**: link the new post from the user's older indexed posts there, profile, collections, tags.
-- **Share where crawlers come often**: X, Pinterest, a Reddit / community answer where self-links are allowed, a YouTube description.
-- **Own site only**: Search Console URL Inspection, sitemap, IndexNow (Bing and others, not Google).
-Say plainly what Google says (`methods.md`): links are how Google finds pages; no service can force indexing.
+- **Own site + Search Console** — only when the profile says the user has a site verified in Search Console: "Put a link to the new page on a page of your site (a post, a hub page, the home page), then in Search Console → URL Inspection → Request indexing for **your** page. Google follows the link to the new page." Remove the link later if you like, once the page is indexed. No own site → skip this point entirely.
+- **Instant indexing** — say once, in these words (translated into the working language): "There are instant indexing services: a page usually gets into the index within one to a few minutes. They are paid — one link can cost about $0.50. The specific tools are kept secret, but you can find them yourself." Never name an instant service.
+- Nothing else. No links from other pages, no social posts, no pings — not even as "might help".
 
 ## Step 3 — The list to send, and logging it
 
@@ -86,7 +86,7 @@ Rechecks come from the journal's queue (`work-log` `due`) and run through `platf
 
 Still out after the recheck:
 1. Before the service's refund window closes (SpeedyIndex 7 days, GIGA 9, IndexMeNow 10, Rapid URL Indexer 14 — `indexers.md`) → wait; resending now pays twice.
-2. After the window → one more free way (a new link from a crawled page) and suggest resending once, preferably to another service (Indexceptional is the strong second try for ★ pages).
+2. After the window → suggest resending once, preferably to another service (Indexceptional is the strong second try for ★ pages).
 3. Still out after the second round → the page is the problem, not the indexer: `page-audit` (thin, duplicate, AI-looking text) or move it to a stronger platform (`work-log` `republish`). Say it in one line; don't keep paying.
 
 ## Step 5 — Indexing stats ("my indexing stats", "which indexer works")

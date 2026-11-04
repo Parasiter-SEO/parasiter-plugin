@@ -50,11 +50,12 @@ Ask only what the brief (`clients/<slug>/client-brief.md`) doesn't answer:
 1. **Goal** of this placement: a page that ranks for a query (which), a dofollow link to a page of the site (which), credibility / news coverage, referral traffic.
 2. **Budget** per placement and per month.
 3. **Niche and country** — many wires refuse gambling, crypto, CBD, adult, some health and finance claims.
-4. **What there is to say** — real news for a press release (launch, new product, study, partnership, event, milestone) or a useful article topic for a sponsored post. No news → a sponsored expert article, not a fake "announcement".
+4. **Company or private person** — agencies and wires work by contract and mostly with companies (company / ФОП details, invoice); without a company, marketplaces (prnews.io, Collaborator.pro) are the start. Ask once, save in the brief.
+5. **What there is to say** — real news for a press release (launch, new product, study, partnership, event, milestone) or a useful article topic for a sponsored post. No news → a sponsored expert article, not a fake "announcement".
 
 ## Step 2 — Shortlist from the base
 
-From `references/placements.md`, filtered by goal, budget, niche and country. For each: what you buy, price (or "price on request" + how to ask), link policy stated and seen, distribution, restrictions, turnaround. Show free and paid options side by side when a free platform can reach the same goal ("Medium + LinkedIn article can rank for this query for $0 — the paid wire adds a dofollow link and news distribution for $X").
+From `references/placements.md`, filtered by goal, budget, niche and country. For each: what you buy, price (or "price on request" + how to ask), **work format** (one-off article · package · contract with a company), link policy stated and seen, distribution, restrictions, turnaround. A private person without a company: contract-only services (XPR Media and the big wires) go to "Skip" with the reason. Show free and paid options side by side when a free platform can reach the same goal ("Medium + LinkedIn article can rank for this query for $0 — the paid wire adds a dofollow link and news distribution for $X").
 
 **Fresh check** (prices change, link policies change): send the shortlisted services, niche, country, budget, goal and target queries to the **`placement-scout` agent**. It checks the current packages, opens recent published pieces to see the real `rel` of links and whether they are indexed, and whether the outlet's pages rank in the niche. Show its table with the check date.
 
@@ -66,7 +67,7 @@ One table, best first:
 
 ```
 Placement plan · [site / client] · budget $N
-| # | Where | What | Price | Link (stated / seen) | Ranks in niche? | Goal it serves | Why |
+| # | Where | What | Price | Work format | Link (stated / seen) | Ranks in niche? | Goal it serves | Why |
 Total: $N · expected: [pages that can rank for …, N dofollow links to …] — assumptions, not promises
 Skip: [option] — [why: nofollow and no ranking pages / refuses the niche / price for what it gives]
 ```

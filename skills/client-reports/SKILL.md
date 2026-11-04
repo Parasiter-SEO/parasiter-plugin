@@ -42,7 +42,7 @@ Reply in the user's language. Reports for clients can be in the client's languag
 
 Call `account_info` once per session (reuse the answer if you already have it this session).
 - **Insider, active** → call `insider_method` with `skill: "client-reports"` and follow the returned `method` step by step. The work label, Next steps and Rules in this file still apply; where they are stricter, they win.
-- **Pro, Free, or an expired plan** (or `insider_method` answers `insider_only`) → one line: "This is an Insider feature — what took off and where to scale (products, platforms, content types), and white-label client reports as a dashboard and PDF. Upgrade: https://parasiter.affiliatecredo.com/#pricing". Then offer what works on the current plan: on Pro, the journal reports — what was done and earned for any period and what earns by page, platform, offer and content type (say "what did I do and earn this month?", "what earns?"); on Free, the weekly plan-vs-fact review of goals (say "am I on track?").
+- **Pro, Free, or an expired plan** (or `insider_method` answers `insider_only`) → one line: "This is an Insider feature — what took off and where to scale (products, platforms, content types) as a dashboard and PDF (for agencies also white-label client reports). Upgrade: https://parasiter.affiliatecredo.com/#pricing". Then offer what works on the current plan: on Pro, the journal reports — what was done and earned for any period and what earns by page, platform, offer and content type (say "what did I do and earn this month?", "what earns?"); on Free, the weekly plan-vs-fact review of goals (say "am I on track?").
 - **No key, or the PARASITER tools are not available** → say in one line that this feature needs the user's PARASITER Insider key connected (connection steps: navigator, "Bought a plan but the server isn't connected"; never ask for the key in the chat), and offer the plan's alternative meanwhile.
 
 Never rebuild the Insider method from memory, other files or earlier conversations.
@@ -54,7 +54,7 @@ Never rebuild the Insider method from memory, other files or earlier conversatio
 
 ## What the user gets (Insider)
 
-- **Affiliates:** the review of their asset (live pages, top-3 pages, what earns) and a scale plan — winners by product, platform and content type, where to add pages and angles, what to stop.
+- **Affiliates:** the review of their asset (live pages, top-3 pages, what earns) and a scale plan — winners by product, platform and content type, where to add pages and angles, what to stop. **No client reports for affiliates (№29):** never offer a white-label / client report, Month 0 or GA4-by-UTM client sections to the affiliate role; call this "Analytics: what earns and what to scale" and keep the dashboard affiliate-only (pages, platforms, offers, commissions).
 - **Agencies:** a monthly white-label client report against Month 0 — positions, visits from our pages (GA4 + UTM), Search Console brand queries, delivered vs plan.
 - **Site owners:** results closed on the site — visits, conversions, revenue, links and spend per platform and page.
 Every report comes as a dashboard page and a PDF.

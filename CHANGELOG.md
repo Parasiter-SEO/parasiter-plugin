@@ -2,6 +2,14 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.30.0 — 2026-11-04
+
+**A working desk per role, honest indexing, images as real files.**
+- **Your role's desk:** "menu" / **0** shows your role's skills under its own numbers (affiliate: 16 skills, 7 agents); no client reports on the affiliate desk — there it is "Analytics: what earns and what to scale". Other roles' functions: *"all functions"*.
+- **Indexing without myths:** no free tricks — links and social posts don't get parasite pages indexed. The only free way is your own site in Google Search Console. Otherwise indexing services: regular ones (results in days, Rumer's comparison with prices) and instant ones (one to a few minutes, about $0.50 a link — the tools are kept secret, but you can find them yourself).
+- **Paid placements:** agencies and wires work by contract and mostly with companies; each service shows its work format (one-off · package · contract). XPR Media: big packages for long periods. Without a company — start with prnews.io or Collaborator.
+- **Images:** infographics come as separate JPG files exactly 700 px wide, named in order (`01-quick-facts.jpg`…). For the cover — paste a **screenshot** of the product photo into Gemini (no saving). A table of generators with their free and paid terms: Gemini, ChatGPT, Canva, Midjourney.
+
 ## 0.29.0 — 2026-11-03
 
 **Every function under a number — jump anywhere, come back.**

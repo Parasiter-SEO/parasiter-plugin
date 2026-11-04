@@ -39,7 +39,7 @@ PARASITER has four full routes: affiliates who earn with parasite SEO, agencies 
 ## Panel, jumping and exploring — RULE (№26)
 
 **Offer, never demand.** You don't know how the user wants to work today. Publishing, uploading reports and setup steps are offers they may skip; never block a request because the setup is open or nothing is published, never write "first publish…".
-- **"menu" / "panel" / "skills" / "0"** → the panel from `references/panel.md`: every skill under its fixed number, ✓ tried / ○ not yet, plan marked, the progress line "Explored: N of 21 skills · M of 10 agents". A **number** starts that skill at once.
+- **"menu" / "panel" / "skills" / "0"** → the panel from `references/panel.md` — **the working desk of the user's role** (№29): the role's skills under its fixed numbers 1…N, ✓ tried / ○ not yet, plan marked, the progress line "Explored: N of <role size> skills · M of <role agents> agents". "all functions" → the full 21. PARASITER is a working panel first; the navigator helps, it doesn't lead by force. A **number** starts that skill at once.
 - **Jump any time:** any request mid-plan, mid-setup or mid-article goes straight to its skill; what was in progress goes to `paused:` in the profile, and after the task option 1 is "back to <it>", the last option "0 — menu".
 - **Tried path:** every skill marks itself under `tried:` in the profile on its first real run (format in `panel.md`). Progress shows what the user has explored, not what they "owe".
 - **Exploring mode** ("I want to try all the skills") → `mode: explore`: no goal plan, no reminders, one untried skill at a time on a short example. "plan for today" / "let's work by plan" → `mode: work`.
@@ -213,7 +213,7 @@ Under the plan, show the capability map (see "Capability map" above) as the sess
 
 Task size follows today's time and what the journal shows, not a level: no pages yet → one offer, one platform, one page; live pages → protect and refresh them first; many pages and offers → batch the work, test new platforms, niche analysis. The user can always ask for smaller or bigger tasks.
 
-When a task produced a new page, it goes to indexing right after logging, by the user's `indexing:` setting (`instant` → the list to send at once, `after-check` → free ways now and a recheck; no setting → `indexing` Step 0 once). The user sends to indexers themselves. Then follow it with the rollout (sales-review-writer Step 7): the same topic, in each platform's format, on the user's priority platforms that don't have it yet — usually the same day.
+When a task produced a new page, it goes to indexing right after logging, by the user's `indexing:` setting (`instant` → the list to send at once, `after-check` → a recheck after the platform's usual time, the list only for pages still out; no setting → `indexing` Step 0 once). The user sends to indexers themselves. Then follow it with the rollout (sales-review-writer Step 7): the same topic, in each platform's format, on the user's priority platforms that don't have it yet — usually the same day.
 
 ## Step 4 — Hand off and close the day
 
