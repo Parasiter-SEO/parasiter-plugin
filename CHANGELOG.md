@@ -2,11 +2,17 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.33.0 — 2026-11-04
+
+**A shorter checkout.**
+- Your Claude plan is no longer asked on the payment page: the navigator asks it once at the first start, and says it's not a purchase — it only picks the work mode for your Claude limits (Lite on Pro, agents on Max).
+- The payment page lists the agents by name, as short as the skills.
+
 ## 0.32.0 — 2026-11-04
 
 **PARASITER works by your Claude plan: Lite on Pro, agents on Max.**
 - **Every answer is PARASITER at work:** a skill with Rumer's rules, criteria and references, and the label shows it — `▸ PARASITER · <skill> · Lite` or `▸ PARASITER · <skill> → <agent>`. The reply names what it stands on: Rumer's rules, the checklist, the platform base.
-- **Your Claude plan is asked once — when you buy or get the Free key.** On **Claude Pro**, heavy steps run in **Lite**: the same skills in a smaller scope, so your limits last. On **Max / Team**, the skills' agents run at once.
+- **Your Claude plan sets the depth.** On **Claude Pro**, heavy steps run in **Lite**: the same skills in a smaller scope, so your limits last. On **Max / Team**, the skills' agents run at once.
 - **Advice instead of commands:** when the full version would give a better result, PARASITER says why in one line and gives the phrase — **full**. An independent audit of an article written in the chat is always offered.
 - **Change it any time:** "I'm on Max now" in Claude, or `/plan` in @parasiter_bot. "save limits" → Lite, "turn on agents" → agents always. Hit the usage limit? PARASITER switches to Lite by itself.
 
