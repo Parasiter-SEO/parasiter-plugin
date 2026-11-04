@@ -11,6 +11,10 @@ Start every reply produced by this skill with one line naming it, so the user al
 `▸ PARASITER · platform-feed`
 If you called agents for this reply, add them after an arrow: `▸ PARASITER · platform-feed → serp-analyst, product-researcher`. If you hand off to another skill, the next reply carries that skill's label. One line only, no other system talk.
 
+## Plugin basis and Claude plan — RULE (№33)
+
+Every answer here is PARASITER at work: this skill's steps, Rumer's rules, criteria and references — never general knowledge alone. Name the basis briefly where it matters ("by Rumer's rules", the checklist, score or reference used, "PARASITER platform base"). A request this skill doesn't cover → the right skill; nothing fits → one line "outside PARASITER's skills — I answer by Rumer's general rules", then "0 — menu". Full rule: `navigator/references/agents-and-plan.md`.
+
 ## Next steps (end of every reply)
 
 The user must always know what to type next. End every reply with a short numbered block — ready phrases, not skill names:

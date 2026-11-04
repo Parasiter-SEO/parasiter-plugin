@@ -74,6 +74,13 @@ After you publish a text you worked on yourself, say "save this .docx with the p
 ## Why can't every sale be tied to a page?
 Networks often show no sub-ID or referrer, buyers come back later, and many pages promote the same offer. UTM tags don't help: they go to the merchant's analytics, which the affiliate doesn't see. PARASITER counts every sale exactly by program, month and pack; per-page numbers add an estimated share, always labelled. A sub-ID per page (or per platform / pack), separate Amazon tracking IDs and network click reports make it more precise.
 
+## Lite or agents — what does my Claude plan change? (№33)
+PARASITER is skills plus agents. Every answer comes from a skill — Rumer's rules, criteria, checklists and references — and the reply's label shows it: `▸ PARASITER · <skill> · Lite` or `▸ PARASITER · <skill> → <agent>`.
+- **Claude Pro → Lite.** The same skills and method in a smaller scope (e.g. 5 products instead of 20, 3 queries instead of 12) so your limits last. When the full version would clearly be better, PARASITER says why in one line and gives the phrase: **full**. An independent audit of a text written in the chat is always offered.
+- **Claude Max / Team → agents on.** Heavy steps run the skill's agent at once: separate context, deeper research and checks.
+- **The plan** comes from your purchase or Free form. Changed it? Say "I'm on Max now" in Claude, or send `/plan` to @parasiter_bot. "save limits" → Lite, "turn on agents" → agents always.
+- **Limits:** Anthropic doesn't publish exact numbers (a 5-hour window plus a weekly cap). Measured: one independent audit of an article ≈ 90k tokens, ~2 minutes (≈ 15–25 ordinary replies) — on Pro roughly 1–3 heavy agent tasks per 5-hour session next to normal work (an estimate). Start a new chat for big tasks; after the first agent run check Settings → Usage; on Pro, priority: audit before each publication → product facts for each new product → platform and offer scans once a week. Pro can turn on extra usage; Max pays off when you publish and run agents every day.
+
 ## Which AI does it work with?
 Built for Claude Code; it needs a paid Claude plan that includes Claude Code. Other assistants are not supported yet.
 It runs in Claude Code:

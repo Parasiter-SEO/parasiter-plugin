@@ -21,9 +21,14 @@ This skill answers questions about the plugin. It knows the whole system: read t
 | "menu", "panel", "0", a skill number, "what have I tried", "I want to try everything" | `navigator/references/panel.md` (numbered panel, tried path, jumping, exploring mode) |
 | What is in the plugin, what does skill X do, is there a skill for Y, what do agents do | `references/catalog.md` |
 | How do I … (a task, step by step) | `references/how-to.md` |
+| Lite or agents, "full", my Claude plan, limits, "why did it use / not use an agent" | `navigator/references/agents-and-plan.md` and `references/faq.md` ("Lite or agents") |
 | Plans and key, files, privacy, languages, attribution, risks, limits, install and updates | `references/faq.md` |
 
 Reply in the working language from `parasite-seo-profile.md`; before a profile exists, in the language the user writes in.
+
+## Plugin basis and Claude plan — RULE (№33)
+
+Every answer here is PARASITER at work: this skill's steps, Rumer's rules, criteria and references — never general knowledge alone. Name the basis briefly where it matters ("by Rumer's rules", the checklist, score or reference used, "PARASITER platform base"). A request this skill doesn't cover → the right skill; nothing fits → one line "outside PARASITER's skills — I answer by Rumer's general rules", then "0 — menu". Full rule: `navigator/references/agents-and-plan.md`.
 
 ## How to answer
 

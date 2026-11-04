@@ -10,6 +10,8 @@ Prices checked October 2026; they change — always say "about" and point to the
 | **Pro** | ~$20/month (~$17 billed yearly) | The minimum: skills, code execution (journal, reports, image cards), connectors, Claude Code. Enough for a light pace — a page or two a day, the weekly review. Long days (several articles, rollouts to many platforms, agents doing research) hit the 5-hour limit. |
 | **Max** | from ~$100/month (5× Pro), 20× tier higher | Recommended for daily work with the full system: many articles and rollouts a day, agents, scans and reports without waiting for limits. |
 
+**How PARASITER uses your plan (№33):** on **Pro** it works in **Lite** — the same skills, rules and references in a smaller scope, to save your limits; the skills' agents run when you say "full" (an independent audit of texts written here is always offered). On **Max / Team** the agents run at once for heavy steps. The plan is taken from your purchase form; change it any time ("I'm on Max now", or `/plan` in the bot).
+
 ## 2. SEO data (positions, keywords, platform scans)
 
 | Service | Price | Claude can run it itself? |
