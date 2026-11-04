@@ -61,7 +61,7 @@ Everything you show must be real — no invented sales, screenshots, reviews or 
 2. "Write it for [platform]" → `sales-review-writer` (current prices via product-researcher).
 3. "Make images" → `post-illustrations`: infographics drawn in the chat, the cover from a real photo or free Gemini (see "Images for an article").
 4. "Audit it" → `page-audit` (two scores: Rumer's rules and copywriting); fix until the score is good.
-The article comes right in the chat, formatted: press the copy button under the reply and paste it into the platform's editor (headings, lists, tables and links keep their look). No file by default — say "file" if you want a Word copy. Markdown and BBCode platforms also get the source in a code block; presentations get the text by slides.
+The article comes as a finished product for posting: formatted in the chat (copy button) **and as a Word file `.docx`** with the same headings, tables, lists and links, plus the JPG images and the cover prompt. Every product name is already a link to the product — PARASITER asks for your affiliate links before writing. No `.md` / `.txt` files and no Markdown unless you ask. Presentations (Prezi, Gamma, Canva) get the same, split by slides.
 5. Publish it yourself. Worked on the text? "Save this .docx with the page" — it can be republished if the page is removed.
 6. Say "published: [URL], [platform], [program], pack [name]" → `work-log` records it; add a sub-ID to the affiliate link if the network supports it. The page is now in the check queue.
 
@@ -155,6 +155,7 @@ Every client has its own folder (`clients/acme/`); nothing from one client appea
 7. Every month: upload GA4 (Session source / medium, Session manual ad content, Sessions, Key events, Purchase revenue) → "how did my pages pay off?" (`site-roi`), "my backlinks" (`backlinks`), and the site owner report.
 
 ## Jump between functions: the panel (menu)
+**Bases and data first:** **Б1** (B1) Rumer's platform base (Free key: 50 platforms) · **Б2** my platforms · **Б3** journal (pages, sales, traffic, checks) · **Б4** my offers and links · **Б5** feed. Type the code (or "base", "journal") — the table opens at once; then filter in words ("only forums", "new this week").
 Say **"menu"** or **0** at any moment: your role's working desk — its skills under fixed numbers (affiliate: 16), by section, with ✓ what you have tried and ○ what not yet, and "Explored: N of 16 skills · M of 7 agents". Other roles' functions: say **all functions**. Reply with a **number** ("12", or "12 https://your-page") and that skill starts at once. Whatever you were doing (today's plan, a setup step, a draft) is paused: after the task, **1 — back** returns you there, **0** opens the menu again. Nothing is required first: publishing and reports are offers. Want to try everything? Say **"I want to try all the skills"** — exploring mode walks you through the untried ones on short examples, without plans or reminders; "plan for today" switches back. The panel also comes as a page (`parasiter-panel.html` or an artifact) with a copy button for each number.
 
 ## Your plan for the day as a page

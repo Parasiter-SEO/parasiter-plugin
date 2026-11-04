@@ -24,6 +24,7 @@ plan.json (all text in the user's working language; only "title", "tasks" are re
   "why": "Пока ничего не опубликовано: одна живая страница сегодня даёт больше, чем три в черновиках.",
   "next": [{"say": "Напиши профиль автора", "what": "начнём с задачи 1"}],
   "explored": "Освоено: 8 из 21 скилов · 4 из 10 агентов",         # №26 panel (optional; "kind": "panel" = panel only)
+  "bases": [{"code": "Б1", "name": "База площадок Rumer", "what": "проверенные площадки", "plan": "Pro"}, …],   # №32, first on the panel
   "panel": [{"name": "План", "items": [{"n": 1, "skill": "navigator", "what": "план на сегодня", "plan": "Pro",
                                          "tried": "03.11", "locked": false}, …]}, …]
 }
@@ -36,14 +37,14 @@ import sys
 from datetime import date
 
 L = {
-    "en": {"panel": "PARASITER PANEL", "panel_h": "All functions — reply with a number", "menu0": "this menu any time", "tried": "tried", "untried": "not yet", "locked": "not on your plan", "plan": "TODAY'S PLAN", "week": "WEEKLY REVIEW", "setup": "SETUP DONE", "time": "Time today", "goal": "Goal",
+    "en": {"panel": "PARASITER PANEL", "bases": "Bases and data", "panel_h": "All functions — reply with a number", "menu0": "this menu any time", "tried": "tried", "untried": "not yet", "locked": "not on your plan", "plan": "TODAY'S PLAN", "week": "WEEKLY REVIEW", "setup": "SETUP DONE", "time": "Time today", "goal": "Goal",
            "tasks": "Tasks", "why": "Why this order", "next": "What's next — say", "copy": "Copy", "copied": "Copied",
            "done": "done", "by": "who", "moves": "moves", "of": "of", "foot": "PARASITER by Rumer · your plan stays in your folder"},
-    "ru": {"panel": "ПУЛЬТ PARASITER", "panel_h": "Все функции — ответьте номером", "menu0": "это меню в любой момент", "tried": "пробовал", "untried": "ещё нет", "locked": "не в вашем тарифе", "plan": "ПЛАН НА СЕГОДНЯ", "week": "ОБЗОР НЕДЕЛИ", "setup": "НАСТРОЙКА ГОТОВА", "time": "Время сегодня", "goal": "Цель",
+    "ru": {"panel": "ПУЛЬТ PARASITER", "bases": "Базы и данные", "panel_h": "Все функции — ответьте номером", "menu0": "это меню в любой момент", "tried": "пробовал", "untried": "ещё нет", "locked": "не в вашем тарифе", "plan": "ПЛАН НА СЕГОДНЯ", "week": "ОБЗОР НЕДЕЛИ", "setup": "НАСТРОЙКА ГОТОВА", "time": "Время сегодня", "goal": "Цель",
            "tasks": "Задачи", "why": "Почему такой порядок", "next": "Что дальше — скажите", "copy": "Копировать",
            "copied": "Скопировано", "done": "сделано", "by": "кто", "moves": "двигает", "of": "из",
            "foot": "PARASITER by Rumer · план хранится в вашей папке"},
-    "uk": {"panel": "ПУЛЬТ PARASITER", "panel_h": "Усі функції — відповідайте номером", "menu0": "це меню будь-коли", "tried": "пробував", "untried": "ще ні", "locked": "не у вашому тарифі", "plan": "ПЛАН НА СЬОГОДНІ", "week": "ОГЛЯД ТИЖНЯ", "setup": "НАЛАШТУВАННЯ ГОТОВЕ", "time": "Час сьогодні", "goal": "Ціль",
+    "uk": {"panel": "ПУЛЬТ PARASITER", "bases": "Бази й дані", "panel_h": "Усі функції — відповідайте номером", "menu0": "це меню будь-коли", "tried": "пробував", "untried": "ще ні", "locked": "не у вашому тарифі", "plan": "ПЛАН НА СЬОГОДНІ", "week": "ОГЛЯД ТИЖНЯ", "setup": "НАЛАШТУВАННЯ ГОТОВЕ", "time": "Час сьогодні", "goal": "Ціль",
            "tasks": "Завдання", "why": "Чому такий порядок", "next": "Що далі — скажіть", "copy": "Копіювати",
            "copied": "Скопійовано", "done": "зроблено", "by": "хто", "moves": "рухає", "of": "з",
            "foot": "PARASITER by Rumer · план зберігається у вашій папці"},
@@ -162,6 +163,12 @@ def build(p: dict) -> str:
         rows = "".join(f'<div class="row"><code class="mono">{e(n.get("say"))}</code><button data-copy="{e(n.get("say"))}" data-ok="{e(lab["copied"])}">'
                        f'{e(lab["copy"])}</button><span class="w">{e(n.get("what"))}</span></div>' for n in p["next"])
         parts.append(f'<h2 class="mono">{e(lab["next"]).upper()}</h2><div class="next">{rows}</div>')
+    if p.get("bases"):
+        tiles = "".join(f'<div class="tile"><div class="n mono">{e(b.get("code"))}</div><div class="sk">{e(b.get("name"))}</div>'
+                        f'<div class="w">{e(b.get("what"))}</div><div class="st">' + (f'<span class="pl">{e(b.get("plan"))}</span>' if b.get("plan") else "") +
+                        f'</div><button data-copy="{e(b.get("code"))}" data-ok="{e(lab["copied"])}">{e(lab["copy"])} {e(b.get("code"))}</button></div>'
+                        for b in p["bases"])
+        parts.append(f'<div class="psec mono">{e(lab["bases"]).upper()}</div><div class="tiles">{tiles}</div>')
     if p.get("panel"):
         if kind != "panel":
             parts.append(f'<h2 class="mono">{e(lab["panel"])}</h2>')
@@ -208,7 +215,9 @@ def main(argv):
                                                       {"n": 3, "skill": "affiliate-finder", "what": "офферы", "plan": "Insider", "locked": True}]}]
         out = build(sample)
         assert "ПУЛЬТ PARASITER" in out and "✓ пробовал 03.11" in out and "не в вашем тарифе" in out
-        panel_only = build({"lang": "en", "kind": "panel", "title": "PARASITER panel", "panel": sample["panel"]})
+        panel_only = build({"lang": "en", "kind": "panel", "title": "PARASITER panel", "panel": sample["panel"],
+                            "bases": [{"code": "B1", "name": "Rumer's platform base", "what": "checked platforms", "plan": "Pro"}]})
+        assert "BASES AND DATA" in panel_only and "Copy B1" in panel_only
         assert "PARASITER PANEL" in panel_only and "Copy 1" in panel_only
         assert "Опубликовать статью" in out and "0/3" in out and "<script>" in out and "Копировать" in out
         assert "&lt;ссылка&gt;" in out                       # user text is escaped

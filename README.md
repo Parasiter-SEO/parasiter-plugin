@@ -17,7 +17,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 
 > **Privacy:** the PARASITER server never receives your page URLs, journal, sales, affiliate links or texts — they stay in your Claude project. Page checks run in your own Claude. **Legal products and content only.**
 
-> **Status: private beta (v0.30.0).** Skills and agents work without a key. The server part (platform database, feed, Telegram alerts) is in development; skills that need it say so and fall back to a live search.
+> **Status: private beta (v0.31.0).** Skills and agents work without a key. The server part (platform database, feed, Telegram alerts) is in development; skills that need it say so and fall back to a live search.
 
 ## How it works
 

@@ -10,6 +10,20 @@ PARASITER does not know how the user wants to work today. Publishing, uploading 
 
 PARASITER is first of all a **working panel**: every tool of the user's role at hand, any moment — navigator and the day plan are help, not a required route. Each role sees **its own set**, numbered **1…N without gaps**; the numbers are fixed for that role. Other roles' functions are not on the panel: one line under it — "Other roles' functions: say **all functions**" → the full list of 21 (the "Other" table below) marked by role; starting any skill by name always works. **Client reports are not on the affiliate panel**: for affiliates `client-reports` is shown only as "Analytics: what earns and what to scale".
 
+## Bases and data — first on the panel (№32)
+
+The user's working data opens in one step, **above the skills**, with short codes so they never clash with skill numbers: **Б1…Б5** in Russian / Ukrainian, **B1…B5** in other languages (both always accepted, as are "base", "база", "журнал", "journal", "my platforms"). A code opens the table at once, no questions; then the user filters in words ("only forums", "in Spanish", "new this week", "★ only"). Shown as a table in the chat and on the panel page; never inside a code block. Bases don't count in "Explored".
+
+| Code | Affiliate | Opens with | Plan |
+|---|---|---|---|
+| Б1 / B1 | **Rumer's platform base** — checked platforms, live example posts, sign-up links; filters type / language / new this week | `platform-finder` Step 2 (`platforms_search`, `feed_latest`); Free key: Free mode A (`free_base`, the 50 snapshot) | Free key: 50 · Pro / Insider: all |
+| Б2 / B2 | **My platforms** — the user's own base: priority, state, posts, in the top | `work-log` Mode 7 | Pro |
+| Б3 / B3 | **Journal** — pages, sales, traffic, the check queue; today / week / month | `work-log` Mode 4 (report), Mode 5 (queue), Mode 6b (base page to open / download) | Pro |
+| Б4 / B4 | **My offers and links** — the affiliate links library | `work-log` Mode 10 | Pro |
+| Б5 / B5 | **Feed** — new platforms, news, weekly analysis | `platform-feed` | Pro |
+
+Agency / site owner: Б1 Rumer's base (brand-safe filter) · Б2 the client's (or the site's) platforms · Б3 the client's journal · Б4 **paid placements base** (`paid-placements/references/placements.md`) · Б5 feed. Creator: Б2 my channels (`creator-channels` profile) · Б3 journal. A base above the user's plan stays listed with its plan marked; choosing it gives the one-line upgrade note and what works on their plan (Free key → the 50 snapshot).
+
 ### 1 · Affiliate — 16 skills · 7 agents
 | # | Skill | What it does | Plan |
 |---|---|---|---|
@@ -106,7 +120,7 @@ Agents: affiliate-scout → 3 · product-researcher → 6 · serp-analyst → 5,
 | 21 | help | how anything works | Free | all |
 
 ### How each row is shown
-`N · name — what it does · plan · ✓ tried DD.MM / ○ not yet`
+`N · name — what it does · plan · ✓ tried DD.MM / ○ not yet` — under the "Bases and data" row (Б1…Б5), which always comes first.
 - The plan is marked against the user's plan (`account_info`): above their plan → "(Pro)" / "(Insider)", still listed, never hidden. Choosing it gives the one-line upgrade note and the alternative on their plan.
 - Role: show only the user's role table (role from the profile; no role yet → ask it first, it takes one line). Numbers are that table's numbers.
 - Above the panel, one line of progress counted on the role's set: **"Explored: 9 of 16 skills · 5 of 7 agents"** (affiliate); under it, the last 3 tried ("last: page-audit 03.11 · goals 02.11 · platform-finder 02.11").
@@ -132,4 +146,4 @@ Every skill, on its first real run in a session, adds one line under `tried:` in
 - Leave with "let's work by plan" / "plan for today" → `mode: work`.
 
 ## On the visual page
-The panel goes on the dashboard too (`scripts/dayplan.py`, `"panel"` in the JSON — or `"kind": "panel"` for a page with only the panel, `parasiter-panel.html`): tiles by section, number, name, what, plan, ✓/○, and a copy button for the number. The page cannot start a skill in Claude by itself: the button copies the number, the user pastes it in the chat.
+The panel goes on the dashboard too — the "Bases and data" tiles first (`"bases"` in the JSON: code, name, what, plan), then the skills (`scripts/dayplan.py`, `"panel"` in the JSON — or `"kind": "panel"` for a page with only the panel, `parasiter-panel.html`): tiles by section, number, name, what, plan, ✓/○, and a copy button for the number. The page cannot start a skill in Claude by itself: the button copies the number, the user pastes it in the chat.

@@ -51,7 +51,7 @@ If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for 
 
 **Ask at most 3–4 questions before writing, in one message** — the ones the profile, the brief, the links library and `product-researcher` can't answer (usually: product(s) and #1, link if missing, platform, and whether the user has used the product). Everything else gets a sensible default or a `[VERIFY: …]` mark listed in the operator checklist. What the article needs:
 
-1. **Product(s) and the affiliate link for each — always ask, before writing** (unless the profile's links library already has it; then confirm it in one line). "What is your affiliate link for [product]?" Do not start the article without it; if the user has no link yet, write `[AFFILIATE LINK: product]` placeholders and list them in the operator checklist. For "best of": 10, 14 or 15 products by default (fewer only if the user asks), the order, which one is #1, and a link for every product. Ask also whether a specific package/order page link converts better than the main one.
+1. **Product(s) and the affiliate link for each — always ask, before writing** (№31: every product name in the article becomes a link to it — headings, tables, text, CTAs) (unless the profile's links library already has it; then confirm it in one line). "What is your affiliate link for [product]?" Do not start the article without it; if the user has no link yet, write `[AFFILIATE LINK: product]` placeholders and list them in the operator checklist. For "best of": 10, 14 or 15 products by default (fewer only if the user asks), the order, which one is #1, and a link for every product. Ask also whether a specific package/order page link converts better than the main one.
 2. **Content type**: single review, best-of comparison, A vs B, personal experience, complaints/doubts, packages/price guide.
 3. **Platform** where it will be published (decides length, tone and formatting — see `references/platform-formats.md`).
 4. **Author profile** — required, see Step 2.
@@ -139,32 +139,34 @@ Without code execution, say once that the JPG cards appear automatically when th
 
 **Before handing over — the built-in check.** Run `references/quality-check.md` and the page-audit checklist (`../page-audit/references/audit-checklist.md`, scored with the Rumer's-rules table in `../page-audit/references/scoring.md`) on the draft yourself, silently, and fix what fails. It is part of writing, not a separate step and not extra text. In the reply it is one line: "Check by Rumer's rules: 92/100, fixed: prices block, CTA in the verdict" — or, if something needs the user: "Check by Rumer's rules: 85/100 — 2 notes: no own photo yet; guarantee not confirmed [VERIFY]". The full audit with the independent auditor stays optional (last Next steps option).
 
-**The article lives in the chat, not in a file — RULE.** The user copies it with the copy button under your reply and pastes it into the platform's editor: headings, lists, tables, bold and links survive that paste better than from any file. So by default the whole article is output **in the reply itself, fully formatted**, and **no file is made** — no `.docx`, no Claude doc, no `.md`, no artifact. A file only when the user asks for one ("file", "Word", "doc", "PDF").
+**The article is a finished product for posting — RULE (Rumer, №31).** Title, headings, formatting, links and images always come together, in one delivery:
+1. **The article in the chat**, fully formatted (H1, H2/H3, lists, real tables, bold, links) — the user can copy it with the copy button.
+2. **A Word file `.docx` with the same formatting** — always, not only on request. Write the article as simple HTML (`<h1> <h2> <h3> <p> <b> <a href> <ul>/<ol> <li> <table> <th> <td> <img src="01-…jpg">`) and build it with `scripts/article_docx.py article.html <slug>.docx --images images/<slug>/` (standard library only; real Word headings, tables, lists and hyperlinks; the JPG infographics embedded where they belong). Hand the .docx over as a file. Many editors keep the formatting when the user copies from Word.
+3. **The images right away**: the cover prompt (Gemini, copy icon) and the JPG infographics 700 px (`post-illustrations`, №30), each marked in the text where it goes.
+4. **Every product name is a link to the product** — the user's affiliate link, in headings, tables, text and CTAs (Step 1 asks for the links before writing).
 
-The platform decides only what is added **in the chat** next to the article (`references/platform-formats.md`, "Delivery format by platform"). One line before the article says which format and why ("Prezi doesn't read Markdown — the text goes by slides").
+**Never** a `.md` or `.txt` file, and **no Markdown** (no `#`, `**`, `|` source, no Markdown code block) unless the user asks for it ("give me Markdown", "Markdown for HackMD"). If a platform doesn't take images or links, the user simply doesn't use them — don't strip them; at most one line warns ("Prezi: links are added by hand — select the words, click the link icon").
 
-| Platform kind | What the user gets (all in the chat) |
+One line before the article says the platform's specifics if any ("Prezi — the .docx goes by slides").
+
+| Platform kind | What the user gets |
 |---|---|
-| Visual editors (Medium, LinkedIn, WordPress, Raisely, Google Sites and similar) | the formatted article, ready to copy — nothing else |
-| Markdown platforms (HackMD, Dev.to, GitHub, Reddit, Markdown forums) | the formatted article + the same text as Markdown in a code block (its own copy button) |
-| BBCode forums | the formatted article + the BBCode source in a code block |
-| Presentations (Prezi, Gamma, Canva, PDF slides) | the text **by slides** in the chat: "Slide 1 — Title / Text / Image / Link", plain text, no Markdown marks; each table becomes its own slide as an image (infographic card, Step 5) |
-| PDF / document hosts | the formatted article in the chat; the PDF only when the user asks for the file |
+| Any editor (Medium, LinkedIn, WordPress, HackMD, forums, Google Sites, Raisely…) | the formatted article in the chat + the `.docx` + images and the cover prompt |
+| Presentations (Prezi, Gamma, Canva, PDF slides) | the same, with the article split by slides: an H2 "Slide 1 — <title>" per slide, its text, its image; tables as image slides; no Markdown, no `.txt` |
+| Markdown / BBCode **only when the user asks** | the source in a code block in addition to the `.docx` |
 
-**Long article:** never cut it into files. If it doesn't fit one reply, output it in parts — "Part 1 of 2", "Part 2 of 2" — each a complete block to copy, split at an H2 boundary.
-
-**After the article, one line only:** "Need a backup copy as a file (Word) in case the page is removed? Say **file**." Never a `.md` for a platform that does not render Markdown — its `#`, `**` and `|` land on the page as junk.
+**Long article:** in the chat in parts ("Part 1 of 2"), split at an H2; the `.docx` is always the whole article in one file.
 
 1. Output the full article **right in the chat, fully formatted, ready to copy**. The article only, from title to disclosure, with no comments, notes or questions inside it.
    - **Formatting is required:** one H1 title; H2 sections and H3 subsections; a **table of contents** with anchor links to the H2 sections right after the author intro; bullet and numbered lists; bold for key facts; short paragraphs (2–4 lines on mobile).
    - **Tables often** — wherever they help the decision: quick facts, pain → solution, comparison with competitors, prices and packages, pros and cons, "choose X if…". A typical article has 3–5 tables (presentations: table slides as images).
-   - Render it as formatted text in the reply (not inside a code block, not in a file); the source code block is added only per the table above.
-   - Images (Step 5) are files shown separately; in the article text mark where each goes: "[Image 2: price comparison — insert here]".
-   - Before the article, three short lines: word count, tables and images, the reference followed · the delivery format and why · "Check by Rumer's rules: N/100, fixed: …".
+   - Render it as formatted text in the reply (never inside a code block); then build and hand over the `.docx` (above). Markdown source only when the user asks.
+   - Images (Step 5) are JPG files shown separately and embedded in the `.docx`; in the chat text mark where each goes: "[Image 2: 02-ingredients.jpg — insert here]". The cover prompt comes in the same reply.
+   - Before the article, three short lines: word count, tables and images, the reference followed · the platform's specifics if any · "Check by Rumer's rules: N/100, fixed: …".
 2. Under the article, separately, a short **operator checklist**: facts to verify, placeholders left (marked `[VERIFY: …]`), images to create, links to check.
 3. **Mark the topic written and show the batch progress.** If the article came from the approved list, set its `topics:` status to `written YYYY-MM-DD` in the profile and add one line: "Written 1 of 3 'test first' topics · next: #2 7 Best … for Bulking (10/12)".
 4. Ask what to change. Iterate section by section; keep everything the user did not ask to change.
-5. When the user publishes it, offer once to save the final text with the page in the journal (`work-log` Mode 11 `source`; a .docx only if they want one), so it can be republished if the page is removed.
+5. When the user publishes it, offer once to save the final `.docx` with the page in the journal (`work-log` Mode 11 `source`), so it can be republished if the page is removed.
 
 Then the Next steps above: next topic first, "I published" second, the full audit only last.
 

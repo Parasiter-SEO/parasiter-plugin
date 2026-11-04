@@ -23,29 +23,27 @@ Same sales logic everywhere (author → problem → solution → bridge → fact
 
 ## Delivery format by platform
 
-The article always goes **in the chat, formatted, for the copy button** — no file unless the user asks. The editor decides only what is added in the chat next to it. Say in one line why ("Prezi doesn't read Markdown — the text goes by slides").
+Every article comes the same way, whatever the platform (№31): **formatted in the chat + a `.docx` with the same formatting + images and the cover prompt**, every product name linked. **No `.md` / `.txt` files and no Markdown unless the user asks.** The platform only changes:
 
-| Editor | Platforms (examples) | Deliver |
+| Editor | Platforms (examples) | What changes |
 |---|---|---|
-| Markdown | HackMD, Dev.to, GitHub, Reddit, forums with a Markdown editor | Formatted article in chat + Markdown in a code block; a `.md` file only if asked |
-| BBCode | Most classic forums (phpBB, vBulletin, XenForo with BBCode) | Formatted article in chat + BBCode in a code block |
-| Visual (WYSIWYG) | Medium, LinkedIn, WordPress, Raisely, Google Sites, community editors | Formatted article in chat to copy — nothing else; Word / doc only if asked |
-| Presentation | Prezi, Gamma, Canva, PDF slides | The text "by slides" in the chat, plain text, no Markdown marks: `Slide N — Title / Text / Image / Link`; each table becomes its own slide as an infographic image; a doc only if asked |
-| Document | PDF and document hosts | Formatted article in chat; the PDF / .docx file only when the user asks |
-| Plain text / short | Facebook, YouTube description, Quora, podcast description | Plain text in chat, links written out in full |
+| Visual / most editors | Medium, LinkedIn, WordPress, Raisely, Google Sites, HackMD, community editors | nothing — copy from the chat or the .docx |
+| Presentation | Prezi, Gamma, Canva, PDF slides | the .docx and the chat text go by slides: "Slide N — Title" heading, text, image; tables become image slides; links are added by hand in Prezi (one line says how) |
+| Markdown / BBCode — only on request | HackMD, Dev.to, Reddit, BBCode forums | the source in a code block in addition, when the user asks |
+| Plain text / short | Facebook, YouTube description, Quora, podcast description | the text in the chat with links written out in full; the .docx still comes |
+| Document | PDF and document hosts | the .docx (export it to PDF) |
 
 Not sure which editor the platform uses? Check the platform's own post editor or a live example (`platform-analyzer`), then pick the row.
 
-Slide doc template (presentations):
+Slide template (presentations, in the .docx and the chat):
 ```
-Slide 1 — Title: A vs B: Which One to Buy in 2026
-Text: one-line promise of the deck
-Image: cover (product photo)
-Link: —
-Slide 2 — Title: Quick facts
-Text: price from … · guarantee … · best for … (checked 02.11.2026)
-Image: quick facts card
-Link: "See today's price" → affiliate link
+Slide 1 — A vs B: Which One to Buy in 2026        (Heading 2 in the .docx)
+  one-line promise of the deck
+  [image: cover]
+Slide 2 — Quick facts
+  price from … · guarantee … · best for … (checked 02.11.2026)
+  [image: 01-quick-facts.jpg]
+  See today's price → (the words are the link)
 …
 ```
 

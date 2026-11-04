@@ -2,6 +2,12 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.31.0 — 2026-11-04
+
+**Articles ready to post, bases one tap away.**
+- **Every article is a finished product:** formatted in the chat **and a Word `.docx`** with the same headings, tables, lists and links, plus the JPG images and the cover prompt — all in one delivery. Every product name links to the product: PARASITER asks for your affiliate links before writing. No `.md` / `.txt` files and no Markdown unless you ask. Presentations get the same, split by slides.
+- **Bases and data first on the panel:** **Б1 / B1** Rumer's platform base (Free key: 50 platforms) · **Б2** my platforms · **Б3** journal · **Б4** my offers and links · **Б5** feed. Type the code, "base" or "journal" — the table opens at once; filter in words.
+
 ## 0.30.0 — 2026-11-04
 
 **A working desk per role, honest indexing, images as real files.**
