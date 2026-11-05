@@ -2,6 +2,13 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.34.0 — 2026-11-05
+
+**Your base is yours — export it any time, keep it when a plan ends.**
+- **Export my base:** say *export my base* — one zip with every PARASITER file as it is (journal, sales, platforms, links, profile, goals), an Excel workbook and a README on how to bring it back. Works on any plan, even without a key.
+- **Nothing is lost when a plan ends.** Your files live in your own folder, never on the PARASITER server. Renew within 30 days and the same key continues with your settings; later, a new key works with the same files.
+- **Change plan without a new key:** Insider → Pro or Pro → Insider with the same email keeps your key, files and settings; only the channels change.
+
 ## 0.33.0 — 2026-11-04
 
 **A shorter checkout.**

@@ -37,6 +37,12 @@ The setup is 12 fixed steps (language and role · work environment · about you 
 ## See or download my base of posts
 "Open my base" → a dashboard page with all your posts: totals, status by platform, search and filters (platform, status, topic, offer, ★, top 10), sorting by any column. "My posts in Excel", "download my base" → an Excel file with sheets Summary, Posts, Platforms, Sales, Links and the full Journal; filters, clickable links and real dates are ready. On the dashboard, **Download Excel** gives the same file and **CSV of this view** gives exactly the rows you filtered. "Show my posts on Medium" in the chat gives a short list instead.
 
+## Export my base / keep my data after a plan ends
+Say *export my base*. You get one zip: all your PARASITER files as they are, an Excel workbook and a README. Works on any plan and without a key. Your files never leave your folder, so ending or changing a plan deletes nothing; renew within 30 days and the same key continues.
+
+## Change plan (Insider → Pro or back)
+Pay for the new plan on the site with the same email. Same key, same files, same settings; the bot sends invites for the new plan's channels and removes you from the old ones.
+
 ## Track positions of my pages
 Search Console can't see pages on other people's platforms. Connect your own DataForSEO account (pay per query, cents a month for dozens of pages): create it at dataforseo.com, copy the API login and password, and set them as `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD`. Then "check my positions" → you choose which pages (★, earning, new, all) and see the cost; after your yes they are checked in Google (top 10–30), positions and "new in top 10 / up / down / out" go into your journal. Weekly is enough; "check ★ pages every Monday" sets a scheduled check with a Telegram warning before each run. Using Ubersuggest or another tracker: export the rankings as CSV and upload it — "here are my positions". Trackers follow a whole domain, so on shared platforms (Medium, LinkedIn) make sure the ranking URL is your page; PARASITER skips rows where someone else's page of the same platform ranks. Or just say them ("cortisol on Medium is #8").
 

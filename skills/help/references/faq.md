@@ -34,6 +34,7 @@ An affiliate never sees the merchant's analytics, so UTM tags are wasted. An age
 - Pro includes the PARASITER Pro channel and personal notifications from the bot. Telegram is for paid plans only.
 - Annual billing about 20% less. Prices are preliminary — current terms on the official site.
 - The key is personal: one key, one person. It stops working when the subscription ends; skills keep working without server data.
+- **Change plan** (Insider → Pro or back): pay for the new plan with the same email. Your key stays the same, your files and server settings stay, only the channels change (Pro channel instead of the Insider channel and group, or the other way). Remaining days of the old plan are not carried over.
 - Platform feed updates come as findings appear — several times a week, sometimes less. No daily promise.
 
 ## Do images cost anything?
@@ -61,6 +62,7 @@ After you publish a text you worked on yourself, say "save this .docx with the p
 - **How to connect**: say "connect Telegram" in Claude, open the personal link, press Start. A username is not enough: Telegram bots cannot write to someone first.
 - **Notifications**: one daily summary of your pages that got worse, Monday check-in at 10:00 Kyiv (bring last week's sales, traffic and UTM data to Claude and say "weekly check-in"; buttons for a 19:00 reminder, a position check, skip or off), news digest, billing, warnings before a scheduled paid check. Platform-wide news (new platforms, cleanups) comes in the channel only, never twice. Quiet at night. Turn any off: "turn off news notifications" in Claude, or in the bot (`/checkin off` for the Monday check-in).
 - **Plan ends**: access to the channels and group ends with it and comes back on renewal.
+- **Plan ends — your data stays.** Journal, sales, pages, platforms, links, profile and goals are in your own folder and stay there for good. Server settings (Telegram link, notifications, scheduled checks) are kept 30 days: renew within 30 days and you keep the same key and everything continues; later you get a new key, your files still work. Any time, on any plan, even without a key: say *export my base* — one zip with all your files, an Excel workbook and a README.
 - The bot never asks for a password, phone number or login code.
 - Do not forward channel posts outside: they are for subscribers.
 

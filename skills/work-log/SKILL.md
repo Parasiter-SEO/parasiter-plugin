@@ -52,7 +52,7 @@ Reply in the working language from `parasite-seo-profile.md`. Keep column names 
 
 ## Step 0 — Plan check (Pro)
 
-**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — the journal of your pages, sales and traffic, your platform base, sales imports from networks, reports and the check queue. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (tell the goals tracker what you did — say "I published 3 pages" or "2 sales today" — and it counts them in your weekly plan-vs-fact; keep the page links in your own table meanwhile), and stop.
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. **Always allowed on any plan, with or without a key (№34):** "export my base", "download my data", "my base in Excel", "open my base" — Mode "Export my base" and the My base dashboard below. The files are the user's own and never live on the server, so a lapsed plan never locks the user out of their own data; run these without the upgrade line. Everything else: Free, expired or no key → one line: "This is a Pro feature — the journal of your pages, sales and traffic, your platform base, sales imports from networks, reports and the check queue. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (tell the goals tracker what you did — say "I published 3 pages" or "2 sales today" — and it counts them in your weekly plan-vs-fact; keep the page links in your own table meanwhile), and stop.
 
 ## Files
 
@@ -234,6 +234,19 @@ Writes, next to the journal:
 - `parasite-seo-base.html` — the dashboard: totals (posts, ★, platforms, alive, indexed, top 10, need attention, sales and commission per currency), status of posts by platform, and tabs Posts · Platforms · Sales · Links with search, filters (platform, status, topic, offer, ★ only, top 10 only) and sorting by any column. Buttons **Download Excel** (the workbook is inside the page) and **CSV of this view** (exactly the rows the filters show). Light and dark, works on a phone.
 
 `--lang` = the working language from `parasite-seo-profile.md` (en, ru, uk, es, pt; other languages get English labels). Labels and statuses are translated, the data never is. `--xlsx` or `--html` writes only one of them; `--platform / --priority / --topic` narrow the Posts sheet and the page table. The script only reads the journal files.
+
+### Export my base — keep everything (any plan, no key needed)
+
+"export my base", "download all my data", "back up my base", "I'm cancelling — what about my data?", or a lapsed / Free user asking for their journal:
+
+```
+python3 scripts/export.py parasite-seo-progress.csv --lang ru
+```
+One zip next to the journal, `parasite-seo-export-YYYY-MM-DD.zip`: `original/` — every PARASITER file byte for byte (journal, sales, platforms, links, keywords, profile, goals, writer notes); `parasite-seo-base.xlsx` — the same data as Excel; `README.txt` — what each file is, how to bring the base back, SHA-256 checksums. Reads only, works without a journal too (exports whatever PARASITER files exist).
+
+Send the zip as a file. Then say in 2 lines: the base always lives in their own folder and never on the PARASITER server, so ending a plan deletes nothing of it; after renewal (same key within 30 days of the end) or a new plan PARASITER continues from the same files. Offer once: "Want a monthly backup reminder?" (a scheduled task in their Claude, if they agree).
+
+When the user says they're switching plan (Insider → Pro, Pro → Insider): nothing to move — files stay, the key stays the same (see help, "Change plan").
 
 Delivering:
 - **Claude app / claude.ai** (can publish pages): publish the `.html` as a private artifact with `capabilities: {"downloads": true}` — without it the download buttons are hidden. Keep the same artifact for the user's base and republish it to the same URL when they ask again, so the link stays. Also send the `.xlsx` as a file when they asked for Excel.
