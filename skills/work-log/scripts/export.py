@@ -31,6 +31,8 @@ FILES = [
     ("parasite-seo-platforms.csv", "Your personal platform base"),
     ("parasite-seo-links.csv", "Your affiliate links and products"),
     ("parasite-seo-keywords.csv", "Keywords your pages rank for"),
+    ("parasite-seo-queue.csv", "Publication queue: your next pages, ranked, planned and published"),
+    ("parasite-seo-queue-settings.json", "Publication queue mix (scale / expand / explore)"),
     ("parasite-seo-profile.md", "Your PARASITER profile: role, language, time, settings"),
     ("parasite-seo-goals.md", "Goals, milestones and weekly targets"),
     ("parasite-seo-writer.md", "Writer settings: voice, author block, disclosure"),

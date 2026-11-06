@@ -2,6 +2,18 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.35.0 — 2026-11-06
+
+**Your publication queue: what to publish next, where and why — from your own numbers.**
+- **Say *what should I write next?*** — PARASITER ranks your next pages from your pages, positions, sales, traffic and affiliate links, each with its reason ("#3 on Pressbooks, earns $240 — missing on ResearchGate"):
+  - **Fix & push** — pages at #4–20 to push into the top 3, pages with traffic but no sales to audit;
+  - **Scale** — topics that rank or earn, missing on your strong platforms;
+  - **Expand** — products from your links with no pages yet, best sellers in new content types (A vs B, complaints, pricing);
+  - **Explore** — sister products of programs that already pay you, a new platform while you're under 10.
+- **Plan by numbers:** reply "1, 3, 5" and they go into your plan for the day you choose; the day plan takes new pages from the queue in your time.
+- **It updates itself:** after every upload of pages, sales or positions the queue is rebuilt; a page you publish and log marks its item done. *What did the queue bring?* shows earning pages, top 10 and commission per group — and what earns weighs more next time.
+- **Your mix:** 70% scaling what works, 20% new products and formats, 10% experiments. Say *more experiments* or *only what works* to change it.
+
 ## 0.34.0 — 2026-11-05
 
 **Your base is yours — export it any time, keep it when a plan ends.**

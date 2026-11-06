@@ -55,6 +55,8 @@ Wrote a page? Say "roll this topic out" (or "where else should this go?"): you g
 ## What to write and where
 "What should I write next?", "which topics are missing on Medium?" → topic coverage: a table of your topics × platforms and the best gaps, e.g. *glp1 patch review → Medium: #7 and earning on the forum, Medium is your priority platform*. Pick one and it goes to content-type-selector and sales-review-writer (a new angle, never a copy).
 
+**Publication queue** — "what should I write next?", "plan me topics", "what can I scale?": PARASITER ranks your next pages from your own pages, positions and sales in four groups — **Fix & push** (pages at #4–20 to push into the top 3, traffic without sales to audit), **Scale** (topics that rank or earn, missing on your strong platforms), **Expand** (products from your links with no pages yet, best sellers in new content types) and **Explore** (sister products of programs that pay you, a new platform). Each item says why. Reply with numbers — they go into your plan on the date you choose; when you publish and log the page, the item marks itself done, and "what did the queue bring?" shows the result. "More experiments" or "only what works" changes the mix (default 70 / 20 / 10).
+
 ## Pick a product or program
 "Which program should I promote?" → `affiliate-finder`: pick a niche (nutra, gambling, crypto, gaming, software…), get programs from networks and direct merchants sorted by how popular the offer is in search, 15%+ commission, traffic rules checked. Then "is [product] worth it?" → `niche-analysis`: volumes and an entry score for the top 20 (is one of our kind of platforms there?).
 

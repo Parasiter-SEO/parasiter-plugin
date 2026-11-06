@@ -1,6 +1,6 @@
 ---
 name: work-log
-description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms. Imports pages they already published and builds their own platform base; records every action, sale (by hand or from affiliate network exports) and traffic; ties sales to pages by sub-ID; gives reports for any day, week or month, effectiveness by page, platform, offer, program and content type, and a queue of pages due for checks. Use when the user uploads or pastes their pages, asks for "my platforms", marks priority pages or platforms, asks which pages are in the top, wants to see or download their base of posts ("open my base", "my posts in Excel"), "what should I write and where", "which topics are missing on X", reports work or a sale, uploads a sales or traffic export, asks "what did I do / earn this week", wants a report, or asks what needs checking.
+description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms; keeps the publication queue — next pages ranked by what earns (fix, scale, expand, explore). Imports pages they already published and builds their own platform base; records every action, sale (by hand or from affiliate network exports) and traffic; ties sales to pages by sub-ID; gives reports for any day, week or month, effectiveness by page, platform, offer, program and content type, and a queue of pages due for checks. Use when the user uploads or pastes their pages, asks for "my platforms", marks priority pages or platforms, asks which pages are in the top, wants to see or download their base of posts ("open my base", "my posts in Excel"), "what should I write and where", "which topics are missing on X", reports work or a sale, uploads a sales or traffic export, asks "what did I do / earn this week", wants a report, or asks what needs checking.
 ---
 
 # Work Log
@@ -59,6 +59,7 @@ Reply in the working language from `parasite-seo-profile.md`. Keep column names 
 In the user's project folder (formats in `references/log-format.md`):
 - `parasite-seo-progress.csv` — work journal: pages, checks, audits, traffic, imports (the same file `goals` reads).
 - `parasite-seo-sales.csv` — one row per sale, logged by hand or imported.
+- `parasite-seo-queue.csv` — the publication queue (Mode 12): next pages ranked by what earns, updated in place.
 - `parasite-seo-platforms.csv` — the user's own platform base: one row per platform they publish on (domain, type, language, link rules, account, score, state). Built automatically from their pages; the only file here whose rows are updated in place.
 
 One row per fact. Never edit or delete old rows; corrections and status changes are new rows. If a file has an older, shorter header, the script upgrades the header and keeps every value.
@@ -328,6 +329,32 @@ python3 scripts/worklog.py coverage parasite-seo-progress.csv [--topic keto] [--
 `--by-platform` answers "which of my topics are missing on each of my top platforms": per platform, in the user's own order, the topics they already have elsewhere. The user's order of platforms ("Medium is my #1") goes in with `platform-set --rank 1`; it outweighs every other signal.
 Read it to the user as 3–5 concrete suggestions: topic → platform → why → the content type to use there. A new page on a topic must be rewritten for the platform (new angle or content type, the platform's format), never copied — duplicates get filtered and hurt both pages. Hand the chosen gap to `content-type-selector` and `sales-review-writer`. The navigator uses this list for "new content" in the daily plan.
 
+## Mode 12 — Publication queue: what to publish next, ranked by what earns
+
+"What should I write and where?", "plan me topics", "add them to the plan", "what can I scale?", "which products haven't I tried?" → the queue. It turns the whole base — pages, positions, sales, traffic, links — into one ranked list of next pages, so the user never starts from a blank page and the plan always comes from their own numbers.
+```
+python3 scripts/pubqueue.py build parasite-seo-progress.csv        # refresh from the base
+python3 scripts/pubqueue.py list  parasite-seo-progress.csv [--bucket scale|expand|explore|fix] [--n 15]
+python3 scripts/pubqueue.py today parasite-seo-progress.csv --minutes 120 [--json]
+python3 scripts/pubqueue.py plan  parasite-seo-progress.csv --ids 3,5 [--date 2026-11-07]   (or --next 3)
+python3 scripts/pubqueue.py set   parasite-seo-progress.csv --id 7 --status skipped|writing|published [--url …]
+python3 scripts/pubqueue.py mix   parasite-seo-progress.csv 70,20,10
+python3 scripts/pubqueue.py review parasite-seo-progress.csv
+```
+File `parasite-seo-queue.csv` next to the journal (one row per item, updated in place); the mix in `parasite-seo-queue-settings.json`.
+
+**Four buckets, each item with its reason:**
+- **Fix & push** — money pages first: positions 4–20 → refresh to reach the top 3 / top 10 (Rumer: sales start in the top 3); 100+ views or 5+ affiliate clicks in 60 days and no sales → page-audit. At most 2 a day ahead of new pages.
+- **Scale** — a proven topic (top 10, earning or ★) missing on a strong platform (the `coverage` gaps, weighted by what the offer and content type earn). Topics that are only indexed wait for data. A page removed from a platform comes back as "republish".
+- **Expand** — what the user sells but hasn't tried: products from the links library with no pages (programs that already pay first), and earning offers written in only one or two content types → the next buyer intents (A vs B, complaints, pricing, experience, best-of).
+- **Explore** — sister products of a program that pays (→ affiliate-finder), a new platform while the base is under Rumer's rule of 10 (→ platform-finder, the user picks).
+
+**Mix.** New pages come in the user's proportion, default **70 / 20 / 10** (scale / expand / explore); "more experiments" / "only what works" → `mix`. Scores (0–100) rank items within their bucket.
+
+**The loop.** Run `build` after every import of pages, sales, traffic or positions (and in the Monday check-in). It adds new items, refreshes scores, retires items that are no longer relevant, and marks queue items **published** by itself when a matching page appears in the journal (same platform and topic, logged after the item). `review` shows what the queue brought — earning, top 10, commission per bucket; those pages then weigh content types, offers and platforms in the next `build`. "Skip #N" hides an item for 30 days; it comes back only if still relevant.
+
+**How to show it.** `today` / `list` → 3–8 items, one line each: topic → platform · content type · ~minutes · why — then "Which go into the plan? Reply with numbers." The numbers go to `plan`. The user's platform choice rules (navigator): `today` uses only ★ platforms when the user has marked any; other items stay in the queue. A chosen write item → content-type-selector → sales-review-writer (a new angle for the platform, never a copy), then `add --event published` as usual — the queue links itself. No data yet (a new user) → nothing to rank: say so in one line and go to content-type-selector with the user's offers.
+
 ## Mode 8b — Topics for the user's own plan
 
 When the user says what they will publish today and where, `ideas` answers per target platform:
@@ -366,6 +393,7 @@ python3 scripts/rankcheck.py parasite-seo-progress.csv [--country us] [--priorit
 
 ## Rules
 
+- **Queue after data.** After any import (pages, sales, traffic, ranks) or a position check, run `pubqueue.py build` without asking and add one line to the import report: "Queue: N new — say *what should I write next?*".
 - **Legal products and content only.** PARASITER works only with legal products and content. Don't write, plan, find platforms for or log pages that promote pirated software, films, books or courses, file-upload / download or "free download" schemes, cracks and keygens, counterfeit or illegal goods, or content that breaks the target platform's rules or the law of the target country. Say so in one line, without lecturing, and offer a legal alternative (the official product or a legal affiliate offer). This rule is part of the PARASITER offer the user accepted.
 - **Paid checks only with the user's yes, every time.** Index checks, position checks (Mode 9), page keywords (Mode 9b) and any other call that spends the user's SEO API balance: before each run ask **how many pages and which** — ★ pages, earning pages, new pages not yet indexed, one platform, or the user's own list — show the rough cost for that number (`--dry-run`), and run only after a clear yes. Never run them silently from the check queue, the daily plan or the weekly review, and never extend an earlier yes to a new run or a bigger set. A scheduled weekly run exists only if the user set it up themselves with the pages and the cost shown. The user must always know what they are paying for.
 - **★ pages.** Offer the user to star their main pages (`tag --priority high`) after the import; ★ pages are the default proposal for every paid check.

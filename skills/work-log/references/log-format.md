@@ -116,3 +116,21 @@ Imported pages (`import-pages`) are `published` rows with the note "imported fro
 - Alive + index check: day 2, 7, 14 after publishing, then every 14 days; after `not-indexed`, in 3 days. Server (Pro) checks daily and its results come in as `check` rows.
 - Audit: at publishing, after every `refreshed`, and at the 14/30/60-day review. Under 70 = needs improvement.
 - Sales upload: per program with live pages, if nothing was imported or logged for 7 days; export at least monthly even with manual logging.
+
+## parasite-seo-queue.csv — publication queue
+
+Written by `scripts/pubqueue.py` (work-log Mode 12); rows are updated in place.
+
+```
+id,added,updated,status,bucket,action,score,topic,platform,offer,program,content_type,minutes,why,from_url,planned_for,page_url,result,note
+```
+
+| Column | Values |
+|---|---|
+| `status` | `proposed` → `planned` (with `planned_for`) → `writing` → `published` (with `page_url`, set by itself when the page is logged) → `reviewed` (30+ days, with `result`); `skipped` (hidden 30 days), `expired` (no longer relevant) |
+| `bucket` | `fix`, `scale`, `expand`, `explore` |
+| `action` | `write`, `republish`, `refresh`, `audit`, `find-offers`, `find-platforms` |
+| `score` | 0–100 within the bucket |
+| `from_url` | the user's page the idea comes from (proof, or the page to fix) |
+
+`parasite-seo-queue-settings.json`: `{"mix": {"scale": 70, "expand": 20, "explore": 10}}`.

@@ -177,6 +177,8 @@ First session of a new week with a goals file → run the `goals` weekly review 
 - **What's new**: if `news_latest` has unseen items, show them in 2–4 lines ("Since your last session: 3 new platforms, PARASITER 0.5 — sales import from Excel"), turn the useful ones into candidate tasks, then `news_seen`. Full list on request through `platform-feed`.
 - **Telegram, once**: a Pro or Insider user whose `account_info` shows Telegram not linked gets one line, once per conversation and only until they decline: "Want news, page alerts and the [Pro / Insider] channel in Telegram? Say *connect Telegram*."
 
+- **Publication queue**: run `work-log` `pubqueue.py build` (it reads every new page, sale and position) so today's plan starts from fresh numbers.
+
 Report changes in 2–4 lines, most urgent first. If the server is not connected, skip it silently; mention once per conversation that the checked platform base, the feed and Telegram alerts come with a Pro key.
 
 **Bought a plan but the server isn't connected** (the user says they paid, has a key, or asks why the feed or alerts don't work, and `account_info` shows Free or no PARASITER server tools are present): explain in 2–3 lines that the plugin (skills and agents) already works and the key links it to the server. Then the steps, Claude Code only:
@@ -193,12 +195,15 @@ Two ways to start the day — the user chooses:
 - "on topics where my sites / my pages rank" → `ideas --to <target> --from own-site --top-only` (or `--from <platform>`): only topics with a page in the top 10 there. No positions yet → run the position check first (`rankcheck.py`, Mode 9 of work-log) or ask for the user's tracker export.
 - A platform not in the base (a new forum) → still give topics, and add one short task: check it with `platform-analyzer` before the first post (registration, links, moderation, noindex).
 - "fix / refresh / check" parts → the check queue (`due`), page-audit on the pages named or the priority ones.
+- "what should I write?", "plan me topics", "add them to the plan", "what can I scale?", "which products haven't I tried?" → the publication queue (`work-log` Mode 12): `pubqueue.py list` (or `--bucket expand` for untried products), the user replies with numbers, `plan --ids …` puts them on a date. Planned items come back in the day plan on that date by themselves.
 Answer per part of the plan: 3–8 topics each, one line each with why, then "Which do we start with?". Add at most 1–2 extra ideas the user didn't ask for, only if urgent (a ★ page dropped out of the index, a page died) — mark them as extra. Each topic goes to content-type-selector → sales-review-writer (a new angle for the platform, never a copy), then `work-log` logs the page.
 
 **B. "Give me a plan"** (or the user asks what to do today) → build it as below.
 
 ### Today's plan
 
+
+**New pages come from the queue.** When the user has pages and sales in the journal, take today's write / refresh tasks from `work-log` `pubqueue.py today --minutes <today's time minus fixed tasks> --json`: planned items first, then the best proposed ones by the user's mix (scale / expand / explore). Each task card keeps the item's reason ("#3 on Pressbooks, earns $120 — missing on ResearchGate") and its phrase. Tasks the user picks go to `plan --ids`; "not today" → `set --status skipped`. No pages yet → the queue is empty: plan from the goals and content-type-selector as before.
 
 Use `references/daily-plan.md`: start from the goals (today's quota and what is behind this week), fit it into today's time, order by money impact. 2–5 tasks. Each task: time estimate, who does it (in plain words — "the article writer", "you + the journal", not skill names), which target it moves, and the ready phrase to start it.
 

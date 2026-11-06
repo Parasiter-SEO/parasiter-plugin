@@ -34,6 +34,8 @@ Commands:
   backlinks      JOURNAL [--period P] [--target URL]   links our pages give to the own / client site: dofollow, live, anchors, cost
   coverage       JOURNAL [--topic T] [--platform P] [--gaps N]   topics x platforms, what to write where
 
+Publication queue (next pages ranked by what earns): scripts/pubqueue.py, built on coverage_model().
+
 Periods: today, yesterday, week, last-week, month, last-month, YYYY-MM, YYYY-MM-DD,
 YYYY-MM-DD..YYYY-MM-DD, all.  --sales-file FILE overrides the sales file path.
 Positions: scripts/rankcheck.py (DataForSEO). Formats: references/log-format.md, references/sales-import.md. Standard library only.
@@ -2023,9 +2025,10 @@ def page_strength(p, earned):
     return sc
 
 
-def cmd_coverage(a):
-    today, rows, pages, sales = load(a)
-    reg = read_platforms(platforms_path(a.journal))
+def coverage_model(today, rows, pages, sales, journal, platform=None, topic=None, include_guessed=False):
+    """Topics x platforms and the gaps: a proven topic missing on a strong platform.
+    Used by `coverage` and by the publication queue (pubqueue.py)."""
+    reg = read_platforms(platforms_path(journal))
     earned = defaultdict(lambda: [0, 0.0])
     for r in sales:
         if r["_page"] and counted(r):
@@ -2059,12 +2062,54 @@ def cmd_coverage(a):
         plat[key] = {"name": r.get("platform") or key, "strength": strength, "rank": num(r.get("rank")), "top": top, "idx": idx,
                      "pages": s["pages"], "priority": r.get("priority") or "normal", "state": state,
                      "type": r.get("type") or ""}
-    if a.platform:
-        plat = {k: v for k, v in plat.items() if k == a.platform.lower()}
-    names = sorted(plat, key=lambda k: -plat[k]["strength"])
+    if platform:
+        plat = {k: v for k, v in plat.items() if k == platform.lower()}
+    names = sorted(plat, key=lambda k: (-plat[k]["strength"], k))
     tlist = sorted(topics, key=lambda t: (-max(page_strength(p, earned) for p in topics[t].values()), -len(topics[t]), t))
-    if a.topic:
-        tlist = [t for t in tlist if a.topic.lower() in t]
+    if topic:
+        tlist = [t for t in tlist if topic.lower() in t]
+    # gaps: proven topic missing on a strong platform
+    gaps = []
+    for t in tlist:
+        if t.startswith("~ ") and not include_guessed:
+            continue
+        have = topics[t]
+        proof = max(page_strength(p, earned) for p in have.values())
+        best = max(have.values(), key=lambda p: page_strength(p, earned))
+        for k in names:
+            if k in have:
+                continue
+            pl = plat[k]
+            if pl["pages"] == 0 and pl["priority"] != "high":
+                continue
+            score = proof * 1.0 + pl["strength"] + (1 if k in lost[t] else 0)
+            why = []
+            if best["position"] is not None and best["position"] <= TOP:
+                why.append(f"#{best['position']:.0f} on {best['platform']}")
+            if earned.get(best["url"], [0, 0])[1] > 0:
+                why.append(f"earns on {best['platform']}")
+            if best["priority"] == "high":
+                why.append("priority topic")
+            if pl["top"]:
+                why.append(f"{pl['name']} has {pl['top']} pages in the top {TOP}")
+            elif pl["idx"] is not None:
+                why.append(f"{pl['name']} indexes {pl['idx'] * 100:.0f}%")
+            if pl["rank"]:
+                why.append(f"{pl['name']} is your #{pl['rank']:.0f} platform")
+            elif pl["priority"] == "high":
+                why.append(f"{pl['name']} is a priority platform")
+            if k in lost[t]:
+                why.append("your page there was removed — republish")
+            gaps.append((score, t, pl["name"], best, why))
+    gaps.sort(key=lambda g: -g[0])
+    return {"names": names, "plat": plat, "topics": topics, "lost": lost, "earned": earned,
+            "tlist": tlist, "gaps": gaps}
+
+
+def cmd_coverage(a):
+    today, rows, pages, sales = load(a)
+    m = coverage_model(today, rows, pages, sales, a.journal, a.platform, a.topic, a.include_guessed)
+    names, plat, topics, lost, earned, tlist, gaps = (m[k] for k in ("names", "plat", "topics", "lost", "earned", "tlist", "gaps"))
     print(f"# Topic coverage · {today} · {len(tlist)} topics × {len(names)} platforms\n")
     if not tlist:
         print("No live pages with platforms yet. Import your pages first (import-pages).")
@@ -2097,40 +2142,6 @@ def cmd_coverage(a):
     if unnamed:
         print(f"{unnamed} topics are guessed from URLs (marked ~): name them with `tag --topic` so pages on the same subject group together.")
 
-    # gaps: proven topic missing on a strong platform
-    gaps = []
-    for t in tlist:
-        if t.startswith("~ ") and not a.include_guessed:
-            continue
-        have = topics[t]
-        proof = max(page_strength(p, earned) for p in have.values())
-        best = max(have.values(), key=lambda p: page_strength(p, earned))
-        for k in names:
-            if k in have:
-                continue
-            pl = plat[k]
-            if pl["pages"] == 0 and pl["priority"] != "high":
-                continue
-            score = proof * 1.0 + pl["strength"] + (1 if k in lost[t] else 0)
-            why = []
-            if best["position"] is not None and best["position"] <= TOP:
-                why.append(f"#{best['position']:.0f} on {best['platform']}")
-            if earned.get(best["url"], [0, 0])[1] > 0:
-                why.append(f"earns on {best['platform']}")
-            if best["priority"] == "high":
-                why.append("priority topic")
-            if pl["top"]:
-                why.append(f"{pl['name']} has {pl['top']} pages in the top {TOP}")
-            elif pl["idx"] is not None:
-                why.append(f"{pl['name']} indexes {pl['idx'] * 100:.0f}%")
-            if pl["rank"]:
-                why.append(f"{pl['name']} is your #{pl['rank']:.0f} platform")
-            elif pl["priority"] == "high":
-                why.append(f"{pl['name']} is a priority platform")
-            if k in lost[t]:
-                why.append("your page there was removed — republish")
-            gaps.append((score, t, pl["name"], best, why))
-    gaps.sort(key=lambda g: -g[0])
     if a.by_platform:
         print("\n## Missing on each platform (topics you have elsewhere)\n")
         for k in names:
