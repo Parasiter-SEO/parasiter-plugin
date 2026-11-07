@@ -175,6 +175,8 @@ First session of a new week with a goals file → run the `goals` weekly review 
 - **Page checks** (`work-log` `due`, run by `platform-monitor` in the user's Claude): dead, noindexed or dropped pages since the last check. With 20+ pages and no scheduled check yet, offer once to schedule it in the user's Claude. Page URLs never go to the server.
 - **Server, if connected** (`news_latest`, `account_info`): news, cleanups on platforms, plan (Pro / Insider) and limits.
 - **What's new**: if `news_latest` has unseen items, show them in 2–4 lines ("Since your last session: 3 new platforms, PARASITER 0.5 — sales import from Excel"), turn the useful ones into candidate tasks, then `news_seen`. Full list on request through `platform-feed`.
+- **Plugin update, once per session (№39):** compare `latest_plugin_version` from `account_info` with this plugin's version (`.claude-plugin/plugin.json`). Older → one line at the top of the reply: "PARASITER {latest} is out ({latest_plugin_notes}, if any). Update: {plugin_update_steps}". Same or newer, or the field is empty → say nothing.
+- **Beta tester (`beta: true` in `account_info`), once per session:** one line near the end: "You're on free beta access — bugs and ideas go to the bot: /bug, /idea, /feedback. Thank you!"
 - **Telegram, once**: a Pro or Insider user whose `account_info` shows Telegram not linked gets one line, once per conversation and only until they decline: "Want news, page alerts and the [Pro / Insider] channel in Telegram? Say *connect Telegram*."
 
 - **Publication queue**: run `work-log` `pubqueue.py build` (it reads every new page, sale and position) so today's plan starts from fresh numbers.

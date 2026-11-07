@@ -2,6 +2,14 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.36.0 — 2026-11-07
+
+**Safer subscriptions and clear updates.**
+- **New version? You'll know.** When a new PARASITER version is out, the plan for the day tells you once, with the update steps. Your key and files stay.
+- **Key leaked or lost?** Send */newkey* to the bot: a new key comes by email and the old one stops working at once. Then reinstall the plugin and paste the new key.
+- **Refunds:** when a refund is made, access ends at once and you get a confirmation email.
+- **Beta testers:** your plan for the day reminds you once where to send bugs and ideas (/bug, /idea, /feedback in the bot).
+
 ## 0.35.0 — 2026-11-06
 
 **Your publication queue: what to publish next, where and why — from your own numbers.**
