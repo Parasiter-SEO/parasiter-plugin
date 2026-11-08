@@ -144,6 +144,19 @@ Google acts against site reputation abuse, platforms change moderation and remov
 
 © Rumer / Affiliate Credo. Licensed for the subscriber's personal use; redistribution of the plugin or server data is not permitted.
 
-## Privacy
+## Privacy and external services
+
+**Stays on your machine / in your Claude project:** your journal, pages and their URLs, sales, affiliate links, texts, client files and your writer profile (name or pen name you give, background). PARASITER never uploads them.
+
+**Sent off-platform, and only these:**
+
+| Service | When | What is sent |
+|---|---|---|
+| PARASITER server (`parasiter.affiliatecredo.com`, the declared MCP connector) | Only with a key | Your key; account data from payment (email, plan, term, Telegram link if you connect it); platform search queries; bare platform domains your scan found dead (no URLs, nothing about you); weekly counts (pages, sales count — no URLs or sums); the schedule of your paid checks as you describe it ("24 starred pages") |
+| DataForSEO API (`api.dataforseo.com`) — **your own account** | Only if you set it up and say yes to a check (cost shown first) | Search queries, keywords and the page URLs being checked; billed to your DataForSEO balance. Credentials never go to the PARASITER server |
+| Public web pages | Platform and page checks | Plain HTTP requests to the platforms and your published pages to see if they are live, indexed (noindex) and keep your link |
+| Other SEO tools (Semrush, Ahrefs, Serpstat, Google Search Console, GA4) | Only through connectors you add yourself | Whatever that connector sends under its own terms |
+
+**Retention on the PARASITER server:** account data for the life of the subscription and as required for payment records; encrypted backups for 14 days. Details and deletion requests: privacy policy below.
 
 Privacy policy: https://parasiter.affiliatecredo.com/privacy-en.html
