@@ -274,7 +274,7 @@ Other skills use the base: `platform-finder` excludes or marks platforms already
 
 ## Mode 9b — What each page ranks for, and what it lost
 
-`scripts/pagekeywords.py` asks DataForSEO Labs, page by page (full URL, never the bare domain — a domain target returns the whole site), which queries the page ranks for, their volume and estimated traffic, and which queries it lost and when. One page ≈ $0.013–0.02.
+`scripts/pagekeywords.py` (run through `dataforseo_run`, script `pagekeywords`) asks DataForSEO Labs, page by page (full URL, never the bare domain — a domain target returns the whole site), which queries the page ranks for, their volume and estimated traffic, and which queries it lost and when. One page ≈ $0.013–0.02.
 ```
 python3 scripts/pagekeywords.py parasite-seo-progress.csv [--priority high] [--platform medium] [--dry-run]
 ```
@@ -370,6 +370,8 @@ python3 scripts/worklog.py ideas parasite-seo-progress.csv --to thermaltake --fr
 
 ## Mode 9 — Positions of every page, automatically (DataForSEO)
 
+**How paid scripts run:** every DataForSEO call goes through the `dataforseo_run` tool of the bundled `parasiter-dataforseo` server (script + the same args as below, `cwd` = the folder with the user's files); it takes the login and password from the plugin settings. `--dry-run`, `--from-json`, `--from-raw` and `--self-test` are free and may also run directly with python3. `dataforseo_status` says whether DataForSEO is set up and shows the balance.
+
 Search Console and free webmaster tools only see sites the user owns, so they can't see parasite pages. PARASITER checks Google itself through the user's own DataForSEO account (pay per request, from about $0.0006 per query: 50 queries a week cost cents a month).
 
 ```
@@ -383,7 +385,7 @@ python3 scripts/rankcheck.py parasite-seo-progress.csv [--country us] [--priorit
 - Found pages get a `check` row with their position and status `indexed`; pages not in the top 100 get "not in top 100". The output lists changes since the last check: new in the top 10, up, down, out.
 - Standard queue by default (cheapest, results in a few minutes); `--live` answers at once for about 3× the price. DataForSEO bills per 10 results, so the top 100 costs 10× the top 10: use `--depth 10` (or 30) when only the top matters. Before **every** run: ask which pages and how many, show the `--dry-run` cost, wait for a yes (Rules: paid checks).
 - Tasks not downloaded in time (or after an error) are already paid: `--collect 24` downloads them for free; `--skip-today` re-runs only pages not checked today.
-- Credentials: the user's API login and password (app.dataforseo.com → API Access) in the environment as `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD`. Never write them into any file, profile or journal. If the assistant's sandbox blocks the network, the user allows `api.dataforseo.com` in their assistant's settings.
+- Credentials: the user's API login and password (app.dataforseo.com → API Access) go only into the plugin settings (/plugin → PARASITER → configure options → DataForSEO API login / password); the password is kept in secure storage. Never ask for them in the chat and never write them into any file, profile or journal. If `dataforseo_status` says it is not set up, give the user these steps once. If the assistant's sandbox blocks the network, the user allows `api.dataforseo.com` in their assistant's settings.
 - Weekly is enough; after a Google update, suggest a run the same day.
 - **Scheduled paid check** — only if the user asks for it. Set it up with the user: day and time, which pages (★, earning, new not yet indexed, a platform, a list), how many, and the cost per run from a `--dry-run`; if the user has ★ pages, also the "only ★" count and cost. Register it with `paid_check_schedule` (action=set; list / cancel to review or stop it). The server warns the user in Telegram ahead of every run (the day before, or that morning — always 6+ hours): *"Tomorrow at 10:00: position check of 61 earning pages, ~$0.12 from your SEO API balance"* with buttons **Run as planned · Only ★ · Skip this time · Change** (after Change, a text message sets the new pages).
   The assistant's scheduled task calls `paid_check_pending` (id) right before the run and does exactly what it returns: `run: true` → run that set; `run: false` → don't run, say why in the next session; `run: "if_within_cost"` → work out the pages the user wrote, dry-run, and run only if the cost is not above `cost_limit_usd`, else wait for a yes. No answer in Telegram = run as planned; a run the user was not warned about never runs. After the run, `paid_check_report` sends the result and the real cost to the user's Telegram.

@@ -1,7 +1,7 @@
 {
   "name": "parasiter",
   "displayName": "PARASITER by Rumer",
-  "version": "0.36.0",
+  "version": "0.37.0",
   "description": "Parasite SEO inside your AI assistant, for affiliate marketers, creators, site owners and agencies: find and analyze platforms, pick the content type that sells, write reviews and brand content, make videos and posts findable in Google (video SEO, channel audits, indexing), audit pages and sites, create images, analyze niches and programs, plan paid placements, set goals and get a daily plan, run clients or your own site (content and link plans, positions, GA4 and Search Console, backlinks, revenue vs spend, reports), and keep a journal with a check queue for every page.",
   "author": {
     "name": "Rumer (Affiliate Credo)",
@@ -34,6 +34,20 @@
       "type": "string",
       "title": "PARASITER key (Free, Pro or Insider)",
       "description": "Your personal key from the PARASITER email (starts with psr_). Free key by email, no card: parasiter.affiliatecredo.com/free.html. Leave empty to use only the content skills.",
+      "required": false,
+      "sensitive": true
+    },
+    "dataforseo_login": {
+      "type": "string",
+      "title": "DataForSEO API login (optional)",
+      "description": "Your own DataForSEO account for position checks, page keywords and platform scans (pay per request, cost shown before every run). app.dataforseo.com → API Access → API login. Leave empty if you don't use DataForSEO.",
+      "required": false,
+      "sensitive": false
+    },
+    "dataforseo_password": {
+      "type": "string",
+      "title": "DataForSEO API password (optional)",
+      "description": "API password from app.dataforseo.com → API Access (not your website password). Stored in secure storage and sent only to api.dataforseo.com — never to the PARASITER server or the chat.",
       "required": false,
       "sensitive": true
     }

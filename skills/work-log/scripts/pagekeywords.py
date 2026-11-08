@@ -31,10 +31,9 @@ def main():
     ap.add_argument("--country", default="us"); ap.add_argument("--language", default="en")
     ap.add_argument("--limit", type=int, default=50, help="keywords per page (by search volume)")
     ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--login"); ap.add_argument("--password")
+    ap.add_argument("--auth-fd", help=argparse.SUPPRESS)
     a = ap.parse_args()
-    login = a.login or os.environ.get("DATAFORSEO_LOGIN")
-    password = a.password or os.environ.get("DATAFORSEO_PASSWORD")
+    login, password = rc.read_auth(a.auth_fd)
     loc = rc.COUNTRIES.get(a.country.lower()) or sys.exit("Unknown --country")
     today = date.today()
     pages = [p for p in w.page_states(w.read_rows(a.journal), today).values()
@@ -46,7 +45,7 @@ def main():
     if a.dry_run or not pages:
         return
     if not (login and password):
-        sys.exit("No DataForSEO credentials (DATAFORSEO_LOGIN / DATAFORSEO_PASSWORD).")
+        sys.exit(rc.NO_CREDS)
     out_path = os.path.join(os.path.dirname(os.path.abspath(a.journal)), "parasite-seo-keywords.csv")
     rows, checks, summary = [], [], []
     for p in pages:

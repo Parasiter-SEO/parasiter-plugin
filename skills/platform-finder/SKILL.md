@@ -124,7 +124,7 @@ If the server is not connected, say once: "Checked platforms from Rumer come wit
 
 ## Step 3 — Live scan: where reviews of affiliate products are published now
 
-**The live scan is paid** (the user's DataForSEO balance) — always say so before running it, with the number of products and the rough cost, and run it only after a yes (`work-log` Rules: paid checks).
+**The live scan is paid** (the user's DataForSEO balance; it runs through the `dataforseo_run` tool, script `platformscan`, with the args below — credentials come from the plugin settings, see `work-log` Mode 9) — always say so before running it, with the number of products and the rough cost, and run it only after a yes (`work-log` Rules: paid checks).
 
 1. **Products to probe** — `references/products-seed.md`: the user's own products first, then the current top of the marketplaces in their niche (ClickBank, Digistore24, BuyGoods…), the seed list only as a fallback. 20–50 names is a good scan.
 2. **Scan** — every affiliate review page has the same two words: *[product name] review*. Search them and collect every result that is not the product's own site or a store:

@@ -2,6 +2,13 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.37.0 — 2026-11-08
+
+**DataForSEO in the plugin settings.**
+- **Your DataForSEO login and password now go into the plugin settings**, not your computer's environment: /plugin → PARASITER → configure options → DataForSEO API login / password. The password is kept in secure storage and sent only to DataForSEO.
+- Already set DATAFORSEO_LOGIN / DATAFORSEO_PASSWORD before? Enter them once in the settings; the old variables are no longer read.
+- Say *"is my DataForSEO connected?"* to see the status and your balance.
+
 ## 0.36.0 — 2026-11-07
 
 **Safer subscriptions and clear updates.**

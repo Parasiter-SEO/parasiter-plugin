@@ -35,7 +35,7 @@ The point is not to find unknown platforms, but the ones where affiliate review 
 already published AND indexed — proven places to post. Links on them don't matter; that the
 page itself is in Google does.
 
-Credentials: env DATAFORSEO_LOGIN / DATAFORSEO_PASSWORD. Never written anywhere.
+Credentials: from the plugin settings via the dataforseo_run tool (inherited pipe, --auth-fd). Never written anywhere.
 Standard library only.
 """
 import argparse
@@ -366,9 +366,9 @@ def run_search(a, products):
         for q in list(queries)[:20]:
             print("  ·", q)
         return None, queries
-    login, password = os.environ.get("DATAFORSEO_LOGIN"), os.environ.get("DATAFORSEO_PASSWORD")
+    login, password = rc.read_auth(a.auth_fd)
     if not (login and password):
-        sys.exit("No DataForSEO credentials: set DATAFORSEO_LOGIN and DATAFORSEO_PASSWORD.")
+        sys.exit(rc.NO_CREDS)
     body = [{"keyword": q, "location_code": loc, "language_code": a.language, "depth": a.depth,
              "device": a.device, "tag": q} for q in queries]
     results = {}
@@ -601,6 +601,7 @@ def main():
     ap.add_argument("--allowed", help='JSON {"allowed": [...]} from examples_filter: only these example posts are shown')
     ap.add_argument("--no-live-check", action="store_true", help=argparse.SUPPRESS)
     ap.add_argument("--no-signup", action="store_true", help="skip the sign-up link search")
+    ap.add_argument("--auth-fd", help=argparse.SUPPRESS)
     ap.add_argument("--self-test", action="store_true", help="offline test of exclusions and the live-check rules")
     a = ap.parse_args()
     if a.self_test:

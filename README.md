@@ -39,7 +39,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 
 > **Privacy:** the PARASITER server never receives your page URLs, journal, sales, affiliate links or texts — they stay in your Claude project. Page checks run in your own Claude. **Legal products and content only.**
 
-> **Status: beta (v0.36.0).** Skills and agents work without a key; the server (platform database, feed, Telegram, page checks) is live for Pro and Insider.
+> **Status: beta (v0.37.0).** Skills and agents work without a key; the server (platform database, feed, Telegram, page checks) is live for Pro and Insider.
 
 ## How it works
 
@@ -153,7 +153,7 @@ Google acts against site reputation abuse, platforms change moderation and remov
 | Service | When | What is sent |
 |---|---|---|
 | PARASITER server (`parasiter.affiliatecredo.com`, the declared MCP connector) | Only with a key | Your key; account data from payment (email, plan, term, Telegram link if you connect it); platform search queries; bare platform domains your scan found dead (no URLs, nothing about you); weekly page-health counts per platform domain (how many removed or noindexed — no URLs, no sales); the schedule of your paid checks as you describe it ("24 starred pages") |
-| DataForSEO API (`api.dataforseo.com`) — **your own account** | Only if you set it up and say yes to a check (cost shown first) | Search queries, keywords and the page URLs being checked; billed to your DataForSEO balance. Credentials never go to the PARASITER server |
+| DataForSEO API (`api.dataforseo.com`) — **your own account** | Only if you enter your DataForSEO API login and password in the plugin settings (the password is kept in secure storage) and say yes to a check (cost shown first). Runs through the bundled local `parasiter-dataforseo` server | Search queries, keywords and the page URLs being checked; billed to your DataForSEO balance. Credentials never go to the PARASITER server |
 | Public web pages | Platform and page checks | Plain HTTP requests to the platforms and your published pages to see if they are live, indexed (noindex) and keep your link |
 | Other SEO tools (Semrush, Ahrefs, Serpstat, Google Search Console, GA4) | Only through connectors you add yourself | Whatever that connector sends under its own terms |
 

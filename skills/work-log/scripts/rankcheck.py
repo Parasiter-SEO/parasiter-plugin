@@ -4,7 +4,8 @@
   rankcheck.py JOURNAL [--country us] [--language en] [--depth 100] [--platform P] [--priority high]
                [--topic TEXT] [--limit N] [--live] [--dry-run] [--from-json FILE]
 
-Credentials: env DATAFORSEO_LOGIN / DATAFORSEO_PASSWORD, or --login / --password.
+Credentials: from the plugin settings only — the bundled parasiter-dataforseo server (dataforseo_run tool)
+passes them through an inherited pipe (--auth-fd). Never from files, arguments or the chat.
 Never written to any file. One SERP request per unique query; every page of the user found in
 the results gets its position. Results go into the journal as `check` rows (position, status
 indexed when found) with the note "rank: <query> · google <country>"; pages not found get
@@ -28,6 +29,23 @@ API = "https://api.dataforseo.com/v3/serp/google/organic"
 COUNTRIES = {"us": 2840, "uk": 2826, "gb": 2826, "ca": 2124, "au": 2036, "nz": 2554, "ie": 2372,
              "in": 2356, "de": 2276, "fr": 2250, "es": 2724, "it": 2380, "nl": 2528, "br": 2076,
              "mx": 2484, "pl": 2616, "ua": 2804, "za": 2710, "sg": 2702, "ph": 2608}
+
+
+NO_CREDS = ("DataForSEO is not set up for this run: add your API login and password in the PARASITER plugin settings "
+            "(/plugin → PARASITER → configure options) and run paid checks through the dataforseo_run tool.")
+
+
+def read_auth(fd):
+    """Login and password handed over by the parasiter-dataforseo server through an inherited pipe."""
+    if fd is None:
+        return None, None
+    try:
+        data = os.read(int(fd), 4096).decode()
+        os.close(int(fd))
+    except OSError:
+        return None, None
+    login, _, password = data.partition("\n")
+    return login.strip() or None, password.strip() or None
 
 
 def call(method, path, login, password, body=None, base=None, tries=8):
@@ -116,7 +134,7 @@ def main():
     ap.add_argument("--priority", choices=w.PRIORITIES)
     ap.add_argument("--limit", type=int, default=200, help="max queries per run")
     ap.add_argument("--live", action="store_true"); ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--login"); ap.add_argument("--password")
+    ap.add_argument("--auth-fd", help=argparse.SUPPRESS)
     ap.add_argument("--from-json", help="parse a saved DataForSEO response instead of calling the API")
     ap.add_argument("--wait", type=int, default=15, help="minutes to wait for the standard queue")
     ap.add_argument("--skip-today", action="store_true", help="skip pages already rank-checked today")
@@ -159,11 +177,10 @@ def main():
             print(f"  · {q} ({len(by_q[q])} pages)")
         return
 
-    login = a.login or os.environ.get("DATAFORSEO_LOGIN")
-    password = a.password or os.environ.get("DATAFORSEO_PASSWORD")
+    login, password = read_auth(a.auth_fd)
     if a.collect:
         if not (login and password):
-            sys.exit("No DataForSEO credentials.")
+            sys.exit(NO_CREDS)
         from datetime import datetime, timedelta, timezone
         now = datetime.now(timezone.utc)
         fmt_ = "%Y-%m-%d %H:%M:%S +00:00"
@@ -189,7 +206,7 @@ def main():
             results[kw] = serp_items(t)
     else:
         if not (login and password):
-            sys.exit("No DataForSEO credentials: set DATAFORSEO_LOGIN and DATAFORSEO_PASSWORD (API login and password from app.dataforseo.com → API Access).")
+            sys.exit(NO_CREDS)
         body = [{"keyword": q, "location_code": loc, "language_code": a.language, "depth": a.depth,
                  "device": a.device, "tag": q} for q in queries]
         if a.live:
