@@ -10,7 +10,7 @@ PARASITER server: it passes them only to PARASITER's own scripts through an inhe
 
 Tools:
   dataforseo_status  — is DataForSEO set up, and the account balance (free call)
-  dataforseo_run     — run a paid PARASITER script (rankcheck / pagekeywords / platformscan)
+  dataforseo_run     — run a paid PARASITER script (rankcheck / aicheck / pagekeywords / platformscan)
 """
 import base64
 import json
@@ -25,6 +25,7 @@ SCRIPTS = {
     "rankcheck": os.path.join(ROOT, "skills", "work-log", "scripts", "rankcheck.py"),
     "pagekeywords": os.path.join(ROOT, "skills", "work-log", "scripts", "pagekeywords.py"),
     "platformscan": os.path.join(ROOT, "skills", "platform-finder", "scripts", "platformscan.py"),
+    "aicheck": os.path.join(ROOT, "skills", "work-log", "scripts", "aicheck.py"),
 }
 VERSION = "1.0.0"
 MAX_OUT = 60_000
@@ -108,8 +109,8 @@ TOOLS = [
      "description": "Check whether the user's own DataForSEO account is set up in the PARASITER plugin settings and show its balance. Free. Use before offering a paid check.",
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "dataforseo_run",
-     "description": ("Run a PARASITER script that calls the user's own DataForSEO account: rankcheck (positions of the user's pages), "
-                     "pagekeywords (keywords each page ranks for) or platformscan (platforms ranking for '<product> review'). "
+     "description": ("Run a PARASITER script that calls the user's own DataForSEO account: rankcheck (Google or Bing positions of the user's pages, --engine bing), "
+                     "aicheck (is the page cited in Google AI Mode / ChatGPT / Gemini answers), pagekeywords (keywords each page ranks for) or platformscan (platforms ranking for '<product> review'). "
                      "PAID from the user's DataForSEO balance: run it with --dry-run first, show the cost and run for real only after the user says yes. "
                      "Credentials come from the plugin settings; never pass them in args."),
      "inputSchema": {"type": "object", "required": ["script", "args"], "properties": {

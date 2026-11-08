@@ -24,6 +24,7 @@ For **affiliate marketers**, **creators**, **site owners** and **agencies**: you
 - **Content:** buyer topics picked by Rumer's rules, reviews and comparisons written for each platform, images
 - **Journal:** every page, sale and click in one place — which pages, platforms and offers really earn
 - **Control:** alive / indexed / ranking checks and a queue of what to fix, refresh or republish
+- **Beyond Google:** Bing positions and whether Google AI Mode, ChatGPT and Gemini cite your pages; every page written and audited to be AI-ready
 - **Updates:** new platforms, Rumer's weekly market analysis and news in Claude and Telegram
 
 **Who it's for:** four full routes — **bloggers and creators** growing their own channels for free, **site owners** building parasite pages around their own site, and **affiliate marketers** who earn with parasite SEO, at any stage, and **agencies** (SEO and marketing agencies, freelancers, in-house teams) running parasite SEO for clients.
@@ -41,7 +42,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 
 > **Privacy:** the PARASITER server never receives your page URLs, journal, sales, affiliate links or texts — they stay in your Claude project. Page checks run in your own Claude. **Legal products and content only.**
 
-> **Status: beta (v0.37.0).** Skills and agents work without a key; the server (platform database, feed, Telegram, page checks) is live for Pro and Insider.
+> **Status: beta (v0.38.0).** Skills and agents work without a key; the server (platform database, feed, Telegram, page checks) is live for Pro and Insider.
 
 ## How it works
 

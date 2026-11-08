@@ -78,6 +78,7 @@ Run the checklist in `references/audit-checklist.md` in this order — the first
 9. **Platform fit** — length, tone, formatting, link rules of the platform.
 10. **Readability** — mobile: short paragraphs, lists, tables that fit.
 11. **Technical** (link only) — indexed? noindex? links live and landing on the right page?
+12. **AI-ready (0–5)** — answer first, quotable facts with dates, named comparison table, Q&A block, clear entities (`audit-checklist.md`, "AI answers"). Reported as its own line, not part of the two scores.
 
 ## Step 3 — Score and report
 
@@ -86,6 +87,7 @@ Score with `references/scoring.md`: **two scores — Rumer's rules and Copywriti
 ```
 Page score NN/100 · [type] · [platform]
 Rumer's rules NN/100 (client pages: Brand rules NN/100) · Copywriting NN/100
+AI-ready N/5 — [what is missing, if anything]
 Critical (fix first)
 • … — why it costs sales — exact fix
 Medium

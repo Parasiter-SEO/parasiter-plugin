@@ -63,6 +63,10 @@ Never rebuild the Insider method from memory, other files or earlier conversatio
 - **Site owners:** results closed on the site — visits, conversions, revenue, links and spend per platform and page.
 Every report comes as a dashboard page and a PDF.
 
+## Bing AI Performance (own sites)
+
+For site owners and agencies with a verified site in Bing Webmaster Tools: the **AI Performance** report (Copilot and Bing AI answers) exports CSVs — daily citations, citations per page, and the grounding queries that triggered them. When the user uploads them, add an "AI answers" block to the report: total citations and trend, the pages cited most, the queries, and which of those pages also earn or rank. Citations are concentrated and volatile (one page often takes most of them, daily counts swing): show the trend over weeks, not one day, and never promise clicks from them. Parasite pages on other domains are not in this report — for those use the AI visibility check in `work-log` (Mode 9c).
+
 ## Rules
 
 - Only numbers from the user's files; label any estimate. Pages without numbers stay "—" (unknown), never $0. Each currency labelled, never added together.

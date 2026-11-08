@@ -371,7 +371,8 @@ def page_states(rows, today):
                                    "position": None, "pos_date": None, "best_pos": None,
                                    "prev_pos": None, "date_unknown": False,
                                    "link_target": "", "link_rel": "", "anchor": "", "cost": 0.0,
-                                   "submits": [], "first_indexed": None, "checks": []})
+                                   "submits": [], "first_indexed": None, "checks": [],
+                                   "bing_pos": None, "bing_date": None, "ai": {}})
         for k in ("link_target", "link_rel", "anchor"):
             if r.get(k):
                 p[k] = r[k].strip().lower() if k == "link_rel" else r[k].strip()
@@ -395,6 +396,13 @@ def page_states(rows, today):
             p["best_pos"] = pos if p["best_pos"] is None else min(p["best_pos"], pos)
         elif ev == "check" and "· not in top" in (r.get("note") or ""):
             p["prev_pos"], p["position"], p["pos_date"] = p["position"], None, r["_d"]
+        if ev == "check" and (r.get("note") or "").startswith("ai: "):
+            m_ = re.search(r" · (ai_mode|chatgpt|gemini) \S+ · (cited|platform cited|not cited)$", r["note"])
+            if m_:
+                p["ai"][m_.group(1)] = (m_.group(2), r["_d"])
+        if ev == "check" and (r.get("note") or "").startswith("rank:") and " · bing " in r["note"]:
+            m_ = re.search(r"· bing #(\d+)", r["note"])
+            p["bing_pos"], p["bing_date"] = (int(m_.group(1)) if m_ else None), r["_d"]
         if ev == "tag":
             for k, col in (("offer", "offer"), ("program", "program"), ("campaign", "campaign"),
                            ("sub_id", "sub_id"), ("query", "main_query"), ("content_type", "content_type")):
@@ -1236,11 +1244,20 @@ def cmd_pages(a):
         if p["position"] is not None and p.get("prev_pos") is not None and p["prev_pos"] != p["position"]:
             d = p["prev_pos"] - p["position"]
             pos += f" ({'↑' if d > 0 else '↓'}{abs(d):.0f})"
+        if p.get("bing_date"):
+            pos += f" · B {p['bing_pos'] if p['bing_pos'] is not None else '—'}"
+        if p.get("ai"):
+            hits = [{"ai_mode": "AI Mode", "chatgpt": "ChatGPT", "gemini": "Gemini"}[e] for e, (v, _) in sorted(p["ai"].items()) if v == "cited"]
+            pos += " · AI ✓ " + ", ".join(hits) if hits else " · AI —"
         print(f"| {p['published']} | {short(p['url'], 45)} | {p['platform']} | {short(p['topic_key'], 30)} | "
               f"{'★' if p['priority'] == 'high' else ('low' if p['priority'] == 'low' else '')} | {p['offer']} | "
               f"{p['age']} d | {h} | {pos} | {fmt(p['score'])} | "
               f"{fmt(v) if v else '—'} | {fmt(ac) if ac else '—'} | {n} | {money(c)} |")
     print("\n**Status:** " + " · ".join(f"{k} {v}" for k, v in hc.most_common()))
+    if any(p.get("bing_date") for p in items):
+        print("Pos: Google position · B = Bing position (last Bing check).")
+    if any(p.get("ai") for p in items):
+        print("AI ✓ = the page itself was cited in that AI answer at the last AI check; AI — = not cited.")
 
 
 def cmd_add(a):

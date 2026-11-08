@@ -2,6 +2,14 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.38.0 — 2026-11-08
+
+**Beyond Google: Bing and AI answers.**
+- **Bing positions:** say *"check my Bing positions"*. Bing results feed ChatGPT search and Copilot. Your page list shows Bing next to Google ("B 4").
+- **AI visibility check:** say *"am I cited in AI answers?"*. For each page's query PARASITER asks Google AI Mode (and, if you want, ChatGPT and Gemini) and tells you: your page is cited, another page of your platform is cited, or not cited. It also lists the other sites these AIs trust for your queries — new platform ideas. Paid from your DataForSEO balance (about $0.0012 per query per engine), cost shown first.
+- **AI-ready pages:** the review writer now writes so AI answers can quote you (answer first, facts with dates, named comparison table, real buyer questions). The page audit gives a separate **AI-ready 0–5** line with what to add.
+- **Own site:** upload Bing Webmaster Tools → AI Performance exports to your reports to see how often Copilot cites your site.
+
 ## 0.37.0 — 2026-11-08
 
 **DataForSEO in the plugin settings.**

@@ -34,6 +34,8 @@ The setup is 12 fixed steps (language and role · work environment · about you 
 ## Which pages are in the top
 "Which of my pages are in the top 10?" → your pages with positions (from checks, a rank tracker or Search Console). "Show only priority pages" filters the list.
 
+"Check my Bing positions" / "Am I cited in AI answers?" → `work-log` Mode 9c on your DataForSEO account (paid, cost shown first): Bing positions (Bing feeds ChatGPT search and Copilot) and whether Google AI Mode, ChatGPT or Gemini cite your page — or another page of the same platform — for its query. "Audit my page" also gives an **AI-ready** score (0–5) with what to add so AI answers can quote it.
+
 ## See or download my base of posts
 "Open my base" → a dashboard page with all your posts: totals, status by platform, search and filters (platform, status, topic, offer, ★, top 10), sorting by any column. "My posts in Excel", "download my base" → an Excel file with sheets Summary, Posts, Platforms, Sales, Links and the full Journal; filters, clickable links and real dates are ready. On the dashboard, **Download Excel** gives the same file and **CSV of this view** gives exactly the rows you filtered. "Show my posts on Medium" in the chat gives a short list instead.
 

@@ -107,6 +107,8 @@ Follow the template for the content type in `references/article-structure.md`. E
 
 Then the body per type, then FAQ, verdict with the main CTA, affiliate disclosure and last-checked date.
 
+**AI-ready by default** (pages that AI answers — Google AI Mode, Gemini, ChatGPT, Copilot — can quote): the first 2–3 sentences answer the main query plainly; every H2 opens with a one–two sentence direct answer, then the details; prices, packages, guarantee and specs as plain numbers with the checked date; the comparison is a table with named products; the FAQ uses the real questions buyers type into search and AI chats, each with a short direct answer first; full product and brand names instead of "it". This is the same honest, specific writing the buyer needs — never stuffing or invented facts.
+
 ### Mandatory blocks in every article (Rumer's rules)
 
 Whatever the content type, the body always contains these five blocks. Templates and order per type: `references/article-structure.md`.

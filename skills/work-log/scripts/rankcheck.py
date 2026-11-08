@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""PARASITER — position check for the user's own pages through DataForSEO (Google organic).
+"""PARASITER — position check for the user's own pages through DataForSEO (Google or Bing organic).
 
-  rankcheck.py JOURNAL [--country us] [--language en] [--depth 100] [--platform P] [--priority high]
+  rankcheck.py JOURNAL [--engine google|bing] [--country us] [--language en] [--depth 100] [--platform P] [--priority high]
                [--topic TEXT] [--limit N] [--live] [--dry-run] [--from-json FILE]
 
 Credentials: from the plugin settings only — the bundled parasiter-dataforseo server (dataforseo_run tool)
@@ -10,6 +10,9 @@ Never written to any file. One SERP request per unique query; every page of the 
 the results gets its position. Results go into the journal as `check` rows (position, status
 indexed when found) with the note "rank: <query> · google <country>"; pages not found get
 "not in top N". Standard queue (cheapest) by default; --live answers at once at a higher price.
+--engine bing: Bing positions (Bing results feed ChatGPT search and Copilot). Bing rows carry no
+position/status columns (those stay Google's): the note says "rank: <query> · bing <country> <device> · bing #N"
+or "· bing out of top N", and worklog keeps it as bing_pos.
 """
 import argparse
 import base64
@@ -26,6 +29,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import worklog as w  # noqa: E402
 
 API = "https://api.dataforseo.com/v3/serp/google/organic"
+ENGINES = ("google", "bing")
 COUNTRIES = {"us": 2840, "uk": 2826, "gb": 2826, "ca": 2124, "au": 2036, "nz": 2554, "ie": 2372,
              "in": 2356, "de": 2276, "fr": 2250, "es": 2724, "it": 2380, "nl": 2528, "br": 2076,
              "mx": 2484, "pl": 2616, "ua": 2804, "za": 2710, "sg": 2702, "ph": 2608}
@@ -127,6 +131,7 @@ def match(page_url, serp_url):
 def main():
     ap = argparse.ArgumentParser(description="Position check of the user's pages (DataForSEO)")
     ap.add_argument("journal")
+    ap.add_argument("--engine", default="google", choices=ENGINES, help="google (default) or bing")
     ap.add_argument("--country", default="us"); ap.add_argument("--language", default="en")
     ap.add_argument("--depth", type=int, default=30, help="results to check; billed per 10, top 30 is enough to see traffic")
     ap.add_argument("--device", default="desktop", choices=["desktop", "mobile"])
@@ -157,7 +162,8 @@ def main():
             continue
         q = query_of(p)
         if q and a.skip_today and any(r for r in rows_all if r.get("page_url") == p["url"] and r["event"] == "check"
-                                      and r["_d"] == today and (r.get("note") or "").startswith("rank:")):
+                                      and r["_d"] == today and (r.get("note") or "").startswith("rank:")
+                                      and ((" · bing " in r["note"]) == (a.engine == "bing"))):
             continue
         (by_q[q.lower()].append(p) if q else skipped.append(p))
     queries = sorted(by_q, key=lambda q: min(w.PRIORITIES.index(p["priority"]) for p in by_q[q]))[: a.limit]
@@ -167,7 +173,10 @@ def main():
         sys.exit("Unknown --country. Use one of: " + ", ".join(sorted(COUNTRIES)))
     # DataForSEO bills per 10 results: top 100 = 10 pages of results
     price = (0.002 if a.live else 0.0006) * max(1, a.depth / 10)
-    print(f"Position check · google {a.country} · top {a.depth} · {len(queries)} queries for "
+    api = API.replace("/google/", f"/{a.engine}/")
+    globals()["API"] = api          # call() defaults to API
+    bing = a.engine == "bing"
+    print(f"Position check · {a.engine} {a.country} · top {a.depth} · {len(queries)} queries for "
           f"{sum(len(by_q[q]) for q in queries)} pages · about ${len(queries) * price:.2f}"
           + ("" if a.collect else f" (top 10 only: --depth 10, about ${len(queries) * price / max(1, a.depth / 10):.2f})"))
     if skipped:
@@ -188,7 +197,7 @@ def main():
                 "datetime_to": now.strftime(fmt_), "limit": 1000, "include_metadata": True}]
         d = call("POST", "/id_list", login, password, req, base="https://api.dataforseo.com/v3/serp")
         ids = [x["id"] for t in d.get("tasks") or [] for x in (t.get("result") or [])
-               if "google/organic/task_post" in (x.get("url") or "")]
+               if f"{a.engine}/organic/task_post" in (x.get("url") or "")]
         print(f"- {len(ids)} paid tasks from the last {a.collect} h: downloading results (free)")
         for tid in ids:
             g = call("GET", f"/task_get/advanced/{tid}", login, password)
@@ -240,7 +249,7 @@ def main():
             if ids:
                 print(f"- {len(ids)} tasks not ready yet: they are paid and kept 3 days. Later run with --collect 24 to download them for free.")
 
-    rows, found, top, found_feat = [], 0, 0, []
+    rows, found, top, found_feat, bing_moves = [], 0, 0, [], []
     d = today.isoformat()
     for q in queries:
         if q not in results:
@@ -249,7 +258,16 @@ def main():
         for p in by_q[q]:
             pos = next((rk for rk, u in items if match(p["url"], u)), None)
             cited = sorted({ty for ty, u in feats.get(q, []) if match(p["url"], u)})
-            note = f"rank: {q} · google {a.country} {a.device}" + (f" · cited in {', '.join(cited)}" if cited else "")
+            note = f"rank: {q} · {a.engine} {a.country} {a.device}" + (f" · cited in {', '.join(cited)}" if cited else "")
+            if bing:  # Bing rows never touch the Google position/status columns
+                prev = pages[p["url"]].get("bing_pos")
+                note += f" · bing #{pos}" if pos is not None else f" · bing out of top {a.depth}"
+                found += pos is not None
+                top += pos is not None and pos <= w.TOP
+                rows.append(w.journal_row(date=d, event="check", page_url=p["url"], platform=p["platform"],
+                                          main_query=q, note=note))
+                bing_moves.append((prev, pos, p, q))
+                continue
             if cited:
                 found_feat.append(f"{w.short(p['url'], 50)} · {q}: {', '.join(cited)}")
             if pos is not None:
@@ -265,11 +283,21 @@ def main():
                                           main_query=q, note=note + f" · not in top {a.depth}"))
     if rows:
         w.append(a.journal, w.COLUMNS, rows)
-    print(f"- {len(rows)} pages checked · {found} found in the top {a.depth} · {top} in the top {w.TOP}")
+    print(f"- {len(rows)} pages checked on {a.engine.title()} · {found} found in the top {a.depth} · {top} in the top {w.TOP}")
     if found_feat:
         print("\n**Cited in SERP blocks (AI Overview, forums, videos…)**")
         for line in found_feat[:25]:
             print("- " + line)
+    if bing:
+        out = []
+        for prev, pos, p, q in bing_moves:
+            if prev != pos and (prev is not None or (pos is not None and pos <= w.TOP)):
+                out.append(f"{w.short(p['url'], 50)} · {q}: Bing {prev if prev is not None else '—'} → {pos if pos is not None else f'out of top {a.depth}'}")
+        if out:
+            print("\n**Bing changes since the last check**")
+            for line in out[:25]:
+                print("- " + line)
+        return
     moves = []
     for r in rows:
         p = pages[r["page_url"]]

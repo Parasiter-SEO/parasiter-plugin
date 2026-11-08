@@ -57,6 +57,15 @@ Severity: **C** critical (directly loses sales), **M** medium, **L** low.
 - [M] Last-checked date for prices and deals.
 - [M] Personal experience claims only if real.
 
+## AI answers (Google AI Mode / AI Overviews, Gemini, ChatGPT, Copilot) — "AI-ready" 0–5
+AI answers cite pages that state facts plainly and are easy to quote. One point each:
+- [M] **Answer first:** the page answers the main query in the first 2–3 sentences, and every H2 opens with a one–two sentence direct answer before the details.
+- [M] **Concrete, quotable facts:** prices, package sizes, guarantee days, key specs, dates — numbers in plain sentences or a table, with the last-checked date (vague overviews are not cited).
+- [M] **Named comparison:** a table of the product vs 2–3 named alternatives with the deciding parameters (price, key feature, best for).
+- [M] **Q&A block:** 4–8 real buyer questions as headings with short direct answers (the same questions people type into AI chats).
+- [L] **Clear entities:** full product and brand names (not only "it" / "this one"), the author named with a role, consistent names across the page.
+AI-ready does not change the two scores; report it as its own line. AI answers change from run to run — to see if the page is actually cited, offer the AI visibility check (`work-log`, needs DataForSEO).
+
 ## Platform fit
 - [M] Length and format fit the platform (forum native tone; press release neutral; Raisely short with emojis; PDF ~3,000 words clean document).
 - [M] Platform rules respected (links, promotion).

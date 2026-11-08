@@ -1,6 +1,6 @@
 ---
 name: work-log
-description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms; keeps the publication queue — next pages ranked by what earns (fix, scale, expand, explore). Imports pages they already published and builds their own platform base; records every action, sale (by hand or from affiliate network exports) and traffic; ties sales to pages by sub-ID; gives reports for any day, week or month, effectiveness by page, platform, offer, program and content type, and a queue of pages due for checks. Use when the user uploads or pastes their pages, asks for "my platforms", marks priority pages or platforms, asks which pages are in the top, wants to see or download their base of posts ("open my base", "my posts in Excel"), "what should I write and where", "which topics are missing on X", reports work or a sale, uploads a sales or traffic export, asks "what did I do / earn this week", wants a report, or asks what needs checking.
+description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms; keeps the publication queue — next pages ranked by what earns (fix, scale, expand, explore). Imports pages they already published and builds their own platform base; records every action, sale (by hand or from affiliate network exports) and traffic; ties sales to pages by sub-ID; gives reports for any day, week or month, effectiveness by page, platform, offer, program and content type, and a queue of pages due for checks. Use when the user uploads or pastes their pages, asks for "my platforms", marks priority pages or platforms, asks which pages are in the top, wants to see or download their base of posts ("open my base", "my posts in Excel"), "what should I write and where", "which topics are missing on X", reports work or a sale, uploads a sales or traffic export, asks "what did I do / earn this week", wants a report, asks what needs checking, or asks about Bing or AI-answer visibility.
 ---
 
 # Work Log
@@ -43,6 +43,7 @@ Options that usually fit after this part (adapt to the user's products and words
 - "what earns and where to scale?" — report with charts
 - "which topics are missing on my strong platforms?"
 - "check positions of my new pages" — paid, cost shown first
+- "am I cited in AI answers?" / "check my Bing positions" — paid, cost shown first
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
@@ -392,6 +393,22 @@ python3 scripts/rankcheck.py parasite-seo-progress.csv [--country us] [--priorit
   Without the server or a linked Telegram there is no way to warn the user, so scheduled paid checks are not offered: the check is suggested in the next session and runs after a yes.
 - Any rank tracker instead (Ubersuggest, SE Ranking, ProRankTracker, SEO PowerSuite…): upload its CSV export — `import-ranks parasite-seo-progress.csv export.csv`. Rows are matched by URL, else by keyword to the page's query or topic. If the tracker shows another page of the same platform ranking (trackers follow a domain, and medium.com or linkedin.com is everyone's domain), the row is skipped, never credited to the user. Weekly export = weekly history.
 - Single positions from the user's own notes: `tag --position` (or `add --event check --position`).
+
+### Mode 9c — Bing positions and AI answers (beyond Google)
+
+Traffic is no longer Google only: ChatGPT search and Copilot lean on Bing results, and AI answers (Google AI Mode, Gemini, ChatGPT) cite a few sources per query, very often user platforms. Both checks are paid from the user's DataForSEO balance, same rules as Mode 9 (which pages, `--dry-run` cost, a yes before every run), and run through `dataforseo_run`.
+
+```
+python3 scripts/rankcheck.py parasite-seo-progress.csv --engine bing --dry-run       # Bing positions, same options as Google
+python3 scripts/aicheck.py parasite-seo-progress.csv --dry-run                         # Google AI Mode (default)
+python3 scripts/aicheck.py parasite-seo-progress.csv --engines ai_mode,chatgpt,gemini --priority high
+```
+
+- **Bing** (`rankcheck --engine bing`): Bing positions go into the journal as notes ("bing #4"), never into the Google position column; `pages` shows them as "B 4". A page strong in Bing but weak in Google is a ChatGPT/Copilot asset — say so.
+- **AI answers** (`aicheck`): for each page's query, the answer of Google AI Mode (closest to Google; default), ChatGPT and/or Gemini, about $0.0012 per query per engine. Each page gets one of: **cited** (the page itself is a source), **platform cited** (another page of the same platform is a source — the AI trusts this platform for the query: a good sign to publish there and improve the page), **not cited**. The output also lists other domains the AIs cite for the user's queries — platform ideas to check with `platform-analyzer` before posting.
+- AI answers change from run to run: one check is a sample. Compare monthly on the same queries, not day to day. Start with ★ or earning pages and AI Mode only; add ChatGPT and Gemini when the user wants the full picture.
+- Not cited but the page ranks in Google or Bing → run `page-audit`: its **AI-ready** line says what to add (answer first, facts with dates, named comparison table, Q&A).
+- The user's **own site** (site owners, agencies): Bing Webmaster Tools → AI Performance shows how often Copilot cites the site and for which queries; the CSV exports can be uploaded to `client-reports`. Parasite pages live on other people's domains, so this report and IndexNow only work for sites the user owns.
 
 ## Rules
 
