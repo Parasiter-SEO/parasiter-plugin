@@ -13,7 +13,7 @@ Each version's section is posted to the news feed and the Telegram channels when
 ## 0.35.0 — 2026-11-06
 
 **Your publication queue: what to publish next, where and why — from your own numbers.**
-- **Say *what should I write next?*** — PARASITER ranks your next pages from your pages, positions, sales, traffic and affiliate links, each with its reason ("#3 on Pressbooks, earns $240 — missing on ResearchGate"):
+- **Say *what should I write next?*** — PARASITER ranks your next pages from your pages, positions, sales, traffic and affiliate links, each with its reason ("#3 on Medium, earns $240 — missing on LinkedIn"):
   - **Fix & push** — pages at #4–20 to push into the top 3, pages with traffic but no sales to audit;
   - **Scale** — topics that rank or earn, missing on your strong platforms;
   - **Expand** — products from your links with no pages yet, best sellers in new content types (A vs B, complaints, pricing);

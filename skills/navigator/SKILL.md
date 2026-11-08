@@ -205,7 +205,7 @@ Answer per part of the plan: 3–8 topics each, one line each with why, then "Wh
 ### Today's plan
 
 
-**New pages come from the queue.** When the user has pages and sales in the journal, take today's write / refresh tasks from `work-log` `pubqueue.py today --minutes <today's time minus fixed tasks> --json`: planned items first, then the best proposed ones by the user's mix (scale / expand / explore). Each task card keeps the item's reason ("#3 on Pressbooks, earns $120 — missing on ResearchGate") and its phrase. Tasks the user picks go to `plan --ids`; "not today" → `set --status skipped`. No pages yet → the queue is empty: plan from the goals and content-type-selector as before.
+**New pages come from the queue.** When the user has pages and sales in the journal, take today's write / refresh tasks from `work-log` `pubqueue.py today --minutes <today's time minus fixed tasks> --json`: planned items first, then the best proposed ones by the user's mix (scale / expand / explore). Each task card keeps the item's reason ("#3 on Medium, earns $120 — missing on LinkedIn") and its phrase. Tasks the user picks go to `plan --ids`; "not today" → `set --status skipped`. No pages yet → the queue is empty: plan from the goals and content-type-selector as before.
 
 Use `references/daily-plan.md`: start from the goals (today's quota and what is behind this week), fit it into today's time, order by money impact. 2–5 tasks. Each task: time estimate, who does it (in plain words — "the article writer", "you + the journal", not skill names), which target it moves, and the ready phrase to start it.
 
