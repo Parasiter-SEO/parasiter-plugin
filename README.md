@@ -13,6 +13,8 @@
 
 Free works without a key. Pro and Insider: paste the key from your welcome email when the plugin asks.
 
+⭐ **If PARASITER saves you time, star this repo** — it helps other SEOs find it. Questions, ideas and your results: [Discussions](https://github.com/Parasiter-SEO/parasiter-plugin/discussions) · bugs: [Issues](https://github.com/Parasiter-SEO/parasiter-plugin/issues) or `/bug` in [@parasiter_bot](https://t.me/parasiter_bot).
+
 ## What it does
 
 For **affiliate marketers**, **creators**, **site owners** and **agencies**: you publish pages on platforms Google already trusts — affiliates earn the commission, site owners and agencies send buyers (and links, where platforms allow) to the site. Skills and agents find platforms where reviews rank right now, pick the content type that sells, write and audit the page, track every page and sale, and tell you what to do next.
