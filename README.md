@@ -1,5 +1,7 @@
 # PARASITER by Rumer
 
+<a href="https://parasiter.affiliatecredo.com"><img src="https://github.com/user-attachments/assets/7ba859b4-2529-4700-b21e-196fd15c83a3" alt="PARASITER by Rumer — parasite SEO workflow in one place: platforms, pages that sell, sales journal and page checks" width="100%"></a>
+
 **A complete system for managing your parasite SEO work inside Claude Code** — all the skills and AI agents you need for every stage, plus connections to your own SEO tools (DataForSEO, Semrush, Ahrefs, Serpstat and others). Planning, platforms, content that sells, your sales journal and page checks in one place.
 
 [Website](https://parasiter.affiliatecredo.com) · [Watch the 3-minute demo](https://www.youtube.com/watch?v=8pxC6Ml6kVI) · [Plans: Free, Pro, Insider](https://parasiter.affiliatecredo.com/#pricing) · [What's new](CHANGELOG.md)
