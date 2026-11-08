@@ -1,6 +1,6 @@
 ---
 name: post-illustrations
-description: Plan and write image-generator prompts for parasite SEO and affiliate posts — hero/cover image, product-in-hand, comparison card, key-facts infographic, price/bundle visual, Facebook post series — matched to the content type and platform, in one consistent style — for agencies in the client's brand style (logo, colours, fonts, real product photos). Images cost $0: infographics are drawn by Claude in the chat; the cover is the real product photo or one ready prompt for free Gemini (ChatGPT / DALL·E only for users who already pay for it). Use when the user needs images, a cover, an infographic or visuals for a review, comparison or post, or when sales-review-writer hands off image ideas.
+description: "Plan and write image-generator prompts for parasite SEO and affiliate posts — hero/cover image, product-in-hand, comparison card, key-facts infographic, price/bundle visual, Facebook post series — matched to the content type and platform, in one consistent style — for agencies in the client's brand style (logo, colours, fonts, real product photos). Images cost $0: infographics are drawn by Claude in the chat; the cover is the real product photo or one ready prompt for free Gemini (ChatGPT / DALL·E only for users who already pay for it). Use when the user needs images, a cover, an infographic or visuals for a review, comparison or post, or when sales-review-writer hands off image ideas."
 ---
 
 # Post Illustrations
