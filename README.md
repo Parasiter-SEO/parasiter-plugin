@@ -1,6 +1,28 @@
 # PARASITER by Rumer
 
-Parasite SEO inside your AI assistant for **affiliate marketers**, **creators**, **site owners** and **agencies**: you publish pages on platforms Google already trusts — affiliates earn the commission, site owners and agencies send buyers (and links, where platforms allow) to the site. Skills and agents find platforms, pick the content type that sells, write the review, audit the page, track every sale, and tell you what to do next.
+**A complete system for managing your parasite SEO work inside Claude Code** — all the skills and AI agents you need for every stage, plus connections to your own SEO tools (DataForSEO, Semrush, Ahrefs, Serpstat and others). Planning, platforms, content that sells, your sales journal and page checks in one place.
+
+[Website](https://parasiter.affiliatecredo.com) · [Watch the 3-minute demo](https://www.youtube.com/watch?v=8pxC6Ml6kVI) · [Plans: Free, Pro, Insider](https://parasiter.affiliatecredo.com/#pricing) · [What's new](CHANGELOG.md)
+
+**Install in Claude Code (two commands):**
+
+```
+/plugin marketplace add Parasiter-SEO/parasiter-plugin
+/plugin install parasiter@parasiter
+```
+
+Free works without a key. Pro and Insider: paste the key from your welcome email when the plugin asks.
+
+## What it does
+
+For **affiliate marketers**, **creators**, **site owners** and **agencies**: you publish pages on platforms Google already trusts — affiliates earn the commission, site owners and agencies send buyers (and links, where platforms allow) to the site. Skills and agents find platforms where reviews rank right now, pick the content type that sells, write and audit the page, track every page and sale, and tell you what to do next.
+
+- **Plan:** goals from your own baseline and a daily plan that fits the time you have
+- **Platforms:** where affiliate reviews rank today, with a live example post and a sign-up link for each
+- **Content:** buyer topics picked by Rumer's rules, reviews and comparisons written for each platform, images
+- **Journal:** every page, sale and click in one place — which pages, platforms and offers really earn
+- **Control:** alive / indexed / ranking checks and a queue of what to fix, refresh or republish
+- **Updates:** new platforms, Rumer's weekly market analysis and news in Claude and Telegram
 
 **Who it's for:** four full routes — **bloggers and creators** growing their own channels for free, **site owners** building parasite pages around their own site, and **affiliate marketers** who earn with parasite SEO, at any stage, and **agencies** (SEO and marketing agencies, freelancers, in-house teams) running parasite SEO for clients.
 
@@ -17,7 +39,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 
 > **Privacy:** the PARASITER server never receives your page URLs, journal, sales, affiliate links or texts — they stay in your Claude project. Page checks run in your own Claude. **Legal products and content only.**
 
-> **Status: private beta (v0.35.0).** Skills and agents work without a key. The server part (platform database, feed, Telegram alerts) is in development; skills that need it say so and fall back to a live search.
+> **Status: beta (v0.36.0).** Skills and agents work without a key; the server (platform database, feed, Telegram, page checks) is live for Pro and Insider.
 
 ## How it works
 
