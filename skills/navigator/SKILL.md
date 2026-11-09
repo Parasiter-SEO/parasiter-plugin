@@ -189,6 +189,8 @@ Report changes in 2–4 lines, most urgent first. If the server is not connected
 - **Check:** "my PARASITER plan" → `account_info` shows the plan and end date.
 Never ask for the key in the chat.
 
+**Server connection error** (the user reports `InvalidHTTPResponse`, "Auth: not authenticated" or `/mcp` shows **parasiter** failed, while the plugin itself works): don't suggest a reinstall first. The likely cause is antivirus web / HTTPS protection (Norton Safe Web, Avast or AVG Web Shield, Kaspersky, Bitdefender), which scans every program's traffic, so turning off only its firewall doesn't help. Give the fix from the help FAQ ("The PARASITER server doesn't connect"): add `parasiter.affiliatecredo.com` to the antivirus web-protection exclusions (Norton: Scam Protection → Safe Web → This device → Exclusions), then `/mcp` → plugin:parasiter:parasiter → Reconnect. If `account_info` then answers "key not accepted", the key is the problem: paste the latest one in the plugin settings. On Windows, if **parasiter-dataforseo** or **parasiter-serpapi** fails to start, `python3` is missing: Python from the Microsoft Store provides it (python.org's installer doesn't).
+
 ## Step 3 — The user's own plan, or today's plan
 
 Two ways to start the day — the user chooses:

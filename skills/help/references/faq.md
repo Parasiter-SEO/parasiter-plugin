@@ -119,6 +119,16 @@ Google acts against site reputation abuse; platforms change moderation and remov
 ## Something doesn't work
 Describe what happened; Claude tries the step again. If it still fails — Insider: the private Telegram group; others: the author via the official site.
 
+## The PARASITER server doesn't connect
+`/mcp` shows **parasiter** failed with *"InvalidHTTPResponse fetching https://parasiter.affiliatecredo.com"* or *"Auth: not authenticated"*, and "my PARASITER plan" doesn't load. Most often an antivirus with web or HTTPS protection breaks the connection — it checks every program's traffic, not only the browser, so turning off its firewall alone doesn't help.
+- **Norton 360:** Norton → Scam Protection → Safe Web → This device → Exclusions → add `parasiter.affiliatecredo.com`.
+- **Avast, AVG, Kaspersky, Bitdefender, ESET and others:** add `parasiter.affiliatecredo.com` to the exclusions of web / HTTPS scanning (Web Shield, Safe Browsing, Online Threat Prevention and the like).
+- Then in Claude Code: `/mcp` → **plugin:parasiter:parasiter** → Reconnect.
+Still failing? Say "my PARASITER plan": if it says the key was not accepted, paste the key from your latest email again (/plugin → PARASITER → configure options). Otherwise tell Rumer via the bot (/bug) with your antivirus name.
+
+## On Windows the DataForSEO or SerpApi server doesn't start
+They start with the `python3` command. Python from python.org installs only `python` and `py`, so `/mcp` shows **parasiter-dataforseo** / **parasiter-serpapi** failed. Install Python from the Microsoft Store (it adds `python3`), then restart Claude Code. Python from python.org can stay.
+
 ## Can I share the plugin?
 No: licensed for the subscriber's personal use; redistribution of the plugin or server data is not permitted.
 

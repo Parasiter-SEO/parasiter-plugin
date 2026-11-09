@@ -148,6 +148,18 @@ Google бореться зі зловживанням репутацією са�
 <!-- src: 529358f8c8 -->
 Опишіть, що сталося; Claude спробує крок ще раз. Якщо досі не працює — Insider: приватна Telegram-група; інші: автор через офіційний сайт.
 
+## Сервер PARASITER не підключається {#the-parasiter-server-doesnt-connect}
+<!-- src: e3d4877e6b -->
+`/mcp` показує, що **parasiter** не підключився, з помилкою *"InvalidHTTPResponse fetching https://parasiter.affiliatecredo.com"* або *"Auth: not authenticated"*, і "my PARASITER plan" не завантажується. Найчастіше з'єднання ламає антивірус із вебзахистом або перевіркою HTTPS — він перевіряє трафік усіх програм, а не лише браузера, тож вимкнення тільки його фаєрвола не допомагає.
+- **Norton 360:** Norton → Scam Protection → Safe Web → This device → Exclusions → додайте `parasiter.affiliatecredo.com`.
+- **Avast, AVG, Kaspersky, Bitdefender, ESET та інші:** додайте `parasiter.affiliatecredo.com` у винятки вебзахисту / перевірки HTTPS (Web Shield, Safe Browsing, Online Threat Prevention тощо).
+- Потім у Claude Code: `/mcp` → **plugin:parasiter:parasiter** → Reconnect.
+Досі не працює? Скажіть "my PARASITER plan": якщо відповідь — ключ не прийнято, вставте ключ з останнього листа ще раз (/plugin → PARASITER → configure options). Інакше напишіть Rumer через бота (/bug) і вкажіть назву антивірусу.
+
+## На Windows не запускається сервер DataForSEO або SerpApi {#on-windows-the-dataforseo-or-serpapi-server-doesnt-start}
+<!-- src: 282a991ae1 -->
+Вони запускаються командою `python3`. Python з python.org встановлює лише `python` і `py`, тож `/mcp` показує, що **parasiter-dataforseo** / **parasiter-serpapi** не запустився. Встановіть Python з Microsoft Store (він додає `python3`) і перезапустіть Claude Code. Python з python.org можна не видаляти.
+
 ## Чи можна ділитися плагіном? {#can-i-share-the-plugin}
 <!-- src: 46ee6196f7 -->
 Ні: ліцензія — для особистого використання підписником; поширення плагіна чи даних сервера не дозволяється.

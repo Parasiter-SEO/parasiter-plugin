@@ -125,6 +125,8 @@ Every new platform, plugin update, idea, market analysis and poll from Rumer app
 
 PARASITER runs in Claude Code (needs a paid Claude plan that includes Claude Code).
 
+Windows: the DataForSEO and SerpApi checks need the `python3` command — install Python from the Microsoft Store (python.org's installer adds only `python` and `py`). Antivirus with web / HTTPS protection (Norton Safe Web, Avast, Kaspersky, Bitdefender…): add `parasiter.affiliatecredo.com` to its exclusions, or the PARASITER server won't connect.
+
 1. Open Claude Code and type two commands:
 
 ```
