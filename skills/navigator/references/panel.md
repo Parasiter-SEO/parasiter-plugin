@@ -10,6 +10,10 @@ PARASITER does not know how the user wants to work today. Publishing, uploading 
 
 PARASITER is first of all a **working panel**: every tool of the user's role at hand, any moment — navigator and the day plan are help, not a required route. Each role sees **its own set**, numbered **1…N without gaps**; the numbers are fixed for that role. Other roles' functions are not on the panel: one line under it — "Other roles' functions: say **all functions**" → the full list of 21 (the "Other" table below) marked by role; starting any skill by name always works. **Client reports are not on the affiliate panel**: for affiliates `client-reports` is shown only as "Analytics: what earns and what to scale".
 
+## 🏆 Top-10 of the week — pinned at the very top
+
+Rumer's ranked pick of the 10 platforms that hold posts and bring results right now. He sets it in the bot every week (it holds 7 days). It is **the first block of the panel, above the bases**: one line with the date and the first three names — "🏆 Top-10 of the week (DD.MM): 1. X · 2. Y · 3. Z … — say **TOP**" — from `top10_week` (Pro / Insider). **TOP / ТОП / "top 10" / "best platforms this week"** opens the full list at once as a table: `# · Platform · Why (Rumer) · Type · Sign-up · Example`, then one line: "Want posts for these? Say **plan** — today's plan puts them first." `stale: true` → show the last list with "(new Top-10 coming soon)". On the panel page pass it to `dayplan.py` as `top10` ({week_of, stale, items: [{rank, name, why}]}). No list yet, or no server tools → skip the block silently. Free key → the line "🏆 Top-10 of the week — Pro / Insider" with the upgrade note on request.
+
 ## Bases and data — first on the panel (№32)
 
 The user's working data opens in one step, **above the skills**, with short codes so they never clash with skill numbers: **Б1…Б5** in Russian / Ukrainian, **B1…B5** in other languages (both always accepted, as are "base", "база", "журнал", "journal", "my platforms"). A code opens the table at once, no questions; then the user filters in words ("only forums", "in Spanish", "new this week", "★ only"). Shown as a table in the chat and on the panel page; never inside a code block. Bases don't count in "Explored".
@@ -120,7 +124,7 @@ Agents: affiliate-scout → 3 · product-researcher → 6 · serp-analyst → 5,
 | 21 | help | how anything works | Free | all |
 
 ### How each row is shown
-`N · name — what it does · plan · ✓ tried DD.MM / ○ not yet` — under the "Bases and data" row (Б1…Б5), which always comes first.
+`N · name — what it does · plan · ✓ tried DD.MM / ○ not yet` — under the 🏆 Top-10 line and the "Bases and data" row (Б1…Б5), which always come first.
 - The plan is marked against the user's plan (`account_info`): above their plan → "(Pro)" / "(Insider)", still listed, never hidden. Choosing it gives the one-line upgrade note and the alternative on their plan.
 - Role: show only the user's role table (role from the profile; no role yet → ask it first, it takes one line). Numbers are that table's numbers.
 - Above the panel, one line of progress counted on the role's set: **"Explored: 9 of 16 skills · 5 of 7 agents"** (affiliate); under it, the last 3 tried ("last: page-audit 03.11 · goals 02.11 · platform-finder 02.11").

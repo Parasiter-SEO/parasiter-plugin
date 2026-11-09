@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.40.0 — 2026-11-09
+
+**🏆 Top-10 platforms of the week.** Rumer's ranked pick of the 10 platforms that hold posts and bring results right now — with why, type, sign-up link and a live example — pinned at the very top of the panel and updated every week. Say **TOP** (or "top 10 platforms") to open it; today's plan puts uncovered Top-10 platforms first. Pro and Insider.
+
 ## 0.39.0 — 2026-11-09
 
 **Position checks on SerpApi too — start free.**

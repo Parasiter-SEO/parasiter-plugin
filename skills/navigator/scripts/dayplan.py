@@ -24,6 +24,7 @@ plan.json (all text in the user's working language; only "title", "tasks" are re
   "why": "Пока ничего не опубликовано: одна живая страница сегодня даёт больше, чем три в черновиках.",
   "next": [{"say": "Напиши профиль автора", "what": "начнём с задачи 1"}],
   "explored": "Освоено: 8 из 21 скилов · 4 из 10 агентов",         # №26 panel (optional; "kind": "panel" = panel only)
+  "top10": {"week_of": "2026-11-09", "stale": false, "items": [{"rank": 1, "name": "ResearchGate", "why": "…"}, …]},  # pinned above the bases
   "bases": [{"code": "Б1", "name": "База площадок Rumer", "what": "проверенные площадки", "plan": "Pro"}, …],   # №32, first on the panel
   "panel": [{"name": "План", "items": [{"n": 1, "skill": "navigator", "what": "план на сегодня", "plan": "Pro",
                                          "tried": "03.11", "locked": false}, …]}, …]
@@ -37,14 +38,14 @@ import sys
 from datetime import date
 
 L = {
-    "en": {"panel": "PARASITER PANEL", "bases": "Bases and data", "panel_h": "All functions — reply with a number", "menu0": "this menu any time", "tried": "tried", "untried": "not yet", "locked": "not on your plan", "plan": "TODAY'S PLAN", "week": "WEEKLY REVIEW", "setup": "SETUP DONE", "time": "Time today", "goal": "Goal",
+    "en": {"top10": "🏆 Top-10 platforms of the week", "top10_soon": "new Top-10 coming soon", "panel": "PARASITER PANEL", "bases": "Bases and data", "panel_h": "All functions — reply with a number", "menu0": "this menu any time", "tried": "tried", "untried": "not yet", "locked": "not on your plan", "plan": "TODAY'S PLAN", "week": "WEEKLY REVIEW", "setup": "SETUP DONE", "time": "Time today", "goal": "Goal",
            "tasks": "Tasks", "why": "Why this order", "next": "What's next — say", "copy": "Copy", "copied": "Copied",
            "done": "done", "by": "who", "moves": "moves", "of": "of", "foot": "PARASITER by Rumer · your plan stays in your folder"},
-    "ru": {"panel": "ПУЛЬТ PARASITER", "bases": "Базы и данные", "panel_h": "Все функции — ответьте номером", "menu0": "это меню в любой момент", "tried": "пробовал", "untried": "ещё нет", "locked": "не в вашем тарифе", "plan": "ПЛАН НА СЕГОДНЯ", "week": "ОБЗОР НЕДЕЛИ", "setup": "НАСТРОЙКА ГОТОВА", "time": "Время сегодня", "goal": "Цель",
+    "ru": {"top10": "🏆 Топ-10 площадок недели", "top10_soon": "скоро новый Топ-10", "panel": "ПУЛЬТ PARASITER", "bases": "Базы и данные", "panel_h": "Все функции — ответьте номером", "menu0": "это меню в любой момент", "tried": "пробовал", "untried": "ещё нет", "locked": "не в вашем тарифе", "plan": "ПЛАН НА СЕГОДНЯ", "week": "ОБЗОР НЕДЕЛИ", "setup": "НАСТРОЙКА ГОТОВА", "time": "Время сегодня", "goal": "Цель",
            "tasks": "Задачи", "why": "Почему такой порядок", "next": "Что дальше — скажите", "copy": "Копировать",
            "copied": "Скопировано", "done": "сделано", "by": "кто", "moves": "двигает", "of": "из",
            "foot": "PARASITER by Rumer · план хранится в вашей папке"},
-    "uk": {"panel": "ПУЛЬТ PARASITER", "bases": "Бази й дані", "panel_h": "Усі функції — відповідайте номером", "menu0": "це меню будь-коли", "tried": "пробував", "untried": "ще ні", "locked": "не у вашому тарифі", "plan": "ПЛАН НА СЬОГОДНІ", "week": "ОГЛЯД ТИЖНЯ", "setup": "НАЛАШТУВАННЯ ГОТОВЕ", "time": "Час сьогодні", "goal": "Ціль",
+    "uk": {"top10": "🏆 Топ-10 платформ тижня", "top10_soon": "скоро новий Топ-10", "panel": "ПУЛЬТ PARASITER", "bases": "Бази й дані", "panel_h": "Усі функції — відповідайте номером", "menu0": "це меню будь-коли", "tried": "пробував", "untried": "ще ні", "locked": "не у вашому тарифі", "plan": "ПЛАН НА СЬОГОДНІ", "week": "ОГЛЯД ТИЖНЯ", "setup": "НАЛАШТУВАННЯ ГОТОВЕ", "time": "Час сьогодні", "goal": "Ціль",
            "tasks": "Завдання", "why": "Чому такий порядок", "next": "Що далі — скажіть", "copy": "Копіювати",
            "copied": "Скопійовано", "done": "зроблено", "by": "хто", "moves": "рухає", "of": "з",
            "foot": "PARASITER by Rumer · план зберігається у вашій папці"},
@@ -163,6 +164,14 @@ def build(p: dict) -> str:
         rows = "".join(f'<div class="row"><code class="mono">{e(n.get("say"))}</code><button data-copy="{e(n.get("say"))}" data-ok="{e(lab["copied"])}">'
                        f'{e(lab["copy"])}</button><span class="w">{e(n.get("what"))}</span></div>' for n in p["next"])
         parts.append(f'<h2 class="mono">{e(lab["next"]).upper()}</h2><div class="next">{rows}</div>')
+    t10 = p.get("top10") or {}
+    if t10.get("items"):
+        rows = "".join(f'<div class="row"><code class="mono">{e(i.get("rank"))}</code><b>{e(i.get("name"))}</b>'
+                       f'<span class="w">{e(i.get("why"))}</span></div>' for i in t10["items"][:10])
+        when = e(t10.get("week_of", "")) + (f' · {e(lab.get("top10_soon", L["en"]["top10_soon"]))}' if t10.get("stale") else "")
+        parts.append(f'<div class="psec mono">{e(lab.get("top10", L["en"]["top10"])).upper()} · {when}</div>'
+                     f'<div class="next">{rows}<div class="row"><code class="mono">TOP</code><button data-copy="TOP" data-ok="{e(lab["copied"])}">'
+                     f'{e(lab["copy"])}</button></div></div>')
     if p.get("bases"):
         tiles = "".join(f'<div class="tile"><div class="n mono">{e(b.get("code"))}</div><div class="sk">{e(b.get("name"))}</div>'
                         f'<div class="w">{e(b.get("what"))}</div><div class="st">' + (f'<span class="pl">{e(b.get("plan"))}</span>' if b.get("plan") else "") +
