@@ -2,6 +2,13 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.39.0 — 2026-11-09
+
+**Position checks on SerpApi too — start free.**
+- **Second option next to DataForSEO:** connect your own **SerpApi** account (free plan: 250 searches a month, enough for a weekly top-10 check of 50–80 pages). /plugin → PARASITER → configure options → **SerpApi API key**. The key goes to secure storage and only to serpapi.com.
+- **Connect one or both.** With both, PARASITER asks which to use for each check: SerpApi while your free searches last, DataForSEO for big runs, the top 100, page keywords and the AI-answer check.
+- Say *"is my SerpApi connected?"* to see your plan and searches left, then *"check my positions"* as before. Google and Bing positions work on both.
+
 ## 0.38.0 — 2026-11-08
 
 **Beyond Google: Bing and AI answers.**

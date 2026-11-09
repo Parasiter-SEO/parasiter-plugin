@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""PARASITER — position check for the user's own pages through DataForSEO (Google or Bing organic).
+"""PARASITER — position check for the user's own pages through DataForSEO or SerpApi (Google or Bing organic).
 
-  rankcheck.py JOURNAL [--engine google|bing] [--country us] [--language en] [--depth 100] [--platform P] [--priority high]
+  rankcheck.py JOURNAL [--provider dataforseo|serpapi] [--engine google|bing] [--country us] [--language en] [--depth 100] [--platform P] [--priority high]
                [--topic TEXT] [--limit N] [--live] [--dry-run] [--from-json FILE]
 
 Credentials: from the plugin settings only — the bundled parasiter-dataforseo server (dataforseo_run tool)
-passes them through an inherited pipe (--auth-fd). Never from files, arguments or the chat.
+or parasiter-serpapi server (serpapi_run tool, --provider serpapi) passes them through an inherited pipe (--auth-fd). Never from files, arguments or the chat.
 Never written to any file. One SERP request per unique query; every page of the user found in
 the results gets its position. Results go into the journal as `check` rows (position, status
 indexed when found) with the note "rank: <query> · google <country>"; pages not found get
@@ -13,7 +13,11 @@ indexed when found) with the note "rank: <query> · google <country>"; pages not
 --engine bing: Bing positions (Bing results feed ChatGPT search and Copilot). Bing rows carry no
 position/status columns (those stay Google's): the note says "rank: <query> · bing <country> <device> · bing #N"
 or "· bing out of top N", and worklog keeps it as bing_pos.
+--provider serpapi: the user's own SerpApi key (free plan: 250 searches a month). SerpApi returns 10
+Google results per search, so top 30 = 3 searches per query (fewer when the results run out); Bing up
+to 50 results in one search. Answers at once (no queue, no --collect).
 """
+import math
 import argparse
 import base64
 import json
@@ -21,6 +25,7 @@ import os
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from collections import defaultdict
 from datetime import date
@@ -85,6 +90,73 @@ def _call(method, path, login, password, body=None, base=None):
     return data
 
 
+SERPAPI = "https://serpapi.com/search.json"
+SERPAPI_GL = {"uk": "gb"}
+SERPAPI_SKIP = {"organic_results", "search_metadata", "search_parameters", "search_information",
+                "pagination", "serpapi_pagination", "ads", "shopping_results"}
+NO_SERPAPI = ("SerpApi is not set up for this run: add your SerpApi API key in the PARASITER plugin settings "
+              "(/plugin → PARASITER → configure options) and run checks through the serpapi_run tool.")
+
+
+def serpapi_searches(depth, engine):
+    """Searches one query costs on SerpApi: Google gives 10 results per search, Bing up to 50."""
+    return 1 if engine == "bing" else max(1, math.ceil(depth / 10))
+
+
+def serpapi_get(params, key):
+    url = SERPAPI + "?" + urllib.parse.urlencode({**params, "api_key": key, "output": "json"})
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url), timeout=90) as r:
+            data = json.loads(r.read().decode())
+    except urllib.error.HTTPError as e:
+        try:
+            msg = json.loads(e.read().decode()).get("error") or e.reason
+        except Exception:
+            msg = e.reason
+        hint = {401: " Check the SerpApi key in the plugin settings.",
+                429: " Your SerpApi searches for this month are used up or the hourly limit is reached."}.get(e.code, "")
+        sys.exit(f"SerpApi HTTP {e.code}: {msg}.{hint}")
+    except urllib.error.URLError as e:
+        sys.exit(f"Can't reach serpapi.com ({e.reason}). Allow the domain in your assistant's network settings.")
+    if data.get("error") and not data.get("organic_results"):
+        if "hasn't returned any results" in data["error"]:
+            return data
+        sys.exit(f"SerpApi error: {data['error']}")
+    return data
+
+
+def serpapi_parse(responses):
+    """Organic (position, url) and non-organic (block, url) from one query's SerpApi pages, in order."""
+    items, feats, n = [], [], 0
+    for d in responses:
+        for it in d.get("organic_results") or []:
+            n += 1
+            if it.get("link"):
+                items.append((n, it["link"]))
+        for k, v in d.items():
+            if k not in SERPAPI_SKIP:
+                feats += [(k, u) for u in set(urls_in(v))]
+    return items, feats
+
+
+def serpapi_query(q, key, a):
+    base = {"engine": a.engine, "q": q}
+    if a.engine == "bing":
+        base.update({"cc": a.country.upper(), "count": min(a.depth, 50)})
+        if a.device == "mobile":
+            base["device"] = "mobile"
+        return [serpapi_get(base, key)]
+    base.update({"gl": SERPAPI_GL.get(a.country.lower(), a.country.lower()), "hl": a.language,
+                 "device": a.device, "num": 10})
+    out = []
+    for start in range(0, a.depth, 10):
+        d = serpapi_get({**base, "start": start}, key)
+        out.append(d)
+        if len(d.get("organic_results") or []) < 5 or not (d.get("serpapi_pagination") or {}).get("next"):
+            break
+    return out
+
+
 def query_of(p):
     q = (p.get("query") or "").strip()
     if q:
@@ -129,23 +201,27 @@ def match(page_url, serp_url):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Position check of the user's pages (DataForSEO)")
+    ap = argparse.ArgumentParser(description="Position check of the user's pages (DataForSEO or SerpApi)")
     ap.add_argument("journal")
+    ap.add_argument("--provider", default="dataforseo", choices=["dataforseo", "serpapi"],
+                    help="whose account pays: dataforseo (default) or serpapi")
     ap.add_argument("--engine", default="google", choices=ENGINES, help="google (default) or bing")
     ap.add_argument("--country", default="us"); ap.add_argument("--language", default="en")
-    ap.add_argument("--depth", type=int, default=30, help="results to check; billed per 10, top 30 is enough to see traffic")
+    ap.add_argument("--depth", type=int, default=None, help="results to check; DataForSEO default 30 (billed per 10), SerpApi default 10 (1 search per 10)")
     ap.add_argument("--device", default="desktop", choices=["desktop", "mobile"])
     ap.add_argument("--platform"); ap.add_argument("--topic")
     ap.add_argument("--priority", choices=w.PRIORITIES)
     ap.add_argument("--limit", type=int, default=200, help="max queries per run")
     ap.add_argument("--live", action="store_true"); ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--auth-fd", help=argparse.SUPPRESS)
-    ap.add_argument("--from-json", help="parse a saved DataForSEO response instead of calling the API")
+    ap.add_argument("--from-json", help="parse a saved DataForSEO response (SerpApi: a list of saved responses) instead of calling the API")
     ap.add_argument("--wait", type=int, default=15, help="minutes to wait for the standard queue")
     ap.add_argument("--skip-today", action="store_true", help="skip pages already rank-checked today")
     ap.add_argument("--collect", type=int, metavar="HOURS",
                     help="don't post new tasks: download results of tasks already paid in the last HOURS (free)")
     a = ap.parse_args()
+    if a.depth is None:
+        a.depth = 10 if a.provider == "serpapi" else 30
 
     today = date.today()
     rows_all = w.read_rows(a.journal)
@@ -171,11 +247,42 @@ def main():
     loc = COUNTRIES.get(a.country.lower())
     if not loc:
         sys.exit("Unknown --country. Use one of: " + ", ".join(sorted(COUNTRIES)))
+    bing = a.engine == "bing"
+    if a.provider == "serpapi":
+        if a.collect:
+            sys.exit("--collect is for DataForSEO only: SerpApi answers at once, there is nothing to collect.")
+        per = serpapi_searches(a.depth, a.engine)
+        print(f"Position check · SerpApi · {a.engine} {a.country} · top {a.depth} · {len(queries)} queries for "
+              f"{sum(len(by_q[q]) for q in queries)} pages · up to {len(queries) * per} SerpApi searches "
+              f"({per} per query; the free plan has 250 a month)"
+              + ("" if bing or per == 1 else f" · top 10 only: --depth 10, {len(queries)} searches"))
+        if skipped:
+            print(f"- {len(skipped)} pages have no query or named topic: set them with `worklog.py tag --query` first")
+        if a.dry_run or not queries:
+            for q in queries[:30]:
+                print(f"  · {q} ({len(by_q[q])} pages)")
+            return
+        if a.from_json:
+            for d in json.load(open(a.from_json)):
+                q = ((d.get("search_parameters") or {}).get("q") or "").lower()
+                results.setdefault(q, []).append(d)
+            for q in list(results):
+                results[q], feats[q] = serpapi_parse(results[q])
+        else:
+            key, _ = read_auth(a.auth_fd)
+            if not key:
+                sys.exit(NO_SERPAPI)
+            used = 0
+            for q in queries:
+                pages_ = serpapi_query(q, key, a)
+                used += len(pages_)
+                results[q], feats[q] = serpapi_parse(pages_)
+            print(f"- {used} SerpApi searches used")
+        return report(a, today, pages, queries, by_q, results, feats, bing)
     # DataForSEO bills per 10 results: top 100 = 10 pages of results
     price = (0.002 if a.live else 0.0006) * max(1, a.depth / 10)
     api = API.replace("/google/", f"/{a.engine}/")
     globals()["API"] = api          # call() defaults to API
-    bing = a.engine == "bing"
     print(f"Position check · {a.engine} {a.country} · top {a.depth} · {len(queries)} queries for "
           f"{sum(len(by_q[q]) for q in queries)} pages · about ${len(queries) * price:.2f}"
           + ("" if a.collect else f" (top 10 only: --depth 10, about ${len(queries) * price / max(1, a.depth / 10):.2f})"))
@@ -249,6 +356,11 @@ def main():
             if ids:
                 print(f"- {len(ids)} tasks not ready yet: they are paid and kept 3 days. Later run with --collect 24 to download them for free.")
 
+    return report(a, today, pages, queries, by_q, results, feats, bing)
+
+
+def report(a, today, pages, queries, by_q, results, feats, bing):
+    """Journal rows and the summary, the same for every provider."""
     rows, found, top, found_feat, bing_moves = [], 0, 0, [], []
     d = today.isoformat()
     for q in queries:
@@ -283,7 +395,7 @@ def main():
                                           main_query=q, note=note + f" · not in top {a.depth}"))
     if rows:
         w.append(a.journal, w.COLUMNS, rows)
-    print(f"- {len(rows)} pages checked on {a.engine.title()} · {found} found in the top {a.depth} · {top} in the top {w.TOP}")
+    print(f"- {len(rows)} pages checked on {a.engine.title()}{' (SerpApi)' if a.provider == 'serpapi' else ''} · {found} found in the top {a.depth} · {top} in the top {w.TOP}")
     if found_feat:
         print("\n**Cited in SERP blocks (AI Overview, forums, videos…)**")
         for line in found_feat[:25]:

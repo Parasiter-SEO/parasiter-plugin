@@ -99,7 +99,7 @@ python3 scripts/worklog.py import-pages parasite-seo-progress.csv my-pages.csv [
 After the import, report in 4–5 lines: pages added, per platform, new platforms in the base, pages without offer/program. Then offer the first check, because the system knows nothing about the pages' status yet:
 
 - **Alive check** (page opens, not removed, no noindex, affiliate link in place) — free, runs through `platform-monitor` → `page-checker`.
-- **Index and position checks need the user's own SEO data account.** Say so plainly: "To check indexing and positions, connect your own SEO API — DataForSEO is recommended (pay per check, Claude runs it itself); if you already have Semrush, Ahrefs, Serpstat or Ubersuggest, connect that or upload its export." Setup: `niche-analysis/references/seo-apis.md`.
+- **Index and position checks need the user's own SEO data account.** Say so plainly: "To check indexing and positions, connect your own SEO API — DataForSEO (pay per check, Claude runs it itself) or SerpApi (free plan, 250 searches a month), or both; if you already have Semrush, Ahrefs, Serpstat or Ubersuggest, connect that or upload its export." Setup: `niche-analysis/references/seo-apis.md`.
 - **Before any paid check, warn that it is not free and suggest a sample**: priority (★) pages, pages that earn or get clicks, the newest pack, or one page per topic — not the whole base. Give the rough cost for the chosen number of pages (from `seo-apis.md` and Mode 9 / 9b) and wait for the user's yes. Check the whole base only when the user asks for it after seeing the cost. Imported pages wait in their own queue section until that first check; only then do they get the regular check and audit schedule (audits only for pages that matter: live and indexed, or earning).
 
 ## Mode 1 — Log work as you go
@@ -158,7 +158,7 @@ Every Monday at 10:00 (Kyiv) the PARASITER bot asks Pro and Insider users with T
    - **UTM / analytics** — GA4 "Session source / medium", utm_source reports, Search Console pages → `import-traffic` the same way.
    Take whatever comes; never block the check-in on a missing file — name what is missing in one line and go on.
 3. Report the week: `summary --period last-week` and `effect --period last-week --by platform`, 4–6 lines: sales and commission vs the week before, best page and platform, traffic without sales (→ page-audit), pages that dropped or died (from the latest page check). With a goals file, add the pace line from the `goals` weekly review. Charts and PDF as always (client-reports style) when the user wants the full report.
-4. **Offer a position check** to see how keywords and posts moved: "Check positions of ★ / earning / new pages? N pages ≈ $X on your DataForSEO." It is paid — ask which pages and show the cost first, run only after a yes (Mode 9, Rules). If they want it every Monday, set it up with `paid_check_schedule` (they choose pages and cost once; the bot warns before each run).
+4. **Offer a position check** to see how keywords and posts moved: "Check positions of ★ / earning / new pages? N pages ≈ $X on your DataForSEO" (or "≈ N searches of your SerpApi, M left this month"). It is paid — ask which pages and show the cost first, run only after a yes (Mode 9, Rules). If they want it every Monday, set it up with `paid_check_schedule` (they choose pages and cost once; the bot warns before each run).
 5. `weekly_checkin` action `done` — the bot then stops nudging for this week. Only the fact "logged" goes to the server, never sales or traffic.
 
 "Turn off Monday check-ins" → `telegram_settings` checkin `off` (or `/checkin off` in the bot); "turn them on" → `on`.
@@ -369,9 +369,11 @@ python3 scripts/worklog.py ideas parasite-seo-progress.csv --to thermaltake --fr
 
 `rollout --topic "keto gummies review"` (or `--url <page just published>`): the user's active platforms that don't have this topic yet, in the user's order (rank, ★ first), with the format each platform needs. Run it after every new page (sales-review-writer Step 7) and when the user says "I wrote about X".
 
-## Mode 9 — Positions of every page, automatically (DataForSEO)
+## Mode 9 — Positions of every page, automatically (DataForSEO or SerpApi)
 
 **How paid scripts run:** every DataForSEO call goes through the `dataforseo_run` tool of the bundled `parasiter-dataforseo` server (script + the same args as below, `cwd` = the folder with the user's files); it takes the login and password from the plugin settings. `--dry-run`, `--from-json`, `--from-raw` and `--self-test` are free and may also run directly with python3. `dataforseo_status` says whether DataForSEO is set up and shows the balance.
+
+**Two accounts, the user's choice.** Positions can be checked on the user's DataForSEO (pay per request) or on their SerpApi (free plan: 250 searches a month, then paid plans) — offer both, never make the user pick one forever. Call `dataforseo_status` and `serpapi_status`: only one set up → use it; both → ask which to use for this run (SerpApi while free searches last, DataForSEO for big runs, top 100 or the AI check); none → give the setup of both in 3 lines (`niche-analysis/references/seo-apis.md`). SerpApi runs the same script through the `serpapi_run` tool of the bundled `parasiter-serpapi` server (same args, no `--provider`: the tool adds it). It answers at once, defaults to the top 10 and spends 1 search per 10 results per query (top 30 = 3 searches); before every run show the `--dry-run` search count and the searches left from `serpapi_status`, and wait for a yes. `--live` and `--collect` are DataForSEO only; Mode 9b (page keywords), Mode 9c AI check and platform scans stay on DataForSEO, Bing positions work on both.
 
 Search Console and free webmaster tools only see sites the user owns, so they can't see parasite pages. PARASITER checks Google itself through the user's own DataForSEO account (pay per request, from about $0.0006 per query: 50 queries a week cost cents a month).
 

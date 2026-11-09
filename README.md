@@ -2,7 +2,7 @@
 
 <a href="https://parasiter.affiliatecredo.com"><img src="https://github.com/user-attachments/assets/7ba859b4-2529-4700-b21e-196fd15c83a3" alt="PARASITER by Rumer — parasite SEO workflow in one place: platforms, pages that sell, sales journal and page checks" width="100%"></a>
 
-**A complete system for managing your parasite SEO work inside Claude Code** — all the skills and AI agents you need for every stage, plus connections to your own SEO tools (DataForSEO, Semrush, Ahrefs, Serpstat and others). Planning, platforms, content that sells, your sales journal and page checks in one place.
+**A complete system for managing your parasite SEO work inside Claude Code** — all the skills and AI agents you need for every stage, plus connections to your own SEO tools (DataForSEO, SerpApi, Semrush, Ahrefs, Serpstat and others). Planning, platforms, content that sells, your sales journal and page checks in one place.
 
 [Website](https://parasiter.affiliatecredo.com) · [Watch the 3-minute demo](https://www.youtube.com/watch?v=8pxC6Ml6kVI) · [Plans: Free, Pro, Insider](https://parasiter.affiliatecredo.com/#pricing) · [What's new](CHANGELOG.md)
 
@@ -159,6 +159,7 @@ Google acts against site reputation abuse, platforms change moderation and remov
 |---|---|---|
 | PARASITER server (`parasiter.affiliatecredo.com`, the declared MCP connector) | Only with a key | Your key; account data from payment (email, plan, term, Telegram link if you connect it); platform search queries; bare platform domains your scan found dead (no URLs, nothing about you); weekly page-health counts per platform domain (how many removed or noindexed — no URLs, no sales); the schedule of your paid checks as you describe it ("24 starred pages") |
 | DataForSEO API (`api.dataforseo.com`) — **your own account** | Only if you enter your DataForSEO API login and password in the plugin settings (the password is kept in secure storage) and say yes to a check (cost shown first). Runs through the bundled local `parasiter-dataforseo` server | Search queries, keywords and the page URLs being checked; billed to your DataForSEO balance. Credentials never go to the PARASITER server |
+| SerpApi (`serpapi.com`) — **your own account** | Only if you enter your SerpApi API key in the plugin settings (kept in secure storage) and say yes to a position check (searches shown first). Runs through the bundled local `parasiter-serpapi` server | Search queries; uses your SerpApi searches (free plan 250 a month). The key never goes to the PARASITER server |
 | Public web pages | Platform and page checks | Plain HTTP requests to the platforms and your published pages to see if they are live, indexed (noindex) and keep your link |
 | Other SEO tools (Semrush, Ahrefs, Serpstat, Google Search Console, GA4) | Only through connectors you add yourself | Whatever that connector sends under its own terms |
 

@@ -17,6 +17,16 @@
         "PARASITER_DFS_LOGIN": "${user_config.dataforseo_login}",
         "PARASITER_DFS_PASSWORD": "${user_config.dataforseo_password}"
       }
+    },
+    "parasiter-serpapi": {
+      "type": "stdio",
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp/serpapi_server.py"
+      ],
+      "env": {
+        "PARASITER_SERPAPI_KEY": "${user_config.serpapi_key}"
+      }
     }
   }
 }

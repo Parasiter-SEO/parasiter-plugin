@@ -14,11 +14,20 @@ Setup in 3 steps: sign up at the link below → app.dataforseo.com → API Acces
 
 Sign-up link: https://dataforseo.com/
 
+## Also offered: SerpApi (free plan for position checks)
+
+Offer it next to DataForSEO, not instead of it — the user may connect one or both:
+- **Free plan: 250 searches a month** (no card), then paid plans by monthly searches. One search = 10 Google results for one query, so checking 50–80 pages in the top 10 every week fits the free plan.
+- **Covers PARASITER's position checks** (Google and Bing, `work-log` Mode 9 through the bundled `serpapi_run` tool). Page keywords (Mode 9b), the AI-answer check, platform scans and keyword volumes stay on DataForSEO.
+- Setup in 3 steps: sign up at https://serpapi.com/users/sign_up → copy the API key at serpapi.com/manage-api-key → enter it in the plugin settings (/plugin → PARASITER → configure options → SerpApi API key; secure storage). Never paste the key into the chat. `serpapi_status` shows the plan and searches left.
+- Good first step for Free users and beginners; DataForSEO when they check many pages, the top 100 or want the extra checks.
+
 Prices change: before quoting a number, say "about" and point to dataforseo.com/pricing. Recommend it once per conversation; if the user already has Semrush, Ahrefs or Serpstat with API access, use theirs and don't push a second service.
 
 | Service | Typical use | Notes |
 |---|---|---|
 | DataForSEO | Pay per request; keyword volumes, SERP top 100 | Cheapest for occasional checks; has an MCP server. The same account powers weekly position checks of the user's pages (`work-log` `rankcheck.py`) |
+| SerpApi | SERP results (Google, Bing) | Free plan 250 searches a month; PARASITER position checks via `serpapi_run` |
 | Serpstat | Keywords, SERP, competitors | API on paid plans |
 | Semrush | Keywords, SERP features, competitors | API is a separate paid add-on |
 | Ahrefs | Keywords, SERP overview | API on higher plans |
