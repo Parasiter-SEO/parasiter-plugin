@@ -1,0 +1,43 @@
+name: Help page on the site
+
+# The public Help page (parasiter.affiliatecredo.com/help.html and help-uk.html) is built
+# from skills/help/references/*.md and the Ukrainian copy in skills/help/uk/.
+# On every change here this workflow:
+#   1. reports Ukrainian sections that are missing or outdated (they show in English on help-uk.html);
+#   2. asks the site repo to rebuild the page now, if the SITE_DISPATCH_TOKEN secret is set
+#      (fine-grained token, repo Parasiter-SEO/parasiter-site, permission "Contents: Read and write").
+#      Without the token the site still picks the change up on its 3-hourly schedule.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "skills/help/**"
+      - "tools/help_uk.py"
+      - ".claude-plugin/plugin.json"
+  workflow_dispatch:
+
+jobs:
+  help:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ukrainian copy up to date?
+        run: |
+          if ! python3 tools/help_uk.py status; then
+            echo "::warning::Some Ukrainian help sections are missing or outdated; help-uk.html shows them in English until translated (see tools/help_uk.py)."
+          fi
+
+      - name: Rebuild the site's Help page now
+        env:
+          TOKEN: ${{ secrets.SITE_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::notice::SITE_DISPATCH_TOKEN not set: the site rebuilds Help on its schedule (every 3 hours)."
+            exit 0
+          fi
+          curl -fsS -X POST -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/Parasiter-SEO/parasiter-site/dispatches \
+            -d '{"event_type":"help-updated"}'
+          echo "::notice::Site asked to rebuild the Help page."

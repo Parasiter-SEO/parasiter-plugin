@@ -196,3 +196,4 @@ After linking the bot pins a start guide with every command and sends it as a de
 
 ## Get help
 "Help", "is there a skill for …?" → this help. "What can PARASITER do?" or "map" → the capability map: every skill and agent for your role, what it does, what to say, and its plan. It is also shown at the first start and at the start of every session.
+The same help is on the site, with search, for reading without Claude: parasiter.affiliatecredo.com/help.html (Ukrainian: /help-uk.html).
