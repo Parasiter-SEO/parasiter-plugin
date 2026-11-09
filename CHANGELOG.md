@@ -10,6 +10,7 @@ Each version's section is posted to the news feed and the Telegram channels when
 - Say *"is my SerpApi connected?"* to see your plan and searches left, then *"check my positions"* as before. Google and Bing positions work on both.
 - **Server won't connect with an antivirus on?** Norton Safe Web and similar web / HTTPS protection can block PARASITER. Add `parasiter.affiliatecredo.com` to its exclusions, then `/mcp` → Reconnect. Steps for Norton, Avast, Kaspersky, Bitdefender are in the help (thanks to a beta tester).
 - **Windows:** the DataForSEO and SerpApi checks need `python3` — install Python from the Microsoft Store.
+- **Fixed:** the update notice could suggest an older version than the one installed. Now the server compares the versions and the notice shows only when a newer one is really out.
 
 ## 0.38.0 — 2026-11-08
 
