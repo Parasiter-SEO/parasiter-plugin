@@ -2,6 +2,11 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.42.2 — 2026-11-10
+
+- PARASITER is coming to the Claude directory. The directory edition is built automatically from this version: same skills and agents, and position checks run through the official DataForSEO and SerpApi servers with your own account (DataForSEO there takes one API token instead of login + password — the setting explains how to make it). Installed from GitHub? Nothing changes for you: the full edition keeps the bundled DataForSEO / SerpApi runners.
+- Privacy policy link added to the plugin listing.
+
 ## 0.42.1 — 2026-11-10
 
 **No more quiet Free.** If Claude Code clears your saved PARASITER key, PARASITER now says so at the top of the reply and shows how to put it back (/plugin → PARASITER → Configure options), instead of quietly running as Free. DataForSEO tells you when only the password was cleared. Help: *"my key keeps going back to not set"*.

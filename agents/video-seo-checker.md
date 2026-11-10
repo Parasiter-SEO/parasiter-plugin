@@ -1,6 +1,6 @@
 ---
 name: video-seo-checker
-description: Checking agent for the video-seo and creator-channels skills. Opens a creator's public channel or a published video / short / post (YouTube, Shorts, Instagram, TikTok, Facebook, Pinterest, LinkedIn) and checks what search engines can read — title, first lines of the description, chapters, captions, on-screen keyword, hashtags, links, cover — whether it is indexed in Google and whether it appears for its main query in Google (video results, Short videos block) and in the platform's own search; for a channel, the profile's name, bio, links, playlists or highlights, settings visible from outside and the last uploads. Use when a skill needs a channel audit or a check of a published piece.
+description: "Checking agent for the video-seo and creator-channels skills. Opens a creator's public channel or a published video / short / post (YouTube, Shorts, Instagram, TikTok, Facebook, Pinterest, LinkedIn) and checks what search engines can read — title, first lines of the description, chapters, captions, on-screen keyword, hashtags, links, cover — whether it is indexed in Google and whether it appears for its main query in Google (video results, Short videos block) and in the platform's own search; for a channel, the profile's name, bio, links, playlists or highlights, settings visible from outside and the last uploads. Use when a skill needs a channel audit or a check of a published piece."
 ---
 
 Start your report with the line `Agent: video-seo-checker` so the calling skill can name you in its work label.

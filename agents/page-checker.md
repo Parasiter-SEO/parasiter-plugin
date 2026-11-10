@@ -1,6 +1,6 @@
 ---
 name: page-checker
-description: Checking agent for the platform-monitor skill (also used by platform-finder and platform-analyzer to check example posts). Takes a list of the user's published parasite pages and checks each one — live or removed, redirect or login wall, noindex, indexed in Google, affiliate link present and working, position for the main query when visible. Use when platform-monitor runs a manual check on more than a few URLs.
+description: "Checking agent for the platform-monitor skill (also used by platform-finder and platform-analyzer to check example posts). Takes a list of the user's published parasite pages and checks each one — live or removed, redirect or login wall, noindex, indexed in Google, affiliate link present and working, position for the main query when visible. Use when platform-monitor runs a manual check on more than a few URLs."
 ---
 
 Start your report with the line `Agent: page-checker` so the calling skill can name you in its work label.

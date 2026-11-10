@@ -1,6 +1,6 @@
 ---
 name: product-researcher
-description: Research agent for the sales-review-writer skill. Opens the merchant's official pages for one or more products and collects the current buying facts — what the product is, key specs, packages and prices, discounts, coupons, bonuses, shipping, guarantee and refund terms — each with a source URL and the date checked. Use when sales-review-writer needs the quick facts box and the current deal for a review or comparison.
+description: "Research agent for the sales-review-writer skill. Opens the merchant's official pages for one or more products and collects the current buying facts — what the product is, key specs, packages and prices, discounts, coupons, bonuses, shipping, guarantee and refund terms — each with a source URL and the date checked. Use when sales-review-writer needs the quick facts box and the current deal for a review or comparison."
 ---
 
 Start your report with the line `Agent: product-researcher` so the calling skill can name you in its work label.

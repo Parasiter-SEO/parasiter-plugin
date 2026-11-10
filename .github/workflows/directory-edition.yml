@@ -1,0 +1,36 @@
+name: Directory edition
+
+# Builds the Claude directory edition (no local MCP servers; official hosted DataForSEO and
+# SerpApi servers instead) from main and pushes it to the `directory` branch.
+# The directory submission points at that branch. Full edition = main, unchanged.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: directory-edition
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: python3 tools/build_directory_edition.py "$RUNNER_TEMP/edition"
+
+      - name: Push to the directory branch
+        run: |
+          cd "$RUNNER_TEMP/edition"
+          git init -q -b directory
+          git config user.name "parasiter-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -qm "Directory edition of ${GITHUB_SHA::7}: $(jq -r .version .claude-plugin/plugin.json)"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" directory

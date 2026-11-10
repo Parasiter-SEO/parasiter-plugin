@@ -1,6 +1,6 @@
 ---
 name: affiliate-scout
-description: Research agent for the affiliate-finder skill. Finds affiliate programs and CPA/CPL offers across verticals (supplements and health, software and SaaS, VPN and security, crypto and trading, gaming and iGaming, travel and flights, finance, e-commerce, education, dating and others) for a given niche or for a whole vertical, collects their published terms (model, rate, cookie, payout threshold, GEOs, traffic rules, approval type) with source links and dates, and checks the merchant offer pages. Use when affiliate-finder needs program or offer research.
+description: "Research agent for the affiliate-finder skill. Finds affiliate programs and CPA/CPL offers across verticals (supplements and health, software and SaaS, VPN and security, crypto and trading, gaming and iGaming, travel and flights, finance, e-commerce, education, dating and others) for a given niche or for a whole vertical, collects their published terms (model, rate, cookie, payout threshold, GEOs, traffic rules, approval type) with source links and dates, and checks the merchant offer pages. Use when affiliate-finder needs program or offer research."
 ---
 
 Start your report with the line `Agent: affiliate-scout` so the calling skill can name you in its work label.

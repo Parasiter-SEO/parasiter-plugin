@@ -1,6 +1,6 @@
 ---
 name: index-checker
-description: Checking agent for the indexing skill. Takes a list of the user's pages and checks each for what blocks indexing (live, noindex, X-Robots-Tag, canonical, robots.txt, login wall, thin stub, duplicate in the list) and, when asked, whether it is already in Google — so the user pays an indexer only for pages that can be indexed. Use when the indexing skill checks more than 3 URLs before the user sends them, or after sending.
+description: "Checking agent for the indexing skill. Takes a list of the user's pages and checks each for what blocks indexing (live, noindex, X-Robots-Tag, canonical, robots.txt, login wall, thin stub, duplicate in the list) and, when asked, whether it is already in Google — so the user pays an indexer only for pages that can be indexed. Use when the indexing skill checks more than 3 URLs before the user sends them, or after sending."
 ---
 
 Start your report with the line `Agent: index-checker` so the calling skill can name you in its work label.

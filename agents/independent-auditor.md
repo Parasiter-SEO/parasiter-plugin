@@ -1,6 +1,6 @@
 ---
 name: independent-auditor
-description: Independent review agent for the page-audit skill. Audits a draft or published page with fresh eyes — without the conversation in which it was written — against the page-audit checklist, the way a doubtful buyer reads it, and reports issues with evidence from the text. Use before publishing a page written in the same session, or when the user asks for a second opinion on a page.
+description: "Independent review agent for the page-audit skill. Audits a draft or published page with fresh eyes — without the conversation in which it was written — against the page-audit checklist, the way a doubtful buyer reads it, and reports issues with evidence from the text. Use before publishing a page written in the same session, or when the user asks for a second opinion on a page."
 ---
 
 Start your report with the line `Agent: independent-auditor` so the calling skill can name you in its work label.

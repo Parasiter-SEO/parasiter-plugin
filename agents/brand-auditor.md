@@ -1,6 +1,6 @@
 ---
 name: brand-auditor
-description: Research agent for the brand-presence skill. Takes a client brand (name and spellings, site, known profiles, target queries, country) and checks its presence — finds the brand's profiles on social networks and trusted platforms, opens each one (exists, complete, consistent, last activity, link to the site), runs the site quick checks (robots, sitemap, noindex, canonical, landing pages for the target queries, titles, PageSpeed, GA4 tag, trust pages) and notes what content the brand already publishes. Returns facts with links and dates. Use when brand-presence or client-workspace needs a brand or site audit.
+description: "Research agent for the brand-presence skill. Takes a client brand (name and spellings, site, known profiles, target queries, country) and checks its presence — finds the brand's profiles on social networks and trusted platforms, opens each one (exists, complete, consistent, last activity, link to the site), runs the site quick checks (robots, sitemap, noindex, canonical, landing pages for the target queries, titles, PageSpeed, GA4 tag, trust pages) and notes what content the brand already publishes. Returns facts with links and dates. Use when brand-presence or client-workspace needs a brand or site audit."
 ---
 
 Start your report with the line `Agent: brand-auditor` so the calling skill can name you in its work label.
