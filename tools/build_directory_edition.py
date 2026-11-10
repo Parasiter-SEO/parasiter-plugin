@@ -124,6 +124,17 @@ def offline_scripts(out):
                 "Every live call goes through the hosted servers above.\n")
 
 
+REVIEWERS = """## For directory reviewers
+
+PARASITER is a workspace for white-hat UGC SEO: it helps users plan, write, track and analyze content they publish under their own accounts on public platforms (Medium, forums, Q&A, article and document sites). It works as a CRM for SEO work: a journal of published pages, sales and traffic, position checks and reports. Users publish only legal content; the plugin does not automate posting, account creation or link spam.
+
+- **Keys.** All three keys are `sensitive` userConfig options, sent only in the headers of the declared remote MCP servers: PARASITER (`parasiter.affiliatecredo.com/mcp`), DataForSEO's official server and SerpApi's official server. No script reads a credential or makes an API call in this edition.
+- **Credential hold.** `worklog.py` and `pubqueue.py` read no credentials and make no network calls. "own-site" is a journal label for the user's own website, not a host; "set" is the publication queue's subcommand (set an item's status), not the shell builtin.
+- **Data.** The PARASITER server keeps account data only (email, plan, key hash, Telegram link, notification and scheduled-check settings), deleted 30 days after a subscription ends. Journals, pages, sales and affiliate links stay in the user's own folder. Privacy policy: https://parasiter.affiliatecredo.com/privacy-en.html
+- **Testing.** Content skills work without a key. A test Insider key for review: write to sales@affiliatecredo.com.
+"""
+
+
 def main(out):
     if os.path.exists(out):
         shutil.rmtree(out)
@@ -151,6 +162,12 @@ def main(out):
         f.write("\n")
 
     offline_scripts(out)
+
+    readme = os.path.join(out, "README.md")
+    with open(readme, encoding="utf-8") as f:
+        text = f.read()
+    with open(readme, "w", encoding="utf-8") as f:
+        f.write(text.rstrip("\n") + "\n\n" + REVIEWERS)
 
     with open(os.path.join(out, "EDITION.md"), "w", encoding="utf-8") as f:
         f.write(
