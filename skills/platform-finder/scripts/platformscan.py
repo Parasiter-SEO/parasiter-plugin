@@ -21,14 +21,14 @@ After the paid search everything else is free:
 - Live check: up to 3 example pages per platform are opened (404/410, "page removed" text,
   redirect to the home or login page, empty page, noindex meta / X-Robots-Tag = removed).
   A platform passes only if at least one example is alive. Platforms whose examples are all
-  removed are listed apart and their domains saved to platforms-scan-dead.txt (for `dead_report`).
+  removed are listed apart and their domains saved to platforms-scan-dead.txt (kept locally).
 - Sign-up link: found on the home page or common paths (/register, /signup, /join…) and opened
   to check it works; otherwise "sign-up link not found" + the home page.
 - Rows are post-first: Post · Product · Pos. · Platform · Type · Free/Paid · Sign-up.
 
 With a PARASITER key, run in two steps so the author's private posts are never shown:
   1) --collect-only  → platforms-scan.raw.json + platforms-scan.examples.txt (URLs to filter)
-  2) `examples_filter` on those URLs → save {"allowed": [...]} as allowed.json
+  2) privfilter.py private-hashes.json <examples file> --out allowed.json (local, nothing is sent)
   3) --from-raw platforms-scan.raw.json --allowed allowed.json  (free: checks + output)
 
 The point is not to find unknown platforms, but the ones where affiliate review pages are
@@ -548,7 +548,7 @@ def report(platforms, skipped, out, allowed, yours, today):
         hosts = sorted({host_path(by_slug[r["platform"]]["pages"][0]["url"])[0] for r in dead if by_slug[r["platform"]]["pages"]})
         f.write("\n".join(hosts) + ("\n" if hosts else ""))
     if dead:
-        print(f"Dead domains saved to {dead_path} — send them with `dead_report` so nobody pays to scan them again.")
+        print(f"Dead domains saved to {dead_path} — skip them in your next scans (--exclude) so you don't pay to scan them again.")
 
 
 def self_test():
@@ -596,9 +596,9 @@ def main():
     ap.add_argument("--wait", type=int, default=15)
     ap.add_argument("--exclusions", help="saved JSON answer of the server's exclusions_get (stop types, blacklist, dead)")
     ap.add_argument("--exclude", default="", help="the user's own exclusions: domain[/path],…")
-    ap.add_argument("--collect-only", action="store_true", help="search + group only; write <out>.raw.json and the example URLs for examples_filter")
+    ap.add_argument("--collect-only", action="store_true", help="search + group only; write <out>.raw.json and the example URLs for the local private filter")
     ap.add_argument("--from-raw", help="continue from a --collect-only file (free: live check, sign-up links, output)")
-    ap.add_argument("--allowed", help='JSON {"allowed": [...]} from examples_filter: only these example posts are shown')
+    ap.add_argument("--allowed", help='JSON {"allowed": [...]} from privfilter.py: only these example posts are shown')
     ap.add_argument("--no-live-check", action="store_true", help=argparse.SUPPRESS)
     ap.add_argument("--no-signup", action="store_true", help="skip the sign-up link search")
     ap.add_argument("--auth-fd", help=argparse.SUPPRESS)
@@ -641,7 +641,7 @@ def main():
             with open(base_out + ".examples.txt", "w", encoding="utf-8") as f:
                 f.write("\n".join(urls) + "\n")
             print(f"- saved {base_out}.raw.json and {len(urls)} example URLs in {base_out}.examples.txt "
-                  f"→ pass them to examples_filter, then: --from-raw {base_out}.raw.json --allowed allowed.json")
+                  f"→ run privfilter.py on them, then: --from-raw {base_out}.raw.json --allowed allowed.json")
             return
 
     yours = set()

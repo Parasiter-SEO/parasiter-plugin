@@ -86,8 +86,8 @@
 | `clients/<slug>/…` | client-workspace і кожен скіл у режимі агенції | на кожного клієнта: `client-brief.md`, `content-plan.md`, `brand-presence.md`, власні файли журналу / платформ / посилань клієнта, `reports/` |
 | `clients/_agency.md` | client-workspace | назва агенції, текст логотипа, кольори звітів, мова звітів, white-label |
 | `platforms-scan.csv` | platform-finder | останній живий скан: платформи з партнерськими оглядами, безкоштовні / платні |
-| `platforms-scan-dead.txt` | platform-finder | домени, де в останньому скані всі приклади сторінок видалено; відправляються на сервер через `dead_report` (лише домен і дата) |
-| `platforms-scan.raw.json`, `platforms-scan.examples.txt` | platform-finder | з ключем: сирий скан і URL прикладів, які проходять через `examples_filter` перед безкоштовними перевірками |
+| `platforms-scan-dead.txt` | platform-finder | домени, де в останньому скані всі приклади сторінок видалено; лишаються на вашому комп'ютері й пропускаються в наступних сканах; нікуди не надсилаються |
+| `platforms-scan.raw.json`, `platforms-scan.examples.txt` | platform-finder | з ключем: сирий скан і URL прикладів, для локального приватного фільтра (privfilter.py) перед безкоштовними перевірками; нічого не надсилається |
 
 ## Telegram (лише Pro та Insider) {#telegram-pro-and-insider-only}
 <!-- src: 470bdb5c08 -->

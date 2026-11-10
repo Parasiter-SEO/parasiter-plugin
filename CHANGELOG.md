@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.42.0 — 2026-11-10
+
+**Your finds stay yours.** Nothing a platform search finds — URLs, domains, platforms, queries or products — is sent to the PARASITER server any more. The platforms you pick go only into your own base; dead ones stay in your folder and are skipped in your next scans. The filter that keeps the author's own posts out of example lists now runs on your machine: the server gives it hashed entries and no URL leaves your computer.
+
 ## 0.41.4 — 2026-11-10
 
 **Using the Claude app in a browser?** Help now explains how to connect your key there: add PARASITER as a custom connector with your key in the address. Ask *"PARASITER shows Free in the Claude app"*.

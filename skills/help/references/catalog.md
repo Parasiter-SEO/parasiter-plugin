@@ -71,7 +71,7 @@ Agencies and site owners plan in `client-workspace`, creators in `creator-channe
 
 ## Server tools (Pro / Insider key)
 
-`account_info` (plan, limits, Telegram linked) · `free_base`, `free_scout` (Free key: the 50-platform snapshot and 3 platform scans a week) · `platforms_search` (checked platform database) · `feed_latest`, `analysis_latest` (platforms and weekly analysis) · `news_latest`, `news_seen` (news feed) · `telegram_link`, `telegram_status`, `telegram_settings`, `telegram_unlink` (Telegram) · `pages_report` (counts of your page check for the Telegram summary and platform cleanups — never URLs) · `paid_check_schedule`, `paid_check_pending`, `paid_check_report` (scheduled paid checks on your own SEO API, warned in Telegram before each run) · `weekly_checkin` (Monday check-in: marks the week's sales and traffic logged) · `exclusions_get` (stop types, blacklist and dead platforms skipped in every scan) · `dead_report` (domains found dead in a scan — domain and date only) · `examples_filter` (hides the author's own posts from example lists) · `insider_method` (Insider: the method of affiliate-finder, niche-analysis and client-reports). `platforms_search` / `platform_get` rows include a sign-up link and up to 3 live example posts. Skills say when they need one and fall back to live search or manual checks without a key. The server is in beta.
+`account_info` (plan, limits, Telegram linked) · `free_base`, `free_scout` (Free key: the 50-platform snapshot and 3 platform scans a week) · `platforms_search` (checked platform database) · `feed_latest`, `analysis_latest` (platforms and weekly analysis) · `news_latest`, `news_seen` (news feed) · `telegram_link`, `telegram_status`, `telegram_settings`, `telegram_unlink` (Telegram) · `pages_report` (counts of your page check for the Telegram summary and platform cleanups — never URLs) · `paid_check_schedule`, `paid_check_pending`, `paid_check_report` (scheduled paid checks on your own SEO API, warned in Telegram before each run) · `weekly_checkin` (Monday check-in: marks the week's sales and traffic logged) · `exclusions_get` (stop types, blacklist and dead platforms skipped in every scan) · `private_hashes` (the author's private list as hashes: his own posts are hidden from example lists locally, nothing is sent) · `insider_method` (Insider: the method of affiliate-finder, niche-analysis and client-reports). `platforms_search` / `platform_get` rows include a sign-up link and up to 3 live example posts. Skills say when they need one and fall back to live search or manual checks without a key. The server is in beta.
 
 ## The user's files
 
@@ -89,8 +89,8 @@ Kept in the user's project folder, written by the skills:
 | `clients/<slug>/…` | client-workspace and every skill in agency mode | per client: `client-brief.md`, `content-plan.md`, `brand-presence.md`, the client's own journal / platforms / links files, `reports/` |
 | `clients/_agency.md` | client-workspace | agency name, logo text, report colours, report language, white-label |
 | `platforms-scan.csv` | platform-finder | the latest live scan: platforms with affiliate reviews, free / paid |
-| `platforms-scan-dead.txt` | platform-finder | domains whose example pages were all removed in the last scan; sent to the server with `dead_report` (domain and date only) |
-| `platforms-scan.raw.json`, `platforms-scan.examples.txt` | platform-finder | with a key: the raw scan and the example URLs to pass through `examples_filter` before the free checks |
+| `platforms-scan-dead.txt` | platform-finder | domains whose example pages were all removed in the last scan; kept on your machine and skipped in your next scans; never sent |
+| `platforms-scan.raw.json`, `platforms-scan.examples.txt` | platform-finder | with a key: the raw scan and the example URLs for the local private filter (privfilter.py) before the free checks; nothing is sent |
 
 ## Telegram (Pro and Insider only)
 
