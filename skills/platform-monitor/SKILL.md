@@ -15,7 +15,7 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 Every answer here is PARASITER at work: this skill's steps, Rumer's rules, criteria and references — never general knowledge alone. Name the basis briefly where it matters ("by Rumer's rules", the checklist, score or reference used, "PARASITER platform base"). A request this skill doesn't cover → the right skill; nothing fits → one line "outside PARASITER's skills — I answer by Rumer's general rules", then "0 — menu". Full rule: `navigator/references/agents-and-plan.md`.
 
-**Agents and Claude plan.** Heavy step: checking the user's pages → agent `page-checker`. Mode: `agents:` in `parasite-seo-profile.md`, else `agents_default` from `account_info`.
+**Agents and Claude plan.** Heavy step: checking the user's pages → agent `page-checker`. Mode: `agents:` in `parasite-seo-profile.md`, else `agents_default` from `account_info`. Profile says Pro or Insider but `account_info` shows no key or Free → the navigator's "key isn't connected" warning at the top (№44), never a quiet Free run.
 - `on` (Claude Max, Team) → run the agent; label `▸ PARASITER · <skill> → page-checker`.
 - `lite` (Claude Pro) → the **Lite version** below, label `▸ PARASITER · <skill> · Lite`. When the full version would clearly give a better result here, add one line of advice — why, and the phrase **full** ("For 20 products the full version is better: page-checker checks every one, about 3–5× more of your Claude limits. Say **full** — or I keep Lite").
 - `offer` (plan not known) → ask once before the first run: "This step of the skill is done by PARASITER's page-checker agent: separate context, deeper, uses more of your Claude limits (best on Max). Run it? Or Lite with the same skill."

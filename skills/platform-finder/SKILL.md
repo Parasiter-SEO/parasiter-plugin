@@ -151,7 +151,7 @@ Order: follow with a live wave → clean → fading ("check"). Closed ones only 
 
 **6. Nothing is sent.** The finds stay with the user: the ones they pick go into their own base (Step 5), the rest stay in this chat. A category whose search found nothing: say that the built-in search showed nothing and offer method B ("full search with your DataForSEO — about $X") instead of calling the category empty.
 
-Free key or no key: `patterns_get` answers `paid_plan_only` — one line "Searching new platforms by Rumer's patterns is Pro and Insider: https://parasiter.affiliatecredo.com/#pricing", then what Free has (the base snapshot, one scan).
+Free key or no key: `patterns_get` answers `paid_plan_only` — one line "Searching new platforms by Rumer's patterns is Pro and Insider: https://parasiter.affiliatecredo.com/#pricing", then what Free has (the base snapshot, one scan). Profile says Pro or Insider but `account_info` shows no key or Free → the navigator's "key isn't connected" warning at the top (№44), never a quiet Free run.
 
 ## Step 1 — Filters
 

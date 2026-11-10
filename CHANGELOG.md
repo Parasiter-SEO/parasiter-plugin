@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.42.1 — 2026-11-10
+
+**No more quiet Free.** If Claude Code clears your saved PARASITER key, PARASITER now says so at the top of the reply and shows how to put it back (/plugin → PARASITER → Configure options), instead of quietly running as Free. DataForSEO tells you when only the password was cleared. Help: *"my key keeps going back to not set"*.
+
 ## 0.42.0 — 2026-11-10
 
 **Your finds stay yours.** Nothing a platform search finds — URLs, domains, platforms, queries or products — is sent to the PARASITER server any more. The platforms you pick go only into your own base; dead ones stay in your folder and are skipped in your next scans. The filter that keeps the author's own posts out of example lists now runs on your machine: the server gives it hashed entries and no URL leaves your computer.

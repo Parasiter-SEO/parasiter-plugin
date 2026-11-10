@@ -44,6 +44,9 @@ def creds():
 
 def balance():
     login, password = creds()
+    if login and not password:
+        return {"configured": False, "message": "DataForSEO login is set but the password is empty: Claude Code may have cleared the "
+                "plugin's saved options. Re-enter it: /plugin → PARASITER → configure options → DataForSEO API password, then restart."}
     if not (login and password):
         return {"configured": False, "message": SETUP}
     req = urllib.request.Request("https://api.dataforseo.com/v3/appendix/user_data")
