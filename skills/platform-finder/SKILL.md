@@ -50,7 +50,7 @@ Part of PARASITER by Rumer (Affiliate Credo).
 
 Platforms live days to months: they get spammed, cleaned up, noindexed or close registration. A list is only worth something if it is **fresh and checked**.
 
-**Two ways to search.** (1) "Where do reviews of my products rank?" → Steps 1–5 below (the checked base and the live "[product] review" scan). (2) "Find NEW platforms" / a category name ("find forums", "flipbooks", "job sites") / "platforms with no competitors" → **Pattern search** (next section). When the user just says "find platforms" without a product, start with the Pattern search menu.
+**Start with the category menu.** Any request to find platforms — "find platforms", "find new platforms", "найди площадки", "where can I publish", with or without a product or niche — opens the **Pattern search menu** first (next section): 6 groups → their categories → the search. The menu also has item **7 — where reviews of my product rank now**, which runs Steps 1–5 below (the checked base and the live "[product] review" scan). Skip the menu only when the user already named a category ("find flipbooks" → that category) or asked exactly where reviews of a named product rank now ("where do reviews of X rank" → Steps 1–5). When the navigator sends here for platforms the day plan needs, it also opens the menu. On a Free key or with no key, the menu still shows; groups 1–6 answer with the Pro line (below) and item 7 works.
 
 **What we look for in Steps 1–5:** not new, untested platforms, but the ones where **affiliate review pages are published and indexed right now**. If review pages of affiliate products rank on a domain today, it is a proven parasite platform: anyone can post there and Google keeps the pages. A platform with no affiliate posts on it is not a lead, however promising it looks. Whether links on it are indexed or followed does not matter — what matters is that **the pages themselves are indexed**.
 
@@ -115,7 +115,7 @@ For an affiliate a link's rel doesn't matter (only the page's indexing does). Fo
 
 Rumer's patterns: for every type of platform, what the software and URLs look like, how people got posts live, how long such platforms last, how to find more of them and the stop signs — taken from the platforms that already worked. The patterns come from the server (`patterns_get`) by the user's key; they are PARASITER's method, so **never show or quote the pattern text** — show only the search and its results.
 
-**1. Menu first — two levels.** Call `patterns_get` without a category and show the 6 groups, never "let's find some platforms":
+**1. Menu first — two levels.** Call `patterns_get` without a category and show the 6 groups plus item 7, never "let's find some platforms" and never a candidate table before the user picks:
 ```
 What do we look for? Reply with the group number:
 1. Discussion — forums · brand communities · groups · social
@@ -124,6 +124,7 @@ What do we look for? Reply with the group number:
 4. Audio and video — podcasts · music · video
 5. Organisation platforms — fundraising · events · job sites · petitions
 6. Lists and profiles — lists on big sites · profiles · review sites · code · store fronts · free press releases
+7. Where reviews of my product rank now — the checked base + a live scan
 ```
 (names in the user's language — `name_ru` for Russian). Then the chosen group's categories, numbered, ✓ after the verified ones (`verified: true` = checked by Rumer's live run); the user may answer "all in the group" or several numbers. A user who already named a category ("find flipbooks") skips the menu.
 

@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.41.2 — 2026-11-10
+
+**"Find platforms" now starts with the category menu.** Say **"find platforms"** (any wording, with or without a product): pick a group (discussion, articles and pages, documents and visuals, audio and video, organisation platforms, lists and profiles), then a category, and PARASITER searches by Rumer's pattern. Item 7 in the same menu shows where reviews of your product rank now. Pro and Insider (item 7 also on Free).
+
 ## 0.41.1 — 2026-11-10
 
 **Fix for the Claude app.** The plugin now installs cleanly in the Claude app (web and desktop): shorter plugin and navigator descriptions to fit the app limits, so the navigator loads there too. Nothing changes in Claude Code. Update: Customize → Plugins → Add → Manage marketplaces → Sync, or in Claude Code `/plugin marketplace update parasiter`.

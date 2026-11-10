@@ -37,7 +37,7 @@ Agency / site owner: Б1 Rumer's base (brand-safe filter) · Б2 the client's (o
 | **Find** | | | |
 | 3 | affiliate-finder | offers and programs for a niche | Insider |
 | 4 | niche-analysis | keywords, demand, can you enter | Insider |
-| 5 | platform-finder | where reviews rank now · new platforms by Rumer's patterns | Free key / Pro |
+| 5 | platform-finder | find platforms: menu of 6 groups → categories (Rumer's patterns) · where reviews rank now | Free key / Pro |
 | 6 | platform-analyzer | score one platform 0–100 | Pro |
 | 7 | platform-feed | Rumer's feed, news, Telegram | Pro |
 | **Write** | | | |
@@ -105,7 +105,7 @@ Agents: affiliate-scout → 3 · product-researcher → 6 · serp-analyst → 5,
 | 2 | goals | baseline, goals, weekly review | Free | affiliate |
 | 3 | affiliate-finder | offers and programs | Insider | affiliate, creator |
 | 4 | niche-analysis | keywords, demand | Insider | all |
-| 5 | platform-finder | where reviews rank now · new platforms by Rumer's patterns | Free key / Pro | affiliate, agency, site owner |
+| 5 | platform-finder | find platforms: menu of 6 groups → categories (Rumer's patterns) · where reviews rank now | Free key / Pro | affiliate, agency, site owner |
 | 6 | platform-analyzer | score one platform | Pro | affiliate, agency, site owner |
 | 7 | platform-feed | Rumer's feed, Telegram | Pro | affiliate, agency, site owner |
 | 8 | paid-placements | news sites, PR wires | Pro | agency, site owner |
