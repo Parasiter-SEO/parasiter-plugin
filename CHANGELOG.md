@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.41.0 — 2026-11-10
+
+**🔎 New platforms by Rumer's patterns — where competitors are few or none.** Say **"find new platforms"** (or a category: "find flipbooks", "find job sites", "find podcasts"). Pick one of 6 groups — discussion, articles and pages, documents and visuals, audio and video, organisation platforms, lists and profiles — then a category (27 in all, ✓ = checked by Rumer's live run). PARASITER searches by the pattern of the platforms that already worked: the software, the URL, how people got posts live, the stop signs. You see two kinds of platforms: where affiliates post now (with the date of the newest post — live, fading or closed) and **clean** ones with open sign-up and no affiliate posts yet, with a simple test plan. Pick by numbers. Pro and Insider.
+
 ## 0.40.0 — 2026-11-09
 
 **🏆 Top-10 platforms of the week.** Rumer's ranked pick of the 10 platforms that hold posts and bring results right now — with why, type, sign-up link and a live example — pinned at the very top of the panel and updated every week. Say **TOP** (or "top 10 platforms") to open it; today's plan puts uncovered Top-10 platforms first. Pro and Insider.

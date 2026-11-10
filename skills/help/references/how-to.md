@@ -72,6 +72,8 @@ Everything you show must be real — no invented sales, screenshots, reviews or 
 ## Find where to publish
 "Where can I publish about [niche]?" → `platform-finder`. Free key: the 50-platform snapshot, or a scan for one product (3 a week, top 3 in full). Pro: Rumer's checked platforms first, then a live scan of "[product] review" for 20–50 affiliate products — where reviews rank in the top 10 now. The scan is paid (your DataForSEO), cost shown first. Free and paid platforms are listed separately. Before the first post: "analyze [platform]" → `platform-analyzer`.
 
+**How to find platforms with no competitors (Pro / Insider).** Say "find new platforms" (or a category: "find flipbooks", "find job sites"). Pick a group, then a category (✓ = checked by Rumer's live run), give your niche and language — or skip. You get two kinds of platforms: where affiliates already post (with the date of the newest post: live, fading or closed) and clean ones with open sign-up and no affiliate posts yet, with a test plan. Pick by numbers; they go to your platforms as "testing". New domains are sent to Rumer (domain only) — good ones join the checked base.
+
 ## Write and publish a page (full cycle)
 1. "What should I write about [product] for [query]?" → `content-type-selector` picks the type and topic.
 2. "Write it for [platform]" → `sales-review-writer` (current prices via product-researcher).

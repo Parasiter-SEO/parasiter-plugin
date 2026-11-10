@@ -1,6 +1,6 @@
 ---
 name: platform-finder
-description: Find platforms where a parasite SEO page can be published and rank — forums, communities, Q&A, article and profile platforms, document hosts, site builders, event and fundraising pages — filtered by niche, language, link rules, indexing speed and moderation. Use when the user asks where to publish, wants new platforms, forums or communities for a niche, or a list of platforms that work now.
+description: Find platforms where a parasite SEO page can be published and rank — forums, communities, Q&A, article and profile platforms, document hosts, flipbooks, podcasts, site builders, event, job and fundraising pages — filtered by niche, language, link rules, indexing speed and moderation; and search NEW platforms by category with Rumer's patterns (two-level menu of 6 groups and 27 categories, platforms where affiliates already post and clean ones with no competitors yet). Use when the user asks where to publish, wants new platforms, forums or communities for a niche, a list of platforms that work now, "find new platforms", "find forums / flipbooks / job sites / podcasts…", or "platforms with no competitors".
 ---
 
 # Platform Finder
@@ -41,6 +41,7 @@ The user must always know what to type next. End every reply with a short number
 
 Options that usually fit after this part (adapt to the user's products and words):
 - After a candidate list, option 1 is always the choice itself: "1, 3" — take these platforms (see Step 5)
+- "find new <category>" — a pattern search in another category (e.g. "find new flipbooks")
 - "analyze <platform>" — score one before posting
 - "what should I write there?"
 - "add it to my platforms"
@@ -49,7 +50,9 @@ Part of PARASITER by Rumer (Affiliate Credo).
 
 Platforms live days to months: they get spammed, cleaned up, noindexed or close registration. A list is only worth something if it is **fresh and checked**.
 
-**What we look for:** not new, untested platforms, but the ones where **affiliate review pages are published and indexed right now**. If review pages of affiliate products rank on a domain today, it is a proven parasite platform: anyone can post there and Google keeps the pages. A platform with no affiliate posts on it is not a lead, however promising it looks. Whether links on it are indexed or followed does not matter — what matters is that **the pages themselves are indexed**.
+**Two ways to search.** (1) "Where do reviews of my products rank?" → Steps 1–5 below (the checked base and the live "[product] review" scan). (2) "Find NEW platforms" / a category name ("find forums", "flipbooks", "job sites") / "platforms with no competitors" → **Pattern search** (next section). When the user just says "find platforms" without a product, start with the Pattern search menu.
+
+**What we look for in Steps 1–5:** not new, untested platforms, but the ones where **affiliate review pages are published and indexed right now**. If review pages of affiliate products rank on a domain today, it is a proven parasite platform: anyone can post there and Google keeps the pages. A platform with no affiliate posts on it is not a lead, however promising it looks. Whether links on it are indexed or followed does not matter — what matters is that **the pages themselves are indexed**.
 
 **Free and paid are always separate.** Free: platforms where users post themselves (Facebook, Reddit, Quora, forums, article and document platforms, site builders, podcasts, Gamma…). Paid: news and media sites (all of them are paid — sponsored posts, "partner content", press releases), PR wires, paid placements. Every list shows them in separate tables.
 
@@ -107,6 +110,41 @@ Read and write the client's platform base (`clients/<slug>/parasite-seo-progress
 ## Site owner role — links matter
 
 For an affiliate a link's rel doesn't matter (only the page's indexing does). For a site owner it does: every candidate platform is marked **dofollow / nofollow / ugc / sponsored** for links to their site (check a recent post's link in the page source), and dofollow platforms with indexed pages come first for link building. Probe the site's category like the agency mode above. Paid platforms (news sites, press-release wires, sponsored-article marketplaces) go to `paid-placements`, which keeps their prices, packages and how to order.
+
+## Pattern search — new platforms by category (Pro / Insider, №42)
+
+Rumer's patterns: for every type of platform, what the software and URLs look like, how people got posts live, how long such platforms last, how to find more of them and the stop signs — taken from the platforms that already worked. The patterns come from the server (`patterns_get`) by the user's key; they are PARASITER's method, so **never show or quote the pattern text** — show only the search and its results.
+
+**1. Menu first — two levels.** Call `patterns_get` without a category and show the 6 groups, never "let's find some platforms":
+```
+What do we look for? Reply with the group number:
+1. Discussion — forums · brand communities · groups · social
+2. Articles and pages — blogs · knowledge bases · site builders · AI page builders · Google services
+3. Documents and visuals — PDF · flipbooks · presentations · art · virtual tours
+4. Audio and video — podcasts · music · video
+5. Organisation platforms — fundraising · events · job sites · petitions
+6. Lists and profiles — lists on big sites · profiles · review sites · code · store fronts · free press releases
+```
+(names in the user's language — `name_ru` for Russian). Then the chosen group's categories, numbered, ✓ after the verified ones (`verified: true` = checked by Rumer's live run); the user may answer "all in the group" or several numbers. A user who already named a category ("find flipbooks") skips the menu.
+
+**2. One question:** niche or offer, language / country, forum topic if it matters — "or say skip". Then `patterns_get(category)` for every chosen category.
+
+**3. Search strictly by the pattern** — its Find section (method A: current products + "reviews 2026" + the platform's names or page words in the built-in web search; method B: the footprints in Google or the user's SEO API — paid, cost shown first and only after a yes). Plan check, mode and agents as everywhere: `on` → agent `platform-scout` in **pattern mode** (pass the category, the pattern and the common rules, the exclusions and the user's base); `lite` → up to 5 queries yourself, one category at a time.
+
+**4. Two tracks in every result:**
+- **Follow** — affiliate posts are already there: the date of the newest one and the wave — **live** (≤14 days) · **fading** (15–60 days: check that sign-up is open, not "old accounts only") · **closed** (>60 days or sign-up closed: not in the working list, one line "old posts still there, no new ones").
+- **Clean** — the pattern's good signs, open sign-up, no affiliate posts yet: "clean — no competitors". Give the test plan: register as a normal user → a neutral post on the site's topic → the review 2–3 days later → check indexing. Say the risk plainly: moderation may be absent or manual, the first post shows.
+
+**5. Output:**
+```
+New platforms · [category] · [niche, language] · checked [date] · by Rumer's pattern
+| # | Platform (live example or section) | Software | Topic | Language | Affiliates (newest post / clean) | Wave | Sign-up | Indexing | Filters | Verdict |
+```
+Order: follow with a live wave → clean → fading ("check"). Closed ones only as a count line. Same exclusions, `examples_filter` and `dead_report` as in every step; the author's private platforms are never named. ★ up to 3 with the reason; the user chooses by numbers and the choice is saved as in Step 5 (state `testing`). Never register or post for the user.
+
+**6. Send the new finds.** After the table, call `candidates_submit(category, domains)` with the bare domains of candidates that are not in the checked base (domains only, never URLs) and say in one line: "Sent N new domains to Rumer for review — good ones join the checked base." A category whose search found nothing: say that the built-in search showed nothing and offer method B ("full search with your DataForSEO — about $X") instead of calling the category empty.
+
+Free key or no key: `patterns_get` answers `paid_plan_only` — one line "Searching new platforms by Rumer's patterns is Pro and Insider: https://parasiter.affiliatecredo.com/#pricing", then what Free has (the base snapshot, one scan).
 
 ## Step 1 — Filters
 
