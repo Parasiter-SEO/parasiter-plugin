@@ -59,6 +59,68 @@ DFS_TOKEN = {
 }
 
 
+# Scripts that only call DataForSEO with credentials handed over by the local runner: not shipped.
+DROP_SCRIPTS = ["skills/work-log/scripts/aicheck.py", "skills/work-log/scripts/pagekeywords.py"]
+
+OFFLINE_MSG = ("Directory edition: this script makes no API calls. Run live checks through the hosted "
+               "DataForSEO / SerpApi servers (skills/work-log/references/directory-edition.md), or use the full "
+               "edition from https://github.com/Parasiter-SEO/parasiter-plugin")
+
+# Function bodies replaced so no script in the directory edition reads a credential or sends one anywhere.
+STUBS = {
+    "skills/work-log/scripts/rankcheck.py": {
+        "read_auth": '    """Directory edition: no credentials are passed to scripts."""\n    return None, None\n',
+        "_call": "    sys.exit(OFFLINE_MSG)\n",
+        "serpapi_get": "    sys.exit(OFFLINE_MSG)\n",
+    },
+}
+
+AUTH_ARG = 'ap.add_argument("--auth-fd", help=argparse.SUPPRESS)'
+CRED_DOC = "Directory edition: offline only (dry runs, saved responses, imports); no credentials, no API calls.\n"
+
+
+def _replace_body(src, name, body):
+    import ast
+    lines = src.splitlines(keepends=True)
+    for node in ast.walk(ast.parse(src)):
+        if isinstance(node, ast.FunctionDef) and node.name == name:
+            first = node.body[0].lineno - 1
+            if isinstance(node.body[0], ast.Expr) and isinstance(getattr(node.body[0], "value", None), ast.Constant):
+                first = node.body[0].lineno - 1  # docstring replaced too
+            return "".join(lines[:first]) + body + "".join(lines[node.end_lineno:])
+    raise SystemExit(f"build_directory_edition: function {name} not found")
+
+
+def offline_scripts(out):
+    for rel in DROP_SCRIPTS:
+        p = os.path.join(out, rel)
+        if os.path.exists(p):
+            os.remove(p)
+    for rel, stubs in STUBS.items():
+        p = os.path.join(out, rel)
+        src = open(p, encoding="utf-8").read()
+        for name, body in stubs.items():
+            src = _replace_body(src, name, body)
+        src = src.replace("\nSERPAPI = ", f"\nOFFLINE_MSG = {OFFLINE_MSG!r}\nSERPAPI = ", 1)
+        open(p, "w", encoding="utf-8").write(src)
+    import re
+    for root, _, files in os.walk(os.path.join(out, "skills")):
+        for fn in files:
+            if not fn.endswith(".py"):
+                continue
+            p = os.path.join(root, fn)
+            src = open(p, encoding="utf-8").read()
+            new = src.replace(AUTH_ARG, "ap.set_defaults(auth_fd=None)")
+            new = re.sub(r"^Credentials:.*\n(?:or .*\n)?(?:Never written to any file\.\s*)?", CRED_DOC, new, flags=re.M)
+            if new != src:
+                open(p, "w", encoding="utf-8").write(new)
+    doc = os.path.join(out, "skills/work-log/references/directory-edition.md")
+    with open(doc, "a", encoding="utf-8") as f:
+        f.write("\nIn this edition `aicheck.py` and `pagekeywords.py` are not included and the bundled scripts make no "
+                "API calls: they only plan runs (`--dry-run`), read saved responses (`--from-json`) and import results. "
+                "Every live call goes through the hosted servers above.\n")
+
+
 def main(out):
     if os.path.exists(out):
         shutil.rmtree(out)
@@ -84,6 +146,8 @@ def main(out):
     with open(pj, "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2, ensure_ascii=False)
         f.write("\n")
+
+    offline_scripts(out)
 
     with open(os.path.join(out, "EDITION.md"), "w", encoding="utf-8") as f:
         f.write(
