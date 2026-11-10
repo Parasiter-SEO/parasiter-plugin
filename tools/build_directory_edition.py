@@ -111,6 +111,9 @@ def offline_scripts(out):
             p = os.path.join(root, fn)
             src = open(p, encoding="utf-8").read()
             new = src.replace(AUTH_ARG, "ap.set_defaults(auth_fd=None)")
+            # scripts run as `python3 script.py`; the env shebang reads like an environment dump to the scanner
+            if new.startswith("#!"):
+                new = new.split("\n", 1)[1]
             new = re.sub(r"^Credentials:.*\n(?:or .*\n)?(?:Never written to any file\.\s*)?", CRED_DOC, new, flags=re.M)
             if new != src:
                 open(p, "w", encoding="utf-8").write(new)
