@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.41.3 — 2026-11-10
+
+**New platforms come with links you can act on.** Every platform found by Rumer's patterns now shows its home page and the direct sign-up page, both opened and checked. Example posts are shown only when they really open — removed posts are no longer listed; if all of a platform's posts were removed, it is marked "posts removed (cleanup)". Works in Lite too.
+
 ## 0.41.2 — 2026-11-10
 
 **"Find platforms" now starts with the category menu.** Say **"find platforms"** (any wording, with or without a product): pick a group (discussion, articles and pages, documents and visuals, audio and video, organisation platforms, lists and profiles), then a category, and PARASITER searches by Rumer's pattern. Item 7 in the same menu shows where reviews of your product rank now. Pro and Insider (item 7 also on Free).

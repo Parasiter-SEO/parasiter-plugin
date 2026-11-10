@@ -130,17 +130,23 @@ What do we look for? Reply with the group number:
 
 **2. One question:** niche or offer, language / country, forum topic if it matters — "or say skip". Then `patterns_get(category)` for every chosen category.
 
-**3. Search strictly by the pattern** — its Find section (method A: current products + "reviews 2026" + the platform's names or page words in the built-in web search; method B: the footprints in Google or the user's SEO API — paid, cost shown first and only after a yes). Plan check, mode and agents as everywhere: `on` → agent `platform-scout` in **pattern mode** (pass the category, the pattern and the common rules, the exclusions and the user's base); `lite` → up to 5 queries yourself, one category at a time.
+**3. Search strictly by the pattern** — its Find section (method A: current products + "reviews 2026" + the platform's names or page words in the built-in web search; method B: the footprints in Google or the user's SEO API — paid, cost shown first and only after a yes). Plan check, mode and agents as everywhere: `on` → agent `platform-scout` in **pattern mode** (pass the category, the pattern and the common rules, the exclusions and the user's base); `lite` → up to 5 queries yourself, one category at a time — the link check in 4a still runs in Lite (it is page opens, not searches).
 
 **4. Two tracks in every result:**
 - **Follow** — affiliate posts are already there: the date of the newest one and the wave — **live** (≤14 days) · **fading** (15–60 days: check that sign-up is open, not "old accounts only") · **closed** (>60 days or sign-up closed: not in the working list, one line "old posts still there, no new ones").
 - **Clean** — the pattern's good signs, open sign-up, no affiliate posts yet: "clean — no competitors". Give the test plan: register as a normal user → a neutral post on the site's topic → the review 2–3 days later → check indexing. Say the risk plainly: moderation may be absent or manual, the first post shows.
 
-**5. Output:**
+**4a. Open every link before showing it — in every mode, Lite included (plain page fetches, free).** For each candidate:
+- **Home** — the platform's root or the forum's index / the section where posts go. Open it: it must load.
+- **Sign-up** — the direct register / sign-up / create-account page (look for the link on the home page, else try /register, /signup, /join, /user/register, /create-account, /users/sign_up, /login?register, /member/register). Open it and confirm a sign-up form loads. Not found → "sign-up link not found — use Home".
+- **Live example** — each affiliate post you found: 404 / 410, "page not found / removed / deleted", redirect to the home or a login page, an empty page or noindex = **removed**. Show an example **only if it opens and the post is there**; never print a removed example as a link — not in the table, not under "Sources". All examples removed → the platform cleans up: say "posts removed (cleanup on [date checked])", move it to **fading** with "check that new posts stay", and send its domain with `dead_report` only when the home or sign-up is also gone. A site that blocks the check → "could not verify — open by hand", never "live".
+
+**5. Output** — one row per platform, the user should be able to act from the row without searching:
 ```
-New platforms · [category] · [niche, language] · checked [date] · by Rumer's pattern
-| # | Platform (live example or section) | Software | Topic | Language | Affiliates (newest post / clean) | Wave | Sign-up | Indexing | Filters | Verdict |
+New platforms · [category] · [niche, language] · checked [date] · by Rumer's pattern · links opened [date]
+| # | Platform | Home | Sign-up | Live example (only if it opens) | Software | Topic · language | Affiliates (newest post / clean) | Wave | Indexing | Filters | Verdict |
 ```
+Home and Sign-up are clickable links in every row. The "Live example" cell is a link only for a post that opened; otherwise "none live" or "clean — no posts yet". Under the table no list of example links that were not checked.
 Order: follow with a live wave → clean → fading ("check"). Closed ones only as a count line. Same exclusions, `examples_filter` and `dead_report` as in every step; the author's private platforms are never named. ★ up to 3 with the reason; the user chooses by numbers and the choice is saved as in Step 5 (state `testing`). Never register or post for the user.
 
 **6. Send the new finds.** After the table, call `candidates_submit(category, domains)` with the bare domains of candidates that are not in the checked base (domains only, never URLs) and say in one line: "Sent N new domains to Rumer for review — good ones join the checked base." A category whose search found nothing: say that the built-in search showed nothing and offer method B ("full search with your DataForSEO — about $X") instead of calling the category empty.
