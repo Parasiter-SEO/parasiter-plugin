@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.41.1 — 2026-11-10
+
+**Fix for the Claude app.** The plugin now installs cleanly in the Claude app (web and desktop): shorter plugin and navigator descriptions to fit the app limits, so the navigator loads there too. Nothing changes in Claude Code. Update: Customize → Plugins → Add → Manage marketplaces → Sync, or in Claude Code `/plugin marketplace update parasiter`.
+
 ## 0.41.0 — 2026-11-10
 
 **🔎 New platforms by Rumer's patterns — where competitors are few or none.** Say **"find new platforms"** (or a category: "find flipbooks", "find job sites", "find podcasts"). Pick one of 6 groups — discussion, articles and pages, documents and visuals, audio and video, organisation platforms, lists and profiles — then a category (27 in all, ✓ = checked by Rumer's live run). PARASITER searches by the pattern of the platforms that already worked: the software, the URL, how people got posts live, the stop signs. You see two kinds of platforms: where affiliates post now (with the date of the newest post — live, fading or closed) and **clean** ones with open sign-up and no affiliate posts yet, with a simple test plan. Pick by numbers. Pro and Insider.

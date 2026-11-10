@@ -9,8 +9,8 @@
     {
       "name": "parasiter",
       "source": "./",
-      "description": "Parasite SEO inside your AI assistant, for affiliate marketers, creators, site owners and agencies: find and analyze platforms, pick the content type that sells, write reviews and brand content, make videos and posts findable in Google (video SEO, channel audits, indexing), audit pages and sites, create images, analyze niches and programs, plan paid placements, set goals and get a daily plan, run clients or your own site (content and link plans, positions, GA4 and Search Console, backlinks, revenue vs spend, reports), and keep a journal with a check queue for every page.",
-      "version": "0.41.0"
+      "description": "Parasite SEO in your AI assistant for affiliates, creators, site owners and agencies: find and analyze platforms, pick content that sells, write reviews and brand content, video SEO and indexing, audit pages, create images, analyze niches and programs, plan paid placements, set goals and a daily plan, run clients or your own site, and keep a journal with checks for every page.",
+      "version": "0.41.1"
     }
   ]
 }
