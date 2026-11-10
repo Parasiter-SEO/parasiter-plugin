@@ -94,6 +94,9 @@ New versions come through the same marketplace: update the plugin in Claude Code
 ## Connecting the key
 The content skills need no key. During install the plugin asks for "PARASITER key (Free, Pro or Insider)" — paste the key from your email (it starts with `psr_`): the Free key from parasiter.affiliatecredo.com/free.html, or the Pro / Insider key from your welcome email. Need to change it later? Reinstall the plugin and paste the key when asked. Details: how-to, "Connect your key".
 
+## I use the Claude app in a browser, and PARASITER shows Free
+The plugin works in the Claude app too, but the app doesn't ask for the key, so the plugin's built-in `parasiter` connection runs as Free (its only tool is account info). Add your key as a separate connector: Customize → Connectors → Add custom connector, name PARASITER, URL `https://parasiter.affiliatecredo.com/mcp/` followed by your key (`psr_…`, no spaces). A header on the plain `/mcp` address won't save ("a connector with this URL already exists") — use the address with the key. Then start a new chat and say "my PARASITER plan". Keep that address private: it contains your key. Claude Code asks for the key during install and needs none of this.
+
 ## Languages
 Works in any language. The working language (plans, explanations) is set on first run; the content language of pages follows the target country. "Switch to …" changes it.
 

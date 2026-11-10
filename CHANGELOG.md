@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.41.4 — 2026-11-10
+
+**Using the Claude app in a browser?** Help now explains how to connect your key there: add PARASITER as a custom connector with your key in the address. Ask *"PARASITER shows Free in the Claude app"*.
+
 ## 0.41.3 — 2026-11-10
 
 **New platforms come with links you can act on.** Every platform found by Rumer's patterns now shows its home page and the direct sign-up page, both opened and checked. Example posts are shown only when they really open — removed posts are no longer listed; if all of a platform's posts were removed, it is marked "posts removed (cleanup)". Works in Lite too.
