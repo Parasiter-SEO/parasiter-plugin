@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.42.6 — 2026-11-11
+
+**Find the offers the top already sells (Insider).** Say *"find affiliate programs for <niche>"*: PARASITER now first runs dozens of buyer queries for your niche ("best …", "… reviews", "… scam or legit", "… reddit"), opens the pages in Google's top and counts which products they push with affiliate links and through which network — ClickBank, Digistore24, BuyGoods, MaxWeb, Amazon, Impact, CJ, ShareASale, Awin and more, cloaked /go/ links included. You see the demand map — product · network · how many ranking pages push it · in how many queries — and then the programs and terms for the products that lead it. Free with web search; full Google top with your DataForSEO or SerpApi account (cost shown first). Other affiliates' IDs are never shown or saved.
+
 ## 0.42.5 — 2026-11-11
 
 **Change plan without losing paid days.**

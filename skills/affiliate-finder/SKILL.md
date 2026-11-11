@@ -79,6 +79,7 @@ Programs for [niche] · checked [date]
 | Program | Network/direct | Searches/mo | Model | Rate | Cookie | Min payout | Traffic rules | Approval | Score |
 ```
 - **Approval** — `auto` / `manual review` / `strict` (needs a working site, traffic, sales stats) / `invite-only`, with its source (sign-up page, FAQ, terms). Not found → `not stated`, never a guess.
+- **What the top already sells:** for your niche PARASITER runs dozens of buyer queries ("best …", "… reviews", "… scam or legit"), opens the pages in Google's top and counts which products they push with affiliate links and through which network (ClickBank, Digistore24, BuyGoods, Amazon, Impact, CJ, ShareASale, Awin…). The products many ranking pages push are the ones buyers search for — they lead the list. Free with web search; deeper with your DataForSEO or SerpApi account (cost shown first).
 - 1–3 recommended offers with one line why each, and a content plan for them.
 - **Beginners** (no site, channels or sales history) get auto- and soft-approval programs first; strict and invite-only programs go on a "later" list while they build their site and posts.
 - Under every recommended offer with manual, strict or invite-only approval: a short "How to get approved — Rumer's rules" block; the full list below when the user asks "how do I get approved".

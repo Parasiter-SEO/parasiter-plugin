@@ -10,7 +10,7 @@ PARASITER server: it passes them only to PARASITER's own scripts through an inhe
 
 Tools:
   dataforseo_status  — is DataForSEO set up, and the account balance (free call)
-  dataforseo_run     — run a paid PARASITER script (rankcheck / aicheck / pagekeywords / platformscan)
+  dataforseo_run     — run a paid PARASITER script (rankcheck / aicheck / pagekeywords / platformscan / offerscan)
 """
 import base64
 import json
@@ -26,6 +26,7 @@ SCRIPTS = {
     "pagekeywords": os.path.join(ROOT, "skills", "work-log", "scripts", "pagekeywords.py"),
     "platformscan": os.path.join(ROOT, "skills", "platform-finder", "scripts", "platformscan.py"),
     "aicheck": os.path.join(ROOT, "skills", "work-log", "scripts", "aicheck.py"),
+    "offerscan": os.path.join(ROOT, "skills", "affiliate-finder", "scripts", "offerscan.py"),
 }
 VERSION = "1.0.0"
 MAX_OUT = 60_000
@@ -77,7 +78,7 @@ def run(script, args=None, cwd=None, timeout_minutes=30):
         raise ValueError(f"cwd is not a folder: {cwd}")
     timeout = max(1, min(int(timeout_minutes or 30), 120)) * 60
     login, password = creds()
-    needs_api = not any(x in ("--dry-run", "--self-test") or x.startswith(("--from-json", "--from-raw")) for x in args)
+    needs_api = not any(x in ("--dry-run", "--self-test") or x.startswith(("--from-json", "--from-raw", "--urls")) for x in args)
     if needs_api and not (login and password):
         return {"exit_code": 2, "output": SETUP}
     cmd = [sys.executable, SCRIPTS[script]] + args
@@ -113,7 +114,7 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "dataforseo_run",
      "description": ("Run a PARASITER script that calls the user's own DataForSEO account: rankcheck (Google or Bing positions of the user's pages, --engine bing), "
-                     "aicheck (is the page cited in Google AI Mode / ChatGPT / Gemini answers), pagekeywords (keywords each page ranks for) or platformscan (platforms ranking for '<product> review'). "
+                     "aicheck (is the page cited in Google AI Mode / ChatGPT / Gemini answers), pagekeywords (keywords each page ranks for), platformscan (platforms ranking for '<product> review') or offerscan (which affiliate products and programs the top pages for affiliate-intent queries push). "
                      "PAID from the user's DataForSEO balance: run it with --dry-run first, show the cost and run for real only after the user says yes. "
                      "Credentials come from the plugin settings; never pass them in args."),
      "inputSchema": {"type": "object", "required": ["script", "args"], "properties": {
