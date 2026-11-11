@@ -2,6 +2,12 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.42.5 — 2026-11-11
+
+**Change plan without losing paid days.**
+- **Pro → Insider starts at once.** Send */upgrade* to the bot (or say *"upgrade to Insider"*) and pay with the same email. Your unused paid Pro days become extra Insider days — the pay page and the bot show exactly how many before you pay. Same key, nothing to reinstall.
+- **Insider → Pro from the end of your period.** Send */downgrade* to the bot or press *Move to Pro* on your subscription page. Nothing is charged now: Insider runs to its end date, then Pro starts with the same key. Changed your mind? */downgrade cancel*.
+
 ## 0.42.4 — 2026-11-11
 
 **See everything the platform search found, and how it searched.** The live platform search now shows the full list of live platforms by default, not a top 5–10. Every result starts with one line on how it was searched: the free built-in web search (sees only part of Google, no positions) or your DataForSEO account (Google's top 10–30 with positions and the cost) — and ends with what would find more in your case — your DataForSEO key for the live search, Claude Max for the full mode instead of Lite, or Insider for the author's checked platforms the same day. Say *"where can I publish <product> reviews?"*.

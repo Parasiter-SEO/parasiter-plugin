@@ -34,7 +34,7 @@ An affiliate never sees the merchant's analytics, so UTM tags are wasted. An age
 - Pro includes the PARASITER Pro channel and personal notifications from the bot. Telegram is for paid plans only.
 - Annual billing about 20% less. Prices are preliminary — current terms on the official site.
 - The key is personal: one key, one person. It stops working when the subscription ends; skills keep working without server data.
-- **Change plan** (Insider → Pro or back): pay for the new plan with the same email. Your key stays the same, your files and server settings stay, only the channels change (Pro channel instead of the Insider channel and group, or the other way). Remaining days of the old plan are not carried over.
+- **Change plan:** up (Pro → Insider) — */upgrade* in the bot, pay with the same email, Insider starts at once and your unused paid Pro days become extra Insider days. Down (Insider → Pro) — */downgrade* in the bot or the subscription page: Insider runs to the end of the paid period, then Pro; nothing is charged now. Same key, same files and settings; only the channels change.
 - Platform feed updates come as findings appear — several times a week, sometimes less. No daily promise.
 
 ## Do images cost anything?
