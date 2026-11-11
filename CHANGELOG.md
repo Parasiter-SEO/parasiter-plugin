@@ -4,7 +4,7 @@ Each version's section is posted to the news feed and the Telegram channels when
 
 ## 0.42.4 — 2026-11-11
 
-**See everything the platform search found, and how it searched.** The live platform search now shows the full list of live platforms by default, not a top 5–10. Every result starts with one line on how it was searched: the free built-in web search (sees only part of Google, no positions) or your DataForSEO account (Google's top 10–30 with positions and the cost) — and ends with what would find more in your case. Say *"where can I publish <product> reviews?"*.
+**See everything the platform search found, and how it searched.** The live platform search now shows the full list of live platforms by default, not a top 5–10. Every result starts with one line on how it was searched: the free built-in web search (sees only part of Google, no positions) or your DataForSEO account (Google's top 10–30 with positions and the cost) — and ends with what would find more in your case — your DataForSEO key for the live search, Claude Max for the full mode instead of Lite, or Insider for the author's checked platforms the same day. Say *"where can I publish <product> reviews?"*.
 
 ## 0.42.3 — 2026-11-11
 
