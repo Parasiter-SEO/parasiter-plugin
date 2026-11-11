@@ -6,6 +6,8 @@ Each version's section is posted to the news feed and the Telegram channels when
 
 **See everything the platform search found, and how it searched.** The live platform search now shows the full list of live platforms by default, not a top 5–10. Every result starts with one line on how it was searched: the free built-in web search (sees only part of Google, no positions) or your DataForSEO account (Google's top 10–30 with positions and the cost) — and ends with what would find more in your case — your DataForSEO key for the live search, Claude Max for the full mode instead of Lite, or Insider for the author's checked platforms the same day. Say *"where can I publish <product> reviews?"*.
 
+**Jump between platform categories.** Every category has a code (3.2 flipbooks, 5.1 fundraising…). Type a code or say *"categories"* any time to see all 6 groups and their categories in one block, with the ones you already searched marked — no need to go back a level. After each result you get the group's other categories in one line.
+
 ## 0.42.3 — 2026-11-11
 
 **Searching the checked base by niche works.** Asking for platforms for a niche or product ("platforms for joint supplements") no longer comes back empty: the checked base is matched word by word, including the example posts, and when no platform mentions your niche yet you get the checked platforms by type and language with a note — most of them work for any niche. Say *"where can I publish <product> reviews?"*. Thanks to the beta testers for the report.

@@ -128,6 +128,16 @@ What do we look for? Reply with the group number:
 ```
 (names in the user's language — `name_ru` for Russian). Then the chosen group's categories, numbered, ✓ after the verified ones (`verified: true` = checked by Rumer's live run); the user may answer "all in the group" or several numbers. A user who already named a category ("find flipbooks") skips the menu.
 
+**Category navigation — RULE (№49).** Every category has a fixed code `group.item` (1.1 forums, 1.2 brand communities … 3.2 flipbooks … 6.6 free press releases — the order of `patterns_get`). The user can jump straight to any category by its code or name at any time ("3.2", "flipbooks"), with no need to go up a level first.
+- **"categories" / "категории" / "all categories" / "tree" / "back" (in this menu)** → the whole tree in one compact block, all 6 groups with their categories and codes, ✓ after the verified ones, and the ones already searched in this session marked "· done":
+  ```
+  1 Discussion: 1.1 forums ✓ · done · 1.2 brand communities · 1.3 groups · 1.4 social
+  2 Articles and pages: 2.1 blogs · 2.2 knowledge bases · …
+  …
+  Reply with a code (e.g. 3.2) or several (2.1, 3.2).
+  ```
+- **After every category result**, the Next steps start with: **"1 — next category in <group>: <the group's other codes and names, one line>"** · **"2 — all categories (the tree)"** · then the usual choice of platforms by numbers and **0 — menu**. Never make the user climb back to the group list to see what else there is.
+
 **2. One question:** niche or offer, language / country, forum topic if it matters — "or say skip". Then `patterns_get(category)` for every chosen category.
 
 **3. Search strictly by the pattern** — its Find section (method A: current products + "reviews 2026" + the platform's names or page words in the built-in web search; method B: the footprints in Google or the user's SEO API — paid, cost shown first and only after a yes). Plan check, mode and agents as everywhere: `on` → agent `platform-scout` in **pattern mode** (pass the category, the pattern and the common rules, the exclusions and the user's base); `lite` → up to 5 queries yourself, one category at a time — the link check in 4a still runs in Lite (it is page opens, not searches).
