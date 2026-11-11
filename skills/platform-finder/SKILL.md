@@ -163,7 +163,7 @@ Ask only what is missing:
 
 ## Step 2 — The author's base first (Pro / Insider)
 
-If `platforms_search` is available, call it with the filters. These are platforms Rumer checked by hand; he adds them every Monday and often in between, several a day. Pro sees them ~7 days after they are added, Insider the same day. Each row carries `examples` (live posts, best position first, already filtered) and `signup_url`. Drop rows that match the exclusions, then show them post-first in the Step 5 format and keep the server's notes as written.
+If `platforms_search` is available, call it with the filters: `type` and `language` from Step 1, and the niche or product words as `query` (matched word by word against the platform and its example posts). If the answer has `query_matched: false`, no checked platform mentions the niche yet: show the base by type and language anyway with one line from `note` (most checked platforms work for any niche) — never report "0 platforms" while `total_in_your_plan` is above 0. These are platforms Rumer checked by hand; he adds them every Monday and often in between, several a day. Pro sees them ~7 days after they are added, Insider the same day. Each row carries `examples` (live posts, best position first, already filtered) and `signup_url`. Drop rows that match the exclusions, then show them post-first in the Step 5 format and keep the server's notes as written.
 
 If the server is not connected, say once: "Checked platforms from Rumer come with a Pro key. Meanwhile we can run a live scan." and go to Step 3.
 
