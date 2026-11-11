@@ -21,7 +21,7 @@ Every answer here is PARASITER at work: this skill's steps, Rumer's rules, crite
 - `offer` (plan not known) → ask once before the first run: "This step of the skill is done by PARASITER's platform-scout agent: separate context, deeper, uses more of your Claude limits (best on Max). Run it? Or Lite with the same skill."
 - "full" / "audit by agent" → run it this time; "turn on agents" → `agents: on`; "save limits" or a usage limit hit → `agents: lite` (save in the profile, advice from `agents-and-plan.md` §3).
 
-**Lite version:** up to 5 products: the checked base (`platforms_search`; Free key: `free_base`) plus one "[product] review" search each, no live sign-up / indexing check of every platform. A Free key still calls `free_scout` start before any search, Lite or full. Lite is the same method in a smaller scope: say what was left out.
+**Lite version:** up to 5 products (the result still shows the full list of what was found and the search source line, Step 5): the checked base (`platforms_search`; Free key: `free_base`) plus one "[product] review" search each, no live sign-up / indexing check of every platform. A Free key still calls `free_scout` start before any search, Lite or full. Lite is the same method in a smaller scope: say what was left out.
 
 ## Next steps (end of every reply)
 
@@ -201,7 +201,15 @@ A platform with no live example is never a candidate. Mark uncertain ones "test"
 
 ## Step 5 — Candidates: the user chooses
 
-Show **5–10 candidates** when there are that many (free and paid in separate tables), numbered, post-first:
+Show **every live candidate found — the full list by default** (free and paid in separate tables), numbered, post-first, best first. Never cut the list to 5–10 or to a top N and never hide the rest behind a count (the only exception is the Free key's top 3 in Free mode B). More than ~30 rows: keep the same table, compact (Pros / risks may shrink to a few words), and also save it as `platforms-scan.csv` in the user's folder.
+
+**Search source line — RULE (№48).** Right under the title of every live search result (Lite, full, agent, pattern search, Free scan) say how it was searched, so the user knows whether this is all there is:
+- built-in web search: `Search: built-in web search, no SEO API — free, but it sees only part of Google and gives no positions. With your DataForSEO key the live scan reads Google's top 10–30 for every product and usually finds several times more.` + `Probed: N products × "<suffix>"`;
+- DataForSEO: `Search: DataForSEO API (your account) · Google <country> · top <depth> · N products × "<suffix>" · cost $X`;
+- mixed: name both and which part came from which.
+After the list, one line on how to get more **in this case** (only what applies): more products, `--depth 20/30`, other suffixes (`reviews`, `complaints`, `reviews 2026`), the full mode instead of Lite, the pattern search ("find new platforms").
+
+
 
 ```
 Platform candidates · [niche] · [country] · checked [date]

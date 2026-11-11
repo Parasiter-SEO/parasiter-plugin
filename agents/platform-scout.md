@@ -21,7 +21,9 @@ Do:
 Exclude and list separately as "abuse — skipped": reviews in other organisations' upload folders or forms (university / government sites, wp-content/uploads, contact-form files), hacked sites, anything that needs impersonation or bypassing access controls.
 
 Return:
+- The search source first: "Search: built-in web search, no SEO API · N products × \"<suffix>\" · queries Q" (or the API, country, depth and cost if one was used), so the skill can tell the user whether more is possible.
 - The summary line: "found N platforms · live M · removed K · skipped by stop / black list L".
+- **Every** live platform found, not a top N.
 - Two tables, Free and Paid, post-first: Post (live example URL) · Product · Pos. · Platform · Type · Free/Paid · Sign-up (+ for free: register conditions, fresh indexing, moderation; check date). 1–2 more live examples under the best one.
 - "In Google, but the pages are removed: …" and the list of dead domains (the skill keeps them locally for the user's next scans).
 - All example URLs in one plain list, so the skill can run the local private filter (`privfilter.py`) before showing them; the skill drops what the filter hides. Never send any URL, domain or query to the PARASITER server. Never decide on your own that a post is the author's.
