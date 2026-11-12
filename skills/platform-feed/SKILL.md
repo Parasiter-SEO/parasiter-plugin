@@ -83,8 +83,8 @@ Plan shapes what comes back: Pro sees new platforms ~7 days after they are found
 2. Not linked → `telegram_link`, then:
    "Open this link and press **Start**: [link] (valid 30 minutes). The bot will confirm and send you invites to [PARASITER Pro channel] / [PARASITER Insider channel and the Insider group]. Your plan's channel replaces the free channel @parasiter_plugin, so you don't read the same news twice: if you're in the free channel, the bot takes you out of it."
    Telegram bots cannot write to someone first, so this link is the only way — a username is not enough.
-3. Explain the personal notifications in 5 short lines (page alerts, Monday sales reminder, news digest, billing, warnings before a scheduled paid check with buttons to run, narrow or skip it), at most one message a day, quiet at night, and that any type can be turned off.
-4. "Turn off X" → `telegram_settings` (`alerts`, `digest`, `checkin` for the Monday check-in). "Disconnect Telegram" → `telegram_unlink` (channel access also ends; reconnect any time).
+3. Explain the personal notifications in 6 short lines (a morning message at 09:00 Kyiv with the 5-minute routine and the focus of the day, page alerts, Monday sales reminder, news digest, billing, warnings before a scheduled paid check with buttons to run, narrow or skip it), at most one message a day, quiet at night, and that any type can be turned off.
+4. "Turn off X" → `telegram_settings` (`alerts`, `digest`, `checkin` for the Monday check-in, `morning` for the 09:00 morning message). "Disconnect Telegram" → `telegram_unlink` (channel access also ends; reconnect any time).
 
 ## Rules
 

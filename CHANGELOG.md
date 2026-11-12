@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.42.9 — 2026-11-12
+
+**Good morning from PARASITER (Pro, Insider).** Every day at 09:00 Kyiv the bot sends you one short message: your 5-minute routine (log yesterday's sales, log what you published, plan the day), the focus of the day — find platforms, write the page that sells, check your pages, scale what works, read the market, plan the week — and the new platforms for your plan since yesterday. Don't want it? Send `/morning off` to the bot, or say *"turn off the morning message"*.
+
 ## 0.42.8 — 2026-11-12
 
 **One channel per plan, no repeats.** Free — the free channel [@parasiter_plugin](https://t.me/parasiter_plugin); Pro — the Pro channel; Insider — the Insider channel and the private group. When you link a paid plan, the bot takes you out of the free channel, so you never read the same post twice.
