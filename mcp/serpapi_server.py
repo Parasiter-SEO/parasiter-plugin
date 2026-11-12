@@ -2,7 +2,7 @@
 """PARASITER · local SerpApi runner (stdio MCP server, Python standard library only).
 
 The user enters their own SerpApi API key once, in the plugin settings (userConfig: serpapi_key,
-stored by Claude Code in secure storage). Claude Code starts this server with it in the environment
+stored by Claude Code in Claude Code's plugin settings). Claude Code starts this server with it in the environment
 ("env" block of .mcp.json). The server never writes the key anywhere and never sends it to the
 PARASITER server: it passes it only to PARASITER's own script through an inherited pipe (--auth-fd),
 and the script sends it only to serpapi.com.

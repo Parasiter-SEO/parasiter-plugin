@@ -3,7 +3,7 @@
 
 The user enters their own DataForSEO API login and password once, in the plugin settings
 (userConfig: dataforseo_login, dataforseo_password — the password is stored by Claude Code in
-secure storage). Claude Code starts this server with those two values in its environment
+Claude Code's plugin settings). Claude Code starts this server with those two values in its environment
 ("env" block of .mcp.json). The server never writes them anywhere and never sends them to the
 PARASITER server: it passes them only to PARASITER's own scripts through an inherited pipe
 (--auth-fd), and the scripts send them only to api.dataforseo.com.

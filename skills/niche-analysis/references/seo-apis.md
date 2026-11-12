@@ -10,7 +10,7 @@ When the user has no SEO service with an API, or asks which one to get, recommen
 - **It powers PARASITER's own checks**: positions of every page (`work-log` Mode 9), what each page ranks for and what it lost (Mode 9b), niche and keyword analysis (this skill), SERP gap checks.
 - Search Console can't do this: it only sees sites you own, never your pages on Medium, forums or other platforms.
 
-Setup in 3 steps: sign up at the link below → app.dataforseo.com → API Access: copy the API login and password → enter them in the PARASITER plugin settings (/plugin → PARASITER → configure options → DataForSEO API login / password; the password goes to secure storage). PARASITER's checks then run through its bundled `dataforseo_run` tool. Never paste the password into the chat.
+Setup in 3 steps: sign up at the link below → app.dataforseo.com → API Access: copy the API login and password → enter them in the PARASITER plugin settings (/plugin → PARASITER → configure options → DataForSEO API login / password; kept in Claude Code's own settings on your computer). PARASITER's checks then run through its bundled `dataforseo_run` tool. Never paste the password into the chat.
 
 Sign-up link: https://dataforseo.com/
 
@@ -19,7 +19,7 @@ Sign-up link: https://dataforseo.com/
 Offer it next to DataForSEO, not instead of it — the user may connect one or both:
 - **Free plan: 250 searches a month** (no card), then paid plans by monthly searches. One search = 10 Google results for one query, so checking 50–80 pages in the top 10 every week fits the free plan.
 - **Covers PARASITER's position checks** (Google and Bing, `work-log` Mode 9 through the bundled `serpapi_run` tool). Page keywords (Mode 9b), the AI-answer check, platform scans and keyword volumes stay on DataForSEO.
-- Setup in 3 steps: sign up at https://serpapi.com/users/sign_up → copy the API key at serpapi.com/manage-api-key → enter it in the plugin settings (/plugin → PARASITER → configure options → SerpApi API key; secure storage). Never paste the key into the chat. `serpapi_status` shows the plan and searches left.
+- Setup in 3 steps: sign up at https://serpapi.com/users/sign_up → copy the API key at serpapi.com/manage-api-key → enter it in the plugin settings (/plugin → PARASITER → configure options → SerpApi API key; kept in Claude Code's own settings on your computer). Never paste the key into the chat. `serpapi_status` shows the plan and searches left.
 - Good first step for Free users and beginners; DataForSEO when they check many pages, the top 100 or want the extra checks.
 
 Prices change: before quoting a number, say "about" and point to dataforseo.com/pricing. Recommend it once per conversation; if the user already has Semrush, Ahrefs or Serpstat with API access, use theirs and don't push a second service.

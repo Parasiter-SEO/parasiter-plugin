@@ -155,7 +155,7 @@ def main(out):
         elif k == "dataforseo_password":
             continue
         else:
-            new_uc[k] = v
+            new_uc[k] = {**v, "sensitive": True}      # the directory edition keeps every credential in secure storage
     meta["userConfig"] = new_uc
     with open(pj, "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2, ensure_ascii=False)

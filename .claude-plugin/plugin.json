@@ -1,7 +1,7 @@
 {
   "name": "parasiter",
   "displayName": "PARASITER by Rumer",
-  "version": "0.42.10",
+  "version": "0.43.0",
   "description": "Parasite SEO in your AI assistant for affiliates, creators, site owners and agencies: find and analyze platforms, pick content that sells, write reviews and brand content, video SEO and indexing, audit pages, create images, analyze niches and programs, plan paid placements, set goals and a daily plan, run clients or your own site, and keep a journal with checks for every page.",
   "author": {
     "name": "Rumer (Affiliate Credo)",
@@ -33,9 +33,9 @@
     "parasiter_key": {
       "type": "string",
       "title": "PARASITER key (Free, Pro or Insider)",
-      "description": "Your personal key from the PARASITER email (starts with psr_). Free key by email, no card: parasiter.affiliatecredo.com/free.html. Leave empty to use only the content skills.",
+      "description": "Your personal key from the PARASITER email (starts with psr_). Free key by email, no card: parasiter.affiliatecredo.com/free.html. Leave empty to use only the content skills. Kept in Claude Code's own settings on your computer (not the system keychain, which Claude Code updates can clear), sent only to the PARASITER server.",
       "required": false,
-      "sensitive": true
+      "sensitive": false
     },
     "dataforseo_login": {
       "type": "string",
@@ -47,16 +47,16 @@
     "dataforseo_password": {
       "type": "string",
       "title": "DataForSEO API password (optional)",
-      "description": "API password from app.dataforseo.com → API Access (not your website password). Stored in secure storage and sent only to api.dataforseo.com — never to the PARASITER server or the chat.",
+      "description": "API password from app.dataforseo.com → API Access (not your website password). Kept in Claude Code's own settings on your computer and sent only to api.dataforseo.com — never to the PARASITER server or the chat.",
       "required": false,
-      "sensitive": true
+      "sensitive": false
     },
     "serpapi_key": {
       "type": "string",
       "title": "SerpApi API key (optional)",
-      "description": "Alternative to DataForSEO for position checks: your own SerpApi account, free plan 250 searches a month. serpapi.com → Your Account → API key. Stored in secure storage and sent only to serpapi.com — never to the PARASITER server or the chat. Leave empty if you don't use SerpApi.",
+      "description": "Alternative to DataForSEO for position checks: your own SerpApi account, free plan 250 searches a month. serpapi.com → Your Account → API key. Kept in Claude Code's own settings on your computer and sent only to serpapi.com — never to the PARASITER server or the chat. Leave empty if you don't use SerpApi.",
       "required": false,
-      "sensitive": true
+      "sensitive": false
     }
   }
 }
