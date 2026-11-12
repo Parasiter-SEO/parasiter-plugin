@@ -68,6 +68,7 @@ After you publish a text you worked on yourself, say "save this .docx with the p
 
 ## Where is my data?
 - Profile, goals, journal and sales files are in the user's own project folder. PARASITER does not upload them anywhere.
+- **See it yourself:** say *where is my data*. PARASITER shows the exact folder and every file in it (size, rows, last change), what never goes to the server and what the server does know. Open the folder: the files are plain CSV and Markdown. Working in Claude Code or the desktop app with a connected folder keeps them on your own computer. The plugin code is public on GitHub, and the site has a one-page summary: https://parasiter.affiliatecredo.com/data.html
 - Sales exports often contain customer data; the import keeps only date, program, product, sub-ID, order ID, amount, commission, currency and status.
 - **The PARASITER server never receives your page URLs, journal, sales, affiliate links or texts.** Page checks run in your own Claude; the server only gets counts ("40 checked, 2 removed") and the platform domain where pages were lost, for your Telegram summary and to spot platform cleanups across subscribers (kept 7 days, without your name). Rumer as administrator cannot see your posts.
 - **Platform searches send nothing.** Whatever a search finds — page URLs, domains, platforms, queries, products — stays with you; the platforms you pick go only into your own base. The filter that keeps Rumer's own posts out of example lists runs on your machine with hashed entries.

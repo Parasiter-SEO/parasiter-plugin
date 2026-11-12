@@ -1,6 +1,6 @@
 ---
 name: work-log
-description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms; keeps the publication queue — next pages ranked by what earns (fix, scale, expand, explore). Imports pages they already published and builds their own platform base; records every action, sale (by hand or from affiliate network exports) and traffic; ties sales to pages by sub-ID; gives reports for any day, week or month, effectiveness by page, platform, offer, program and content type, and a queue of pages due for checks. Use when the user uploads or pastes their pages, asks for "my platforms", marks priority pages or platforms, asks which pages are in the top, wants to see or download their base of posts ("open my base", "my posts in Excel"), "what should I write and where", "which topics are missing on X", reports work or a sale, uploads a sales or traffic export, asks "what did I do / earn this week", wants a report, asks what needs checking, or asks about Bing or AI-answer visibility.
+description: The user's parasite SEO journal of work, traffic and sales, and their personal inventory of pages and platforms; keeps the publication queue — next pages ranked by what earns (fix, scale, expand, explore). Imports pages they already published and builds their own platform base; records every action, sale (by hand or from affiliate network exports) and traffic; ties sales to pages by sub-ID; gives reports for any day, week or month, effectiveness by page, platform, offer, program and content type, and a queue of pages due for checks. Use when the user uploads or pastes their pages, asks for "my platforms", marks priority pages or platforms, asks which pages are in the top, wants to see or download their base of posts ("open my base", "my posts in Excel"), asks where their data is or who can see it ("where is my data", "does the server see my sales"), "what should I write and where", "which topics are missing on X", reports work or a sale, uploads a sales or traffic export, asks "what did I do / earn this week", wants a report, asks what needs checking, or asks about Bing or AI-answer visibility.
 ---
 
 # Work Log
@@ -53,7 +53,7 @@ Reply in the working language from `parasite-seo-profile.md`. Keep column names 
 
 ## Step 0 — Plan check (Pro)
 
-**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. **Always allowed on any plan, with or without a key (№34):** "export my base", "download my data", "my base in Excel", "open my base" — Mode "Export my base" and the My base dashboard below. The files are the user's own and never live on the server, so a lapsed plan never locks the user out of their own data; run these without the upgrade line. Everything else: Free, expired or no key → one line: "This is a Pro feature — the journal of your pages, sales and traffic, your platform base, sales imports from networks, reports and the check queue. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (tell the goals tracker what you did — say "I published 3 pages" or "2 sales today" — and it counts them in your weekly plan-vs-fact; keep the page links in your own table meanwhile), and stop.
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. **Always allowed on any plan, with or without a key (№34):** "export my base", "download my data", "my base in Excel", "open my base", "where is my data" — Mode "Export my base", Mode "Where is my data" and the My base dashboard below. The files are the user's own and never live on the server, so a lapsed plan never locks the user out of their own data; run these without the upgrade line. Everything else: Free, expired or no key → one line: "This is a Pro feature — the journal of your pages, sales and traffic, your platform base, sales imports from networks, reports and the check queue. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (tell the goals tracker what you did — say "I published 3 pages" or "2 sales today" — and it counts them in your weekly plan-vs-fact; keep the page links in your own table meanwhile), and stop.
 
 ## Files
 
@@ -256,6 +256,19 @@ Delivering:
 - Agencies: run it on the client's journal (`clients/<slug>/parasite-seo-progress.csv`) with `--out clients/<slug>/reports/<yyyy-mm>/base`; never mix clients in one base. It is the full inventory, so it can go to the client as an attachment to the monthly report.
 
 Reply in 2–3 lines: what the base holds now (posts, platforms, alive, top 10, need attention) and one thing to act on from it (for example "4 pages not checked yet — check them now?"). Never retype the table in the chat.
+
+### Where is my data — show the folder (any plan, no key needed)
+
+"where is my data", "where are my files", "who can see my sales", "does the server / Rumer see my pages", "is my data safe", or any worry that the journal goes somewhere:
+
+```
+python3 scripts/wheredata.py . --lang ru
+```
+(agencies: the client's folder, `clients/<slug>`). Read-only: the full path of the folder, every PARASITER file in it with size, rows and last change, what never goes to the server, what the server does know, and how to check it yourself. Show its output as it is, then in 1–2 lines:
+- **Claude Code / Claude desktop with a connected folder:** "This folder is on your computer. Open it — these files are your whole base." Offer to open the folder path or the My base dashboard.
+- **Claude app in a browser without a connected folder** (the path is a cloud workspace such as `/home/…` or `/mnt/…`): say the files are in this Claude workspace, not on the PARASITER server, and that to keep them on their own computer they work from Claude Code or the desktop app with a connected folder — and can say *export my base* any time to download everything.
+
+Never claim more than is true: the files are processed by their AI assistant (Claude, under Anthropic's policy) while they work; the PARASITER server and Rumer never receive them. Don't call any server tool for this mode.
 
 ## Mode 7 — My platform base
 

@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.42.7 — 2026-11-12
+
+**See where your data lives (any plan, no key needed).** Say *"where is my data"*. PARASITER shows the exact folder on your computer and every file of your base in it — journal, sales, platforms, links, profile, goals — with size, rows and last change, then what never goes to the PARASITER server (your pages, sales, links, texts) and the little the server does know (email, plan, key hash, Telegram ID, counts after a page check). Open the folder and check it yourself: the files are plain CSV and Markdown, and the plugin code is public. The same in one page on the site: [Your data](https://parasiter.affiliatecredo.com/data.html).
+
 ## 0.42.6 — 2026-11-11
 
 **Find the offers the top already sells (Insider).** Say *"find affiliate programs for <niche>"*: PARASITER now first runs dozens of buyer queries for your niche ("best …", "… reviews", "… scam or legit", "… reddit"), opens the pages in Google's top and counts which products they push with affiliate links and through which network — ClickBank, Digistore24, BuyGoods, MaxWeb, Amazon, Impact, CJ, ShareASale, Awin and more, cloaked /go/ links included. You see the demand map — product · network · how many ranking pages push it · in how many queries — and then the programs and terms for the products that lead it. Free with web search; full Google top with your DataForSEO or SerpApi account (cost shown first). Other affiliates' IDs are never shown or saved.
