@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.42.10 — 2026-11-12
+
+- **Update check fixed.** "Is there a new version?" no longer shows an old version as the latest or your installed one as unknown: the server now follows each release by itself, and PARASITER reads your installed version from the plugin. Thanks to the beta testers for the report.
+
 ## 0.42.9 — 2026-11-12
 
 **Good morning from PARASITER (Pro, Insider).** Every day at 09:00 Kyiv the bot sends you one short message: your 5-minute routine (log yesterday's sales, log what you published, plan the day), the focus of the day — find platforms, write the page that sells, check your pages, scale what works, read the market, plan the week — and the new platforms for your plan since yesterday. Don't want it? Send `/morning off` to the bot, or say *"turn off the morning message"*.
