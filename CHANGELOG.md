@@ -2,6 +2,12 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.42.8 — 2026-11-12
+
+**One channel per plan, no repeats.** Free — the free channel [@parasiter_plugin](https://t.me/parasiter_plugin); Pro — the Pro channel; Insider — the Insider channel and the private group. When you link a paid plan, the bot takes you out of the free channel, so you never read the same post twice.
+
+**Free users can link the bot too.** Say *"connect Telegram"* with your Free key, or press Start from the link in your Free email. Rumer's announcements then come to you personally; send `/offers off` to the bot to stop them.
+
 ## 0.42.7 — 2026-11-12
 
 **See where your data lives (any plan, no key needed).** Say *"where is my data"*. PARASITER shows the exact folder on your computer and every file of your base in it — journal, sales, platforms, links, profile, goals — with size, rows and last change, then what never goes to the PARASITER server (your pages, sales, links, texts) and the little the server does know (email, plan, key hash, Telegram ID, counts after a page check). Open the folder and check it yourself: the files are plain CSV and Markdown, and the plugin code is public. The same in one page on the site: [Your data](https://parasiter.affiliatecredo.com/data.html).

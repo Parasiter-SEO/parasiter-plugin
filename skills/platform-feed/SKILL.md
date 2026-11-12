@@ -46,7 +46,7 @@ Reply in the user's working language.
 
 ## Step 0 — Plan check (Pro)
 
-**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — Rumer's feed: new checked platforms with live example posts, weekly market analysis, news and the Pro / Insider Telegram channels. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (the public channel @parasiter_plugin (https://t.me/parasiter_plugin) with plugin news and how-tos, open to everyone), and stop.
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — Rumer's feed: new checked platforms with live example posts, weekly market analysis, news and the Pro / Insider Telegram channels. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (the free channel @parasiter_plugin (https://t.me/parasiter_plugin) with plugin news, how-tos and tips, open to everyone), and stop. **Exception — "connect Telegram" on a Free key:** run Mode 2 with the Free key (`telegram_link` works on Free): the bot links the Free key and sends the free channel; Rumer's announcements come there personally; `/offers off` in the bot stops them.
 
 ## Requires the server (Pro or Insider)
 
@@ -78,9 +78,10 @@ Plan shapes what comes back: Pro sees new platforms ~7 days after they are found
 ## Mode 2 — Connect Telegram
 
 "Connect Telegram", "I want notifications", or the navigator's one-time offer to a paid user who has not linked:
+0. **Free key** (`account_info` says free with a key): call `telegram_link` and give its link: "Open this link and press **Start**: [link]. The bot links your Free key and sends the free channel @parasiter_plugin; Rumer's announcements come there personally (`/offers off` stops them). Pro adds the Pro channel, page alerts and the Monday check-in." Stop here (no `telegram_status` / `telegram_settings` on Free).
 1. `telegram_status`. Already linked → show what is on and the chats joined.
 2. Not linked → `telegram_link`, then:
-   "Open this link and press **Start**: [link] (valid 30 minutes). The bot will confirm and send you invites to [PARASITER Pro channel] / [PARASITER Insider channel and the Insider group]."
+   "Open this link and press **Start**: [link] (valid 30 minutes). The bot will confirm and send you invites to [PARASITER Pro channel] / [PARASITER Insider channel and the Insider group]. Your plan's channel replaces the free channel @parasiter_plugin, so you don't read the same news twice: if you're in the free channel, the bot takes you out of it."
    Telegram bots cannot write to someone first, so this link is the only way — a username is not enough.
 3. Explain the personal notifications in 5 short lines (page alerts, Monday sales reminder, news digest, billing, warnings before a scheduled paid check with buttons to run, narrow or skip it), at most one message a day, quiet at night, and that any type can be turned off.
 4. "Turn off X" → `telegram_settings` (`alerts`, `digest`, `checkin` for the Monday check-in). "Disconnect Telegram" → `telegram_unlink` (channel access also ends; reconnect any time).
