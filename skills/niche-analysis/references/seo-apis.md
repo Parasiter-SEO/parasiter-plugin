@@ -14,11 +14,12 @@ Setup in 3 steps: sign up at the link below → app.dataforseo.com → API Acces
 
 Sign-up link: https://dataforseo.com/
 
-## Also offered: SerpApi (free plan for position checks)
+## Also offered: SerpApi (free plan — use it first)
 
 Offer it next to DataForSEO, not instead of it — the user may connect one or both:
 - **Free plan: 250 searches a month** (no card), then paid plans by monthly searches. One search = 10 Google results for one query, so checking 50–80 pages in the top 10 every week fits the free plan.
-- **Covers PARASITER's position checks** (Google and Bing, `work-log` Mode 9 through the bundled `serpapi_run` tool). Page keywords (Mode 9b), the AI-answer check, platform scans and keyword volumes stay on DataForSEO.
+- **Covers** PARASITER's position checks (Google and Bing, `work-log` Mode 9), the offer scan (`affiliate-finder`), the platform scan "[product] review" and the footprint search for new platforms (`platform-finder`) — all through the bundled `serpapi_run` tool. Page keywords (Mode 9b), the AI-answer check and keyword volumes stay on DataForSEO.
+- **Free first:** when both are connected, PARASITER spends SerpApi's searches left this month before any DataForSEO money; when they run out it asks — DataForSEO, a paid SerpApi plan on the same key, or wait for the reset.
 - Setup in 3 steps: sign up at https://serpapi.com/users/sign_up → copy the API key at serpapi.com/manage-api-key → enter it in the plugin settings (/plugin → PARASITER → configure options → SerpApi API key; kept in Claude Code's own settings on your computer). Never paste the key into the chat. `serpapi_status` shows the plan and searches left.
 - Good first step for Free users and beginners; DataForSEO when they check many pages, the top 100 or want the extra checks.
 
@@ -27,7 +28,7 @@ Prices change: before quoting a number, say "about" and point to dataforseo.com/
 | Service | Typical use | Notes |
 |---|---|---|
 | DataForSEO | Pay per request; keyword volumes, SERP top 100 | Cheapest for occasional checks; has an MCP server. The same account powers weekly position checks of the user's pages (`work-log` `rankcheck.py`) |
-| SerpApi | SERP results (Google, Bing) | Free plan 250 searches a month; PARASITER position checks via `serpapi_run` |
+| SerpApi | SERP results (Google, Bing) | Free plan 250 searches a month; PARASITER position checks, offer and platform scans, footprint search for new platforms via `serpapi_run` |
 | Serpstat | Keywords, SERP, competitors | API on paid plans |
 | Semrush | Keywords, SERP features, competitors | API is a separate paid add-on |
 | Ahrefs | Keywords, SERP overview | API on higher plans |

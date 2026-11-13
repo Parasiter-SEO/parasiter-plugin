@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.43.2 — 2026-11-13
+
+**Find platforms with your free SerpApi searches.** SerpApi now works everywhere DataForSEO does in "find platforms": the scan of where "[product] review" pages rank and the footprint search for new platforms by Rumer's patterns, in real Google with positions. Before every search PARASITER shows both accounts: how many SerpApi searches you have left this month and your DataForSEO balance, and spends the free searches first. When they run out, you choose: DataForSEO, a paid SerpApi plan on the same key, or wait for the reset. Not connected yet? PARASITER tells you how — SerpApi's free plan is 250 searches a month, no card: /plugin → PARASITER → Configure options → SerpApi API key. Say *"find new platforms"* to start.
+
 ## 0.43.1 — 2026-11-13
 
 **You choose how many platforms and how to search.** In "find new platforms", after the category PARASITER asks: start with 10, 20, 30 or everything it finds — and search with the free live search, your DataForSEO (the price shown before it runs) or both. On Claude Max it no longer falls back to the small Lite search on its own. Results come in batches with only platforms whose home, sign-up and example post opened; pick the ones you like by number and say **next 10** — free, or with DataForSEO — until you have enough. Say *"find new platforms"* to start.
