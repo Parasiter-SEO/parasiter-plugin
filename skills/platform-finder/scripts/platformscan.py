@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """PARASITER — find the platforms where affiliate review pages are published and indexed right now.
 
-  platformscan.py PRODUCTS [--suffix review] [--country us] [--depth 10] [--device desktop]
+  platformscan.py PRODUCTS [--provider dataforseo|serpapi] [--suffix review] [--country us] [--depth 10] [--device desktop]
                   [--base parasite-seo-progress.csv] [--out platforms-scan.csv] [--dry-run] [--live]
                   [--exclusions exclusions.json] [--exclude domain[/path],...] [--collect-only]
   platformscan.py --from-raw platforms-scan.raw.json [--allowed allowed.json] [--exclusions ...]
@@ -10,7 +10,8 @@
 PRODUCTS: a text file with one affiliate product name per line (or a CSV with a product column),
 or comma-separated names. For each product the script searches Google for "<product> review"
 through the user's own DataForSEO account (paid: the cost is printed first, --dry-run prints only
-the cost) and collects every page in the results that is NOT the product's own site or a store.
+the cost) or SerpApi account (--provider serpapi: searches from the monthly quota — the free plan
+gives 250 a month; 1 search per query per 10 results) and collects every page in the results that is NOT the product's own site or a store.
 Pages are grouped by platform: how many different products have review pages there, the platform
 type and whether it is free (user posts) or paid (news / PR / sponsored).
 
@@ -35,7 +36,10 @@ The point is not to find unknown platforms, but the ones where affiliate review 
 already published AND indexed — proven places to post. Links on them don't matter; that the
 page itself is in Google does.
 
-Credentials: from the plugin settings via the dataforseo_run tool (inherited pipe, --auth-fd). Never written anywhere.
+Pattern search, method B (footprints): put one ready Google query per line in PRODUCTS
+(e.g. inurl:/discuss "mitolyn") and pass --suffix "" — the lines are searched as they are.
+
+Credentials: from the plugin settings via the dataforseo_run / serpapi_run tool (inherited pipe, --auth-fd). Never written anywhere.
 Standard library only.
 """
 import argparse
@@ -356,16 +360,46 @@ def find_signup(example_url, domain=""):
 
 # ---------- scan ----------
 
+def read_key(fd):
+    if fd is None:
+        return None
+    try:
+        data = os.read(int(fd), 4096).decode().strip()
+        os.close(int(fd))
+        return data or None
+    except OSError:
+        return None
+
+
+def serpapi_task(responses):
+    """One query's SerpApi pages as a DataForSEO-shaped task, so group() reads both the same way."""
+    items, feats = rc.serpapi_parse(responses)
+    return {"result": [{"items": [{"type": "organic", "url": u, "rank_group": pos} for pos, u in items]
+                        + [{"type": kind, "url": u} for kind, u in feats]}]}
+
+
 def run_search(a, products):
-    loc = rc.COUNTRIES.get(a.country.lower()) or sys.exit("Unknown --country: " + ", ".join(sorted(rc.COUNTRIES)))
-    price = (0.002 if a.live else 0.0006) * max(1, a.depth / 10)
     queries = {f"{p} {a.suffix}".strip().lower(): p for p in products}
-    print(f"Platform scan · google {a.country} · top {a.depth} · {len(queries)} queries "
-          f"(\"<product> {a.suffix}\") · PAID: about ${len(queries) * price:.2f} from your DataForSEO balance")
+    probe = f"\"<product> {a.suffix}\"" if a.suffix.strip() else "queries as written"
+    if a.provider == "serpapi":
+        per = rc.serpapi_searches(a.depth, "google")
+        print(f"Platform scan · google {a.country} · top {a.depth} · {len(queries)} queries ({probe}) · "
+              f"SerpApi: {len(queries) * per} searches from your monthly quota")
+    else:
+        loc = rc.COUNTRIES.get(a.country.lower()) or sys.exit("Unknown --country: " + ", ".join(sorted(rc.COUNTRIES)))
+        price = (0.002 if a.live else 0.0006) * max(1, a.depth / 10)
+        print(f"Platform scan · google {a.country} · top {a.depth} · {len(queries)} queries "
+              f"({probe}) · PAID: about ${len(queries) * price:.2f} from your DataForSEO balance")
     if a.dry_run:
         for q in list(queries)[:20]:
             print("  ·", q)
         return None, queries
+    if a.provider == "serpapi":
+        key = read_key(a.auth_fd)
+        if not key:
+            sys.exit(rc.NO_SERPAPI)
+        a.engine = "google"
+        return {q: serpapi_task(rc.serpapi_query(q, key, a)) for q in queries}, queries
     login, password = rc.read_auth(a.auth_fd)
     if not (login and password):
         sys.exit(rc.NO_CREDS)
@@ -580,12 +614,17 @@ def self_test():
     assert judge("https://x.example/a.pdf", 200, "https://x.example/a.pdf", {"content-type": "application/pdf"}, b"%PDF-" + b"0" * 2000)[0] == "live"
     assert classify("https://docs.example.net/files/x.pdf")[2] == "document/pdf"
     assert ABUSE.search("https://uni.edu/wp-content/uploads/2026/x.pdf")
+    t = serpapi_task([{"organic_results": [{"position": 1, "link": "https://forum.example.com/t/x-review/1"}],
+                       "discussions_and_forums": [{"link": "https://www.reddit.com/r/x/comments/1"}]}])
+    assert rc.serp_items(t) == [(1, "https://forum.example.com/t/x-review/1")]
+    assert ("discussions_and_forums", "https://www.reddit.com/r/x/comments/1") in rc.serp_features(t)
     print("self-test ok")
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Platforms where affiliate review pages rank now (DataForSEO) + free live check")
+    ap = argparse.ArgumentParser(description="Platforms where affiliate review pages rank now (DataForSEO or SerpApi) + free live check")
     ap.add_argument("products", nargs="?")
+    ap.add_argument("--provider", default="dataforseo", choices=["dataforseo", "serpapi"])
     ap.add_argument("--suffix", default="review", help='added to each product: "review" (default), "reviews", "complaints"…')
     ap.add_argument("--country", default="us"); ap.add_argument("--language", default="en")
     ap.add_argument("--depth", type=int, default=10, help="top 10 by default: that is where the traffic is"); ap.add_argument("--device", default="desktop", choices=["desktop", "mobile"])

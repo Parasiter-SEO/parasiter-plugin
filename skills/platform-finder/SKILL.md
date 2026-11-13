@@ -141,19 +141,25 @@ What do we look for? Reply with the group number:
 **2. One question:** niche or offer, language / country, forum topic if it matters — "or say skip". Then `patterns_get(category)` for every chosen category.
 
 **2a. Volume and source — RULE (№50).** Before the first search of a category, in the same message as the question above or right after it, the user chooses how much to find and with what. Never pick for them and never fall back to Lite silently: a skipped choice means the default below, said in one line.
+
+First, silently, check both SEO accounts: `serpapi_status` (plan, searches per month, searches left) and `dataforseo_status` (balance). Then:
 ```
 How many platforms do we start with?
 1. 10   2. 20   3. 30   4. as many as the search finds
-Source:
+Source (free first):
 A. Live search — built-in web search by Rumer's pattern (free, uses Claude limits)
-B. DataForSEO — footprint search in Google (~$X for N queries, from --dry-run)
-C. Both — A first, then B adds what A missed (~$X)
+B. SerpApi — footprint search in real Google · plan <Free/…> · <left> of <per month> searches left this month · this batch ≈ N searches
+C. DataForSEO — footprint search in Google · balance $<balance> · this batch ~$X
+D. Everything — A, then B on the searches left, then C only for what is still missing (~$X at most)
 ```
-- Show B and C only when DataForSEO is configured (`dataforseo_run` tool or the directory edition); otherwise one line "B / C need your DataForSEO key — /plugin → PARASITER → Configure options".
-- **Default** when the user skips: `agents: on` (Max, Team) → 10 + A with the agent; `lite` (Pro) → 10 + A in Lite, plus the one-line **full** advice. The profile's `agents: lite` while `account_info` says `claude_plan: max` → one line "Your profile says Lite, your account says Max — I run full; say **save limits** to keep Lite", and set `agents: on`.
-- The cost of B is always the `--dry-run` figure, shown before the run; B runs only after a yes for that amount.
+- **Free first — RULE (№51).** Order of use: A (free) → SerpApi searches still left this month (free plan or already paid plan) → paid: DataForSEO or more SerpApi (a paid SerpApi plan on the same key). Never spend DataForSEO money while SerpApi searches are left, unless the user picks C. When SerpApi runs out mid-batch, stop and ask: "SerpApi: 0 searches left (resets on <date>). Go on with DataForSEO (~$X), upgrade SerpApi (serpapi.com/pricing, same key), or stop here?".
+- **Not connected → ask to connect, each one once per session.** SerpApi missing → "B needs a SerpApi key: free plan 250 searches a month, no card — sign up at https://serpapi.com/users/sign_up → copy the key at serpapi.com/manage-api-key → /plugin → PARASITER → Configure options → SerpApi API key → restart Claude Code." DataForSEO missing → "C needs your DataForSEO login and password — app.dataforseo.com → API Access → /plugin → PARASITER → Configure options." Show only the lines that are missing; the options that work stay in the list. Never ask for a key in the chat.
+- A key is set but the status call fails (wrong key, 401, can't reach) → one line with the status message, then go on with what works.
+- **Default** when the user skips: `agents: on` (Max, Team) → 10 + A with the agent, plus B when SerpApi has searches left (free); `lite` (Pro) → 10 + A in Lite, plus the one-line **full** advice. The profile's `agents: lite` while `account_info` says `claude_plan: max` → one line "Your profile says Lite, your account says Max — I run full; say **save limits** to keep Lite", and set `agents: on`.
+- The size of B and the cost of C are always the `--dry-run` figures, shown before the run; B runs after a yes for that number of searches, C after a yes for that amount.
+- **How B and C run:** the pattern's method B footprints become one ready Google query per line (`queries.txt`), then `platformscan` with `--suffix ""` through `serpapi_run` (B) or `dataforseo_run` (C), `--dry-run` first: SerpApi costs 1 search per query per 10 results (keep `--depth 10` unless the user asks for more). Results go through the same exclusions, live check and sign-up lookup as every scan, then 4–5a below.
 
-**3. Search strictly by the pattern** — its Find section (method A: current products + "reviews 2026" + the platform's names or page words in the built-in web search; method B: the footprints in Google or the user's SEO API — paid, cost shown first and only after a yes). Plan check, mode and agents as everywhere: `on` → agent `platform-scout` in **pattern mode** (pass the category, the pattern and the common rules, the exclusions, the user's base, the chosen volume and source, and the seen-list from 5a); `lite` → up to 5 queries yourself per batch, one category at a time — the link check in 4a still runs in Lite (it is page opens, not searches). The volume chosen in 2a is the target, not a cap on what the search may look at: keep searching (more products, more query variants, deeper pages) until the batch is full of platforms that passed 4a or the source runs dry — then say which.
+**3. Search strictly by the pattern** — its Find section (method A: current products + "reviews 2026" + the platform's names or page words in the built-in web search; method B: the footprints in real Google through the user's SerpApi — free while the monthly searches last — or DataForSEO — paid; searches or cost shown first and only after a yes, see 2a). Plan check, mode and agents as everywhere: `on` → agent `platform-scout` in **pattern mode** (pass the category, the pattern and the common rules, the exclusions, the user's base, the chosen volume and source, and the seen-list from 5a); `lite` → up to 5 queries yourself per batch, one category at a time — the link check in 4a still runs in Lite (it is page opens, not searches). The volume chosen in 2a is the target, not a cap on what the search may look at: keep searching (more products, more query variants, deeper pages) until the batch is full of platforms that passed 4a or the source runs dry — then say which.
 
 **4. Two tracks in every result:**
 - **Follow** — affiliate posts are already there: the date of the newest one and the wave — **live** (≤14 days) · **fading** (15–60 days: check that sign-up is open, not "old accounts only") · **closed** (>60 days or sign-up closed: not in the working list, one line "old posts still there, no new ones").
@@ -176,11 +182,11 @@ Order: follow with a live wave → clean → fading ("check"). Closed ones only 
 - Only platforms that passed 4a fill a batch: removed examples, dead homes and closed sign-ups are dropped before showing and do not count toward the 10; say in one line how many were dropped.
 - Keep a **seen-list** for the session (platform domains already shown, picked or dropped, plus the user's base): never show a platform twice, across batches or categories.
 - Under every batch, before the Next steps, one line:
-  "Pick numbers to save (e.g. 2, 5, 7) · **next 10** — live search, free · **next 10 with DataForSEO** — ~$X · **stop**"
-  (the DataForSEO option only when it is configured; its price from `--dry-run` for that batch). Picks and "next" can come in one reply ("3, 8 — next 10").
+  "Pick numbers to save (e.g. 2, 5, 7) · **next 10** — live search, free · **next 10 with SerpApi** — ≈N searches, <left> left · **next 10 with DataForSEO** — ~$X · **stop**"
+  (the SerpApi and DataForSEO options only when they are configured; SerpApi first while it has searches left; figures from `--dry-run` for that batch and the latest `serpapi_status`). Picks and "next" can come in one reply ("3, 8 — next 10").
 - When a source runs dry, say so plainly ("live search found nothing new after N queries") and offer the other source or the next category — never pad the batch with unchecked or closed platforms.
 
-**6. Nothing is sent.** The finds stay with the user: the ones they pick go into their own base (Step 5), the rest stay in this chat. A category whose search found nothing: say that the built-in search showed nothing and offer method B ("full search with your DataForSEO — about $X") instead of calling the category empty.
+**6. Nothing is sent.** The finds stay with the user: the ones they pick go into their own base (Step 5), the rest stay in this chat. A category whose search found nothing: say that the built-in search showed nothing and offer method B — SerpApi first while it has free searches ("footprint search in Google with your SerpApi — ≈N searches, <left> left this month"), then DataForSEO ("about $X") — instead of calling the category empty.
 
 Free key or no key: `patterns_get` answers `paid_plan_only` — one line "Searching new platforms by Rumer's patterns is Pro and Insider: https://parasiter.affiliatecredo.com/#pricing", then what Free has (the base snapshot, one scan). Profile says Pro or Insider but `account_info` shows no key or Free → the navigator's "key isn't connected" warning at the top (№44), never a quiet Free run.
 
@@ -200,7 +206,7 @@ If the server is not connected, say once: "Checked platforms from Rumer come wit
 
 ## Step 3 — Live scan: where reviews of affiliate products are published now
 
-**The live scan is paid** (the user's DataForSEO balance; it runs through the `dataforseo_run` tool, script `platformscan`, with the args below — credentials come from the plugin settings, see `work-log` Mode 9; no `dataforseo_run` tool in this session → directory edition, see `work-log/references/directory-edition.md`) — always say so before running it, with the number of products and the rough cost, and run it only after a yes (`work-log` Rules: paid checks).
+**The live scan uses the user's own SEO account** — SerpApi first while its monthly searches last (`serpapi_run`, script `platformscan`; 1 search per product per 10 results; free plan 250 a month), DataForSEO otherwise or when the user picks it (`dataforseo_run`, paid from the balance). Same script and args below for both: the tool adds the provider and the credentials from the plugin settings (see `work-log` Mode 9; no `serpapi_run` / `dataforseo_run` tool in this session → directory edition, see `work-log/references/directory-edition.md`). Check `serpapi_status` and `dataforseo_status`, say which account, how many searches or roughly what it costs, run `--dry-run` first and run for real only after a yes (`work-log` Rules: paid checks). A scan larger than the SerpApi searches left: offer to split it (the first N products on SerpApi, the rest on DataForSEO) or to wait for the reset date. Neither account connected → the connect lines from 2a, then item 3 below.
 
 1. **Products to probe** — `references/products-seed.md`: the user's own products first, then the current top of the marketplaces in their niche (ClickBank, Digistore24, BuyGoods…), the seed list only as a fallback. 20–50 names is a good scan.
 2. **Scan** — every affiliate review page has the same two words: *[product name] review*. Search them and collect every result that is not the product's own site or a store:
@@ -236,12 +242,14 @@ Show **every live candidate found — the full list by default** (free and paid 
 
 **Search source line — RULE (№48).** Right under the title of every live search result (Lite, full, agent, pattern search, Free scan) say how it was searched, so the user knows whether this is all there is:
 - built-in web search: `Search: built-in web search, no SEO API — free, but it sees only part of Google and gives no positions. With your DataForSEO key the live scan reads Google's top 10–30 for every product and usually finds several times more.` + `Probed: N products × "<suffix>"`;
+- SerpApi: `Search: SerpApi (your account, <plan>) · Google <country> · top <depth> · N queries · used N searches, <left> left this month`;
 - DataForSEO: `Search: DataForSEO API (your account) · Google <country> · top <depth> · N products × "<suffix>" · cost $X`;
 - mixed: name both and which part came from which.
 After the list, one line on how to get more **in this case** (only what applies): more products, `--depth 20/30`, other suffixes (`reviews`, `complaints`, `reviews 2026`), the full mode instead of Lite, the pattern search ("find new platforms").
 
 **What gives more — upgrade hint (№48), honest and once per session.** Under the "how to get more" line, show only the items the user does not have yet (plan from `account_info`, Claude plan and `agents:` from the profile, DataForSEO from the settings), each with what it really changes. Never promise more than that item changes:
-- **Your DataForSEO key** → the biggest jump in the *live* search: Google's real top 10–30 for 20–50 products with positions, instead of a part of Google from web search. Pay per request on your own account, cost shown before every run.
+- **Your SerpApi key (free plan)** → Google's real top 10 with positions for the live scan and the footprint search for new platforms, 250 searches a month at no cost: start here.
+- **Your DataForSEO key** → the same real Google, pay per request with no monthly cap: for big scans (50+ products, top 30) or when SerpApi's free searches are used up. Cost shown before every run.
 - **Claude Max** → the full mode with the platform-scout agent every time instead of Lite: more products per run and a deeper check, without hitting the Claude Pro limit after one big search.
 - **PARASITER Insider** → more *ready* platforms: the author's whole checked base the same day he adds it (on Pro ~7 days later), with live example posts and sign-up links — platforms you can use without searching at all. Insider does not change how many platforms the live search finds. Link: https://parasiter.affiliatecredo.com/#pricing
 If the user has all three, skip this block. One short line per item; no pressure words, no "limited offer".

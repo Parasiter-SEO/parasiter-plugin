@@ -7,11 +7,13 @@ stored by Claude Code in Claude Code's plugin settings). Claude Code starts this
 PARASITER server: it passes it only to PARASITER's own script through an inherited pipe (--auth-fd),
 and the script sends it only to serpapi.com.
 
-An alternative to DataForSEO for position checks: SerpApi's free plan gives 250 searches a month.
+An alternative to DataForSEO for position checks, offer scans and platform scans (including the footprint
+search for new platforms): SerpApi's free plan gives 250 searches a month, paid plans give more on the same key.
 
 Tools:
   serpapi_status — is SerpApi set up, the plan and the searches left this month (free, uses no search)
-  serpapi_run    — run the position check (rankcheck) or the offer scan (offerscan) on the user's SerpApi account
+  serpapi_run    — run the position check (rankcheck), the offer scan (offerscan) or the platform scan
+                   (platformscan) on the user's SerpApi account
 """
 import json
 import os
@@ -25,8 +27,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPTS = {
     "rankcheck": os.path.join(ROOT, "skills", "work-log", "scripts", "rankcheck.py"),
     "offerscan": os.path.join(ROOT, "skills", "affiliate-finder", "scripts", "offerscan.py"),
+    "platformscan": os.path.join(ROOT, "skills", "platform-finder", "scripts", "platformscan.py"),
 }
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 MAX_OUT = 60_000
 SIGNUP = "https://serpapi.com/users/sign_up"
 SETUP = ("SerpApi is not set up. Create a free account (" + SIGNUP + ", 250 searches a month), copy your API key "
@@ -74,7 +77,7 @@ def run(script, args=None, cwd=None, timeout_minutes=30):
         raise ValueError(f"cwd is not a folder: {cwd}")
     timeout = max(1, min(int(timeout_minutes or 30), 120)) * 60
     k = key()
-    needs_api = not any(x in ("--dry-run", "--self-test") or x.startswith(("--from-json", "--urls")) for x in args)
+    needs_api = not any(x in ("--dry-run", "--self-test") or x.startswith(("--from-json", "--from-raw", "--urls")) for x in args)
     if needs_api and not k:
         return {"exit_code": 2, "output": SETUP}
     cmd = [sys.executable, SCRIPTS[script]] + args + ["--provider", "serpapi"]
@@ -106,10 +109,11 @@ def run(script, args=None, cwd=None, timeout_minutes=30):
 
 TOOLS = [
     {"name": "serpapi_status",
-     "description": "Check whether the user's own SerpApi account is set up in the PARASITER plugin settings, its plan and the searches left this month. Free, uses no search. Use before offering a SerpApi position check.",
+     "description": "Check whether the user's own SerpApi account is set up in the PARASITER plugin settings, its plan, searches per month and the searches left this month. Free, uses no search. Use before offering any SerpApi run (position check, offer scan, platform scan or footprint search) and show the searches left.",
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "serpapi_run",
-     "description": ("Run PARASITER's position check (rankcheck: Google or Bing positions of the user's pages, --engine bing) or the offer scan (offerscan: which affiliate products and programs the top pages push) on the user's own SerpApi account — "
+     "description": ("Run PARASITER's position check (rankcheck: Google or Bing positions of the user's pages, --engine bing), the offer scan (offerscan: which affiliate products and programs the top pages push) "
+                     "or the platform scan (platformscan: platforms where '<product> review' pages rank; with --suffix \"\" the lines are ready footprint queries for the new-platform pattern search) on the user's own SerpApi account — "
                      "the alternative to dataforseo_run. Uses the user's SerpApi searches (free plan: 250 a month; Google: 1 search per 10 results per query, "
                      "so top 30 = 3 searches per query). Run it with --dry-run first, show how many searches it takes and how many are left (serpapi_status), "
                      "and run for real only after the user says yes. The key comes from the plugin settings; never pass it, or --provider, in args."),

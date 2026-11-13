@@ -17,7 +17,7 @@ Prices checked October 2026; they change — always say "about" and point to the
 | Service | Price | Claude can run it itself? |
 |---|---|---|
 | **DataForSEO — recommended** | pay per request, minimum top-up $50 (doesn't expire), $1 free trial; checking dozens of pages costs cents | Yes — API and an official MCP server |
-| **SerpApi — free start** | free plan 250 searches a month (position checks of ~50–80 pages weekly), paid plans above that | Yes — API, PARASITER runs it itself |
+| **SerpApi — free start** | free plan 250 searches a month (position checks of ~50–80 pages weekly, platform scans, search for new platforms; used before DataForSEO), paid plans above that | Yes — API, PARASITER runs it itself |
 | Serpstat | Team plan ~$100/month includes API | Yes (API) |
 | Ahrefs | Lite ~$129/month and up include API v3 and MCP (Starter $29 has none) | Yes |
 | Semrush | API only on the top plans (~$500+/month) plus API units bought separately | Yes, expensive |
