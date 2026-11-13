@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.44.0 — 2026-11-13
+
+**See everything PARASITER can do — even on Free.** The panel, the capability map and the bases now show every function, including the ones your plan doesn't open yet, marked 🔒 Pro or 🔒 Insider with what each would do for you. Open one and you see exactly what you'd get, plus the free alternative you can use right now. After a Free result (a topic, an article, an audit, goals) PARASITER shows in one short block what the same step adds on Pro and on Insider. Insider opens all 21 skills and 10 agents; on Pro you can switch any time and your unused Pro days carry over (*/upgrade* in the bot). The panel page has an **Unlock** button on every locked tile. Say **0** to open the panel.
+
 ## 0.43.3 — 2026-11-13
 
 **Platforms show up as soon as they are checked.** In "find new platforms" and the live scan you no longer wait for the whole batch: within a minute or two PARASITER says how many candidates it found, and every platform appears the moment its home page, sign-up and example post have opened ("3 of 10 · checked"). Say *"where is the list"* any time to see everything checked so far.

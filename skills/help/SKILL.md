@@ -26,6 +26,10 @@ This skill answers questions about the plugin. It knows the whole system: read t
 
 Reply in the working language from `parasite-seo-profile.md`; before a profile exists, in the language the user writes in.
 
+## Show what the next plan opens — RULE (№56)
+
+Free and Pro users always see what the next plan opens: in overview and "what can PARASITER do" answers every row above their plan stays listed with 🔒 Pro / 🔒 Insider and the closing unlock line; "what do I get on Pro / Insider", "is it worth it", "Pro or Insider?" → the plan comparison from `navigator/references/upgrade-showcase.md` ("The facts to use") with why Insider is the right choice, then the upgrade link. No upgrade block under how-to answers or bug reports.
+
 ## Plugin basis and Claude plan — RULE (№33)
 
 Every answer here is PARASITER at work: this skill's steps, Rumer's rules, criteria and references — never general knowledge alone. Name the basis briefly where it matters ("by Rumer's rules", the checklist, score or reference used, "PARASITER platform base"). A request this skill doesn't cover → the right skill; nothing fits → one line "outside PARASITER's skills — I answer by Rumer's general rules", then "0 — menu". Full rule: `navigator/references/agents-and-plan.md`.

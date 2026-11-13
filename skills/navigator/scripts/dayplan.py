@@ -27,8 +27,11 @@ plan.json (all text in the user's working language; only "title", "tasks" are re
   "top10": {"week_of": "2026-11-09", "stale": false, "items": [{"rank": 1, "name": "ResearchGate", "why": "…"}, …]},  # pinned above the bases
   "bases": [{"code": "Б1", "name": "База площадок Rumer", "what": "проверенные площадки", "plan": "Pro"}, …],   # №32, first on the panel
   "panel": [{"name": "План", "items": [{"n": 1, "skill": "navigator", "what": "план на сегодня", "plan": "Pro",
-                                         "tried": "03.11", "locked": false}, …]}, …]
+                                         "tried": "03.11", "locked": false}, …]}, …],
+  "upgrade": {"url": "https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=panel#pricing",
+              "text": "🔒 7 из 16 функций закрыты на вашем тарифе. Insider открывает все 21 + 10 агентов…"}   # №56, below Insider only
 }
+Locked tiles and bases ("locked": true) get 🔒 and an Unlock button to "upgrade.url"; "upgrade.text" is the banner above the panel.
 Checkboxes are remembered in this browser only (localStorage); the plan itself stays in the user's folder.
 """
 import html
@@ -38,14 +41,14 @@ import sys
 from datetime import date
 
 L = {
-    "en": {"top10": "🏆 Top-10 platforms of the week", "top10_soon": "new Top-10 coming soon", "panel": "PARASITER PANEL", "bases": "Bases and data", "panel_h": "All functions — reply with a number", "menu0": "this menu any time", "tried": "tried", "untried": "not yet", "locked": "not on your plan", "plan": "TODAY'S PLAN", "week": "WEEKLY REVIEW", "setup": "SETUP DONE", "time": "Time today", "goal": "Goal",
+    "en": {"top10": "🏆 Top-10 platforms of the week", "top10_soon": "new Top-10 coming soon", "panel": "PARASITER PANEL", "bases": "Bases and data", "panel_h": "All functions — reply with a number", "menu0": "this menu any time", "tried": "tried", "untried": "not yet", "locked": "not on your plan", "unlock": "Unlock", "plan": "TODAY'S PLAN", "week": "WEEKLY REVIEW", "setup": "SETUP DONE", "time": "Time today", "goal": "Goal",
            "tasks": "Tasks", "why": "Why this order", "next": "What's next — say", "copy": "Copy", "copied": "Copied",
            "done": "done", "by": "who", "moves": "moves", "of": "of", "foot": "PARASITER by Rumer · your plan stays in your folder"},
-    "ru": {"top10": "🏆 Топ-10 площадок недели", "top10_soon": "скоро новый Топ-10", "panel": "ПУЛЬТ PARASITER", "bases": "Базы и данные", "panel_h": "Все функции — ответьте номером", "menu0": "это меню в любой момент", "tried": "пробовал", "untried": "ещё нет", "locked": "не в вашем тарифе", "plan": "ПЛАН НА СЕГОДНЯ", "week": "ОБЗОР НЕДЕЛИ", "setup": "НАСТРОЙКА ГОТОВА", "time": "Время сегодня", "goal": "Цель",
+    "ru": {"top10": "🏆 Топ-10 площадок недели", "top10_soon": "скоро новый Топ-10", "panel": "ПУЛЬТ PARASITER", "bases": "Базы и данные", "panel_h": "Все функции — ответьте номером", "menu0": "это меню в любой момент", "tried": "пробовал", "untried": "ещё нет", "locked": "не в вашем тарифе", "unlock": "Открыть", "plan": "ПЛАН НА СЕГОДНЯ", "week": "ОБЗОР НЕДЕЛИ", "setup": "НАСТРОЙКА ГОТОВА", "time": "Время сегодня", "goal": "Цель",
            "tasks": "Задачи", "why": "Почему такой порядок", "next": "Что дальше — скажите", "copy": "Копировать",
            "copied": "Скопировано", "done": "сделано", "by": "кто", "moves": "двигает", "of": "из",
            "foot": "PARASITER by Rumer · план хранится в вашей папке"},
-    "uk": {"top10": "🏆 Топ-10 платформ тижня", "top10_soon": "скоро новий Топ-10", "panel": "ПУЛЬТ PARASITER", "bases": "Бази й дані", "panel_h": "Усі функції — відповідайте номером", "menu0": "це меню будь-коли", "tried": "пробував", "untried": "ще ні", "locked": "не у вашому тарифі", "plan": "ПЛАН НА СЬОГОДНІ", "week": "ОГЛЯД ТИЖНЯ", "setup": "НАЛАШТУВАННЯ ГОТОВЕ", "time": "Час сьогодні", "goal": "Ціль",
+    "uk": {"top10": "🏆 Топ-10 платформ тижня", "top10_soon": "скоро новий Топ-10", "panel": "ПУЛЬТ PARASITER", "bases": "Бази й дані", "panel_h": "Усі функції — відповідайте номером", "menu0": "це меню будь-коли", "tried": "пробував", "untried": "ще ні", "locked": "не у вашому тарифі", "unlock": "Відкрити", "plan": "ПЛАН НА СЬОГОДНІ", "week": "ОГЛЯД ТИЖНЯ", "setup": "НАЛАШТУВАННЯ ГОТОВЕ", "time": "Час сьогодні", "goal": "Ціль",
            "tasks": "Завдання", "why": "Чому такий порядок", "next": "Що далі — скажіть", "copy": "Копіювати",
            "copied": "Скопійовано", "done": "зроблено", "by": "хто", "moves": "рухає", "of": "з",
            "foot": "PARASITER by Rumer · план зберігається у вашій папці"},
@@ -95,7 +98,9 @@ label.chk{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--m);
 .tile .sk{font-weight:600;font-size:14px;word-break:break-word}.tile .w{grid-column:2;color:var(--m);font-size:13px;line-height:1.35}
 .tile .st{grid-column:2;display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:4px;font-size:11px}
 .tile .st .ok{color:var(--ok)}.tile .st .no{color:var(--m)}.tile .st .pl{border:1px solid var(--l);border-radius:5px;padding:0 5px;color:var(--m)}
-.tile.lock{opacity:.55}.tile.tried{border-color:color-mix(in srgb,var(--ok) 35%,var(--l))}
+.tile.lock{border-color:color-mix(in srgb,var(--g) 45%,var(--l))}.tile.lock .n,.tile.lock .sk{opacity:.7}
+.tile a.up,.upg a{grid-column:2;justify-self:start;font-size:12px;font-weight:600;color:var(--bg);background:var(--g);border-radius:8px;padding:4px 10px;text-decoration:none;margin-top:4px}
+.upg{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:14px 0 10px;padding:12px 14px;border-radius:12px;border:1px solid var(--g);background:color-mix(in srgb,var(--g) 10%,transparent)}.upg span{flex:1 1 260px}.upg a{margin:0}.tile.tried{border-color:color-mix(in srgb,var(--ok) 35%,var(--l))}
 .tile button{grid-column:2;justify-self:start;margin-top:4px;padding:3px 8px}
 footer{margin-top:32px;color:var(--m);font-size:12px;border-top:1px solid var(--l);padding-top:12px}
 @media (max-width:560px){.meta{text-align:left}}
@@ -121,6 +126,9 @@ def _ratio(v: str):
 def build(p: dict) -> str:
     e = lambda s: html.escape(str(s or ""))  # noqa: E731
     lab = L.get(p.get("lang", "en"), L["en"])
+    up = p.get("upgrade") or {}
+    up_url = up.get("url", "") if str(up.get("url", "")).startswith(("https://", "http://")) else ""
+    unlock = (lambda: f'<a class="up" href="{e(up_url)}" target="_blank" rel="noopener">🔒 {e(lab.get("unlock", "Unlock"))}</a>' if up_url else "")  # noqa: E731
     kind = p.get("kind", "plan")
     day = p.get("date") or date.today().isoformat()
     parts = [f'<header><div><div class="eb mono">{e(lab.get(kind, lab["plan"]))} · {e(day)}</div><h1>{e(p.get("title"))}</h1></div>']
@@ -174,10 +182,14 @@ def build(p: dict) -> str:
                      f'{e(lab["copy"])}</button></div></div>')
     if p.get("bases"):
         tiles = "".join(f'<div class="tile"><div class="n mono">{e(b.get("code"))}</div><div class="sk">{e(b.get("name"))}</div>'
-                        f'<div class="w">{e(b.get("what"))}</div><div class="st">' + (f'<span class="pl">{e(b.get("plan"))}</span>' if b.get("plan") else "") +
-                        f'</div><button data-copy="{e(b.get("code"))}" data-ok="{e(lab["copied"])}">{e(lab["copy"])} {e(b.get("code"))}</button></div>'
+                        f'<div class="w">{e(b.get("what"))}</div><div class="st">' + (f'<span class="pl">{"🔒 " if b.get("locked") else ""}{e(b.get("plan"))}</span>' if b.get("plan") else "") +
+                        f'</div><button data-copy="{e(b.get("code"))}" data-ok="{e(lab["copied"])}">{e(lab["copy"])} {e(b.get("code"))}</button>'
+                        + (unlock() if b.get("locked") else "") + '</div>'
                         for b in p["bases"])
         parts.append(f'<div class="psec mono">{e(lab["bases"]).upper()}</div><div class="tiles">{tiles}</div>')
+    if p.get("panel") and up.get("text"):
+        link = f'<a href="{e(up_url)}" target="_blank" rel="noopener">{e(lab.get("unlock", "Unlock"))} →</a>' if up_url else ""
+        parts.append(f'<div class="upg"><span>{e(up["text"])}</span>{link}</div>')
     if p.get("panel"):
         if kind != "panel":
             parts.append(f'<h2 class="mono">{e(lab["panel"])}</h2>')
@@ -189,12 +201,13 @@ def build(p: dict) -> str:
             for it in sec.get("items", []):
                 tried = it.get("tried")
                 st = (f'<span class="ok">✓ {e(lab["tried"])} {e(tried)}</span>' if tried else f'<span class="no">○ {e(lab["untried"])}</span>')
-                pl = f'<span class="pl">{e(it.get("plan"))}</span>' if it.get("plan") else ""
+                pl = f'<span class="pl">{"🔒 " if it.get("locked") else ""}{e(it.get("plan"))}</span>' if it.get("plan") else ""
                 lk = f'<span class="no">{e(lab["locked"])}</span>' if it.get("locked") else ""
                 cls = "tile" + (" tried" if tried else "") + (" lock" if it.get("locked") else "")
                 tiles.append(f'<div class="{cls}"><div class="n mono">{e(it.get("n"))}</div><div class="sk mono">{e(it.get("skill"))}</div>'
                              f'<div class="w">{e(it.get("what"))}</div><div class="st">{st}{pl}{lk}</div>'
-                             f'<button data-copy="{e(it.get("n"))}" data-ok="{e(lab["copied"])}">{e(lab["copy"])} {e(it.get("n"))}</button></div>')
+                             f'<button data-copy="{e(it.get("n"))}" data-ok="{e(lab["copied"])}">{e(lab["copy"])} {e(it.get("n"))}</button>'
+                             + (unlock() if it.get("locked") else "") + '</div>')
             parts.append(f'<div class="psec mono">{e(sec.get("name", "")).upper()}</div><div class="tiles">{"".join(tiles)}</div>')
     parts.append(f'<footer class="mono">{e(lab["foot"])}</footer>')
     key = e(f"{kind}-{day}")
@@ -223,6 +236,11 @@ def main(argv):
         sample["panel"] = [{"name": "План", "items": [{"n": 1, "skill": "navigator", "what": "план", "plan": "Pro", "tried": "03.11"},
                                                       {"n": 3, "skill": "affiliate-finder", "what": "офферы", "plan": "Insider", "locked": True}]}]
         out = build(sample)
+        assert 'class="up"' not in out                       # no upgrade url → no unlock buttons
+        sample["upgrade"] = {"url": "https://parasiter.affiliatecredo.com/?utm_campaign=panel#pricing", "text": "🔒 1 из 2 закрыта"}
+        up_out = build(sample)
+        assert up_out.count('class="up"') == 1 and "🔒 Открыть" in up_out and 'class="upg"' in up_out and "🔒 Insider" in up_out
+        assert 'class="up"' not in build({**sample, "upgrade": {"url": "javascript:alert(1)", "text": "x"}})   # only http(s) links
         assert "ПУЛЬТ PARASITER" in out and "✓ пробовал 03.11" in out and "не в вашем тарифе" in out
         panel_only = build({"lang": "en", "kind": "panel", "title": "PARASITER panel", "panel": sample["panel"],
                             "bases": [{"code": "B1", "name": "Rumer's platform base", "what": "checked platforms", "plan": "Pro"}]})
