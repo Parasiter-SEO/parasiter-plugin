@@ -11,10 +11,10 @@ The user must always know every skill and agent PARASITER has and not forget the
 ## Rules for showing it
 
 - **Role:** each role sees only the rows of its set ("Rows per role" below); sections with no rows for the role are dropped. Role 1 (affiliate) sees the approved affiliate map; the agency, site-owner and creator rows only if asked. "Other" sees the full map.
-- **Plan:** every row shows its plan. A skill above the user's plan (from `account_info`; no key = Free without a key, `plan: free` = Free with a key) stays in the map with the plan marked, e.g. "Insider — not on your plan", never hidden.
+- **Plan:** every row shows its plan. A skill above the user's plan (from `account_info`; no key = Free without a key, `plan: free` = Free with a key) stays in the map with the plan marked "🔒 Pro" / "🔒 Insider", never hidden. Below Insider, the map ends with the unlock line from `upgrade-showcase.md` §1 after the closing line.
 - **Panel numbers:** every skill row starts with its number in the user's role table in `panel.md` (first column "#"); affiliates don't see client-report rows — `client-reports` is "Analytics: what earns and what to scale"; under the map: "Reply with a number to start it · **0** — the panel with what you've tried".
 - "How to start" is a ready phrase in the working language, adapted to the user's products and platforms when known ("What should I write about [their product]?").
-- No other text around it: the title "PARASITER capability map", the sections, the agents, one closing line "Say any phrase from the third column — or just describe what you want."
+- No other text around it: the title "PARASITER capability map", the sections, the agents, one closing line "Say any phrase from the third column — or just describe what you want." (plus the unlock line below Insider, №56).
 
 ## The map
 

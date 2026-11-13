@@ -11,6 +11,10 @@ Start every reply produced by this skill with one line naming it, so the user al
 `▸ PARASITER · client-workspace · [client]`
 If you called agents for this reply, add them after an arrow: `▸ PARASITER · client-workspace · Acme → brand-auditor, serp-analyst`. If you hand off to another skill, the next reply carries that skill's label (with the client name). One line only, no other system talk.
 
+## Show what the next plan opens — RULE (№56)
+
+Pro skill. On Free or with no key, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 21 skills for $39 / Pro = 17 for $19, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
+
 ## Plugin basis and Claude plan — RULE (№33)
 
 Every answer here is PARASITER at work: this skill's steps, Rumer's rules, criteria and references — never general knowledge alone. Name the basis briefly where it matters ("by Rumer's rules", the checklist, score or reference used, "PARASITER platform base"). A request this skill doesn't cover → the right skill; nothing fits → one line "outside PARASITER's skills — I answer by Rumer's general rules", then "0 — menu". Full rule: `navigator/references/agents-and-plan.md`.
@@ -33,7 +37,7 @@ The user must always know what to type next. End every reply with a short number
 
 - 2–3 options that fit what just happened, the recommended next step first. "1", "yes", "ok", "go" means option 1. Any free wording of the same wish works too ("give me the offers").
 - Each option is a complete phrase in the user's working language that they can copy, plus what it does. Never show skill or agent names here: the work label at the top already names the part that is working.
-- Offer only what the user's plan includes (`account_info`, once per session). A Pro or Insider feature on a lower plan appears at most once as the last option, marked "(Insider)" or "(Pro)" with one line on what it gives.
+- Offer only what the user's plan includes (`account_info`, once per session). On a lower plan the last option before "0" is always one locked feature of the next plan that fits this step, marked "🔒 Pro" or "🔒 Insider" with what it gives (`navigator/references/upgrade-showcase.md`, №56).
 - **During first setup** (a step in the profile's `setup:` is still open — not `done`, `skipped` or `not needed`): option 1 is the current setup step, and the setup footer from `navigator` ("First setup checklist") goes under the options — step N of 12, what is done, now, next.
 - Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered.
 - **0 — menu (№26):** the last option is always "**0** — menu of all functions". If something is paused (`paused:` in the profile: a day-plan task, a setup step, a draft), option 1 is "**back** to <it>". Never make an option a condition ("first publish…") — every option is an offer.
@@ -54,7 +58,7 @@ Reply in the working language from `parasite-seo-profile.md`. Client-facing text
 
 ## Plan check (Pro) — before anything else
 
-**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → one line: "This is a Pro feature — a folder per client or your own site: brief, Month 0 baseline, monthly content plan with approval, today's plan across clients and monthly reports. Upgrade: https://parasiter.affiliatecredo.com/#pricing", then offer the Free alternative for this skill (pick buyer topics for the brand — say "what should I write about <brand>?" — then write and check each piece — say "write a brand article for Medium", "audit this page: <link>"), and stop.
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → the locked card (№56, `navigator/references/upgrade-showcase.md` §2) built on: "This is a Pro feature — a folder per client or your own site: brief, Month 0 baseline, monthly content plan with approval, today's plan across clients and monthly reports. Upgrade: https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=client-workspace#pricing", then offer the Free alternative for this skill (pick buyer topics for the brand — say "what should I write about <brand>?" — then write and check each piece — say "write a brand article for Medium", "audit this page: <link>"), and stop.
 
 ## Files — one folder per client
 
