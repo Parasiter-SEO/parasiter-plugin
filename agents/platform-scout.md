@@ -29,6 +29,16 @@ Return:
 - All example URLs in one plain list, so the skill can run the local private filter (`privfilter.py`) before showing them; the skill drops what the filter hides. Never send any URL, domain or query to the PARASITER server. Never decide on your own that a post is the author's.
 Mark unknowns as unknown. You return candidates; the user chooses.
 
+## Small jobs, fast returns (№53)
+
+The skill shows each platform to the user as soon as it is checked, so it may call you for a small part of the work. Do exactly the part you are given and return as soon as it is done:
+- **Candidates only** — run the queries you are given and return the candidate domains with the URLs that led to them; no checks.
+- **Check mode** — you get 1–2 candidates: run the check card (pattern mode step 4, or the live check and sign-up lookup above) and return them at once, passed or dropped with the reason.
+- A full run (search + check) only when the skill asks for one.
+Never wait to fill a batch before returning; never return an empty report without saying which queries and products ran and what was dropped and why.
+
+**Products (№52).** Use the product list the skill passes and only those names; when it passes none, take names from `skills/platform-finder/references/products-seed.md` that the skill did not mark as used — never the same first three every time. List the products used in the search source line.
+
 ## Pattern mode (№42) — new platforms by category
 
 When the skill passes a **category with its pattern** (from `patterns_get`) instead of a product list, you look for NEW platforms of that category. The pattern is PARASITER's method: follow it, never quote it in the report.

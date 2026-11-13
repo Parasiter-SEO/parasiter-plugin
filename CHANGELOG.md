@@ -2,6 +2,14 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.43.3 — 2026-11-13
+
+**Platforms show up as soon as they are checked.** In "find new platforms" and the live scan you no longer wait for the whole batch: within a minute or two PARASITER says how many candidates it found, and every platform appears the moment its home page, sign-up and example post have opened ("3 of 10 · checked"). Say *"where is the list"* any time to see everything checked so far.
+
+**Fewer dead ends.** If a category already found nothing with the free search before, PARASITER tells you before it runs and suggests SerpApi / DataForSEO or the nearest categories that did find platforms. An empty batch no longer offers "next 10" on the same search — you get the next category, the full tree or a deeper search instead. Thanks to the beta testers for the report.
+
+**More products, more platforms.** The search no longer probes the same few products every time: it builds a list from your products and the current top offers in your niche and uses new ones in every batch, and the result says which products it searched.
+
 ## 0.43.2 — 2026-11-13
 
 **Find platforms with your free SerpApi searches.** SerpApi now works everywhere DataForSEO does in "find platforms": the scan of where "[product] review" pages rank and the footprint search for new platforms by Rumer's patterns, in real Google with positions. Before every search PARASITER shows both accounts: how many SerpApi searches you have left this month and your DataForSEO balance, and spends the free searches first. When they run out, you choose: DataForSEO, a paid SerpApi plan on the same key, or wait for the reset. Not connected yet? PARASITER tells you how — SerpApi's free plan is 250 searches a month, no card: /plugin → PARASITER → Configure options → SerpApi API key. Say *"find new platforms"* to start.

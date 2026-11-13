@@ -31,6 +31,10 @@ Aqua Sculpt
 Nagano Tonic
 Glucoberry
 Kerassentials
+ProstaVive
+Spartamax
+Yu Sleep
+NeuroQuiet
 
 ## Mind / manifestation (ClickBank)
 Billionaire Brain Wave
