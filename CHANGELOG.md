@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.43.1 — 2026-11-13
+
+**You choose how many platforms and how to search.** In "find new platforms", after the category PARASITER asks: start with 10, 20, 30 or everything it finds — and search with the free live search, your DataForSEO (the price shown before it runs) or both. On Claude Max it no longer falls back to the small Lite search on its own. Results come in batches with only platforms whose home, sign-up and example post opened; pick the ones you like by number and say **next 10** — free, or with DataForSEO — until you have enough. Say *"find new platforms"* to start.
+
 ## 0.43.0 — 2026-11-12
 
 **Your key and DataForSEO password stop resetting overnight.** They were kept in the system keychain, and Claude Code's automatic updates could lose access to it, so the key came back empty and PARASITER fell back to Free. Now they live in Claude Code's own plugin settings on your computer. They still go only where they are used, never to the chat or anywhere else. **Once, after this update:** `/plugin` → PARASITER → Configure options → paste your key (`psr_…`) and your DataForSEO / SerpApi secrets → restart Claude Code. Thanks to the beta testers for the report.

@@ -140,7 +140,20 @@ What do we look for? Reply with the group number:
 
 **2. One question:** niche or offer, language / country, forum topic if it matters — "or say skip". Then `patterns_get(category)` for every chosen category.
 
-**3. Search strictly by the pattern** — its Find section (method A: current products + "reviews 2026" + the platform's names or page words in the built-in web search; method B: the footprints in Google or the user's SEO API — paid, cost shown first and only after a yes). Plan check, mode and agents as everywhere: `on` → agent `platform-scout` in **pattern mode** (pass the category, the pattern and the common rules, the exclusions and the user's base); `lite` → up to 5 queries yourself, one category at a time — the link check in 4a still runs in Lite (it is page opens, not searches).
+**2a. Volume and source — RULE (№50).** Before the first search of a category, in the same message as the question above or right after it, the user chooses how much to find and with what. Never pick for them and never fall back to Lite silently: a skipped choice means the default below, said in one line.
+```
+How many platforms do we start with?
+1. 10   2. 20   3. 30   4. as many as the search finds
+Source:
+A. Live search — built-in web search by Rumer's pattern (free, uses Claude limits)
+B. DataForSEO — footprint search in Google (~$X for N queries, from --dry-run)
+C. Both — A first, then B adds what A missed (~$X)
+```
+- Show B and C only when DataForSEO is configured (`dataforseo_run` tool or the directory edition); otherwise one line "B / C need your DataForSEO key — /plugin → PARASITER → Configure options".
+- **Default** when the user skips: `agents: on` (Max, Team) → 10 + A with the agent; `lite` (Pro) → 10 + A in Lite, plus the one-line **full** advice. The profile's `agents: lite` while `account_info` says `claude_plan: max` → one line "Your profile says Lite, your account says Max — I run full; say **save limits** to keep Lite", and set `agents: on`.
+- The cost of B is always the `--dry-run` figure, shown before the run; B runs only after a yes for that amount.
+
+**3. Search strictly by the pattern** — its Find section (method A: current products + "reviews 2026" + the platform's names or page words in the built-in web search; method B: the footprints in Google or the user's SEO API — paid, cost shown first and only after a yes). Plan check, mode and agents as everywhere: `on` → agent `platform-scout` in **pattern mode** (pass the category, the pattern and the common rules, the exclusions, the user's base, the chosen volume and source, and the seen-list from 5a); `lite` → up to 5 queries yourself per batch, one category at a time — the link check in 4a still runs in Lite (it is page opens, not searches). The volume chosen in 2a is the target, not a cap on what the search may look at: keep searching (more products, more query variants, deeper pages) until the batch is full of platforms that passed 4a or the source runs dry — then say which.
 
 **4. Two tracks in every result:**
 - **Follow** — affiliate posts are already there: the date of the newest one and the wave — **live** (≤14 days) · **fading** (15–60 days: check that sign-up is open, not "old accounts only") · **closed** (>60 days or sign-up closed: not in the working list, one line "old posts still there, no new ones").
@@ -158,6 +171,14 @@ New platforms · [category] · [niche, language] · checked [date] · by Rumer's
 ```
 Home and Sign-up are clickable links in every row. The "Live example" cell is a link only for a post that opened; otherwise "none live" or "clean — no posts yet". Under the table no list of example links that were not checked.
 Order: follow with a live wave → clean → fading ("check"). Closed ones only as a count line. Same exclusions and the local private filter as in every step; the author's private platforms are never named. ★ up to 3 with the reason; the user chooses by numbers and the choice is saved as in Step 5 (state `testing`). Never register or post for the user.
+
+**5a. Batches — the user reviews and decides what comes next.** Results come in batches of the size chosen in 2a (10 by default); numbering continues across batches (11, 12 …) so picks stay unambiguous.
+- Only platforms that passed 4a fill a batch: removed examples, dead homes and closed sign-ups are dropped before showing and do not count toward the 10; say in one line how many were dropped.
+- Keep a **seen-list** for the session (platform domains already shown, picked or dropped, plus the user's base): never show a platform twice, across batches or categories.
+- Under every batch, before the Next steps, one line:
+  "Pick numbers to save (e.g. 2, 5, 7) · **next 10** — live search, free · **next 10 with DataForSEO** — ~$X · **stop**"
+  (the DataForSEO option only when it is configured; its price from `--dry-run` for that batch). Picks and "next" can come in one reply ("3, 8 — next 10").
+- When a source runs dry, say so plainly ("live search found nothing new after N queries") and offer the other source or the next category — never pad the batch with unchecked or closed platforms.
 
 **6. Nothing is sent.** The finds stay with the user: the ones they pick go into their own base (Step 5), the rest stay in this chat. A category whose search found nothing: say that the built-in search showed nothing and offer method B ("full search with your DataForSEO — about $X") instead of calling the category empty.
 
