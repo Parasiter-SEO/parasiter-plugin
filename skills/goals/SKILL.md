@@ -62,6 +62,8 @@ Open with this explanation, in the working language, before any question:
 
 The navigator's setup already asked about programs and traffic sources and collected the uploads (pages, affiliate links, sales and traffic reports). Never ask those again here.
 
+**Story first (№63).** If `parasite-seo-story.md` exists, take every baseline number it gives (hours, pages per week, live pages, platforms, content types, income now) and mark each "(from your story)" in the confirmation so the user can correct it; ask only what it doesn't cover. The wanted income and the direction of growth in the story are the starting answers for Mode 2 — show them back, don't ask again.
+
 **Step 1 — compute from what was uploaded** (`work-log`): live pages and platforms, offers and programs, countries, pages per week in the last 4–8 weeks (from publish dates), sales, commission and income per month, affiliate clicks, EPC and conversion where clicks and sales exist, pages that died and how fast, best and worst platform and offer by commission.
 
 **Step 2 — ask only what no file can show**, in one message:

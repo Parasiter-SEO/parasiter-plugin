@@ -104,7 +104,7 @@ The first setup is a fixed route of 12 steps — an **offer**, not a gate. The u
 |---|---|---|
 | 1 | Language and role | navigator Step 0 |
 | 2 | Your work environment | navigator (block from `references/work-environment.md`) |
-| 3 | About you: niche, offers, programs, country, hours, tools | navigator Message A |
+| 3 | Your story → verdict; then only the gaps (niche, offers, programs, country, hours, tools) | navigator: Your story (`references/your-story.md`), Message A only for what the story didn't answer |
 | 4 | Upload your base and reports: live pages, sales, traffic | navigator Message B → `work-log` |
 | 5 | Goals | `goals` |
 | 6 | Offers to promote | your offers from step 3; on Insider `affiliate-finder` can find new ones |
@@ -138,6 +138,7 @@ Now: send your affiliate links for VigRX Plus and D-Bal Max (text or a screensho
 
 Read, if they exist in the conversation or the user's project files:
 - `parasite-seo-profile.md` — working language, role, niche, offers, target country and content language, tools, author profile.
+- `parasite-seo-story.md` — the user's own story (№63): what works, what doesn't, the pains and what they want. Pains named there raise the matching tasks in today's plan; first session of the month → ask in one line whether the story changed (`references/your-story.md` §4).
 - `parasite-seo-goals.md` — baseline (how the user works and earns now), goals, milestones, this week's targets and daily quota (written by the `goals` skill).
 - `parasite-seo-progress.csv` and `parasite-seo-sales.csv` — the journal (`work-log`): what was published, checked, audited, the traffic and every sale.
 
@@ -145,7 +146,9 @@ No profile → first ask which language to work in (offer the language the user 
 
 **Before the questions — your work environment** (once, at the first start, 6–8 lines from `references/work-environment.md`): what a full setup takes and roughly what it costs — the Claude plan (Pro is the minimum, Max recommended for daily work with the full system), an SEO data service (DataForSEO recommended: pay per request; SerpApi's free plan, 250 searches a month, for position checks; others if the user already has one with API access, with their prices), the PARASITER plan, **images: $0** (infographics drawn by Claude, the cover in free Gemini from PARASITER's prompt) and **indexing** (why it matters; the only free way is the user's own verified site in Search Console; otherwise paid indexing services — Rumer's top with price per URL and refunds; PARASITER doesn't send URLs — the user does, we pick the service, give a clean list and count the result) — and what works without each one, so the user knows from the start which reports will be thinner. Then go on; never make the questions wait for a purchase.
 
-**Message A — about you** (short answers):
+**Your story — first (№63).** Before Message A, invite the user to tell their parasite SEO story in their own words, typed or dictated, with the hints from `references/your-story.md` §1 (what they do now, where and what, what works and what doesn't, money now and wanted, how they see parasite SEO and where they want to grow, what gets in their way, what they need most). Take everything it answers into the profile and the `goals` baseline, save `parasite-seo-story.md`, give the **verdict** (§3: what I heard · what PARASITER does for you, pain by pain · where this can take you, without money · your first step) in the same reply, and ask only the gaps (2–4 questions). Message A below is then only for what the story didn't cover. "ask me questions" → Message A in full, as before.
+
+**Message A — about you** (short answers; skip every question the story already answered):
 1. Niche(s) and offer(s) — or "don't have one yet".
 2. Affiliate programs and networks you work with (ClickBank, Digistore24, Everflow / FanFuel, Impact, CJ, Awin, direct merchant programs…) and the commission if you know it.
 3. Target country and the language of the pages you publish (can differ from the working language).

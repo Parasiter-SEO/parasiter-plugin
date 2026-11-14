@@ -10,6 +10,9 @@ The whole start, step by step for each plan (Free, Pro, Insider), with what to s
 4. You get 2–5 tasks for today and the capability map (every function, what to say, its plan). "Start with #1?" — each task opens the right skill.
 The setup is 12 fixed steps (language and role · work environment · about you · upload your base · goals · offers · affiliate links or approvals · indexing · Telegram · first topic · first article · publish and log). Under every reply you see "First setup · step N of 12", what is done and the one thing to do now. Progress is saved in your profile: a new chat or a break continues from the same step. Say "skip" to leave a step for later, "where am I?" to see the whole list.
 
+## Tell PARASITER my story
+At the first setup PARASITER asks for your story instead of a questionnaire: what you do now, where and what you post, what works and what doesn't, roughly what you earn and want to earn, what gets in your way, what you need most. Type it or dictate it (Windows: Win + H, Mac: Fn twice, Claude app: the microphone). PARASITER builds your profile and starting point from it, asks only what's missing and tells you what it will do for you. Later: say *"my story"* to see it, *"my story changed"* to add an update. Prefer questions? Say *"ask me questions"*. The story stays in your own folder.
+
 ## Run the full version (agent) or save limits
 - "full" — this time the skill runs its agent (deeper, more of your Claude limits).
 - "turn on agents" — agents always (Claude Max / Team). "save limits" — Lite always (Claude Pro).

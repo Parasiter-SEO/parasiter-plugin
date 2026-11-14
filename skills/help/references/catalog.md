@@ -80,6 +80,7 @@ Kept in the user's project folder, written by the skills:
 | File | Written by | Holds |
 |---|---|---|
 | `parasite-seo-profile.md` | navigator | working language, role, niche, offers, country and content language, tools, author profile |
+| `parasite-seo-story.md` | navigator | your parasite SEO story in your own words (first setup), what PARASITER took from it and the verdict; monthly updates. Never sent to the server |
 | `parasite-seo-goals.md` | goals | baseline, goals, milestones, this week's targets, reviews |
 | `parasite-seo-progress.csv` | work-log | pages, checks, audits, traffic, imports, other work — one row per fact |
 | `parasite-seo-sales.csv` | work-log | one row per sale, manual or imported |

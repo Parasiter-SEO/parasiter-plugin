@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.46.0 — 2026-11-14
+
+**Tell your story instead of filling a form.** At the first setup PARASITER now asks you to tell your parasite SEO story in your own words — type it or dictate it: what you do now, where and what you post, what works and what doesn't, roughly what you earn and want to earn, what gets in your way most and what you need. It builds your profile and starting point from it, asks only the 2–4 things it still needs, and right away gives you a short verdict: what it heard, what PARASITER will do for each of your problems, how your work can change and your first step. Your plan keeps using the story every day, and once a month PARASITER asks if it changed. Prefer short questions? Say *"ask me questions"*. The story stays only in your own folder.
+
 ## 0.45.0 — 2026-11-14
 
 **A free journal for your first 10 pages.** With the free key PARASITER now keeps your pages too: say *"published: <link>"* after you publish, *"are my pages alive?"* to check that each one opens, has no noindex and keeps your link, and *"is my page indexed?"* or *"check my positions"* on your own SerpApi free plan or DataForSEO (the cost shown first). Up to 10 pages, sales logged by hand against them, your base opens and exports any time. Pro keeps the journal without limits, with sales imports from your networks, reports by page, platform and offer, the publication queue and Telegram alerts.
