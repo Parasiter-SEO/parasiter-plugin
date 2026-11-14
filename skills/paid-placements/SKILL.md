@@ -1,0 +1,121 @@
+---
+name: paid-placements
+description: Paid publications as part of parasite SEO for site owners and agencies — a base of press-release wires (GlobeNewswire, ACCESS Newswire, EIN Presswire, XPR Media…), sponsored-article marketplaces (prnews.io and similar) and media sites that sell articles, with packages, public prices or how to request a quote, link policy (dofollow / nofollow), distribution, niche restrictions; picks the placements that fit a goal and budget, checks a marketplace catalog with the placement-scout agent, prepares the text, and tracks each placement's links, visits, conversions and return. Use when the user asks "where can I buy an article / press release", "is GlobeNewswire worth it", "which prnews.io sites to buy", "paid platforms", "link building budget", "press release for my site / client", or plans a budget for placements.
+---
+
+# Paid Placements
+
+## Work label (testing period)
+
+Start every reply produced by this skill with one line naming it (and the client or site in agency / own-site mode):
+`▸ PARASITER · paid-placements · [site or client]`
+If you called agents, add them after an arrow: `▸ PARASITER · paid-placements · Acme → placement-scout`. One line only, no other system talk.
+
+## Show what the next plan opens — RULE (№56)
+
+Pro skill. On Free or with no key, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 21 skills for $39 / Pro = 17 for $19, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
+
+## Plugin basis and Claude plan — RULE (№33)
+
+Every answer here is PARASITER at work: this skill's steps, Rumer's rules, criteria and references — never general knowledge alone. Name the basis briefly where it matters ("by Rumer's rules", the checklist, score or reference used, "PARASITER platform base"). A request this skill doesn't cover → the right skill; nothing fits → one line "outside PARASITER's skills — I answer by Rumer's general rules", then "0 — menu". Full rule: `navigator/references/agents-and-plan.md`.
+
+**Agents and Claude plan.** Heavy step: the fresh check of placements → agent `placement-scout`. Mode: `agents:` in `parasite-seo-profile.md`, else `agents_default` from `account_info`.
+- `on` (Claude Max, Team) → run the agent; label `▸ PARASITER · <skill> → placement-scout`.
+- `lite` (Claude Pro) → the **Lite version** below, label `▸ PARASITER · <skill> · Lite`. When the full version would clearly give a better result here, add one line of advice — why, and the phrase **full** ("For 20 products the full version is better: placement-scout checks every one, about 3–5× more of your Claude limits. Say **full** — or I keep Lite").
+- `offer` (plan not known) → ask once before the first run: "This step of the skill is done by PARASITER's placement-scout agent: separate context, deeper, uses more of your Claude limits (best on Max). Run it? Or Lite with the same skill."
+- "full" / "audit by agent" → run it this time; "turn on agents" → `agents: on`; "save limits" or a usage limit hit → `agents: lite` (save in the profile, advice from `agents-and-plan.md` §3).
+
+**Lite version:** the placements base (`references/placements.md`) as it is, each row with its check date, no fresh check of prices, links or indexing. Lite is the same method in a smaller scope: say what was left out.
+
+## Next steps (end of every reply)
+
+The user must always know what to type next. End every reply with a short numbered block — ready phrases, not skill names:
+
+**What's next? Reply with a number or the phrase:**
+1. "<ready phrase>" — <what happens after it, a few words>
+2. "<ready phrase>" — <what happens>
+
+- 2–3 options that fit what just happened, the recommended next step first. "1", "yes", "ok", "go" means option 1. Any free wording of the same wish works too ("give me the offers").
+- Each option is a complete phrase in the user's working language that they can copy, plus what it does. Never show skill or agent names here: the work label at the top already names the part that is working.
+- Offer only what the user's plan includes (`account_info`, once per session). On a lower plan the last option before "0" is always one locked feature of the next plan that fits this step, marked "🔒 Pro" or "🔒 Insider" with what it gives (`navigator/references/upgrade-showcase.md`, №56).
+- **During first setup** (a step in the profile's `setup:` is still open — not `done`, `skipped` or `not needed`): option 1 is the current setup step, and the setup footer from `navigator` ("First setup checklist") goes under the options — step N of 12, what is done, now, next.
+- Things that need no decision (logging, monitoring, saving to the base) are done automatically, not offered.
+- **0 — menu (№26):** the last option is always "**0** — menu of all functions". If something is paused (`paused:` in the profile: a day-plan task, a setup step, a draft), option 1 is "**back** to <it>". Never make an option a condition ("first publish…") — every option is an offer.
+- **Mark tried:** on this skill's first real run in the session, add or update its line under `tried:` in `parasite-seo-profile.md` (`- <skill> · YYYY-MM-DD · <what, 3–6 words>`; agents too, marked `agent`). When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**."
+
+Options that usually fit after this part (adapt to the user's products and words):
+- "write the press release"
+- "add these placements to next month's plan"
+- "how did my placements pay off?"
+
+Part of PARASITER by Rumer (Affiliate Credo).
+
+**A paid placement is an investment, not exposure.** For a site owner or an agency it buys three things, and each is checked before money is spent: a **page on a strong domain** that can rank for a query (often within days, when the free platforms are slow), a **link to the site** (dofollow where the outlet gives it — link building), and **credibility** (the brand on known media). Typical costs (checked 10/2026): a basic wire release from about $149 (EIN Presswire) to $400–1,200 (Newswire.com, ACCESS Newswire), top wires on request; sponsored articles on marketplaces from a few dollars to $70–175 for a solid site, famous outlets far more. **Wire links are usually nofollow** — wires buy a fast ranking page and credibility; dofollow links come from chosen sites on marketplaces (with the paid-link risk the owner decides on). The base in `references/placements.md` lists the offers; the agent checks what is current.
+
+Who uses it: site owners and agencies first. Affiliates can use it too (paid news pages for reviews), with the publisher's rules on affiliate content checked first.
+
+Reply in the working language; the press release or article itself in the content language.
+
+## Step 0 — Plan check (Pro)
+
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → the locked card (№56, `navigator/references/upgrade-showcase.md` §2) built on: "This is a Pro feature — a base of press-release wires and sponsored-article sites with packages, prices, link types and how to order, checked by an agent. Upgrade: https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=paid-placements#pricing", then offer the Free alternative for this skill (write the press release or sponsored article itself, ready to send to any outlet you choose — say "write a press release about <news>"), and stop.
+
+## Step 1 — Goal and budget
+
+Ask only what the brief (`clients/<slug>/client-brief.md`) doesn't answer:
+1. **Goal** of this placement: a page that ranks for a query (which), a dofollow link to a page of the site (which), credibility / news coverage, referral traffic.
+2. **Budget** per placement and per month.
+3. **Niche and country** — many wires refuse gambling, crypto, CBD, adult, some health and finance claims.
+4. **Company or private person** — agencies and wires work by contract and mostly with companies (company / ФОП details, invoice); without a company, marketplaces (prnews.io, Collaborator.pro) are the start. Ask once, save in the brief.
+5. **What there is to say** — real news for a press release (launch, new product, study, partnership, event, milestone) or a useful article topic for a sponsored post. No news → a sponsored expert article, not a fake "announcement".
+
+## Step 2 — Shortlist from the base
+
+From `references/placements.md`, filtered by goal, budget, niche and country. For each: what you buy, price (or "price on request" + how to ask), **work format** (one-off article · package · contract with a company), link policy stated and seen, distribution, restrictions, turnaround. A private person without a company: contract-only services (XPR Media and the big wires) go to "Skip" with the reason. Show free and paid options side by side when a free platform can reach the same goal ("Medium + LinkedIn article can rank for this query for $0 — the paid wire adds a dofollow link and news distribution for $X").
+
+**Fresh check** (prices change, link policies change): send the shortlisted services, niche, country, budget, goal and target queries to the **`placement-scout` agent**. It checks the current packages, opens recent published pieces to see the real `rel` of links and whether they are indexed, and whether the outlet's pages rank in the niche. Show its table with the check date.
+
+**Marketplaces** (prnews.io and similar): the agent shortlists 5–10 sites per budget from the public catalog — price, stated traffic, Google News, link rel, an indexed recent article. Pick by the goal: for ranking — outlets whose pages are in the top 10 for the niche's queries; for links — dofollow, indexed, topically close; for credibility — names the audience knows.
+
+## Step 3 — Decide
+
+One table, best first:
+
+```
+Placement plan · [site / client] · budget $N
+| # | Where | What | Price | Work format | Link (stated / seen) | Ranks in niche? | Goal it serves | Why |
+Total: $N · expected: [pages that can rank for …, N dofollow links to …] — assumptions, not promises
+Skip: [option] — [why: nofollow and no ranking pages / refuses the niche / price for what it gives]
+```
+
+Never promise rankings, traffic or that a link stays dofollow; say what was seen and when.
+
+## Step 4 — Prepare the piece
+
+- **Press release:** real news only, `sales-review-writer` brand mode in press-release format: headline with the news, dateline, lead paragraph (who, what, when, why it matters), body with facts and one quote from a real person at the company (approved), boilerplate "About [Brand]", media contact. Links: as many as the wire allows, to the right pages, with UTM; anchors varied (brand, URL, natural phrase).
+- **Sponsored article:** an expert article for the outlet's readers (`sales-review-writer` brand mode), the outlet's word count and link limits, the brand disclosed and the publisher's "sponsored / partner" label kept.
+- Images: `post-illustrations` (cover in the brand's style, infographic of the facts).
+- Check with `page-audit` (brand scale) before sending to the publisher.
+
+## Step 5 — Order and log
+
+The user orders and pays on the service's site — PARASITER never logs in, pays or contacts sales. Give the exact link to the order page or the quote form, and what to fill in. After publishing, log every resulting URL in the site's or client's journal:
+
+```
+python3 ../work-log/scripts/worklog.py add clients/acme/parasite-seo-progress.csv --event published --url <published URL> --platform globenewswire --sub-id gn-launch-1125 --link-target https://acme.com/crm --link-rel dofollow --anchor "Acme CRM" --cost 150 --query "acme crm"
+```
+
+Wire releases appear on many outlets: log the main release page with the cost, and only the syndicated copies that are indexed or rank (without cost). Monitoring and the check queue take over: is the page live, indexed, is the link still there and still dofollow.
+
+## Step 6 — Did it pay off
+
+After 30 and 60 days: `work-log site-roi --by page` (visits, conversions, revenue against cost) and `backlinks` (live dofollow links, spend per live dofollow link), positions of the placement's pages. Keep buying from outlets whose pages rank or whose links stay; drop those that brought nothing. The verdict goes into the base as a note for the user (`references/placements.md` is the author's; the user's own experience goes into their platform base with `platform-set --score … --note …`).
+
+## Rules
+
+- Real news for press releases; never invented announcements, awards, studies, quotes or numbers.
+- Keep the publisher's "sponsored" / "press release" labels; never ask to hide that a placement is paid. Links are what the publisher gives.
+- No link schemes: placements are bought for a page that serves readers and a relevant link, not as mass link buying; anchors varied; no buying links on hacked or abused sites. Say once, plainly, that Google's guidelines ask paid links to be `sponsored` / `nofollow` and that dofollow paid links are a risk the owner chooses.
+- Prices only from the service or the agent's check, with the date; otherwise "price on request".
+- Money is the user's decision: show the total and what it is expected to give, as assumptions.
+- Never order, pay, log in or contact sales on the user's behalf.

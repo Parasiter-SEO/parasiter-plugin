@@ -1,0 +1,79 @@
+# Audit checklist
+
+Severity: **C** critical (directly loses sales), **M** medium, **L** low.
+
+## Snippet
+- [C] Title states the value and matches the page 100% (no clickbait the page doesn't deliver).
+- [M] Main keyword in the title; buyer modifier where it fits (vs, review, complaints, price, discount, year).
+- [M] Title stands out among similar posts on the same platform (forums: the title is what must be unique).
+- [L] Description/first sentence works as a snippet.
+
+## First screen
+- [C] Photo right under the title: real or custom (product in hand, author, comparison card) — not stock. It is what Google tends to take for the snippet image; if missing, recommend the real product photo (own or merchant's) first, otherwise one cover prompt for free Gemini via `post-illustrations` (never a paid tool as the default).
+- [C] Facts box for the main product, up to 10 lines: price, quality, my rating x/10 (honest, explained in the text), special offers with checked date, guarantee, best for, key parameters — then the link.
+- [C] One clear CTA visible without scrolling (soft on forums/Reddit/PDF).
+
+## Rumer's mandatory blocks
+- [C] Pains: 3–5 concrete pains in the buyer's words.
+- [C] Product facts tied to each pain (pain → what the product does → why it works).
+- [M] Life after: concrete everyday picture, no guaranteed results.
+- [C] Prices and current offers block: packages, best value, deal, checked date, CTA to the package page.
+- [C] Comparison with 2–3 competitors + honest alternatives (other products/services, cheaper or free options; natural ones in health).
+- [M] 1,500+ words for article formats.
+
+## Copywriting
+- [C] The page is useful on its own: how to choose, what to avoid, which package, who it is not for.
+- [C] Problem → solution flow: the problem is opened and felt before the product appears; every product claim answers a pain.
+- [C] Motivation: why this product, why this offer, why now (real conditions only); doubts answered before each CTA.
+- [M] Images support the text: 3–6 (facts card, pains → solution, comparison, prices, verdict), each next to its section, facts and dates correct.
+
+## Author and hook
+- [C] Author introduced: who, role/position, why trust, why listen. Not no-name.
+- [M] Author's view appears again in product sections and verdict.
+- [M] Hook: reader's problem → solution → bridge → what the article gives.
+
+## TOC and headings
+- [M] Table of contents on long pages.
+- [M] Headings tell the story and the conclusion ("The 6-Bottle Pack Is the Real Bargain"), not "Overview", "Features".
+
+## Structure (by type)
+- [M] All blocks of the template present (single review, best-of, A vs B, experience, complaints, packages).
+- [M] Alternatives / comparison even in a single review.
+- [M] Pros and cons; who it is NOT for.
+- [M] FAQ from real buyer questions.
+- [C] Clear verdict with the main CTA.
+- [M] Best-of: same template for every product; #1 justified.
+
+## CTAs and offer
+- [C] CTA explains why this product, why this offer, why now — with the real current deal.
+- [M] CTAs at decision points, not scattered or a wall of buttons.
+- [M] Link lands on the best page (order/bundle page often converts better than the homepage).
+- [M] Link works; affiliate ID present.
+
+## Honesty and compliance
+- [C] No invented tests, reviews, quotes, results, credentials, prices, warranty terms or deadlines.
+- [C] No guaranteed outcomes; health/money limits stated.
+- [M] Affiliate disclosure.
+- [M] Last-checked date for prices and deals.
+- [M] Personal experience claims only if real.
+
+## AI answers (Google AI Mode / AI Overviews, Gemini, ChatGPT, Copilot) — "AI-ready" 0–5
+AI answers cite pages that state facts plainly and are easy to quote. One point each:
+- [M] **Answer first:** the page answers the main query in the first 2–3 sentences, and every H2 opens with a one–two sentence direct answer before the details.
+- [M] **Concrete, quotable facts:** prices, package sizes, guarantee days, key specs, dates — numbers in plain sentences or a table, with the last-checked date (vague overviews are not cited).
+- [M] **Named comparison:** a table of the product vs 2–3 named alternatives with the deciding parameters (price, key feature, best for).
+- [M] **Q&A block:** 4–8 real buyer questions as headings with short direct answers (the same questions people type into AI chats).
+- [L] **Clear entities:** full product and brand names (not only "it" / "this one"), the author named with a role, consistent names across the page.
+AI-ready does not change the two scores; report it as its own line. AI answers change from run to run — to see if the page is actually cited, offer the AI visibility check (`work-log`, needs DataForSEO).
+
+## Platform fit
+- [M] Length and format fit the platform (forum native tone; press release neutral; Raisely short with emojis; PDF ~3,000 words clean document).
+- [M] Platform rules respected (links, promotion).
+
+## Readability (mobile)
+- [M] Paragraphs ≤ 4–5 lines on mobile; lists; tables fit or scroll.
+- [L] No walls of keywords; natural language.
+
+## Technical (when a URL is given)
+- [C] Page live, indexed, no noindex.
+- [M] Images load; no broken links.
