@@ -21,6 +21,7 @@ Free works without a key. Pro and Insider: paste the key from your welcome email
 
 For **affiliate marketers**, **creators**, **site owners** and **agencies**: you publish pages on platforms Google already trusts — affiliates earn the commission, site owners and agencies send buyers (and links, where platforms allow) to the site. Skills and agents find platforms where reviews rank right now, pick the content type that sells, write and audit the page, track every page and sale, and tell you what to do next.
 
+- **Your own mentor:** tell your parasite SEO story in your own words (typed or dictated) — PARASITER builds your profile from it, tells you what it will do for each of your problems and plans every day around them
 - **Plan:** goals from your own baseline and a daily plan that fits the time you have
 - **Platforms:** where affiliate reviews rank today, with a live example post and a sign-up link for each
 - **Content:** buyer topics picked by Rumer's rules, reviews and comparisons written for each platform, images
@@ -49,7 +50,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 ## How it works
 
 0. **Basic setup: your pages, platforms and affiliate links.** Upload your affiliate links for every product you sell (a list, a table or screenshots), so every article gets the right link and you see which products have no pages yet. Already have pages? Upload the list (any file or pasted links). `work-log` puts every page in your journal, builds your own platform base from them, and one bulk check shows which are alive and indexed.
-1. **Fill in your baseline journal** with `goals`: how many hours you work now, how many pages you publish, on which platforms and offers, and what it earns per day, week or month. These are your starting settings: everything after is calculated from them.
+1. **Tell your story, then fill in what's missing in your baseline journal** with `goals` (the story usually answers most of it): how many hours you work now, how many pages you publish, on which platforms and offers, and what it earns per day, week or month. These are your starting settings: everything after is calculated from them.
 2. **Set your goals** from that starting point: pages, platforms, offers, time and the income you realistically expect, over 1 week to 12 months. The skill compares the goal with your real pace, breaks it into monthly milestones and weekly targets, and marks every number it had to assume.
 3. **Ask for today's plan** with `navigator`. It reads your goals, progress and time, checks what changed on your platforms, and gives you 2–5 tasks that fit today's time. You don't pick commands: each task goes to the right skill.
 4. **Report what you did and what you sold** ("added an article: URL", "sent it to indexing", "made a sale, $42"). `work-log` writes it into your journal at once. Every page is queued for alive and index checks and a conversion audit, so nothing you published is forgotten.
