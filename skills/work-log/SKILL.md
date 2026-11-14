@@ -13,7 +13,7 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 ## Show what the next plan opens — RULE (№56)
 
-Pro skill. On Free or with no key, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 21 skills for $39 / Pro = 17 for $19, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
+Pro skill with a **Free journal** (№57): on a Free key the user keeps up to 10 pages with checks (Step 0). Anything beyond the Free journal, or no key at all, gets the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 21 skills for $39 / Pro = 17 for $19, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
 
 ## Plugin basis and Claude plan — RULE (№33)
 
@@ -55,9 +55,25 @@ Parasite SEO is measured in sales, not positions. This skill keeps three things 
 
 Reply in the working language from `parasite-seo-profile.md`. Keep column names and `event` / `status` values in English so the files stay machine-readable.
 
-## Step 0 — Plan check (Pro)
+## Step 0 — Plan check (Pro · Free journal on a Free key)
 
-**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. **Always allowed on any plan, with or without a key (№34):** "export my base", "download my data", "my base in Excel", "open my base", "where is my data" — Mode "Export my base", Mode "Where is my data" and the My base dashboard below. The files are the user's own and never live on the server, so a lapsed plan never locks the user out of their own data; run these without the upgrade line. Everything else: Free, expired or no key → the locked card (№56, `navigator/references/upgrade-showcase.md` §2) built on: "This is a Pro feature — the journal of your pages, sales and traffic, your platform base, sales imports from networks, reports and the check queue. Upgrade: https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=work-log#pricing", then offer the Free alternative for this skill (tell the goals tracker what you did — say "I published 3 pages" or "2 sales today" — and it counts them in your weekly plan-vs-fact; keep the page links in your own table meanwhile), and stop.
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. **Free key (`plan: free`) → the Free journal below.** **Always allowed on any plan, with or without a key (№34):** "export my base", "download my data", "my base in Excel", "open my base", "where is my data" — Mode "Export my base", Mode "Where is my data" and the My base dashboard below. The files are the user's own and never live on the server, so a lapsed plan never locks the user out of their own data; run these without the upgrade line. Everything else: Free, expired or no key → the locked card (№56, `navigator/references/upgrade-showcase.md` §2) built on: "This is a Pro feature — the journal of your pages, sales and traffic, your platform base, sales imports from networks, reports and the check queue. Upgrade: https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=work-log#pricing", then offer the Free alternative for this skill (tell the goals tracker what you did — say "I published 3 pages" or "2 sales today" — and it counts them in your weekly plan-vs-fact; keep the page links in your own table meanwhile), and stop. **No key at all** → the card leads with the Free key instead: "A free key (by email, no card) opens a journal for 10 pages with alive, index and position checks: https://parasiter.affiliatecredo.com/free.html?utm_source=plugin&utm_medium=freekey&utm_campaign=work-log".
+
+### Free journal — up to 10 pages (Free key, №57)
+
+The point of Free is to let the user see their own first result inside PARASITER: a page logged, checked, indexed, ranking. So on a Free key this skill works for real, within a limit of **`free_journal_pages` pages (10)** from `account_info`.
+
+- **Works on Free:** Mode 1 (log pages as you go: "published: <link>"), Mode 0 import **up to the limit** (the first N pages of the list; say how many were left out), logging a sale by hand against a page in the journal (Mode 2, by hand only), the page list ("my pages" — `worklog.py pages`), Mode 5 check queue, alive checks of these pages (`platform-monitor`, run in the user's Claude), index and position checks of these pages on the user's own SerpApi / DataForSEO (Mode 9, cost shown first as always), Mode 6b open / export, "where is my data".
+- **Pro only (locked card, §2):** sales and traffic imports from network or platform exports (Mode 2 imports, Mode 3), reports and effectiveness by page / platform / offer / program / content type (Mode 4), the publication queue (Mode 12), topics and coverage (Modes 8, 8b, 8c), Bing / AI-answer checks (Mode 9c), the affiliate links library beyond the pages' own links (Mode 10), Telegram summaries (`pages_report` — don't call it on Free).
+- **Count:** pages in the journal = `worklog.py pages` total (each page counts once, whatever its events). Before logging or importing, count first.
+- **The limit:** a page that would be the 11th is not logged. Say so in one line, keep the link in the reply for the user to save, and show the `journal_full` event card. Never delete or replace old pages to make room unless the user asks ("remove <page> from my journal" → a `removed` row, then the new page fits).
+- **Events (№57, `navigator/references/upgrade-showcase.md` §6):** call `free_event` with the event name only, never a URL:
+  - `first_page` — the journal went from 0 to 1 page;
+  - `journal_full` — the journal reached the limit (the 10th page logged, or an 11th refused);
+  - `page_indexed` — a check found a journal page indexed (first time for that user);
+  - `page_top10` — a position check found a journal page in the top 10 (first time).
+  `first_time: true` → the event card after the result (it replaces the §3 block in that reply). `false` → nothing.
+- Every Free reply of this skill ends with the usual §3 block (one Pro line tied to the result) unless an event card was shown.
 
 ## Files
 

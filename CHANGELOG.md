@@ -2,6 +2,12 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.45.0 — 2026-11-14
+
+**A free journal for your first 10 pages.** With the free key PARASITER now keeps your pages too: say *"published: <link>"* after you publish, *"are my pages alive?"* to check that each one opens, has no noindex and keeps your link, and *"is my page indexed?"* or *"check my positions"* on your own SerpApi free plan or DataForSEO (the cost shown first). Up to 10 pages, sales logged by hand against them, your base opens and exports any time. Pro keeps the journal without limits, with sales imports from your networks, reports by page, platform and offer, the publication queue and Telegram alerts.
+
+**PARASITER tells you when something good happens.** Your first page in the journal, a page that got into Google, a page in the top 10: you see it right away, with what to do next while it works.
+
 ## 0.44.0 — 2026-11-13
 
 **See everything PARASITER can do — even on Free.** The panel, the capability map and the bases now show every function, including the ones your plan doesn't open yet, marked 🔒 Pro or 🔒 Insider with what each would do for you. Open one and you see exactly what you'd get, plus the free alternative you can use right now. After a Free result (a topic, an article, an audit, goals) PARASITER shows in one short block what the same step adds on Pro and on Insider. Insider opens all 21 skills and 10 agents; on Pro you can switch any time and your unused Pro days carry over (*/upgrade* in the bot). The panel page has an **Unlock** button on every locked tile. Say **0** to open the panel.

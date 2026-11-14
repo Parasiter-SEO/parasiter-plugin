@@ -50,7 +50,7 @@ A page that is not in Google's index can't rank and can't sell — so every new 
 
 - **Works with Claude Pro and no SEO service:** profile and goals, the journal (pages, sales, traffic from your exports), reports and effectiveness tables, choosing what to write, writing articles, images, page audits, live research with web search (offers, platforms — fewer results), free page checks (alive, noindex, link).
 - **Limited without an SEO service:** no automatic positions of your pages (Search Console only sees your own sites) — positions only from a free tracker (ProRankTracker free: 20 keywords), manual Google checks or what you type in; no keyword volumes in niche analysis and offer popularity only from free signals; platform scans only through web search, without positions. Many reports (top 3 count, what pages rank for, lost queries, scale plan by position) get thinner.
-- **Free key (by email, no card — parasiter.affiliatecredo.com/free.html):** a snapshot of 50 checked platforms and 3 platform scans a week for your product (top 3 platforms in full). Not on Free: example posts, the full base, new platforms every week, the feed, Telegram alerts (page checks still run in your Claude).
+- **Free key (by email, no card — parasiter.affiliatecredo.com/free.html):** a snapshot of 50 checked platforms and 3 platform scans a week for your product (top 3 platforms in full), plus the Free journal: up to 10 pages with alive, index and position checks. Not on Free: example posts, the full base, new platforms every week, the feed, sales imports and reports, Telegram alerts.
 - **No key at all:** the content skills only — no platform base and no scans from the server.
 
 ## For agencies and site owners

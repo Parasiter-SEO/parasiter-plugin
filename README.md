@@ -109,7 +109,7 @@ The plugin is written in English and works in any language. On first run the nav
 
 ## Plans
 
-- **Free, $0** — the plugin without a key: topics, articles, images, page audit, goals, help. **Free key** (by email, no card — [parasiter.affiliatecredo.com/free.html](https://parasiter.affiliatecredo.com/free.html)): a snapshot of 50 checked platforms and 3 platform scans a week for your product.
+- **Free, $0** — the plugin without a key: topics, articles, images, page audit, goals, help. **Free key** (by email, no card — [parasiter.affiliatecredo.com/free.html](https://parasiter.affiliatecredo.com/free.html)): a snapshot of 50 checked platforms, 3 platform scans a week for your product and the Free journal for 10 pages with alive, index and position checks.
 - **Pro, $19/month** — personal key: platform database, feed and weekly analysis, Telegram alerts, navigator updates; new platforms about 7 days after they are found. **PARASITER Pro** Telegram channel and personal notifications from the bot.
 - **Insider, $39/month** — everything in Pro, the full skill set and extra features, new platforms the day they are found. **PARASITER Insider** Telegram channel (platforms a week earlier, extra posts) and the private Insider group (discussion, polls).
 

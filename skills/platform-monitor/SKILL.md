@@ -54,9 +54,9 @@ Page checks run **in the user's own Claude**, never on the PARASITER server: the
 
 Reply in the user's language.
 
-## Step 0 — Plan check (Pro)
+## Step 0 — Plan check (Pro · Free journal on a Free key)
 
-**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → the locked card (№56, `navigator/references/upgrade-showcase.md` §2) built on: "This is a Pro feature — checks of every page in your journal — alive, removed, noindex, affiliate link — on request or on your own schedule, with the republish list. Upgrade: https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=platform-monitor#pricing", then offer the Free alternative for this skill (open each page yourself in a private window (it opens, isn't removed, the affiliate link works), or audit one page by link — say "audit my article: <link>"), and stop.
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. **Free key (`plan: free`, №57) → check the pages of the Free journal (up to 10, `work-log` "Free journal"): on request only, no scheduled task, no `pages_report` (no Telegram summary). When a check (or a paid index / position check the user ran) shows a journal page indexed or in the top 10 for the first time, call `free_event` (`page_indexed` / `page_top10`) and show the event card from `navigator/references/upgrade-showcase.md` §6.** Scheduled checks, the Telegram summary and checks of more pages → the locked card. Expired or no key → the locked card (№56, `navigator/references/upgrade-showcase.md` §2) built on: "This is a Pro feature — checks of every page in your journal — alive, removed, noindex, affiliate link — on request or on your own schedule, with the republish list. Upgrade: https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=platform-monitor#pricing", then offer the Free alternative for this skill (open each page yourself in a private window (it opens, isn't removed, the affiliate link works), or audit one page by link — say "audit my article: <link>"), and stop.
 
 ## When checks run
 

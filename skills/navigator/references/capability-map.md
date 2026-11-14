@@ -49,7 +49,7 @@ The user must always know every skill and agent PARASITER has and not forget the
 **4. Publish and journal**
 | Skill | What it does | How to start | Plan |
 |---|---|---|---|
-| work-log | journal of pages, sales, traffic, sources, republishing | "Published: link", "Here are my sales" | Pro |
+| work-log | journal of pages, sales, traffic, sources, republishing | "Published: link", "Here are my sales" | Free key: 10 pages · Pro |
 | indexing | getting pages into Google: your own site + Search Console, Rumer's top indexers, a clean list for your indexer (you send it), stats by service | "Index these pages", "Which indexer should I use?" | Pro |
 | platform-monitor | are your pages alive, platform cleanups, what to republish | "Are my pages alive?" | Pro |
 

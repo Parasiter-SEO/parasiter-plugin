@@ -22,7 +22,7 @@ The user's working data opens in one step, **above the skills**, with short code
 |---|---|---|---|
 | Б1 / B1 | **Rumer's platform base** — checked platforms, live example posts, sign-up links; filters type / language / new this week | `platform-finder` Step 2 (`platforms_search`, `feed_latest`); Free key: Free mode A (`free_base`, the 50 snapshot) | Free key: 50 · Pro / Insider: all |
 | Б2 / B2 | **My platforms** — the user's own base: priority, state, posts, in the top | `work-log` Mode 7 | Pro |
-| Б3 / B3 | **Journal** — pages, sales, traffic, the check queue; today / week / month | `work-log` Mode 4 (report), Mode 5 (queue), Mode 6b (base page to open / download) | Pro |
+| Б3 / B3 | **Journal** — pages, sales, traffic, the check queue; today / week / month | `work-log` Mode 4 (report), Mode 5 (queue), Mode 6b (base page to open / download) | Free key: 10 pages (list + checks) · Pro |
 | Б4 / B4 | **My offers and links** — the affiliate links library | `work-log` Mode 10 | Pro |
 | Б5 / B5 | **Feed** — new platforms, news, weekly analysis | `platform-feed` | Pro |
 
@@ -46,7 +46,7 @@ Agency / site owner: Б1 Rumer's base (brand-safe filter) · Б2 the client's (o
 | 10 | post-illustrations | infographics + cover prompt | Free |
 | 11 | page-audit | check a page by link or text | Free |
 | **Publish and journal** | | | |
-| 12 | work-log | journal of pages, sales, traffic | Pro |
+| 12 | work-log | journal of pages, sales, traffic | Free key: 10 pages · Pro |
 | 13 | indexing | get pages into Google | Pro |
 | 14 | platform-monitor | are my pages alive | Pro |
 | **Analytics** | | | |
@@ -92,7 +92,7 @@ The agency table with: 1 client-workspace = "your site: plans, links, results"; 
 | 6 | sales-review-writer | text posts and reviews | Free |
 | 7 | post-illustrations | covers and images | Free |
 | 8 | page-audit | check a page or post | Free |
-| 9 | work-log | journal of pieces and sponsors | Pro |
+| 9 | work-log | journal of pieces and sponsors | Free key: 10 pages · Pro |
 | 10 | platform-monitor | are the pieces alive | Pro |
 | 11 | help | how anything works | Free |
 
@@ -117,7 +117,7 @@ Agents: affiliate-scout → 3 · product-researcher → 6 · serp-analyst → 5,
 | 14 | video-seo | a video made findable | Free | creator |
 | 15 | brand-presence | brand profiles, site audit | Insider | agency, site owner |
 | 16 | client-workspace | clients or your own site | Pro | agency, site owner |
-| 17 | work-log | journal | Pro | all |
+| 17 | work-log | journal | Free key: 10 pages · Pro | all |
 | 18 | indexing | pages into Google | Pro | affiliate, agency, site owner |
 | 19 | platform-monitor | are pages alive | Pro | all |
 | 20 | client-reports | analytics / client and site reports | Insider | affiliate (analytics), agency, site owner |
