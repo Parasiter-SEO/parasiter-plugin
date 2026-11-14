@@ -17,7 +17,7 @@ Commands:
   list    JOURNAL [--bucket B] [--status S] [--n 15] [--json]
   today   JOURNAL [--minutes 120] [--all-platforms] [--json]   what fits into today's time
   plan    JOURNAL (--ids 3,5 | --next N) [--date D]            put items into the plan (status planned)
-  set     JOURNAL --id N --status planned|writing|published|skipped|proposed [--url U] [--date D] [--note T]
+  set     JOURNAL --id N --status planned|writing|draft|staged|published|skipped|proposed [--url U] [--date D] [--note T]
   mix     JOURNAL 70,20,10                     scale,expand,explore shares
   review  JOURNAL [--days 30]                  results of published queue items: what the queue brought
 
@@ -38,8 +38,9 @@ import worklog as W  # noqa: E402
 
 QCOLS = ["id", "added", "updated", "status", "bucket", "action", "score", "topic", "platform", "offer",
          "program", "content_type", "minutes", "why", "from_url", "planned_for", "page_url", "result", "note"]
-STATUSES = ["proposed", "planned", "writing", "published", "reviewed", "skipped", "expired"]
-OPEN = ("proposed", "planned", "writing")
+STATUSES = ["proposed", "planned", "writing", "draft", "staged", "published", "reviewed", "skipped", "expired"]
+OPEN = ("proposed", "planned", "writing", "draft", "staged")
+ACTIVE = ("planned", "writing", "draft", "staged")   # №65: draft = text exists, not final; staged = ready, waiting to be published
 BUCKETS = ["fix", "scale", "expand", "explore"]
 BUCKET_LABEL = {"fix": "Fix & push", "scale": "Scale", "expand": "Expand", "explore": "Explore"}
 DEFAULT_MIX = {"scale": 70, "expand": 20, "explore": 10}
@@ -77,8 +78,22 @@ def spath(journal):
     return os.path.join(os.path.dirname(os.path.abspath(journal)), "parasite-seo-queue-settings.json")
 
 
+LEGACY = {"": "proposed", "new": "proposed", "todo": "proposed", "idea": "proposed", "in progress": "writing",
+          "in-progress": "writing", "wip": "writing", "ready": "staged", "scheduled": "staged", "queued": "staged",
+          "done": "published", "posted": "published", "live": "published", "cancelled": "skipped", "canceled": "skipped"}
+
+
 def read_queue(journal):
-    return W.read_csv(qpath(journal))
+    """№65: older or hand-edited queue files are read as they are — missing columns empty, unknown statuses mapped."""
+    items = W.read_csv(qpath(journal))
+    for it in items:
+        for c in QCOLS:
+            it.setdefault(c, "")
+            if it[c] is None:
+                it[c] = ""
+        st = (it["status"] or "").strip().lower()
+        it["status"] = st if st in STATUSES else LEGACY.get(st, "proposed")
+    return items
 
 
 def write_queue(journal, items):
@@ -342,7 +357,7 @@ def cmd_build(a):
                 it.update(status="proposed", score=c["score"], why=c["why"], minutes=c["minutes"],
                           content_type=it.get("content_type") or c["content_type"], updated=today.isoformat())
                 kept += 1
-            elif it["status"] in ("planned", "writing"):
+            elif it["status"] in ACTIVE:
                 it.update(score=c["score"], why=c["why"])
             continue
         nid += 1
@@ -395,7 +410,7 @@ def say(it):
 def line(it):
     tgt = f" → **{it['platform']}**" if it["platform"] else ""
     ct = f" · {it['content_type']}" if it["content_type"] and it["action"] == "write" else ""
-    when = f" · planned {it['planned_for']}" if it["planned_for"] and it["status"] in ("planned", "writing") else ""
+    when = f" · planned {it['planned_for']}" if it["planned_for"] and it["status"] in ACTIVE else ""
     st = "" if it["status"] == "proposed" else f" [{it['status']}]"
     return (f"#{it['id']} **{it['topic']}**{tgt}{ct} · {it['action']} · ~{it['minutes']} min · {it['score']}/100{when}{st}\n"
             f"   why: {it['why']}\n   say: “{say(it)}”")
@@ -443,8 +458,8 @@ def cmd_today(a):
     high = {k for k, r in reg.items() if (r.get("priority") or "") == "high"}
     ok_plat = (lambda it: True) if (a.all_platforms or not high) else \
         (lambda it: not it["platform"] or it["platform"].lower() in high)
-    due = [it for it in items if it["status"] in ("planned", "writing") and (W.pdate(it["planned_for"]) or today) <= today]
-    due.sort(key=lambda it: (it["status"] != "writing", it["planned_for"], -int(it["score"] or 0)))
+    due = [it for it in items if it["status"] in ACTIVE and (W.pdate(it["planned_for"]) or today) <= today]
+    due.sort(key=lambda it: ({"staged": 0, "draft": 1, "writing": 2}.get(it["status"], 3), it["planned_for"], -int(it["score"] or 0)))
     pick, used = [], 0
     for it in due:
         pick.append(it)
@@ -463,7 +478,7 @@ def cmd_today(a):
     if not pick:
         print("Nothing fits today's time" + (" on your ★ platforms (--all-platforms to widen)" if high and not a.all_platforms else "") + ".")
     for i, it in enumerate(pick, 1):
-        tag = "planned" if it["status"] in ("planned", "writing") else BUCKET_LABEL[it["bucket"]]
+        tag = "planned" if it["status"] in ACTIVE else BUCKET_LABEL[it["bucket"]]
         print(f"{i}. [{tag}] " + line(it))
     skipped_plat = sum(1 for it in items if it["status"] == "proposed" and not ok_plat(it))
     if skipped_plat:

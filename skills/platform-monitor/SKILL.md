@@ -50,7 +50,7 @@ Options that usually fit after this part (adapt to the user's products and words
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-Page checks run **in the user's own Claude**, never on the PARASITER server: the server never receives the user's page addresses (privacy rule). The pages come from the user's journal (`parasite-seo-progress.csv`), the `page-checker` agent opens them, and every result is logged in the journal. Only counts and bare platform domains may go to the server (`pages_report`), so the user gets a Telegram summary and platform cleanups can be spotted across subscribers.
+Page checks run **in the user's own Claude**, never on the PARASITER server: the server never receives the user's page addresses (privacy rule). The pages come from the user's journal (`parasite-seo-progress.csv`), the `page-checker` agent opens them, and every result is logged in the journal. Only counts and bare platform domains may go to the server (`pages_report`), and **only if the user turned that sharing on (№65, off by default)** — so they get a Telegram summary and platform cleanups can be spotted across subscribers.
 
 Reply in the user's language.
 
@@ -62,7 +62,7 @@ Reply in the user's language.
 
 - **On request:** "are my pages alive?", "check my pages", "what died?", after a Google update.
 - **From the check queue:** the navigator puts due alive checks into today's plan (`work-log` `due`: 2, 7, 14 days after publishing, then every 14 days; ★ pages first).
-- **On the user's schedule (recommended once the base has 20+ pages):** offer once — "Want me to check your pages every morning (or every Monday)? It runs in your Claude, costs nothing but Claude usage, and you get a short summary in Telegram." On yes, create a scheduled task in the user's Claude with the session's scheduling tools (the user's own task; it uses their Claude limits): prompt "PARASITER: check my pages due today (platform-monitor, free checks only), log the results, send pages_report". On Claude Pro suggest weekly, not daily. If the session can't schedule tasks, say so and keep the check queue.
+- **On the user's schedule (recommended once the base has 20+ pages):** offer once — "Want me to check your pages every morning (or every Monday)? It runs in your Claude, costs nothing but Claude usage, and you get a short summary in Telegram." On yes, create a scheduled task in the user's Claude with the session's scheduling tools (the user's own task; it uses their Claude limits): prompt "PARASITER: check my pages due today (platform-monitor, free checks only), log the results, send pages_report only if share_check_summary is on". On Claude Pro suggest weekly, not daily. If the session can't schedule tasks, say so and keep the check queue.
 
 ## The check (free: alive, noindex, link)
 
@@ -78,7 +78,8 @@ Changed since [last check]:
 Platforms: [X] — 3 of your pages gone this week
 Alive: N of M pages
 ```
-5. **With a key:** call `pages_report` with ONLY the numbers and the bare platform domains that lost pages — `checked`, `removed`, `noindex`, `not_indexed`, `dropped`, `domains: [{domain: "example.com", removed: 2}]`. Never send page URLs, titles, queries or sub-IDs: the tool rejects them. The user's Telegram gets the counts; the list stays here.
+5. **Sharing — opt-in (№65).** Read `share_check_summary:` in the profile. Not set → after the first check ask once, showing exactly what would be sent, built from this check: "Send this to PARASITER for your Telegram summary? `{checked: 24, removed: 2, noindex: 1, not_indexed: 3, dropped: 0, domains: [{domain: \"forum-x.com\", removed: 2}]}` — numbers and platform domains only, never page addresses, titles, queries or sub-IDs. Yes / No (you can change it any time: \"turn check summary sharing on/off\")." Save the answer as `share_check_summary: on|off`. `off` or not answered → do not call `pages_report`; the summary stays in the chat. Without a key → never.
+   **With a key and sharing on:** call `pages_report` with ONLY the numbers and the bare platform domains that lost pages — `checked`, `removed`, `noindex`, `not_indexed`, `dropped`, `domains: [{domain: "example.com", removed: 2}]`. Never send page URLs, titles, queries or sub-IDs: the tool rejects them. The user's Telegram gets the counts; the list stays here.
 
 ## Actions
 
@@ -93,7 +94,7 @@ Every check result goes into the work journal as a `check` row (`work-log`): `st
 ## Rules
 
 - Never claim a page is indexed or ranking without a check result; mark unknowns.
-- **Privacy:** page URLs never go to the PARASITER server or to Telegram. `pages_report` gets counts and platform domains only. If the user asks the bot or the server to check a URL, explain that checks run in their Claude.
+- **Privacy:** page URLs never go to the PARASITER server or to Telegram. `pages_report` gets counts and platform domains only, and only when the user turned sharing on (`share_check_summary: on`, asked once with a preview of the exact data). If the user asks the bot or the server to check a URL, explain that checks run in their Claude.
 - Index and position checks run on the user's own SEO data account (DataForSEO or SerpApi's free plan; Semrush, Ahrefs, Serpstat or Ubersuggest via their connector or exports). They cost money: before a paid check say so, give the rough cost, and suggest a sample (★ pages, earning pages, the newest pack) instead of the whole base. Alive / noindex / link checks are free.
 - Remind to keep a copy of every published text — that is what makes fast republishing possible.
 - After a Google update: check all rankings, reduce work on platforms that lost visibility.

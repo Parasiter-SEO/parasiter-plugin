@@ -77,7 +77,7 @@ Run the checklist in `references/audit-checklist.md` in this order — the first
 5. **TOC and headings** — headings alone tell the conclusion.
 6. **Structure and Rumer's blocks** — pains, facts → solution, life after, prices and offers, comparison + alternatives, 1,500+ words, plus the blocks of the content type (sales-review-writer templates).
 6b. **Copywriting** — useful on its own; problem opened and solved with the product; motivates the click and the purchase; images that support the text.
-7. **CTAs** — at decision points; why this product / this offer / now; best landing page.
+7. **CTAs** — at decision points; why this product / this offer / now; best landing page. **Before recommending any affiliate CTA or link (№65), check the platform's own rules on promotion and affiliate links** (terms, community rules, signs on the page: nofollow, link warnings, removed links in other posts). Platform forbids or restricts them → say so first and recommend the allowed form instead (no link, link in profile, one link, disclosure wording), never a CTA that gets the post or account removed.
 8. **Honesty** — no fake tests, reviews, results, prices, deadlines; disclosure; last-checked date.
 9. **Platform fit** — length, tone, formatting, link rules of the platform.
 10. **Readability** — mobile: short paragraphs, lists, tables that fit.

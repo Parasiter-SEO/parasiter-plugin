@@ -371,7 +371,7 @@ python3 scripts/pubqueue.py build parasite-seo-progress.csv        # refresh fro
 python3 scripts/pubqueue.py list  parasite-seo-progress.csv [--bucket scale|expand|explore|fix] [--n 15]
 python3 scripts/pubqueue.py today parasite-seo-progress.csv --minutes 120 [--json]
 python3 scripts/pubqueue.py plan  parasite-seo-progress.csv --ids 3,5 [--date 2026-11-07]   (or --next 3)
-python3 scripts/pubqueue.py set   parasite-seo-progress.csv --id 7 --status skipped|writing|published [--url …]
+python3 scripts/pubqueue.py set   parasite-seo-progress.csv --id 7 --status skipped|writing|draft|staged|published [--url …]
 python3 scripts/pubqueue.py mix   parasite-seo-progress.csv 70,20,10
 python3 scripts/pubqueue.py review parasite-seo-progress.csv
 ```

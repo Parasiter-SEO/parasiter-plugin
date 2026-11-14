@@ -127,7 +127,7 @@ id,added,updated,status,bucket,action,score,topic,platform,offer,program,content
 
 | Column | Values |
 |---|---|
-| `status` | `proposed` → `planned` (with `planned_for`) → `writing` → `published` (with `page_url`, set by itself when the page is logged) → `reviewed` (30+ days, with `result`); `skipped` (hidden 30 days), `expired` (no longer relevant) |
+| `status` | `proposed` → `planned` (with `planned_for`) → `writing` → `draft` (text exists, not final) → `staged` (ready, waiting to be published; shown first in "today") → `published` (with `page_url`, set by itself when the page is logged) → `reviewed` (30+ days, with `result`); `skipped` (hidden 30 days), `expired` (no longer relevant) |
 | `bucket` | `fix`, `scale`, `expand`, `explore` |
 | `action` | `write`, `republish`, `refresh`, `audit`, `find-offers`, `find-platforms` |
 | `score` | 0–100 within the bucket |

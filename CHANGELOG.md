@@ -2,6 +2,16 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.47.0 — 2026-11-14
+
+From the beta testers' weekly reports:
+- **Proof that a platform can rank.** Every platform the search finds now gets a "Top 20?" mark: do its pages already sit in Google's top 20 for commercial queries of your niche, with the date — real positions with your SerpApi / DataForSEO, "not verified" when only the built-in web search is available. Forums and communities stay "worth a test" even without that proof (they almost always work to some degree); other platform types need the proof before they become a priority.
+- **No duplicates in the platform list.** One row per domain, platforms already in your base shown apart, every example and sign-up link opened in the same run.
+- **Your page-check summary is opt-in.** PARASITER sends nothing about your checks until you say yes, and first shows exactly what would go to your Telegram summary: numbers and platform domains, never page addresses. Off by default.
+- **Draft and staged in the publication queue.** New statuses between "writing" and "published": *draft* (text exists, not final) and *staged* (ready, waiting to be published; shown first in today's list). Older queue files with other status words are read as they are.
+- **The audit checks the platform's rules before it suggests a CTA.** If the platform forbids or limits promotion or affiliate links, the audit says so and recommends the allowed form instead.
+- **Help fixed:** an outdated line said new domains from platform searches go to Rumer. They don't: nothing a search finds is sent anywhere.
+
 ## 0.46.0 — 2026-11-14
 
 **Tell your story instead of filling a form.** At the first setup PARASITER now asks you to tell your parasite SEO story in your own words — type it or dictate it: what you do now, where and what you post, what works and what doesn't, roughly what you earn and want to earn, what gets in your way most and what you need. It builds your profile and starting point from it, asks only the 2–4 things it still needs, and right away gives you a short verdict: what it heard, what PARASITER will do for each of your problems, how your work can change and your first step. Your plan keeps using the story every day, and once a month PARASITER asks if it changed. Prefer short questions? Say *"ask me questions"*. The story stays only in your own folder.

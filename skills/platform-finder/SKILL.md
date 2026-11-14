@@ -256,6 +256,14 @@ The scan already opened the examples and looked for the sign-up page. For the to
 
 A platform with no live example is never a candidate. Mark uncertain ones "test".
 
+**Ranking proof — "Top 20?" (№65).** Finding a platform is not proof it can rank for money queries. For every candidate check whether pages of that domain sit in Google's top 20 for 1–3 commercial queries of the user's niche ("[product] review", "best [category]", "[product] vs …"), with the date:
+- with the user's SerpApi / DataForSEO: real positions → `✓ #7 "mitolyn review" (14.11)` or `not in top 20`;
+- built-in web search only: `seen in results, position not verified`, or `not found` — never write a position you did not read;
+- Free: `not verified on Free` (the same check runs with the user's own SerpApi key).
+**How to read it (Rumer's rule):** a new platform is a chance to test. **Forums and communities** almost always work to some degree — open sign-up, live threads, indexing — so they stay "worth a test" even without top-20 proof: one post, indexing, a check in 7 days. **Other types** (document hosts, flipbooks, profiles, site builders, event, job and fundraising pages) need the proof: without a top-20 sighting for a commercial query they are "unproven — small test only", never a priority.
+
+**No duplicates, links validated.** One row per domain: merge every example of the same domain into that row (keep the best live example). Drop domains already in the user's base (show them under "Already in your base") and anything in the exclusions. Every Post and Sign-up link in the table was opened in this run: an example that redirected, needs a login or is gone is not shown as live.
+
 ## Step 5 — Candidates: the user chooses
 
 Show **every live candidate found — the full list by default** (free and paid in separate tables), numbered, post-first, best first. Never cut the list to 5–10 or to a top N and never hide the rest behind a count (the only exception is the Free key's top 3 in Free mode B). More than ~30 rows: keep the same table, compact (Pros / risks may shrink to a few words), and also save it as `platforms-scan.csv` in the user's folder.
@@ -280,11 +288,12 @@ If the user has all three, skip this block. One short line per item; no pressure
 Platform candidates · [niche] · [country] · checked [date]
 Found N · live M · removed K · skipped by stop / black list L
 Free
-| # | Post (live example) | Product | Pos. | Platform | Type | Free/Paid | Score | Indexing | Moderation | Pros / risks | Sign-up |
+| # | Post (live example) | Product | Pos. | Top 20? | Platform | Type | Free/Paid | Score | Indexing | Moderation | Pros / risks | Sign-up |
 Paid
 | # | Post | Product | Pos. | Platform | Type | Price / how to buy (if known) | Sign-up / contact |
 Already in your base: [platforms from the user's base that fit, with their state and priority]
 ```
+- **Top 20?** = the ranking proof above; forums and communities without proof read "worth a test (forum)".
 - **Score** = the `platform-analyzer` score 0–100 if there is one (server or the user's base), otherwise "not checked". Indexing speed and moderation from the server, the analyzer or the quick check; "unknown" when not checked. Pros / risks in a few words each.
 - **Sign-up** = the checked sign-up link, or "sign-up link not found" + the home page.
 - **Post** = a live, filtered example; if none is left after the filter: "example: find your own with \"[product] review\"".
