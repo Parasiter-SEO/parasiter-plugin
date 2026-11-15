@@ -62,9 +62,29 @@ sys.path.insert(0, os.path.join(HERE, "..", "..", "work-log", "scripts"))
 import rankcheck as rc  # noqa: E402
 import worklog as w  # noqa: E402
 
-STORES = ("amazon.", "walmart.", "ebay.", "target.com", "iherb.", "gnc.com", "vitaminshoppe.", "costco.",
-          "aliexpress.", "temu.", "etsy.com", "bestbuy.", "trustpilot.", "bbb.org", "sitejabber.",
-          "google.com", "apple.com", "play.google")
+# Stores and review aggregators: never a platform to publish on. Matched by host label / domain
+# suffix, never by substring (№66: "google.com" as a substring removed sites.google.com).
+STORE_BRANDS = ("amazon", "walmart", "ebay", "iherb", "vitaminshoppe", "costco", "aliexpress", "temu",
+                "bestbuy", "trustpilot", "sitejabber")          # any host label: amazon.co.uk, smile.amazon.com
+STORE_DOMAINS = ("target.com", "gnc.com", "etsy.com", "bbb.org", "apple.com",
+                 "google.com", "play.google.com")               # the domain itself or its subdomains
+# Google / Apple hosts where users publish: platforms, checked before the store rule
+PUBLISHING_HOSTS = {"sites.google.com": "site-builder", "docs.google.com": "document",
+                    "drive.google.com": "document", "groups.google.com": "community",
+                    "discussions.apple.com": "community"}
+
+
+def host_of(url):
+    return re.sub(r"^(www|m)\.", "", (urllib.parse.urlsplit(url if "://" in url else "http://" + url).hostname or "").lower())
+
+
+def suffix_match(host, domain):
+    return host == domain or host.endswith("." + domain)
+
+
+def is_store(host):
+    labels = host.split(".")
+    return any(b in labels for b in STORE_BRANDS) or any(suffix_match(host, d) for d in STORE_DOMAINS)
 # news / PR / media: posting there is paid (sponsored post, press release, "partner content")
 PAID_HINTS = ("news", "times", "post", "journal", "herald", "tribune", "gazette", "observer", "daily",
               "magazine", "mag.", "press", "wire", "media", "chronicle", "insider", "today", "weekly",
@@ -125,11 +145,16 @@ FREE_TYPES |= {"podcast"}
 
 def classify(url):
     slug, dom, typ = w.platform_of(url)
-    typ = typ or next((t for d, t in EXTRA_TYPES.items() if dom.endswith(d) or d in dom), "")
+    host = host_of(url)
+    pub = next((d for d in PUBLISHING_HOSTS if suffix_match(host, d)), None)
+    if pub:  # a publishing service on a big brand's domain: the service is the platform
+        typ = typ or PUBLISHING_HOSTS[pub]
+        return (slug if dom == pub else pub.split(".")[0] + "-" + pub.split(".")[1]), pub, typ, "free"
+    typ = typ or next((t for d, t in EXTRA_TYPES.items() if suffix_match(host, d) or (d == "ucoz" and "ucoz" in host)), "")
     if not typ and urllib.parse.urlsplit(url).path.lower().endswith(".pdf"):
         typ = "document/pdf"  # PDFs are normal findings; the PDF's host is the platform
     low = dom.lower()
-    if any(s in low for s in STORES):
+    if is_store(host):
         return slug, dom, typ, "store"
     if typ in FREE_TYPES or typ == "forum":
         return slug, dom, typ, "free"
@@ -613,6 +638,18 @@ def self_test():
     assert judge(u, 403, u, {}, b"")[0] == "unknown"
     assert judge("https://x.example/a.pdf", 200, "https://x.example/a.pdf", {"content-type": "application/pdf"}, b"%PDF-" + b"0" * 2000)[0] == "live"
     assert classify("https://docs.example.net/files/x.pdf")[2] == "document/pdf"
+    # №66: stores matched by domain, not substring; Google Sites & co. are platforms
+    assert classify("https://sites.google.com/view/x-review/home")[3] == "free"
+    assert classify("https://sites.google.com/view/x-review/home")[2] == "site-builder"
+    assert classify("https://docs.google.com/document/d/abc/edit")[3] == "free"
+    assert classify("https://groups.google.com/g/x/c/abc")[3] == "free"
+    assert classify("https://www.google.com/search?q=x")[3] == "store"
+    assert classify("https://play.google.com/store/apps/details?id=x")[3] == "store"
+    assert classify("https://www.amazon.co.uk/dp/B0X")[3] == "store"
+    assert classify("https://smile.amazon.com/dp/B0X")[3] == "store"
+    assert classify("https://www.target.com/p/x")[3] == "store"
+    assert classify("https://forum.nottarget.community/t/x-review/1")[3] != "store"
+    assert classify("https://googlecomputing-forum.example/threads/x.1/")[3] != "store"
     assert ABUSE.search("https://uni.edu/wp-content/uploads/2026/x.pdf")
     t = serpapi_task([{"organic_results": [{"position": 1, "link": "https://forum.example.com/t/x-review/1"}],
                        "discussions_and_forums": [{"link": "https://www.reddit.com/r/x/comments/1"}]}])

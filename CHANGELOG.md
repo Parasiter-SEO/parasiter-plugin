@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.47.1 — 2026-11-15
+
+**Google Sites is back in the platform search.** The store filter matched domains by a piece of text, so every `sites.google.com` page was dropped as "Google store" — even ones sitting in Google's top 20. Stores are now matched by their exact domain: Google Sites, Google Docs and Google Groups count as publishing platforms, while Google search and Google Play stay out. Thanks to a beta tester for the report with proof. Run *"find platforms"* again for your niche to see what was hidden.
+
 ## 0.47.0 — 2026-11-14
 
 From the beta testers' weekly reports:
