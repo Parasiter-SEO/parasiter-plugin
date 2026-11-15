@@ -57,6 +57,10 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 5. **Upload your sales and traffic exports** once a week (ClickBank, Impact, CJ, Amazon, platform stats). Sales are tied to pages by sub-ID, so you see which pages, platforms, offers and content types actually earn: EPC, conversion, commission per page. If you forget, the system asks. Ask "what did I do and earn this week?" or "report for September" any time.
 6. **Weekly review**: the goals skill compares plan and fact from the journal, replaces assumptions with your real numbers, and adjusts the next week.
 
+## Rumer's terms
+
+**Web 2.0** — a platform other SEOs barely use: you discovered it, only you work it, and you keep it private in your own platform list. **Web 3.0** — a platform everyone sees in the top, but nobody knows how to publish on it (example: Amazon S3). **Creative SEO** — Rumer's main principle: inventing non-standard ideas that give new parasite SEO strategies, methods and tools; PARASITER itself is one. These are Rumer's own terms, not the usual meanings. Full definitions: `skills/help/references/rumer-concepts.md`.
+
 ## Skills
 
 | Skill | What it does |
@@ -68,8 +72,8 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | `sales-review-writer` | Writes the sales review / comparison for your platform |
 | `page-audit` | Audits a page by link or text, 0–100 score, fixes |
 | `post-illustrations` | Image plan and generator prompts for your posts |
-| `platform-finder` | Finds platforms for your niche; checked database with a key |
-| `platform-analyzer` | Breaks down one platform, 0–100 score, verdict |
+| `platform-finder` | Finds platforms for your niche; checked database with a key; every find classed by Rumer's terms: proven, Web 2.0 🔒 (your private find), Web 3.0 (in the top, route not obvious) |
+| `platform-analyzer` | Breaks down one platform, 0–100 score, verdict and Rumer's class; Web 3.0 mode researches how people publish on a service |
 | `platform-feed` | News from Rumer: new platforms, plugin updates, ideas, weekly market analysis, polls; connects Telegram (key required) |
 | `platform-monitor` | Alive / indexed / ranking status of your pages; scheduled with a key |
 | `indexing` | Gets your pages into Google: blocker check (with agent), free ways, Rumer's comparison of the top indexers and which to use or mix, the clean list to send, logs and rechecks every submission, indexing stats per service, mix and platform |

@@ -88,9 +88,9 @@ Counting rules:
 ## parasite-seo-platforms.csv — my platform base
 
 ```
-platform,domain,type,language,links,account,score,state,added,source,note
-medium,medium.com,article,en,nofollow,@rumer,78,active,2026-10-23,my pages,
-healthboards,healthboards.com,forum,en,nofollow,rumer_k,72,testing,2026-10-23,my pages,first 3 posts
+platform,domain,type,language,links,account,score,state,priority,rank,class,added,source,note
+medium,medium.com,article,en,nofollow,@rumer,78,active,high,1,proven,2026-10-23,my pages,
+healthboards,healthboards.com,forum,en,nofollow,rumer_k,72,testing,,,proven,2026-10-23,my pages,first 3 posts
 ```
 
 | Column | Meaning |
@@ -105,6 +105,7 @@ healthboards,healthboards.com,forum,en,nofollow,rumer_k,72,testing,2026-10-23,my
 | `state` | active · testing · paused · dropped · dead |
 | `priority` | high · normal · low |
 | `rank` | the user's own order of platforms, 1 = best |
+| `class` | Rumer's class (№67): proven · web2 (Web 2.0 — the user's private find, never sent anywhere) · web3 (Web 3.0 — in the top for everyone, posting route not obvious); empty = not classed yet |
 | `added`, `source` | when and how it entered the base: my pages, journal, manual, analyzer |
 
 One row per platform, updated in place (`platform-set`). Page counts, statuses and sales are never stored here: `platforms` computes them from the journal and sales files.

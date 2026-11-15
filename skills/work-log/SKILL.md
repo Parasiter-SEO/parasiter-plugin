@@ -304,6 +304,8 @@ python3 scripts/worklog.py platform-set parasite-seo-progress.csv --platform hea
 
 States: `active` (publishing), `testing` (1–3 test posts), `paused`, `dropped` (stopped: died, cleaned up, no traffic), `dead` (platform gone). Never write logins or passwords here — an account name is enough.
 
+**Rumer's class of each platform (№67)** — `platform-set --class proven|web2|web3` (definitions: `../help/references/rumer-concepts.md`). `proven` — affiliate reviews rank there; `web2` — **Web 2.0 🔒**, the user's own find with no competitors, their private platform; `web3` — **Web 3.0**, in the top for everyone, posting route not obvious. `platforms` shows the class and lists the Web 2.0 ones apart with the reminder to keep them private; the base page (`mybase.py`) marks them too. Web 2.0 platforms never leave the user's folder: never in the Telegram summary, never in anything sent to the server, and when the user shares a report or the base with someone (client, partner, screenshot for a group) offer once to leave the Web 2.0 rows out. "my Web 2.0 platforms" → `platforms`, only the `web2` rows.
+
 Other skills use the base: `platform-finder` excludes or marks platforms already in it, `platform-analyzer` writes its score and verdict back with `platform-set`, the navigator prefers `active` platforms with live, indexed pages for new posts.
 
 ## Mode 9b — What each page ranks for, and what it lost

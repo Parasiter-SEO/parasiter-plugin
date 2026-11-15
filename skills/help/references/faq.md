@@ -53,7 +53,13 @@ No. Every paid check (index, positions, page keywords, platform scans, niche vol
 That's a normal start. The navigator skips the reports, helps you pick a niche and one offer, and `goals` gives you a ladder: first posts and platforms → 15–20 indexed posts → first top-10 positions and clicks → toward 10 platforms / 100 posts and first sales. Possible income is calculated after your first clicks and sales; zero sales in the first 4–8 weeks is normal.
 
 ## What platforms does PARASITER look for?
-Ones where review pages of affiliate products are published and indexed **right now** (top 10 in Google) — proven parasite platforms. It doesn't hunt for untested sites with no affiliate posts. Whether links there are followed or indexed doesn't matter; the page being indexed does. A platform in the top now goes to work now, even if it may not last; pages living 2+ weeks mark it as stable. Free platforms (you post yourself) and paid ones (news sites, PR wires) are always shown separately.
+First, ones where review pages of affiliate products are published and indexed **right now** (top 10 in Google): **proven** parasite platforms. The pattern search (Pro / Insider) also finds clean platforms with no affiliate posts yet. Those are Rumer's **Web 2.0** candidates, and you test them before you rely on them. It also shows **Web 3.0** platforms: their pages rank, but the way to publish there isn't obvious. Whether links there are followed or indexed doesn't matter; the page being indexed does. A platform in the top now goes to work now, even if it may not last; pages living 2+ weeks mark it as stable. Free platforms (you post yourself) and paid ones (news sites, PR wires) are always shown separately.
+
+## What are Web 2.0, Web 3.0 and Creative SEO?
+These are Rumer's own terms. They don't mean what they usually mean on the internet.
+- **Web 2.0**: a platform you discovered that other SEOs barely use. You work it alone and keep it secret: it lives in your own platform base, marked 🔒, and PARASITER never sends it anywhere or puts it in your Telegram summary. Find candidates with "find Web 2.0 platforms" (the "clean" track of the pattern search).
+- **Web 3.0**: a platform whose pages sit in the top for everyone to see, but where few know how to publish. Rumer's example is Amazon S3. Say "how do people publish on <domain>?" and the analyzer researches the legitimate route from the service's own documentation, along with its cost, indexing and risks.
+- **Creative SEO**: Rumer's main principle of inventing new strategies, methods and tools that nobody uses yet. PARASITER itself is one. Say "give me a Creative SEO idea" whenever the standard route stops working. Every idea comes as a hypothesis with the cheapest test, never as a proven method.
 
 ## Saving my reviews
 After you publish a text you worked on yourself, say "save this .docx with the page": it is kept in `parasite-seo-sources/` linked to the page. If the page or the whole platform is removed, "which of my pages were on X?" lists them with their sources to republish. Plain AI drafts are not worth saving — quicker to write again.
@@ -120,6 +126,9 @@ There are none. The plan follows your role, goals, journal and the time you have
 - **Top 3** — where sales start: Rumer counts posts in the top 3 as a milestone.
 - **EPC** — earnings per click on your affiliate link.
 - **SERP** — the Google results page.
+- **Web 2.0 (Rumer's term)** — a platform other SEOs barely use: you discovered it, only you work it and you keep it private in your own list.
+- **Web 3.0 (Rumer's term)** — a platform everyone sees in the top, but nobody knows how to publish on it; the process is the barrier (example: Amazon S3).
+- **Creative SEO (Rumer's term)** — inventing non-standard ideas that give new parasite SEO strategies, methods and tools; Rumer's main principle, and PARASITER itself came out of it.
 
 ## Rules built in
 No fake reviews, tests, results, credentials, prices or deadlines. Personal experience only when real. Affiliate disclosure and last-checked date on every page. Only platforms where the user can legitimately post. No income guarantees: income goals are the user's; the system plans actions and tracks results.

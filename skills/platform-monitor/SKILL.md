@@ -79,7 +79,7 @@ Platforms: [X] — 3 of your pages gone this week
 Alive: N of M pages
 ```
 5. **Sharing — opt-in (№65).** Read `share_check_summary:` in the profile. Not set → after the first check ask once, showing exactly what would be sent, built from this check: "Send this to PARASITER for your Telegram summary? `{checked: 24, removed: 2, noindex: 1, not_indexed: 3, dropped: 0, domains: [{domain: \"forum-x.com\", removed: 2}]}` — numbers and platform domains only, never page addresses, titles, queries or sub-IDs. Yes / No (you can change it any time: \"turn check summary sharing on/off\")." Save the answer as `share_check_summary: on|off`. `off` or not answered → do not call `pages_report`; the summary stays in the chat. Without a key → never.
-   **With a key and sharing on:** call `pages_report` with ONLY the numbers and the bare platform domains that lost pages — `checked`, `removed`, `noindex`, `not_indexed`, `dropped`, `domains: [{domain: "example.com", removed: 2}]`. Never send page URLs, titles, queries or sub-IDs: the tool rejects them. The user's Telegram gets the counts; the list stays here.
+   **With a key and sharing on:** call `pages_report` with ONLY the numbers and the bare platform domains that lost pages — `checked`, `removed`, `noindex`, `not_indexed`, `dropped`, `domains: [{domain: "example.com", removed: 2}]`. Never send page URLs, titles, queries or sub-IDs: the tool rejects them. **Never send the domains of the user's Web 2.0 platforms** (`class: web2` in `parasite-seo-platforms.csv`, Rumer's term for their private finds, №67): count their pages in the numbers, leave their domains out of `domains`. The preview in the opt-in question shows the same filtered data. The user's Telegram gets the counts; the list stays here.
 
 ## Actions
 
@@ -94,7 +94,7 @@ Every check result goes into the work journal as a `check` row (`work-log`): `st
 ## Rules
 
 - Never claim a page is indexed or ranking without a check result; mark unknowns.
-- **Privacy:** page URLs never go to the PARASITER server or to Telegram. `pages_report` gets counts and platform domains only, and only when the user turned sharing on (`share_check_summary: on`, asked once with a preview of the exact data). If the user asks the bot or the server to check a URL, explain that checks run in their Claude.
+- **Privacy:** page URLs never go to the PARASITER server or to Telegram. Web 2.0 platforms (class `web2`) are never named in anything sent — not even as a bare domain. `pages_report` gets counts and platform domains only, and only when the user turned sharing on (`share_check_summary: on`, asked once with a preview of the exact data). If the user asks the bot or the server to check a URL, explain that checks run in their Claude.
 - Index and position checks run on the user's own SEO data account (DataForSEO or SerpApi's free plan; Semrush, Ahrefs, Serpstat or Ubersuggest via their connector or exports). They cost money: before a paid check say so, give the rough cost, and suggest a sample (★ pages, earning pages, the newest pack) instead of the whole base. Alive / noindex / link checks are free.
 - Remind to keep a copy of every published text — that is what makes fast republishing possible.
 - After a Google update: check all rankings, reduce work on platforms that lost visibility.

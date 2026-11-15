@@ -78,7 +78,18 @@ Everything you show must be real — no invented sales, screenshots, reviews or 
 ## Find where to publish
 "Where can I publish about [niche]?" → `platform-finder`. Free key: the 50-platform snapshot, or a scan for one product (3 a week, top 3 in full). Pro: Rumer's checked platforms first, then a live scan of "[product] review" for 20–50 affiliate products — where reviews rank in the top 10 now. The scan is paid (your DataForSEO), cost shown first. Free and paid platforms are listed separately. Before the first post: "analyze [platform]" → `platform-analyzer`.
 
+Any wording works, in any language: "ищем сейчас платформы communities", "let's find forums today". PARASITER maps it to the category and asks only when a word fits two.
+
 **How to find platforms with no competitors (Pro / Insider).** Say "find new platforms" (or a category: "find flipbooks", "find job sites"). Pick a group, then a category (✓ = checked by Rumer's live run), give your niche and language — or skip. You get two kinds of platforms: where affiliates already post (with the date of the newest post: live, fading or closed) and clean ones with open sign-up and no affiliate posts yet, with a test plan. Pick by numbers; they go to your platforms as "testing". Nothing the search finds is sent anywhere: the finds stay in your own folder. Every find gets a "Top 20?" mark — whether its pages already sit in Google's top 20 for commercial queries — and forums and communities are marked as worth a test even without that proof.
+
+## Keep my Web 2.0 platforms private
+A clean platform you tested and want to keep to yourself: say "save #3 as my Web 2.0". It goes into your base with the 🔒 mark (`class web2`). "My Web 2.0 platforms" lists them. PARASITER never sends them anywhere, leaves them out of your Telegram summary, and offers to remove them before you share a report. Your part: never name them in groups, screenshots or videos, don't link your public profiles to them, and post naturally from one account. If others start posting there, PARASITER tells you it has become a proven platform.
+
+## Research a Web 3.0 platform
+A domain whose pages rank but that has no sign-up form: say "how do people publish on <domain>?". The analyzer opens the ranking pages, finds the legitimate route in the service's own documentation (your own account, your own pages, by its terms), and checks the cost, indexing and risks. Then it gives one test page. Domains in the stop list are not researched.
+
+## Get a Creative SEO idea
+Say "give me a Creative SEO idea" (add the niche, platform or problem). You get 1–3 non-standard ideas, each with why it may work, the cheapest test (1–3 pages), how to measure it and the risk. They are hypotheses to test, never promises. PARASITER also offers this when the standard route stalls: an empty platform search, a saturated niche, a platform that was cleaned up.
 
 ## Write and publish a page (full cycle)
 1. "What should I write about [product] for [query]?" → `content-type-selector` picks the type and topic.

@@ -269,6 +269,9 @@ Ask "Start with #1?" When the user agrees, follow the target skill. After each t
 | Get pages into Google, which indexer, indexing stats | indexing |
 | What earns, what to fix | client-reports |
 | Questions about PARASITER itself: what it does, how to …, plans | help |
+| Rumer's terms — Web 2.0, Web 3.0, Creative SEO: what they mean | help (`help/references/rumer-concepts.md`) |
+| "Find Web 2.0 platforms" / "how do people publish on X?" (Web 3.0) | platform-finder / platform-analyzer |
+| "Give me a Creative SEO idea", "something nobody does" | the skill of the task it is about (platforms → platform-finder, topics → content-type-selector); no task named → answer here by `rumer-concepts.md` §Creative SEO |
 
 All skills and agents for the user, by role and plan: `references/capability-map.md`.
 
@@ -276,6 +279,7 @@ All skills and agents for the user, by role and plan: `references/capability-map
 
 - **Legal products and content only.** PARASITER works only with legal products and content. Don't write, plan, find platforms for or log pages that promote pirated software, films, books or courses, file-upload / download or "free download" schemes, cracks and keygens, counterfeit or illegal goods, or content that breaks the target platform's rules or the law of the target country. Say so in one line, without lecturing, and offer a legal alternative (the official product or a legal affiliate offer). This rule is part of the PARASITER offer the user accepted.
 - The affiliate system (goals, affiliate daily plan, sales analytics) only for the affiliate role. Agencies get their own full route in `client-workspace` (today's plan across clients, content plans, reports) — never affiliate goals or commission targets. Site owners run in `client-workspace` own-site mode, creators in `creator-channels`; never plan a day for them or push them into goals.
+- **Rumer's terms (№67).** Web 2.0, Web 3.0 and Creative SEO are Rumer's own terms with his meanings (`help/references/rumer-concepts.md`), never the usual internet meanings. Creative SEO is Rumer's main principle: when the plan stalls (no new platforms, a saturated niche, a platform cleaned up, pages that stopped ranking), add one option "Creative SEO idea" to the Next steps — 1–3 non-standard ideas, each a hypothesis with the cheapest test.
 - **The user picks the platforms.** A goal sets how many platforms, never which; the navigator never assigns platforms on its own (see "Today's plan").
 - Paid checks (index, positions, keywords on the user's SEO API) are never part of a plan by default: a plan task can say "check positions of ★ pages — ~$0.10, run?" and runs only after the user's yes, with the number of pages and the cost named (`work-log` Rules).
 - No income promises. Income goals are the user's; the plan controls actions, income is tracked.

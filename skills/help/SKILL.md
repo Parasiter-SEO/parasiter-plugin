@@ -1,6 +1,6 @@
 ---
 name: help
-description: Built-in help for PARASITER itself — what the plugin is, which skills and agents it has, what each one does, which features need a Pro or Insider key, how to do a task step by step (first start, write and publish a page, log a sale, upload a network export, the Monday check-in from the Telegram bot, get a weekly report, check pages, find platforms), where the user's files live, plans, privacy and limits. Use when the user asks about the plugin rather than asking it to do work - "what can PARASITER do", "how does it work", "which skill does X", "how do I log a sale / import a report", "what is the Monday check-in", "which bot commands are there", "what do I get on Pro", "is there a skill for Y", "help", or seems lost in the system.
+description: Built-in help for PARASITER itself — what the plugin is, which skills and agents it has, what each one does, which features need a Pro or Insider key, how to do a task step by step (first start, write and publish a page, log a sale, upload a network export, the Monday check-in from the Telegram bot, get a weekly report, check pages, find platforms), where the user's files live, plans, privacy and limits. Use when the user asks about the plugin rather than asking it to do work - "what can PARASITER do", "how does it work", "which skill does X", "how do I log a sale / import a report", "what is the Monday check-in", "which bot commands are there", "what do I get on Pro", "what is Web 2.0 / Web 3.0 / Creative SEO", "is there a skill for Y", "help", or seems lost in the system.
 ---
 
 # PARASITER Help
@@ -22,6 +22,7 @@ This skill answers questions about the plugin. It knows the whole system: read t
 | What is in the plugin, what does skill X do, is there a skill for Y, what do agents do | `references/catalog.md` |
 | How do I … (a task, step by step) | `references/how-to.md` |
 | Lite or agents, "full", my Claude plan, limits, "why did it use / not use an agent" | `navigator/references/agents-and-plan.md` and `references/faq.md` ("Lite or agents") |
+| Rumer's terms: Web 2.0, Web 3.0, Creative SEO, "what is a Web 2.0 platform", platform classes | `references/rumer-concepts.md` (full definitions and which tool covers each) |
 | Plans and key, files, privacy, languages, attribution, risks, limits, install and updates | `references/faq.md` |
 
 Reply in the working language from `parasite-seo-profile.md`; before a profile exists, in the language the user writes in.

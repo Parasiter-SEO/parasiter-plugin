@@ -16,7 +16,7 @@ Partial points for partial conditions. A platform with **noindex on new posts sc
 | Score | Verdict |
 |---|---|
 | Any score with affiliate reviews in the top 10 now | Publish now — test 1–3 posts today |
-| 50+ without reviews in the top 10 | Test 1–3 posts, check in 3–7 days |
+| 50+ without reviews in the top 10 | Test 1–3 posts, check in 3–7 days — a **Web 2.0 candidate by Rumer** (nobody posts there yet; keep it private if it works) |
 | 30–49 | Only if nothing better |
 | 0–29 | Skip |
 

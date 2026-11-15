@@ -274,6 +274,7 @@ def collect(journal, today, sales_override=None, platform=None, priority=None, t
         out_plat.append({
             "platform": r.get("platform") or k, "domain": r.get("domain", ""), "type": r.get("type", ""),
             "state": r.get("state") or "active", "priority": r.get("priority") or "normal",
+            "class": (r.get("class") or "").lower(),
             "rank": wl.num(r.get("rank")), "pages": s["pages"], "alive": s["alive"], "indexed": s["indexed"],
             "top10": tops[k], "gone": s["gone"], "unchecked": s["unchecked"],
             "last_page": s["last"].isoformat() if s["last"] else None, "sales": s["sales"] or None,
@@ -910,7 +911,7 @@ views.posts=table({rows:D.pages,cols:postCols,tools:postsTools,emptyText:T.no_da
       el.querySelectorAll('input[type=search],select').forEach(x=>x.value='');el.querySelectorAll('input[type=checkbox]').forEach(x=>x.checked=false);re()})}});
 
 views.platforms=table({rows:D.platforms,cols:[
-  {k:'platform',label:T.platform,cell:p=>(p.priority==='high'?'<span class="star">★ </span>':'')+'<b>'+esc(p.platform)+'</b>'},
+  {k:'platform',label:T.platform,cell:p=>(p.priority==='high'?'<span class="star">★ </span>':'')+'<b>'+esc(p.platform)+'</b>'+({web2:' <span class="pill info" title="Rumer: your own find, keep it private">Web 2.0 🔒</span>',web3:' <span class="pill muted" title="Rumer: in the top for everyone, posting route not obvious">Web 3.0</span>'}[p['class']]||''),csv:p=>p.platform+({web2:' (Web 2.0)',web3:' (Web 3.0)'}[p['class']]||'')},
   {k:'domain',label:T.domain,cell:p=>esc(p.domain||'—')},
   {k:'type',label:T.ptype,cell:p=>esc(p.type||'—')},
   {k:'state',label:T.state,cell:p=>'<span class="pill '+({active:'good',testing:'info',paused:'warn',dropped:'muted',dead:'bad'}[p.state]||'muted')+'">'+esc(st(p.state))+'</span>',csv:p=>st(p.state)},

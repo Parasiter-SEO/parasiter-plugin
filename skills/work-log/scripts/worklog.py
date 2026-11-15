@@ -22,7 +22,8 @@ Commands:
                  [--type T] [--map field=Header ...]   (CSV/TSV/TXT or any text with URLs)
   platforms      JOURNAL [--today D]                  personal platform base with stats
   platform-set   JOURNAL --platform P [--domain --type --language --links --account --score
-                 --state active|testing|paused|dropped|dead --priority high|normal|low --note]
+                 --state active|testing|paused|dropped|dead --priority high|normal|low
+                 --class proven|web2|web3 --note]
   tag            JOURNAL (--url U ... | --urls-file F | --platform P | --match TEXT)
                  [--topic --priority --position --offer --program --campaign --query --type]
   import-ranks   JOURNAL EXPORT.csv [--date D] [--map field=Header]   positions from any rank tracker
@@ -137,7 +138,11 @@ STATUS_MAP = {
 
 
 PLATFORM_COLUMNS = ["platform", "domain", "type", "language", "links", "account", "score",
-                    "state", "priority", "rank", "added", "source", "note"]
+                    "state", "priority", "rank", "class", "added", "source", "note"]
+# Rumer's platform classes (help/references/rumer-concepts.md): proven = affiliates already post there,
+# web2 = your own find with no competitors, kept private; web3 = in the top for everyone, posting route not obvious.
+PLATFORM_CLASSES = ["proven", "web2", "web3"]
+CLASS_LABEL = {"proven": "proven", "web2": "Web 2.0 🔒", "web3": "Web 3.0"}
 PAGE_ALIASES = {
     "url": TRAFFIC_ALIASES["url"] + ["urls", "pages", "postlink", "publishedurl"],
     "date": ["date", "published", "publishdate", "publishedat", "publicationdate", "datepublished",
@@ -1940,8 +1945,8 @@ def cmd_platforms(a):
         return
     tops = Counter(p["platform"].lower() for p in pages.values()
                    if p["position"] is not None and p["position"] <= TOP and not p["moved"] and health(p) not in GONE)
-    print(f"| Platform | Domain | Type | State | Prio | Pages | Alive | Indexed | Top {TOP} | Gone | Not checked | Last page | Sales | Commission | Score |")
-    print("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
+    print(f"| Platform | Domain | Type | Class | State | Prio | Pages | Alive | Indexed | Top {TOP} | Gone | Not checked | Last page | Sales | Commission | Score |")
+    print("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
     order = sorted(reg.values(), key=lambda r: (num(r.get("rank")) or 99, PRIORITIES.index(r.get("priority") or "normal"),
                                                 -st[r["platform"].lower()]["pages"], r["platform"]))
     attention, waiting = [], []
@@ -1949,7 +1954,8 @@ def cmd_platforms(a):
         s = st[r["platform"].lower()]
         score = r.get("score") or (fmt(s["score"]) if s["score"] is not None else "")
         prio = {"high": "★", "low": "low"}.get(r.get("priority") or "", "")
-        print(f"| {r['platform']} | {r.get('domain') or '—'} | {r.get('type') or '?'} | {r.get('state') or 'active'} | {prio} | "
+        cls = CLASS_LABEL.get((r.get("class") or "").lower(), "")
+        print(f"| {r['platform']} | {r.get('domain') or '—'} | {r.get('type') or '?'} | {cls or '—'} | {r.get('state') or 'active'} | {prio} | "
               f"{s['pages']} | {s['alive']} | {s['indexed']} | {tops[r['platform'].lower()]} | {s['gone']} | {s['unchecked']} | "
               f"{s['last'] or '—'} | {s['sales']} | {money(s['comm'])} | {score or '—'} |")
         checked = s["pages"] - s["unchecked"]
@@ -1963,6 +1969,10 @@ def cmd_platforms(a):
     unchecked = sum(s["unchecked"] for s in st.values())
     print(f"\n**Total:** {tot} pages on {sum(1 for r in reg.values() if st[r['platform'].lower()]['pages'])} platforms"
           + (f" · {unchecked} not checked yet" if unchecked else ""))
+    web2 = [r["platform"] for r in order if (r.get("class") or "").lower() == "web2"]
+    if web2:
+        print(f"\n**Web 2.0 🔒 — your private platforms ({len(web2)}):** " + ", ".join(web2)
+              + ". Keep them to yourself: no public lists, screenshots or shared profiles.")
     if waiting:
         print(f"\n**No pages yet on {len(waiting)} platforms — send their lists:** " + ", ".join(waiting))
     if attention:
@@ -1977,8 +1987,8 @@ def cmd_platform_set(a):
     key = a.platform.lower()
     r = reg.setdefault(key, {"platform": a.platform, "state": "active",
                              "added": date.today().isoformat(), "source": "manual"})
-    for f in ("domain", "type", "language", "links", "account", "score", "state", "priority", "rank", "note"):
-        v = getattr(a, f)
+    for f in ("domain", "type", "language", "links", "account", "score", "state", "priority", "rank", "class", "note"):
+        v = getattr(a, "cls" if f == "class" else f)
         if v is not None:
             r[f] = v
     write_platforms(path, reg)
@@ -2669,6 +2679,8 @@ def main():
     ps.add_argument("--state", choices=["active", "testing", "paused", "dropped", "dead"])
     ps.add_argument("--priority", choices=PRIORITIES)
     ps.add_argument("--rank", help="your own order of platforms: 1 = best")
+    ps.add_argument("--class", dest="cls", choices=PLATFORM_CLASSES,
+                    help="Rumer's class: proven · web2 (your private find) · web3 (route not obvious)")
     ps.set_defaults(fn=cmd_platform_set)
 
     a = ap.parse_args()

@@ -1,6 +1,6 @@
 ---
 name: platform-analyzer
-description: Break down one parasite SEO platform before investing time in it — affiliate reviews ranking in the top 10 there, registration, indexing of fresh pages, noindex, moderation and keyword filters, account warm-up, content limits, free or paid, stability — and give a 0–100 score with a verdict on what to publish there. Use when the user asks "should I post on X", "is X still working", "analyze this platform/forum", or before the first post on a new platform.
+description: Break down one parasite SEO platform before investing time in it — affiliate reviews ranking in the top 10 there, registration, indexing of fresh pages, noindex, moderation and keyword filters, account warm-up, content limits, free or paid, stability — and give a 0–100 score with a verdict on what to publish there and Rumer's class (proven, Web 2.0, Web 3.0); for a Web 3.0 platform researches how people publish there. Use when the user asks "should I post on X", "is X still working", "analyze this platform/forum", or before the first post on a new platform, or asks "how do people publish on X?", "is this Web 2.0 / Web 3.0?".
 ---
 
 # Platform Analyzer
@@ -67,7 +67,7 @@ Use web search / fetch where available; otherwise give the user each check as a 
 1. **Registration** — open for new users? Captcha, app, phone, invite, paid plan, old accounts only? Give the **sign-up link**: `signup_url` from the server, or find it (sign-up / register / create account link on the home page, else /register, /signup, /join, /user/register, /create-account) and open it to confirm the form loads; else "sign-up link not found" + the home page.
 2. **Fresh indexing** — are posts from the last 1–2 weeks indexed (`site:` + recent)? How fast?
 3. **noindex** — meta robots and X-Robots-Tag on new posts/profiles; some platforms noindex new accounts only.
-4. **Affiliate reviews ranking there (the main check)** — search `site:domain review` and "[product] review" for a few affiliate products: are review pages on this domain in the Google top 10, in "Discussions and forums" or AI Overview? None → the platform is not proven, however good it looks. **Open each review page found (up to 3, free): it counts only if it is alive** — 404 / 410, "page removed" text, redirect to the home or login page, an empty page or noindex (meta robots / X-Robots-Tag) = removed, however high Google still shows it. All found pages removed → verdict "skip — pages are being removed". Pages shown to the user as examples go through the local private filter first (with a key: `private_hashes` + platform-finder's `scripts/privfilter.py`, nothing is sent); the author's posts are never shown.
+4. **Affiliate reviews ranking there (the main check)** — search `site:domain review` and "[product] review" for a few affiliate products: are review pages on this domain in the Google top 10, in "Discussions and forums" or AI Overview? None → the platform is not proven, however good it looks — **unless** it passes the other checks (open sign-up, fresh pages indexed, no noindex, live topic): then it is a **Web 2.0 candidate by Rumer** (nobody posts there yet, the user can be its discoverer), verdict "test 1–3 posts as your Web 2.0" instead of "skip". **Open each review page found (up to 3, free): it counts only if it is alive** — 404 / 410, "page removed" text, redirect to the home or login page, an empty page or noindex (meta robots / X-Robots-Tag) = removed, however high Google still shows it. All found pages removed → verdict "skip — pages are being removed". Pages shown to the user as examples go through the local private filter first (with a key: `private_hashes` + platform-finder's `scripts/privfilter.py`, nothing is sent); the author's posts are never shown.
 5. **Link to the offer** — possible anywhere (body, profile, signature, description)? Outbound warning page? Link only after N posts? Link indexing and nofollow don't matter.
 6. **Moderation** — pre-moderation, keyword blacklists (platforms block typical affiliate words), automatic AI spam removal, cleanup waves, bans.
 7. **Account needs** — warm-up (XenForo forums, Medium, LinkedIn need aged/active accounts), points systems, first-post limits.
@@ -82,13 +82,31 @@ Score with `references/scoring.md` (0–100) and show:
 ```
 [Platform] · score NN/100 · checked [date]
 Free / Paid · Affiliate reviews in top 10 (live): … | Indexing: … | Stability: stable / new / unstable | Link: …
+Class (by Rumer): proven / Web 2.0 🔒 candidate / Web 3.0 — one line why
 Live example: [post URL] · [product] · pos. N   |   Sign-up: [link] (or "sign-up link not found" + home page)
 Verdict: [publish now / test 1–3 posts / skip] — affiliate reviews in the top 10 now = publish now
 Best content type here: …
 How to post: [account, title, link placement, tone]
 ```
 
-Write the result into the user's platform base: `work-log` `platform-set --platform <slug> --domain … --type … --links … --score NN --state testing|active|dropped` and a journal row `add --event platform --platform <slug> --score NN --note "verdict: …"`.
+Write the result into the user's platform base: `work-log` `platform-set --platform <slug> --domain … --type … --links … --score NN --state testing|active|dropped --class proven|web2|web3` and a journal row `add --event platform --platform <slug> --score NN --note "verdict: …"`.
+
+## Rumer's class — RULE (№67)
+
+Every verdict names the class by Rumer's definitions (`../help/references/rumer-concepts.md`; his own terms, not the usual "Web 2.0" / "Web3" — say so the first time):
+- **proven** — affiliate reviews rank there now (check 4 found live ones).
+- **Web 2.0 🔒 candidate** — no affiliate posts yet, but sign-up, indexing and topic pass. Add the privacy line: "If it works, keep it as your own Web 2.0: don't name it in public groups, screenshots or videos, don't link your profiles to it, post naturally from one account." When check 4 later finds other people's affiliate posts on a platform the user keeps as `web2`, say "your Web 2.0 has been found by others — it is a proven platform now" and offer `--class proven`.
+- **Web 3.0** — its pages rank in the top for everyone to see, but there is no visible sign-up or post form: publishing goes through the service's own tools and few people know the process.
+
+## Web 3.0 mode — "how do people publish on <domain>?"
+
+For a Web 3.0 platform (or when the user asks how pages get onto a service), research the route instead of scoring registration and moderation:
+1. **What the ranking pages are** — open 2–3 live examples: what kind of page (static page, document, listing, profile, project page), what URL shape, whose account they sit under.
+2. **The legitimate route** — from the service's own documentation and public guides only: how a person opens their own account, creates a public page of that kind, makes it public, and whether the service's terms allow promotional or affiliate content. Give it as steps with links to the official docs, plus cost (free tier or paid) and what it takes technically.
+3. **Indexing** — are such pages indexed, how fast, and do new ones rank (fresh examples)?
+4. **Risks** — the service's terms (accounts used for spam get closed), Google's site reputation abuse policy and spam rules, how the service handles abuse reports. A route that needs someone else's account, access controls bypassed or other organisations' storage is abuse: say so and stop.
+5. **Verdict** — "Web 3.0 · route found: <easy / technical / paid>" with the first test (one useful page, disclosure, check indexing in 3–7 days), or "route not found — skip". Mark it as **Creative SEO** work: a method few people use, a test before any scale.
+Domains in the stop list or blacklist are not researched (Step 2 still applies first).
 
 ## Rules
 

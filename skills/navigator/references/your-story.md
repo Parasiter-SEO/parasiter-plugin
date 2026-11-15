@@ -64,7 +64,7 @@ Rules for the verdict:
 | The user says | PARASITER answers with |
 |---|---|
 | pages don't get indexed | `indexing`: what blocks indexing, the free way, Rumer's indexer comparison, clean lists, results counted |
-| can't find platforms / platforms get spammed / always the same platforms | `platform-finder`: the checked base and pattern search — clean platforms with no competitors, where affiliates post now and when |
+| can't find platforms / platforms get spammed / always the same platforms | `platform-finder`: the checked base and pattern search — clean platforms with no competitors (your own **Web 2.0** by Rumer, kept private), where affiliates post now and when, and **Web 3.0** platforms whose route few people know |
 | pages get deleted / cleanups / bans | `platform-monitor`: alive, indexed, still ranking; alerts; republish queue |
 | don't know what to write / pages don't sell | `content-type-selector` + `sales-review-writer`: the content type that sells for each query, the article for the platform |
 | don't know which offer / program | `affiliate-finder` (Insider: the offers Google's top already sells) |

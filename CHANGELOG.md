@@ -2,6 +2,16 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.48.0 — 2026-11-15
+
+**Rumer's terms are now part of PARASITER: Web 2.0, Web 3.0 and Creative SEO.** They are Rumer's own definitions, not the usual internet meanings:
+- **Web 2.0**: a platform other SEOs barely use. You discover it, you work it alone, and you keep it private in your own platform list. The pattern search marks clean platforms with no competitors as Web 2.0 candidates. Once you save one ("save #3 as my Web 2.0"), it gets a 🔒 in your base, it never leaves your folder, and it stays out of your Telegram summary.
+- **Web 3.0**: a platform everyone sees in the top, but almost nobody knows how to publish on it. Domains whose pages rank but that have no sign-up form are no longer dropped: they show up in a separate Web 3.0 block. Say *"how do people publish on <domain>?"* and the analyzer researches the legitimate route from the service's own documentation, along with its cost, indexing and risks.
+- **Creative SEO**: Rumer's main principle of inventing new strategies, methods and tools nobody uses yet. PARASITER itself came out of it. Say *"give me a Creative SEO idea"*, and PARASITER also offers one when the standard route stalls. Every idea comes with the cheapest test, as a hypothesis, never a promise.
+- Every platform in searches, in the analyzer and in your base now carries its class: proven, Web 2.0 or Web 3.0.
+- Ask in your own words: *"ищем сейчас платформы communities"* or *"let's find forums today"* starts the platform search. No fixed phrases needed.
+- Help explains all three terms: *"what is Web 2.0?"*
+
 ## 0.47.1 — 2026-11-15
 
 **Google Sites is back in the platform search.** The store filter matched domains by a piece of text, so every `sites.google.com` page was dropped as "Google store" — even ones sitting in Google's top 20. Stores are now matched by their exact domain: Google Sites, Google Docs and Google Groups count as publishing platforms, while Google search and Google Play stay out. Thanks to a beta tester for the report with proof. Run *"find platforms"* again for your niche to see what was hidden.
