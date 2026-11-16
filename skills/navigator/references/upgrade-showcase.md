@@ -90,6 +90,7 @@ Free users are offered Pro at the moment PARASITER helps them, not on a schedule
 | `first_page` | the first page went into the Free journal | "📗 Your first page is in your journal. Free keeps up to 10 pages with checks." · Pro: unlimited journal, sales tied to pages, the daily plan |
 | `page_indexed` | a check finds a journal page indexed for the first time | "✅ <page> on <platform> is in Google." · Pro: keeps watching it and alerts in Telegram when it drops; the next pages planned where it works |
 | `page_top10` | a position check finds a journal page in the top 10 for the first time | "🏆 <page> is #<pos> for "<query>"." · Pro: the publication queue (2–3 more pages on this platform while it ranks), sales tied to this page · Insider: the offers Google's top sells in this niche |
+| `first_look` | the First look was shown in the first setup (`free-start.md` §2) | no extra card — the First look already ends with its 🔒 lines made of the user's numbers |
 | `journal_full` | the 10th page went in, or the user tries to add an 11th | "📚 Your Free journal is full: 10 pages. They keep working." · Pro: unlimited journal, network imports, reports |
 
 Card shape (4 lines at most):
