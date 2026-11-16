@@ -2,6 +2,14 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.50.0 — 2026-11-16
+
+Weekly check-in is more honest (thanks to our beta testers):
+- It first shows what your journal already has for the week and asks only for what is missing.
+- A program or source with no report is recorded as **unknown**, never as zero.
+- Drafts, staged and paused pages are never counted as live; an experiment is "ranking" only with a position check on record.
+- New queue status **paused** for projects on hold. Say: "pause item 7".
+
 ## 0.49.0 — 2026-11-16
 
 **Start your real work on the Free plan.** The whole first setup now runs on Free, not only on Pro: tell PARASITER your story (type or dictate it), upload what you have — your pages, sales exports from your networks, traffic and platform stats — and right away you get your **First look**: three insights from your own data, with your numbers. Where your money really comes from, how much of it hangs on one platform, which pages get clicks but no sales, which topics earn on one platform and are missing on the others. Starting from zero? The First look is built from your story and one free scan of where reviews of your product rank right now. Then goals, your first topic and article, publish and log — and a **Starter plan** for your first week, shown again on *"what should I do today?"* until it's done. The daily plan, keeping your exports in the journal with reports, and checks of all your pages stay in Pro — the First look shows what Pro would do with your exact numbers. Say *"where do I start?"* to begin.

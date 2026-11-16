@@ -38,7 +38,8 @@ import worklog as W  # noqa: E402
 
 QCOLS = ["id", "added", "updated", "status", "bucket", "action", "score", "topic", "platform", "offer",
          "program", "content_type", "minutes", "why", "from_url", "planned_for", "page_url", "result", "note"]
-STATUSES = ["proposed", "planned", "writing", "draft", "staged", "published", "reviewed", "skipped", "expired"]
+STATUSES = ["proposed", "planned", "writing", "draft", "staged", "paused", "published", "reviewed", "skipped", "expired"]
+# №69 paused = a project on hold: kept, never counted as live or due, back with --status planned
 OPEN = ("proposed", "planned", "writing", "draft", "staged")
 ACTIVE = ("planned", "writing", "draft", "staged")   # №65: draft = text exists, not final; staged = ready, waiting to be published
 BUCKETS = ["fix", "scale", "expand", "explore"]
@@ -80,7 +81,8 @@ def spath(journal):
 
 LEGACY = {"": "proposed", "new": "proposed", "todo": "proposed", "idea": "proposed", "in progress": "writing",
           "in-progress": "writing", "wip": "writing", "ready": "staged", "scheduled": "staged", "queued": "staged",
-          "done": "published", "posted": "published", "live": "published", "cancelled": "skipped", "canceled": "skipped"}
+          "done": "published", "posted": "published", "live": "published", "cancelled": "skipped", "canceled": "skipped",
+          "on hold": "paused", "hold": "paused", "on-hold": "paused"}
 
 
 def read_queue(journal):

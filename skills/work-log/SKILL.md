@@ -173,12 +173,15 @@ The check queue (Mode 5) lists every program with live pages whose sales were no
 Every Monday at 10:00 (Kyiv) the PARASITER bot asks Pro and Insider users with Telegram linked to bring last week's numbers here. The user says **"weekly check-in"** (or "Monday check-in", "here are my sales for the week", or just uploads exports on a Monday). Run it as one short flow:
 
 1. `weekly_checkin` (action `status`) gives the period to log (last Monday–Sunday). Without a key or Telegram, use last Monday–Sunday in the user's time zone.
-2. Ask for what they have, in one message, all optional except sales:
+2. **Reuse first (№69, beta feedback).** Before asking anything, read what the journal and the user's files already hold for the period: pages logged, sales and traffic already imported or logged by hand, page / index / position checks, experiments and platform tests (including NO-GO results), notes. Show it in 2–3 lines ("Already in your journal for Nov 9–15: 2 pages published, 1 sale logged by hand, index checks on 4 pages") and ask **only for what is genuinely missing** for this period — never again for data that is already there.
+   Ask for the missing parts, in one message, all optional except sales:
    - **Sales** — the export from every program with live pages (`due` lists them), for that period → `import-sales` (Mode 2). Screenshot or PDF → read and log with `sale`.
    - **Traffic** — platform stats (views, plays, clicks) and the network click report → `import-traffic` with `--from/--to` = the period (Mode 3).
    - **UTM / analytics** — GA4 "Session source / medium", utm_source reports, Search Console pages → `import-traffic` the same way.
    Take whatever comes; never block the check-in on a missing file — name what is missing in one line and go on.
-3. Report the week: `summary --period last-week` and `effect --period last-week --by platform`, 4–6 lines: sales and commission vs the week before, best page and platform, traffic without sales (→ page-audit), pages that dropped or died (from the latest page check). With a goals file, add the pace line from the `goals` weekly review. Charts and PDF as always (client-reports style) when the user wants the full report.
+   **Missing is UNKNOWN, never zero.** A program, platform or traffic source with no export and no word from the user is recorded for the period as `unknown` (a `task` row with note `checkin: <source> unknown <period>`), and reports show it as "unknown", never as $0 or 0 clicks. Zero is written only when the user says so ("no sales from ClickBank last week"). Example figures in PARASITER messages ("2 sales, $84") are formats to copy, never data: nothing is logged from them.
+   **Status stays honest:** count as live only pages with status `published` and a URL. `draft`, `staged` (ready, not published yet), `paused` and `skipped` items are listed apart and never counted as live, published or in the top; an experiment is "ranking" only with a position check on record (date and position), "earning" only with sales tied to it.
+3. Report the week (with `unknown` sources named, and live / staged / draft / paused counted apart): `summary --period last-week` and `effect --period last-week --by platform`, 4–6 lines: sales and commission vs the week before, best page and platform, traffic without sales (→ page-audit), pages that dropped or died (from the latest page check). With a goals file, add the pace line from the `goals` weekly review. Charts and PDF as always (client-reports style) when the user wants the full report.
 4. **Offer a position check** to see how keywords and posts moved: "Check positions of ★ / earning / new pages? N pages ≈ $X on your DataForSEO" (or "≈ N searches of your SerpApi, M left this month"). It is paid — ask which pages and show the cost first, run only after a yes (Mode 9, Rules). If they want it every Monday, set it up with `paid_check_schedule` (they choose pages and cost once; the bot warns before each run).
 5. `weekly_checkin` action `done` — the bot then stops nudging for this week. Only the fact "logged" goes to the server, never sales or traffic.
 
@@ -374,7 +377,7 @@ python3 scripts/pubqueue.py build parasite-seo-progress.csv        # refresh fro
 python3 scripts/pubqueue.py list  parasite-seo-progress.csv [--bucket scale|expand|explore|fix] [--n 15]
 python3 scripts/pubqueue.py today parasite-seo-progress.csv --minutes 120 [--json]
 python3 scripts/pubqueue.py plan  parasite-seo-progress.csv --ids 3,5 [--date 2026-11-07]   (or --next 3)
-python3 scripts/pubqueue.py set   parasite-seo-progress.csv --id 7 --status skipped|writing|draft|staged|published [--url …]
+python3 scripts/pubqueue.py set   parasite-seo-progress.csv --id 7 --status skipped|writing|draft|staged|paused|published [--url …]
 python3 scripts/pubqueue.py mix   parasite-seo-progress.csv 70,20,10
 python3 scripts/pubqueue.py review parasite-seo-progress.csv
 ```
