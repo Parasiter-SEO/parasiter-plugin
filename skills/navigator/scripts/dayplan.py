@@ -24,7 +24,7 @@ plan.json (all text in the user's working language; only "title", "tasks" are re
   "why": "Пока ничего не опубликовано: одна живая страница сегодня даёт больше, чем три в черновиках.",
   "next": [{"say": "Напиши профиль автора", "what": "начнём с задачи 1"}],
   "explored": "Освоено: 8 из 21 скилов · 4 из 10 агентов",         # №26 panel (optional; "kind": "panel" = panel only)
-  "top10": {"week_of": "2026-11-09", "stale": false, "items": [{"rank": 1, "name": "ResearchGate", "why": "…"}, …]},  # pinned above the bases
+  "top10": {"week_of": "2026-11-09", "stale": false, "items": [{"rank": 1, "name": "Medium", "why": "…"}, …]},  # pinned above the bases
   "bases": [{"code": "Б1", "name": "База площадок Rumer", "what": "проверенные площадки", "plan": "Pro"}, …],   # №32, first on the panel
   "panel": [{"name": "План", "items": [{"n": 1, "skill": "navigator", "what": "план на сегодня", "plan": "Pro",
                                          "tried": "03.11", "locked": false}, …]}, …],
