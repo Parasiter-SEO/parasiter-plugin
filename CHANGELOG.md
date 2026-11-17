@@ -2,6 +2,16 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.51.0 — 2026-11-17
+
+Platform search now says exactly what is proven (thanks to a beta tester's detailed report):
+- **Evidence on every platform:** "Google ranking verified: #4 for '<product> review' (date)", or "example URL verified live · Google ranking not checked". A page that opens is never called a ranking page. The same labels are in the Telegram digest and the channels.
+- **Platform rules:** every platform shows whether its own rules allow affiliate reviews and links (allowed / limited / forbidden) with the link to the official rules page, or **UNKNOWN** when nobody has read them yet.
+- **Your research comes first:** before a platform is called unsuitable or "no ranking evidence", PARASITER reads your base, journal and earlier scans. If today's result disagrees with a dated record, you see both and "conflict — recheck"; your history is never overwritten.
+- **What is really new:** each platform is marked NEW, EXISTING with new evidence, or EXISTING repeated from your research. When nothing new turned up, PARASITER says so plainly and offers ways to find new ones.
+
+Say *"find platforms"* to try it.
+
 ## 0.50.0 — 2026-11-16
 
 Weekly check-in is more honest (thanks to our beta testers):

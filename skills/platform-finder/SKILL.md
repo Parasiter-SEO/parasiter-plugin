@@ -70,6 +70,12 @@ Skip the menu only when the user already named a category ("find flipbooks" → 
 - **Web 3.0** — its pages sit in the top for everyone to see, but almost nobody knows how to publish there: the whole process is the barrier (see "Web 3.0 candidates" below).
 Finding Web 2.0 and Web 3.0 platforms is **Creative SEO** — Rumer's main principle (same reference).
 
+**Evidence, policy, history and what is new — RULE (№70).** From a beta tester's report on v0.50.0. Every platform row in every mode (base, live scan, pattern search, Free scan, agent results) carries four facts, said exactly, never rounded up:
+- **Evidence** — the strongest level actually on record, with its date: `Google ranking verified: #N for "<query>" (date)` (a position read from Google through SerpApi / DataForSEO, or the server's position; a ranking page is indexed) · `Google indexing verified (date)` (an index check on record, no position) · `Example URL verified live (date) · Google ranking not checked` · `could not verify`. A live or opened URL is **never** written as "ranks", "in Google" or "checked" alone. Built-in web search gives no positions: such rows read "seen in web search, ranking not checked". The server's `platforms_search` / `platform_get` / `feed_latest` rows already carry `evidence_level` and `evidence`: show them as given.
+- **Policy** — do the platform's own rules allow the content type the user will post (affiliate review, promotion, links)? `allowed` / `limited` / `forbidden` + the **official** rules, terms or community-guidelines URL on the platform's own domain, with the date read; never a third-party article. Not read → `UNKNOWN`, never a guess. The server's rows carry `policy`; for live finds the check card reads the rules page (look for /terms, /rules, /guidelines, /community-guidelines, /tos, the forum's rules thread). `forbidden` → shown, but no ★ and the line "rules forbid this content — not a candidate for affiliate posts"; `limited` → say what is limited (disclosure, no links in first post, sponsored label…).
+- **History** — before calling any platform absent, unsuitable, "no ranking evidence" or "not in top", read what the user already has on it: their base and journal (`parasite-seo-platforms.csv`, positions in `parasite-seo-progress.csv`), earlier scans (`platforms-scan*.csv` — `platformscan.py` reads the previous `--out` file and `--history a.csv,b.csv` itself), `pattern-runs.csv`, and any research archive the user names or that sits in their folder. Today's result never overwrites a dated record: when they disagree, show both — "history: #2 "<query>" (24.10, your journal) · today: not in top 10 — **conflict, recheck**" — and keep the platform in the list with "recheck" instead of dropping it.
+- **Discovery** — `NEW platform` (in none of the above) · `EXISTING · NEW evidence` (known, but this run found a new example URL or a better position) · `EXISTING · repeated from saved research` (nothing new). The summary line under the title adds "NEW N · existing with new evidence M · repeated K". **No new platform found → say it in one plain line at the top of the result**: "No genuinely new platform this time — all N are already in your base or earlier research." Then offer what can find new ones (other category, more products, SerpApi / DataForSEO footprints, Creative SEO idea) — never present repeated platforms as finds.
+
 **Never shown:** stop types and blacklisted sites (`references/exclusions.md`, the live list comes from the server), platforms whose example pages are removed, and the author's own posts as examples (filtered by the server). The author's private platforms are never named, not even as "skipped".
 
 Reply in the user's language.
@@ -173,7 +179,7 @@ D. Everything — A, then B on the searches left, then C only for what is still 
 - The size of B and the cost of C are always the `--dry-run` figures, shown before the run; B runs after a yes for that number of searches, C after a yes for that amount.
 - **How B and C run:** the pattern's method B footprints become one ready Google query per line (`queries.txt`), then `platformscan` with `--suffix ""` through `serpapi_run` (B) or `dataforseo_run` (C), `--dry-run` first: SerpApi costs 1 search per query per 10 results (keep `--depth 10` unless the user asks for more). Results go through the same exclusions, live check and sign-up lookup as every scan, then 4–5a below.
 
-**3. Search strictly by the pattern** — its Find section (method A: current products + "reviews 2026" + the platform's names or page words in the built-in web search; method B: the footprints in real Google through the user's SerpApi — free while the monthly searches last — or DataForSEO — paid; searches or cost shown first and only after a yes, see 2a). Plan check, mode and agents as everywhere: `on` → agent `platform-scout` in **pattern mode** (pass the category, the pattern and the common rules, the exclusions, the user's base, the chosen volume and source, and the seen-list from 5a); `lite` → up to 5 queries yourself per batch, one category at a time — the link check in 4a still runs in Lite (it is page opens, not searches). The volume chosen in 2a is the target, not a cap on what the search may look at: keep searching (more products, more query variants, deeper pages) until the batch is full of platforms that passed 4a or the source runs dry — then say which.
+**3. Search strictly by the pattern** — its Find section (method A: current products + "reviews 2026" + the platform's names or page words in the built-in web search; method B: the footprints in real Google through the user's SerpApi — free while the monthly searches last — or DataForSEO — paid; searches or cost shown first and only after a yes, see 2a). Plan check, mode and agents as everywhere: `on` → agent `platform-scout` in **pattern mode** (pass the category, the pattern and the common rules, the exclusions, the user's base **and research history** (№70: domains with their best dated position), the chosen volume and source, and the seen-list from 5a); `lite` → up to 5 queries yourself per batch, one category at a time — the link check in 4a still runs in Lite (it is page opens, not searches). The volume chosen in 2a is the target, not a cap on what the search may look at: keep searching (more products, more query variants, deeper pages) until the batch is full of platforms that passed 4a or the source runs dry — then say which.
 
 **3a. Products to search with — RULE (№52).** Method A needs product names, and the same three every time find the same platforms. Build the product list for the user's niche before the first query: the user's own products (links library, profile) → the current hot offers from the server when `hot_offers` is available (Rumer's list) → the current top of the marketplaces in the niche (ClickBank, Digistore24, BuyGoods by gravity) → `references/products-seed.md` as the last fallback. Take 15–30 names. **Rotate:** every batch and every "next 10" uses products not used yet in this session (keep them in the seen-list), never the first names of the list again. The products used go into the search source line of the result ("Products searched: …").
 
@@ -199,7 +205,7 @@ D. Everything — A, then B on the searches left, then C only for what is still 
 **5. Output** — one row per platform, the user should be able to act from the row without searching:
 ```
 New platforms · [category] · [niche, language] · checked [date] · by Rumer's pattern · links opened [date]
-| # | Platform | Class | Home | Sign-up | Live example (only if it opens) | Software | Topic · language | Affiliates (newest post / clean) | Wave | Indexing | Filters | Verdict |
+| # | Platform | Class | Discovery | Home | Sign-up | Live example (only if it opens) | Evidence | Policy | History | Software | Topic · language | Affiliates (newest post / clean) | Wave | Indexing | Filters | Verdict |
 ```
 Home and Sign-up are clickable links in every row. The "Live example" cell is a link only for a post that opened; otherwise "none live" or "clean — no posts yet". Under the table no list of example links that were not checked.
 Order: follow with a live wave → clean → fading ("check"). Closed ones only as a count line. Same exclusions and the local private filter as in every step; the author's private platforms are never named. ★ up to 3 with the reason; the user chooses by numbers and the choice is saved as in Step 5 (state `testing`). Never register or post for the user.
@@ -242,13 +248,14 @@ If the server is not connected, say once: "Checked platforms from Rumer come wit
 2. **Scan** — every affiliate review page has the same two words: *[product name] review*. Search them and collect every result that is not the product's own site or a store:
    ```
    python3 scripts/platformscan.py products.txt --country us --dry-run   # the cost first (top 10 by default)
-   python3 scripts/platformscan.py products.txt --country us --base parasite-seo-progress.csv
+   python3 scripts/platformscan.py products.txt --country us --base parasite-seo-progress.csv --history <earlier scans / research CSVs>
    ```
+   `--base` and `--history` give every row its Discovery and History (№70); the previous `--out` file is always read before it is overwritten.
    **With a PARASITER key** run it in two steps so the author's posts never reach the user:
    ```
    python3 scripts/platformscan.py products.txt --country us --exclusions exclusions.json --collect-only
    python3 scripts/privfilter.py private-hashes.json platforms-scan.examples.txt --out allowed.json   # local, nothing is sent
-   python3 scripts/platformscan.py --from-raw platforms-scan.raw.json --allowed allowed.json --exclusions exclusions.json --base parasite-seo-progress.csv
+   python3 scripts/platformscan.py --from-raw platforms-scan.raw.json --allowed allowed.json --exclusions exclusions.json --base parasite-seo-progress.csv --history <earlier scans>
    ```
    After the paid search everything is free: excluded and known-dead domains are dropped and counted; up to 3 example pages per platform are **opened live** (404/410, "page removed" text, redirect to the home or login page, empty page, noindex meta or X-Robots-Tag = removed) and a platform passes only if at least one example is alive; a sign-up link is looked up (home page, /register, /signup, /join, /user/register, /create-account…) and opened to check it works, otherwise "sign-up link not found" + the home page.
    Output: the summary line **"found N platforms · live M · removed K · skipped by stop / black list L"**, then **Free / Paid / To check** tables post-first: `Post · Product · Pos. · Platform · Type · Free/Paid · Sign-up` (best post first, 1–2 more under it); then "in Google, but the pages are removed: …" (never in the working list) and platforms that could not be verified automatically. Saved as `platforms-scan.csv`, dead domains in `platforms-scan-dead.txt` (kept locally, skipped in the next scans). `--suffix reviews` / `complaints` for other probes; `--device mobile` for the mobile SERP; `--self-test` checks the script offline.
@@ -270,6 +277,7 @@ A platform with no live example is never a candidate. Mark uncertain ones "test"
 - with the user's SerpApi / DataForSEO: real positions → `✓ #7 "mitolyn review" (14.11)` or `not in top 20`;
 - built-in web search only: `seen in results, position not verified`, or `not found` — never write a position you did not read;
 - Free: `not verified on Free` (the same check runs with the user's own SerpApi key).
+**History before verdict (№70):** a candidate without a top-20 sighting today is checked against the user's history first; a dated top position there keeps it as "proven earlier — recheck", with both dates, never "no ranking evidence".
 **How to read it (Rumer's rule):** a new platform is a chance to test. **Forums and communities** almost always work to some degree — open sign-up, live threads, indexing — so they stay "worth a test" even without top-20 proof: one post, indexing, a check in 7 days. **Other types** (document hosts, flipbooks, profiles, site builders, event, job and fundraising pages) need the proof: without a top-20 sighting for a commercial query they are "unproven — small test only", never a priority.
 
 **No duplicates, links validated.** One row per domain: merge every example of the same domain into that row (keep the best live example). Drop domains already in the user's base (show them under "Already in your base") and anything in the exclusions. Every Post and Sign-up link in the table was opened in this run: an example that redirected, needs a login or is gone is not shown as live.
@@ -296,15 +304,16 @@ If the user has all three, skip this block. One short line per item; no pressure
 
 ```
 Platform candidates · [niche] · [country] · checked [date]
-Found N · live M · removed K · skipped by stop / black list L
+Found N · NEW n · existing with new evidence m · repeated k · live M · removed K · skipped by stop / black list L
 Free
-| # | Post (live example) | Product | Pos. | Top 20? | Platform | Class | Type | Free/Paid | Score | Indexing | Moderation | Pros / risks | Sign-up |
+| # | Post (live example) | Product | Pos. | Top 20? | Platform | Class | Discovery | Evidence | Policy | History | Type | Free/Paid | Score | Indexing | Moderation | Pros / risks | Sign-up |
 Paid
 | # | Post | Product | Pos. | Platform | Type | Price / how to buy (if known) | Sign-up / contact |
 Already in your base: [platforms from the user's base that fit, with their state and priority]
 ```
 - **Class** = proven (affiliate reviews rank there now) in this table; domains in the top with no sign-up or post form go to the "Web 3.0 — posting route not obvious" block under the tables (4b of the pattern search), not to "To check".
 - **Top 20?** = the ranking proof above; forums and communities without proof read "worth a test (forum)".
+- **Discovery / Evidence / Policy / History** = RULE №70 above. Found N line becomes "Found N · NEW n · existing with new evidence m · repeated k · live M · removed K · skipped L"; history conflicts are listed under the tables.
 - **Score** = the `platform-analyzer` score 0–100 if there is one (server or the user's base), otherwise "not checked". Indexing speed and moderation from the server, the analyzer or the quick check; "unknown" when not checked. Pros / risks in a few words each.
 - **Sign-up** = the checked sign-up link, or "sign-up link not found" + the home page.
 - **Post** = a live, filtered example; if none is left after the filter: "example: find your own with \"[product] review\"".

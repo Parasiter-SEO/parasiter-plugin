@@ -536,7 +536,99 @@ def signup_cell(p):
     return f"sign-up link not found · {p.get('home') or 'https://' + p['domain'] + '/'}"
 
 
-def report(platforms, skipped, out, allowed, yours, today):
+# №70 evidence labels, research history and discovery status (beta-tester report on v0.50.0)
+def load_history(paths, journal=None, today=None):
+    """Everything the user already has on a platform: earlier scans (platforms-scan*.csv) and the journal's positions.
+    Returns {key: {"urls": set, "best": (pos, query/product, date, source) or None}} keyed by platform slug AND host."""
+    hist = defaultdict(lambda: {"urls": set(), "best": None})
+
+    def add(keys, url, pos, what, day, src):
+        for k in {x.lower() for x in keys if x}:
+            h = hist[k]
+            if url:
+                h["urls"].add(url.rstrip("/"))
+            try:
+                pos = int(float(pos)) if str(pos or "").strip() else None
+            except ValueError:
+                pos = None
+            if pos and (h["best"] is None or pos < h["best"][0]):
+                h["best"] = (pos, what or "", day or "", src)
+    for path in paths:
+        if not path or not os.path.exists(path):
+            continue
+        with open(path, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                dom = (r.get("platform") or "").lower()
+                for u in [r.get("post", "")] + (r.get("more_posts") or "").split():
+                    if u:
+                        add([dom, host_of(u)], u, r.get("position") if u == r.get("post") else "", r.get("product"),
+                            r.get("checked"), os.path.basename(path))
+                if r.get("best_position"):
+                    add([dom], "", r.get("best_position"), r.get("product_names", "").split(";")[0], r.get("checked"),
+                        os.path.basename(path))
+    if journal and os.path.exists(journal):
+        for pg in w.page_states(w.read_rows(journal), today or date.today()).values():
+            pos = pg.get("best_pos") or pg.get("position")
+            add([pg.get("platform", ""), host_of(pg["url"])], pg["url"], pos, pg.get("query") or pg.get("offer"),
+                str(pg.get("pos_date") or ""), "your journal")
+    return hist
+
+
+def evidence_cell(pg, live_status):
+    """№70 never "ranks" without a position read from Google: ranking verified (a ranking page is indexed) ·
+    seen in a Google block · example URL verified live only."""
+    if live_status != "live":
+        return "example removed" if live_status == "removed" else "could not verify"
+    if pg and pg.get("position"):
+        return f"Google ranking verified: #{pg['position']} (today) · example URL verified live"
+    if pg:
+        return "Seen in a Google block, position not recorded · example URL verified live"
+    return "Example URL verified live · Google ranking not checked"
+
+
+def history_of(p, hist):
+    keys = {p["platform"].lower(), p["domain"].lower()}
+    keys |= {host_of(pg["url"]) for pg in p["pages"]}
+    urls, best = set(), None
+    for k in keys:
+        h = hist.get(k)
+        if not h:
+            continue
+        urls |= h["urls"]
+        if h["best"] and (best is None or h["best"][0] < best[0]):
+            best = h["best"]
+    return urls, best
+
+
+def discovery_cell(p, hist, yours):
+    """NEW platform · EXISTING with NEW evidence · EXISTING repeated from saved research."""
+    urls, best = history_of(p, hist)
+    known = bool(urls or best) or p["platform"] in yours or p["domain"] in yours
+    if not known:
+        return "NEW platform"
+    now_urls = {pg["url"].rstrip("/") for pg in p["pages"]}
+    better = p["best_position"] and (best is None or int(p["best_position"]) < best[0])
+    if (now_urls - urls) or better:
+        return "EXISTING · NEW evidence"
+    return "EXISTING · repeated from saved research"
+
+
+def history_cell(p, hist, live_status):
+    """The best earlier evidence, and a conflict line when today's scan disagrees with it (never overwrite history)."""
+    _, best = history_of(p, hist)
+    if not best:
+        return "", ""
+    pos, what, day, src = best
+    cell = f"#{pos}" + (f' "{what}"' if what else "") + (f" ({day}" if day else " (") + f", {src})"
+    conflict = ""
+    if live_status == "removed":
+        conflict = f"history shows #{pos} on {day or '?'}; today the examples are removed — recheck before dropping"
+    elif not p["best_position"]:
+        conflict = f"history shows #{pos} on {day or '?'}; this scan did not see it in the top — recheck, history kept"
+    return cell, conflict
+
+
+def report(platforms, skipped, out, allowed, yours, today, hist=None):
     shown_hidden = 0
     rows = []
     for p in platforms:
@@ -556,6 +648,11 @@ def report(platforms, skipped, out, allowed, yours, today):
                      "more_posts": " ".join(pg["url"] for pg in live_pages[1:]),
                      "checks": " ".join(f"{pg['url']} → {pg.get('status', '-')}: {pg.get('why', '')}" for pg in p["pages"][:3]),
                      "product_names": "; ".join(p["products"])[:300], "checked": today})
+        hist = hist if hist is not None else {}
+        rows[-1]["evidence"] = evidence_cell(live_pages[0] if live_pages else None, p["live"])
+        rows[-1]["discovery"] = discovery_cell(p, hist, yours)
+        rows[-1]["history"], rows[-1]["conflict"] = history_cell(p, hist, p["live"])
+        rows[-1]["policy"] = "UNKNOWN"          # the platform's own rules: filled by the skill with the official URL
     order = {"live": 0, "unverified": 1, "removed": 2, "abuse": 3}
     rows.sort(key=lambda r: (order[r["status"]], -r["products"], r["position"] or r["best_position"] or 999))
     with open(out, "w", newline="", encoding="utf-8") as f:
@@ -572,21 +669,32 @@ def report(platforms, skipped, out, allowed, yours, today):
           f"skipped by stop / black list {n_skip}"
           + (f" · skipped as known dead {len(skipped['dead'])}" if skipped["dead"] else "")
           + (f" · could not verify {len(unver)}" if unver else "") + f" · checked {today} · saved to {out}\n")
+    found_rows = [r for r in rows if r["status"] in ("live", "unverified")]
+    n_new = sum(r["discovery"] == "NEW platform" for r in found_rows)
+    n_ev = sum(r["discovery"] == "EXISTING · NEW evidence" for r in found_rows)
+    n_rep = sum(r["discovery"].startswith("EXISTING · repeated") for r in found_rows)
+    print(f"Discovery: NEW platforms {n_new} · EXISTING with NEW evidence {n_ev} · EXISTING repeated from saved research {n_rep}")
+    if found_rows and not n_new:
+        print("No genuinely new platform in this scan: every platform found is already in your base or earlier research.")
+    conf = [r for r in rows if r["conflict"]]
+    if conf:
+        print("History conflicts (kept, not overwritten): " + " · ".join(f"{r['platform']}: {r['conflict']}" for r in conf[:15]))
+    print()
     by_slug = {p["domain"]: p for p in platforms}
     for title, keep in (("Free (user posts)", "free"), ("Paid (news / PR / sponsored)", "paid"), ("To check", "check")):
         part = [r for r in live if r["cost"] == keep]
         if not part:
             continue
         print(f"## {title} — {len(part)}")
-        print("| # | Post | Product | Pos. | Platform | Type | Free/Paid | Sign-up |")
-        print("|---|---|---|---|---|---|---|---|")
+        print("| # | Post | Product | Pos. | Platform | Discovery | Evidence | History | Policy | Type | Free/Paid | Sign-up |")
+        print("|---|---|---|---|---|---|---|---|---|---|---|---|")
         for i, r in enumerate(part[:40], 1):
             fp = "Paid" if keep == "paid" else "Free" if keep == "free" else "Free?"
             post = r["post"] or f"example: find your own with \"{(by_slug[r['platform']]['products'] or ['product'])[0]} review\""
             print(f"| {i} | {post} | {r['product']} | {r['position']} | {r['platform']}{' (yours)' if r['yours'] else ''} "
-                  f"| {r['type']} | {fp} | {r['signup']} |")
+                  f"| {r['discovery']} | {r['evidence']} | {r['history'] or '—'} | {r['policy']} | {r['type']} | {fp} | {r['signup']} |")
             for pg in by_slug[r["platform"]]["shown"][1:3]:
-                print(f"|  | ↳ {pg['url']} | {pg['product']} | {pg['position'] or ''} |  |  |  |  |")
+                print(f"|  | ↳ {pg['url']} | {pg['product']} | {pg['position'] or ''} |  |  |  |  |  |  |  |  |")
         print()
     if dead:
         print("In Google, but the pages are removed (not in the working list): "
@@ -655,6 +763,30 @@ def self_test():
                        "discussions_and_forums": [{"link": "https://www.reddit.com/r/x/comments/1"}]}])
     assert rc.serp_items(t) == [(1, "https://forum.example.com/t/x-review/1")]
     assert ("discussions_and_forums", "https://www.reddit.com/r/x/comments/1") in rc.serp_features(t)
+    # №70 evidence, history and discovery
+    assert "ranking not checked" in evidence_cell({"url": "u", "position": None}, "live") or \
+        "position not recorded" in evidence_cell({"url": "u", "position": None}, "live")
+    assert evidence_cell({"url": "u", "position": 3}, "live").startswith("Google ranking verified: #3")
+    assert evidence_cell(None, "live") == "Example URL verified live · Google ranking not checked"
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        old = os.path.join(d, "old.csv")
+        with open(old, "w", newline="", encoding="utf-8") as f:
+            wr = csv.DictWriter(f, fieldnames=["post", "product", "position", "platform", "more_posts", "best_position", "product_names", "checked"])
+            wr.writeheader()
+            wr.writerow({"post": "https://known.example/t/a-review", "product": "Acme", "position": "2",
+                         "platform": "known.example", "checked": "2026-10-24"})
+        hist = load_history([old])
+        known = {"platform": "known.example", "domain": "known.example", "best_position": "",
+                 "pages": [{"url": "https://known.example/t/a-review", "position": None}]}
+        assert discovery_cell(known, hist, set()) == "EXISTING · repeated from saved research"
+        cell, conflict = history_cell(known, hist, "live")
+        assert "#2" in cell and "2026-10-24" in cell and "recheck" in conflict      # history kept, conflict reported
+        known2 = dict(known, pages=[{"url": "https://known.example/t/b-review", "position": 5}], best_position=5)
+        assert discovery_cell(known2, hist, set()) == "EXISTING · NEW evidence"
+        fresh = {"platform": "fresh.example", "domain": "fresh.example", "best_position": 4,
+                 "pages": [{"url": "https://fresh.example/x", "position": 4}]}
+        assert discovery_cell(fresh, hist, set()) == "NEW platform" and history_cell(fresh, hist, "live") == ("", "")
     print("self-test ok")
 
 
@@ -678,6 +810,8 @@ def main():
     ap.add_argument("--no-live-check", action="store_true", help=argparse.SUPPRESS)
     ap.add_argument("--no-signup", action="store_true", help="skip the sign-up link search")
     ap.add_argument("--auth-fd", help=argparse.SUPPRESS)
+    ap.add_argument("--history", default="", help="earlier scans / research CSVs, comma-separated (the previous --out file is always read too): "
+                                                  "platforms found before are marked EXISTING and their old rankings are shown, never overwritten")
     ap.add_argument("--self-test", action="store_true", help="offline test of exclusions and the live-check rules")
     a = ap.parse_args()
     if a.self_test:
@@ -730,7 +864,9 @@ def main():
     else:
         print(f"- free live check of up to 3 example pages on {len([p for p in platforms if p['cost'] != 'abuse'])} platforms…")
         verify(platforms, signup=not a.no_signup)
-    report(platforms, skipped, a.out, load_allowed(a.allowed), yours, date.today().isoformat())
+    hist_paths = [x.strip() for x in a.history.split(",") if x.strip()] + [a.out]
+    hist = load_history(hist_paths, a.base, date.today())          # read BEFORE the new scan overwrites --out
+    report(platforms, skipped, a.out, load_allowed(a.allowed), yours, date.today().isoformat(), hist)
 
 
 if __name__ == "__main__":
