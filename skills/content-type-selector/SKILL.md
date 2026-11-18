@@ -1,6 +1,6 @@
 ---
 name: content-type-selector
-description: Choose WHAT to write before writing — the content type and topic that sells for a given product (A vs B comparison, personal experience, complaints/doubts, packages and pricing, discounts, real discussions, selection tools, original research, decision-tool "best of"). Use whenever the user wants to write, plan or pick a topic for a parasite SEO or affiliate post, asks "what should I write about", or before any conversion content is drafted.
+description: Choose WHAT to write before writing — the content type and topic that sells for a given product (A vs B comparison, personal experience, complaints/doubts, packages and pricing, discounts, real discussions, selection tools, original research, decision-tool "best of"); plus Rumer's forum cluster — analyze which competitor forum threads reached the top and Google's "Discussions and forums" block, then plan several fresh personal-experience threads per query to push the old ones out. Use whenever the user wants to write, plan or pick a topic for a parasite SEO or affiliate post, asks "what should I write about", wants to rank on forums or beat competitors' forum threads ("forum cluster", "forum posts", "Discussions and forums"), or before any conversion content is drafted.
 ---
 
 # Content Type Selector
@@ -48,6 +48,7 @@ Options that usually fit after this part (adapt to the user's products and words
 - "why 9?" — the score broken down by Rumer's 6 criteria and how to raise it
 - "check the platform first" — is it worth posting there (Pro)
 - "make the images" — cover and infographic
+- "forum cluster for <query>" — Rumer's forum method: competitor threads in the top → several fresh experience threads
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
@@ -58,6 +59,12 @@ AI answers now cover the basics ("what is it", "how it works", "pros and cons").
 Reply in the user's language. Keep questions short; ask only what you cannot infer.
 
 **Agency role:** the product, competitors, queries, country and voice come from `clients/<slug>/client-brief.md`; ideas come from the client's content plan and `brand-presence` gaps. The same buyer-doubt logic applies, in formats a brand can publish honestly: how to choose, best-of with the brand disclosed as one of the options, [brand] vs [competitor] by the brand's team, alternatives to [competitor], price / plans explained, case study, problem → solution. "Personal experience" needs a real person at the client who used it — otherwise drop it; "my rating" is never used for the brand's own product. The brief goes to `sales-review-writer` brand mode.
+
+## Forum cluster mode — Rumer's method (№68)
+
+When the user wants to rank on forums, beat competitors' forum threads, get into Google's "Discussions and forums" block, or says "forum cluster", "forum posts for <query>", "форумы", "обойти конкурентов на форумах" — run `references/forum-cluster.md` instead of Steps 1–5 below: queries → `forumscan` (the block and forum threads in the top with their ages, verdict OPEN / WINDOW / CROWDED / NO FORUMS; SerpApi free searches first, DataForSEO cost shown first; Lite = web search) → the competitor threads that won, taken apart (pattern, never copy) → 3–5 threads per query, each its own angle, on different forums, staggered → each thread written by `sales-review-writer` in forum experience mode → saved under `forum_clusters:` → recheck in 5–10 days with `--mine`. The honesty rules below hold: real experience or the research angle, the user's own accounts, no fake replies.
+
+Also offer it on its own when a SERP check (Step 3) shows the "Discussions and forums" block for an approved topic, or the user's base has strong forums: one line — "Google shows 'Discussions and forums' here: Rumer's forum cluster can take several places. Say **forum cluster**."
 
 ## Step 1 — Get the inputs
 

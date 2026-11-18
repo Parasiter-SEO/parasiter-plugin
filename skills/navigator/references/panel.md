@@ -41,7 +41,7 @@ Agency / site owner: Б1 Rumer's base (brand-safe filter) · Б2 the client's (o
 | 6 | platform-analyzer | score one platform 0–100 | Pro |
 | 7 | platform-feed | Rumer's feed, news, Telegram | Pro |
 | **Write** | | | |
-| 8 | content-type-selector | what to write: topics by Rumer's rules | Free |
+| 8 | content-type-selector | what to write: topics by Rumer's rules · forum cluster | Free |
 | 9 | sales-review-writer | the article, 1500+ words | Free |
 | 10 | post-illustrations | infographics + cover prompt | Free |
 | 11 | page-audit | check a page by link or text | Free |
@@ -109,7 +109,7 @@ Agents: affiliate-scout → 3 · product-researcher → 6 · serp-analyst → 5,
 | 6 | platform-analyzer | score one platform | Pro | affiliate, agency, site owner |
 | 7 | platform-feed | Rumer's feed, Telegram | Pro | affiliate, agency, site owner |
 | 8 | paid-placements | news sites, PR wires | Pro | agency, site owner |
-| 9 | content-type-selector | what to write | Free | all |
+| 9 | content-type-selector | what to write · forum cluster | Free | all |
 | 10 | sales-review-writer | the article | Free | all |
 | 11 | post-illustrations | infographics + cover | Free | all |
 | 12 | page-audit | check a page | Free | all |

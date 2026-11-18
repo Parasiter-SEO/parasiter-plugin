@@ -10,7 +10,7 @@ PARASITER server: it passes them only to PARASITER's own scripts through an inhe
 
 Tools:
   dataforseo_status  — is DataForSEO set up, and the account balance (free call)
-  dataforseo_run     — run a paid PARASITER script (rankcheck / aicheck / pagekeywords / platformscan / offerscan)
+  dataforseo_run     — run a paid PARASITER script (rankcheck / aicheck / pagekeywords / platformscan / forumscan / offerscan)
 """
 import base64
 import json
@@ -25,10 +25,11 @@ SCRIPTS = {
     "rankcheck": os.path.join(ROOT, "skills", "work-log", "scripts", "rankcheck.py"),
     "pagekeywords": os.path.join(ROOT, "skills", "work-log", "scripts", "pagekeywords.py"),
     "platformscan": os.path.join(ROOT, "skills", "platform-finder", "scripts", "platformscan.py"),
+    "forumscan": os.path.join(ROOT, "skills", "content-type-selector", "scripts", "forumscan.py"),
     "aicheck": os.path.join(ROOT, "skills", "work-log", "scripts", "aicheck.py"),
     "offerscan": os.path.join(ROOT, "skills", "affiliate-finder", "scripts", "offerscan.py"),
 }
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 MAX_OUT = 60_000
 SETUP = ("DataForSEO is not set up. Add your API login and password (app.dataforseo.com → API Access) "
          "in the PARASITER plugin settings: /plugin → PARASITER → configure options → "
@@ -114,7 +115,7 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "dataforseo_run",
      "description": ("Run a PARASITER script that calls the user's own DataForSEO account: rankcheck (Google or Bing positions of the user's pages, --engine bing), "
-                     "aicheck (is the page cited in Google AI Mode / ChatGPT / Gemini answers), pagekeywords (keywords each page ranks for), platformscan (platforms ranking for '<product> review') or offerscan (which affiliate products and programs the top pages for affiliate-intent queries push). "
+                     "aicheck (is the page cited in Google AI Mode / ChatGPT / Gemini answers), pagekeywords (keywords each page ranks for), platformscan (platforms ranking for '<product> review'), forumscan (the Discussions and forums block and forum threads in the top with their ages — Rumer's forum cluster method) or offerscan (which affiliate products and programs the top pages for affiliate-intent queries push). "
                      "PAID from the user's DataForSEO balance: run it with --dry-run first, show the cost and run for real only after the user says yes. "
                      "Credentials come from the plugin settings; never pass them in args."),
      "inputSchema": {"type": "object", "required": ["script", "args"], "properties": {

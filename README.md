@@ -68,7 +68,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | `goals` | Baseline journal, goals over 1 week to 12 months, reality check, milestones, weekly targets, progress log, weekly review |
 | `navigator` | Entry point: asks your role and offers the tools for it; for affiliates, today's plan from your goals, progress and time; routes each task |
 | `work-log` | Journal of work, traffic and sales, and your inventory: imports pages you already have and builds your own platform base; topics, priorities, top-10 positions and what to write where; logs every page, action and sale; imports network and platform exports; ties sales to pages by sub-ID; reports for any day, week or month; effectiveness by page, platform, offer, program, content type; check queue and weekly sales upload reminder; your whole base as a dashboard page and an Excel file |
-| `content-type-selector` | Picks the content type and topic that sell before writing |
+| `content-type-selector` | Picks the content type and topic that sell before writing; forum cluster — beat competitors' forum threads with several fresh experience threads per query (`forumscan`) |
 | `sales-review-writer` | Writes the sales review / comparison for your platform |
 | `page-audit` | Audits a page by link or text, 0–100 score, fixes |
 | `post-illustrations` | Image plan and generator prompts for your posts |

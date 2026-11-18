@@ -2,6 +2,17 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.52.0 — 2026-11-18
+
+**Forum cluster: Rumer's method for ranking above competitors on forums.** Rumer looked at which of a competitor's forum threads had reached the top and wrote about 10 of his own threads on those topics. They pushed the old threads out almost at once. Now PARASITER does this with you:
+- **See the forum top of your queries:** Google's "Discussions and forums" block and the forum threads in the top 20, each with its age, comments and forum engine, and which of them are yours. Every query gets a verdict: **OPEN** (old top, post now), **WINDOW**, **CROWDED** or **NO FORUMS**. It runs on your free SerpApi searches first, or DataForSEO with the cost shown first.
+- **Learn why the competitor's threads won:** title, opening, story, replies and forum rules. You take the pattern, never the text.
+- **Several threads per query:** 3–5 fresh threads, each with its own angle (my results, a question I answer, comparison from use, mistakes, for a specific person, downsides, update), on different forums, 1–2 a day. Fresh threads push old ones out, and several threads on one query take more places in the block.
+- **Threads that read like real ones, because they are:** a short interview about your own experience comes first. Then every thread is written as a native first-person post with real numbers, downsides and a question to the forum, your link where the forum allows it, and your own follow-up replies for later. No hands-on use? Then the honest research angle, never invented results.
+- **Track it:** the cluster is saved in your profile. In 5–10 days, "recheck the forum top" shows which of your threads got in and which old ones they pushed out.
+
+Say *"forum cluster for <your query>"* to try it.
+
 ## 0.51.0 — 2026-11-17
 
 Platform search now says exactly what is proven (thanks to a beta tester's detailed report):

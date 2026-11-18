@@ -75,6 +75,10 @@ If a CONTENT BRIEF from `content-type-selector` exists, use it and ask only for 
 6. **Unique assets**: own use of the product, photos, notes, measurements, screenshots, data.
 7. **Target query and country.**
 
+## Forum experience mode (Rumer's forum cluster, №68)
+
+A brief from the forum cluster (`forum_clusters:` in the profile), or "write a forum post from my experience", "write the cluster", "thread like a real one" → follow `references/forum-experience-post.md` instead of Steps 1b–6: the short experience interview first (saved under `experience:` in the writer profile, asked once per product), then native first-person threads, each with its own angle, downsides in every one, the user's link only where the forum allows, the author's own follow-up replies. No real use → the research angle, never invented results. Step 8 ("I published") and the work log stay the same; each thread is logged with content type `forum-experience`.
+
 ## Step 1b — Pick a visual reference
 
 Open `references/examples/INDEX.md`, pick 1–2 screenshots that match the content type and platform, look at them, and tell the user in one line which reference you follow. Take the structure and visual approach, not the text or claims. If nothing matches, follow `references/article-structure.md`.
@@ -238,4 +242,4 @@ What changes:
 - Show cons and say who the product is NOT for — that is what makes the recommendation believable.
 - Affiliate disclosure (brand mode: brand disclosure) and last-checked date on every page.
 - Role from `parasite-seo-profile.md` (navigator `references/roles.md`): affiliates and bloggers get the review mode; agencies and course authors / own-product owners get brand mode (above), disclosed as the brand's or the author's own product. Never present the user's own or a client's product as an independent review, test or ranking.
-- Length: **every article is at least 1,500 words** (count before handing over; if short, deepen pains, facts, life after, comparison and FAQ — never pad with filler). Longer where the platform wants it (PDF ~3,000, press release 2,000–3,000). Only non-article formats are shorter: Facebook posts, YouTube descriptions, Reddit/Quora answers.
+- Length: **every article is at least 1,500 words** (count before handing over; if short, deepen pains, facts, life after, comparison and FAQ — never pad with filler). Longer where the platform wants it (PDF ~3,000, press release 2,000–3,000). Only non-article formats are shorter: Facebook posts, YouTube descriptions, Reddit/Quora answers, and the threads of a forum cluster (`references/forum-experience-post.md`: the main story 1,200–1,800 words, other angles 500–1,000; a number the user asks for is always reached).

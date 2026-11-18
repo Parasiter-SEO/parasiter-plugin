@@ -40,7 +40,7 @@ The user must always know every skill and agent PARASITER has and not forget the
 **3. Write**
 | Skill | What it does | How to start | Plan |
 |---|---|---|---|
-| content-type-selector | what to write: topics picked by Rumer's rules — every topic scored by the 12-point filter ("Rumer filter score (of 12)"), best-of lists first | "What should I write about [product]?" | Free |
+| content-type-selector | what to write: topics picked by Rumer's rules — every topic scored by the 12-point filter ("Rumer filter score (of 12)"), best-of lists first; **forum cluster** — competitor threads in the top and "Discussions and forums" → several fresh experience threads per query | "What should I write about [product]?", "Forum cluster for [query]" | Free |
 | sales-review-writer | 1,500+ word article by the rules + rollout to your other platforms | "Write a review for Medium" | Free |
 | post-illustrations | infographics drawn by Claude + a free Gemini cover prompt | "Make images for the article" | Free |
 | page-audit | two scores: Rumer's rules and copywriting | "Audit my article: link" | Free |

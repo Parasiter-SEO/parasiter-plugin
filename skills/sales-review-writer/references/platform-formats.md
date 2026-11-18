@@ -5,7 +5,7 @@ Same sales logic everywhere (author → problem → solution → bridge → fact
 | Platform | Length | Tone | Formatting / limits |
 |---|---|---|---|
 | Medium, LinkedIn, blog-type platforms | 1,500–2,000+ words | Expert or real-user blog post | Full structure, tables, images, TOC |
-| Forums | 1,500+ words; split into post + replies only if the forum has a character limit | Native forum user/expert, first person, friendly, asks for replies | Forum editor (often BBCode), images hosted externally, check keyword filters and moderation; unique title matters most; prepare 2–5 own replies in the thread |
+| Forums | 1,500+ words; split into post + replies only if the forum has a character limit | Native forum user/expert, first person, friendly, asks for replies | Forum editor (often BBCode), images hosted externally, check keyword filters and moderation; unique title matters most; prepare 2–5 own replies in the thread (the author's own, never other "users"). Forum cluster threads (several per query): `forum-experience-post.md` |
 | Reddit / Quora | Short to medium | Genuine question/answer, community voice | No sales voice; follow subreddit rules |
 | PDF (upload platforms) | ~3,000 words | Research paper / analysis | Clean, standard document look (no flashy design); few light images; TOC/bookmarks; key benefits and main links on the first screens; mobile-readable; soft CTAs |
 | Press release (GlobeNewswire, Access Newswire, etc.) | 2,000–3,000 words | Independent expert/journalist, educational | Neutral language, avoid "best"/hype; facts, comparisons, links to credible sources; images if the editor allows |

@@ -13,7 +13,7 @@ search for new platforms): SerpApi's free plan gives 250 searches a month, paid 
 Tools:
   serpapi_status — is SerpApi set up, the plan and the searches left this month (free, uses no search)
   serpapi_run    — run the position check (rankcheck), the offer scan (offerscan) or the platform scan
-                   (platformscan) on the user's SerpApi account
+                   (platformscan) or the forum cluster scan (forumscan) on the user's SerpApi account
 """
 import json
 import os
@@ -28,8 +28,9 @@ SCRIPTS = {
     "rankcheck": os.path.join(ROOT, "skills", "work-log", "scripts", "rankcheck.py"),
     "offerscan": os.path.join(ROOT, "skills", "affiliate-finder", "scripts", "offerscan.py"),
     "platformscan": os.path.join(ROOT, "skills", "platform-finder", "scripts", "platformscan.py"),
+    "forumscan": os.path.join(ROOT, "skills", "content-type-selector", "scripts", "forumscan.py"),
 }
-VERSION = "1.1.0"
+VERSION = "1.2.0"
 MAX_OUT = 60_000
 SIGNUP = "https://serpapi.com/users/sign_up"
 SETUP = ("SerpApi is not set up. Create a free account (" + SIGNUP + ", 250 searches a month), copy your API key "
@@ -109,11 +110,11 @@ def run(script, args=None, cwd=None, timeout_minutes=30):
 
 TOOLS = [
     {"name": "serpapi_status",
-     "description": "Check whether the user's own SerpApi account is set up in the PARASITER plugin settings, its plan, searches per month and the searches left this month. Free, uses no search. Use before offering any SerpApi run (position check, offer scan, platform scan or footprint search) and show the searches left.",
+     "description": "Check whether the user's own SerpApi account is set up in the PARASITER plugin settings, its plan, searches per month and the searches left this month. Free, uses no search. Use before offering any SerpApi run (position check, offer scan, platform scan, footprint search or forum scan) and show the searches left.",
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "serpapi_run",
      "description": ("Run PARASITER's position check (rankcheck: Google or Bing positions of the user's pages, --engine bing), the offer scan (offerscan: which affiliate products and programs the top pages push) "
-                     "or the platform scan (platformscan: platforms where '<product> review' pages rank; with --suffix \"\" the lines are ready footprint queries for the new-platform pattern search) on the user's own SerpApi account — "
+                     "the platform scan (platformscan: platforms where '<product> review' pages rank; with --suffix \"\" the lines are ready footprint queries for the new-platform pattern search) or the forum cluster scan (forumscan: the Discussions and forums block and forum threads in the top with their ages, for Rumer's forum cluster method) on the user's own SerpApi account — "
                      "the alternative to dataforseo_run. Uses the user's SerpApi searches (free plan: 250 a month; Google: 1 search per 10 results per query, "
                      "so top 30 = 3 searches per query). Run it with --dry-run first, show how many searches it takes and how many are left (serpapi_status), "
                      "and run for real only after the user says yes. The key comes from the plugin settings; never pass it, or --provider, in args."),
