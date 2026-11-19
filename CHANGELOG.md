@@ -2,6 +2,16 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.53.0 — 2026-11-19
+
+**Dead threads and noindex are caught (thanks to a beta tester's report).** Every example page in platform and forum search now gets two separate fields:
+- **Thread availability:** LIVE THREAD · REDIRECTED / REMOVED · FETCH BLOCKED · UNVERIFIED. A page that answers "200 OK" but only sends you to the forum index with a JavaScript or meta-refresh redirect is now marked removed. A thread counts as live only when its topic is really on the final page.
+- **Indexing eligibility:** INDEXABLE · NOINDEX · UNVERIFIED, read from the page's robots meta tag and the X-Robots-Tag header. A live page with noindex is shown as such and is never counted as proof that a platform's posts get into Google.
+- **Search sightings vs Google positions:** a find from built-in search reads "seen in built-in search results — not a Google position". A position is written only from a dated Google check.
+- **Update fix:** the version in the marketplace now matches the plugin, so Claude Code shows the update.
+
+Say *"find forums"* or *"find platforms"* to try it.
+
 ## 0.52.0 — 2026-11-18
 
 **Forum cluster: Rumer's method for ranking above competitors on forums.** Rumer looked at which of a competitor's forum threads had reached the top and wrote about 10 of his own threads on those topics. They pushed the old threads out almost at once. Now PARASITER does this with you:

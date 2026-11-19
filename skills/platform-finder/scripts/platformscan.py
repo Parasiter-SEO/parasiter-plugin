@@ -5,6 +5,7 @@
                   [--base parasite-seo-progress.csv] [--out platforms-scan.csv] [--dry-run] [--live]
                   [--exclusions exclusions.json] [--exclude domain[/path],...] [--collect-only]
   platformscan.py --from-raw platforms-scan.raw.json [--allowed allowed.json] [--exclusions ...]
+  platformscan.py --check-urls urls.txt [--out checks.csv]
   platformscan.py --self-test
 
 PRODUCTS: a text file with one affiliate product name per line (or a CSV with a product column),
@@ -19,8 +20,12 @@ After the paid search everything else is free:
 - Exclusions: stop types and the blacklist (references/exclusions.md, merged with the server list
   passed by --exclusions = the saved answer of `exclusions_get`) and the known-dead platforms from
   the server are dropped before any check and only counted.
-- Live check: up to 3 example pages per platform are opened (404/410, "page removed" text,
-  redirect to the home or login page, empty page, noindex meta / X-Robots-Tag = removed).
+- Live check: up to 3 example pages per platform are opened. Two fields per page (№71):
+  thread availability LIVE THREAD / REDIRECTED / REMOVED / FETCH BLOCKED / UNVERIFIED (404/410,
+  "page removed" text, HTTP or client-side redirect — JavaScript or meta refresh — to the index,
+  home or login page, empty stub, or the expected topic missing at the destination) and indexing
+  eligibility INDEXABLE / NOINDEX / UNVERIFIED (meta robots / googlebot, X-Robots-Tag). An example
+  counts as working only when it is LIVE THREAD and INDEXABLE.
   A platform passes only if at least one example is alive. Platforms whose examples are all
   removed are listed apart and their domains saved to platforms-scan-dead.txt (kept locally).
 - Sign-up link: found on the home page or common paths (/register, /signup, /join…) and opened
@@ -266,39 +271,150 @@ def visible_text(html):
     return re.sub(r"\s+", " ", t).strip()
 
 
-def judge(orig_url, status, final_url, headers, body):
-    """Pure decision: ('live'|'removed'|'unknown', why). No network here, so it is unit-tested."""
+# №71 (beta report on v0.51.0): two separate fields for every example page.
+#   availability: LIVE THREAD · REDIRECTED / REMOVED · FETCH BLOCKED · UNVERIFIED
+#   indexing:     INDEXABLE · NOINDEX · UNVERIFIED
+# HTTP 200 alone proves nothing: a ~80-byte page with window.location.href to the forum index is a dead
+# thread. Client-side redirects (JavaScript, meta refresh) are followed one hop and the destination must
+# still carry the expected discussion.
+LIVE, GONE, BLOCKED, UNVER = "LIVE THREAD", "REDIRECTED / REMOVED", "FETCH BLOCKED", "UNVERIFIED"
+INDEXABLE, NOINDEX = "INDEXABLE", "NOINDEX"
+JS_REDIRECT = re.compile(r"""(?:window|document|top|self|parent)?\.?location(?:\.href)?\s*=\s*["']([^"']+)["']"""
+                         r"""|location\.(?:replace|assign)\(\s*["']([^"']+)["']""", re.I)
+META_TAG = re.compile(r"<meta\b[^>]*>", re.I)
+BLOCK_TEXT = re.compile(r"(just a moment\.\.\.|checking your browser|cf-chl|attention required|access denied|"
+                        r"enable javascript and cookies|verify you are (a )?human|captcha)", re.I)
+INDEX_SEGMENTS = {"", "forum", "forums", "community", "board", "boards", "discussions", "discuss", "index.php",
+                  "index.html", "home", "topics", "threads", "latest", "categories", "c", "t", "f"}
+SLUG_STOP = {"the", "and", "for", "with", "that", "this", "from", "your", "you", "are", "was", "how", "what",
+             "why", "does", "threads", "thread", "topic", "topics", "forum", "forums", "post", "posts", "index",
+             "html", "php", "viewtopic", "showthread", "discussion", "discussions", "community", "page"}
+
+
+def _attr(tag, name):
+    m = re.search(name + r"""\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))""", tag, re.I)
+    return (m.group(1) or m.group(2) or m.group(3) or "") if m else ""
+
+
+def noindex_reason(headers, html):
+    """'X-Robots-Tag' / 'meta robots' / '' — noindex or none for all bots or for Googlebot."""
+    for part in re.split(r",(?=\s*[a-z0-9_-]+\s*:\s*[a-z])|\n", headers.get("x-robots-tag") or "", flags=re.I):
+        m = re.match(r"\s*([a-z0-9_-]+)\s*:\s*([a-z].*)", part, re.I)
+        bot, rules = (m.group(1).lower(), m.group(2)) if m and m.group(1).lower() != "unavailable_after" else ("", part)
+        if bot in ("", "googlebot") and re.search(r"\b(noindex|none)\b", rules, re.I):
+            return "X-Robots-Tag"
+    for tag in META_TAG.findall(html):
+        if _attr(tag, "name").lower() in ("robots", "googlebot") and re.search(r"\b(noindex|none)\b", _attr(tag, "content"), re.I):
+            return "meta robots"
+    return ""
+
+
+def client_redirect(html, base_url):
+    """Target URL of a meta refresh or a script redirect, or ''. A script redirect counts only on a stub
+    page (little visible text): ordinary pages carry location.href in click handlers."""
+    for tag in META_TAG.findall(html):
+        if _attr(tag, "http-equiv").lower() == "refresh":
+            m = re.search(r"url\s*=\s*['\"]?([^'\";]+)", _attr(tag, "content"), re.I)
+            delay = re.match(r"\s*(\d+)", _attr(tag, "content"))
+            if m and (not delay or int(delay.group(1)) <= 10):
+                return urllib.parse.urljoin(base_url, m.group(1).strip())
+    if len(visible_text(html)) < 300:
+        m = JS_REDIRECT.search(html)
+        if m:
+            return urllib.parse.urljoin(base_url, (m.group(1) or m.group(2)).strip())
+    return ""
+
+
+def is_index_path(path):
+    segs = [x for x in path.lower().split("?")[0].split("/") if x]
+    return all(x in INDEX_SEGMENTS for x in segs)
+
+
+def expected_tokens(url, expect=""):
+    """Words the discussion must carry: from the expected title, else from the URL slug."""
+    src = expect or urllib.parse.unquote(host_path(url)[1])
+    words = [x for x in re.split(r"[^a-z0-9]+", src.lower()) if len(x) >= 4 and not x.isdigit() and x not in SLUG_STOP]
+    return list(dict.fromkeys(words))[:8]
+
+
+def topic_present(tokens, html):
+    if not tokens:
+        return None                       # nothing to compare (e.g. /t/12345): not proven either way
+    hay = (" ".join(re.findall(r"(?is)<title[^>]*>(.*?)</title>", html)) + " " + visible_text(html)).lower()
+    hits = sum(t in hay for t in tokens)
+    return hits >= max(1, min(3, (len(tokens) + 1) // 2))
+
+
+def assess(orig_url, status, final_url, headers, body, expect="", hop=None):
+    """Pure decision (unit-tested). hop = (status, final_url, headers, body) of the client-redirect target,
+    when the caller fetched it. Returns {availability, indexing, why, final}."""
+    def out(av, why, ix=UNVER, final=None):
+        return {"availability": av, "indexing": ix, "why": why, "final": final or final_url or orig_url}
     if status in (404, 410):
-        return "removed", f"HTTP {status}"
+        return out(GONE, f"HTTP {status}")
+    if status in (401, 403, 429) or (status and status >= 500):
+        return out(BLOCKED, f"HTTP {status} — the site blocks automatic checks, open by hand")
     if status and status >= 400:
-        return "unknown", f"HTTP {status} (site blocks the check — open by hand)"
-    if "noindex" in (headers.get("x-robots-tag") or "").lower():
-        return "removed", "noindex (X-Robots-Tag)"
+        return out(UNVER, f"HTTP {status}")
     o_host, o_path = host_path(orig_url)
     f_host, f_path = host_path(final_url or orig_url)
+    tokens = expected_tokens(orig_url, expect)
     if final_url and final_url != orig_url:
         if LOGIN_PATH.search(f_path) and not LOGIN_PATH.search(o_path):
-            return "removed", "redirect to the login page"
-        if f_path.rstrip("/") == "" and o_path.rstrip("/") != "":
-            return "removed", "redirect to the home page"
+            return out(GONE, "HTTP redirect to the login page")
+        if is_index_path(f_path) and not is_index_path(o_path):
+            return out(GONE, "HTTP redirect to the forum index / home page")
     ctype = (headers.get("content-type") or "").lower()
     if "pdf" in ctype or o_path.lower().endswith(".pdf"):
         if body[:5] == b"%PDF-" or "pdf" in ctype:
-            return ("live", "PDF opens") if len(body) > 1000 else ("removed", "empty PDF")
-        # a PDF link that now serves HTML: judge the HTML below
+            ix = NOINDEX if noindex_reason(headers, "") else INDEXABLE
+            return out(LIVE, "PDF opens", ix) if len(body) > 1000 else out(GONE, "empty PDF")
     html = body.decode("utf-8", "replace")
-    if NOINDEX_META.search(html) or NOINDEX_META2.search(html):
-        return "removed", "noindex (meta robots)"
+    target = client_redirect(html, final_url or orig_url)
+    if target:
+        kind = "meta refresh" if any(_attr(t, "http-equiv").lower() == "refresh" for t in META_TAG.findall(html)) else "JavaScript redirect"
+        t_path = host_path(target)[1]
+        if hop is None:
+            if is_index_path(t_path) or LOGIN_PATH.search(t_path):
+                return out(GONE, f"HTTP {status or 200} but {kind} to {target} ({len(body)} bytes) — the thread is gone", final=target)
+            return out(UNVER, f"{kind} to {target} — destination not opened, check by hand", final=target)
+        dest = assess(target, *hop, expect=expect or " ".join(tokens))
+        if dest["availability"] == LIVE and not is_index_path(t_path) and not LOGIN_PATH.search(t_path):
+            dest["why"] = f"moved: {kind} to {dest['final']} · " + dest["why"]
+            return dest
+        why = f"HTTP {status or 200} but {kind} to {target}"
+        if dest["availability"] == LIVE or is_index_path(t_path):
+            why += " (forum index / home)" if is_index_path(t_path) else " (expected discussion not there)"
+        else:
+            why += f" → {dest['why']}"
+        return out(GONE, why + " — the thread is gone", final=dest["final"])
+    if BLOCK_TEXT.search(" ".join(re.findall(r"(?is)<title[^>]*>(.*?)</title>", html))) or \
+            (len(visible_text(html)) < 600 and BLOCK_TEXT.search(html)):
+        return out(BLOCKED, "bot check / captcha page — open by hand")
     text = visible_text(html)
     title = " ".join(re.findall(r"(?is)<title[^>]*>(.*?)</title>", html))[:300]
     heads = " ".join(re.findall(r"(?is)<h1[^>]*>(.*?)</h1>", html))[:300]
     if REMOVED_TEXT.search(title) or REMOVED_TEXT.search(visible_text(heads)) or REMOVED_TEXT.search(text[:1500]):
-        return "removed", "'page removed / not found' text"
+        return out(GONE, "'page removed / not found' text")
     if len(text) < 150:
         if len(html) > 20000:
-            return "unknown", "page is built by scripts — open by hand"
-        return "removed", "empty page"
-    return "live", f"HTTP {status or 200}"
+            return out(UNVER, "page is built by scripts — open by hand")
+        return out(GONE, f"empty page ({len(body)} bytes)")
+    nr = noindex_reason(headers, html)
+    ix = NOINDEX if nr else INDEXABLE
+    ix_why = f" · noindex ({nr})" if nr else ""
+    found = topic_present(tokens, html)
+    if found is False:
+        if final_url and final_url != orig_url:
+            return out(GONE, f"HTTP redirect to {final_url} — expected discussion not there")
+        return out(UNVER, "page opens but the expected topic is not on it — check by hand" + ix_why, ix)
+    return out(LIVE, f"HTTP {status or 200}" + (" · topic found" if found else " · topic not compared") + ix_why, ix)
+
+
+def judge(orig_url, status, final_url, headers, body, expect="", hop=None):
+    """Scan verdict ('live'|'removed'|'unknown', why) from assess(): a working example must be a live
+    thread AND indexable — a noindexed page is never proof that the platform's posts get into Google."""
+    return verdict(assess(orig_url, status, final_url, headers, body, expect, hop))
 
 
 def fetch(url, limit=600_000, timeout=20):
@@ -316,16 +432,58 @@ def fetch(url, limit=600_000, timeout=20):
         return e.code, e.geturl() or url, {k.lower(): v for k, v in (e.headers or {}).items()}, body
 
 
-def check_page(url):
+def check_url(url, expect=""):
+    """Network wrapper of assess(): follows one client-side redirect."""
     try:
-        return judge(url, *fetch(url))
+        res = fetch(url)
+        hop = None
+        if res[0] and res[0] < 400:
+            target = client_redirect(res[3].decode("utf-8", "replace"), res[1] or url)
+            if target:
+                try:
+                    hop = fetch(target)
+                except Exception:
+                    hop = None
+        return assess(url, *res, expect=expect, hop=hop)
     except urllib.error.URLError as e:
         reason = str(getattr(e, "reason", e))
         if "Name or service not known" in reason or "getaddrinfo" in reason or "nodename" in reason:
-            return "removed", "domain does not resolve"
-        return "unknown", "could not open: " + reason[:60]
+            return {"availability": GONE, "indexing": UNVER, "why": "domain does not resolve", "final": url}
+        return {"availability": BLOCKED, "indexing": UNVER, "why": "could not open: " + reason[:60], "final": url}
     except Exception as e:  # timeouts, TLS, broken servers
-        return "unknown", "could not open: " + str(e)[:60]
+        return {"availability": BLOCKED, "indexing": UNVER, "why": "could not open: " + str(e)[:60], "final": url}
+
+
+def verdict(r):
+    if r["availability"] == LIVE:
+        return ("removed", "noindex — " + r["why"]) if r["indexing"] == NOINDEX else ("live", r["why"])
+    return ("removed" if r["availability"] == GONE else "unknown"), r["why"]
+
+
+def check_page(url, expect=""):
+    return verdict(check_url(url, expect))
+
+
+def check_urls_cli(path, out):
+    """--check-urls: one URL per line, optionally TAB + expected thread title. Prints both fields."""
+    rows = []
+    with open(path, encoding="utf-8") as f:
+        items = [ln.rstrip("\n").split("\t", 1) for ln in f if ln.strip() and not ln.startswith("#")]
+    with ThreadPoolExecutor(8) as pool:
+        res = list(pool.map(lambda it: check_url(it[0].strip(), it[1].strip() if len(it) > 1 else ""), items))
+    print("| URL | Thread availability | Indexing eligibility | Why | Final URL |")
+    print("|---|---|---|---|---|")
+    for it, r in zip(items, res):
+        rows.append({"url": it[0].strip(), "availability": r["availability"], "indexing": r["indexing"],
+                     "why": r["why"], "final": r["final"], "checked": date.today().isoformat()})
+        print(f"| {it[0].strip()} | {r['availability']} | {r['indexing']} | {r['why']} | {r['final']} |")
+    if out:
+        with open(out, "w", newline="", encoding="utf-8") as f:
+            wr = csv.DictWriter(f, fieldnames=["url", "availability", "indexing", "why", "final", "checked"])
+            wr.writeheader()
+            wr.writerows(rows)
+    print("\nThread availability and indexing eligibility are page checks only — not a Google position. "
+          "A position is written only from a dated Google check (SerpApi / DataForSEO).")
 
 
 # ---------- sign-up link (№5) ----------
@@ -507,8 +665,10 @@ def verify(platforms, signup=True, workers=8):
     jobs = [(i, j, pg["url"]) for i, p in enumerate(platforms) if p["cost"] != "abuse"
             for j, pg in enumerate(p["pages"][:3])]
     with ThreadPoolExecutor(workers) as pool:
-        for (i, j, _), res in zip(jobs, pool.map(lambda t: check_page(t[2]), jobs)):
-            platforms[i]["pages"][j]["status"], platforms[i]["pages"][j]["why"] = res
+        for (i, j, _), r in zip(jobs, pool.map(lambda t: check_url(t[2]), jobs)):
+            pg = platforms[i]["pages"][j]
+            pg["availability"], pg["indexing"] = r["availability"], r["indexing"]
+            pg["status"], pg["why"] = verdict(r)
     for p in platforms:
         st = [pg.get("status") for pg in p["pages"][:3]]
         p["live"] = "abuse" if p["cost"] == "abuse" else "live" if "live" in st else \
@@ -646,7 +806,8 @@ def report(platforms, skipped, out, allowed, yours, today, hist=None):
                      "status": p["live"], "products": len(p["products"]), "best_position": p["best_position"],
                      "serp_blocks": " ".join(p["serp_blocks"]), "yours": "yes" if p["platform"] in yours else "",
                      "more_posts": " ".join(pg["url"] for pg in live_pages[1:]),
-                     "checks": " ".join(f"{pg['url']} → {pg.get('status', '-')}: {pg.get('why', '')}" for pg in p["pages"][:3]),
+                     "checks": " ".join(f"{pg['url']} → {pg.get('availability', pg.get('status', '-'))} · {pg.get('indexing', 'UNVERIFIED')}: {pg.get('why', '')}"
+                                       for pg in p["pages"][:3]),
                      "product_names": "; ".join(p["products"])[:300], "checked": today})
         hist = hist if hist is not None else {}
         rows[-1]["evidence"] = evidence_cell(live_pages[0] if live_pages else None, p["live"])
@@ -744,6 +905,34 @@ def self_test():
     assert judge(u, 200, u, {}, b"<html><title>Oops! That page can\xe2\x80\x99t be found</title><h1>Page not found</h1></html>")[0] == "removed"
     assert judge(u, 200, u, {}, b"<html><body></body></html>")[0] == "removed"
     assert judge(u, 403, u, {}, b"")[0] == "unknown"
+    # №71: JS / meta-refresh stubs, noindex as its own field, topic at the destination
+    stub = b'<script>window.location.href="https://forum.example.com/";</script>'
+    assert len(stub) < 100
+    r = assess(u, 200, u, {}, stub)
+    assert r["availability"] == GONE and "JavaScript redirect" in r["why"], r
+    r = assess(u, 200, u, {}, stub, hop=(200, "https://forum.example.com/", {}, page))
+    assert r["availability"] == GONE, r
+    meta = b'<html><head><meta http-equiv="refresh" content="0; url=/forums/"></head><body></body></html>'
+    assert assess(u, 200, u, {}, meta)["availability"] == GONE
+    moved = b'<script>location.replace("/threads/x-review-new.9/")</script>'
+    r = assess(u, 200, u, {}, moved, hop=(200, "https://forum.example.com/threads/x-review-new.9/", {}, page))
+    assert r["availability"] == LIVE and r["why"].startswith("moved"), r
+    r = assess(u, 200, u, {}, moved, hop=(200, "https://forum.example.com/threads/other.9/", {},
+                                          b"<title>Other</title><body>" + b"<p>Unrelated chatter here. </p>" * 20))
+    assert r["availability"] == GONE, r
+    ni = assess(u, 200, u, {}, page.replace(b"<head>", b"<head><meta content=\"noindex\" name=\"robots\">"))
+    assert ni["availability"] == LIVE and ni["indexing"] == NOINDEX, ni
+    assert assess(u, 200, u, {"x-robots-tag": "googlebot: noindex, nofollow"}, page)["indexing"] == NOINDEX
+    assert assess(u, 200, u, {"x-robots-tag": "otherbot: noindex"}, page)["indexing"] == INDEXABLE
+    assert assess(u, 200, u, {"x-robots-tag": "unavailable_after: 25 Jun 2030 15:00:00 PST"}, page)["indexing"] == INDEXABLE
+    assert assess(u, 200, u, {}, page)["indexing"] == INDEXABLE
+    assert assess(u, 403, u, {}, b"")["availability"] == BLOCKED
+    assert assess(u, 200, u, {}, b"<title>Just a moment...</title>")["availability"] == BLOCKED
+    assert assess(u, 200, "https://forum.example.com/threads/other.2/", {},
+                  b"<title>Other</title><body>" + b"<p>Unrelated chatter here. </p>" * 20)["availability"] == GONE
+    assert assess(u, 200, u, {}, b"<title>Forum</title><body>" + b"<p>Unrelated chatter here. </p>" * 20)["availability"] == UNVER
+    handler = page.replace(b"</body>", b"<a onclick=\"location.href='/login'\">x</a></body>")
+    assert assess(u, 200, u, {}, handler)["availability"] == LIVE        # handlers on a full page are not redirects
     assert judge("https://x.example/a.pdf", 200, "https://x.example/a.pdf", {"content-type": "application/pdf"}, b"%PDF-" + b"0" * 2000)[0] == "live"
     assert classify("https://docs.example.net/files/x.pdf")[2] == "document/pdf"
     # №66: stores matched by domain, not substring; Google Sites & co. are platforms
@@ -813,9 +1002,13 @@ def main():
     ap.add_argument("--history", default="", help="earlier scans / research CSVs, comma-separated (the previous --out file is always read too): "
                                                   "platforms found before are marked EXISTING and their old rankings are shown, never overwritten")
     ap.add_argument("--self-test", action="store_true", help="offline test of exclusions and the live-check rules")
+    ap.add_argument("--check-urls", help="free page check only: a file with one URL per line (optionally TAB + expected thread title); "
+                                         "prints thread availability and indexing eligibility as two fields (№71)")
     a = ap.parse_args()
     if a.self_test:
         return self_test()
+    if a.check_urls:
+        return check_urls_cli(a.check_urls, a.out if a.out != "platforms-scan.csv" else "")
 
     ex = load_exclusions(a.exclusions, a.exclude.split(","))
     base_out = os.path.splitext(a.out)[0]
