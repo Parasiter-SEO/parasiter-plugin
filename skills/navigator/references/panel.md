@@ -23,7 +23,7 @@ The user's working data opens in one step, **above the skills**, with short code
 | Б1 / B1 | **Rumer's platform base** — checked platforms, live example posts, sign-up links; filters type / language / new this week | `platform-finder` Step 2 (`platforms_search`, `feed_latest`); Free key: Free mode A (`free_base`, the 50 snapshot) | Free key: 50 · Pro / Insider: all |
 | Б2 / B2 | **My platforms** — the user's own base: priority, state, posts, in the top | `work-log` Mode 7 | Pro |
 | Б3 / B3 | **Journal** — pages, sales, traffic, the check queue; today / week / month | `work-log` Mode 4 (report), Mode 5 (queue), Mode 6b (base page to open / download) | Free key: 10 pages (list + checks) · Pro |
-| Б4 / B4 | **My offers and links** — the affiliate links library | `work-log` Mode 10 | Pro |
+| Б4 / B4 | **My offers and links** — the affiliate links library; plus **Rumer's starter programs** by niche (`starter_offers`, every plan, №73) | `work-log` Mode 10; starter programs: `first-post.md` Step 2 | Links library: Pro · starter programs: all |
 | Б5 / B5 | **Feed** — new platforms, news, weekly analysis | `platform-feed` | Pro |
 
 Agency / site owner: Б1 Rumer's base (brand-safe filter) · Б2 the client's (or the site's) platforms · Б3 the client's journal · Б4 **paid placements base** (`paid-placements/references/placements.md`) · Б5 feed. Creator: Б2 my channels (`creator-channels` profile) · Б3 journal. A base above the user's plan stays listed, marked "🔒 Pro" with what it would hold for them; choosing it gives the locked card (`upgrade-showcase.md` §2) and what works on their plan (Free key → the 50 snapshot).

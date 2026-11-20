@@ -1,5 +1,7 @@
 # Free start — the first setup and the First look on the Free plan (№67)
 
+> **Beginners (`level: new`) take the "First post with Rumer" path instead (`first-post.md`, №73):** story → what to promote → their strategy → one real post through the whole cycle. This file is for users who already do parasite SEO (`level: pro`).
+
 The Free plan's job: the user starts real work inside PARASITER, gets the first insights from **their own** story and data, and feels where the Free limits end. So on a Free key (and with no key, as far as it goes) the navigator runs the whole first setup for real — it is not a Pro feature. Only the **daily** plan, the session checks and continuous reports stay Pro.
 
 Everything is in the working language. Nothing from the story or the uploads goes to the PARASITER server: files stay in the user's folder.

@@ -10,6 +10,16 @@ The whole start, step by step for each plan (Free, Pro, Insider), with what to s
 4. You get 2–5 tasks for today and the capability map (every function, what to say, its plan). "Start with #1?" — each task opens the right skill.
 On Free the whole setup works too: after your story and uploads you get the First look (three insights from your own data), and after step 12 a Starter plan for the first week; the daily plan is Pro. The setup is 12 fixed steps (language and role · work environment · about you · upload your base · goals · offers · affiliate links or approvals · indexing · Telegram · first topic · first article · publish and log). Under every reply you see "First setup · step N of 12", what is done and the one thing to do now. Progress is saved in your profile: a new chat or a break continues from the same step. Say "skip" to leave a step for later, "where am I?" to see the whole list.
 
+## I'm new: first post with Rumer
+New to parasite SEO? Say *"I'm new, guide me"* (or answer "I'm new" on the Free form). PARASITER walks you through one real post from start to finish, one step at a time:
+1. **About you** — what you want, your time, language and country; then: earn commissions (affiliate) or bring buyers to your own business, site or channel.
+2. **What we promote** — no product yet? Rumer's starter base of programs by niche (supplements, licensed casino, VPN, hosting, marketing software, AI tools, courses, languages, crypto security, sleep, travel): what each sells, commission, approval and a Join link; PARASITER helps you join and pick one product. Own business? Tell about it — the post is written as your brand's, with a link to your page.
+3. **Your strategy** — "I made a strategy for you": your product, your 10 platforms in order, topics, rhythm, how we check, milestones. Then PARASITER carries it out with you.
+4. **Platform** — your 10 platforms as a table with a Sign up button and progress for each.
+5. **Topic → article → check** — topics by Rumer's rules, the article, then the audit: 80/100 or more and you publish.
+6. **Publish and log**, then **indexing** (what speeds it up) and the checks: the bot reminds you on day 3 ("is my page indexed?") and day 7 ("check my page position").
+Then post 2 on the next platform. Free: 10 guided posts (the Free journal); the rest of the base and new platforms every week are in Pro.
+
 ## Tell PARASITER my story
 At the first setup PARASITER asks for your story instead of a questionnaire: what you do now, where and what you post, what works and what doesn't, roughly what you earn and want to earn, what gets in your way, what you need most. Type it or dictate it (Windows: Win + H, Mac: Fn twice, Claude app: the microphone). PARASITER builds your profile and starting point from it, asks only what's missing and tells you what it will do for you. Later: say *"my story"* to see it, *"my story changed"* to add an update. Prefer questions? Say *"ask me questions"*. The story stays in your own folder.
 

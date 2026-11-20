@@ -2,6 +2,18 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.54.0 — 2026-11-20
+
+**New to parasite SEO? Your first post with Rumer, from zero to Google.** Beginners get one real post through the whole cycle, one step at a time:
+- **About you** in two minutes, then: earn commissions (affiliate) or bring buyers to your own business, site or channel.
+- **Rumer's starter base of affiliate programs**, 11 niches: supplements, licensed casino (18+, only where legal), VPN, hosting, marketing software, AI tools, online courses, languages, crypto security, sleep, travel. What each program sells, the commission, cookie, approval and a Join link, and help joining and picking one product. Own business? The post is written as your brand's, with a link to your page.
+- **"I made a strategy for you":** your product, your 10 platforms in order, topics, rhythm, how we check and the milestones, on one screen. Then PARASITER carries it out with you.
+- **Your 10 platforms as a table** with a Sign up button and progress (written → published → indexed → position).
+- **Topic, article and a check before publishing:** 80/100 or more and you publish.
+- **Indexing and the checks close the cycle:** the bot reminds you on day 3 to check indexing and on day 7 to check the position, then the next post. Free: 10 guided posts.
+
+Say *"I'm new, guide me"* to start.
+
 ## 0.53.0 — 2026-11-19
 
 **Dead threads and noindex are caught (thanks to a beta tester's report).** Every example page in platform and forum search now gets two separate fields:
