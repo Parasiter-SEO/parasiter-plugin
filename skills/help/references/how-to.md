@@ -20,6 +20,12 @@ New to parasite SEO? Say *"I'm new, guide me"* (or answer "I'm new" on the Free 
 6. **Publish and log**, then **indexing** (what speeds it up) and the checks: the bot reminds you on day 3 ("is my page indexed?") and day 7 ("check my page position").
 Then post 2 on the next platform. Free: 10 guided posts (the Free journal); the rest of the base and new platforms every week are in Pro.
 
+## Rumer's strategies (the course, alive)
+Say *"Rumer's strategies"* (or **S** on the panel): 8 of Rumer's methods — $100 a day (the 30-day plan: 3 products, ~145 posts on ~45 platforms), systematic parasite SEO (10 platforms, 100 posts, scale the winners), content that sells, the forum strategy, hidden platforms (Web 2.0), Web 3.0 platforms, documents/PDF & press, Creative SEO. Pick one: PARASITER checks it fits your product and time, puts the plan on one screen and walks you through it with its skills.
+
+## Repeat this result
+Saw a page in the top and want the same? Paste its link and say *"repeat this result"*. PARASITER shows how it was done (platform and its rules, query and position, format, title, structure, links, age, indexing, why it works) and plans the same for your product — the pattern, never the text. Free: once a week; Pro and Insider: any time.
+
 ## Tell PARASITER my story
 At the first setup PARASITER asks for your story instead of a questionnaire: what you do now, where and what you post, what works and what doesn't, roughly what you earn and want to earn, what gets in your way, what you need most. Type it or dictate it (Windows: Win + H, Mac: Fn twice, Claude app: the microphone). PARASITER builds your profile and starting point from it, asks only what's missing and tells you what it will do for you. Later: say *"my story"* to see it, *"my story changed"* to add an update. Prefer questions? Say *"ask me questions"*. The story stays in your own folder.
 

@@ -14,6 +14,10 @@ PARASITER is first of all a **working panel**: every tool of the user's role at 
 
 Rumer's ranked pick of the 10 platforms that hold posts and bring results right now. He sets it in the bot every week (it holds 7 days). It is **the first block of the panel, above the bases**: one line with the date and the first three names — "🏆 Top-10 of the week (DD.MM): 1. X · 2. Y · 3. Z … — say **TOP**" — from `top10_week` (Pro / Insider). **TOP / ТОП / "top 10" / "best platforms this week"** opens the full list at once as a table: `# · Platform · Why (Rumer) · Type · Sign-up · Example`, then one line: "Want posts for these? Say **plan** — today's plan puts them first." `stale: true` → show the last list with "(new Top-10 coming soon)". On the panel page pass it to `dayplan.py` as `top10` ({week_of, stale, items: [{rank, name, why}]}). No list yet, or no server tools → skip the block silently. Free key or no key → the line stays on the panel, locked: "🏆 Top-10 of the week — 🔒 Pro: Rumer's 10 platforms that hold posts right now" — saying **TOP** gives the locked card (`upgrade-showcase.md` §2).
 
+## 📚 Rumer's strategies and 🔁 Repeat this result — right under the Top-10 (№75)
+
+One line on every plan: "📚 Rumer's strategies (8) — say **S** · 🔁 Saw a page in the top? Paste the link and say **repeat this result**". **S / С / "strategies"** opens the library (`strategies.md`); a pasted link with "repeat" runs `repeat-result.md`. On Free both are open (repeat: 1 a week, `repeat_result` counts it).
+
 ## Bases and data — first on the panel (№32)
 
 The user's working data opens in one step, **above the skills**, with short codes so they never clash with skill numbers: **Б1…Б5** in Russian / Ukrainian, **B1…B5** in other languages (both always accepted, as are "base", "база", "журнал", "journal", "my platforms"). A code opens the table at once, no questions; then the user filters in words ("only forums", "in Spanish", "new this week", "★ only"). Shown as a table in the chat and on the panel page; never inside a code block. Bases don't count in "Explored".

@@ -2,6 +2,13 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.56.0 — 2026-11-20
+
+**Rumer's parasite SEO course, alive inside PARASITER.** The secrets of the market his 200+ course students came for, now run by the system:
+- **Rumer's strategies (say "Rumer's strategies" or S on the panel):** 8 of his methods — $100 a day (the 30-day plan: 3 products, ~145 posts on ~45 free platforms), systematic parasite SEO, content that sells, the forum strategy, hidden platforms (Web 2.0), Web 3.0 platforms, documents/PDF & press, Creative SEO. Each one checks it fits your product and time, shows the plan on one screen and runs step by step through PARASITER's skills.
+- **Repeat this result:** paste a page you saw in the top and say "repeat this result". PARASITER shows how it was done — platform and its rules, query and position, format, title, structure, links, age, indexing, why it works — and plans the same for your product. The pattern, never the text. Free: once a week.
+- **Rumer's insider pack** comes with every Free key: the platforms holding posts right now, this week in parasite SEO, the strategies and how to reach Rumer.
+
 ## 0.55.0 — 2026-11-20
 
 **Rumer is one message away at every step.** If something doesn't work or you don't like something, PARASITER shows how to reach Rumer right there: /support in @parasiter_bot (any plan), he answers himself.
