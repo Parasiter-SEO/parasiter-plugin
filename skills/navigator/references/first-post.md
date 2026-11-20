@@ -9,7 +9,9 @@
 🌱 First post with Rumer · step 4 of 9 · post 1 of 10
 ✓ About you · ✓ What we promote · ✓ Your strategy → now: Platform · next: Topic, Article, Check, Publish, Indexing & position
 Now: <one concrete action>
+Stuck or don't like something? Write to Rumer: /support in @parasiter_bot — he answers himself.
 ```
+**Tell the server each step (№74):** as each step starts, call `path_step` with the step name only (`about`, `promote`, `strategy`, `platform`, `topic`, `article`, `check`, `publish`, `indexing`, `position`, `done`) and `post` = the post number. Never a page, link, product or text. This is how Rumer sees where people stop and writes to them himself; without a key, skip it silently. On `publish` of post 1 the bot asks the user to rate the way there (1–5) — if `rating_asked` is true, add one line: "I've sent you a quick question in the bot — 10 seconds, it helps Rumer a lot."
 Keep progress in `parasite-seo-profile.md` under `first_post:` (step, post number, product, platform, page URL when published, dates) so a new chat continues where it stopped ("Continuing your first post: step 6 — the article check.").
 
 Work label stays `▸ PARASITER · navigator`; when a step hands off to a skill, that skill's label shows and control comes back here after it.
@@ -49,7 +51,7 @@ Milestones: post 1 this week → 3 posts with first indexing → 10 posts on 10 
 ```
 Then: "We start with post 1 on <platform #1>. Ready?" Save the strategy as `parasite-seo-strategy.md` in the user's folder (it feeds the Starter plan, `free-start.md` §3).
 
-Choosing the 10 platforms: `free_base` (language and type filters), keep only platforms whose rules allow this kind of post and link (`allowed` / `limited`; `forbidden` never; `UNKNOWN` → say it), prefer fast indexing and no pre-moderation for post #1. On a Free key with scans left, offer ONE `free_scout` for the product to see where reviews rank right now and move matching platforms up.
+Choosing the 10 platforms: `free_base` (language and type filters). Only `free_to_post: true` (never a paid wire for a free first post). The base's rules field is often not checked yet: for each of the 10, before recommending it, open the platform's rules / terms page yourself and say in one word whether affiliate reviews and links are allowed, limited or forbidden (with the link); forbidden → drop it and take the next. For post #1 prefer a simple free platform a beginner can use today: open sign-up, an editor for long text, posts indexed fast, no pre-moderation (articles, document / presentation hosts, a free site builder) over forums that need account warm-up. `signup_how` tells whether the link is a direct sign-up page or the home page — say which. On a Free key with scans left, offer ONE `free_scout` for the product to see where reviews rank right now and move matching platforms up.
 
 ## Step 4 — Platform: the table with sign-up buttons
 

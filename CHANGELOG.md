@@ -2,6 +2,12 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.55.0 — 2026-11-20
+
+**Rumer is one message away at every step.** If something doesn't work or you don't like something, PARASITER shows how to reach Rumer right there: /support in @parasiter_bot (any plan), he answers himself.
+- **First post with Rumer:** every step shows the line to write to Rumer. If you stop somewhere, Rumer can see the step (only its name, never your pages or texts) and may write to you himself to help.
+- **After your first post is published,** the bot asks one question: how was the way there, 1 to 5. Your answer goes straight to Rumer and shapes the next updates.
+
 ## 0.54.0 — 2026-11-20
 
 **New to parasite SEO? Your first post with Rumer, from zero to Google.** Beginners get one real post through the whole cycle, one step at a time:
