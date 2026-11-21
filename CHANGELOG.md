@@ -4,7 +4,7 @@ Each version's section is posted to the news feed and the Telegram channels when
 
 ## 0.63.0 — 2026-11-21
 
-**One way in: say "Where do I start?"** It opens the first setup step by step: your story, goals, your data, first platforms, topic and article. On a Free key, finishing all 12 steps (or your first post on the beginner path) gives you a personal −20% code for lifetime Pro or Insider. When the setup asks for your pages and sales, it now says right there that the files stay in your folder and the PARASITER server never sees them. Help is updated for lifetime access: no subscription, nothing renews, every update included.
+**Bought Pro while on the Free key?** PARASITER now notices it and tells you how to switch to the paid key in a minute. **One way in: say "Where do I start?"** It opens the first setup step by step: your story, goals, your data, first platforms, topic and article. On a Free key, finishing all 12 steps (or your first post on the beginner path) gives you a personal −20% code for lifetime Pro or Insider. When the setup asks for your pages and sales, it now says right there that the files stay in your folder and the PARASITER server never sees them. Help is updated for lifetime access: no subscription, nothing renews, every update included.
 
 ## 0.62.0 — 2026-11-21
 
