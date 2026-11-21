@@ -13,7 +13,7 @@ If you called agents, add them after an arrow: `▸ PARASITER · paid-placements
 
 ## Show what the next plan opens — RULE (№56)
 
-Pro skill. On Free or with no key, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 21 skills for $39 / Pro = 17 for $19, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
+Pro skill. On Free or with no key, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 21 skills / Pro = 17, one payment for lifetime access, prices from `account_info.prices`, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
 
 ## Plugin basis and Claude plan — RULE (№33)
 

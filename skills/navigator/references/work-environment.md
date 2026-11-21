@@ -27,7 +27,7 @@ Already have one with API access? Connect it — no need for a second service.
 
 ## 3. PARASITER plan
 
-Free $0 · Pro $19/month · Insider $39/month (see help `faq.md` for what each includes).
+Free $0 · Pro and Insider: one payment, lifetime access, no subscription — prices from `account_info.prices` (Early Bird while it lasts). See help `faq.md` for what each includes.
 
 **Images: $0** — infographics are drawn by Claude in the chat (needs code execution turned on in Claude); the cover is the real product photo or is made in free Gemini from PARASITER's prompt (ChatGPT / DALL·E only if you already pay for it).
 

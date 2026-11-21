@@ -60,11 +60,12 @@ At the first setup PARASITER asks for your story instead of a questionnaire: wha
 "Open my base" → a dashboard page with all your posts: totals, status by platform, search and filters (platform, status, topic, offer, ★, top 10), sorting by any column. "My posts in Excel", "download my base" → an Excel file with sheets Summary, Posts, Platforms, Sales, Links and the full Journal; filters, clickable links and real dates are ready. On the dashboard, **Download Excel** gives the same file and **CSV of this view** gives exactly the rows you filtered. "Show my posts on Medium" in the chat gives a short list instead.
 
 ## Export my base / keep my data after a plan ends
-Say *export my base*. You get one zip: all your PARASITER files as they are, an Excel workbook and a README. Works on any plan and without a key. Your files never leave your folder, so ending or changing a plan deletes nothing; renew within 30 days and the same key continues.
+Say *export my base*. You get one zip: all your PARASITER files as they are, an Excel workbook and a README. Works on any plan and without a key. Your files never leave your folder, so changing a plan deletes nothing.
 
 ## Change plan (Pro → Insider, Insider → Pro)
-- **Up, Pro → Insider — starts at once.** Send */upgrade* to the bot (or say "upgrade to Insider": `account_info` → `upgrade.pay_url`, `upgrade.bonus_days`) and pay for Insider with the same email. Insider starts right after payment with the same key; the unused paid Pro days become extra Insider days (the pay page and the bot show how many before you pay). Granted or beta access was free, so it adds no days.
-- **Down, Insider → Pro — from the end of the paid period.** Send */downgrade* to the bot or press "Move to Pro" on your subscription page (`manage_subscription_url`). Nothing is charged now: Insider runs until its end date, then Pro starts with the same key; the reminder, the pay link and auto-renewal are for Pro. Changed your mind: */downgrade cancel*. Paying for Pro while Insider is active also works: the paid Pro period simply starts when Insider ends — no paid days are lost.
+- **Pro and Insider are one payment, lifetime access (№77)** — no subscription, nothing renews. Current prices: `account_info.prices` (Early Bird while it lasts).
+- **Up, Pro → Insider — starts at once.** Send */upgrade* to the bot (or say "upgrade to Insider": `account_info` → `upgrade.pay_url`) and pay with the same email. Lifetime Pro pays only the difference; Insider starts right after payment with the same key, for life.
+- **Down, Insider → Pro:** lifetime Insider never needs it — nothing is charged again. Older monthly access (beta, grants) simply ends on its date.
 - Either way: same key, same files and server settings; the bot moves you between the channels (Pro channel ↔ Insider channel and group).
 - **Free → Pro or Insider:** buy on the site with any email; the paid plan comes with its own key by email — put it in place of the Free key (/plugin → PARASITER → configure options), your files stay.
 

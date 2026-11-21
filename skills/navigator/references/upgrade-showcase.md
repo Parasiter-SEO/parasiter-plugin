@@ -12,11 +12,11 @@ Free is the shop window of PARASITER. Its job is to give real value **and** to s
 ## The facts to use (never invent others)
 
 - **Free, $0** — 8 skills without a key; the Free key (by email, no card) adds 50 checked platforms, 3 platform scans a week and the **Free journal: up to 10 pages** with alive, index and position checks (№57).
-- **Pro, $19/month** — 17 skills: the checked platform base in full with live example posts, Rumer's pattern search for new platforms (27 categories), platform scores 0–100, the 🏆 Top-10 of the week, the feed and weekly market analysis, today's plan from your goals, the unlimited journal of pages, sales and traffic (network imports, reports by page / platform / offer), the publication queue, indexing, page monitoring, paid placements, Telegram (Pro channel, morning message, alerts).
-- **Insider, $39/month** — **all 21 skills and 10 agents**: everything in Pro + affiliate-finder (programs and offers found and scored by an agent), niche-analysis (keywords with volumes and an entry score), client-reports (what took off and where to scale), brand-presence (agencies); new platforms the same day they are found (Pro: about 7 days later), the Insider channel and the private group with Rumer.
-- **Why Insider is the right choice:** for $20 more than Pro it opens the 4 tools that decide what to promote and where to scale — the money part of the work — plus platforms a week earlier than Pro, while they are still clean. Say it in these words or close to them; no other claims.
-- Pro → Insider any time: starts at once, unused Pro days become extra Insider days (*/upgrade* in the bot). Annual billing is about 20% less. Prices are preliminary — current terms on the site.
-- Never invent discounts, deadlines, "only today", seat limits or results the user will get.
+- **Pro** (price: `account_info.prices.pro`, e.g. "$39 once, lifetime (Early Bird until Dec 5, then $69)") — 17 skills: the checked platform base in full with live example posts, Rumer's pattern search for new platforms (27 categories), platform scores 0–100, the 🏆 Top-10 of the week, the feed and weekly market analysis, today's plan from your goals, the unlimited journal of pages, sales and traffic (network imports, reports by page / platform / offer), the publication queue, indexing, page monitoring, paid placements, Telegram (Pro channel, morning message, alerts).
+- **Insider** (price: `account_info.prices.insider`) — **all 21 skills and 10 agents**: everything in Pro + affiliate-finder (programs and offers found and scored by an agent), niche-analysis (keywords with volumes and an entry score), client-reports (what took off and where to scale), brand-presence (agencies); new platforms the same day they are found (Pro: about 7 days later), the Insider channel and the private group with Rumer.
+- **Why Insider is the right choice:** for a little more than Pro it opens the 4 tools that decide what to promote and where to scale — the money part of the work — plus platforms a week earlier than Pro, while they are still clean. Say it in these words or close to them; no other claims.
+- **The model (№77): one payment, lifetime access, no subscription.** Pro → Insider any time: starts at once, the user pays only the difference (*/upgrade* in the bot).
+- **Prices always from `account_info.prices`** (current, server-side). While `early_bird` is true, say it plainly once per card: "🐣 Early Bird: lifetime at the launch price until <early_bird_until, as a date> — then the regular price." This is the only deadline you may mention; never invent other discounts, "only today", seat limits or results the user will get. No `prices` in the answer → say "one payment, lifetime access — price on the site".
 
 **Links** (`<skill>` = the skill that shows the card, so Rumer sees which feature sells):
 - Upgrade: `https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=<skill>#pricing`
@@ -27,7 +27,7 @@ Free is the shop window of PARASITER. Its job is to give real value **and** to s
 
 Panel, capability map, bases, Top-10 line, help answers about functions: a row above the user's plan is **never hidden**. It shows `🔒 Pro` or `🔒 Insider` and, in a few words, what it would do for this user. Under the panel and the map, for any user below Insider, one closing line:
 
-> 🔒 N of M functions are locked on your plan. **Insider opens all 21 + 10 agents** ($39/mo) · Pro opens 17 ($19/mo) — <upgrade link>
+> 🔒 N of M functions are locked on your plan. **Insider opens all 21 + 10 agents** (<Insider price>) · Pro opens 17 (<Pro price>) — prices from `account_info.prices` — <upgrade link>
 
 (Pro user: "🔒 4 functions are Insider: affiliate-finder, niche-analysis, client-reports, brand-presence — <link> or /upgrade in the bot".)
 
@@ -38,10 +38,10 @@ When the user starts a skill, base or mode above their plan (by number, phrase o
 ```
 🔒 <Function> — <Pro | Insider>
 What it would do for you now: <2–3 concrete lines with the user's product / niche / platforms>
-Insider: all 21 skills + 10 agents for $39/mo — Pro: 17 for $19/mo
+Insider: all 21 skills + 10 agents, <Insider price> — Pro: 17, <Pro price> (one payment, lifetime)
 → Unlock: <upgrade link>
 ```
-Then: "Meanwhile on your plan: <the skill's Free alternative as a ready phrase>". On an Insider-only function shown to a Pro user, the third line is "You're on Pro — Insider adds this and 3 more tools for $20 more; your Pro days carry over (/upgrade in the bot)".
+Then: "Meanwhile on your plan: <the skill's Free alternative as a ready phrase>". On an Insider-only function shown to a Pro user, the third line is "You're on Pro — Insider adds this and 3 more tools; you pay only the difference (/upgrade in the bot)".
 
 ## 3. "What you'd get here on Pro / Insider" — under every Free result
 
@@ -97,7 +97,7 @@ Card shape (4 lines at most):
 ```
 <icon> <what just happened, with the user's page / platform>
 Now: <the one thing that matters next>
-Pro ($19/mo) does it for you: <one concrete line> · Insider ($39/mo): all 21 skills + 10 agents
+Pro (<Pro price>) does it for you: <one concrete line> · Insider (<Insider price>): all 21 skills + 10 agents
 → <upgrade_url from the free_event result>
 ```
 - The server also sends the person one email / bot note for the same event (the user doesn't need to do anything). Say nothing about it.

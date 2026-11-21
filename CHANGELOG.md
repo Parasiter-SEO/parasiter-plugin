@@ -2,6 +2,15 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.59.0 — 2026-11-21
+
+**PARASITER is now yours for life: one payment, no subscription.**
+- **🐣 Early Bird until December 5:** Pro $39 (then $69), Insider $69 (then $99). Lifetime access while PARASITER is being tested — every update included.
+- **Pro → Insider any time:** pay only the difference, same key.
+- PARASITER shows the current price and the Early Bird deadline everywhere a plan comes up — on the panel, in locked functions and in help.
+
+Say **0** to see the panel, or open the pricing on the site.
+
 ## 0.58.0 — 2026-11-21
 
 **Claude Pro made complete: ready data first, and you always see the price.** On Claude Pro PARASITER now builds your work on what Rumer has already found and checked, so your limits go into your own pages:

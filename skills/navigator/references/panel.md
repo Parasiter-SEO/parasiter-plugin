@@ -135,7 +135,7 @@ On Claude Pro (`claude_plan: pro`) every skill row and base gets a mark after th
 - The plan is marked against the user's plan (`account_info`): above their plan → "🔒 Pro" / "🔒 Insider", still listed, never hidden, in its usual place. Choosing it gives the locked card (`upgrade-showcase.md` §2) and the alternative on their plan.
 - Role: show only the user's role table (role from the profile; no role yet → ask it first, it takes one line). Numbers are that table's numbers.
 - Above the panel, one line of progress counted on the role's set: **"Explored: 9 of 16 skills · 5 of 7 agents"** (affiliate); under it, the last 3 tried ("last: page-audit 03.11 · goals 02.11 · platform-finder 02.11").
-- Under the panel: "Reply with a number. **0** — this menu any time." Below Insider, then the unlock line (№56): "🔒 N of M functions are locked on your plan. **Insider opens all 21 + 10 agents** ($39/mo) · Pro opens 17 ($19/mo) — <upgrade link>" (Pro user: the 4 Insider functions + /upgrade). N counts the locked rows of the role's table.
+- Under the panel: "Reply with a number. **0** — this menu any time." Below Insider, then the unlock line (№56): "🔒 N of M functions are locked on your plan. **Insider opens all 21 + 10 agents** (<Insider price>) · Pro opens 17 (<Pro price>) — prices from `account_info.prices` — <upgrade link>" (Pro user: the 4 Insider functions + /upgrade). N counts the locked rows of the role's table.
 
 ## Starting a skill by number
 - "5" (or "5 VigRX Plus", "12 https://…") starts that skill at once with what was given. Nothing given → the skill asks one short question or offers a quick demo on the user's own data; no data yet → a short example on a sample product, marked as a sample.

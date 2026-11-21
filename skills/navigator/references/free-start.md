@@ -52,7 +52,7 @@ Where you are: <pages / platforms / programs / income, from the story or the dat
 3. <insight> → <action>
 Today: <the one first step>
 🔒 With your data, Pro would: <2–3 lines made of this user's numbers — e.g. "track all 37 pages (Free keeps 10) and check them every day", "tie your ClickBank and Digistore24 sales to pages and show EPC by platform", "plan the next pages where you already earn (publication queue)">
-Insider: <one line — e.g. "the scale plan from your sales and the offers Google's top sells in your niche"> · Pro $19 · Insider $39 → <upgrade link, utm_campaign=first-look>
+Insider: <one line — e.g. "the scale plan from your sales and the offers Google's top sells in your niche"> · Pro <Pro price> · Insider <Insider price> (one payment, lifetime; `account_info.prices`) → <upgrade link, utm_campaign=first-look>
 ```
 Rules: three insights, not ten; numbers from the user's files only (mark story numbers "(from your story)"); no income promises; the 🔒 lines must use this user's numbers, never a generic list. Then call `free_event` with `first_look` (Free key only; show nothing about it) and continue the setup with the next step.
 
