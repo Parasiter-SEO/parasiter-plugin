@@ -71,9 +71,9 @@ Keyword and SERP data come from the **user's own SEO service** with their own ke
 
 ```
 Niche: [x] · [country] · data: [source, date]
-| Keyword | Cluster | Volume | Entry | Ours in top 20 (best pos.) | Heavy in top 20 | Opportunity |
+| Keyword | Cluster | Volume | Trend 12 mo | Season | Entry | Ours in top 20 (best pos.) | Heavy in top 20 | Opportunity |
 ```
-Then the top 5 keywords to target, the platforms already ranking for them (handed to platform-finder), the content types that fit (handed to content-type-selector), competitor parasite pages and the buyer doubts they leave open, and a note on oversaturation. A test page and the position tracker decide in the end.
+Plus the niche's demand line: growing or falling over a year (%), seasonal or steady (peak months), and where it is now — from the same volume data, no extra paid queries. Then the top 5 keywords to target, the platforms already ranking for them (handed to platform-finder), the content types that fit (handed to content-type-selector), competitor parasite pages and the buyer doubts they leave open, and a note on oversaturation. A test page and the position tracker decide in the end.
 
 ## Rules
 
