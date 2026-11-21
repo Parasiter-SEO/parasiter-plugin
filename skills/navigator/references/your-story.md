@@ -32,6 +32,10 @@ Read the whole story (several messages are fine; wait for "that's it" or a clear
    - baseline facts for `goals` Mode 1: hours, pages per week, live pages and platforms, content types, income now — every number marked **(from your story)** so the user can correct it;
    - wanted income, direction of growth (side income / business / clients / own site / team) → `goals` Mode 2 inputs, kept as the user's words.
 2. **Save the story** as `parasite-seo-story.md` (format in §5): the user's words, tidied but not rewritten, plus the extracted lines.
+   **Where it is — say it, every time (Rumer):** right after saving, one line in the working language: what was saved and where.
+   - A connected folder (Claude Desktop / Claude Code): "Saved your story and profile in your folder: parasite-seo-story.md, parasite-seo-profile.md — every new chat reads them."
+   - No folder (claude.ai chat, mobile app): the files exist only in this chat. **Send both files to the user at once** (the file-sending tool), and say: "These two files are your PARASITER profile. In a new chat, attach them (or connect a folder in Claude Desktop: + → Add folder) — otherwise I'll start from zero."
+   - A new chat with no profile file and no folder: before step 1, ask once "Do you have your parasite-seo-profile.md / parasite-seo-story.md from an earlier chat? Attach them — or tell me your story again in 2 minutes."
 3. **Ask only the gaps** that the next steps really need, in one message, 2–4 questions at most (most often: target country / content language, programs, which SEO tools they have). Never re-ask what the story said, even vaguely: confirm it instead ("You said around $300 a month — right?").
 
 ## 3. The verdict — right after the story (setup step 3)
