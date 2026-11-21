@@ -23,6 +23,6 @@ Notes from client: […]
 - **Topics:** decision and commercial intent first (best, vs, alternatives, price, how to choose, review of the category, problems the product solves). Informational "what is" topics only when the client needs awareness and accepts it.
 - **Platforms:** the client's own declared profiles first (LinkedIn page, Medium, YouTube descriptions, brand Reddit / Quora accounts where the community allows brand participation), then fresh checked platforms from `platform-feed` / `platform-finder` (agency filter: brand-safe, allows declared brand content).
 - **One topic → several platforms** in the same month, each a new angle and format (work-log `rollout`), never a copy.
-- **Profiles:** each missing or weak profile from `brand-presence` is its own row (P1, P2…).
+- **Profiles:** each missing or weak profile from the baseline audit is its own row (P1, P2…).
 - **Volume:** as the contract says; spread evenly over the month; the main query's pieces go first.
 - **Approval message to the client:** the table, 3 lines on why this plan (queries, platforms, what we expect to move — no guarantees), and the question "Approve all, or tell us which rows to change?"

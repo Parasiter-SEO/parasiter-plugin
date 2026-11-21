@@ -9,20 +9,20 @@ description: The workspace of PARASITER for agencies (SEO and marketing agencies
 
 Start every reply produced by this skill with one line naming it, so the user always sees which part of PARASITER is working:
 `▸ PARASITER · client-workspace · [client]`
-If you called agents for this reply, add them after an arrow: `▸ PARASITER · client-workspace · Acme → brand-auditor, serp-analyst`. If you hand off to another skill, the next reply carries that skill's label (with the client name). One line only, no other system talk.
+If you called agents for this reply, add them after an arrow: `▸ PARASITER · client-workspace · Acme → serp-analyst`. If you hand off to another skill, the next reply carries that skill's label (with the client name). One line only, no other system talk.
 
 ## Show what the next plan opens — RULE (№56)
 
-Pro skill. On Free or with no key, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 21 skills / Pro = 17, one payment for lifetime access, prices from `account_info.prices`, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
+Pro skill. On Free or with no key, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 20 skills / Pro = 17, one payment for lifetime access, prices from `account_info.prices`, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
 
 ## Plugin basis and Claude plan — RULE (№33)
 
 Every answer here is PARASITER at work: this skill's steps, Rumer's rules, criteria and references — never general knowledge alone. Name the basis briefly where it matters ("by Rumer's rules", the checklist, score or reference used, "PARASITER platform base"). A request this skill doesn't cover → the right skill; nothing fits → one line "outside PARASITER's skills — I answer by Rumer's general rules", then "0 — menu". Full rule: `navigator/references/agents-and-plan.md`.
 
-**Agents and Claude plan.** Heavy step: the client's brand audit and SERP work → agents `brand-auditor, serp-analyst`. Mode: `agents:` in `parasite-seo-profile.md`, else `agents_default` from `account_info`.
-- `on` (Claude Max, Team) → run the agents; label `▸ PARASITER · <skill> → brand-auditor, serp-analyst`.
-- `lite` (Claude Pro) → the **Lite version** below, label `▸ PARASITER · <skill> · Lite`. When the full version would clearly give a better result here, add one line of advice — why, and the phrase **full** ("For 20 products the full version is better: brand-auditor checks every one, about 3–5× more of your Claude limits. Say **full** — or I keep Lite").
-- `offer` (plan not known) → ask once before the first run: "This step of the skill is done by PARASITER's brand-auditor, serp-analyst agents: separate context, deeper, uses more of your Claude limits (best on Max). Run it? Or Lite with the same skill."
+**Agents and Claude plan.** Heavy step: the client's SERP work → agent `serp-analyst`. Mode: `agents:` in `parasite-seo-profile.md`, else `agents_default` from `account_info`.
+- `on` (Claude Max, Team) → run the agent; label `▸ PARASITER · <skill> → serp-analyst`.
+- `lite` (Claude Pro) → the **Lite version** below, label `▸ PARASITER · <skill> · Lite`. When the full version would clearly give a better result here, add one line of advice — why, and the phrase **full** ("For 20 products the full version is better: serp-analyst checks every query, about 3–5× more of your Claude limits. Say **full** — or I keep Lite").
+- `offer` (plan not known) → ask once before the first run: "This step of the skill is done by PARASITER's serp-analyst agent: separate context, deeper, uses more of your Claude limits (best on Max). Run it? Or Lite with the same skill."
 - "full" / "audit by agent" → run it this time; "turn on agents" → `agents: on`; "save limits" or a usage limit hit → `agents: lite` (save in the profile, advice from `agents-and-plan.md` §3).
 
 **Lite version:** 2–3 brand profiles and the 3 main queries; the rest marked "not checked — say **full**". Lite is the same method in a smaller scope: say what was left out.
@@ -68,7 +68,7 @@ clients/
   <client-slug>/
     client-brief.md          the brief (template: references/client-brief.md)
     content-plan.md          month plans with approval status (references/content-plan.md)
-    brand-presence.md        site and profile audit, profile plan (brand-presence skill)
+    brand-presence.md        site and profile audit, profile plan (by hand, step 1 below)
     parasite-seo-progress.csv   the client's journal (work-log, same format as for affiliates)
     parasite-seo-platforms.csv  the client's platform base
     parasite-seo-links.csv      the client's landing pages with UTM (Mode 10 of work-log)
@@ -86,7 +86,7 @@ For a site owner the site is the one "client": `clients/<site-slug>/` with the s
 - **The brief is about the site:** what it sells, top products / services and their pages, prices, the queries each page should win, what a conversion is (order, lead form, booking, sign-up) and its value.
 - **The plan is a content and link plan.** Every row also says the link the page gives the site: target page, the rel the platform allows (dofollow / nofollow / ugc / sponsored), anchor (vary it: brand, URL, natural phrases — never the same money anchor everywhere), and the cost for paid placements. Free platforms first; paid placements (`paid-placements`) as a budget line where a dofollow link or a strong media page pays off.
 - **Every page has calls to action to the site** (product, booking, lead form) with UTM — traffic that doesn't reach a product or form is wasted.
-- **The site itself is part of the work:** `brand-presence` site audit and `page-audit` on the landing pages our links point to (first screen, offer, CTA, trust, speed) — a parasite page can't sell through a landing page that doesn't.
+- **The site itself is part of the work:** site audit (`references/site-audit.md`) and `page-audit` on the landing pages our links point to (first screen, offer, CTA, trust, speed) — a parasite page can't sell through a landing page that doesn't.
 - **Results are closed on the site:** GA4 (or the shop's export) by source and `utm_content` gives visits, conversions and revenue per page (`work-log import-traffic --medium parasite`, `site-roi`); `work-log backlinks` shows links live, dofollow, anchors and spend. Search Console shows the site's own growth: target queries, brand queries, impressions.
 
 ## Step 0 — Agency profile (once)
@@ -109,7 +109,7 @@ Say: "New client: Acme". Create the folder and fill `client-brief.md` from `refe
 1. **Google Search Console** — the client adds the agency's Google account as a user (Restricted is enough to read). Steps and what we use it for: `references/measurement.md`.
 2. **Google Analytics 4** — Viewer access on the client's property, to see visits that come from our pages (UTM).
 3. Existing positions or tracker exports, last 3 months, if any.
-4. List of the client's existing profiles (or "find them") → `brand-presence`.
+4. List of the client's existing profiles (or "find them") → checked by hand in step 1 of the baseline.
 5. Brand assets: logo, colours, fonts, real product photos, approved claims → used by `post-illustrations` and `sales-review-writer` (brand mode).
 
 Then set up, without asking again:
@@ -121,7 +121,7 @@ Close with a 4–6 line onboarding summary (what we know, what we still need fro
 ## Step 2 — Baseline (before any work, so growth can be shown later)
 
 The first report is only convincing if month 0 is recorded. In one pass:
-1. **Brand presence and site** → `brand-presence` (site quick audit, profiles, content): what exists, what is missing, what is broken. On Pro (brand-presence is Insider): go through `brand-presence/references/profiles.md` and `site-audit.md` with the user by hand — the same checklist, without the agent.
+1. **Brand presence and site** → go through `references/profiles.md` and `references/site-audit.md` with the user by hand (site quick audit, profiles, content): what exists, what is missing, what is broken.
 2. **Search Console, last 3 months** (export or connector): clicks, impressions, average position for the site; **brand queries** (queries that contain the brand name) separately; top pages. Log the totals as a `baseline` row in the client journal and keep the export in `reports/`.
 3. **Positions** for the client's target queries: who ranks now, which platforms are in the top 10 for them (`serp-analyst` agent; DataForSEO checks only with the user's yes and the cost shown — the same paid-check rule as everywhere in PARASITER).
 4. **GA4**: sessions by source for the last month, so new UTM traffic stands out.
@@ -134,7 +134,7 @@ Output: a one-screen "Month 0" card (site clicks, brand-query clicks, queries in
 1. **Topics** from the client's queries and products, through `content-type-selector` (commercial and decision intent: best, vs, alternatives, price, review of the category, how to choose) and `niche-analysis` when the client's niche needs keyword data (Insider).
 2. **Platforms** from `platform-feed` / `platform-finder` (fresh, checked, brand-safe — `platform-finder` agency filter) plus the client's own profiles (LinkedIn page and articles, Medium, YouTube descriptions, Reddit / Quora brand accounts where allowed).
 3. **One row per piece:** topic, target query, platform, format, destination link (UTM), owner, date, status `idea → approved → written → client-approved → published → checked`.
-4. **Profiles to open or fix** from `brand-presence`, as rows of their own.
+4. **Profiles to open or fix** from the step-1 audit, as rows of their own.
 4b. **Paid placements** (wires, sponsored articles) from `paid-placements` when the budget allows, as rows with their price — the client (or the owner) approves the spend row by row.
 5. Volume: what the contract says; otherwise ask once. Spread the month evenly; the most important queries go first.
 

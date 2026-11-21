@@ -50,7 +50,6 @@ The user never has to remember commands. At the moment of a heavy step, one line
 | page-audit → independent-auditor | self-check by the checklist, labelled "not independent" | independent audit (always offered for texts written here) |
 | platform-monitor / work-log → page-checker | up to 3 pages | batches of 15 |
 | indexing → index-checker | up to 3 pages | the whole list |
-| brand-presence / client-workspace → brand-auditor | 2–3 profiles | every profile and the site |
 | paid-placements → placement-scout | data from the placements base, no fresh check | fresh check of prices, links, indexing |
 | video-seo / creator-channels → video-seo-checker | one video or channel by the checklist | every video, live checks |
 
@@ -96,7 +95,7 @@ On Claude Pro the user **uses what Rumer has already found and checked**, and sp
 |---|---|---|
 | 🟢 | ready / light — use freely | Rumer's platform base (Б1) and Top-10, weekly analysis and feed, strategies, starter programs, the journal and reports (scripts), goals and the day plan, what to write (Lite), articles from known facts, images, the page-audit self-check, the publication queue |
 | 🟡 | cheap check — a script does it | page checks with `platform-monitor/scripts/pagecheck.py` (alive, noindex, affiliate link — any number of pages, about one reply of usage), paid index / position checks on the user's SEO account (money, not Claude limits — ask first as always) |
-| 🔴 | heavy — ≈ 3–5× more limits | agents (platform-scout, affiliate-scout, serp-analyst, product-researcher, independent-auditor, brand-auditor, placement-scout, video-seo-checker), live platform / offer discovery beyond the base, the full SERP breakdown, "repeat this result" on a new page |
+| 🔴 | heavy — ≈ 3–5× more limits | agents (platform-scout, affiliate-scout, serp-analyst, product-researcher, independent-auditor, placement-scout, video-seo-checker), live platform / offer discovery beyond the base, the full SERP breakdown, "repeat this result" on a new page |
 
 **How skills apply it (Claude Pro, `agents: lite`)**
 1. **Ready data first.** "where to post", "what to promote", "what works now" → answer from the server data above (Б1, Top-10, analysis, starter programs) before any live search. Live search runs only when the base has nothing for the user's product or niche — and then as the Lite version with the price line: "Rumer's base has nothing for <X> yet. A live search finds it (🔴 ≈ 3–5× usage). Say **search live** — or take the closest from the base."

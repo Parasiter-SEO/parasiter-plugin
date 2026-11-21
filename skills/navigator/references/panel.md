@@ -60,7 +60,7 @@ Agency / site owner: Б1 Rumer's base (brand-safe filter) · Б2 the client's (o
 
 Agents: platform-scout → 5 · affiliate-scout → 3 · product-researcher → 9 · serp-analyst → 8, 4 · page-checker → 14, 12 · independent-auditor → 11 · index-checker → 13
 
-### 2 · Agency — 16 skills · 8 agents
+### 2 · Agency — 15 skills · 7 agents
 | # | Skill | What it does | Plan |
 |---|---|---|---|
 | 1 | client-workspace | clients: plans, links, results | Pro |
@@ -69,21 +69,20 @@ Agents: platform-scout → 5 · affiliate-scout → 3 · product-researcher → 
 | 4 | platform-analyzer | score one platform | Pro |
 | 5 | platform-feed | Rumer's feed, news | Pro |
 | 6 | paid-placements | news sites, PR wires, prices | Pro |
-| 7 | brand-presence | brand profiles, site audit | Insider |
-| 8 | content-type-selector | what to write for the client | Free |
-| 9 | sales-review-writer | brand articles | Free |
-| 10 | post-illustrations | images in the brand style | Free |
-| 11 | page-audit | check a page | Free |
-| 12 | work-log | journal per client | Pro |
-| 13 | indexing | get pages into Google | Pro |
-| 14 | platform-monitor | are the pages alive | Pro |
-| 15 | client-reports | monthly client report | Insider |
-| 16 | help | how anything works | Free |
+| 7 | content-type-selector | what to write for the client | Free |
+| 8 | sales-review-writer | brand articles | Free |
+| 9 | post-illustrations | images in the brand style | Free |
+| 10 | page-audit | check a page | Free |
+| 11 | work-log | journal per client | Pro |
+| 12 | indexing | get pages into Google | Pro |
+| 13 | platform-monitor | are the pages alive | Pro |
+| 14 | client-reports | monthly client report | Insider |
+| 15 | help | how anything works | Free |
 
-Agents: platform-scout → 3 · product-researcher → 9 · serp-analyst → 8, 2 · page-checker → 14, 12 · independent-auditor → 11 · index-checker → 13 · brand-auditor → 7, 1 · placement-scout → 6
+Agents: platform-scout → 3 · product-researcher → 8 · serp-analyst → 7, 2 · page-checker → 13, 11 · independent-auditor → 10 · index-checker → 12 · placement-scout → 6
 
-### 4 · Site owner — 16 skills · 8 agents
-The agency table with: 1 client-workspace = "your site: plans, links, results"; 15 client-reports = "site report: visits, sales, spend"; numbers and agents the same.
+### 4 · Site owner — 15 skills · 7 agents
+The agency table with: 1 client-workspace = "your site: plans, links, results"; 14 client-reports = "site report: visits, sales, spend"; numbers and agents the same.
 
 ### 3 · Creator — 11 skills · 6 agents
 | # | Skill | What it does | Plan |
@@ -102,7 +101,7 @@ The agency table with: 1 client-workspace = "your site: plans, links, results"; 
 
 Agents: affiliate-scout → 3 · product-researcher → 6 · serp-analyst → 5, 4 · page-checker → 10, 9 · independent-auditor → 8 · video-seo-checker → 2, 1
 
-### 5 · Other, and "all functions" — 21 skills · 10 agents
+### 5 · Other, and "all functions" — 20 skills · 9 agents
 | # | Skill | What it does | Plan | Roles |
 |---|---|---|---|---|
 | 1 | navigator | today's plan | Pro | affiliate |
@@ -119,23 +118,22 @@ Agents: affiliate-scout → 3 · product-researcher → 6 · serp-analyst → 5,
 | 12 | page-audit | check a page | Free | all |
 | 13 | creator-channels | channels as Google traffic | Free | creator |
 | 14 | video-seo | a video made findable | Free | creator |
-| 15 | brand-presence | brand profiles, site audit | Insider | agency, site owner |
-| 16 | client-workspace | clients or your own site | Pro | agency, site owner |
-| 17 | work-log | journal | Free key: 10 pages · Pro | all |
-| 18 | indexing | pages into Google | Pro | affiliate, agency, site owner |
-| 19 | platform-monitor | are pages alive | Pro | all |
-| 20 | client-reports | analytics / client and site reports | Insider | affiliate (analytics), agency, site owner |
-| 21 | help | how anything works | Free | all |
+| 15 | client-workspace | clients or your own site | Pro | agency, site owner |
+| 16 | work-log | journal | Free key: 10 pages · Pro | all |
+| 17 | indexing | pages into Google | Pro | affiliate, agency, site owner |
+| 18 | platform-monitor | are pages alive | Pro | all |
+| 19 | client-reports | analytics / client and site reports | Insider | affiliate (analytics), agency, site owner |
+| 20 | help | how anything works | Free | all |
 
 ### Cost marks on Claude Pro (№76)
-On Claude Pro (`claude_plan: pro`) every skill row and base gets a mark after the plan: 🟢 ready / light, 🟡 cheap check, 🔴 heavy (`agents-and-plan.md` §7). Bases Б1–Б5 are 🟢. Skills: 🟢 navigator, goals, platform-feed, content-type-selector (Lite), sales-review-writer, post-illustrations, page-audit (self-check), work-log, client-reports, client-workspace, creator-channels, video-seo (package), help; 🟡 platform-monitor, indexing (script check; index / positions on the user's SEO account); 🔴 affiliate-finder, niche-analysis, platform-analyzer, paid-placements (fresh check), brand-presence; platform-finder is 🟢 from Rumer's base and 🔴 for a live search — show "🟢 base · 🔴 live". Legend under the panel (one line), on the visual page as `"cost"` per tile. Max / Team: no marks.
+On Claude Pro (`claude_plan: pro`) every skill row and base gets a mark after the plan: 🟢 ready / light, 🟡 cheap check, 🔴 heavy (`agents-and-plan.md` §7). Bases Б1–Б5 are 🟢. Skills: 🟢 navigator, goals, platform-feed, content-type-selector (Lite), sales-review-writer, post-illustrations, page-audit (self-check), work-log, client-reports, client-workspace, creator-channels, video-seo (package), help; 🟡 platform-monitor, indexing (script check; index / positions on the user's SEO account); 🔴 affiliate-finder, niche-analysis, platform-analyzer, paid-placements (fresh check); platform-finder is 🟢 from Rumer's base and 🔴 for a live search — show "🟢 base · 🔴 live". Legend under the panel (one line), on the visual page as `"cost"` per tile. Max / Team: no marks.
 
 ### How each row is shown
 `N · name — what it does · plan · [🟢/🟡/🔴 on Claude Pro] · ✓ tried DD.MM / ○ not yet` — under the 🏆 Top-10 line and the "Bases and data" row (Б1…Б5), which always come first.
 - The plan is marked against the user's plan (`account_info`): above their plan → "🔒 Pro" / "🔒 Insider", still listed, never hidden, in its usual place. Choosing it gives the locked card (`upgrade-showcase.md` §2) and the alternative on their plan.
 - Role: show only the user's role table (role from the profile; no role yet → ask it first, it takes one line). Numbers are that table's numbers.
 - Above the panel, one line of progress counted on the role's set: **"Explored: 9 of 16 skills · 5 of 7 agents"** (affiliate); under it, the last 3 tried ("last: page-audit 03.11 · goals 02.11 · platform-finder 02.11").
-- Under the panel: "Reply with a number. **0** — this menu any time." Below Insider, then the unlock line (№56): "🔒 N of M functions are locked on your plan. **Insider opens all 21 + 10 agents** (<Insider price>) · Pro opens 17 (<Pro price>) — prices from `account_info.prices` — <upgrade link>" (Pro user: the 4 Insider functions + /upgrade). N counts the locked rows of the role's table.
+- Under the panel: "Reply with a number. **0** — this menu any time." Below Insider, then the unlock line (№56): "🔒 N of M functions are locked on your plan. **Insider opens all 20 + 9 agents** (<Insider price>) · Pro opens 17 (<Pro price>) — prices from `account_info.prices` — <upgrade link>" (Pro user: the 4 Insider functions + /upgrade). N counts the locked rows of the role's table.
 
 ## Starting a skill by number
 - "5" (or "5 VigRX Plus", "12 https://…") starts that skill at once with what was given. Nothing given → the skill asks one short question or offers a quick demo on the user's own data; no data yet → a short example on a sample product, marked as a sample.

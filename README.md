@@ -81,7 +81,6 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | `affiliate-finder` | Finds and scores affiliate programs (with agent) |
 | `client-reports` | Performance analytics and client reports from your data |
 | `client-workspace` | Agencies: clients, onboarding brief, Search Console / GA4 access, UTM, Month 0 baseline, content plan with approval, today's plan across clients, monthly report cycle |
-| `brand-presence` | Agencies: client site quick audit, brand profiles on socials and platforms, content audit, profiles plan (with agent) |
 | `paid-placements` | Paid publications: wires and sponsored-article marketplaces with prices, link policy, how to order; plan for a budget; did it pay off (with agent) |
 | `creator-channels` | Creators: profile, channel audit and optimization, search-based content plan and posting model, indexing, tracking in Google, media kit (free) |
 | `video-seo` | The package for every video and post (title, description, chapters, spoken and on-screen keywords, captions, hashtags, cover) and a check after publishing (free) |
@@ -98,7 +97,6 @@ Skills hold the method; agents do the heavy research and checking in their own c
 | `product-researcher` | `sales-review-writer` | Collects current specs, packages, prices, discounts, shipping and guarantee from the merchant's own pages for the quick facts box |
 | `serp-analyst` | `content-type-selector`, `niche-analysis` | Breaks down the top 10 for buyer queries: formats, parasite platforms, SERP features, open buyer questions |
 | `page-checker` | `platform-monitor`, `work-log` | Checks lists of your pages: live, noindex, indexed, affiliate link working, position |
-| `brand-auditor` | `brand-presence`, `client-workspace` | Finds and opens a client brand's profiles and key site pages: exist, complete, consistent, last activity, links; site quick checks; what the brand publishes |
 | `placement-scout` | `paid-placements` | Checks paid offers and link policy on published pieces; shortlists marketplace sites for a niche and budget |
 | `video-seo-checker` | `video-seo`, `creator-channels` | Checks a channel or a published video / post: what search reads, indexed, appears for its query in Google's video and short-video results |
 | `index-checker` | `indexing` | Checks pages for what blocks indexing and whether they are already indexed; returns the clean list to send |

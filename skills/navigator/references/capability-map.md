@@ -34,7 +34,6 @@ The user must always know every skill and agent PARASITER has and not forget the
 | platform-finder | where reviews rank in the top 10 now, free and paid separately; new platforms by category with Rumer's patterns — where affiliates post and clean ones with no competitors; every find classed proven / Web 2.0 🔒 / Web 3.0 (Rumer's terms) | "Where should I publish about joint supplements?", "Find new flipbooks", "Find Web 2.0 platforms" | Free key: 50-platform base + 3 scans a week · Pro: full |
 | platform-analyzer | breakdown of one platform, score 0–100 and Rumer's class; Web 3.0 mode: how people publish on a service with no sign-up form | "Should I post on X?", "How do people publish on X?" | Pro |
 | platform-feed | Rumer's feed: platforms, analysis, news, Telegram | "What's new?", "Connect Telegram" | Pro |
-| brand-presence | agencies and site owners: site audit, brand profiles on socials and platforms, content audit | "Brand audit for Acme" | Insider |
 | paid-placements | agencies and site owners: press-release wires and sponsored articles — prices, links, how to order | "Where can I buy an article for my site?" | Pro |
 
 **3. Write**
@@ -67,7 +66,6 @@ The user must always know every skill and agent PARASITER has and not forget the
 - page-checker — checks lists of pages (for platform-monitor and work-log)
 - independent-auditor — a fresh look at the article, like a doubtful buyer (for page-audit)
 - index-checker — what blocks indexing and the clean list to send (for indexing)
-- brand-auditor — the brand's profiles and site pages (for brand-presence and client-workspace)
 - placement-scout — checks paid offers and marketplace sites (for paid-placements)
 - video-seo-checker — what search can read on a channel or video (for video-seo and creator-channels)
 
@@ -76,9 +74,9 @@ The user must always know every skill and agent PARASITER has and not forget the
 | Role | Rows | Agents |
 |---|---|---|
 | 1. Affiliate | navigator, goals, affiliate-finder, niche-analysis, platform-finder, platform-analyzer, platform-feed, content-type-selector, sales-review-writer, post-illustrations, page-audit, work-log, indexing, platform-monitor, client-reports, help | platform-scout, affiliate-scout, product-researcher, serp-analyst, page-checker, independent-auditor, index-checker |
-| 2. Agency | client-workspace, brand-presence, niche-analysis, platform-finder, platform-analyzer, platform-feed, paid-placements, content-type-selector, sales-review-writer (brand mode), post-illustrations, page-audit, work-log, indexing, platform-monitor, client-reports, help | platform-scout, product-researcher, serp-analyst, page-checker, independent-auditor, index-checker, brand-auditor, placement-scout |
+| 2. Agency | client-workspace, niche-analysis, platform-finder, platform-analyzer, platform-feed, paid-placements, content-type-selector, sales-review-writer (brand mode), post-illustrations, page-audit, work-log, indexing, platform-monitor, client-reports, help | platform-scout, product-researcher, serp-analyst, page-checker, independent-auditor, index-checker, placement-scout |
 | 3. Creator | creator-channels, affiliate-finder, niche-analysis, content-type-selector, sales-review-writer, post-illustrations, page-audit, video-seo, work-log, platform-monitor, help | affiliate-scout, product-researcher, serp-analyst, page-checker, independent-auditor, video-seo-checker |
-| 4. Site owner | client-workspace (own-site mode), brand-presence, niche-analysis, platform-finder, platform-analyzer, platform-feed, paid-placements, content-type-selector, sales-review-writer (brand mode), post-illustrations, page-audit, work-log, indexing, platform-monitor, client-reports, help | platform-scout, product-researcher, serp-analyst, page-checker, independent-auditor, index-checker, brand-auditor, placement-scout |
+| 4. Site owner | client-workspace (own-site mode), niche-analysis, platform-finder, platform-analyzer, platform-feed, paid-placements, content-type-selector, sales-review-writer (brand mode), post-illustrations, page-audit, work-log, indexing, platform-monitor, client-reports, help | platform-scout, product-researcher, serp-analyst, page-checker, independent-auditor, index-checker, placement-scout |
 | 5. Other | the full map | all |
 
 Keep this file in step with `help/references/catalog.md` and `roles.md` whenever a skill, agent or plan changes.

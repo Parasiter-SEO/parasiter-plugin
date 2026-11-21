@@ -13,8 +13,8 @@ Free is the shop window of PARASITER. Its job is to give real value **and** to s
 
 - **Free, $0** — 8 skills without a key; the Free key (by email, no card) adds 50 checked platforms, 3 platform scans a week and the **Free journal: up to 10 pages** with alive, index and position checks (№57).
 - **Pro** (price: `account_info.prices.pro`, e.g. "$39 once, lifetime (Early Bird until <date>, then $69)") — 17 skills: the checked platform base in full with live example posts, Rumer's pattern search for new platforms (27 categories), platform scores 0–100, the 🏆 Top-10 of the week, the feed and weekly market analysis, today's plan from your goals, the unlimited journal of pages, sales and traffic (network imports, reports by page / platform / offer), the publication queue, indexing, page monitoring, paid placements, Telegram (Pro channel, morning message, alerts).
-- **Insider** (price: `account_info.prices.insider`) — **all 21 skills and 10 agents**: everything in Pro + affiliate-finder (programs and offers found and scored by an agent), niche-analysis (keywords with volumes and an entry score), client-reports (what took off and where to scale), brand-presence (agencies); new platforms the same day they are found (Pro: about 7 days later), the Insider channel and the private group with Rumer.
-- **Why Insider is the right choice:** for a little more than Pro it opens the 4 tools that decide what to promote and where to scale — the money part of the work — plus platforms a week earlier than Pro, while they are still clean. Say it in these words or close to them; no other claims.
+- **Insider** (price: `account_info.prices.insider`) — **all 20 skills and 9 agents**: everything in Pro + affiliate-finder (programs and offers found and scored by an agent), niche-analysis (keywords with volumes and an entry score), client-reports (what took off and where to scale); new platforms the same day they are found (Pro: about 7 days later), the Insider channel and the private group with Rumer.
+- **Why Insider is the right choice:** for a little more than Pro it opens the 3 tools that decide what to promote and where to scale — the money part of the work — plus platforms a week earlier than Pro, while they are still clean. Say it in these words or close to them; no other claims.
 - **The model (№77): one payment, lifetime access, no subscription.** Pro → Insider any time: starts at once, the user pays only the difference (*/upgrade* in the bot).
 - **Prices always from `account_info.prices`** (current, server-side). While `early_bird` is true, say it plainly once per card: "🐣 Early Bird: lifetime at the launch price until <early_bird_until, as a date> — then the regular price." This is the only deadline you may mention; never invent other discounts, "only today", seat limits or results the user will get. No `prices` in the answer → say "one payment, lifetime access — price on the site".
 
@@ -27,9 +27,9 @@ Free is the shop window of PARASITER. Its job is to give real value **and** to s
 
 Panel, capability map, bases, Top-10 line, help answers about functions: a row above the user's plan is **never hidden**. It shows `🔒 Pro` or `🔒 Insider` and, in a few words, what it would do for this user. Under the panel and the map, for any user below Insider, one closing line:
 
-> 🔒 N of M functions are locked on your plan. **Insider opens all 21 + 10 agents** (<Insider price>) · Pro opens 17 (<Pro price>) — prices from `account_info.prices` — <upgrade link>
+> 🔒 N of M functions are locked on your plan. **Insider opens all 20 + 9 agents** (<Insider price>) · Pro opens 17 (<Pro price>) — prices from `account_info.prices` — <upgrade link>
 
-(Pro user: "🔒 4 functions are Insider: affiliate-finder, niche-analysis, client-reports, brand-presence — <link> or /upgrade in the bot".)
+(Pro user: "🔒 3 functions are Insider: affiliate-finder, niche-analysis, client-reports — <link> or /upgrade in the bot".)
 
 ## 2. The locked card — when the user opens a locked function
 
@@ -38,10 +38,10 @@ When the user starts a skill, base or mode above their plan (by number, phrase o
 ```
 🔒 <Function> — <Pro | Insider>
 What it would do for you now: <2–3 concrete lines with the user's product / niche / platforms>
-Insider: all 21 skills + 10 agents, <Insider price> — Pro: 17, <Pro price> (one payment, lifetime)
+Insider: all 20 skills + 9 agents, <Insider price> — Pro: 17, <Pro price> (one payment, lifetime)
 → Unlock: <upgrade link>
 ```
-Then: "Meanwhile on your plan: <the skill's Free alternative as a ready phrase>". On an Insider-only function shown to a Pro user, the third line is "You're on Pro — Insider adds this and 3 more tools; you pay only the difference (/upgrade in the bot)".
+Then: "Meanwhile on your plan: <the skill's Free alternative as a ready phrase>". On an Insider-only function shown to a Pro user, the third line is "You're on Pro — Insider adds this and 2 more tools; you pay only the difference (/upgrade in the bot)".
 
 ## 3. "What you'd get here on Pro / Insider" — under every Free result
 
@@ -50,7 +50,7 @@ After the real result of a Free skill (never above it, never instead of it), bef
 ```
 🔒 On Pro / Insider this step would also:
 · Pro — <one concrete thing for this exact result>
-· Insider — <one concrete thing> ← all 21 skills
+· Insider — <one concrete thing> ← all 20 skills
 <upgrade link>
 ```
 - Pick the lines from the table below and make them concrete (the product, the page, the platform just used). Change which feature you show from reply to reply — don't repeat the same block twice in a row.
@@ -97,7 +97,7 @@ Card shape (4 lines at most):
 ```
 <icon> <what just happened, with the user's page / platform>
 Now: <the one thing that matters next>
-Pro (<Pro price>) does it for you: <one concrete line> · Insider (<Insider price>): all 21 skills + 10 agents
+Pro (<Pro price>) does it for you: <one concrete line> · Insider (<Insider price>): all 20 skills + 9 agents
 → <upgrade_url from the free_event result>
 ```
 - The server also sends the person one email / bot note for the same event (the user doesn't need to do anything). Say nothing about it.

@@ -13,7 +13,7 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 ## Show what the next plan opens — RULE (№56)
 
-Insider skill. On Free or Pro, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 21 skills + 10 agents, the upgrade link; a Pro user — "your Pro days carry over, /upgrade in the bot"), then the alternative on their plan.
+Insider skill. On Free or Pro, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 20 skills + 9 agents, the upgrade link; a Pro user — "your Pro days carry over, /upgrade in the bot"), then the alternative on their plan.
 
 ## Plugin basis and Claude plan — RULE (№33)
 

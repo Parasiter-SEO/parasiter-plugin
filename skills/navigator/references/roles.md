@@ -31,12 +31,11 @@ Uses: getting client brands and pages into the top of Google, AI Overviews and "
 
 **Plans:** the route runs on Pro (clients, brief, content plan, production, journals, monitoring, positions, a plain monthly report from the journal). Insider adds the full brand and site audit with the agent, the white-label client report against Month 0 and niche analysis. On Pro, `client-workspace` uses the manual profile checklist and the plain report instead (its Step 2 and Step 6 say how).
 
-Route: agency profile → new client onboarding → baseline (brand-presence + Search Console Month 0 + positions) → monthly content plan with client approval → production → publish and log per client → monthly report. Run by `client-workspace`; the daily question "what do we do today?" goes to its Step 4 (today's plan across clients), not to the affiliate daily plan.
+Route: agency profile → new client onboarding → baseline (site and profile audit in client-workspace + Search Console Month 0 + positions) → monthly content plan with client approval → production → publish and log per client → monthly report. Run by `client-workspace`; the daily question "what do we do today?" goes to its Step 4 (today's plan across clients), not to the affiliate daily plan.
 
 | Need | Skill | Plan |
 |---|---|---|
 | Clients, onboarding, brief, access (GSC / GA4), UTM, content plan, today's plan across clients | client-workspace | Pro |
-| Site quick audit, brand profiles on socials and platforms, content audit, profiles plan | brand-presence (+ brand-auditor agent) | Insider |
 | What content type fits the query and platform | content-type-selector | Free |
 | Brand texts: expert articles, guides, comparisons, LinkedIn / Medium / YouTube / press release, profile bios — disclosed as the brand's | sales-review-writer (brand mode) | Free |
 | Images in the client's brand style: infographics by Claude, cover prompt with a choice of generator | post-illustrations | Free |
@@ -84,7 +83,6 @@ Route: run by `client-workspace` in **own-site mode** — the user's site is the
 | Need | Skill | Plan |
 |---|---|---|
 | The site's workspace: brief, Search Console / GA4, UTM, Month 0, monthly content and link plan, today's plan | client-workspace (own-site mode) | Pro |
-| Site audit (indexing, landing pages, titles, speed, tracking, trust), profiles on socials and platforms, content audit | brand-presence (+ brand-auditor agent) | Insider |
 | Landing pages checked by Rumer's content rules (first screen, offer, CTA, trust) | page-audit (brand scale) | Free |
 | What content type fits the query and platform | content-type-selector | Free |
 | Texts about their own product or service, disclosed as theirs, with CTAs to the site | sales-review-writer (brand mode) | Free |
