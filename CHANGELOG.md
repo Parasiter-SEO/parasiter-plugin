@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.67.0 — 2026-11-21
+
+**"No sales yet?" — see exactly where it breaks.** Say *"no sales"* or *"why don't I earn?"* and PARASITER reads your own chain from the journal: pages live → in the index → in positions → traffic → clicks → sales. It shows what you already have, the step where the numbers drop, and the one thing to change this week — more pages, another platform, indexing, a fresher topic, the page itself or a different offer.
+
 ## 0.66.0 — 2026-11-21
 
 **Which plan, and when to grow.** Start with Pro on Claude Pro; when you outgrow it, PARASITER tells you once: Insider gives the group with Rumer and exclusive platforms right away, and with Claude Max the agents run at full power. On Claude Max, Insider is recommended from day one.
