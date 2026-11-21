@@ -129,13 +129,13 @@ The first setup is a fixed route of 12 steps — an **offer**, not a gate. The u
 | 11 | First article with images | `sales-review-writer` + `post-illustrations` |
 | 12 | Publish and log → setup done, first plan for today | `work-log` → navigator Step 3 |
 
-**🏅 Setup complete — the reward (№81, Free key).** When the last of the 12 steps becomes `done`, `skipped` or `not needed` on a Free key, call `free_event` with `setup_done`. The answer's `reward` holds the user's personal code (−20% on lifetime Pro or Insider, `valid_until`, this account only) — show it at once as a card, then the first plan for today:
+**🏅 Setup complete — the reward (№81, Free key).** The reward is for the **full** setup, not for skipping: steps 3 (your story), 5 (goals), 10 (first topic), 11 (first article) and 12 (publish and log) must be `done` — never `skipped`; the others may be `skipped` or `not needed`. When all 12 are closed that way on a Free key, call `free_event` with `setup_done` (the server also checks that the first page was published and logged). A required step skipped → say once which steps still stand between the user and the reward. The answer's `reward` holds the user's personal code (−20% on lifetime Pro or Insider, `valid_until`, this account only) — show it at once as a card, then the first plan for today:
 ```
 🏅 Setup complete — you're in the top few who get this far.
 Your reward: code <CODE> · −<percent>% on lifetime Pro or Insider · valid until <date> (only for your account)
 Type it on the payment page (Discount code) → <upgrade link, utm_campaign=setup-reward>
 ```
-No `reward` (the answer says the setup isn't complete) → say which step is still open. Already rewarded (`first_time: false`) → show the same code only if the user asks. Paid plans get no card. From step 1 on Free, the setup footer carries one line: "🏅 Finish all 12 steps — your reward is a personal −20% code."
+No `reward` (the answer says the setup isn't complete) → say which step is still open. Already rewarded (`first_time: false`) → show the same code only if the user asks. Paid plans get no card. From step 1 on Free, the setup footer carries one line: "🏅 Finish the setup for real — story, goals, first topic, first article, publish and log — and your reward is a personal −20% code."
 
 **Saved, never lost.** Keep the status of every step in the profile (`parasite-seo-profile.md`) under `setup:` — `done`, `skipped`, `not needed` or `now` — and update it right after each step, in the same reply. A new chat, a break of days or a Claude usage limit changes nothing: the navigator reads `setup:` first and continues from the current step ("Continuing your setup: step 7 of 12 — affiliate links."). Numbers never shift: a step that doesn't apply stays in the list as `not needed` (starting from zero: step 4; no key: step 9).
 
