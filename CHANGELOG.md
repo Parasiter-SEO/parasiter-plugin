@@ -8,7 +8,7 @@ Each version's section is posted to the news feed and the Telegram channels when
 
 ## 0.65.0 — 2026-11-21
 
-**Insider gets more.** Exclusive platforms: Rumer's best finds now go to Insider only and never show up on Pro. The private Insider group is where you have direct contact with Rumer: secret methods, news and updates are discussed there first. Niche analysis works without a paid SEO account too: a free-data mode reads demand, trend and season from free signals (exact volumes still come with DataForSEO).
+**Insider gets more.** Exclusive platforms: Rumer's best finds now go to Insider only and never show up on Pro. Rumer is in the private Insider group: secret methods, news and updates are discussed there first. Niche analysis works without a paid SEO account too: a free-data mode reads demand, trend and season from free signals (exact volumes still come with DataForSEO).
 
 ## 0.64.0 — 2026-11-21
 
