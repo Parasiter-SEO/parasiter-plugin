@@ -99,7 +99,7 @@ On **Claude Max / Team** there are no marks: heavy steps run their agents at onc
 On Claude Pro the found and checked data is what saves your limits — **PARASITER Insider** gives you everything Rumer finds, so you don't spend limits searching.
 
 ## Can I get a discount?
-- **🏅 Finish your setup on Free** (all 12 steps, or your first published post on the beginner path) → a personal **−20% code** for lifetime Pro or Insider, valid 7 days, for your account only. It works on top of the Early Bird price.
+- **🏅 Finish your setup on Free** (all 12 steps, or your first published post on the beginner path) → a personal **−20% code** for lifetime Pro or Insider, valid 7 days, for your account only. It works on top of the Early Bird price. You can skip any step and come back to it later; the code comes once every step is done.
 - **Early Bird** runs for limited periods: the current deadline is on the site and on the payment page.
 - **Rumer's coupons** appear in his videos, articles and letters when there is no Early Bird.
 
