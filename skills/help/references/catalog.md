@@ -2,7 +2,7 @@
 
 <!-- Maintainer: update this file, how-to.md and faq.md whenever a skill, agent, server tool, plan or file changes. The help skill answers only from these files. They are also the public Help page (parasiter.affiliatecredo.com/help.html), rebuilt automatically: keep "## " headings as sections, and update the Ukrainian copy in skills/help/uk/ (run tools/help_uk.py status / stamp). -->
 
-PARASITER by Rumer — parasite SEO inside the user's AI assistant with four full routes: affiliate marketers at any stage (review pages on trusted platforms → affiliate link → commission), agencies running parasite SEO for clients (brand pages on trusted platforms → visitors to the client's site), site owners building parasite pages around their own site (rankings, CTAs, dofollow links where platforms give them, paid placements, sales measured on the site), and bloggers / creators growing their own channels for free (optimized channels, findable videos and posts in Google, indexing, monetization). On first run the navigator asks the role. **Agencies** (SEO and marketing agencies, freelancers, in-house teams running parasite SEO for clients) get their own full route: a folder per client, brand audit, content plan with client approval, positions and traffic to the client, monthly white-label reports. Bloggers and course authors / own-product owners get only the tools that fit them, with no goals or daily plan (see "Roles" below). Skills hold the method; agents do research and checks in their own context and hand back facts with sources. The user never calls agents; skills send them — at once on Claude Max / Team, on Claude Pro as the full version when the user says "full" (otherwise the skill's Lite version: same method, smaller scope; see `navigator/references/agents-and-plan.md`). Version 0.48 (private beta).
+PARASITER by Rumer — parasite SEO inside the user's AI assistant, built for **affiliate marketers at any stage** (review pages on trusted platforms → affiliate link → commission): Rumer's method, the checked platform base, the journal of pages and sales, the daily plan. The navigator doesn't ask a role; agencies, site owners and creators can still say so in their own words and get their route (see "Roles" below). Skills hold the method; agents do research and checks in their own context and hand back facts with sources. The user never calls agents; skills send them — at once on Claude Max / Team, on Claude Pro as the full version when the user says "full" (otherwise the skill's Lite version: same method, smaller scope; see `navigator/references/agents-and-plan.md`).
 
 ## The workflow in 5 steps
 
@@ -52,7 +52,7 @@ Rumer's own terms, not the usual meanings ("Web 2.0" elsewhere means any user-pu
 
 ## Roles
 
-Set once by the navigator ("who are you and what for?"), saved as `role` in the profile, changeable any time. Full table: `navigator/references/roles.md`.
+PARASITER is built for affiliates: the navigator doesn't ask a role and starts everyone on the affiliate route. The other routes open only when the user says so in their own words ("I'm an agency", "it's for my own site", "I'm a creator"); saved as `role` in the profile. Full table: `navigator/references/roles.md`.
 
 | Role | Gets |
 |---|---|
@@ -111,7 +111,7 @@ Kept in the user's project folder, written by the skills:
 | Insider group | Insider | discussion with Rumer and members, polls, questions |
 | PARASITER bot | Pro and Insider | linking, invites, personal notifications: one daily summary of your pages that got worse, Monday check-in (sales, traffic, UTM; Done · Remind at 19:00 · Position check · Skip · Off), news digest, billing, warnings before a scheduled paid check (run / only ★ / skip / change) |
 
-Bot commands: `/status` · `/skills` (what to say for each skill of your plan) · `/invites` · `/setup` · `/checkin on|off` (Monday check-in) · `/cancel` (auto-renewal off) · `/support`, `/bug`, `/idea`, `/feedback` (to Rumer, any plan).
+Bot commands: `/status` · `/skills` (what to say for each skill of your plan) · `/invites` · `/setup` · `/checkin on|off` (Monday check-in) · `/upgrade` (Pro → Insider, pay only the difference) · `/support`, `/bug`, `/idea`, `/feedback` (to Rumer, any plan).
 
 Free: no server and no Telegram chats; the public channel @parasiter_plugin (https://t.me/parasiter_plugin) is open to everyone: plugin news, new features and how-tos.
 

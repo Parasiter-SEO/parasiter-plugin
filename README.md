@@ -19,7 +19,7 @@ Free works without a key. Pro and Insider: paste the key from your welcome email
 
 ## What it does
 
-For **affiliate marketers**, **creators**, **site owners** and **agencies**: you publish pages on platforms Google already trusts — affiliates earn the commission, site owners and agencies send buyers (and links, where platforms allow) to the site. Skills and agents find platforms where reviews rank right now, pick the content type that sells, write and audit the page, track every page and sale, and tell you what to do next.
+For **affiliate marketers doing parasite SEO**, at any stage: you publish review pages on platforms Google already trusts and earn the commission. Skills and agents find platforms where reviews rank right now, pick the content type that sells, write and audit the page, track every page and sale, and tell you what to do next.
 
 - **Your own mentor:** tell your parasite SEO story in your own words (typed or dictated) — PARASITER builds your profile from it, tells you what it will do for each of your problems and plans every day around them
 - **Plan:** goals from your own baseline and a daily plan that fits the time you have
@@ -30,16 +30,9 @@ For **affiliate marketers**, **creators**, **site owners** and **agencies**: you
 - **Beyond Google:** Bing positions and whether Google AI Mode, ChatGPT and Gemini cite your pages; every page written and audited to be AI-ready
 - **Updates:** new platforms, Rumer's weekly market analysis and news in Claude and Telegram
 
-**Who it's for:** four full routes — **bloggers and creators** growing their own channels for free, **site owners** building parasite pages around their own site, and **affiliate marketers** who earn with parasite SEO, at any stage, and **agencies** (SEO and marketing agencies, freelancers, in-house teams) running parasite SEO for clients.
+**Who it's for:** affiliate marketers who earn with parasite SEO, at any stage — from the first page to a portfolio that earns every day. PARASITER is built and tuned for them: the navigator doesn't ask a role, you start on the affiliate route at once.
 
-On first run the navigator asks who you are and what for. Agencies, site owners and creators get their own routes; others and course authors (own product) get only the tools that fit their work, without goals and the daily plan:
-
-| Role | Tools |
-|---|---|
-| Affiliate (parasite SEO) | Goals, daily plan, journal with sales, every affiliate skill |
-| Agency (SEO / marketing, freelancers, in-house) | A folder per client, onboarding brief, brand and site audit, monthly content plan with client approval, brand-mode texts, images in the client's style, audits, brand-safe platforms, monitoring, positions, GA4 + Search Console traffic, monthly white-label reports |
-| Blogger / content creator | Free route: channel audit and optimization, search-based content plan, one idea → many pieces, video SEO packages and checks, indexing, tracking in Google, media kit |
-| Site owner (own site, shop, services, course) | A workspace for the site, site and landing-page audits, content and link plan, brand-mode texts, platforms with link rules, paid placements (wires, sponsored articles), backlinks and site results — visits, conversions, revenue vs spend |
+Not an affiliate? Agencies, site owners and creators can say so in their own words ("I'm an agency", "it's for my own site", "I'm a YouTuber") and get their route (`client-workspace`, `creator-channels`); the guides and examples stay affiliate-first.
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
@@ -66,7 +59,7 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | Skill | What it does |
 |---|---|
 | `goals` | Baseline journal, goals over 1 week to 12 months, reality check, milestones, weekly targets, progress log, weekly review |
-| `navigator` | Entry point: asks your role and offers the tools for it; for affiliates, today's plan from your goals, progress and time; routes each task |
+| `navigator` | Entry point: the first setup step by step ("Where do I start?"), then today's plan from your goals, progress and time; routes each task |
 | `work-log` | Journal of work, traffic and sales, and your inventory: imports pages you already have and builds your own platform base; topics, priorities, top-10 positions and what to write where; logs every page, action and sale; imports network and platform exports; ties sales to pages by sub-ID; reports for any day, week or month; effectiveness by page, platform, offer, program, content type; check queue and weekly sales upload reminder; your whole base as a dashboard page and an Excel file |
 | `content-type-selector` | Picks the content type and topic that sell before writing; forum cluster — beat competitors' forum threads with several fresh experience threads per query (`forumscan`) |
 | `sales-review-writer` | Writes the sales review / comparison for your platform |
@@ -113,10 +106,10 @@ The plugin is written in English and works in any language. On first run the nav
 ## Plans
 
 - **Free, $0** — the plugin without a key: topics, articles, images, page audit, goals, help. **Free key** (by email, no card — [parasiter.affiliatecredo.com/free.html](https://parasiter.affiliatecredo.com/free.html)): a snapshot of 50 checked platforms, 3 platform scans a week for your product and the Free journal for 10 pages with alive, index and position checks.
-- **Pro, $19/month** — personal key: platform database, feed and weekly analysis, Telegram alerts, navigator updates; new platforms about 7 days after they are found. **PARASITER Pro** Telegram channel and personal notifications from the bot.
-- **Insider, $39/month** — everything in Pro, the full skill set and extra features, new platforms the day they are found. **PARASITER Insider** Telegram channel (platforms a week earlier, extra posts) and the private Insider group (discussion, polls).
+- **Pro, one payment, lifetime access** — personal key: platform database, feed and weekly analysis, Telegram alerts, navigator updates; new platforms about 7 days after they are found. **PARASITER Pro** Telegram channel and personal notifications from the bot.
+- **Insider, one payment, lifetime access** — everything in Pro, the full skill set and extra features, new platforms the day they are found. **PARASITER Insider** Telegram channel (platforms a week earlier, extra posts) and the private Insider group (discussion, polls).
 
-Annual billing saves about 20%. First members from the group keep their early price for life. Prices are preliminary.
+No subscription, nothing renews, every update included. Pro → Insider: pay only the difference. Refund within 14 days. Current prices (Early Bird when it runs): [parasiter.affiliatecredo.com](https://parasiter.affiliatecredo.com/#pricing).
 
 Updates to the platform feed come as findings appear — several times a week, sometimes less.
 
@@ -138,7 +131,7 @@ Windows: the DataForSEO and SerpApi checks need the `python3` command — instal
 ```
 
 2. During install the plugin asks for **"PARASITER key (Free, Pro or Insider)"**. Pro / Insider: paste the key from your welcome email (it starts with `psr_`). Free: leave it empty.
-3. Check: say "my PARASITER plan". It shows your plan and its end date.
+3. Check: say "my PARASITER plan". It shows your plan and "lifetime access". Then say "Where do I start?".
 
 Need to change the key later? Reinstall the plugin and paste the key when asked. Never paste the key into a chat.
 
@@ -152,7 +145,7 @@ No fake reviews, tests, results, credentials, prices or deadlines. Personal expe
 
 Google acts against site reputation abuse, platforms change moderation and remove pages, affiliate and payment networks can block traffic sources or niches. Spread pages across platforms, keep copies of every text, monitor.
 
-© Rumer / Affiliate Credo. Licensed for the subscriber's personal use; redistribution of the plugin or server data is not permitted.
+© Rumer / Affiliate Credo. Licensed for the buyer's personal use; redistribution of the plugin or server data is not permitted.
 
 ## Privacy and external services
 
@@ -168,6 +161,6 @@ Google acts against site reputation abuse, platforms change moderation and remov
 | Public web pages | Platform and page checks | Plain HTTP requests to the platforms and your published pages to see if they are live, indexed (noindex) and keep your link |
 | Other SEO tools (Semrush, Ahrefs, Serpstat, Google Search Console, GA4) | Only through connectors you add yourself | Whatever that connector sends under its own terms |
 
-**Retention on the PARASITER server:** account data for the life of the subscription and as required for payment records; encrypted backups for 14 days. Details and deletion requests: privacy policy below.
+**Retention on the PARASITER server:** account data while your access lasts and as required for payment records; encrypted backups for 14 days. Details and deletion requests: privacy policy below.
 
 Privacy policy: https://parasiter.affiliatecredo.com/privacy-en.html

@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.63.0 — 2026-11-21
+
+**One way in: say "Where do I start?"** It opens the first setup step by step: your story, goals, your data, first platforms, topic and article. On a Free key, finishing all 12 steps (or your first post on the beginner path) gives you a personal −20% code for lifetime Pro or Insider. When the setup asks for your pages and sales, it now says right there that the files stay in your folder and the PARASITER server never sees them. Help is updated for lifetime access: no subscription, nothing renews, every update included.
+
 ## 0.62.0 — 2026-11-21
 
 **Niche analysis: is the demand growing, falling or seasonal?** (an idea from an Insider tester — thank you!) Every keyword now shows its 12-month trend in % and whether it is seasonal, with the peak months, plus one line for the whole niche. Falling niches are flagged, and for seasonal ones PARASITER tells you when to have pages live — 6–8 weeks before the peak. Same volume data, no extra paid queries. Say *"analyze the niche"* (Insider).
