@@ -34,6 +34,7 @@ At the first setup PARASITER asks for your story instead of a questionnaire: wha
 - "turn on agents" — agents always (Claude Max / Team). "save limits" — Lite always (Claude Pro).
 - "I'm on Max now" / "my plan is Pro" — PARASITER updates your plan; in the bot: `/plan`, `/plan max`.
 - Hit the usage limit? PARASITER switches to Lite by itself and tells you when heavy tasks are better (a new chat after the reset).
+- "limit tips" — 8 habits that make Claude Pro last longer with PARASITER (one task — one chat, PARASITER connected once, outline before the article…).
 
 ## Upload my traffic
 "Here is my traffic report" + a file or screenshot: network click reports (by referrer or sub-ID), Google Analytics (source / medium, UTM, landing pages), Search Console, Gamma analytics, Medium / LinkedIn stats, podcast plays, shortener clicks. Traffic is credited to the page when the page is known, to the platform when only the referring site is known. "How do I export clicks from [network]?" → the steps for that network.

@@ -2,6 +2,14 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.57.0 — 2026-11-21
+
+**On Claude Pro? PARASITER now shows how to make your limits last.** Lite already saves inside every skill; now you also get the habits that save around it:
+- **At the first start on Pro:** three quick habits — one task, one chat; PARASITER connected once; all details in one message.
+- **Say "limit tips"** any time for all 8: outline before the article, fix a part instead of rewriting the whole, upload files instead of pasting, heavy steps by priority, where to watch your usage, and more.
+- **Hit the limit?** PARASITER switches to Lite and offers the tips.
+- **"Token optimizers"?** PARASITER explains why it doesn't recommend them: they are made for coding, save much less than they claim, and cut the data its checks need.
+
 ## 0.56.0 — 2026-11-20
 
 **Rumer's parasite SEO course, alive inside PARASITER.** The secrets of the market his 200+ course students came for, now run by the system:

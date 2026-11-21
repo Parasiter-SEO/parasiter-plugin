@@ -94,6 +94,16 @@ PARASITER is skills plus agents. Every answer comes from a skill — Rumer's rul
 - **The plan** is asked once by the navigator at the first start (it's not a purchase — only the work mode). Changed it? Say "I'm on Max now" in Claude, or send `/plan` to @parasiter_bot. "save limits" → Lite, "turn on agents" → agents always.
 - **Limits:** Anthropic doesn't publish exact numbers (a 5-hour window plus a weekly cap). Measured: one independent audit of an article ≈ 90k tokens, ~2 minutes (≈ 15–25 ordinary replies) — on Pro roughly 1–3 heavy agent tasks per 5-hour session next to normal work (an estimate). Start a new chat for big tasks; after the first agent run check Settings → Usage; on Pro, priority: audit before each publication → product facts for each new product → platform and offer scans once a week. Pro can turn on extra usage; Max pays off when you publish and run agents every day.
 
+## How do I make Claude Pro limits last with PARASITER?
+Lite already saves inside every skill. Around it, 8 habits (say **limit tips** in Claude for the full list):
+- **One task — one chat.** A long chat makes every reply more expensive; your profile, goals and journal stay in files.
+- **PARASITER connected once.** The plugin brings its connector; remove a second copy added as a custom connector in Claude's settings, and turn off connectors you don't use today.
+- **All details in one message**, **outline before the article**, **fix a part, not the whole**.
+- **Files, not pasted walls:** upload exports, PARASITER counts them with a script.
+- **Heavy steps by priority:** audit before each publication → product facts for each new product → scans once a week.
+- **Watch the meter:** Settings → Usage; in Claude Code `/usage` and `/context`.
+Third-party "token optimizers" are not recommended with PARASITER: they are made for coding, tests show about 20–40% savings, and they cut the page and search data PARASITER's checks rely on.
+
 ## Which AI does it work with?
 Built for Claude Code; it needs a paid Claude plan that includes Claude Code. Other assistants are not supported yet.
 It runs in Claude Code:

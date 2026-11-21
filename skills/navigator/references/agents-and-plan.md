@@ -32,7 +32,7 @@ The user never has to remember commands. At the moment of a heavy step, one line
 - More volume than Lite covers: "For 20 products the full version is better — the platform-scout agent checks every platform (about 3–5× more of your Claude limits). Say **full** — or I keep Lite on 5 products."
 - Own text: "I wrote this article, so an independent audit is better — the independent-auditor agent hasn't seen how I wrote it. Say **audit by agent** — or a Lite self-check (not independent)."
 - A new product in an article: "For a new product, product-researcher is better: prices and the guarantee from the merchant's own pages, conflicts between sources. Say **full** — or Lite: the main product's price and guarantee only."
-- The user hit the usage limit (or says so): switch to Lite at once, then: "Switched to Lite. Heavy tasks are better in a new chat after the limit resets; say **turn on agents** when you're ready."
+- The user hit the usage limit (or says so): switch to Lite at once, then: "Switched to Lite. Heavy tasks are better in a new chat after the limit resets; say **turn on agents** when you're ready." If the §6 tips were not given in this session, add one line: "Say **limit tips** — 8 habits that make Claude Pro last longer with PARASITER."
 - On Max, before a long agent run: one line what it will do and roughly how long; no question.
 - Never repeat the same advice twice in a session after the user chose; never present Lite as "worse Claude" — it is the same method, a smaller scope.
 
@@ -63,3 +63,25 @@ Each skill with an agent carries its own "Agents and Claude plan" block with its
 - After the first agent run, look at Settings → Usage (claude.ai/settings/usage) to see what share it took on your account.
 - Agent priority on Pro: independent-auditor before each publication → product-researcher for each new product → platform-scout and affiliate-scout once a week.
 - On Pro, extra usage (usage credits) can be turned on so work doesn't stop at the limit. Max pays off once you publish every day and run agents daily.
+
+## 6. Claude Pro: tips that make the limits last (№35)
+
+Pro users get these habits from PARASITER, so the plan's limits go into work, not into waste. Lite (§4) saves inside each skill; these tips save around it.
+
+**When to give them**
+- **First run, right after Pro is confirmed or answered** (§2): the short version, three lines, then go on with the setup: "On Pro, three habits keep your limits for work: **one task — one chat**, **PARASITER connected once** (no extra copy as a custom connector), **all details in one message**. Say **limit tips** for all 8."
+- **On request:** "limit tips", "how do I save limits", "my limits run out", "token optimizer", "Pro isn't enough" → the full list below.
+- **At a usage limit:** the line in §3.
+- Once per session; never to Max / Team users unless they ask.
+
+**The full list — 8 habits** (give them as written, in the user's language; label `▸ PARASITER · navigator`)
+1. **One task — one chat.** A long chat is re-read on every reply, so each answer costs more. Your profile, goals and journal live in files: a new chat loses nothing. In Claude Code: `/clear` between tasks.
+2. **Connect PARASITER once, switch off the rest.** The plugin already brings the PARASITER connector; the same connector added again as a custom connector in Claude's settings doubles the tool list that is read on every reply — remove the copy. Turn off connectors and MCP servers you don't need today (Claude Code: `/mcp`).
+3. **All details in one message:** product, platform, affiliate link, deal, length — instead of five short replies.
+4. **Outline first, then the article.** Approve the topic, title and headings, then PARASITER writes the full text once. Fewer rewrites.
+5. **Fix a part, not the whole:** "rewrite the intro", "change section 3", not "write it again".
+6. **Files, not pasted walls.** Upload the network export or the list of pages; PARASITER counts it with a script instead of reading every row in the chat.
+7. **Heavy steps by priority:** the independent audit before each publication → product facts for each new product → platform and offer scans once a week (§5). Say **full** only where it changes the result.
+8. **Watch the meter:** Settings → Usage (claude.ai/settings/usage); in Claude Code `/usage` and `/context` show what takes the space.
+
+**Third-party "token optimizers"** (asked about or mentioned): not recommended with PARASITER. They are built for coding in Claude Code; independent tests show roughly 20–40% savings, not the 90% in their titles; and they cut tool outputs — pages, search results, checks — that PARASITER's verdicts rely on. They also run someone else's code on every step. Lite plus the 8 habits do the saving without losing data.
