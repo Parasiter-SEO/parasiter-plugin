@@ -81,6 +81,23 @@ The last option before "0 — menu" is **always** one locked option of the next 
 - No upgrade text for Insider users, and none inside the user's own files, articles or reports they will publish or send to clients.
 - Profile says Pro / Insider but `account_info` shows Free or no key → this is a lost key, not a Free user: the navigator's "key isn't connected" warning (№44), no upgrade card.
 
+## 5a. The growth ladder — Claude plan is the start, not a cage (№86)
+
+The user's Claude plan (`claude_plan` in the profile / `account_info`) decides where to **start**, never what the user may buy. Insider works on Claude Pro too: the group with Rumer, exclusive platforms and same-day platforms don't depend on Claude at all; only the agents' deep research (offers, niche, live discovery) runs in Lite on Claude Pro. **Claude Max is the amplifier of Insider, not its condition.** Never say "Insider is not for you" or "you need Max to buy Insider".
+
+**Where to start (first setup, plan cards, "which plan?"):**
+- Claude Pro → recommend PARASITER **Pro** as the right first step, honestly, without pushing Insider.
+- Claude Max (or Team) → recommend **Insider** from day one: "You're on Claude Max — Insider is built for it: the agents run at full power, plus the group with Rumer and exclusive platforms."
+- Claude plan unknown → ask it first (navigator), then the line above.
+
+**Growth moments — a PARASITER Pro user on Claude Pro outgrows the start.** Offer the next step when one of these happens:
+- the user hit a Claude usage limit, or asked for the **full** version 3+ times (count in the profile: `full_asks:`);
+- the user opened an Insider-locked function;
+- the journal reached 20+ live pages, or the first sales came in.
+The offer is the pair, in 2–3 lines: "You've outgrown the start. Insider gives you the group with Rumer and exclusive platforms right away; with Claude Max the agents run at full power — offers, niche research, live discovery. Insider works on your Claude Pro too (Lite), it opens fully on Max." + the upgrade link or */upgrade* in the bot.
+- A PARASITER Pro user already on Claude Max → the plain Insider line, no Claude advice.
+- At most **once a week**: save `growth_offer: YYYY-MM-DD` in the profile and skip until 7 days pass. Never on replies about errors, payments or bad news. Never to Insider users.
+
 ## 6. Event cards — the moment of value (№57)
 
 Free users are offered Pro at the moment PARASITER helps them, not on a schedule. On a **Free key**, whenever one of these happens in the user's own work, call `free_event` with the event name only (never a URL, product or text) and, if the result has `first_time: true`, show the event card **after** the result and before Next steps. It replaces the §3 block in that reply. `first_time: false` → no card, no repeat.

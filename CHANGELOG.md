@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.66.0 — 2026-11-21
+
+**Which plan, and when to grow.** Start with Pro on Claude Pro; when you outgrow it, PARASITER tells you once: Insider gives the group with Rumer and exclusive platforms right away, and with Claude Max the agents run at full power. On Claude Max, Insider is recommended from day one.
+
 ## 0.65.0 — 2026-11-21
 
 **Insider gets more.** Exclusive platforms: Rumer's best finds now go to Insider only and never show up on Pro. The private Insider group is where you have direct contact with Rumer: secret methods, news and updates are discussed there first. Niche analysis works without a paid SEO account too: a free-data mode reads demand, trend and season from free signals (exact volumes still come with DataForSEO).

@@ -24,6 +24,7 @@ Usually not: EIN Presswire states nofollow only, and Google asks that links in r
 - **Insider, one payment, lifetime** (Early Bird $69 for a limited time, regular $99) — all 20 skills and 9 agents: Pro + **the private group with Rumer** (direct contact with him; secret methods, news and updates discussed there first), **exclusive platforms** never shown on Pro, new platforms the day they are found, niche-analysis, affiliate-finder and the scale plan (client-reports), the PARASITER Insider channel.
 - Pro includes the PARASITER Pro channel and personal notifications from the bot. Telegram is for paid plans only.
 - No subscription, no renewals. Pro → Insider: pay only the difference. Current prices on the official site.
+- **Which plan?** Start with Pro on Claude Pro. Ready to scale → Insider: the group with Rumer and exclusive platforms work on any Claude plan; with Claude Max the agents run at full power (on Claude Pro, Insider runs in Lite).
 - The key is personal: one key, one person. It works for as long as PARASITER runs (lifetime access); if it is ever switched off, the skills keep working without server data.
 - **Change plan:** up (Pro → Insider) — */upgrade* in the bot, pay only the difference with the same email; Insider starts at once, for life. Same key, same files and settings; only the channels change.
 - Platform feed updates come as findings appear — several times a week, sometimes less. No daily promise.
