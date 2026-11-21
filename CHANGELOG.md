@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.64.0 — 2026-11-21
+
+**Rumer's methods now come fresh from the server.** Strategies, the 12-point topic filter, content types, article structures, the audit checklist and scores, the indexer comparison and the platform score are kept on the PARASITER server and reach your Claude with your key — so Rumer can sharpen them any day, without a plugin update. Any key works, the Free key included (free by email); without a key the skills run on a short version.
+
 ## 0.63.0 — 2026-11-21
 
 **Bought Pro while on the Free key?** PARASITER now notices it and tells you how to switch to the paid key in a minute. **One way in: say "Where do I start?"** It opens the first setup step by step: your story, goals, your data, first platforms, topic and article. On a Free key, finishing all 12 steps (or your first post on the beginner path) gives you a personal −20% code for lifetime Pro or Insider. When the setup asks for your pages and sales, it now says right there that the files stay in your folder and the PARASITER server never sees them. Help is updated for lifetime access: no subscription, nothing renews, every update included.
