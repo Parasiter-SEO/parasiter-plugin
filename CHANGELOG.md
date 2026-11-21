@@ -6,6 +6,12 @@ Each version's section is posted to the news feed and the Telegram channels when
 
 **PARASITER is focused on affiliates.** The brand audit (`brand-presence`) and its `brand-auditor` agent are gone: PARASITER now has 20 skills and 9 agents, all built around parasite SEO for affiliate offers. Agencies and site owners still get the site and profile checklist inside `client-workspace`.
 
+## 0.61.0 — 2026-11-21
+
+**🏅 Finish your setup — get −20%.** On Free, complete the first setup (or publish your first post on the beginner path) and PARASITER gives you a personal −20% code for lifetime Pro or Insider, valid 7 days. It works on top of the Early Bird price.
+
+**Straight to work.** PARASITER is built for affiliates doing parasite SEO, so the first start no longer asks who you are: language, then your setup.
+
 ## 0.60.0 — 2026-11-21
 
 **Anonymous usage statistics.** PARASITER now tells Rumer which skills and agents people use — the names only (for example "page-audit"), with your plan, under a pseudonymous code. Never your pages, products, queries or texts. It shows what to improve next. Don't want it? Say **turn off usage stats**.

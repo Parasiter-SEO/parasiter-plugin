@@ -103,6 +103,11 @@ On **Claude Pro** PARASITER works **ready data first**: you use what Rumer has a
 On **Claude Max / Team** there are no marks: heavy steps run their agents at once.
 On Claude Pro the found and checked data is what saves your limits — **PARASITER Insider** gives you everything Rumer finds, so you don't spend limits searching.
 
+## Can I get a discount?
+- **🏅 Finish your setup on Free** (all 12 steps, or your first published post on the beginner path) → a personal **−20% code** for lifetime Pro or Insider, valid 7 days, for your account only. It works on top of the Early Bird price.
+- **Early Bird** runs for limited periods: the current deadline is on the site and on the payment page.
+- **Rumer's coupons** appear in his videos, articles and letters when there is no Early Bird.
+
 ## How do I make Claude Pro limits last with PARASITER?
 Lite already saves inside every skill. Around it, 8 habits (say **limit tips** in Claude for the full list):
 - **One task — one chat.** A long chat makes every reply more expensive; your profile, goals and journal stay in files.

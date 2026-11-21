@@ -171,7 +171,7 @@ First session of the week, or "am I on track?" → `goals` compares plan and fac
 
 ## Agencies: work for clients
 
-1. **Start:** "I'm an agency" (or pick it at the role question) → agency profile once: name, logo text, report colours, report language, white-label.
+1. **Start:** "I'm an agency" → agency profile once: name, logo text, report colours, report language, white-label.
 2. **New client:** "New client: Acme" → two short messages (the business; access and data). You get a brief, a ready message to the client with the open questions, and the access steps: Search Console (add your Google account as Restricted user), GA4 (Viewer).
 3. **Baseline:** "Brand audit for Acme" → site quick audit, profiles on social networks and platforms, content audit, a plan of profiles to open or fix. Then Month 0: Search Console 3 months (brand queries separately), positions for the target queries.
 4. **Content plan:** "Content plan for Acme, November" → topics × platforms × format × dates × UTM links, sent to the client for approval; only approved rows are produced.

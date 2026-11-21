@@ -10,7 +10,7 @@ Everything is in the working language. Nothing from the story or the uploads goe
 
 | Setup step | Free key | No key |
 |---|---|---|
-| 1 Language and role | yes | yes |
+| 1 Language | yes | yes |
 | 2 Work environment | yes | yes |
 | 3 Your story → verdict (`your-story.md`) | yes | yes |
 | 4 Upload base and reports | pages: the first 10 go into the Free journal, the rest are counted; sales and traffic exports: **read once for the First look** (§2) | read once for the First look; nothing is journaled — the Free key opens the journal |

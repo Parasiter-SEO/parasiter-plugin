@@ -4,7 +4,7 @@ The user must always know every skill and agent PARASITER has and not forget the
 
 ## When to show it
 
-1. **First run** — once, right after the language and role questions (setup step 1), before the work environment block.
+1. **First run** — once, right after the language question (setup step 1), before the work environment block.
 2. **Start of every new session** — as a reminder of what the system can do, after today's plan (navigator Step 3); during first setup, after the setup footer. Also on request any time ("map", "show all functions"). If the user says "don't show the map", save `capability_map: on-request` in the profile and from then on end the first reply of a session with one line instead: "All PARASITER functions: say **map**".
 3. **In `help`** on "what can PARASITER do?", "show all skills", "capability map".
 

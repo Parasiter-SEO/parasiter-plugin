@@ -12,13 +12,15 @@ Now: <one concrete action>
 Stuck or don't like something? Write to Rumer: /support in @parasiter_bot — he answers himself.
 ```
 **Tell the server each step (№74):** as each step starts, call `path_step` with the step name only (`about`, `promote`, `strategy`, `platform`, `topic`, `article`, `check`, `publish`, `indexing`, `position`, `done`) and `post` = the post number. Never a page, link, product or text. This is how Rumer sees where people stop and writes to them himself; without a key, skip it silently. On `publish` of post 1 the bot asks the user to rate the way there (1–5) — if `rating_asked` is true, add one line: "I've sent you a quick question in the bot — 10 seconds, it helps Rumer a lot."
+**🏅 The reward (№81, Free key):** when post 1 is published and logged in the journal, call `free_event` with `setup_done` and show the 🏅 card from the navigator ("Setup complete — the reward") with the personal −20% code. From the start, the footer of this path carries: "🏅 Publish your first post — your reward is a personal −20% code."
+
 Keep progress in `parasite-seo-profile.md` under `first_post:` (step, post number, product, platform, page URL when published, dates) so a new chat continues where it stopped ("Continuing your first post: step 6 — the article check.").
 
 Work label stays `▸ PARASITER · navigator`; when a step hands off to a skill, that skill's label shows and control comes back here after it.
 
 ## Step 1 — About you (2 minutes)
 
-Run `your-story.md` in its short form: what you want from parasite SEO, how much time a week, which language and country you want to write for, what you already have (nothing is fine). Then the role in one question: **"Do you want to earn commissions promoting other companies' products (affiliate) — or bring buyers to your own business, site, shop, course or channel?"**
+Run `your-story.md` in its short form: what you want from parasite SEO, how much time a week, which language and country you want to write for, what you already have (nothing is fine). Then straight to what we promote (№82: affiliate by default, no role question). Only if the user says the post is for their own business, site, shop, course or channel → that branch.
 
 ## Step 2 — What we promote
 

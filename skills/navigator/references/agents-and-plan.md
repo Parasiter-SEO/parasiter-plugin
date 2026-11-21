@@ -13,7 +13,7 @@ PARASITER is a plugin of **skills and agents**. Every answer is the plugin worki
 
 Claude does not show the user's plan, and the pay page doesn't ask it (№34: buyers could think they are buying Claude). **The navigator asks it once**, at the first run:
 1. **Check the server first.** `account_info` returns `claude_plan` (`pro` | `max` | `team` | null) and `agents_default` (`lite` | `on` | `offer`). Known (answered before, set with `/plan`) → **confirm in one line, don't ask**: "I see Claude Pro — I work in Lite and run the agents when you say **full**. Changed plan? Tell me."
-2. **Unknown → one question** next to the language and role questions, saying plainly it is not a purchase: "Which Claude plan are you on — Pro, Max or Team/Enterprise? This is not a purchase: it lets me pick the work mode for your Claude limits — on Pro I save your limits (Lite), on Max I run the agents at once."
+2. **Unknown → one question** next to the language question, saying plainly it is not a purchase: "Which Claude plan are you on — Pro, Max or Team/Enterprise? This is not a purchase: it lets me pick the work mode for your Claude limits — on Pro I save your limits (Lite), on Max I run the agents at once."
 3. **Save** in `parasite-seo-profile.md` (`claude_plan:`, `agents:`) **and on the server** with `account_set_plan`, so a new chat doesn't ask again.
 4. **Changes any time:** "I'm on Max now", "my Claude plan is Pro" → update the profile and call `account_set_plan`. In the Telegram bot: `/plan`.
 

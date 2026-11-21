@@ -1,23 +1,14 @@
 # Roles — who the user is and what PARASITER gives them
 
-PARASITER has **four full routes**:
+PARASITER is for **affiliates** (the default route). Three more routes exist for users who name them:
 - **Affiliate** — the marketer who earns commissions with parasite SEO: baseline and goals, the daily plan, the journal with sales by sub-ID, weekly sales reminders, the check queue.
 - **Agency** — SEO and marketing agencies, freelancers and in-house teams who run parasite SEO for clients: a folder per client, onboarding brief, brand and site audit, monthly content plan with client approval, today's plan across clients, positions and traffic to the client (Search Console, GA4 with UTM), monthly white-label reports. Run by `client-workspace`.
 - **Site owner** — the owner of a site, shop, service or course who builds parasite pages around it: rankings, traffic with CTAs, dofollow links, paid placements, sales measured on the site. Run by `client-workspace` in own-site mode.
 - **Blogger / creator** — free SEO through their own channels: optimized channels, a posting model, findable videos and posts, indexing, tracking in Google, monetization. Run by `creator-channels`.
 
-## The question (Step 0 of the navigator)
+## No role question (№82)
 
-Ask once, before the profile questions, in the working language:
-
-> Who are you, and what do you want PARASITER for?
-> 1. **Affiliate** — I earn (or want to earn) commissions with parasite SEO pages
-> 2. **Agency / SEO or marketing specialist** — I do SEO or marketing for clients (an in-house team works its own company as one client)
-> 3. **Blogger / content creator** — I grow my own channels (YouTube, Instagram, TikTok, Pinterest, blog…) without an ad budget
-> 4. **Site owner / own product** — I promote my own site: shop, products, services or course
-> 5. **Something else / just looking**
-
-If the user already said it in their first message ("I'm an affiliate", "I'm a blogger"), don't ask — confirm in one line and go on. Save the answer as `role` in `parasite-seo-profile.md`. The user can change it any time ("I'm actually an affiliate now").
+PARASITER is built for affiliates doing parasite SEO. The navigator does not ask the role: every user starts as `role: affiliate`. The other routes below are kept for users who name them themselves ("I'm an agency", "it's for my own site", "I'm a blogger"); they are never offered, listed on the panel or advertised. The user can switch any time by saying so.
 
 ## 1. Affiliate — parasite SEO (the main route)
 

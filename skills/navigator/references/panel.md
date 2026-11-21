@@ -8,7 +8,7 @@ PARASITER does not know how the user wants to work today. Publishing, uploading 
 
 ## The panel is the user's working desk — per role (№29)
 
-PARASITER is first of all a **working panel**: every tool of the user's role at hand, any moment — navigator and the day plan are help, not a required route. Each role sees **its own set**, numbered **1…N without gaps**; the numbers are fixed for that role. Other roles' functions are not on the panel: one line under it — "Other roles' functions: say **all functions**" → the full list of 21 (the "Other" table below) marked by role; starting any skill by name always works. **Client reports are not on the affiliate panel**: for affiliates `client-reports` is shown only as "Analytics: what earns and what to scale".
+PARASITER is first of all a **working panel**: every tool of the user's role at hand, any moment — navigator and the day plan are help, not a required route. Each role sees **its own set**, numbered **1…N without gaps**; the numbers are fixed for that role. Other roles' functions are not on the panel and not advertised (№82: PARASITER is for affiliates); "all functions" still lists every skill, and starting any skill by name always works. **Client reports are not on the affiliate panel**: for affiliates `client-reports` is shown only as "Analytics: what earns and what to scale".
 
 ## 🏆 Top-10 of the week — pinned at the very top
 
@@ -131,7 +131,7 @@ On Claude Pro (`claude_plan: pro`) every skill row and base gets a mark after th
 ### How each row is shown
 `N · name — what it does · plan · [🟢/🟡/🔴 on Claude Pro] · ✓ tried DD.MM / ○ not yet` — under the 🏆 Top-10 line and the "Bases and data" row (Б1…Б5), which always come first.
 - The plan is marked against the user's plan (`account_info`): above their plan → "🔒 Pro" / "🔒 Insider", still listed, never hidden, in its usual place. Choosing it gives the locked card (`upgrade-showcase.md` §2) and the alternative on their plan.
-- Role: show only the user's role table (role from the profile; no role yet → ask it first, it takes one line). Numbers are that table's numbers.
+- Role: show only the user's role table (role from the profile; no role → affiliate, never asked, №82). Numbers are that table's numbers.
 - Above the panel, one line of progress counted on the role's set: **"Explored: 9 of 16 skills · 5 of 7 agents"** (affiliate); under it, the last 3 tried ("last: page-audit 03.11 · goals 02.11 · platform-finder 02.11").
 - Under the panel: "Reply with a number. **0** — this menu any time." Below Insider, then the unlock line (№56): "🔒 N of M functions are locked on your plan. **Insider opens all 20 + 9 agents** (<Insider price>) · Pro opens 17 (<Pro price>) — prices from `account_info.prices` — <upgrade link>" (Pro user: the 4 Insider functions + /upgrade). N counts the locked rows of the role's table.
 
