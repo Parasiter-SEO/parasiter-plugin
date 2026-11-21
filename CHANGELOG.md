@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.68.0 — 2026-11-21
+
+**The whole platform base, with Rumer's note on every platform.** The first strategy and the free base now show every platform, grouped by type, each with Rumer's own short characteristic — what ranks, what gets deleted, where the link is hard, what is paid. You choose where to post; nothing is hidden because its topic looks unrelated (music, art and 3D platforms included). Say *"show the platform base"*.
+
 ## 0.67.0 — 2026-11-21
 
 **"No sales yet?" — see exactly where it breaks.** Say *"no sales"* or *"why don't I earn?"* and PARASITER reads your own chain from the journal: pages live → in the index → in positions → traffic → clicks → sales. It shows what you already have, the step where the numbers drop, and the one thing to change this week — more pages, another platform, indexing, a fresher topic, the page itself or a different offer.
