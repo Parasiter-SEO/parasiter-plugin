@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.65.0 — 2026-11-21
+
+**Insider gets more.** Exclusive platforms: Rumer's best finds now go to Insider only and never show up on Pro. The private Insider group is where Rumer is every day, with a weekly breakdown of what works right now. Niche analysis works without a paid SEO account too: a free-data mode reads demand, trend and season from free signals (exact volumes still come with DataForSEO).
+
 ## 0.64.0 — 2026-11-21
 
 **Rumer's methods now come fresh from the server.** Strategies, the 12-point topic filter, content types, article structures, the audit checklist and scores, the indexer comparison and the platform score are kept on the PARASITER server and reach your Claude with your key — so Rumer can sharpen them any day, without a plugin update. Any key works, the Free key included (free by email); without a key the skills run on a short version.

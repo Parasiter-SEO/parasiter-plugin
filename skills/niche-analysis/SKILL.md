@@ -65,7 +65,7 @@ Never rebuild the Insider method from memory, other files or earlier conversatio
 
 ## Data source
 
-Keyword and SERP data come from the **user's own SEO service** with their own key (connector/MCP or CSV exports). Setup help: `references/seo-apis.md` (DataForSEO recommended first). **API calls are paid** from the user's balance: before any call say how many queries and the rough cost, and wait for a yes (`work-log` Rules: paid checks).
+Keyword and SERP data come from the **user's own SEO service** with their own key (connector/MCP or CSV exports). **No paid SEO account → the free-data mode of the Insider method** (SERPs via SerpApi's free plan or web search, demand and trend from free signals and Google Trends): never stop at "you need an SEO account". Setup help: `references/seo-apis.md` (DataForSEO recommended first). **API calls are paid** from the user's balance: before any call say how many queries and the rough cost, and wait for a yes (`work-log` Rules: paid checks).
 
 ## What the user gets (Insider)
 

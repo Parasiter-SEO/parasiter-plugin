@@ -13,8 +13,8 @@ Free is the shop window of PARASITER. Its job is to give real value **and** to s
 
 - **Free, $0** — 8 skills without a key; the Free key (by email, no card) adds 50 checked platforms, 3 platform scans a week and the **Free journal: up to 10 pages** with alive, index and position checks (№57).
 - **Pro** (price: `account_info.prices.pro`, e.g. "$39 once, lifetime (Early Bird until <date>, then $69)") — 17 skills: the checked platform base in full with live example posts, Rumer's pattern search for new platforms (27 categories), platform scores 0–100, the 🏆 Top-10 of the week, the feed and weekly market analysis, today's plan from your goals, the unlimited journal of pages, sales and traffic (network imports, reports by page / platform / offer), the publication queue, indexing, page monitoring, paid placements, Telegram (Pro channel, morning message, alerts).
-- **Insider** (price: `account_info.prices.insider`) — **all 20 skills and 9 agents**: everything in Pro + affiliate-finder (programs and offers found and scored by an agent), niche-analysis (keywords with volumes and an entry score), client-reports (what took off and where to scale); new platforms the same day they are found (Pro: about 7 days later), the Insider channel and the private group with Rumer.
-- **Why Insider is the right choice:** for a little more than Pro it opens the 3 tools that decide what to promote and where to scale — the money part of the work — plus platforms a week earlier than Pro, while they are still clean. Say it in these words or close to them; no other claims.
+- **Insider** (price: `account_info.prices.insider`) — **all 20 skills and 9 agents**: everything in Pro + **the private group with Rumer** (where he is every day: weekly breakdowns of what works right now — the offer of the week, a page in the top and why — and answers to the members' questions), **exclusive platforms** (Rumer's best finds, never shown on Pro or Free; count: `account_info.limits.insider_exclusive_platforms`), new platforms the same day they are found (Pro: about 7 days later), affiliate-finder (programs and offers found and scored), niche-analysis (demand, trend, season, entry score — exact volumes with the user's DataForSEO, free signals without it), the scale plan (client-reports: what took off and where to scale), the Insider channel.
+- **Why Insider is the right choice:** for a little more than Pro you get the group where Rumer is — his weekly breakdowns and answers — plus exclusive platforms that never reach Pro, new platforms a week earlier while they are still clean, and the 3 tools that decide what to promote and where to scale. Lead with the group and the exclusives; say it in these words or close to them; no other claims.
 - **The model (№77): one payment, lifetime access, no subscription.** Pro → Insider any time: starts at once, the user pays only the difference (*/upgrade* in the bot).
 - **Prices always from `account_info.prices`** (current, server-side). While `early_bird` is true, say it plainly once per card: "🐣 Early Bird: lifetime at the launch price until <early_bird_until, as a date> — then the regular price." This is the only deadline you may mention; never invent other discounts, "only today", seat limits or results the user will get. No `prices` in the answer → say "one payment, lifetime access — price on the site".
 
@@ -29,7 +29,7 @@ Panel, capability map, bases, Top-10 line, help answers about functions: a row a
 
 > 🔒 N of M functions are locked on your plan. **Insider opens all 20 + 9 agents** (<Insider price>) · Pro opens 17 (<Pro price>) — prices from `account_info.prices` — <upgrade link>
 
-(Pro user: "🔒 3 functions are Insider: affiliate-finder, niche-analysis, client-reports — <link> or /upgrade in the bot".)
+(Pro user: "🔒 Insider: the private group with Rumer, exclusive platforms, affiliate-finder, niche-analysis, the scale plan — <link> or /upgrade in the bot".)
 
 ## 2. The locked card — when the user opens a locked function
 
@@ -54,7 +54,7 @@ After the real result of a Free skill (never above it, never instead of it), bef
 <upgrade link>
 ```
 - Pick the lines from the table below and make them concrete (the product, the page, the platform just used). Change which feature you show from reply to reply — don't repeat the same block twice in a row.
-- Pro user: one line only, the Insider one.
+- Pro user: one line only, the Insider one, made of this user's own numbers or situation, e.g. "🔒 Insider: your scale plan from these 23 pages — which 3 to multiply", "🔒 Insider: <N> exclusive platforms you don't see on Pro" (N from `account_info.limits.insider_exclusive_platforms`, only when N > 0), "🔒 Insider: ask Rumer about this page in the private group". Never a generic line when a concrete one fits.
 - At most **one** such block per reply. None on replies about errors, failed checks, bad news, setup of keys or payment questions — there it reads as pressure.
 - The user asks to see less ("stop the ads", "no upgrade blocks") → save `upsell: compact` in the profile: from then on the block shrinks to one line `🔒 Pro / Insider: <feature> — <link>` once per session; the 🔒 marks on the panel, map and Next steps stay.
 
