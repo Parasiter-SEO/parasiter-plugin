@@ -13,6 +13,8 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
+**Usage stats (№78):** on the first answer in a session call `usage_event` with skill `help` (name only; skip when the profile says `usage_stats: off`).
+
 This skill answers questions about the plugin. It knows the whole system: read the reference that fits the question before answering, and answer from it, not from memory.
 
 | Question | Read |

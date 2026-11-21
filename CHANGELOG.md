@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.60.0 — 2026-11-21
+
+**Anonymous usage statistics.** PARASITER now tells Rumer which skills and agents people use — the names only (for example "page-audit"), with your plan, under a pseudonymous code. Never your pages, products, queries or texts. It shows what to improve next. Don't want it? Say **turn off usage stats**.
+
 ## 0.59.0 — 2026-11-21
 
 **PARASITER is now yours for life: one payment, no subscription.**
