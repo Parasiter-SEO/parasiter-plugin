@@ -1,0 +1,27 @@
+# Indexing fresh content (checked 2026-10-29)
+
+On Pro, the `indexing` skill runs this for every page: setup once, blocker check, the own-site way, the chosen indexer, recheck and per-service stats. Its `references/indexers.md` is the full, newer comparison; this file is the short creator version.
+
+Google finds most YouTube videos by itself; Instagram, TikTok, Facebook posts and pins are found more slowly or not at all. A piece not in Google can't rank. Check first (search the exact title in quotes, or `site:` + URL), wait a few days, then act. No free tricks (links, social posts, pings) — they don't get pages indexed (Rumer's rule); the only free way is your own site in Search Console.
+
+## Free: your own site only
+
+1. **Own site in Search Console:** embed or link the piece on a page of your site, then Search Console → URL Inspection → Request indexing for that page (a small daily quota). A page where the video is the main content can appear in video results.
+2. **Instagram:** the account must be professional and the "appear in search engine results" setting on — otherwise nothing helps.
+
+No other free ways: links from other pages, posts on X / Pinterest / communities don't get pieces indexed.
+
+## Paid indexer (only with the user's yes)
+
+Instant services (one to a few minutes, about $0.50 per link) exist; the tools are kept secret — say so, never name one. Regular services below:
+
+For URLs still not indexed after 7–14 days — third-party pages the creator can't put in Search Console. Google says there is no "premium" indexing and supports its Indexing API only for job postings and livestreams; indexers work in ways Google doesn't endorse and results vary. None confirms support for YouTube, Instagram or TikTok URLs — **test with 5–10 URLs first**.
+
+| Service | Price (as published / tested) | Not indexed | Notes |
+|---|---|---|---|
+| **Rapid URL Indexer** — recommended to try first | from ~$0.05 per URL; standard ~$0.02, VIP ~$0.10 (independent test 04/2026) | credits refunded after 14 days | claims ~91%; test 89–96% (test linked to the service) |
+| SpeedyIndex | ~$0.004 per link, via Telegram bot, 100 free test links | refund terms unconfirmed | test ~52% |
+| Omega Indexer | ~$0.10 per credit ($19 / 190) | automatic credit refund (claimed) | 3–11 days in a test |
+| IndexMeNow | ~$0.47–0.98 per credit | credits refunded on failure | ~71% in 10 days in a test |
+
+Say the price for the number of URLs before running, log `submitted` in the journal with the service in the note, and check again after 14 days.
