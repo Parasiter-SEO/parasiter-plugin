@@ -56,6 +56,9 @@ These are Rumer's own terms. They don't mean what they usually mean on the inter
 ## Saving my reviews
 After you publish a text you worked on yourself, say "save this .docx with the page": it is kept in `parasite-seo-sources/` linked to the page. If the page or the whole platform is removed, "which of my pages were on X?" lists them with their sources to republish. Plain AI drafts are not worth saving — quicker to write again.
 
+## I have no sales yet. Is PARASITER not working?
+Sales come from your choices — the offer, the angle, how many pages, on which platforms, and time. PARASITER's part is everything before the sale: pages live, in the index, in positions, getting traffic and clicks. Say *"no sales"* and it reads your own chain from the journal (pages live → indexed → positions → traffic → clicks → sales), shows where the numbers drop and the one lever for this week: more pages, another platform, indexing, a fresher topic, the page itself or a different offer. 4–8 weeks without a sale is normal at the start; Rumer's benchmark is 10–15 posts in the top 3. No one can honestly promise income.
+
 ## Telegram
 - **How to connect**: say "connect Telegram" in Claude, open the personal link, press Start. A username is not enough: Telegram bots cannot write to someone first.
 - **Morning message** (Pro, Insider): every day at 09:00 Kyiv — your 5-minute routine (log yesterday's sales, log what you published, plan the day), a focus for the day (find platforms, write, check pages, scale, read the market, plan the week) and new platforms for your plan. `/morning off` in the bot or "turn off the morning message" in Claude.
