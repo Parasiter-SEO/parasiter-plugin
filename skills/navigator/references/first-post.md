@@ -67,6 +67,8 @@ Show the 10 strategy platforms as a table: # · platform · type · **Rumer's no
 
 `sales-review-writer` for this platform, with the affiliate link (or the UTM link to the business); images through `post-illustrations` (free routes first). Honest: no invented experience — if the user hasn't used the product, the research angle.
 
+The first article is delivered complete, in one reply (`sales-review-writer` Step 6): the article · the .docx **with every infographic embedded** (the build must say `images embedded: N of N`) · the infographics shown in the chat · the **cover image** block — the real product photo if found, plus one ready Gemini prompt in a code block with the Gemini link. Then: "Make the cover in Gemini (30 seconds) and put it under the title."
+
 ## Step 7 — Check before publishing ("I'll rate it")
 
 `page-audit` on the draft. **Score 80 or more → publish.** Below 80 → fix the top issues together (the audit's fix list), re-score, then publish. Say the score plainly: "Your post: 84/100 — good to publish. What lifted it: …".
