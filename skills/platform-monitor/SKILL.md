@@ -25,7 +25,7 @@ Every answer here is PARASITER at work: this skill's steps, Rumer's rules, crite
 - `offer` (plan not known) → ask once before the first run: "This step of the skill is done by PARASITER's page-checker agent: separate context, deeper, uses more of your Claude limits (best on Max). Run it? Or Lite with the same skill."
 - "full" / "audit by agent" → run it this time; "turn on agents" → `agents: on`; "save limits" or a usage limit hit → `agents: lite` (save in the profile, advice from `agents-and-plan.md` §3).
 
-**Lite version:** up to 3 pages checked here, the rest listed as "not checked — say **full**". Lite is the same method in a smaller scope: say what was left out.
+**Lite version (№76):** every page in the queue is checked by the script `scripts/pagecheck.py` (alive, noindex, affiliate link) — Claude reads only its summary, so the whole queue costs about one reply of usage. The `page-checker` agent only for the pages the script could not open, or on **full**.
 
 ## Next steps (end of every reply)
 
@@ -67,7 +67,7 @@ Reply in the user's language.
 ## The check (free: alive, noindex, link)
 
 1. Take the pages from the journal: due ones (`work-log` `due`), or all live pages on request, or the ones the user names. Skip pages marked removed.
-2. For each URL: HTTP status (live / 404 / login wall / redirect), noindex in meta or header, affiliate link present and working. For more than 3 URLs hand them to the **`page-checker` agent** (URL, main query, platform, expected affiliate link, country) in batches of about 15.
+2. **Run the script first, on every plan (№76):** `python3 ${CLAUDE_PLUGIN_ROOT}/skills/platform-monitor/scripts/pagecheck.py parasite-seo-progress.csv --due --log` (`--all` for every page, `--platform X`, `--urls file`). It opens each page on the user's computer (HTTP status, client-side redirects, removed text, noindex in meta or header, affiliate link from the links library) and prints only the changes and counts; the full table goes to `pagecheck-results.csv`, check rows to the journal. Do not open the pages yourself. Pages under "Open by hand" (the site blocks automatic checks) → the **`page-checker` agent** on Max / Team or on **full** (URL, main query, platform, expected affiliate link, country), otherwise list them for the user. No shell → the agent (Max) or up to 3 pages by hand (Pro).
 3. Index and positions are **paid** checks on the user's own SEO account — never part of the free check (see Rules).
 4. Summary, changes first:
 ```

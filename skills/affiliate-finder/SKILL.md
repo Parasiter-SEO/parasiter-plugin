@@ -25,7 +25,7 @@ Every answer here is PARASITER at work: this skill's steps, Rumer's rules, crite
 - `offer` (plan not known) → ask once before the first run: "This step of the skill is done by PARASITER's affiliate-scout agent: separate context, deeper, uses more of your Claude limits (best on Max). Run it? Or Lite with the same skill."
 - "full" / "audit by agent" → run it this time; "turn on agents" → `agents: on`; "save limits" or a usage limit hit → `agents: lite` (save in the profile, advice from `agents-and-plan.md` §3).
 
-**Lite version:** 3 programs, their published terms only (model, rate, cookie, payout, GEO, traffic rules) with source links; offer pages are not opened. Lite is the same method in a smaller scope: say what was left out.
+**Lite version:** 3 programs, their published terms only (model, rate, cookie, payout, GEO, traffic rules) with source links; offer pages are not opened. Lite is the same method in a smaller scope: say what was left out. **Ready data first (№76, Claude Pro):** start from Rumer's starter programs (`starter_offers`, 11 niches) and the weekly analysis (`analysis_latest`); search live only for a niche they don't cover, after one line with 🔴 and the phrase **search live**.
 
 ## Next steps (end of every reply)
 

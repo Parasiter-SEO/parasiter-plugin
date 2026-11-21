@@ -127,8 +127,11 @@ Agents: affiliate-scout → 3 · product-researcher → 6 · serp-analyst → 5,
 | 20 | client-reports | analytics / client and site reports | Insider | affiliate (analytics), agency, site owner |
 | 21 | help | how anything works | Free | all |
 
+### Cost marks on Claude Pro (№76)
+On Claude Pro (`claude_plan: pro`) every skill row and base gets a mark after the plan: 🟢 ready / light, 🟡 cheap check, 🔴 heavy (`agents-and-plan.md` §7). Bases Б1–Б5 are 🟢. Skills: 🟢 navigator, goals, platform-feed, content-type-selector (Lite), sales-review-writer, post-illustrations, page-audit (self-check), work-log, client-reports, client-workspace, creator-channels, video-seo (package), help; 🟡 platform-monitor, indexing (script check; index / positions on the user's SEO account); 🔴 affiliate-finder, niche-analysis, platform-analyzer, paid-placements (fresh check), brand-presence; platform-finder is 🟢 from Rumer's base and 🔴 for a live search — show "🟢 base · 🔴 live". Legend under the panel (one line), on the visual page as `"cost"` per tile. Max / Team: no marks.
+
 ### How each row is shown
-`N · name — what it does · plan · ✓ tried DD.MM / ○ not yet` — under the 🏆 Top-10 line and the "Bases and data" row (Б1…Б5), which always come first.
+`N · name — what it does · plan · [🟢/🟡/🔴 on Claude Pro] · ✓ tried DD.MM / ○ not yet` — under the 🏆 Top-10 line and the "Bases and data" row (Б1…Б5), which always come first.
 - The plan is marked against the user's plan (`account_info`): above their plan → "🔒 Pro" / "🔒 Insider", still listed, never hidden, in its usual place. Choosing it gives the locked card (`upgrade-showcase.md` §2) and the alternative on their plan.
 - Role: show only the user's role table (role from the profile; no role yet → ask it first, it takes one line). Numbers are that table's numbers.
 - Above the panel, one line of progress counted on the role's set: **"Explored: 9 of 16 skills · 5 of 7 agents"** (affiliate); under it, the last 3 tried ("last: page-audit 03.11 · goals 02.11 · platform-finder 02.11").

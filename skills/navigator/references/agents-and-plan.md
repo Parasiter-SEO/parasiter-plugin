@@ -85,3 +85,22 @@ Pro users get these habits from PARASITER, so the plan's limits go into work, no
 8. **Watch the meter:** Settings → Usage (claude.ai/settings/usage); in Claude Code `/usage` and `/context` show what takes the space.
 
 **Third-party "token optimizers"** (asked about or mentioned): not recommended with PARASITER. They are built for coding in Claude Code; independent tests show roughly 20–40% savings, not the 90% in their titles; and they cut tool outputs — pages, search results, checks — that PARASITER's verdicts rely on. They also run someone else's code on every step. Lite plus the 8 habits do the saving without losing data.
+
+## 7. Claude Pro: ready data first, discovery on demand — RULE (№76)
+
+On Claude Pro the user **uses what Rumer has already found and checked**, and spends the limits on their own work: journal, articles, publishing. Discovery — live search, SERP analysis, agents — stays open, but shown with its price and run only when the user chooses it. Nothing is hidden or locked by the Claude plan (the PARASITER plan still decides what is open, №56). The point is that the user always knows what they can afford.
+
+**What makes a step expensive** is not the skill, it is Claude reading many live pages or an agent working in its own context. Server data (`platforms_search`, `top10_week`, `analysis_latest`, `feed_latest`, `patterns_get`, `starter_offers`, `insider_method`) and local scripts return short answers — cheap.
+
+| Mark | Cost on Claude Pro | What |
+|---|---|---|
+| 🟢 | ready / light — use freely | Rumer's platform base (Б1) and Top-10, weekly analysis and feed, strategies, starter programs, the journal and reports (scripts), goals and the day plan, what to write (Lite), articles from known facts, images, the page-audit self-check, the publication queue |
+| 🟡 | cheap check — a script does it | page checks with `platform-monitor/scripts/pagecheck.py` (alive, noindex, affiliate link — any number of pages, about one reply of usage), paid index / position checks on the user's SEO account (money, not Claude limits — ask first as always) |
+| 🔴 | heavy — ≈ 3–5× more limits | agents (platform-scout, affiliate-scout, serp-analyst, product-researcher, independent-auditor, brand-auditor, placement-scout, video-seo-checker), live platform / offer discovery beyond the base, the full SERP breakdown, "repeat this result" on a new page |
+
+**How skills apply it (Claude Pro, `agents: lite`)**
+1. **Ready data first.** "where to post", "what to promote", "what works now" → answer from the server data above (Б1, Top-10, analysis, starter programs) before any live search. Live search runs only when the base has nothing for the user's product or niche — and then as the Lite version with the price line: "Rumer's base has nothing for <X> yet. A live search finds it (🔴 ≈ 3–5× usage). Say **search live** — or take the closest from the base."
+2. **Checks by script.** Page checks run `pagecheck.py`; Claude reads only its summary, never each page. The `page-checker` agent only for pages the script could not open, or on **full**.
+3. **🔴 steps:** before running, one line with the mark and what it gives; on Pro suggest a weekly rhythm for them (scans once a week, the independent audit before each publication — §5 priority).
+4. **The panel and the "What's next" options show the mark** on Claude Pro (🟢 / 🟡 / 🔴 after the plan), so the user sees the price before choosing. One legend line under the panel: "🟢 use freely · 🟡 cheap check · 🔴 heavy (≈ 3–5× your Claude limits; best on Max)". On Max / Team no marks.
+5. **The value line.** When it fits (first panel on Claude Pro, a Free or PARASITER Pro user asking why upgrade): "On Claude Pro the found and checked data is what saves your limits — PARASITER Insider gives you everything Rumer finds, so you don't spend limits searching." Always write **Claude Pro** and **PARASITER Pro** in full, so the two plans are never confused.

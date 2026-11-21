@@ -94,6 +94,14 @@ PARASITER is skills plus agents. Every answer comes from a skill — Rumer's rul
 - **The plan** is asked once by the navigator at the first start (it's not a purchase — only the work mode). Changed it? Say "I'm on Max now" in Claude, or send `/plan` to @parasiter_bot. "save limits" → Lite, "turn on agents" → agents always.
 - **Limits:** Anthropic doesn't publish exact numbers (a 5-hour window plus a weekly cap). Measured: one independent audit of an article ≈ 90k tokens, ~2 minutes (≈ 15–25 ordinary replies) — on Pro roughly 1–3 heavy agent tasks per 5-hour session next to normal work (an estimate). Start a new chat for big tasks; after the first agent run check Settings → Usage; on Pro, priority: audit before each publication → product facts for each new product → platform and offer scans once a week. Pro can turn on extra usage; Max pays off when you publish and run agents every day.
 
+## Claude Pro or Max — what can I afford in PARASITER?
+On **Claude Pro** PARASITER works **ready data first**: you use what Rumer has already found and checked, and spend your limits on your own work. The panel marks every function:
+- 🟢 **Use freely:** Rumer's platform base and the Top-10 of the week, the weekly analysis and feed, strategies, starter programs, your journal and reports, the day plan, what to write, articles, images, the page self-check.
+- 🟡 **Cheap check:** page checks (alive, noindex, affiliate link) run by a script on your computer — a whole queue costs about one reply; index and position checks use your SEO account (money, not Claude limits).
+- 🔴 **Heavy (≈ 3–5× your limits):** agents, live search for new platforms or offers beyond the base, the full search-results breakdown. Always available — PARASITER says the price first; on Pro run them about once a week.
+On **Claude Max / Team** there are no marks: heavy steps run their agents at once.
+On Claude Pro the found and checked data is what saves your limits — **PARASITER Insider** gives you everything Rumer finds, so you don't spend limits searching.
+
 ## How do I make Claude Pro limits last with PARASITER?
 Lite already saves inside every skill. Around it, 8 habits (say **limit tips** in Claude for the full list):
 - **One task — one chat.** A long chat makes every reply more expensive; your profile, goals and journal stay in files.

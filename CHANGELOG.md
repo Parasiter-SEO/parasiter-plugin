@@ -2,6 +2,16 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.58.0 — 2026-11-21
+
+**Claude Pro made complete: ready data first, and you always see the price.** On Claude Pro PARASITER now builds your work on what Rumer has already found and checked, so your limits go into your own pages:
+- **Every function has a mark on the panel:** 🟢 use freely (Rumer's base and Top-10, analysis, strategies, journal, articles, day plan) · 🟡 cheap check · 🔴 heavy, about 3–5× your limits (agents, live search beyond the base). Nothing is taken away: heavy steps stay open, PARASITER just names the price first.
+- **"Where do I post?" and "what do I promote?"** are answered from Rumer's base, the Top-10 and the starter programs first. A live search runs only when the base has nothing for your product — and only when you say **search live**.
+- **Page checks by script:** your whole check queue (alive, noindex, affiliate link) is checked on your computer and you get only the changes. 50 pages cost about one ordinary reply instead of a heavy agent run, on every plan.
+- **On Claude Max** nothing changes: the agents run at once.
+
+Say **0** to see the panel with the marks.
+
 ## 0.57.0 — 2026-11-21
 
 **On Claude Pro? PARASITER now shows how to make your limits last.** Lite already saves inside every skill; now you also get the habits that save around it:

@@ -25,7 +25,7 @@ Every answer here is PARASITER at work: this skill's steps, Rumer's rules, crite
 - `offer` (plan not known) → ask once before the first run: "This step of the skill is done by PARASITER's page-checker agent: separate context, deeper, uses more of your Claude limits (best on Max). Run it? Or Lite with the same skill."
 - "full" / "audit by agent" → run it this time; "turn on agents" → `agents: on`; "save limits" or a usage limit hit → `agents: lite` (save in the profile, advice from `agents-and-plan.md` §3).
 
-**Lite version:** up to 3 pages from the queue checked here, the rest stay in the queue. Lite is the same method in a smaller scope: say what was left out.
+**Lite version (№76):** the queue is checked by `platform-monitor/scripts/pagecheck.py` (alive, noindex, affiliate link; only the summary is read), the agent only for pages the script could not open, or on **full**.
 
 ## Next steps (end of every reply)
 

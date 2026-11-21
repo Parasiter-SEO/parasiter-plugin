@@ -26,7 +26,7 @@ plan.json (all text in the user's working language; only "title", "tasks" are re
   "explored": "Освоено: 8 из 21 скилов · 4 из 10 агентов",         # №26 panel (optional; "kind": "panel" = panel only)
   "top10": {"week_of": "2026-11-09", "stale": false, "items": [{"rank": 1, "name": "Medium", "why": "…"}, …]},  # pinned above the bases
   "bases": [{"code": "Б1", "name": "База площадок Rumer", "what": "проверенные площадки", "plan": "Pro"}, …],   # №32, first on the panel
-  "panel": [{"name": "План", "items": [{"n": 1, "skill": "navigator", "what": "план на сегодня", "plan": "Pro",
+  "panel": [{"name": "План", "items": [{"n": 1, "skill": "navigator", "what": "план на сегодня", "plan": "Pro", "cost": "🟢",
                                          "tried": "03.11", "locked": false}, …]}, …],
   "upgrade": {"url": "https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=panel#pricing",
               "text": "🔒 7 из 16 функций закрыты на вашем тарифе. Insider открывает все 21 + 10 агентов…"}   # №56, below Insider only
@@ -203,6 +203,7 @@ def build(p: dict) -> str:
                 st = (f'<span class="ok">✓ {e(lab["tried"])} {e(tried)}</span>' if tried else f'<span class="no">○ {e(lab["untried"])}</span>')
                 pl = f'<span class="pl">{"🔒 " if it.get("locked") else ""}{e(it.get("plan"))}</span>' if it.get("plan") else ""
                 lk = f'<span class="no">{e(lab["locked"])}</span>' if it.get("locked") else ""
+                lk += f'<span class="pl" title="Claude Pro usage">{e(it.get("cost"))}</span>' if it.get("cost") else ""
                 cls = "tile" + (" tried" if tried else "") + (" lock" if it.get("locked") else "")
                 tiles.append(f'<div class="{cls}"><div class="n mono">{e(it.get("n"))}</div><div class="sk mono">{e(it.get("skill"))}</div>'
                              f'<div class="w">{e(it.get("what"))}</div><div class="st">{st}{pl}{lk}</div>'
