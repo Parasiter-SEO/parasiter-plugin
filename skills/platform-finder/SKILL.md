@@ -95,8 +95,10 @@ Free gets two things from the server. Both are real value, and both show clearly
 ```
 Free platform base · snapshot of N checked platforms (of M in Pro)
 Each status is as of its check date — check a platform yourself before you invest in it.
-| # | Platform | Type | Language | Status | Checked | Sign-up |
+| # | Platform | Type | Rumer's note | Language | Status | Checked | Sign-up |
 ```
+- **Every platform of the snapshot, grouped by type** (articles · documents / flipbooks / presentations · forums / communities · site builders · audio / podcasts / music · profiles · visual · reviews · press releases, paid ones last and marked paid). The user chooses. **Never hide a platform because its topic looks unrelated** (music, games, art, 3D…): affiliates post on Bandcamp, SoundCloud and the like — show it with Rumer's note and let the user decide.
+- **Rumer's note** is the row's `rumer_note`: his own characteristic of the platform, in the working language, short and as he says it. Empty → "—". A note that says the platform is not indexed or removed now → keep the row, say it plainly.
 - No example posts on Free (the server sends none — never invent them). Mark platforms already in the user's base "yours".
 - Under the table, one line: "Pro: the whole checked base with live example posts on every platform, new platforms every week (Insider the same day) and what is alive today — https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=platform-finder#pricing".
 - Then the choice as in Step 5 ("Which ones do we take? Reply with numbers") and save the chosen ones the same way. The analyzer checklist works on any of them.
