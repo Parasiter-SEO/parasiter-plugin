@@ -20,6 +20,8 @@ Work label stays `▸ PARASITER · navigator`; when a step hands off to a skill,
 
 ## Step 1 — About you (2 minutes)
 
+**Never skipped (Rumer):** even when the user opens with a product or a program ("I want to promote VigRX Plus from SellHealth"), keep it for Step 2 and still do Step 1 first, in ONE message: the Claude plan (Pro / Max / Team, if `account_info` doesn't know it — "not a purchase, it picks the work mode"), then the short story. The step bar shows "now: About you". Step 2 starts only after the story is saved and the user was told where it is (`your-story.md` §2).
+
 Run `your-story.md` in its short form: what you want from parasite SEO, how much time a week, which language and country you want to write for, what you already have (nothing is fine). Then straight to what we promote (№82: affiliate by default, no role question). Only if the user says the post is for their own business, site, shop, course or channel → that branch.
 
 ## Step 2 — What we promote
@@ -66,6 +68,8 @@ Show the 10 strategy platforms as a table: # · platform · type · **Rumer's no
 ## Step 6 — Article
 
 `sales-review-writer` for this platform, with the affiliate link (or the UTM link to the business); images through `post-illustrations` (free routes first). Honest: no invented experience — if the user hasn't used the product, the research angle.
+
+The first article is delivered complete, in one reply (`sales-review-writer` Step 6): the article · the .docx **with every infographic embedded** (the build must say `images embedded: N of N`) · the infographics shown in the chat · the **cover image** block — the real product photo if found, plus one ready Gemini prompt in a code block with the Gemini link. Then: "Make the cover in Gemini (30 seconds) and put it under the title."
 
 ## Step 7 — Check before publishing ("I'll rate it")
 

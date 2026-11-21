@@ -51,6 +51,7 @@ class Builder(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.body, self.rels, self.media, self.nums = [], [], [], []
         self.img_dirs = img_dirs
+        self.embedded, self.missing = [], []
         self.para = None          # list of runs for the open paragraph
         self.pstyle = None
         self.bold = self.ital = 0
@@ -116,10 +117,12 @@ class Builder(HTMLParser):
                 data = open(p, "rb").read()
                 break
         if data is None:
+            self.missing.append(name)
             self.open_p()
             self.run(f"[Image: {name} — insert here]")
             self.close_p()
             return
+        self.embedded.append(name)
         size = jpeg_size(data) or (700, 394)
         cx = min(MAX_EMU, size[0] * 9525)
         cy = int(cx * size[1] / size[0])
@@ -285,6 +288,7 @@ def build(html_text, out, img_dirs):
         z.writestr("word/_rels/document.xml.rels", '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' + "".join(rels) + "</Relationships>")
         for target, data in b.media:
             z.writestr("word/" + target, data)
+    build.last = b
     return out
 
 
@@ -314,8 +318,19 @@ def main(argv):
     dirs.append(os.path.dirname(os.path.abspath(src)))
     with open(src, encoding="utf-8") as f:
         build(f.read(), out, dirs)
+    b = build.last
     print(os.path.abspath(out))
-    return 0
+    # Delivery gate: every infographic in --images must be inside the .docx (Rumer: the .docx is the finished article).
+    pics = []
+    if "--images" in argv and os.path.isdir(dirs[0]):
+        pics = sorted(f for f in os.listdir(dirs[0]) if f.lower().endswith((".jpg", ".jpeg", ".png")))
+    unref = [f for f in pics if f not in b.embedded]
+    print(f"images embedded: {len(b.embedded)}" + (f" of {len(pics)} in the images folder" if pics else ""))
+    if b.missing:
+        print("MISSING (left as a placeholder): " + ", ".join(b.missing))
+    if unref:
+        print("NOT IN THE DOCX — add <img src=\"…\"> where each belongs and build again: " + ", ".join(unref))
+    return 3 if (b.missing or unref) else 0
 
 
 if __name__ == "__main__":

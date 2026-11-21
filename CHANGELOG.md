@@ -2,6 +2,14 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.70.0 — 2026-11-21
+
+**Your story is never lost.** The first steps always start with you: your Claude plan and your story in 2 minutes, even if you come with a product right away. PARASITER then says exactly where your story and profile are saved; in a chat without a folder it sends you both files, so the next chat continues where you stopped — just attach them.
+
+## 0.69.0 — 2026-11-21
+
+**Every article now comes ready to post.** The Word file always has all the infographics inside, right where they belong, and every article comes with a ready prompt for the cover: copy it, open Gemini (free), paste a screenshot of the product, done in 30 seconds.
+
 ## 0.68.0 — 2026-11-21
 
 **The whole platform base, with Rumer's note on every platform.** The first strategy and the free base now show every platform, grouped by type, each with Rumer's own short characteristic — what ranks, what gets deleted, where the link is hard, what is paid. You choose where to post; nothing is hidden because its topic looks unrelated (music, art and 3D platforms included). Say *"show the platform base"*.
