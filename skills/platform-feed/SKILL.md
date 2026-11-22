@@ -13,7 +13,7 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 ## Show what the next plan opens — RULE (№56)
 
-Pro skill. On Free or with no key, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 16 skills / Pro = 13, one payment for lifetime access, prices from `account_info.prices`, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
+Pro skill with a **Free part (№81)**: on a Free key the user connects Telegram — the bot links the Free key, sends the free channel @parasiter_plugin (plugin news, how-tos, tips), Rumer's personal announcements and support (`/support`). Rumer's feed of new platforms, news, weekly analysis, the Top-10 and the Pro / Insider channels are Pro: when asked for them, show the **locked card** from `navigator/references/upgrade-showcase.md` §2 (Insider = all 16 skills / Pro = 13, one payment for lifetime access, prices from `account_info.prices`, the upgrade link). Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
 
 ## Plugin basis and Claude plan — RULE (№33)
 
@@ -50,13 +50,13 @@ Reply in the user's working language.
 
 ## Step 0 — Plan check (Pro)
 
-**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → the locked card (№56, `navigator/references/upgrade-showcase.md` §2) built on: "This is a Pro feature — Rumer's feed: new checked platforms with live example posts, weekly market analysis, news and the Pro / Insider Telegram channels. Upgrade: https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=platform-feed#pricing", then offer the Free alternative for this skill (the free channel @parasiter_plugin (https://t.me/parasiter_plugin) with plugin news, how-tos and tips, open to everyone), and stop. **Exception — "connect Telegram" on a Free key:** run Mode 2 with the Free key (`telegram_link` works on Free): the bot links the Free key and sends the free channel; Rumer's announcements come there personally; `/offers off` in the bot stops them.
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. **Free key → the Free part:** Telegram not linked yet → Mode 2 step 0 (connect: free channel @parasiter_plugin https://t.me/parasiter_plugin, Rumer's announcements, `/support`); already linked → say the free channel is where plugin news and Rumer's announcements come. If the user asked for the feed, news, analysis or the Top-10 → the locked card (№56) built on: "Rumer's feed: new checked platforms with live example posts, weekly market analysis, news, the weekly Top-10 and the Pro / Insider Telegram channels — Pro. Upgrade: https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=platform-feed#pricing", then the Free part. **No key** → the free channel link (open to everyone) and how to get a Free key; nothing else.
 
 ## Requires the server (Pro or Insider)
 
 Tools: `news_latest`, `news_seen`, `feed_latest`, `analysis_latest`, `account_info`, `telegram_link`, `telegram_status`, `telegram_settings`, `telegram_unlink`; for scheduled paid checks (work-log Mode 9) `paid_check_schedule`, `paid_check_pending`, `paid_check_report`; for the Monday sales check-in (work-log) `weekly_checkin`.
 
-If they are not available, or the plan is Free: say in one line that the feed and Telegram channels come with Pro and Insider, what they contain, and offer platform-finder for a live search instead. Do not invent feed items, updates or poll results.
+If they are not available: say in one line that the feed and the Pro / Insider channels come with Pro and Insider, what they contain, and offer platform-finder for a live search instead. On Free only `telegram_link` works (the Free part). Do not invent feed items, updates or poll results.
 
 ## Mode 1 — What's new
 

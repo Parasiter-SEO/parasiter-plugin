@@ -43,7 +43,7 @@ A base above the user's plan stays listed, marked "🔒 Pro" with what it would 
 | 4 | niche-analysis | keywords, demand, can you enter | Free: 3 keywords · Insider |
 | 5 | platform-finder | find platforms: menu of 6 groups → categories (Rumer's patterns) · where reviews rank now | Free key / Pro |
 | 6 | platform-analyzer | score one platform 0–100 | Pro |
-| 7 | platform-feed | Rumer's feed, news, Telegram | Pro |
+| 7 | platform-feed | Rumer's feed, news, Telegram | Free: Telegram + free channel · Pro |
 | **Write** | | | |
 | 8 | content-type-selector | what to write: topics by Rumer's rules · forum cluster | Free |
 | 9 | sales-review-writer | the article, 1500+ words | Free |
