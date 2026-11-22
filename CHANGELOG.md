@@ -6,6 +6,8 @@ Each version's section is posted to the news feed and the Telegram channels when
 
 **PARASITER is 100% for affiliates.** One clean panel: 16 skills and 7 agents, all built around affiliate review pages on platforms. The agency and site-owner desk (`client-workspace`) is gone, and so are the client reports, brand modes and client folders inside the other skills. Say *"menu"* or *"0"* to see the panel: numbers 1–16 stay the same.
 
+**Free: get your first page into Google.** Indexing now starts on the Free plan. Publish a page and say *"index this page"*: PARASITER checks what could block it, gives you a clean list, and shows how to send it to **SpeedyIndex** through its Telegram bot (free test tokens for new accounts, you pay only for pages that get indexed). Say *"sent to SpeedyIndex"* and the page is logged with a recheck in 4 days.
+
 ## 0.71.0 — 2026-11-22
 
 **Paid platforms, shown honestly.** The free base now marks paid platforms 💲 with their price from Rumer's note, right in the table. Your first 10 platforms are always free; under them one line, *"If you have a budget"*, lists the paid ones that rank best — for later, when you want to invest. Rumer's notes also guide the choice: where a link isn't possible, where to warm up first, where only one post is safe.

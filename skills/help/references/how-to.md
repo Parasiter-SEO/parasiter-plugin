@@ -169,6 +169,15 @@ First session of the week, or "am I on track?" → `goals` compares plan and fac
 ## Republish after a removal or a cleanup
 "Which of my pages were on Medium?", "republish my removed pages" → the list with status, earnings and your saved source for each, ★ and earning first. Each is rewritten for a new platform (new title and angle, the platform's format), never copied.
 
+## Get a page into Google on Free (SpeedyIndex)
+
+1. Publish the page and say "published: <link>" — it goes into your Free journal (up to 10 pages).
+2. Say "index this page". PARASITER checks what could block indexing (noindex, canonical, login wall) and gives you a clean list.
+3. Open Telegram → @SpeedyIndexBot → Start. New accounts get free test tokens, no card. Paste the list (up to 20 links in a message, or a .txt file).
+4. Come back and say "sent to SpeedyIndex". The page is logged and an index check comes in 4 days.
+5. You pay SpeedyIndex only for pages that get indexed: tokens for the rest come back after 7 days. No service can force Google to index a page.
+6. On Pro: Rumer's comparison of the top indexers, mixes for ★ pages, stats by service and Telegram alerts.
+
 ## Get a page into Google (Pro)
 
 1. First time (asked in the first setup right after you upload your pages, or say "set up indexing") → pick your indexers (one or several; or "none yet") and when you send (every new page at once, or only pages still out after a few days). Saved once.

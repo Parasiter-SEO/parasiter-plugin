@@ -80,7 +80,7 @@ How to publish on this platform (formatting, where the link goes, tags). The use
 
 ## Step 9 — Indexing and position (the cycle closes)
 
-- **Indexing right after publishing:** `indexing` in its Free form — what blocks indexing (checked), the free ways (sharing, linking from the user's other profiles, Search Console if they have their own site), and the honest line: "With an indexing service most pages are in Google in about half a day to a day; without one it can take days or weeks." Rumer's indexer comparison and tracking is 🔒 Pro — say it once.
+- **Indexing right after publishing:** `indexing` in its **Free mode — SpeedyIndex start** (№79): what blocks indexing (checked), the clean list, send it to **@SpeedyIndexBot** (free test tokens on sign-up, you pay only for indexed pages), then "sent to SpeedyIndex" is logged. No free tricks (sharing, links from profiles don't index parasite pages — Rumer's rule №27); Search Console only if they have their own site. Rumer's full indexer comparison, mixes and stats are 🔒 Pro — say it once.
 - **Day 3:** the bot reminds them (if Telegram is linked) → "is my page indexed?" → free check (`site:` search or their own SerpApi free plan / DataForSEO). Indexed → `free_event` `page_indexed`.
 - **Day 7:** "check my page position" → the position for the topic's query on their own SerpApi free plan (help set it up once: key into the plugin settings) or DataForSEO with the cost shown first. In the top 10 → `free_event` `page_top10`.
 - **Then the verdict, in Rumer's voice:** what worked, what to change, and "Post 1 of 10 done — next: <platform #2>, topic <…>". Post 2 starts at Step 4 (the strategy is already there).

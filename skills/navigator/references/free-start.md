@@ -17,7 +17,7 @@ Everything is in the working language. Nothing from the story or the uploads goe
 | 5 Goals | yes (`goals` is Free) | yes |
 | 6 Offers | from the story; new offers = 🔒 Insider `affiliate-finder` | same |
 | 7 Affiliate links | the links on the journal pages; the full links library = 🔒 Pro | the user keeps them for now |
-| 8 Indexing | the facts and the free check by hand (site: search); Rumer's indexer comparison and tracking = 🔒 Pro | same |
+| 8 Indexing | **SpeedyIndex start** (`indexing` Free mode, №79): blocker check, clean list, send via @SpeedyIndexBot, logged and rechecked in the Free journal; Rumer's full indexer comparison, mixes and stats = 🔒 Pro | SpeedyIndex start without logging (the Free key opens the journal) |
 | 9 Telegram | the free bot: "connect Telegram" links the Free key — the free channel, Rumer's notes and **the free course** (/course) | not needed |
 | 10 First topic | yes (`content-type-selector`) | yes |
 | 11 First article with images | yes | yes |

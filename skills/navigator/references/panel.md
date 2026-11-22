@@ -51,7 +51,7 @@ A base above the user's plan stays listed, marked "🔒 Pro" with what it would 
 | 11 | page-audit | check a page by link or text | Free |
 | **Publish and journal** | | | |
 | 12 | work-log | journal of pages, sales, traffic | Free key: 10 pages · Pro |
-| 13 | indexing | get pages into Google | Pro |
+| 13 | indexing | get pages into Google | Free: SpeedyIndex start · Pro |
 | 14 | platform-monitor | are my pages alive | Pro |
 | **Analytics** | | | |
 | 15 | client-reports | analytics: what earns, what to scale | Insider |

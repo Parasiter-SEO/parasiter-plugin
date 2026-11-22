@@ -13,7 +13,7 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 ## Show what the next plan opens — RULE (№56)
 
-Pro skill. On Free or with no key, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 16 skills / Pro = 13, one payment for lifetime access, prices from `account_info.prices`, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
+Pro skill with a **Free start (№79)**: on Free or with no key this skill runs the **Free mode — SpeedyIndex start** below for real, so a Free user gets their first page into Google. Everything beyond it (Rumer's full comparison of indexers, mixing services, stats by service, batches beyond the Free journal, instant indexing) is Pro: when the user asks for it, show the **locked card** from `navigator/references/upgrade-showcase.md` §2 (Insider = all 16 skills / Pro = 13, one payment for lifetime access, prices from `account_info.prices`, the upgrade link). Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
 
 ## Plugin basis and Claude plan — RULE (№33)
 
@@ -59,7 +59,26 @@ Files: `references/indexers.md` (top services, prices, refunds, API, test result
 
 ## Plan check (Pro) — before anything else
 
-**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → the locked card (№56, `navigator/references/upgrade-showcase.md` §2) built on: "This is a Pro feature — what blocks indexing, Rumer's comparison of the top indexers, a clean list for your indexer, rechecks and stats by service. Upgrade: https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=indexing#pricing", then offer what works on their plan (the indexing services and prices from Rumer's list — say "which indexer should I use?"; with your own site in Search Console, the own-site way), and stop.
+**Step 0 — Plan check.** Call `account_info` once per session (reuse it if already called). Pro or Insider, active → proceed. Free, expired or no key → **Free mode — SpeedyIndex start** (next section), never a bare locked card.
+
+## Free mode — SpeedyIndex start (Free key and no key, №79)
+
+Why: Free users say they will buy when they see a result. A page that is not in Google gives no result, so Free gets a real, simple way to index: **SpeedyIndex** through its Telegram bot — one service, no choosing.
+
+1. **Check the page first (Step 1 below, free):** opens, no noindex / X-Robots-Tag, canonical to itself, not behind a login, not a thin stub. Blocked → say what to fix; never send a blocked page.
+2. **The clean list:** one URL per line, no tracking parameters. Free key: only pages in the Free journal (up to `free_journal_pages`, 10); a page not in it yet → log it first (`work-log` Mode 1).
+3. **How to send — SpeedyIndex**, in short steps:
+   1. Open Telegram → **@SpeedyIndexBot** (link: `account_info.speedyindex_url` if present, else https://t.me/SpeedyIndexBot) → press Start. New accounts get free test tokens, no card — the bot shows the balance.
+   2. Choose Google indexing and paste the list as a message (up to 20 links) or send a .txt file.
+   3. You pay only for pages that get indexed: tokens for pages not indexed come back after 7 days (as SpeedyIndex publishes it — confirm in the bot).
+   4. Come back and say **"sent to SpeedyIndex"**.
+   Say plainly: no service can force Google to index a page; decent pages usually get in within a few days.
+4. **"sent to SpeedyIndex"** → log it: `work-log` `add --event submitted --url … --note "via SpeedyIndex"` (Free key; no key → nothing is logged, say the Free key keeps a journal for 10 pages). Put an index check into the queue for day 4 and day 8.
+5. **Recheck (day 4–8):** "is my page indexed?" → the free check (`site:` search) or the user's own SerpApi free plan / DataForSEO with the cost shown first. Indexed → `free_event` `page_indexed` and one line: "Your page is in Google — next: its position". Still out after day 8 → Step 1 again on that page (what blocks it), never resend before day 7.
+6. **One 🔒 line, once per session, after a real result:** "🔒 Pro: Rumer's comparison of the top indexers and mixes for ★ pages, indexing stats by service, rechecks on schedule and Telegram alerts — <upgrade link>".
+
+Rules: PARASITER never sends links itself and never holds the user's SpeedyIndex account or key. Free mode recommends SpeedyIndex only; other services, mixes and stats are Pro.
+
 
 ## Step 0 — First time: pick the setup (once, then saved)
 
