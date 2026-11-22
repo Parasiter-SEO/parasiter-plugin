@@ -12,7 +12,7 @@ Links from indexed pages, links inside the platform, posts on X / Reddit / Pinte
 
 ## Instant indexing (say it, never name the tools)
 
-"There are instant indexing services: a page usually gets into the index within one to a few minutes. They are paid — one link can cost about $0.50. The specific tools are kept secret, but you can find them yourself."
+"There are instant indexing services: a page usually gets into the index within one to a few minutes. They are paid — one link can cost about $0.50. They really work. The specific tools are Rumer's secret: finding one is your own honest task — some work only through a Telegram bot, some have their own sites."
 
 ## Own site only — the one free way
 

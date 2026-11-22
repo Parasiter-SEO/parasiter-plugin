@@ -77,6 +77,8 @@ Why: Free users say they will buy when they see a result. A page that is not in 
 5. **Recheck (day 4–8):** "is my page indexed?" → the free check (`site:` search) or the user's own SerpApi free plan / DataForSEO with the cost shown first. Indexed → `free_event` `page_indexed` and one line: "Your page is in Google — next: its position". Still out after day 8 → Step 1 again on that page (what blocks it), never resend before day 7.
 6. **One 🔒 line, once per session, after a real result:** "🔒 Pro: Rumer's comparison of the top indexers and mixes for ★ pages, indexing stats by service, rechecks on schedule and Telegram alerts — <upgrade link>".
 
+7. **Instant indexing — say it once in Free mode too**, after the SpeedyIndex steps (the same words as Step 2): instant indexing services exist and really work (a page in the index within minutes, paid, about $0.50 a link); Rumer keeps his tools secret, finding one is the user's own honest task — some work only through a Telegram bot, some have their own sites. Never name one.
+
 Rules: PARASITER never sends links itself and never holds the user's SpeedyIndex account or key. Free mode recommends SpeedyIndex only; other services, mixes and stats are Pro.
 
 
@@ -105,7 +107,7 @@ Report blockers as: `[URL] — noindex on the page · fix: … / move to …`.
 ## Step 2 — Own site (free) and instant indexing
 
 - **Own site + Search Console** — only when the profile says the user has a site verified in Search Console: "Put a link to the new page on a page of your site (a post, a hub page, the home page), then in Search Console → URL Inspection → Request indexing for **your** page. Google follows the link to the new page." Remove the link later if you like, once the page is indexed. No own site → skip this point entirely.
-- **Instant indexing** — say once, in these words (translated into the working language): "There are instant indexing services: a page usually gets into the index within one to a few minutes. They are paid — one link can cost about $0.50. The specific tools are kept secret, but you can find them yourself." Never name an instant service.
+- **Instant indexing** — say once, in these words (translated into the working language): "There are instant indexing services: a page usually gets into the index within one to a few minutes. They are paid — one link can cost about $0.50. They really work. The specific tools are Rumer's secret: finding one is your own honest task — some work only through a Telegram bot, some have their own sites." Never name an instant service.
 - Nothing else. No links from other pages, no social posts, no pings — not even as "might help".
 
 ## Step 3 — The list to send, and logging it
