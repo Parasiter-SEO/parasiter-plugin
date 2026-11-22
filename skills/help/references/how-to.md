@@ -169,6 +169,19 @@ First session of the week, or "am I on track?" → `goals` compares plan and fac
 ## Republish after a removal or a cleanup
 "Which of my pages were on Medium?", "republish my removed pages" → the list with status, earnings and your saved source for each, ★ and earning first. Each is rewritten for a new platform (new title and angle, the platform's format), never copied.
 
+## Get your first result on Free (9 steps)
+
+Say "Where do I start?" (or "I'm new") and PARASITER walks you through:
+1. Pick a niche. No offer yet? You get Rumer's starter affiliate programs. Pick 2–3 products.
+2. Find your chance: "Which of these products has the best chance?" — 3 buyer keywords per product, who ranks for them, the chance, and the product to start with.
+3. Pick the topic: "What should I write about <product>?" — 3 topics built on your keywords.
+4. Pick a platform from the 50 checked ones, each with Rumer's note; platforms already in the top for your keywords come first.
+5. Get the article: a 1,500+ word review with images.
+6. Check it: score 80+ and it's ready to publish.
+7. Publish and log it: "published: <link>".
+8. Index it: "index this page" → send the list to @SpeedyIndexBot (free test tokens).
+9. See the result: indexed on day 3–4, position on day 7.
+
 ## Get a page into Google on Free (SpeedyIndex)
 
 1. Publish the page and say "published: <link>" — it goes into your Free journal (up to 10 pages).

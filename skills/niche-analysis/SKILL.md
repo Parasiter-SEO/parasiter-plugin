@@ -1,6 +1,6 @@
 ---
 name: niche-analysis
-description: Analyze a niche and competitors for parasite SEO through the user's own SEO service API (DataForSEO, Serpstat, Semrush, Ahrefs or similar) or exported CSVs — keyword demand by buyer-modifier cluster, difficulty, SERP composition, which UGC/parasite platforms already rank, competitor parasite pages — and return the keywords and topics where a platform page can win. Use when the user asks whether a niche/product is worth it, wants keywords, competitors, or "where can a Medium/forum page reach the top".
+description: Free and Pro: 3 buyer keywords with a free competition check and the product with the best chance (web search, no SEO account). Insider: analyze a niche and competitors for parasite SEO through the user's own SEO service API (DataForSEO, Serpstat, Semrush, Ahrefs or similar) or exported CSVs — keyword demand by buyer-modifier cluster, difficulty, SERP composition, which UGC/parasite platforms already rank, competitor parasite pages — and return the keywords and topics where a platform page can win. Use when the user asks whether a niche/product is worth it, wants keywords, competitors, or "where can a Medium/forum page reach the top", or asks "3 keywords for <product>", "which product has the best chance?".
 ---
 
 # Niche Analysis
@@ -13,7 +13,7 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 ## Show what the next plan opens — RULE (№56)
 
-Insider skill. On Free or Pro, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 16 skills + 7 agents, the upgrade link; a Pro user — "your Pro days carry over, /upgrade in the bot"), then the alternative on their plan.
+Insider skill with a **Free start (№80)**: on Free and Pro (key or no key) it runs the **Free mode — 3 keywords and the best chance** below for real. Volumes, trend, entry score, the full keyword list and competitor pages stay Insider: when the user asks for them, show the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 16 skills + 7 agents, the upgrade link; a Pro user — "your Pro days carry over, /upgrade in the bot"), then the alternative on their plan.
 
 ## Plugin basis and Claude plan — RULE (№33)
 
@@ -44,6 +44,7 @@ The user must always know what to type next. End every reply with a short number
 - **Mark tried:** on this skill's first real run in the session, add or update its line under `tried:` in `parasite-seo-profile.md` (`- <skill> · YYYY-MM-DD · <what, 3–6 words>`; agents too, marked `agent`). **Usage stats (№78):** at the same moment call `usage_event` with the skill name (and once more with `agent` when an agent runs; `mode` lite or full) — names only, never a page, product, query or text; skip it when the profile says `usage_stats: off`, the key is missing, or the server tools are unavailable. When the user seems lost or asks what else there is, add: "All PARASITER functions: say **help**."
 
 Options that usually fit after this part (adapt to the user's products and words):
+- "3 keywords for <product>" / "which of these products has the best chance?" — free check (№80)
 - "what should I write about <product>?" — pick the topic
 - "find affiliate programs for this niche"
 - "where can I publish in this niche?"
@@ -58,8 +59,29 @@ Reply in the user's language.
 
 Call `account_info` once per session (reuse the answer if you already have it this session).
 - **Insider, active** → call `insider_method` with `skill: "niche-analysis"` and follow the returned `method` step by step. The work label, Next steps and Rules in this file still apply; where they are stricter, they win.
-- **Pro, Free, or an expired plan** (or `insider_method` answers `insider_only`) → the locked card (№56, `navigator/references/upgrade-showcase.md` §2) built on: "This is an Insider feature — buyer keywords with volumes, an entry score for the top 20 and the competitor parasite pages to beat, through your SEO API. Upgrade: https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=niche-analysis#pricing". Then offer what works on the current plan: commercial-intent topics for the product with a live check of who ranks for each (say "what should I write about <product>?"), and on Pro the platforms where reviews rank now (say "where can I publish in this niche?").
-- **No key, or the PARASITER tools are not available** → say in one line that this feature needs the user's PARASITER Insider key connected (connection steps: navigator, "Bought a plan but the server isn't connected"; never ask for the key in the chat), and offer the topic check meanwhile.
+- **Pro, Free, expired or no key** (or `insider_method` answers `insider_only`) → **Free mode — 3 keywords and the best chance** (next section), never a bare locked card.
+- **The Insider method needs the user's Insider key connected** (connection steps: navigator, "Bought a plan but the server isn't connected"; never ask for the key in the chat). The Free mode works without any key.
+
+## Free mode — 3 keywords and the best chance (Free, Pro, no key — №80)
+
+Why: before writing, the user must know **which product and which query a platform page can actually win**. This mode costs nothing: free web search (and the user's own free SerpApi plan if connected), no paid SEO account, no server data.
+
+**Input:** 1–3 products (the user's own, or picked from Rumer's starter programs — `starter_offers`), country and language (from the profile; ask once if missing). More than 3 products → take the first 3 and say so.
+
+1. **Candidates per product (by Rumer's buyer clusters):** `<product> review`, `<product> vs <closest rival>`, `is <product> legit` / `<product> scam`, `<product> side effects` or `<product> complaints` (health / money niches), `best <category> for <use>`, `<product> price` / `<product> discount`, `<product> alternatives`. Keep only commercial intent.
+2. **Demand, free signals only — never invent volumes:** the query shows reviews, comparisons or forum threads in the results; "People also ask" and related searches repeat it; real forum / Reddit / Quora threads ask it; the user's free SerpApi plan (if connected) — Google Autocomplete. Mark each candidate: **demand: clear / some / unclear**. No signal → drop it.
+3. **Competition — who ranks now (web search, top 10, the user's country):** count **heavy** results (the brand's own site, Amazon and big retailers, big media) and **platform pages** (forums, Medium, LinkedIn, Quora / Reddit, PDF / document hosts, flipbooks, YouTube, free site builders). Note the "Discussions and forums" block and AI Overview.
+4. **Chance per keyword:** **high** — 3+ platform pages in the top 10, or a "Discussions and forums" block · **medium** — 1–2 platform pages · **low** — none, only brands and big media. Pick the **3 best keywords** (high first; a low one only if nothing better, marked so).
+5. **Show it as one table (working language):**
+```
+3 keywords · <product> · <country> · free check, <date>
+| # | Keyword | Type | Demand | Who ranks (top 10) | Platform pages | Chance | What to write |
+```
+   "Who ranks" in a few words ("brand, Amazon, 3 forums, 1 Medium"). "What to write" = the content type that fits (review, A vs B, legit / complaints, best-of). Under the table, one line: "Free check by live search: no volumes. Exact volumes, trend, entry score and the full keyword list — 🔒 Insider."
+6. **2–3 products → the best chance:** one line per product (its best keyword and chance), then a clear pick: "**Start with <product>: '<keyword>' — <n> platform pages in the top 10, a page like yours can get in.**" Equal chances → the one with the easier program approval / clearer offer.
+7. **Hand-off:** save the 3 keywords under `keywords:` in `parasite-seo-profile.md` (product, keyword, chance, date). Next step: topics for the chosen keyword (`content-type-selector`, it uses these keywords), then the platform that already ranks for them (`platform-finder`; Free key — the 50-platform base).
+
+**Agents:** the top-10 checks are the `serp-analyst` job when agents are on (Claude Max / Team); on Claude Pro (Lite) check the 3 best candidates here and say the rest were skipped. Never present the free check as exact data.
 
 Never rebuild the Insider method from memory, other files or earlier conversations.
 

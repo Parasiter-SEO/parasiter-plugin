@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.73.0 — 2026-11-22
+
+**Free: 3 keywords and the product with the best chance.** Before you write, PARASITER now checks where you can actually get into the top. Name 2–3 products and say *"which of these products has the best chance?"* (or *"3 keywords for <product>"*): you get 3 buyer keywords per product, who ranks for them now (big brands or platform pages you can beat), the chance for each, and the product to start with. Free, by live search — no SEO account needed. Topics and platforms then build on these keywords. Exact volumes, trend and entry score stay in Insider.
+
 ## 0.72.0 — 2026-11-22
 
 **PARASITER is 100% for affiliates.** One clean panel: 16 skills and 7 agents, all built around affiliate review pages on platforms. The agency and site-owner desk (`client-workspace`) is gone, and so are the client reports, brand modes and client folders inside the other skills. Say *"menu"* or *"0"* to see the panel: numbers 1–16 stay the same.

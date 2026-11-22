@@ -40,7 +40,7 @@ A base above the user's plan stays listed, marked "🔒 Pro" with what it would 
 | 2 | goals | baseline, goals, weekly review | Free |
 | **Find** | | | |
 | 3 | affiliate-finder | offers and programs for a niche | Insider |
-| 4 | niche-analysis | keywords, demand, can you enter | Insider |
+| 4 | niche-analysis | keywords, demand, can you enter | Free: 3 keywords · Insider |
 | 5 | platform-finder | find platforms: menu of 6 groups → categories (Rumer's patterns) · where reviews rank now | Free key / Pro |
 | 6 | platform-analyzer | score one platform 0–100 | Pro |
 | 7 | platform-feed | Rumer's feed, news, Telegram | Pro |

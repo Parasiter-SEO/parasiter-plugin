@@ -28,7 +28,7 @@ The user must always know every skill and agent PARASITER has and not forget the
 | Skill | What it does | How to start | Plan |
 |---|---|---|---|
 | affiliate-finder | niche → programs, sorted by popularity in search, commission 15%+, approval type + Rumer's approval rules (on Pro: check offers you already chose) | "Which program should I take for nutra?" | Insider |
-| niche-analysis | commercial queries, volumes, entry score from the top 20 | "Is this niche worth entering?" | Insider |
+| niche-analysis | Free: 3 buyer keywords with a free check of who ranks and the product with the best chance · Insider: volumes, trend, entry score from the top 20 | "3 keywords for <product>", "Is this niche worth entering?" | Free: 3 keywords · Insider: full |
 | platform-finder | where reviews rank in the top 10 now, free and paid separately; new platforms by category with Rumer's patterns — where affiliates post and clean ones with no competitors; every find classed proven / Web 2.0 🔒 / Web 3.0 (Rumer's terms) | "Where should I publish about joint supplements?", "Find new flipbooks", "Find Web 2.0 platforms" | Free key: 50-platform base + 3 scans a week · Pro: full |
 | platform-analyzer | breakdown of one platform, score 0–100 and Rumer's class; Web 3.0 mode: how people publish on a service with no sign-up form | "Should I post on X?", "How do people publish on X?" | Pro |
 | platform-feed | Rumer's feed: platforms, analysis, news, Telegram | "What's new?", "Connect Telegram" | Pro |

@@ -36,6 +36,8 @@ Run `your-story.md` in its short form: what you want from parasite SEO, how much
 - Show the niche's **rules** line before going on (e.g. casino: 18+, licensed operators, only where legal, platform rules). Health: no cure claims. Terms are "as published on <checked date>, confirm on the program page".
 - 🔒 Insider line (one, once): "Insider finds programs for any niche and checks what Google's top already sells (`affiliate-finder`)."
 
+**C. Keywords and the best chance (both branches, before the product is final — №80).** Take 2–3 candidate products (the user's own, or 2–3 from the chosen program) and run `niche-analysis` in its **Free mode**: 3 buyer keywords per product with a free check of who ranks, the chance (high / medium / low), and the product with the best chance. The user confirms the product and its 3 keywords; they go into the profile (`keywords:`). A product with only "low" chances → say so plainly and suggest the next candidate. This stays inside the `promote` step (no new `path_step` name).
+
 
 ## Step 3 — "I made a strategy for you" (the key moment)
 
@@ -47,14 +49,15 @@ Goal: <from the story, e.g. "first sales from free Google traffic"> — no incom
 What we promote: <product / program / business> · for <country>, in <language>
 Why it can work: <one line from the niche: buyers search reviews / comparisons before paying>
 Your 10 platforms: <the 10 best from the Free base for this product and language, in order — #1 first>
-What we write: <3–5 topics from content-type-selector / the niche's topics, buyer queries>
+Your 3 keywords: <from step 2C, with their chance>
+What we write: <3–5 topics for these keywords (content-type-selector)>
 Rhythm: <posts a week from their hours, e.g. "2 posts a week, 1–1.5 hours each">
 How we check: indexing on day 1–3 · position on day 7 · Rumer's rule: 10 platforms, 100 posts, first sales usually when 10–15 posts reach the top 3 (varies)
 Milestones: post 1 this week → 3 posts with first indexing → 10 posts on 10 platforms
 ```
 Then: "We start with post 1 on <platform #1>. Ready?" Save the strategy as `parasite-seo-strategy.md` in the user's folder (it feeds the Starter plan, `free-start.md` §3).
 
-Choosing the 10 platforms: `free_base` (language filter; never a topic filter: a music, game or art platform is not dropped for its topic). Only `free_to_post: true` (never a paid platform — wire, sponsored magazine — for a free first post; №76). **Read `rumer_note` for each candidate before choosing** and apply it: no way to place a link (e.g. "you can't place an affiliate link") → not one of the 10 for an affiliate post; "warm up the account first" → not #1, say the warm-up; "make only one post, otherwise the account gets removed" → one post there, say it; "only for a business page of your own product" (Trustpilot) → only if the user sells their own product. The base's rules field is often not checked yet: for each of the 10, before recommending it, open the platform's rules / terms page yourself and say in one word whether affiliate reviews and links are allowed, limited or forbidden (with the link); forbidden → drop it and take the next. For post #1 prefer a simple free platform a beginner can use today: open sign-up, an editor for long text, posts indexed fast, no pre-moderation (articles, document / presentation hosts, a free site builder) over forums that need account warm-up. `signup_how` tells whether the link is a direct sign-up page or the home page — say which. On a Free key with scans left, offer ONE `free_scout` for the product to see where reviews rank right now and move matching platforms up.
+Choosing the 10 platforms: `free_base` (language filter; never a topic filter: a music, game or art platform is not dropped for its topic). Only `free_to_post: true` (never a paid platform — wire, sponsored magazine — for a free first post; №76). **Read `rumer_note` for each candidate before choosing** and apply it: no way to place a link (e.g. "you can't place an affiliate link") → not one of the 10 for an affiliate post; "warm up the account first" → not #1, say the warm-up; "make only one post, otherwise the account gets removed" → one post there, say it; "only for a business page of your own product" (Trustpilot) → only if the user sells their own product. The base's rules field is often not checked yet: for each of the 10, before recommending it, open the platform's rules / terms page yourself and say in one word whether affiliate reviews and links are allowed, limited or forbidden (with the link); forbidden → drop it and take the next. For post #1 prefer a simple free platform a beginner can use today: open sign-up, an editor for long text, posts indexed fast, no pre-moderation (articles, document / presentation hosts, a free site builder) over forums that need account warm-up. `signup_how` tells whether the link is a direct sign-up page or the home page — say which. Platforms already seen in the top 10 for the 3 keywords (step 2C) move up. On a Free key with scans left, offer ONE `free_scout` for the product to see where reviews rank right now and move matching platforms up.
 
 ## Step 4 — Platform: the table with sign-up buttons
 
@@ -62,7 +65,7 @@ Show the 10 strategy platforms as a table: # · platform · type · **Rumer's no
 
 ## Step 5 — Topic
 
-`content-type-selector` for this product and platform: 3 topics with the Rumer filter score; the user picks one (or "you choose" → the highest score).
+`content-type-selector` for this product and platform, built on the 3 keywords from step 2C: 3 topics with the Rumer filter score; the user picks one (or "you choose" → the highest score).
 
 ## Step 6 — Article
 

@@ -103,6 +103,8 @@ Each candidate = a working title + the content type + the commercial query + the
 
 **Creative SEO angle (Rumer's principle, №67).** When the SERP is saturated (the same best-of and review pages from every platform), or the user asks for "something nobody does", add up to 2 candidates marked **Creative SEO**: a commercial topic or format the ranking pages don't use yet (an angle, a buyer group, a comparison or a tool nobody built), with why it may work and the cheapest test (one page, check indexing and top 20 in 7–14 days). Still commercial intent and the honesty rules below; label it a hypothesis, never a proven format. Definition: `../help/references/rumer-concepts.md`.
 
+**Keywords first (№80):** if `parasite-seo-profile.md` has `keywords:` for this product (from `niche-analysis` Free mode or the Insider analysis), build the candidates on those keywords first and keep their chance in the Decision. No keywords yet and the user is choosing a product → offer one line: "First find 3 keywords with a chance: say **3 keywords for <product>**" — never block.
+
 ## Step 3 — SERP gap check
 
 For **every** candidate (web search is free), run the SERP check in `references/modifiers-and-serp.md`: AI Overview, Reddit/forums, videos, shopping blocks, manufacturer pages — on mobile and desktop in the target country.
