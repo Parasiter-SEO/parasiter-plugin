@@ -62,12 +62,22 @@ At the first setup PARASITER asks for your story instead of a questionnaire: wha
 ## Export my base / keep my data after a plan ends
 Say *export my base*. You get one zip: all your PARASITER files as they are, an Excel workbook and a README. Works on any plan and without a key. Your files never leave your folder, so changing a plan deletes nothing.
 
+## Upgrade from Free to Pro or Insider
+Your folder, profile, story, journal and pages stay as they are. Only the key changes.
+1. Buy Pro or Insider on the site (best with the same email as your Free key). The welcome email brings your new key (`psr_…`) and a personal Telegram link.
+2. Put the new key in place of the Free key:
+   - **Claude app or claude.ai:** Customize → Connectors → open PARASITER → remove it. Then *Add custom connector*: name PARASITER, URL `https://parasiter.affiliatecredo.com/mcp/` followed by the new key, no spaces. Start a new chat.
+   - **Claude Code:** `/plugin uninstall parasiter@parasiter`, then `/plugin install parasiter@parasiter` and paste the new key when it asks.
+3. Check: say *my PARASITER plan* — it shows Pro or Insider.
+4. Telegram: open the link from the welcome email and press **Start** (or send the new key to @parasiter_bot as a message — the bot deletes it at once). The bot sends your invite to the Pro channel (Insider: the Insider channel and group). The free channel stays yours too.
+5. Go on where you stopped: say *what's next?*.
+
 ## Change plan (Pro → Insider, Insider → Pro)
 - **Pro and Insider are one payment, lifetime access (№77)** — no subscription, nothing renews. Current prices: `account_info.prices` (Early Bird while it lasts).
 - **Up, Pro → Insider — starts at once.** Send */upgrade* to the bot (or say "upgrade to Insider": `account_info` → `upgrade.pay_url`) and pay with the same email. Lifetime Pro pays only the difference; Insider starts right after payment with the same key, for life.
 - **Down, Insider → Pro:** lifetime Insider never needs it — nothing is charged again. Older monthly access (beta, grants) simply ends on its date.
 - Either way: same key, same files and server settings; the bot moves you between the channels (Pro channel ↔ Insider channel and group).
-- **Free → Pro or Insider:** buy on the site with any email; the paid plan comes with its own key by email — put it in place of the Free key (/plugin → PARASITER → configure options), your files stay.
+- **Free → Pro or Insider:** see *Upgrade from Free* below.
 
 ## Track positions of my pages
 Search Console can't see pages on other people's platforms. Connect your own DataForSEO account (pay per query, cents a month for dozens of pages): create it at dataforseo.com, copy the API login and password from API Access, and enter them in the plugin settings: /plugin → PARASITER → configure options → DataForSEO API login / password (never in the chat). Or SerpApi, free plan 250 searches a month: sign up at serpapi.com, copy the API key and enter it in the same settings → SerpApi API key. With both connected PARASITER asks which to use for each check; "is my SerpApi connected?" shows the searches left. Then "check my positions" → you choose which pages (★, earning, new, all) and see the cost; after your yes they are checked in Google (top 10–30), positions and "new in top 10 / up / down / out" go into your journal. Weekly is enough; "check ★ pages every Monday" sets a scheduled check with a Telegram warning before each run. Using Ubersuggest or another tracker: export the rankings as CSV and upload it — "here are my positions". Trackers follow a whole domain, so on shared platforms (Medium, LinkedIn) make sure the ranking URL is your page; PARASITER skips rows where someone else's page of the same platform ranks. Or just say them ("cortisol on Medium is #8").
