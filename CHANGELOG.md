@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.71.0 — 2026-11-22
+
+**Paid platforms, shown honestly.** The free base now marks paid platforms 💲 with their price from Rumer's note, right in the table. Your first 10 platforms are always free; under them one line, *"If you have a budget"*, lists the paid ones that rank best — for later, when you want to invest. Rumer's notes also guide the choice: where a link isn't possible, where to warm up first, where only one post is safe.
+
 ## 0.70.0 — 2026-11-21
 
 **Your story is never lost.** The first steps always start with you: your Claude plan and your story in 2 minutes, even if you come with a product right away. PARASITER then says exactly where your story and profile are saved; in a chat without a folder it sends you both files, so the next chat continues where you stopped — just attach them.
