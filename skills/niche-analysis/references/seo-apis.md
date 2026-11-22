@@ -2,6 +2,8 @@
 
 The plugin does not ship an SEO data key. Each user connects their own service.
 
+**Start here, every plan (Free too, №83): SerpApi's free plan** — 250 searches a month, no card; it covers the top-10 checks, index and position checks and the scans. **DataForSEO** (below) is the paid add-on for exact search volumes and larger checks. When the user asks which one, the order is SerpApi first, then DataForSEO.
+
 ## Recommended first: DataForSEO
 
 When the user has no SEO service with an API, or asks which one to get, recommend DataForSEO first and say why in 3–4 lines:

@@ -108,7 +108,7 @@ python3 scripts/worklog.py import-pages parasite-seo-progress.csv my-pages.csv [
 After the import, report in 4–5 lines: pages added, per platform, new platforms in the base, pages without offer/program. Then offer the first check, because the system knows nothing about the pages' status yet:
 
 - **Alive check** (page opens, not removed, no noindex, affiliate link in place) — free, runs through `platform-monitor` → `page-checker`.
-- **Index and position checks need the user's own SEO data account.** Say so plainly: "To check indexing and positions, connect your own SEO API — DataForSEO (pay per check, Claude runs it itself) or SerpApi (free plan, 250 searches a month), or both; if you already have Semrush, Ahrefs, Serpstat or Ubersuggest, connect that or upload its export." Setup: `niche-analysis/references/seo-apis.md`.
+- **Index and position checks need the user's own SEO data account.** Say so plainly: "To check indexing and positions, connect your own SEO API — start with SerpApi (free plan, 250 searches a month, every PARASITER plan), add DataForSEO (pay per check) when you want volumes or more checks; if you already have Semrush, Ahrefs, Serpstat or Ubersuggest, connect that or upload its export." Setup: `niche-analysis/references/seo-apis.md`.
 - **Before any paid check, warn that it is not free and suggest a sample**: priority (★) pages, pages that earn or get clicks, the newest pack, or one page per topic — not the whole base. Give the rough cost for the chosen number of pages (from `seo-apis.md` and Mode 9 / 9b) and wait for the user's yes. Check the whole base only when the user asks for it after seeing the cost. Imported pages wait in their own queue section until that first check; only then do they get the regular check and audit schedule (audits only for pages that matter: live and indexed, or earning).
 
 ## Mode 1 — Log work as you go
@@ -117,7 +117,7 @@ Whenever the user reports work, or another skill finishes a step, add the row ri
 
 | User says / skill finishes | Row (`add --event …`) |
 |---|---|
-| "Published / added an article: URL" | `published` + platform, offer, program, campaign (pack), sub-ID if any, main query, content type |
+| "Published / added an article: URL" | `published` + platform, offer, program, campaign (pack), sub-ID if any, main query (№83: when `parasite-seo-profile.md` has `keywords:` for this product, the keyword the article was written for — ask only if unclear), content type |
 | "Sent it to indexing" | `submitted` + `--note "via <service>"` (several: `"via SpeedyIndex + Rapid URL Indexer"`) + `--cost <price per URL>` if known (the recheck comes 4 days later; `index-stats` counts results per service and per mix) |
 | platform-monitor / page-checker result | `check` + status live · indexed · not-indexed · noindex · dropped · removed |
 | page-audit result | `audit` + score 0–100 |

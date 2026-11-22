@@ -79,13 +79,13 @@ The first article is delivered complete, in one reply (`sales-review-writer` Ste
 
 ## Step 8 — Publish and log
 
-How to publish on this platform (formatting, where the link goes, tags). The user pastes the live link → `work-log` logs it (Free journal, page N of 10) → the free alive check (`platform-monitor` → `page-checker`, ask first) → `free_event` `first_page` on the first one. The progress table updates: ✅.
+How to publish on this platform (formatting, where the link goes, tags). The user pastes the live link → `work-log` logs it (Free journal, page N of 10) **with its keyword as the main query** (`--query`: the keyword this article was written for, from step 2C — №83, so the day-7 position check is for that keyword) → the free alive check (`platform-monitor` → `page-checker`, ask first) → `free_event` `first_page` on the first one. The progress table updates: ✅.
 
 ## Step 9 — Indexing and position (the cycle closes)
 
 - **Indexing right after publishing:** `indexing` in its **Free mode — SpeedyIndex start** (№79): what blocks indexing (checked), the clean list, send it to **@SpeedyIndexBot** (free test tokens on sign-up, you pay only for indexed pages), then "sent to SpeedyIndex" is logged. No free tricks (sharing, links from profiles don't index parasite pages — Rumer's rule №27); Search Console only if they have their own site. Rumer's full indexer comparison, mixes and stats are 🔒 Pro — say it once.
 - **Day 3:** the bot reminds them (if Telegram is linked) → "is my page indexed?" → free check (`site:` search or their own SerpApi free plan / DataForSEO). Indexed → `free_event` `page_indexed`.
-- **Day 7:** "check my page position" → the position for the topic's query on their own SerpApi free plan (help set it up once: key into the plugin settings) or DataForSEO with the cost shown first. In the top 10 → `free_event` `page_top10`.
+- **Day 7:** "check my page position" → the position for the page's keyword (the one from step 2C, logged as its main query) on their own SerpApi free plan (help set it up once: key into the plugin settings) or DataForSEO with the cost shown first. In the top 10 → `free_event` `page_top10`.
 - **Then the verdict, in Rumer's voice:** what worked, what to change, and "Post 1 of 10 done — next: <platform #2>, topic <…>". Post 2 starts at Step 4 (the strategy is already there).
 
 ## Limits and the upgrade (honest, at the moment they're met)
