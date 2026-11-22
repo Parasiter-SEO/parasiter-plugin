@@ -1,6 +1,6 @@
 ---
 name: page-audit
-description: Audit a parasite SEO or affiliate page by link or pasted text and find why it does not get clicks or sales — snippet and title, first screen, quick facts and deals box, author block, table of contents and headings, structure for the content type, CTAs, honesty and disclosure, platform fit, readability, indexing — with a 0–100 score and a prioritized fix list; for agencies, client pages are scored on the brand scale (disclosure, brand voice, UTM links, design in the client's style) before the client sees them. Use when the user asks to check, review, audit or improve a page, article or post, asks "why no sales", or before publishing a draft.
+description: Audit a parasite SEO or affiliate page by link or pasted text and find why it does not get clicks or sales — snippet and title, first screen, quick facts and deals box, author block, table of contents and headings, structure for the content type, CTAs, honesty and disclosure, platform fit, readability, indexing — with a 0–100 score and a prioritized fix list. Use when the user asks to check, review, audit or improve a page, article or post, asks "why no sales", or before publishing a draft.
 ---
 
 # Page Audit
@@ -60,8 +60,6 @@ Reply in the user's language; quote page fragments in the page's language.
 - **Link**: fetch it if possible. If the platform blocks fetching or needs login, ask the user to paste the text (and a screenshot of the first screen if they can).
 - **Text**: use as given.
 Ask: target query, content type (if unclear), platform, offer/affiliate link, country.
-**Agency role:** read the client's brief (`clients/<slug>/client-brief.md`) instead of asking — query, destination, voice, approved claims and brand kit are there. Score with **Brand rules** (scoring 1b) in place of Rumer's rules, plus Copywriting. A client page goes to the client only at 75+ (the journal's check queue flags under 70, so 70–74 is yours to catch before sending); log the audit in the client's journal. When the independent auditor runs, pass it the role and the brief.
-
 ## Step 1b — Independent reader
 
 If the page was written in this same conversation (for example by sales-review-writer), do not grade it yourself first: send the text, query, type, platform, country, the checklist and the scoring to the **`independent-auditor` agent**. It reads the page without the writing context, like a doubtful buyer. Use its report as the base and add your own findings in Step 2. For pages the user brings from outside, the agent is optional — use it when the user asks for a second opinion.
@@ -90,7 +88,7 @@ Score with `references/scoring.md`: **two scores — Rumer's rules and Copywriti
 
 ```
 Page score NN/100 · [type] · [platform]
-Rumer's rules NN/100 (client pages: Brand rules NN/100) · Copywriting NN/100
+Rumer's rules NN/100 · Copywriting NN/100
 AI-ready N/5 — [what is missing, if anything]
 Critical (fix first)
 • … — why it costs sales — exact fix

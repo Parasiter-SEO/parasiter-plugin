@@ -1,6 +1,6 @@
 ---
 name: navigator
-description: "Entry point of PARASITER, built for affiliates doing parasite SEO: no role question (other routes only when the user names them). Reads goals, journal and time and builds today's plan; for agencies and site owners hands over to client-workspace; routes each task to the right skill. Also the PARASITER panel: bases and journal under codes Б1…Б5 / B1…B5, every skill under a fixed number, and an exploring mode. Use when the user starts working, asks \"what should I do today\", \"where do I start\", \"what's next\", \"plan my day/week\", says \"menu\", \"panel\", \"0\", a skill number, \"Б1\"/\"B1\"…\"Б5\"/\"B5\", \"base\", \"my platforms\", \"journal\", \"try all the skills\", \"back\", or seems unsure which skill to use."
+description: "Entry point of PARASITER, built for affiliates doing parasite SEO only: no role question. Reads goals, journal and time and builds today's plan; routes each task to the right skill. Also the PARASITER panel: bases and journal under codes Б1…Б5 / B1…B5, every skill under a fixed number, and an exploring mode. Use when the user starts working, asks \"what should I do today\", \"where do I start\", \"what's next\", \"plan my day/week\", says \"menu\", \"panel\", \"0\", a skill number, \"Б1\"/\"B1\"…\"Б5\"/\"B5\", \"base\", \"my platforms\", \"journal\", \"try all the skills\", \"back\", or seems unsure which skill to use."
 ---
 
 # Navigator
@@ -56,7 +56,7 @@ Options that usually fit after this part (adapt to the user's products and words
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-PARASITER has four full routes: affiliates who earn with parasite SEO, agencies running parasite SEO for clients and site owners building parasite pages around their own site (both in `client-workspace`), and creators growing their own channels for free (`creator-channels`).
+PARASITER is for affiliates who earn with parasite SEO — one route, one panel (№78). No agency, site-owner or creator modes.
 
 ## Panel, jumping and exploring — RULE (№26)
 
@@ -87,13 +87,7 @@ If the user changes language mid-conversation ("let's switch to English"), updat
 
 **PARASITER is built for affiliates doing parasite SEO (№82).** No `role` in the profile → do **not** ask a role question: save `role: affiliate` and continue with Step 1 — the full system. One line at the first start, after the language: "PARASITER is set up for affiliate parasite SEO: platforms, review pages, sales — let's go."
 
-Other roles are not offered or listed anywhere. Only when the user says so in their own words ("I'm an agency", "I do SEO for clients", "it's for my own site / shop / course", "I'm a blogger / YouTuber") → the matching route from `references/roles.md`, saved as `role`:
-- **Agency** → `client-workspace` (agency profile, first client). Skip Steps 1–4 here.
-- **Site owner** → `client-workspace` in own-site mode. Skip Steps 1–4 here.
-- **Blogger / creator** → `creator-channels` Step 1. Skip Steps 1–4 here.
-Say once, plainly: "PARASITER is made for affiliates; these tools work for you too, but the guides and examples are affiliate-first."
-
-Every later session: read `role` first. A request outside the role's toolset gets the answer from `roles.md`, not the skill.
+There are no other roles (№78). If the user says they are an agency, a site owner or a blogger, answer as `references/roles.md` says ("When the user says…") and keep them on the affiliate route; an old profile with another role is treated as `role: affiliate`.
 
 ## Claude plan — Lite or the skills' agents (№33)
 
@@ -154,7 +148,6 @@ Now: send your affiliate links for VigRX Plus and D-Bal Max (text or a screensho
 - "Where am I?", "what's left?", "what's next?" → show the whole list with ✓, `now` and what is left, then the current step.
 - A program that needs approval turns step 7 into "apply" (approval rules in `affiliate-finder`); the setup goes on without waiting for the answer.
 - After step 12: one line "Setup done" with what the user now has (pages, links, goals, indexing, Telegram), then the first plan for today (Step 3) — as the visual plan page (`"kind": "setup"` on the first one, so its header says "Setup done"). The footer disappears; from then on replies end with the normal Next steps block.
-- Agencies, site owners and creators follow their own routes (`client-workspace`, `creator-channels`); this footer is for affiliates.
 
 ## Step 1 — Know the user and their goals (affiliates)
 
@@ -275,7 +268,7 @@ When a task produced a new page, it goes to indexing right after logging, by the
 
 Ask "Start with #1?" When the user agrees, follow the target skill. After each task, log the result with the `work-log` skill (one line) and come back with the next task. At the end of the session: today's work report from `work-log` (`summary --period today`), the week's numbers after today, and what is left for tomorrow.
 
-## Skill map (affiliates; agencies and other roles — `references/roles.md`)
+## Skill map
 
 | Need | Skill |
 |---|---|
@@ -297,12 +290,12 @@ Ask "Start with #1?" When the user agrees, follow the target skill. After each t
 | "Find Web 2.0 platforms" / "how do people publish on X?" (Web 3.0) | platform-finder / platform-analyzer |
 | "Give me a Creative SEO idea", "something nobody does" | the skill of the task it is about (platforms → platform-finder, topics → content-type-selector); no task named → answer here by `rumer-concepts.md` §Creative SEO |
 
-All skills and agents for the user, by role and plan: `references/capability-map.md`.
+All skills and agents, by plan: `references/capability-map.md`.
 
 ## Rules
 
 - **Legal products and content only.** PARASITER works only with legal products and content. Don't write, plan, find platforms for or log pages that promote pirated software, films, books or courses, file-upload / download or "free download" schemes, cracks and keygens, counterfeit or illegal goods, or content that breaks the target platform's rules or the law of the target country. Say so in one line, without lecturing, and offer a legal alternative (the official product or a legal affiliate offer). This rule is part of the PARASITER offer the user accepted.
-- The affiliate system (goals, affiliate daily plan, sales analytics) only for the affiliate role. Agencies get their own full route in `client-workspace` (today's plan across clients, content plans, reports) — never affiliate goals or commission targets. Site owners run in `client-workspace` own-site mode, creators in `creator-channels`; never plan a day for them or push them into goals.
+- PARASITER is affiliates-only (№78): no client folders, client approvals, white-label reports, brand modes or creator routes. Hidden skills (`references/roles.md`) are never offered.
 - **Rumer's terms (№67).** Web 2.0, Web 3.0 and Creative SEO are Rumer's own terms with his meanings (`help/references/rumer-concepts.md`), never the usual internet meanings. Creative SEO is Rumer's main principle: when the plan stalls (no new platforms, a saturated niche, a platform cleaned up, pages that stopped ranking), add one option "Creative SEO idea" to the Next steps — 1–3 non-standard ideas, each a hypothesis with the cheapest test.
 - **The user picks the platforms.** A goal sets how many platforms, never which; the navigator never assigns platforms on its own (see "Today's plan").
 - Paid checks (index, positions, keywords on the user's SEO API) are never part of a plan by default: a plan task can say "check positions of ★ pages — ~$0.10, run?" and runs only after the user's yes, with the number of pages and the cost named (`work-log` Rules).

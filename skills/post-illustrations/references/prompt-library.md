@@ -79,11 +79,3 @@ One style block, 5–10 images each on one benefit or tip: "[benefit] illustrate
 - Same style block across the whole article/series.
 
 
-## Brand covers and banners (agency role)
-
-**Brand cover — the client's real product in use**
-"Realistic photograph of [client product, exact look from the client's photo], used by [the client's audience in a real setting], natural light, colour palette with [brand colour 1] and [brand colour 2] accents in the scene, clean modern composition, no logos, no text overlay, horizontal 16:9, photorealistic."
-Gemini by default (DALL·E if the agency pays for ChatGPT). Add the logo and title afterwards in Canva or the client's template — generators distort logos.
-
-**Profile banner (LinkedIn 1584×396, YouTube 2560×1440 safe area 1546×423)**
-"Wide minimal banner background for [industry] brand, [brand colour 1] to [brand colour 2] soft gradient, subtle [industry-relevant] shapes on the right, empty space on the left for text, no text, no logos, high resolution."

@@ -169,18 +169,6 @@ First session of the week, or "am I on track?" → `goals` compares plan and fac
 ## Republish after a removal or a cleanup
 "Which of my pages were on Medium?", "republish my removed pages" → the list with status, earnings and your saved source for each, ★ and earning first. Each is rewritten for a new platform (new title and angle, the platform's format), never copied.
 
-## Agencies: work for clients
-
-1. **Start:** "I'm an agency" → agency profile once: name, logo text, report colours, report language, white-label.
-2. **New client:** "New client: Acme" → two short messages (the business; access and data). You get a brief, a ready message to the client with the open questions, and the access steps: Search Console (add your Google account as Restricted user), GA4 (Viewer).
-3. **Baseline:** "Brand audit for Acme" → site quick audit, profiles on social networks and platforms, content audit, a plan of profiles to open or fix. Then Month 0: Search Console 3 months (brand queries separately), positions for the target queries.
-4. **Content plan:** "Content plan for Acme, November" → topics × platforms × format × dates × UTM links, sent to the client for approval; only approved rows are produced.
-5. **Every piece:** content type → text in brand mode (disclosed as the brand's) → images in the client's style (infographics by Claude; cover prompt for Gemini free, or ChatGPT / Midjourney / Canva) → audit on the brand scale (75+ goes to the client) → client approval → you publish → "published for Acme: URL" (monitoring switches on).
-6. **Every day:** "What do we do today for clients?" → today's plan across all clients, waiting approvals, broken pages, report dates.
-7. **Every month:** "Monthly report for Acme" → upload the GA4 export (traffic acquisition, `utm_medium = parasite`, with Session manual ad content for per-page numbers) and the Search Console export → PDF + dashboard in the agency's name, against Month 0, with next month's plan.
-
-Every client has its own folder (`clients/acme/`); nothing from one client appears in another's plan or report.
-
 ## Get a page into Google (Pro)
 
 1. First time (asked in the first setup right after you upload your pages, or say "set up indexing") → pick your indexers (one or several; or "none yet") and when you send (every new page at once, or only pages still out after a few days). Saved once.
@@ -189,26 +177,6 @@ Every client has its own folder (`clients/acme/`); nothing from one client appea
 4. You see the rough price for each of your services. Each page is logged with the services you used; the recheck comes in 4 days.
 5. Still not indexed after the service's refund window: one resend to another service; after a second miss the page itself is the problem → audit or move it.
 6. "My indexing stats" → per service and per mix: sent, indexed, rate, days, cost per indexed page; per platform: which index on their own (don't pay there).
-
-## Creators: get your videos and posts into Google for free
-
-1. "I'm a creator" → your profile (niche, who you are, audience, how you earn) and the links to all your channels.
-2. "Audit my channels" → each channel checked for Google and in-app search, with ready texts: name line, bio, About, playlist titles, and the settings to turn on.
-3. "Content plan for 2 weeks" → topics people search for, and the posting model: one idea → long video, shorts, pins, text post — sized to your time.
-4. Before filming: "video package for [topic]" → title, hook, chapters, description, spoken and on-screen keywords, captions, hashtags, cover prompt (free in Gemini), pinned comment.
-5. After publishing: "check my video: URL" → what's missing, indexed or not, does it show for the query in Google. Fix the title, description, chapters or captions if needed.
-6. Not in Google after 7–14 days → "index my video" → your own site in Search Console if you have one, otherwise a low-cost indexer if you want it.
-7. Every month: which videos rank in Google, what to make more of; "make my media kit" for sponsors.
-
-## Site owners: grow your own site
-
-1. "I promote my own site" → a brief about the site: what it sells, top pages, queries each page should win, what a conversion is.
-2. "Audit my site" → site quick audit, profiles, and page audits of the landing pages your links will point to.
-3. Month 0: Search Console 3 months, positions of the site's target queries (its landing pages are logged with their queries).
-4. "Content and link plan for November" → topics × platforms × link target, rel and anchor × free or paid (price).
-5. Paid placements: "where can I buy an article for my site?" → wires and marketplaces with prices and link policy, a plan for your budget, the press release or article written, then "published: URL, cost $149".
-6. Every page: CTA to the site with UTM; logged with its link (`--link-target --link-rel --anchor --cost`).
-7. Every month: upload GA4 (Session source / medium, Session manual ad content, Sessions, Key events, Purchase revenue) → "how did my pages pay off?" (`site-roi`), "my backlinks" (`backlinks`), and the site owner report.
 
 ## Jump between functions: the panel (menu)
 **🏆 Top-10 of the week** is pinned at the top (Pro, Insider): Rumer's 10 platforms that work right now, updated every week. Say **TOP** to open it. **Bases and data next:** **Б1** (B1) Rumer's platform base (Free key: 50 platforms) · **Б2** my platforms · **Б3** journal (pages, sales, traffic, checks) · **Б4** my offers and links · **Б5** feed. Type the code (or "base", "journal") — the table opens at once; then filter in words ("only forums", "new this week").

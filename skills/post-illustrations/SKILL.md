@@ -1,6 +1,6 @@
 ---
 name: post-illustrations
-description: "Plan and write image-generator prompts for parasite SEO and affiliate posts — hero/cover image, product-in-hand, comparison card, key-facts infographic, price/bundle visual, Facebook post series — matched to the content type and platform, in one consistent style — for agencies in the client's brand style (logo, colours, fonts, real product photos). Images cost $0: infographics are drawn by Claude in the chat; the cover is the real product photo or one ready prompt for free Gemini (ChatGPT / DALL·E only for users who already pay for it). Use when the user needs images, a cover, an infographic or visuals for a review, comparison or post, or when sales-review-writer hands off image ideas."
+description: "Plan and write image-generator prompts for parasite SEO and affiliate posts — hero/cover image, product-in-hand, comparison card, key-facts infographic, price/bundle visual, Facebook post series — matched to the content type and platform, in one consistent style. Images cost $0: infographics are drawn by Claude in the chat; the cover is the real product photo or one ready prompt for free Gemini (ChatGPT / DALL·E only for users who already pay for it). Use when the user needs images, a cover, an infographic or visuals for a review, comparison or post, or when sales-review-writer hands off image ideas."
 ---
 
 # Post Illustrations
@@ -58,7 +58,6 @@ Reply in the user's language; write prompts in English (generators follow Englis
 - Article title, content type and the sections (what each image will sit next to).
 - Platform (count, and whether images go by upload or by link).
 - Product name(s) and the real product photos: the user's own, or the merchant's product shot (link from `product-researcher`) — used as the cover and to describe the real look exactly. A generated cover only if no real photo fits — Gemini by default (below).
-- **Agency role:** the client's brand kit from `clients/<slug>/client-brief.md` (logo, colours, fonts, real product photos, approved claims). Every infographic uses the client's colours and fonts; the logo only where the client allows it; real product photos first.
 
 ## How we work with images (say it once, short)
 
@@ -81,7 +80,7 @@ Show this table once (with the check date) so the user can choose; terms change 
 |---|---|---|---|
 | **Gemini** (gemini.google.com) — default | yes; Google doesn't publish a daily number — the limit is compute-based, resets every 5 hours, with a weekly cap | Google AI Plus $4.99/mo (2× the limit), AI Pro $19.99/mo (4×) | every article; understands a pasted product screenshot as the reference |
 | **ChatGPT** (image generation) | about 2–3 images per 24 h | Plus $20/mo — far more | text on images |
-| **Canva** (Canva AI / Dream Lab + templates) | up to 20 AI uses a month (shared allowance) | Canva Pro about $15/mo ($144/yr): image generation without a separate cap (fair use) | finishing covers with a logo and fonts (agencies) |
+| **Canva** (Canva AI / Dream Lab + templates) | up to 20 AI uses a month (shared allowance) | Canva Pro about $15/mo ($144/yr): image generation without a separate cap (fair use) | finishing covers with a title and fonts |
 | **Midjourney** | no free plan | Basic $10/mo (~200 fast minutes ≈ 200+ images) | the most "photo" look |
 
 Checked 21–25 Oct 2026 (Gemini: compute-based limits, plans AI Plus / AI Pro; ChatGPT free ~2–3 / 24 h; Canva Free 20 AI uses / month, Pro $144 / yr; Midjourney Basic $10, no free plan). Never quote "20 images a day" for Gemini — Google publishes no such number. The same prompt works in all of them.

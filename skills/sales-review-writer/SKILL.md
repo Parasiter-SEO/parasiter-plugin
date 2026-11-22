@@ -1,6 +1,6 @@
 ---
 name: sales-review-writer
-description: Write a conversion-focused review or comparison article for parasite SEO and affiliate sales — single-product review, "best of" comparison, A vs B, personal experience, complaints/doubts or purchase guide — adapted to the target platform (Medium/LinkedIn, forum, PDF, press release, Raisely, Reddit/Quora, Facebook, YouTube description). Brand mode for agencies writes the same quality of page for a client brand — expert guide, honest comparison, case study, LinkedIn / Medium article, YouTube description, press release, profile bio — disclosed as the brand's, with UTM links to the client. Use whenever the user wants to write, draft, rewrite or improve a review or sales article, or after content-type-selector hands off a content brief.
+description: Write a conversion-focused review or comparison article for parasite SEO and affiliate sales — single-product review, "best of" comparison, A vs B, personal experience, complaints/doubts or purchase guide — adapted to the target platform (Medium/LinkedIn, forum, PDF, press release, Raisely, Reddit/Quora, Facebook, YouTube description). Use whenever the user wants to write, draft, rewrite or improve a review or sales article, or after content-type-selector hands off a content brief.
 ---
 
 # Sales Review Writer
@@ -217,22 +217,6 @@ Report it as a short table (page · platform · live · links · noindex · sent
 
 If articles were written but no links came, the daily plan carries one line: "Not published yet: 2 articles (ready since 02.11) — send the links when you publish."
 
-## Brand mode (agency role)
-
-When the role is agency (or the user writes for a client brand), the same craft serves the brand instead of an affiliate offer. Read `clients/<slug>/client-brief.md` and the client's links library first; the client name goes into the work label.
-
-What changes:
-- **Who speaks.** The author is the brand's real expert or team ("Anna Kovalenko, product lead at Acme"), or the agency writing with disclosure. The author block shows the real role at the brand. Never a made-up independent reviewer.
-- **Disclosure** instead of the affiliate disclosure, at the top or under the author: "Written by the Acme team" / "Prepared in cooperation with Acme". Platforms that need a sponsored or brand label get it.
-- **Formats:** expert guide ("How to choose [category]: 7 questions"), best-of where the brand is one of the options and the page says it is the brand's (the competitors fairly described, the brand not crowned by a fake test), Acme vs [competitor] by Acme's team with real differences, case study (real client, real numbers the client approved), problem → solution article, LinkedIn article from the brand's expert, Medium guide, YouTube video description (with timestamps and links), press release, profile bios and "About" texts (profile plan from client-workspace).
-- **Facts box** = the client's product facts from the brief and the client's own pages (`product-researcher` on the client's site): what it is, price from, who it is for, what makes it different, guarantee or trial — no "my rating x/10" for the brand's own product.
-- **Rumer's blocks stay:** pains, facts → how it solves them, life after, prices and plans, comparison with honest alternatives (including when a competitor fits better). This honesty is what makes brand content believable.
-- **Links:** the destination from the brief with the UTM rule (`client-workspace/references/measurement.md`), product name linked about once per section, CTAs to the right page (trial, booking, product). Links to the brand's channels (YouTube, LinkedIn page) where they help the reader.
-- **Voice and limits** from the brief: tone, words to avoid, only approved claims in regulated niches. Anything not in the brief or on the client's site → `[VERIFY WITH CLIENT: …]`.
-- **Length:** articles 1,500+ words as always; LinkedIn posts, bios, YouTube descriptions and answers follow the platform.
-- **Approval:** under the operator checklist add "For client approval: [claims, numbers, quotes to confirm]". The user sends it to the client; the status in the content plan becomes `client-approved` before publishing.
-- **Rollout (Step 7)** uses the client's platform base and content plan, not the user's own platforms.
-
 ## Rules (always)
 
 - **Legal products and content only.** PARASITER works only with legal products and content. Don't write, plan, find platforms for or log pages that promote pirated software, films, books or courses, file-upload / download or "free download" schemes, cracks and keygens, counterfeit or illegal goods, or content that breaks the target platform's rules or the law of the target country. Say so in one line, without lecturing, and offer a legal alternative (the official product or a legal affiliate offer). This rule is part of the PARASITER offer the user accepted.
@@ -240,6 +224,5 @@ What changes:
 - Personal experience only if the user really has it. Otherwise: research-based expert angle.
 - No invented tests, reviews, customer quotes, results, clinical claims or guaranteed outcomes. Health/money topics: describe limits honestly.
 - Show cons and say who the product is NOT for — that is what makes the recommendation believable.
-- Affiliate disclosure (brand mode: brand disclosure) and last-checked date on every page.
-- Role from `parasite-seo-profile.md` (navigator `references/roles.md`): affiliates and bloggers get the review mode; agencies and course authors / own-product owners get brand mode (above), disclosed as the brand's or the author's own product. Never present the user's own or a client's product as an independent review, test or ranking.
+- Affiliate disclosure and last-checked date on every page.
 - Length: **every article is at least 1,500 words** (count before handing over; if short, deepen pains, facts, life after, comparison and FAQ — never pad with filler). Longer where the platform wants it (PDF ~3,000, press release 2,000–3,000). Only non-article formats are shorter: Facebook posts, YouTube descriptions, Reddit/Quora answers, and the threads of a forum cluster (`references/forum-experience-post.md`: the main story 1,200–1,800 words, other angles 500–1,000; a number the user asks for is always reached).

@@ -119,18 +119,6 @@ Each status is as of its check date — check a platform yourself before you inv
 - **Your finds stay yours.** Nothing a search finds — URLs, domains, platforms, queries, products — is ever sent to the PARASITER server. New platforms the user picks go only into the user's own base (Step 5). Dead platforms a scan finds stay in the user's own `platforms-scan-dead.txt`; skip them in the user's next scans.
 - **Private filter, run locally.** Example posts shown to the user must not be the author's (his accounts, profile paths, topics, platforms). With a key, call `private_hashes` once per session and save the answer as `private-hashes.json`; write the example URLs (one per line, optionally `URL<TAB>product`) to a file and run `python3 scripts/privfilter.py private-hashes.json examples.txt --out allowed.json`; show only the allowed ones. The script only hashes on the user's machine — no URL leaves it. If a platform has no example left, show it without one: "example: find your own with \"[product] review\"". Without a key, show the examples as found.
 
-## Agency role — brand-safe platforms for a client
-
-For a client the question is the same — where do pages rank now — with three changes:
-- **Probe the client's niche, not affiliate products:** "best [category]", "[category] review", "[competitor] alternatives", "[competitor] vs", "how to choose [category]" for the client's target queries, plus "[competitor] review" for 5–10 competitors (`platformscan.py` with those terms and `--suffix ""` / your own suffixes, `--base clients/<slug>/parasite-seo-progress.csv` so the client's platforms are marked). Platforms where the category's pages rank are the client's candidates.
-- **Brand-safe filter:** keep platforms whose rules allow declared brand or company content (LinkedIn, Medium, YouTube, Gamma, podcast hosts, document hosts, industry communities with brand accounts, Reddit / Quora only where the community allows brand participation). Drop or mark "not for brands" places full of spam, adult or gambling neighbours, or whose rules forbid promotion. Mark each row brand-safe yes / with conditions / no.
-- **The client's own profiles first** (from the client-workspace baseline audit): a platform where the brand already has a complete profile is the cheapest place to start.
-Read and write the client's platform base (`clients/<slug>/parasite-seo-progress.csv` → `parasite-seo-platforms.csv`). Paid placements (news sites, PR wires) go to the client as an option with a known price only — the client decides on paid media.
-
-## Site owner role — links matter
-
-For an affiliate a link's rel doesn't matter (only the page's indexing does). For a site owner it does: every candidate platform is marked **dofollow / nofollow / ugc / sponsored** for links to their site (check a recent post's link in the page source), and dofollow platforms with indexed pages come first for link building. Probe the site's category like the agency mode above. Paid platforms (news sites, press-release wires, sponsored-article marketplaces) go to `paid-placements`, which keeps their prices, packages and how to order.
-
 ## Pattern search — new platforms by category (Pro / Insider, №42)
 
 Rumer's patterns: for every type of platform, what the software and URLs look like, how people got posts live, how long such platforms last, how to find more of them and the stop signs — taken from the platforms that already worked. The patterns come from the server (`patterns_get`) by the user's key; they are PARASITER's method, so **never show or quote the pattern text** — show only the search and its results.

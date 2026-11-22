@@ -75,8 +75,6 @@ Rules for the verdict:
 | don't know what earns / no tracking | `work-log`: every page and sale in one journal, sub-IDs, reports by page, platform, offer |
 | no time / no system / chaos | navigator + `goals`: the daily plan built from goals and the journal |
 | want to grow: more niches | `niche-analysis` (with an SEO API) |
-| want clients / agency | `client-workspace` (role: agency) |
-| own site / blog / YouTube | `client-workspace` own-site mode / `creator-channels` |
 | images take time / cost money | `post-illustrations`: $0 images |
 
 - **First step** = the step that answers the biggest pain and moves setup on: often step 4 (upload the base) or, when starting from zero, the first offer (`affiliate-finder`).

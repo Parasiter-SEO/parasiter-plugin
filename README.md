@@ -32,7 +32,7 @@ For **affiliate marketers doing parasite SEO**, at any stage: you publish review
 
 **Who it's for:** affiliate marketers who earn with parasite SEO, at any stage — from the first page to a portfolio that earns every day. PARASITER is built and tuned for them: the navigator doesn't ask a role, you start on the affiliate route at once.
 
-Not an affiliate? Agencies, site owners and creators can say so in their own words ("I'm an agency", "it's for my own site", "I'm a YouTuber") and get their route (`client-workspace`, `creator-channels`); the guides and examples stay affiliate-first.
+PARASITER is for affiliates only: 16 skills and 7 agents, no agency, client or creator modes.
 
 Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5.
 
@@ -73,10 +73,6 @@ Author: Rumer (Affiliate Credo) — 20 years in SEO, parasite SEO for the last 5
 | `niche-analysis` | Keywords and SERPs via your own SEO tool API |
 | `affiliate-finder` | Finds and scores affiliate programs (with agent) |
 | `client-reports` | Performance analytics and client reports from your data |
-| `client-workspace` | Agencies: clients, onboarding brief, Search Console / GA4 access, UTM, Month 0 baseline, content plan with approval, today's plan across clients, monthly report cycle |
-| `paid-placements` | Paid publications: wires and sponsored-article marketplaces with prices, link policy, how to order; plan for a budget; did it pay off (with agent) |
-| `creator-channels` | Creators: profile, channel audit and optimization, search-based content plan and posting model, indexing, tracking in Google, media kit (free) |
-| `video-seo` | The package for every video and post (title, description, chapters, spoken and on-screen keywords, captions, hashtags, cover) and a check after publishing (free) |
 | `help` | Built-in help: what each skill does, how to do any task step by step, plans, files, privacy. Ask "what can PARASITER do?" or "how do I …?" |
 
 ## Agents
@@ -90,8 +86,6 @@ Skills hold the method; agents do the heavy research and checking in their own c
 | `product-researcher` | `sales-review-writer` | Collects current specs, packages, prices, discounts, shipping and guarantee from the merchant's own pages for the quick facts box |
 | `serp-analyst` | `content-type-selector`, `niche-analysis` | Breaks down the top 10 for buyer queries: formats, parasite platforms, SERP features, open buyer questions |
 | `page-checker` | `platform-monitor`, `work-log` | Checks lists of your pages: live, noindex, indexed, affiliate link working, position |
-| `placement-scout` | `paid-placements` | Checks paid offers and link policy on published pieces; shortlists marketplace sites for a niche and budget |
-| `video-seo-checker` | `video-seo`, `creator-channels` | Checks a channel or a published video / post: what search reads, indexed, appears for its query in Google's video and short-video results |
 | `index-checker` | `indexing` | Checks pages for what blocks indexing and whether they are already indexed; returns the clean list to send |
 | `independent-auditor` | `page-audit` | Reads a page without the context that wrote it, like a doubtful buyer, and flags weak spots and facts to verify |
 
@@ -134,8 +128,6 @@ Windows: the DataForSEO and SerpApi checks need the `python3` command — instal
 3. Check: say "my PARASITER plan". It shows your plan and "lifetime access". Then say "Where do I start?".
 
 Need to change the key later? Reinstall the plugin and paste the key when asked. Never paste the key into a chat.
-
-Agency and site owner routes: Pro (incl. paid placements); brand and site audit, client and site owner reports: Insider.
 
 ## Rules built into every skill
 

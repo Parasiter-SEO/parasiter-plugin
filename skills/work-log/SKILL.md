@@ -13,7 +13,7 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 ## Show what the next plan opens — RULE (№56)
 
-Pro skill with a **Free journal** (№57): on a Free key the user keeps up to 10 pages with checks (Step 0). Anything beyond the Free journal, or no key at all, gets the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 20 skills / Pro = 17, one payment for lifetime access, prices from `account_info.prices`, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
+Pro skill with a **Free journal** (№57): on a Free key the user keeps up to 10 pages with checks (Step 0). Anything beyond the Free journal, or no key at all, gets the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 16 skills / Pro = 13, one payment for lifetime access, prices from `account_info.prices`, the upgrade link), then the Free alternative. Pro user: Insider-only parts of this skill are shown as 🔒 Insider where they come up, one line each.
 
 ## Plugin basis and Claude plan — RULE (№33)
 
@@ -87,18 +87,6 @@ In the user's project folder (formats in `references/log-format.md`):
 One row per fact. Never edit or delete old rows; corrections and status changes are new rows. If a file has an older, shorter header, the script upgrades the header and keeps every value.
 
 The script `scripts/worklog.py` does all reading, writing and counting. Pass `--date` / `--time` in the user's local time when the machine clock may differ (cloud sandboxes run in UTC). Without code execution, append rows by hand and count the same way.
-
-## Agency and site owner roles — one journal per client or site
-
-For agencies every client has its own folder and journal: `clients/<slug>/parasite-seo-progress.csv` (with its own platforms and links files next to it). Pass that path to every command; the scripts work the same. Never log two clients in one journal.
-- **Links library (Mode 10)** holds the client's destination pages with the UTM base (`client-workspace/references/measurement.md`), not affiliate links.
-- **Every client page gets a sub-ID equal to its `utm_content`** (`--sub-id md-best-crm`): GA4 exports with "Session manual ad content" then credit visits to the exact page; exports by "Session source / medium" credit the platform.
-- **Traffic (Mode 3)** = GA4 visits to the client's site from our pages, platform stats (views, reads, plays) and the client's own channel stats. Search Console exports of the client's site are kept in `clients/<slug>/reports/` for `client-reports`, not imported as page traffic (they describe the client's site, not our pages).
-- **Sales** are optional: only when the client shares leads or orders by source. Reports read "—" for sales otherwise.
-- The client's own landing pages are journal pages of the platform `own-site` with their target query (`client-workspace/references/measurement.md`), so the position check covers them too.
-- **Links to the site** (site owners, and agencies doing link building): log the link each page gives — `add --event published --url … --link-target https://site/page --link-rel dofollow --anchor "acme crm" --cost 150` (`--cost` for paid placements). `backlinks [--period P] [--target URL]`: links live, dofollow per target page, anchors (warns when one exact anchor dominates), spend per live dofollow link. A check that finds the page removed or noindexed takes its link out of "live". Linking rules of each platform go into the platform base: `platform-set --links dofollow|nofollow|ugc|sponsored`.
-- **Results on the site:** `import-traffic ga4.csv --from … --to … --medium parasite` takes Sessions, Key events (or Conversions, Transactions) and Purchase revenue per page (Session manual ad content = sub-ID) or platform (Session source); `site-roi [--period month] [--by platform|page]` gives visits, conversions, conversion rate, revenue, spend and return. Revenue is the site's own revenue, not a commission; a dash means not measured.
-- Paid checks, page checks, the check queue and Rules below apply per client.
 
 ## Mode 0 — Import pages you already have (inventory)
 
@@ -277,7 +265,6 @@ When the user says they're switching plan (Insider → Pro, Pro → Insider): no
 Delivering:
 - **Claude app / claude.ai** (can publish pages): publish the `.html` as a private artifact with `capabilities: {"downloads": true}` — without it the download buttons are hidden. Keep the same artifact for the user's base and republish it to the same URL when they ask again, so the link stays. Also send the `.xlsx` as a file when they asked for Excel.
 - **Claude Code** (no publishing): give both file paths; the `.html` opens in any browser with working buttons.
-- Agencies: run it on the client's journal (`clients/<slug>/parasite-seo-progress.csv`) with `--out clients/<slug>/reports/<yyyy-mm>/base`; never mix clients in one base. It is the full inventory, so it can go to the client as an attachment to the monthly report.
 
 Reply in 2–3 lines: what the base holds now (posts, platforms, alive, top 10, need attention) and one thing to act on from it (for example "4 pages not checked yet — check them now?"). Never retype the table in the chat.
 
@@ -449,7 +436,7 @@ python3 scripts/aicheck.py parasite-seo-progress.csv --engines ai_mode,chatgpt,g
 - **AI answers** (`aicheck`): for each page's query, the answer of Google AI Mode (closest to Google; default), ChatGPT and/or Gemini, about $0.0012 per query per engine. Each page gets one of: **cited** (the page itself is a source), **platform cited** (another page of the same platform is a source — the AI trusts this platform for the query: a good sign to publish there and improve the page), **not cited**. The output also lists other domains the AIs cite for the user's queries — platform ideas to check with `platform-analyzer` before posting.
 - AI answers change from run to run: one check is a sample. Compare monthly on the same queries, not day to day. Start with ★ or earning pages and AI Mode only; add ChatGPT and Gemini when the user wants the full picture.
 - Not cited but the page ranks in Google or Bing → run `page-audit`: its **AI-ready** line says what to add (answer first, facts with dates, named comparison table, Q&A).
-- The user's **own site** (site owners, agencies): Bing Webmaster Tools → AI Performance shows how often Copilot cites the site and for which queries; the CSV exports can be uploaded to `client-reports`. Parasite pages live on other people's domains, so this report and IndexNow only work for sites the user owns.
+- The user's **own site** (if they have one): Bing Webmaster Tools → AI Performance shows how often Copilot cites the site and for which queries; the CSV exports can be uploaded to `client-reports`. Parasite pages live on other people's domains, so this report and IndexNow only work for sites the user owns.
 
 ## Rules
 

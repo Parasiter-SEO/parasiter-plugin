@@ -10,9 +10,9 @@ The user must always know every skill and agent PARASITER has and not forget the
 
 ## Rules for showing it
 
-- **Role:** each role sees only the rows of its set ("Rows per role" below); sections with no rows for the role are dropped. Role 1 (affiliate) sees the approved affiliate map; the agency, site-owner and creator rows only if asked. "Other" sees the full map.
+- **One map for everyone (№78):** PARASITER is affiliates-only — 16 skills, 7 agents. Hidden skills (`roles.md`) are never shown.
 - **Plan:** every row shows its plan. A skill above the user's plan (from `account_info`; no key = Free without a key, `plan: free` = Free with a key) stays in the map with the plan marked "🔒 Pro" / "🔒 Insider", never hidden. Below Insider, the map ends with the unlock line from `upgrade-showcase.md` §1 after the closing line.
-- **Panel numbers:** every skill row starts with its number in the user's role table in `panel.md` (first column "#"); affiliates don't see client-report rows — `client-reports` is "Analytics: what earns and what to scale"; under the map: "Reply with a number to start it · **0** — the panel with what you've tried".
+- **Panel numbers:** every skill row starts with its number in `panel.md` (first column "#"); `client-reports` is "Analytics: what earns and what to scale"; under the map: "Reply with a number to start it · **0** — the panel with what you've tried".
 - "How to start" is a ready phrase in the working language, adapted to the user's products and platforms when known ("What should I write about [their product]?").
 - No other text around it: the title "PARASITER capability map", the sections, the agents, one closing line "Say any phrase from the third column — or just describe what you want." (plus the unlock line below Insider, №56).
 
@@ -23,8 +23,6 @@ The user must always know every skill and agent PARASITER has and not forget the
 |---|---|---|---|
 | navigator | entry point: first setup, today's plan, leads you through the other skills | "Where do I start?", "What do we do today?" | Pro |
 | goals | starting point, goals, Rumer's rule, weekly review | "Set my goals for 3 months", "Am I on track?" | Free |
-| client-workspace | agencies and site owners: clients or your own site, brief, Month 0, monthly content plan with approval, today's plan across clients | "New client: Acme", "What do we do today for clients?" | Pro |
-| creator-channels | creators: profile and channels, channel audit, search-based content plan, one idea → many pieces, media kit | "I'm a creator", "Audit my YouTube" | Free |
 
 **2. Find**
 | Skill | What it does | How to start | Plan |
@@ -34,7 +32,6 @@ The user must always know every skill and agent PARASITER has and not forget the
 | platform-finder | where reviews rank in the top 10 now, free and paid separately; new platforms by category with Rumer's patterns — where affiliates post and clean ones with no competitors; every find classed proven / Web 2.0 🔒 / Web 3.0 (Rumer's terms) | "Where should I publish about joint supplements?", "Find new flipbooks", "Find Web 2.0 platforms" | Free key: 50-platform base + 3 scans a week · Pro: full |
 | platform-analyzer | breakdown of one platform, score 0–100 and Rumer's class; Web 3.0 mode: how people publish on a service with no sign-up form | "Should I post on X?", "How do people publish on X?" | Pro |
 | platform-feed | Rumer's feed: platforms, analysis, news, Telegram | "What's new?", "Connect Telegram" | Pro |
-| paid-placements | agencies and site owners: press-release wires and sponsored articles — prices, links, how to order | "Where can I buy an article for my site?" | Pro |
 
 **3. Write**
 | Skill | What it does | How to start | Plan |
@@ -43,7 +40,6 @@ The user must always know every skill and agent PARASITER has and not forget the
 | sales-review-writer | 1,500+ word article by the rules + rollout to your other platforms | "Write a review for Medium" | Free |
 | post-illustrations | infographics drawn by Claude + a free Gemini cover prompt | "Make images for the article" | Free |
 | page-audit | two scores: Rumer's rules and copywriting | "Audit my article: link" | Free |
-| video-seo | creators: title, description, chapters, keywords, captions, cover for every video and post; check after publishing | "Optimize my video" | Free |
 
 **4. Publish and journal**
 | Skill | What it does | How to start | Plan |
@@ -55,7 +51,7 @@ The user must always know every skill and agent PARASITER has and not forget the
 **5. Measure**
 | Skill | What it does | How to start | Plan |
 |---|---|---|---|
-| client-reports | what took off and the scale plan (agencies — the client report) | "What took off this month?" | Insider |
+| client-reports | what took off and the scale plan | "What took off this month?" | Insider |
 | help | help on the whole system | "What can PARASITER do?" | Free |
 
 **Agents** (skills call them; you don't start them):
@@ -66,17 +62,5 @@ The user must always know every skill and agent PARASITER has and not forget the
 - page-checker — checks lists of pages (for platform-monitor and work-log)
 - independent-auditor — a fresh look at the article, like a doubtful buyer (for page-audit)
 - index-checker — what blocks indexing and the clean list to send (for indexing)
-- placement-scout — checks paid offers and marketplace sites (for paid-placements)
-- video-seo-checker — what search can read on a channel or video (for video-seo and creator-channels)
 
-## Rows per role
-
-| Role | Rows | Agents |
-|---|---|---|
-| 1. Affiliate | navigator, goals, affiliate-finder, niche-analysis, platform-finder, platform-analyzer, platform-feed, content-type-selector, sales-review-writer, post-illustrations, page-audit, work-log, indexing, platform-monitor, client-reports, help | platform-scout, affiliate-scout, product-researcher, serp-analyst, page-checker, independent-auditor, index-checker |
-| 2. Agency | client-workspace, niche-analysis, platform-finder, platform-analyzer, platform-feed, paid-placements, content-type-selector, sales-review-writer (brand mode), post-illustrations, page-audit, work-log, indexing, platform-monitor, client-reports, help | platform-scout, product-researcher, serp-analyst, page-checker, independent-auditor, index-checker, placement-scout |
-| 3. Creator | creator-channels, affiliate-finder, niche-analysis, content-type-selector, sales-review-writer, post-illustrations, page-audit, video-seo, work-log, platform-monitor, help | affiliate-scout, product-researcher, serp-analyst, page-checker, independent-auditor, video-seo-checker |
-| 4. Site owner | client-workspace (own-site mode), niche-analysis, platform-finder, platform-analyzer, platform-feed, paid-placements, content-type-selector, sales-review-writer (brand mode), post-illustrations, page-audit, work-log, indexing, platform-monitor, client-reports, help | platform-scout, product-researcher, serp-analyst, page-checker, independent-auditor, index-checker, placement-scout |
-| 5. Other | the full map | all |
-
-Keep this file in step with `help/references/catalog.md` and `roles.md` whenever a skill, agent or plan changes.
+Keep this file in step with `help/references/catalog.md`, `panel.md` and `roles.md` whenever a skill, agent or plan changes.

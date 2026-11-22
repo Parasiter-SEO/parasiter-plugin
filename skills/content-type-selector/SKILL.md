@@ -58,8 +58,6 @@ AI answers now cover the basics ("what is it", "how it works", "pros and cons").
 
 Reply in the user's language. Keep questions short; ask only what you cannot infer.
 
-**Agency role:** the product, competitors, queries, country and voice come from `clients/<slug>/client-brief.md`; ideas come from the client's content plan and the baseline audit's gaps. The same buyer-doubt logic applies, in formats a brand can publish honestly: how to choose, best-of with the brand disclosed as one of the options, [brand] vs [competitor] by the brand's team, alternatives to [competitor], price / plans explained, case study, problem → solution. "Personal experience" needs a real person at the client who used it — otherwise drop it; "my rating" is never used for the brand's own product. The brief goes to `sales-review-writer` brand mode.
-
 ## Forum cluster mode — Rumer's method (№68)
 
 When the user wants to rank on forums, beat competitors' forum threads, get into Google's "Discussions and forums" block, or says "forum cluster", "forum posts for <query>", "форумы", "обойти конкурентов на форумах" — run `references/forum-cluster.md` instead of Steps 1–5 below: queries → `forumscan` (the block and forum threads in the top with their ages, verdict OPEN / WINDOW / CROWDED / NO FORUMS; SerpApi free searches first, DataForSEO cost shown first; Lite = web search) → the competitor threads that won, taken apart (pattern, never copy) → 3–5 threads per query, each its own angle, on different forums, staggered → each thread written by `sales-review-writer` in forum experience mode → saved under `forum_clusters:` → recheck in 5–10 days with `--mine`. The honesty rules below hold: real experience or the research angle, the user's own accounts, no fake replies.

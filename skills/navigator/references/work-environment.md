@@ -53,14 +53,4 @@ A page that is not in Google's index can't rank and can't sell — so every new 
 - **Free key (by email, no card — parasiter.affiliatecredo.com/free.html):** a snapshot of 50 checked platforms and 3 platform scans a week for your product (top 3 platforms in full), plus the Free journal: up to 10 pages with alive, index and position checks. Not on Free: example posts, the full base, new platforms every week, the feed, sales imports and reports, Telegram alerts.
 - **No key at all:** the content skills only — no platform base and no scans from the server.
 
-## For agencies and site owners
-
-- **Claude Max** — several clients mean many articles, audits and reports a day; Pro hits the limits early.
-- **DataForSEO** — positions of every client's pages and target queries, cents per check; the cost goes into the client's budget.
-- **PARASITER Insider** — client reports, brand audit and niche analysis are Insider; Pro covers clients, content plans, platforms and monitoring.
-- **From the client, free:** Search Console (Restricted user) and GA4 (Viewer) access for the agency's Google account — the monthly report's traffic numbers come from there.
-- **Images: $0** — infographics are drawn by Claude; covers are generated free in Gemini by PARASITER's prompt (or in ChatGPT / Midjourney / Canva if the agency already pays for them).
-
-**Site owners, also:** paid placements are an optional budget line — wire releases from about $149 (links usually nofollow), sponsored articles on marketplace sites from a few dollars to $70–175 for a solid site (dofollow per site) (`paid-placements`); start with free platforms and add paid ones where a dofollow link or a strong media page pays off.
-
 Say it as the user's investment in their work environment, once, short; never push — the system works at every level, and the user chooses.

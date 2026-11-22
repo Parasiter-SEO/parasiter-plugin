@@ -1,6 +1,6 @@
 ---
 name: client-reports
-description: Build performance analytics and reports for parasite SEO work from the user's uploaded data — publications log, Google Search Console exports, rank tracker, affiliate network stats — computing revenue per publication, EPC, RPM per 1000 impressions, winners and losers by platform, content type and offer, with a 14/30/60-day review and next actions; for agencies a monthly white-label client report against Month 0 — positions, visits to the client's site from GA4 by UTM, Search Console brand queries, delivered vs plan; for site owners the results closed on the site — visits, conversions, revenue, links and spend per platform and page. Use when the user uploads reports or stats, asks what is working, which platforms or pages earn, wants a client or weekly report, or asks what to update next.
+description: Build performance analytics and reports for parasite SEO work from the user's uploaded data — publications log, Google Search Console exports, rank tracker, affiliate network stats — computing revenue per publication, EPC, RPM per 1000 impressions, winners and losers by platform, content type and offer, with a 14/30/60-day review and next actions. Use when the user uploads reports or stats, asks what is working, which platforms or pages earn, wants a weekly or monthly report, or asks what to update next.
 ---
 
 # Client Reports
@@ -13,7 +13,7 @@ If you called agents for this reply, add them after an arrow: `▸ PARASITER · 
 
 ## Show what the next plan opens — RULE (№56)
 
-Insider skill. On Free or Pro, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 20 skills + 9 agents, the upgrade link; a Pro user — "your Pro days carry over, /upgrade in the bot"), then the alternative on their plan.
+Insider skill. On Free or Pro, Step 0 answers with the **locked card** from `navigator/references/upgrade-showcase.md` §2 (what it would do for this user now, Insider = all 16 skills + 7 agents, the upgrade link; a Pro user — "your Pro days carry over, /upgrade in the bot"), then the alternative on their plan.
 
 ## Plugin basis and Claude plan — RULE (№33)
 
@@ -42,9 +42,9 @@ Options that usually fit after this part (adapt to the user's products and words
 
 Part of PARASITER by Rumer (Affiliate Credo).
 
-Measure commissions, not just positions. This skill turns the user's own data — publications log, Search Console, rank tracker, affiliate network stats, GA4 — into an asset review and scale plan for affiliates, a monthly white-label client report for agencies, or a results report for site owners, as a dashboard page and a PDF.
+Measure commissions, not just positions. This skill turns the user's own data — publications log, Search Console, rank tracker, affiliate network stats, GA4 — into an asset review and scale plan for affiliates, as a dashboard page and a PDF.
 
-Reply in the user's language. Reports for clients can be in the client's language.
+Reply in the user's language.
 
 ## Step 0 — Plan check (Insider)
 
@@ -63,16 +63,14 @@ Never rebuild the Insider method from memory, other files or earlier conversatio
 ## What the user gets (Insider)
 
 - **Affiliates:** the review of their asset (live pages, top-3 pages, what earns) and a scale plan — winners by product, platform and content type, where to add pages and angles, what to stop. **No client reports for affiliates (№29):** never offer a white-label / client report, Month 0 or GA4-by-UTM client sections to the affiliate role; call this "Analytics: what earns and what to scale" and keep the dashboard affiliate-only (pages, platforms, offers, commissions).
-- **Agencies:** a monthly white-label client report against Month 0 — positions, visits from our pages (GA4 + UTM), Search Console brand queries, delivered vs plan.
-- **Site owners:** results closed on the site — visits, conversions, revenue, links and spend per platform and page.
 Every report comes as a dashboard page and a PDF.
 
 ## Bing AI Performance (own sites)
 
-For site owners and agencies with a verified site in Bing Webmaster Tools: the **AI Performance** report (Copilot and Bing AI answers) exports CSVs — daily citations, citations per page, and the grounding queries that triggered them. When the user uploads them, add an "AI answers" block to the report: total citations and trend, the pages cited most, the queries, and which of those pages also earn or rank. Citations are concentrated and volatile (one page often takes most of them, daily counts swing): show the trend over weeks, not one day, and never promise clicks from them. Parasite pages on other domains are not in this report — for those use the AI visibility check in `work-log` (Mode 9c).
+For users with their own verified site in Bing Webmaster Tools: the **AI Performance** report (Copilot and Bing AI answers) exports CSVs — daily citations, citations per page, and the grounding queries that triggered them. When the user uploads them, add an "AI answers" block to the report: total citations and trend, the pages cited most, the queries, and which of those pages also earn or rank. Citations are concentrated and volatile (one page often takes most of them, daily counts swing): show the trend over weeks, not one day, and never promise clicks from them. Parasite pages on other domains are not in this report — for those use the AI visibility check in `work-log` (Mode 9c).
 
 ## Rules
 
 - Only numbers from the user's files; label any estimate. Pages without numbers stay "—" (unknown), never $0. Each currency labelled, never added together.
 - No forecasts presented as promises.
-- Keep client data in the conversation/project; do not suggest uploading it to third-party services.
+- Keep the user's data in the conversation/project; do not suggest uploading it to third-party services.
