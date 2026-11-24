@@ -119,7 +119,7 @@ It runs in Claude Code:
 - Open Claude Code and type `/plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `/plugin install parasiter@parasiter`.
 
 ## Updates
-New versions come through the same marketplace: update the plugin in Claude Code. The feed and platform database update on the server without reinstalling.
+New versions come through the same marketplace. For a plugin you already have, two steps: 1) refresh the marketplace — `/plugin marketplace update parasiter`; 2) update the plugin — `/plugin update parasiter@parasiter` (or `/plugin` → PARASITER → Update). Installing again alone does not upgrade an installed plugin. Your key, settings and journal stay as they are. The feed and platform database update on the server without reinstalling.
 
 ## Connecting the key
 The content skills need no key. During install the plugin asks for "PARASITER key (Free, Pro or Insider)" — paste the key from your email (it starts with `psr_`): the Free key from parasiter.affiliatecredo.com/free.html, or the Pro / Insider key from your welcome email. Need to change it later? Reinstall the plugin and paste the key when asked. Details: how-to, "Connect your key".

@@ -88,6 +88,18 @@ Details:
 - The `platform-scout` agent returns full URLs (example, sign-up, rules); this skill turns them into links.
 - A bare domain without a link is allowed only in the "skipped" line (stop list / blacklist) — no links are given there.
 
+**Lean platform card, cheap checks first, candidates — RULE (№85).** From Rumer: "a simple thing saves credits — real posts, when they were posted, a live link, a working sign-up and the list of posts in the section, to see who else posts" · "the number of such sites matters" · "it doesn't have to be a forum where SEOs already post — candidates, quiet but working ones, also count".
+- **Five facts per platform, all links (№84)** — this is the card; everything else is one short line at most:
+  1. **Post** — a real live example: `[<product / title>, <date posted>](<URL>)`;
+  2. **When** — the date of that post and of the newest affiliate post on the platform;
+  3. **Live** — the example opens now, LIVE THREAD + INDEXABLE (no noindex);
+  4. **Sign-up** — the page where the form really loads (else "(not checked)");
+  5. **Section** — `[section](<URL>)`: the list of threads / category / tag page where such posts sit, so the user sees who else posts there and how often.
+  Then: verdict (post now / test 1–3 / skip) and the main risk in one line.
+- **Cheap → paid order (saves the user's credits).** Facts 1–5 first with free means (search results, opening pages). Paid calls — DataForSEO `ranked_keywords` (domain strength), positions, extra SERPs — only for platforms that already passed facts 1–4. No policy reading, domain history or long tables before a platform passes facts 1–4. Report what was spent at the end: "SerpApi N searches · DataForSEO ≈ $X · time ≈ M min".
+- **Quantity matters.** Aim for many working platforms (10–20 per run when the category allows), not a short "best of": every passed platform is shown, ordered by strength.
+- **Candidates — "be first".** A platform with no affiliate posts is not "nothing found": it goes into its own block **"Candidates (clean) — try it, you'll be first"** (class Web 2.0 🔒 candidate). Instead of fact 1 it shows: the live section with the date of the newest real post, Google still showing its threads (no noindex), and the working sign-up. Quiet or even abandoned forums count when they still work. One line under the block: "A candidate is confirmed only by your first test post — that's how you find your golden forum that only you use." Run both tracks (follow + clean) in every pattern search; never return only the follow track.
+
 **Never shown:** stop types and blacklisted sites (`references/exclusions.md`, the live list comes from the server), platforms whose example pages are removed, and the author's own posts as examples (filtered by the server). The author's private platforms are never named, not even as "skipped".
 
 Reply in the user's language.
