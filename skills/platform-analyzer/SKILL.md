@@ -83,11 +83,14 @@ Score with `references/scoring.md` (0–100) and show:
 [Platform] · score NN/100 · checked [date]
 Free / Paid · Affiliate reviews in top 10 (live): … | Indexing: … | Stability: stable / new / unstable | Link: …
 Class (by Rumer): proven / Web 2.0 🔒 candidate / Web 3.0 — one line why
-Live example: [post URL] · [product] · pos. N   |   Sign-up: [link] (or "sign-up link not found" + home page)
+Live example: [<product or title>, <date>](<post URL>) · pos. N   |   Sign-up: [<domain>/register](<sign-up URL>) (or "sign-up link not found" + [home](<home URL>))
+Rules: [terms](<official rules URL>) — only when the card cites the platform's rules (moderation, links, affiliate posts)
 Verdict: [publish now / test 1–3 posts / skip] — affiliate reviews in the top 10 now = publish now
 Best content type here: …
 How to post: [account, title, link placement, tone]
 ```
+
+**Clickable links (№84, same rule as `platform-finder`):** every post, sign-up, rules and home page on the card is a clickable markdown link with the full `https://` URL (Cyrillic and special characters percent-encoded), never a bare domain or a URL to copy. No checked sign-up URL → the engine's standard path as a link marked "(not checked)"; never invent one. The same goes for the Web 3.0 mode below: official docs and ranking example pages as links.
 
 Write the result into the user's platform base: `work-log` `platform-set --platform <slug> --domain … --type … --links … --score NN --state testing|active|dropped --class proven|web2|web3` and a journal row `add --event platform --platform <slug> --score NN --note "verdict: …"`.
 

@@ -104,7 +104,7 @@ Many programs check new applications by hand; some want a site, traffic or stats
 Everything you show must be real — no invented sales, screenshots, reviews or traffic: managers check, and faking it ends in a ban and held payouts.
 
 ## Find where to publish
-"Where can I publish about [niche]?" → `platform-finder`. Free key: the 50-platform snapshot, or a scan for one product (3 a week, top 3 in full). Pro: Rumer's checked platforms first, then a live scan of "[product] review" for 20–50 affiliate products — where reviews rank in the top 10 now. The scan is paid (your DataForSEO), cost shown first. Free and paid platforms are listed separately. Before the first post: "analyze [platform]" → `platform-analyzer`.
+"Where can I publish about [niche]?" → `platform-finder`. Free key: the 50-platform snapshot, or a scan for one product (3 a week, top 3 in full). Pro: Rumer's checked platforms first, then a live scan of "[product] review" for 20–50 affiliate products — where reviews rank in the top 10 now. The scan is paid (your DataForSEO), cost shown first. Free and paid platforms are listed separately. Every platform comes with clickable links — the live post and the sign-up page — so you open them in one click, nothing to copy. Before the first post: "analyze [platform]" → `platform-analyzer`.
 
 Any wording works, in any language: "ищем сейчас платформы communities", "let's find forums today". PARASITER maps it to the category and asks only when a word fits two.
 

@@ -76,6 +76,18 @@ Finding Web 2.0 and Web 3.0 platforms is **Creative SEO** — Rumer's main princ
 - **History** — before calling any platform absent, unsuitable, "no ranking evidence" or "not in top", read what the user already has on it: their base and journal (`parasite-seo-platforms.csv`, positions in `parasite-seo-progress.csv`), earlier scans (`platforms-scan*.csv` — `platformscan.py` reads the previous `--out` file and `--history a.csv,b.csv` itself), `pattern-runs.csv`, and any research archive the user names or that sits in their folder. Today's result never overwrites a dated record: when they disagree, show both — "history: #2 "<query>" (24.10, your journal) · today: not in top 10 — **conflict, recheck**" — and keep the platform in the list with "recheck" instead of dropping it.
 - **Discovery** — `NEW platform` (in none of the above) · `EXISTING · NEW evidence` (known, but this run found a new example URL or a better position) · `EXISTING · repeated from saved research` (nothing new). The summary line under the title adds "NEW N · existing with new evidence M · repeated K". **No new platform found → say it in one plain line at the top of the result**: "No genuinely new platform this time — all N are already in your base or earlier research." Then offer what can find new ones (other category, more products, SerpApi / DataForSEO footprints, Creative SEO idea) — never present repeated platforms as finds.
 
+**Clickable links, always — RULE (№84).** From Rumer: "why are the links inactive? Am I supposed to copy them into the browser? If there is a post — a link; a sign-up page — a link." Every platform in every result (base, live scan, pattern search, Free scan, agent results, the final table, the streamed one-platform messages) is shown with **clickable markdown links**, never a bare domain or a URL to copy:
+- **Post** — `[<product or post title>, <date>](<full URL of the live example>)`;
+- **Sign-up** — `[<domain>/register](<full URL of the sign-up page>)` (the real path in the text, e.g. `[example.com/user/register](https://example.com/user/register)`);
+- **Rules** — `[terms](<URL>)` wherever the Policy fact cites them;
+- **Home** — a link too, whenever it is shown.
+Details:
+- Links are full absolute `https://` URLs in `[text](url)` form; Cyrillic letters, spaces and other special characters in a URL are percent-encoded so the link does not break.
+- No checked sign-up URL → the engine's standard path as a link, marked "(not checked)" — e.g. `[forum.example.com/register](https://forum.example.com/register) (not checked)`; never invent a path that the engine does not have. "Sign-up link not found" still comes with the Home link.
+- A table too wide for the links (more than ~8 columns on the user's screen, or any row where links would wrap into unreadable cells) → instead of the table, a list per platform: number, ★, name, a line "Post: …", a line "Sign-up: …", then status and risk (the other facts of the row in one short line). Same numbering, so "1, 3" still works.
+- The `platform-scout` agent returns full URLs (example, sign-up, rules); this skill turns them into links.
+- A bare domain without a link is allowed only in the "skipped" line (stop list / blacklist) — no links are given there.
+
 **Never shown:** stop types and blacklisted sites (`references/exclusions.md`, the live list comes from the server), platforms whose example pages are removed, and the author's own posts as examples (filtered by the server). The author's private platforms are never named, not even as "skipped".
 
 Reply in the user's language.
@@ -99,6 +111,7 @@ Each status is as of its check date — check a platform yourself before you inv
 ```
 - **Every platform of the snapshot, grouped by type** (articles · documents / flipbooks / presentations · forums / communities · site builders · audio / podcasts / music · profiles · visual · reviews · press releases, paid ones last and marked paid). The user chooses. **Paid platforms (№76)** — rows with `free_to_post: false` — stay in the same table: the Status column says **💲 paid · <price>** (`price`, from Rumer's note), never dropped; `paid_platforms` lists them. **Never hide a platform because its topic looks unrelated** (music, games, art, 3D…): affiliates post on Bandcamp, SoundCloud and the like — show it with Rumer's note and let the user decide.
 - **Rumer's note** is the row's `rumer_note`: his own characteristic of the platform, in the working language, short and as he says it. Empty → "—". A note that says the platform is not indexed or removed now → keep the row, say it plainly.
+- **Sign-up** is a clickable link `[<domain>/register](<signup_url>)` (№84); no `signup_url` → the home page as a link.
 - No example posts on Free (the server sends none — never invent them). Mark platforms already in the user's base "yours".
 - Under the table, one line: "Pro: the whole checked base with live example posts on every platform, new platforms every week (Insider the same day) and what is alive today — https://parasiter.affiliatecredo.com/?utm_source=plugin&utm_medium=upgrade&utm_campaign=platform-finder#pricing".
 - Then the choice as in Step 5 ("Which ones do we take? Reply with numbers") and save the chosen ones the same way. The analyzer checklist works on any of them.
@@ -200,7 +213,7 @@ D. Everything — A, then B on the searches left, then C only for what is still 
 New platforms · [category] · [niche, language] · checked [date] · by Rumer's pattern · links opened [date]
 | # | Platform | Class | Discovery | Home | Sign-up | Live example (only if it opens) | Thread availability | Indexing eligibility | Evidence | Policy | History | Software | Topic · language | Affiliates (newest post / clean) | Wave | Indexing | Filters | Verdict |
 ```
-Home and Sign-up are clickable links in every row. The "Live example" cell is a link only for a post that opened; otherwise "none live" or "clean — no posts yet". Under the table no list of example links that were not checked.
+Home and Sign-up are clickable links in every row (№84: full `https://` URLs in `[text](url)` form, never a bare domain). The "Live example" cell is a link only for a post that opened; otherwise "none live" or "clean — no posts yet". Under the table no list of example links that were not checked.
 Order: follow with a live wave → clean → fading ("check"). Closed ones only as a count line. Same exclusions and the local private filter as in every step; the author's private platforms are never named. ★ up to 3 with the reason; the user chooses by numbers and the choice is saved as in Step 5 (state `testing`). Never register or post for the user.
 
 **5a. Batches — the user reviews and decides what comes next.** Results come in batches of the size chosen in 2a (10 by default); numbering continues across batches (11, 12 …) so picks stay unambiguous.
@@ -308,8 +321,9 @@ Already in your base: [platforms from the user's base that fit, with their state
 - **Top 20?** = the ranking proof above; forums and communities without proof read "worth a test (forum)".
 - **Discovery / Evidence / Policy / History** = RULE №70 above. Found N line becomes "Found N · NEW n · existing with new evidence m · repeated k · live M · removed K · skipped L"; history conflicts are listed under the tables.
 - **Score** = the `platform-analyzer` score 0–100 if there is one (server or the user's base), otherwise "not checked". Indexing speed and moderation from the server, the analyzer or the quick check; "unknown" when not checked. Pros / risks in a few words each.
-- **Sign-up** = the checked sign-up link, or "sign-up link not found" + the home page.
-- **Post** = a live, filtered example; if none is left after the filter: "example: find your own with \"[product] review\"".
+- **Sign-up** = the checked sign-up link as a clickable link `[<domain>/register](<URL>)` (№84), or "sign-up link not found" + the home page as a link; an unchecked standard path is a link marked "(not checked)".
+- **Post** = a live, filtered example as a clickable link `[<product / title>, <date>](<URL>)` (№84); if none is left after the filter: "example: find your own with \"[product] review\"".
+- **Wide table (№84):** when the links do not fit, show the same candidates as a numbered list — `1. ★ <Platform> · <class> · <type>` / `Post: [<product>, <date>](<URL>)` / `Sign-up: [<domain>/register](<URL>)` / `<evidence> · <policy> · risk: …` — instead of the table.
 - You may star recommended ones: "★ I'd start with #1 and #3 — [why, one line each]". A star is advice, not a decision; never drop the others or pick for the user, even when a goal says how many platforms are needed this week ("your goal this week: 2 platforms — pick any 2").
 - Paid ones only with what is known about the price; never guess a price.
 - **Few candidates** (fewer than 5): say exactly how many were found and why (for example: the author's base is still empty on your plan, no DataForSEO key, the niche is narrow) and how to get more — a live DataForSEO scan with more products, the feed (on Pro new platforms arrive ~7 days after the author adds them, on Insider the same day), other probes (`--suffix reviews`, `complaints`). Never narrow the list silently.
