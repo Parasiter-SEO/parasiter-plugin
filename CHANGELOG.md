@@ -2,6 +2,14 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.76.0 — 2026-11-24
+
+**Platform search: simpler, more platforms, fewer credits.** Every platform now comes as a short card of five facts, all links: a real post and when it was posted, whether it is live and indexable, a sign-up page that really opens, and the **section** where such posts sit — so you see who else posts there and how often. Free checks run first; paid ones (SerpApi, DataForSEO) only on platforms that passed, and each run ends with what it cost and how long it took. Searches now aim for many working platforms, not a short list.
+
+**Candidates — try it, you'll be first.** Not every good forum already has SEOs on it. Quiet but working platforms — open sign-up, threads in Google, no affiliate posts yet — now come in their own block, **"Candidates (clean)"**. One test post tells you if it works: that's how you find your golden platform that only you use. Say *"find new forums"*.
+
+**Updating the plugin:** refresh the marketplace, then update the plugin (`/plugin marketplace update parasiter`, then `/plugin update parasiter@parasiter`) — installing again alone doesn't upgrade it. Your key, settings and journal stay.
+
 ## 0.75.0 — 2026-11-24
 
 **Platform links you can click.** Every platform PARASITER finds now comes with active links: the live post (product and date) and the sign-up page open in one click — nothing to copy into the browser. The same in the free base, live scans, new-platform searches and the platform analysis card. When a list is too wide for the links, it turns into a short list per platform: post, sign-up, status, risk.

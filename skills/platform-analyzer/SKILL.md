@@ -92,6 +92,8 @@ How to post: [account, title, link placement, tone]
 
 **Clickable links (№84, same rule as `platform-finder`):** every post, sign-up, rules and home page on the card is a clickable markdown link with the full `https://` URL (Cyrillic and special characters percent-encoded), never a bare domain or a URL to copy. No checked sign-up URL → the engine's standard path as a link marked "(not checked)"; never invent one. The same goes for the Web 3.0 mode below: official docs and ranking example pages as links.
 
+**Lean card first (№85, same rule as `platform-finder`):** the card opens with the five facts — live post with its date, newest affiliate post date, LIVE + INDEXABLE, working sign-up, and the section link (where such posts sit and who else posts). Free checks first; paid calls (DataForSEO domain strength, positions) only after the platform passes the live check. A platform with no affiliate posts but working sign-up and indexed threads is a **candidate — "try it, you'll be first"**, not a fail.
+
 Write the result into the user's platform base: `work-log` `platform-set --platform <slug> --domain … --type … --links … --score NN --state testing|active|dropped --class proven|web2|web3` and a journal row `add --event platform --platform <slug> --score NN --note "verdict: …"`.
 
 ## Rumer's class — RULE (№67)
