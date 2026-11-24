@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.75.0 — 2026-11-24
+
+**Platform links you can click.** Every platform PARASITER finds now comes with active links: the live post (product and date) and the sign-up page open in one click — nothing to copy into the browser. The same in the free base, live scans, new-platform searches and the platform analysis card. When a list is too wide for the links, it turns into a short list per platform: post, sign-up, status, risk.
+
 ## 0.74.0 — 2026-11-24
 
 **New platforms from finance, coupons and gaming.** Platform search has a new group 7 — **niche hubs**: niches whose affiliates find new platforms first. Instead of a platform type you pick a niche, and PARASITER searches by its affiliate programs, the way affiliates do: **7.1 Finance** (gold IRA, crypto exchanges, prop firms, brokers — "[exchange] referral code", "[company] reviews complaints"), **7.2 Coupons and codes** (Temu and other referral-code offers), **7.3 Gaming** (Roblox and game codes). Every platform found gets its type and the usual check, hijacked hosts are skipped, paid placements are shown apart. Say *"find finance platforms"*, *"find platforms for Temu coupons"* or *"find Roblox platforms"*. Pro and Insider.
