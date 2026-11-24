@@ -2,6 +2,10 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.74.0 — 2026-11-24
+
+**New platforms from finance, coupons and gaming.** Platform search has a new group 7 — **niche hubs**: niches whose affiliates find new platforms first. Instead of a platform type you pick a niche, and PARASITER searches by its affiliate programs, the way affiliates do: **7.1 Finance** (gold IRA, crypto exchanges, prop firms, brokers — "[exchange] referral code", "[company] reviews complaints"), **7.2 Coupons and codes** (Temu and other referral-code offers), **7.3 Gaming** (Roblox and game codes). Every platform found gets its type and the usual check, hijacked hosts are skipped, paid placements are shown apart. Say *"find finance platforms"*, *"find platforms for Temu coupons"* or *"find Roblox platforms"*. Pro and Insider.
+
 ## 0.73.0 — 2026-11-22
 
 **Free: 3 keywords and the product with the best chance.** Before you write, PARASITER now checks where you can actually get into the top. Name 2–3 products and say *"which of these products has the best chance?"* (or *"3 keywords for <product>"*): you get 3 buyer keywords per product, who ranks for them now (big brands or platform pages you can beat), the chance for each, and the product to start with. Free, by live search — no SEO account needed. Topics and platforms then build on these keywords. Exact volumes, trend and entry score stay in Insider.
