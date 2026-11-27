@@ -4,7 +4,7 @@ Each recipe: what the user says, what happens. Give the user only the recipe the
 
 ## Start for the first time
 The whole start, step by step for each plan (Free, Pro, Insider), with what to say and what comes after: https://parasiter.affiliatecredo.com/start.html (Ukrainian: /start-uk.html). Bought a plan? Your key came in the welcome email right after the purchase (starts with psr_); the bot's /help sends your plan's guide again.
-1. Say "Where do I start?" — the navigator asks the language, invites your parasite SEO story and asks only what the story didn't cover: niche and offers, affiliate programs, country and page language, hours, tools (no SEO API yet → it recommends DataForSEO). No role question: PARASITER is set up for affiliates.
+1. Say "Where do I start?" — the navigator asks the language, invites your parasite SEO story and asks only what the story didn't cover: niche and offers, affiliate programs, country and page language, hours, tools (no SEO API yet → it recommends SerpApi (free) first, DataForSEO later). No role question: PARASITER is set up for affiliates.
 2. Then it asks you to upload what you have: live pages (any list of links), affiliate links, sales reports from each program (with the export steps for the networks you named) and any traffic data (network clicks by referrer, Google Analytics, Gamma or Medium stats…). These files stay in your folder: the PARASITER server never sees them. Nothing is required; the more real data, the more real the plan. Just starting? Uploads are skipped.
 3. `goals` shows your starting point from these numbers, asks your hours, pace and income in your words, then sets goals with Rumer's rule (10 platforms / 100 live posts) as the minimum.
 4. You get 2–5 tasks for today and the capability map (every function, what to say, its plan). "Start with #1?" — each task opens the right skill.
@@ -224,7 +224,11 @@ On parasiter.affiliatecredo.com/free.html enter your email (no card). The Free k
 The Pro / Insider key comes in the welcome email after payment, the Free key in the Free email (both start with `psr_`). It links the plugin to the PARASITER server: checked platform database and feed, news, weekly analysis, daily page checks, Telegram. Lost the steps? The bot sends them again: /setup.
 1. Open Claude Code and type `/plugin marketplace add Parasiter-SEO/parasiter-plugin`, then `/plugin install parasiter@parasiter`.
 2. During install the plugin asks for "PARASITER key (Free, Pro or Insider)": paste the key. No key yet: leave it empty — the content skills work, platforms need at least the Free key.
-3. Check: say "my PARASITER plan" → `account_info` shows the plan and until when.
+3. Recommended at install, next to the key (not required):
+   • **SerpApi API key** — free plan, 250 Google searches a month, no card (serpapi.com → Your Account → API key). Makes Platform Finder, position and index checks use the real Google top 10.
+   • **DataForSEO login + password** — optional, pay per request, for exact search volumes and more checks (app.dataforseo.com → API Access).
+   Paste them into the same plugin settings: /plugin → PARASITER → Configure options. You can skip both and add them later — everything works without them, with web search instead.
+4. Check: say "my PARASITER plan" → `account_info` shows the plan and until when.
 Need to change the key? Reinstall the plugin and paste the key when asked. Never paste the key into the chat.
 
 ## Get news and notifications in Telegram (Pro, Insider)
