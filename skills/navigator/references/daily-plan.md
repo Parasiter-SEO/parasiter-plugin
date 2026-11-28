@@ -1,0 +1,53 @@
+# Daily plan priorities
+
+**No pressure (№26):** "behind" and the week status appear only when the user works by goals they set themselves (`mode: work` and a goals file). Publishing and uploads are suggested tasks, never conditions. In `mode: explore` there is no goal plan — see `panel.md`.
+
+**How the plan looks (№25):** a branded page from `../scripts/dayplan.py` (artifact where the environment publishes artifacts, `plan-today.html` opened in the browser in Claude Code) plus a short formatted list in the chat. Never a code block. Check before sending: no ``` around the plan; every task has time, who, "moves" and a ready phrase.
+
+## Plan from goals
+
+When `parasite-seo-goals.md` exists, build the day in this order:
+
+1. **Today's time** — the user's hours for today (from the goals file, or ask "how much time today?" if they say the day is different). Never plan past it. Size tasks with the user's own pace from the baseline (hours per page), not generic estimates.
+2. **Fixed tasks first** — anything from priorities 1–2 below (money being lost now, winners to feed). These protect income already earned and come before new pages.
+3. **Today's quota** — the daily quota from the goals file, plus a share of anything the week is behind (spread the backlog over the remaining working days, never all on one day).
+4. **Match the targets to tasks**:
+
+| Weekly target | Tasks it becomes | Skills |
+|---|---|---|
+| Pages published | pick topic → write → images → audit → publish → log | content-type-selector → sales-review-writer → post-illustrations → page-audit → goals |
+| Platforms tested | candidates → the user picks by number → check → 1–3 test posts (the goal gives the count, the user picks which) | platform-finder / platform-feed → platform-analyzer |
+| Pages refreshed | audit → update deal box, prices, date, CTA | page-audit → sales-review-writer |
+| Pages moved off dead platforms | status → pick new platform → repost from saved copy | platform-monitor → platform-finder → goals |
+| Offers added | find and score programs | affiliate-finder → niche-analysis |
+
+5. **What is available** — plan tasks only on platforms with priority `high` in the user's base (the ones the user chose); new ones from the server feed and top list (Pro / Insider) are offered as candidates to choose from, never put into the plan on their own. Skip platforms the monitor marked dead or noindex. Too few chosen platforms for the goal → say how many there are and offer the candidate list (platform-finder Step 5).
+6. **Written, not published** — profile `topics:` entries with status `written` give one plan line: "Not published yet: N articles (ready since DD.MM) — send the links when you publish." No task, no nagging; the links may come in a batch.
+
+If the goals and today's time don't fit, keep the quota smaller and say what moves to tomorrow. If the week cannot be saved, flag it for the weekly review instead of overloading the day.
+
+## Priorities (with or without goals)
+
+Order tasks by how directly they protect or create sales.
+
+1. **Fix what is losing money now** — pages on a platform that died, got noindexed or removed; pages that dropped out of the top. Move or republish from saved copies.
+2. **Feed and scale winners** — pages that already get clicks/sales: refresh the deal box, prices, date; add a comparison block; improve the CTA (run page-audit). Products that took off get more pages: the queue's Fix & push and Scale items (and the scale plan from `client-reports`) go into the plan before untested products.
+3. **Use fresh platforms early** — a new platform from the feed works best in its first days/weeks, before it is spammed and cleaned up. Test 1–3 posts, not 30.
+4. **New content** — when the user has pages, take the topic and platform from the publication queue (`work-log` Mode 12, `pubqueue.py today`): proven topics missing on strong platforms, untried products and content types, new offers — in the user's mix, default 70 / 20 / 10 (scale / expand / explore). Without the queue: `coverage` (proven topic missing on a strong platform), otherwise choose with content-type-selector; write with sales-review-writer, check with page-audit. Priority platforms and topics first.
+5. **Review and learn** — weekly: the goals review and client-reports on what earns; drop or reduce work on platforms that lost visibility.
+
+## Rhythm the author uses (adapt to the user's time)
+
+- **Rumer's rule:** the minimum working base is about 10 platforms and at least 100 live posts. Below it, every week's plan includes testing a new platform (1–3 posts) until there are ~10, and new posts until 100 are live; mention the rule in the plan's goal line ("Rumer's rule: 6/10 platforms, 48/100 posts · top 3: 4/15"). The top-3 count is the one that starts sales (author's experience: 10–15 posts in the top 3); when positions are known, prefer tasks that push pages from 4–10 into the top 3 (refresh, page-audit, rollout of the same topic to a stronger platform).
+- Work in volume: many platforms, many posts; above the minimum, keep a pool of active posts and keep adding.
+- Re-post content where platforms clean up (forums especially) — keep every text saved.
+- Check rankings after each Google update; move effort away from platforms that lost visibility.
+- 14 / 30 / 60-day review of each publication: update winners, reposition losers, don't clone them.
+
+## Fitting the day to the time
+
+| Time today | Typical day |
+|---|---|
+| 1–2 hours | one task from steps 3–4 (or 1 if something is losing money) |
+| 2–4 hours | one task from 1–2, one from 3–4 |
+| Full day | 1–2 first, then batch 3–4; weekly step 5 |

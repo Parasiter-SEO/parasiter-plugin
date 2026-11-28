@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "parasiter": {
+      "type": "http",
+      "url": "https://parasiter.affiliatecredo.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${user_config.parasiter_key}"
+      }
+    },
+    "parasiter-dataforseo": {
+      "type": "http",
+      "url": "https://mcp.dataforseo.com/mcp",
+      "headers": {
+        "Authorization": "Basic ${user_config.dataforseo_token}"
+      }
+    },
+    "parasiter-serpapi": {
+      "type": "http",
+      "url": "https://mcp.serpapi.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${user_config.serpapi_key}"
+      }
+    }
+  }
+}
