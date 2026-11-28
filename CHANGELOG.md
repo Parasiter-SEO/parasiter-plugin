@@ -2,6 +2,18 @@
 
 Each version's section is posted to the news feed and the Telegram channels when it is released. Written for users: what you can do now and what to say to start it.
 
+## 0.77.0 — 2026-11-28
+
+From Daniel's test of 0.76.0 on the Free plan — thank you!
+
+**Platforms for your niche first.** Every platform in Rumer's base now has niche tags: finance, health / supplements, beauty / skin, tech, gaming, or general (works for any niche). Say your niche in your own words, or just the product, and you get the platforms tagged for it first, with example posts only from your niche. If nothing is tagged for it yet, PARASITER says so plainly, and only then shows the general list, labelled as general. Common words like "best", "review" or "pro" no longer count as a match. Say *"platforms for joint supplements"* or *"show general platforms"*.
+
+**Check the best finds in Google cheaply.** A free search finds pages, but that doesn't prove they're in Google. Say *"verify the top 5 in Google"*: PARASITER picks only the few most promising finds and checks just those on your own SerpApi or DataForSEO. You see whether each page is indexed and where it ranks for its query. The cost is shown first ("≈ 8 searches"), and nothing runs without your yes. You get two separate lists: **Verified in Google** and **Found in web search — not verified**.
+
+**Blocked sites no longer drop out.** When a site blocks the automatic check, PARASITER looks for the page in the site's RSS feed, its sitemap and its public API (Discourse, Flarum, Reddit, WordPress). The page is then marked **"blocked — evidence from <source>"** instead of disappearing from the list.
+
+**Updating the plugin:** refresh the marketplace, then update the plugin (`/plugin marketplace update parasiter`, then `/plugin update parasiter@parasiter`). Your key, settings and journal stay.
+
 ## 0.76.0 — 2026-11-24
 
 **Platform search: simpler, more platforms, fewer credits.** Every platform now comes as a short card of five facts, all links: a real post and when it was posted, whether it is live and indexable, a sign-up page that really opens, and the **section** where such posts sit — so you see who else posts there and how often. Free checks run first; paid ones (SerpApi, DataForSEO) only on platforms that passed, and each run ends with what it cost and how long it took. Searches now aim for many working platforms, not a short list.

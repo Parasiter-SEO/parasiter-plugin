@@ -45,6 +45,8 @@ The user must always know what to type next. End every reply with a short number
 
 Options that usually fit after this part (adapt to the user's products and words):
 - After a candidate list, option 1 is always the choice itself: "1, 3" — take these platforms (see Step 5)
+- "verify the top 5 in Google" — after a free discovery: index + position for the most promising few, ≈N searches (№90)
+- "show general platforms" — after a niche result: the general list (any niche), apart (№89)
 - "find new <category>" — a pattern search in another category (e.g. "find new flipbooks")
 - "analyze <platform>" — score one before posting
 - "what should I write there?"
@@ -100,6 +102,19 @@ Details:
 - **Quantity matters.** Aim for many working platforms (10–20 per run when the category allows), not a short "best of": every passed platform is shown, ordered by strength.
 - **Candidates — "be first".** A platform with no affiliate posts is not "nothing found": it goes into its own block **"Candidates (clean) — try it, you'll be first"** (class Web 2.0 🔒 candidate). Instead of fact 1 it shows: the live section with the date of the newest real post, Google still showing its threads (no noindex), and the working sign-up. Quiet or even abandoned forums count when they still work. One line under the block: "A candidate is confirmed only by your first test post — that's how you find your golden forum that only you use." Run both tracks (follow + clean) in every pattern search; never return only the follow track.
 
+**Niche first, general apart — RULE (№89).** From Daniel's free-mode test of v0.76.0. Every platform in Rumer's base has niche tags: **finance · health / supplements · beauty / skin · tech · gaming · general** (general = open to any niche). Always pass the user's niche to `platforms_search` / `free_base` as `niche` — from the profile, the user's words or the product name ("joint supplements", "крипта", "NordVPN" all work).
+- `niche_matched: true` → show only those platforms (`match: niche`). Off-niche platforms never appear. Say in one line how many general platforms are left out (`general_available`) and offer them: *"say: show general platforms"* → the same call with `include_general: true`, shown under their own heading.
+- `niche_matched: false` → say it plainly first: **"No platforms tagged for <niche> yet."** Only then the general list (`general_platforms`) under the heading **"General platforms (any niche)"** — never as niche finds, never mixed into one table with niche matches.
+- **Examples only from the user's niche.** The server sends only example posts of that niche; a row with `examples_note` shows it as written ("no example posts in your niche on this platform yet") — never an example from another niche as proof, never an invented one.
+- **No partial matches from common words.** Words like best, review, top, pro, plus, 2026, guide, price never match on their own (the server ignores them); never present a platform as "matching" because it shares such a word with the query. A `niche_note` (the niche is not one of the tags) is said in one line.
+
+**Two lists, never mixed: found vs verified — RULE (№90).** Between free discovery and a full paid SERP scan sits a cheap step: **targeted verification**. After any free discovery (Lite search, `platform-scout`, pattern method A, Free scan), the hosted results are ranked and only the **top few most promising — default 5 (3–5), the user can change it ("verify 3", "verify 8")** — get a Google check on the user's own SerpApi / DataForSEO: indexed? (`site:<url>`) and the position for the target query.
+- Write the hosted results to `candidates.tsv` (`URL<TAB>target query<TAB>product<TAB>type<TAB>status`, the agent returns this list) and run `platformscan.py --verify candidates.tsv --top 5 --dry-run` through `serpapi_run` (SerpApi first while it has searches left) or `dataforseo_run`. **Show the cost before running:** "Verify the top 5 in Google? ≈ N searches (SerpApi, <left> left this month)" or "≈ $X (DataForSEO)". Run without `--dry-run` only after a yes. No account connected → the connect line from 2a; the lists stay "found in web search".
+- The result keeps **two separate blocks**: **"Verified in Google"** (index ✓ / not in index, `#N for "<query>"` / not in top N, with the date) and **"Found in web search — not verified in Google"** (the rest, labelled exactly so). A page from the second block is never called indexed, ranking or "in Google".
+- Offer it in the Next steps after every free discovery: *"verify the top 5 in Google — ≈N searches"*. A full paid scan (Step 3) stays for many products at once.
+
+**Blocked hosts are not dropped — RULE (№91).** When a host blocks automatic fetches (403 / 429 / captcha / timeout), `platformscan.py` (scan, `--check-urls`, `--verify`) looks for free evidence elsewhere: the RSS / Atom feed → the sitemap → the platform's public API (Discourse, Flarum, Reddit, WordPress). Found → the page stays in the list marked **"blocked — evidence from <source> (date)"** (Evidence column; indexing not verified); the API says the topic does not exist → removed. Google's cache no longer exists — the indexed snippet comes from targeted verification (`site:`), so a blocked page is a good pick for it. Without a shell, do the same by hand in that order. Only when nothing is found anywhere: "could not verify — open by hand".
+
 **Never shown:** stop types and blacklisted sites (`references/exclusions.md`, the live list comes from the server), platforms whose example pages are removed, and the author's own posts as examples (filtered by the server). The author's private platforms are never named, not even as "skipped".
 
 Reply in the user's language.
@@ -115,7 +130,7 @@ Reply in the user's language.
 
 Free gets two things from the server. Both are real value, and both show clearly what Pro and Insider add: under every Free result the "🔒 On Pro / Insider" block (№56, `navigator/references/upgrade-showcase.md` §3) — one block per reply, after the result, never instead of it.
 
-**A. "Show the free platform base" / "where can I publish?" without a product** → `free_base` (filters `type`, `language`, `query` from the user's words).
+**A. "Show the free platform base" / "where can I publish?" without a product** → `free_base` (filters `type`, `language`, `query` from the user's words, and **`niche`** — the user's niche from the profile or their words, №89). With a niche: the niche matches first; `niche_matched: false` → "No platforms tagged for <niche> yet." then `general_platforms` under "General platforms (any niche)". For the first post's 10 platforms, when the niche has fewer than 10, add general ones (`include_general: true`) under their own heading.
 ```
 Free platform base · snapshot of N checked platforms (of M in Pro)
 Each status is as of its check date — check a platform yourself before you invest in it.
@@ -218,6 +233,7 @@ D. Everything — A, then B on the searches left, then C only for what is still 
 **4a. Open every link before showing it — in every mode, Lite included (plain page fetches, free).** For each candidate:
 - **Home** — the platform's root or the forum's index / the section where posts go. Open it: it must load.
 - **Sign-up** — the direct register / sign-up / create-account page (look for the link on the home page, else try /register, /signup, /join, /user/register, /create-account, /users/sign_up, /login?register, /member/register). Open it and confirm a sign-up form loads. Not found → "sign-up link not found — use Home".
+- **Blocked host (№91)** — `FETCH BLOCKED` goes through the fallback (feed → sitemap → public API) before any verdict; with evidence the example is shown as `blocked — evidence from <source> (date)`, after the live ones.
 - **Live example** — each affiliate post you found gets **two separate fields (№71)**, from `platformscan.py --check-urls` (or the same rules by hand on the raw page): **Thread availability** `LIVE THREAD` / `REDIRECTED / REMOVED` (404 / 410, "page not found / removed / deleted", an HTTP **or client-side** redirect — JavaScript `location…` or meta refresh — to the index, home or login page, an empty stub, or the expected discussion missing at the destination; HTTP 200 alone proves nothing) / `FETCH BLOCKED` / `UNVERIFIED`, and **Indexing eligibility** `INDEXABLE` / `NOINDEX` (meta robots / googlebot, X-Robots-Tag) / `UNVERIFIED`. A working example is LIVE THREAD + INDEXABLE; a live NOINDEX page is shown as "live, noindex — cannot get into Google while it stays" and never counts as proof. Show an example **only if it opens and the post is there**; never print a removed example as a link — not in the table, not under "Sources". All examples removed → the platform cleans up: say "posts removed (cleanup on [date checked])", move it to **fading** with "check that new posts stay"; when the home or sign-up is also gone, it is dead — leave it out of the working list. A site that blocks the check → "could not verify — open by hand", never "live".
 
 **5. Output** — one row per platform, the user should be able to act from the row without searching:
@@ -252,7 +268,7 @@ Ask only what is missing:
 
 ## Step 2 — The author's base first (Pro / Insider)
 
-If `platforms_search` is available, call it with the filters: `type` and `language` from Step 1, and the niche or product words as `query` (matched word by word against the platform and its example posts). If the answer has `query_matched: false`, no checked platform mentions the niche yet: show the base by type and language anyway with one line from `note` (most checked platforms work for any niche) — never report "0 platforms" while `total_in_your_plan` is above 0. These are platforms Rumer checked by hand; he adds them every Monday and often in between, several a day. Pro sees them ~7 days after they are added, Insider the same day. Each row carries `examples` (live posts, best position first, already filtered) and `signup_url`. Drop rows that match the exclusions, then show them post-first in the Step 5 format and keep the server's notes as written.
+If `platforms_search` is available, call it with the filters: `type` and `language` from Step 1, the user's **niche** as `niche` (№89) and product words as `query` (whole words only). Niche matches → only them, plus the one line about `general_available`. `niche_matched: false` → "No platforms tagged for <niche> yet." in plain words, then `general_platforms` as the general list under its own heading — never report "0 platforms" while `total_in_your_plan` is above 0, and never mix the two lists. These are platforms Rumer checked by hand; he adds them every Monday and often in between, several a day. Pro sees them ~7 days after they are added, Insider the same day. Each row carries `examples` (live posts, best position first, already filtered) and `signup_url`. Drop rows that match the exclusions, then show them post-first in the Step 5 format and keep the server's notes as written.
 
 If the server is not connected, say once: "Checked platforms from Rumer come with a Pro key. Meanwhile we can run a live scan." and go to Step 3.
 
@@ -292,7 +308,7 @@ The scan already opened the examples and looked for the sign-up page. For the to
 A platform with no live example is never a candidate. Mark uncertain ones "test".
 
 **Ranking proof — "Top 20?" (№65).** Finding a platform is not proof it can rank for money queries. For every candidate check whether pages of that domain sit in Google's top 20 for 1–3 commercial queries of the user's niche ("[product] review", "best [category]", "[product] vs …"), with the date:
-- with the user's SerpApi / DataForSEO: real positions → `✓ #7 "mitolyn review" (14.11)` or `not in top 20`;
+- with the user's SerpApi / DataForSEO: real positions → `✓ #7 "mitolyn review" (14.11)` or `not in top 20` — for a handful of pages, **targeted verification** (№90, `--verify --top 5`, cost first) is the cheap way;
 - built-in web search only: `seen in built-in search results — not a Google position`, or `not found` — never write a position you did not read;
 - Free: `not verified on Free` (the same check runs with the user's own SerpApi key).
 **History before verdict (№70):** a candidate without a top-20 sighting today is checked against the user's history first; a dated top position there keeps it as "proven earlier — recheck", with both dates, never "no ranking evidence".

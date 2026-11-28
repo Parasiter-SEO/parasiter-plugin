@@ -114,7 +114,7 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "serpapi_run",
      "description": ("Run PARASITER's position check (rankcheck: Google or Bing positions of the user's pages, --engine bing), the offer scan (offerscan: which affiliate products and programs the top pages push) "
-                     "the platform scan (platformscan: platforms where '<product> review' pages rank; with --suffix \"\" the lines are ready footprint queries for the new-platform pattern search) or the forum cluster scan (forumscan: the Discussions and forums block and forum threads in the top with their ages, for Rumer's forum cluster method) on the user's own SerpApi account — "
+                     "the platform scan (platformscan: platforms where '<product> review' pages rank; with --suffix \"\" the lines are ready footprint queries for the new-platform pattern search; with --verify candidates.tsv --top N the targeted verification of the few most promising pages from free discovery: Google index (site:) + position for the target query, cost shown by --dry-run) or the forum cluster scan (forumscan: the Discussions and forums block and forum threads in the top with their ages, for Rumer's forum cluster method) on the user's own SerpApi account — "
                      "the alternative to dataforseo_run. Uses the user's SerpApi searches (free plan: 250 a month; Google: 1 search per 10 results per query, "
                      "so top 30 = 3 searches per query). Run it with --dry-run first, show how many searches it takes and how many are left (serpapi_status), "
                      "and run for real only after the user says yes. The key comes from the plugin settings; never pass it, or --provider, in args."),
