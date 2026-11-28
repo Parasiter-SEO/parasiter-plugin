@@ -115,7 +115,7 @@ TOOLS = [
      "inputSchema": {"type": "object", "properties": {}}},
     {"name": "dataforseo_run",
      "description": ("Run a PARASITER script that calls the user's own DataForSEO account: rankcheck (Google or Bing positions of the user's pages, --engine bing), "
-                     "aicheck (is the page cited in Google AI Mode / ChatGPT / Gemini answers), pagekeywords (keywords each page ranks for), platformscan (platforms ranking for '<product> review'), forumscan (the Discussions and forums block and forum threads in the top with their ages — Rumer's forum cluster method) or offerscan (which affiliate products and programs the top pages for affiliate-intent queries push). "
+                     "aicheck (is the page cited in Google AI Mode / ChatGPT / Gemini answers), pagekeywords (keywords each page ranks for), platformscan (platforms ranking for '<product> review'; --verify candidates.tsv --top N: targeted verification of the few most promising pages from free discovery — Google index via site: + position, cost shown by --dry-run), forumscan (the Discussions and forums block and forum threads in the top with their ages — Rumer's forum cluster method) or offerscan (which affiliate products and programs the top pages for affiliate-intent queries push). "
                      "PAID from the user's DataForSEO balance: run it with --dry-run first, show the cost and run for real only after the user says yes. "
                      "Credentials come from the plugin settings; never pass them in args."),
      "inputSchema": {"type": "object", "required": ["script", "args"], "properties": {

@@ -6,6 +6,7 @@
                   [--exclusions exclusions.json] [--exclude domain[/path],...] [--collect-only]
   platformscan.py --from-raw platforms-scan.raw.json [--allowed allowed.json] [--exclusions ...]
   platformscan.py --check-urls urls.txt [--out checks.csv]
+  platformscan.py --verify candidates.tsv [--top 5] [--depth 10] [--dry-run] [--out platforms-verify.csv]
   platformscan.py --self-test
 
 PRODUCTS: a text file with one affiliate product name per line (or a CSV with a product column),
@@ -41,6 +42,19 @@ The point is not to find unknown platforms, but the ones where affiliate review 
 already published AND indexed — proven places to post. Links on them don't matter; that the
 page itself is in Google does.
 
+Blocked hosts (№91): a page that answers 403 / 429 / a captcha / a timeout is not dropped. The script looks for
+free evidence elsewhere — the RSS / Atom feed (the page's own feed link, <thread>.rss, /feed …), the sitemap
+(robots.txt Sitemap lines, /sitemap.xml, one level of sitemap index) and the platform's public API where it has one
+(Discourse /t/<id>.json, Flarum /api/discussions/<id>, Reddit .json, WordPress /wp-json) — and marks the page
+"blocked — evidence from <source> (date)". Indexing stays unverified; an API that says the topic is gone marks it removed.
+
+Targeted verification (№90) — between free discovery and a full paid SERP scan: --verify reads the hosted results
+of a free search (URL<TAB>target query…), checks them free, ranks them (live and indexable first, forums and
+communities, domains with several products) and picks only the top --top (default 5). For those only: a Google index
+check (site:<url>) and the position for the target query on the user's own SerpApi / DataForSEO. --dry-run prints
+the pick and "~N searches" / "~$X" first. Output keeps two lists apart: "Verified in Google" and
+"Found in web search — not verified in Google".
+
 Pattern search, method B (footprints): put one ready Google query per line in PRODUCTS
 (e.g. inurl:/discuss "mitolyn") and pass --suffix "" — the lines are searched as they are.
 
@@ -51,6 +65,7 @@ import argparse
 import csv
 import fnmatch
 import json
+import math
 import os
 import re
 import sys
@@ -432,32 +447,254 @@ def fetch(url, limit=600_000, timeout=20):
         return e.code, e.geturl() or url, {k.lower(): v for k, v in (e.headers or {}).items()}, body
 
 
-def check_url(url, expect=""):
-    """Network wrapper of assess(): follows one client-side redirect."""
+def check_url(url, expect="", fallback=True, get=None):
+    """Network wrapper of assess(): follows one client-side redirect. №91: a page the host blocks (403, captcha,
+    timeout) is not dropped — free evidence is looked for in its RSS / Atom feed, sitemap and public API."""
+    own_get, get = get, get or fetch
     try:
-        res = fetch(url)
+        res = get(url)
         hop = None
         if res[0] and res[0] < 400:
             target = client_redirect(res[3].decode("utf-8", "replace"), res[1] or url)
             if target:
                 try:
-                    hop = fetch(target)
+                    hop = get(target)
                 except Exception:
                     hop = None
-        return assess(url, *res, expect=expect, hop=hop)
+        r = assess(url, *res, expect=expect, hop=hop)
+        html = res[3].decode("utf-8", "replace") if res[3] else ""
     except urllib.error.URLError as e:
         reason = str(getattr(e, "reason", e))
         if "Name or service not known" in reason or "getaddrinfo" in reason or "nodename" in reason:
             return {"availability": GONE, "indexing": UNVER, "why": "domain does not resolve", "final": url}
-        return {"availability": BLOCKED, "indexing": UNVER, "why": "could not open: " + reason[:60], "final": url}
+        r, html = {"availability": BLOCKED, "indexing": UNVER, "why": "could not open: " + reason[:60], "final": url}, ""
     except Exception as e:  # timeouts, TLS, broken servers
-        return {"availability": BLOCKED, "indexing": UNVER, "why": "could not open: " + str(e)[:60], "final": url}
+        r, html = {"availability": BLOCKED, "indexing": UNVER, "why": "could not open: " + str(e)[:60], "final": url}, ""
+    if fallback and r["availability"] == BLOCKED:
+        r = with_fallback(r, url, html, expect, own_get)
+    return r
 
 
 def verdict(r):
     if r["availability"] == LIVE:
         return ("removed", "noindex — " + r["why"]) if r["indexing"] == NOINDEX else ("live", r["why"])
+    if r["availability"] == BLOCKED and r.get("evidence_source"):
+        return "blocked", r["why"]          # №91 kept with its evidence, never dropped as "could not verify"
     return ("removed" if r["availability"] == GONE else "unknown"), r["why"]
+
+
+# ---------- №91 live-check fallback when a host blocks automatic fetches ----------
+# Order: RSS / Atom feed → sitemap → the platform's public API (all free). Google's cache is gone (retired 2024):
+# the indexed snippet from a site: search is used instead, in --verify (the user's SerpApi / DataForSEO).
+FEED_LINK = re.compile(r"<link\b[^>]*type=[\"']application/(?:rss|atom)\+xml[\"'][^>]*>", re.I)
+FEED_PATHS = ("/feed", "/rss", "/feed.xml", "/rss.xml", "/atom.xml", "/index.xml", "/latest.rss",
+              "/forums/-/index.rss", "/feed/")
+SITEMAP_PATHS = ("/sitemap.xml", "/sitemap_index.xml", "/sitemap-index.xml", "/wp-sitemap.xml", "/sitemap/sitemap.xml")
+XML_DATE = re.compile(r"<(pubDate|updated|published|dc:date|lastBuildDate|lastmod)[^>]*>\s*([^<]{6,40}?)\s*</\1>", re.I)
+
+
+def _key(u):
+    """Compare-key of a page URL: no scheme, www, query, fragment or trailing slash."""
+    u = re.sub(r"^https?://(www\.|m\.)?", "", (u or "").strip().lower()).split("#")[0].split("?")[0]
+    return u.rstrip("/")
+
+
+def same_page(a, b):
+    """The feed / sitemap entry is this page (or one of its posts: /t/slug/12 and /t/slug/12/4)."""
+    ka, kb = _key(a), _key(b)
+    return bool(ka) and (ka == kb or kb.startswith(ka + "/") or ka.startswith(kb + "/")) and ka.count("/") >= 1 and kb.count("/") >= 1
+
+
+def _date(s):
+    m = re.search(r"(\d{4}-\d{2}-\d{2})", s or "")
+    if m:
+        return m.group(1)
+    for fmt in ("%a, %d %b %Y", "%d %b %Y"):
+        try:
+            from datetime import datetime
+            return datetime.strptime(re.sub(r"\s+\d{1,2}:\d{2}.*$", "", s.strip()), fmt).date().isoformat()
+        except ValueError:
+            continue
+    return (s or "").strip()[:25]
+
+
+def _body(res):
+    body = res[3] or b""
+    if body[:2] == b"\x1f\x8b":
+        import gzip
+        try:
+            body = gzip.decompress(body)
+        except Exception:
+            return ""
+    return body.decode("utf-8", "replace")
+
+
+def feed_urls(url, html=""):
+    sp = urllib.parse.urlsplit(url)
+    root = f"{sp.scheme}://{sp.netloc}"
+    out = [urllib.parse.urljoin(url, _attr(t, "href")) for t in FEED_LINK.findall(html or "") if _attr(t, "href")]
+    path = sp.path.rstrip("/")
+    if path:
+        out += [root + path + ".rss", root + path + "/feed"]           # Discourse topic feed · WordPress post comments
+    out += [root + p for p in FEED_PATHS]
+    seen = []
+    for u in out:
+        if u.startswith("http") and u not in seen:
+            seen.append(u)
+    return seen[:10]
+
+
+def find_in_feed(xml, url):
+    """(date, title) when the RSS / Atom document lists this page, else None."""
+    if not re.search(r"<(rss|feed|rdf:RDF)\b", xml or "", re.I):
+        return None
+    for block in re.findall(r"(?is)<(?:item|entry)\b.*?</(?:item|entry)>", xml):
+        links = re.findall(r"(?is)<link[^>]*>\s*(https?://[^<\s]+)\s*</link>", block) + \
+            [_attr(t, "href") for t in re.findall(r"(?i)<link\b[^>]*>", block)] + \
+            re.findall(r"(?is)<guid[^>]*>\s*(https?://[^<\s]+)\s*</guid>", block)
+        if any(lk and same_page(url, lk) for lk in links):
+            d = XML_DATE.search(block)
+            t = re.search(r"(?is)<title[^>]*>(.*?)</title>", block)
+            return (_date(d.group(2)) if d else "", visible_text(re.sub(r"<!\[CDATA\[|\]\]>", "", t.group(1)))[:90] if t else "")
+    head = re.split(r"(?i)<(?:item|entry)\b", xml, maxsplit=1)[0]          # a topic's own feed: the channel is the page
+    links = re.findall(r"(?is)<link[^>]*>\s*(https?://[^<\s]+)\s*</link>", head) + \
+        [_attr(t, "href") for t in re.findall(r"(?i)<link\b[^>]*>", head)]
+    if any(lk and _key(lk) == _key(url) for lk in links):
+        d = XML_DATE.search(xml)
+        t = re.search(r"(?is)<title[^>]*>(.*?)</title>", head)
+        return (_date(d.group(2)) if d else "", visible_text(re.sub(r"<!\[CDATA\[|\]\]>", "", t.group(1)))[:90] if t else "")
+    return None
+
+
+def sitemap_urls(robots_txt, root):
+    out = [ln.split(":", 1)[1].strip() for ln in (robots_txt or "").splitlines() if ln.lower().startswith("sitemap:")]
+    return [u for u in out if u.startswith("http")] + [root + p for p in SITEMAP_PATHS]
+
+
+def find_in_sitemap(xml, url):
+    """('found', lastmod) · ('index', [child sitemaps, newest first]) · None."""
+    if re.search(r"<sitemapindex\b", xml or "", re.I):
+        kids = re.findall(r"(?is)<sitemap>\s*<loc>\s*([^<\s]+)\s*</loc>(?:\s*<lastmod>\s*([^<\s]+)\s*</lastmod>)?", xml)
+        return "index", [u for u, _ in sorted(kids, key=lambda k: k[1] or "", reverse=True)]
+    for loc, rest in re.findall(r"(?is)<url>\s*<loc>\s*([^<\s]+)\s*</loc>(.*?)</url>", xml or ""):
+        if _key(loc) == _key(url):
+            m = re.search(r"(?is)<lastmod>\s*([^<\s]+)", rest)
+            return "found", (_date(m.group(1)) if m else "")
+    return None
+
+
+def api_check(url, get):
+    """The platform's public API, where it has one: (source, detail, date, removed) or None."""
+    sp = urllib.parse.urlsplit(url)
+    root, path, host = f"{sp.scheme}://{sp.netloc}", sp.path, host_of(url)
+    tries = []
+    m = re.search(r"/t/(?:[^/]+/)?(\d+)", path)
+    if m:
+        tries.append(("Discourse API", root + f"/t/{m.group(1)}.json"))
+    m = re.search(r"/d/(\d+)", path)
+    if m:
+        tries.append(("Flarum API", root + f"/api/discussions/{m.group(1)}"))
+    if suffix_match(host, "reddit.com") and "/comments/" in path:
+        tries.append(("Reddit API", root + path.rstrip("/") + ".json"))
+    slug = path.rstrip("/").rsplit("/", 1)[-1]
+    if slug and not slug.isdigit() and "." not in slug and not m:
+        tries.append(("WordPress REST API", root + "/wp-json/wp/v2/posts?slug=" + urllib.parse.quote(slug) + "&_fields=link,date,title"))
+    for name, api in tries:
+        try:
+            res = get(api)
+        except Exception:
+            continue
+        ctype = (res[2].get("content-type") or "").lower()
+        if "json" not in ctype:
+            continue
+        try:
+            d = json.loads(_body(res) or "null")
+        except ValueError:
+            continue
+        if res[0] in (404, 410) and name != "WordPress REST API":
+            return name, "the API says the topic does not exist", "", True
+        if res[0] != 200:
+            continue
+        if name == "Discourse API" and isinstance(d, dict) and d.get("id"):
+            return name, f"topic \"{(d.get('title') or '')[:70]}\", {d.get('posts_count', '?')} posts", _date(d.get("created_at") or ""), False
+        if name == "Flarum API" and isinstance(d, dict) and (d.get("data") or {}).get("attributes"):
+            a = d["data"]["attributes"]
+            return name, f"discussion \"{(a.get('title') or '')[:70]}\"", _date(a.get("createdAt") or ""), False
+        if name == "Reddit API" and isinstance(d, list) and d:
+            try:
+                post = d[0]["data"]["children"][0]["data"]
+            except (KeyError, IndexError, TypeError):
+                continue
+            gone = bool(post.get("removed_by_category")) or post.get("selftext") in ("[removed]", "[deleted]")
+            day = date.fromtimestamp(post["created_utc"]).isoformat() if post.get("created_utc") else ""
+            return name, ("post removed" if gone else f"post \"{(post.get('title') or '')[:70]}\""), day, gone
+        if name == "WordPress REST API" and isinstance(d, list):
+            for it in d:
+                if same_page(url, it.get("link") or ""):
+                    title = visible_text(((it.get("title") or {}).get("rendered")) or "")[:70]
+                    return name, f"post \"{title}\"", _date(it.get("date") or ""), False
+    return None
+
+
+def blocked_evidence(url, html="", get=None):
+    """№91 free evidence for a page the host would not let us open. Returns {source, detail, date, removed} or None."""
+    get = get or (lambda u: fetch(u, limit=2_000_000, timeout=15))
+    for fu in feed_urls(url, html):
+        try:
+            res = get(fu)
+        except Exception:
+            continue
+        if res[0] == 200:
+            hit = find_in_feed(_body(res), url)
+            if hit:
+                return {"source": "RSS/Atom feed", "detail": (f'"{hit[1]}" in ' if hit[1] else "listed in ") + fu,
+                        "date": hit[0], "removed": False}
+    sp = urllib.parse.urlsplit(url)
+    root = f"{sp.scheme}://{sp.netloc}"
+    try:
+        rob = get(root + "/robots.txt")
+        robots = _body(rob) if rob[0] == 200 else ""
+    except Exception:
+        robots = ""
+    todo, seen, opened = sitemap_urls(robots, root), set(), 0
+    while todo and opened < 12:
+        sm = todo.pop(0)
+        if sm in seen:
+            continue
+        seen.add(sm)
+        try:
+            res = get(sm)
+        except Exception:
+            continue
+        opened += 1
+        if res[0] != 200:
+            continue
+        hit = find_in_sitemap(_body(res), url)
+        if hit and hit[0] == "found":
+            return {"source": "sitemap", "detail": "listed in " + sm, "date": hit[1], "removed": False}
+        if hit and hit[0] == "index":
+            todo = hit[1][:6] + todo
+    hit = api_check(url, get)
+    if hit:
+        return {"source": hit[0], "detail": hit[1], "date": hit[2], "removed": hit[3]}
+    return None
+
+
+def with_fallback(r, url, html="", expect="", get=None):
+    """A FETCH BLOCKED result + the evidence found elsewhere: 'blocked — evidence from <source>'."""
+    ev = blocked_evidence(url, html, (lambda u: get(u)) if get else None)
+    if not ev:
+        r = dict(r)
+        r["why"] += " · no feed, sitemap or public API lists it"
+        return r
+    r = dict(r)
+    if ev["removed"]:
+        r.update(availability=GONE, why=f"blocked page · removed per {ev['source']}: {ev['detail']}")
+        return r
+    r["evidence_source"], r["evidence_date"] = ev["source"], ev["date"]
+    r["why"] = (f"blocked — evidence from {ev['source']}: {ev['detail']}" + (f" ({ev['date']})" if ev["date"] else "")
+                + " · indexing not verified")
+    return r
 
 
 def check_page(url, expect=""):
@@ -471,15 +708,17 @@ def check_urls_cli(path, out):
         items = [ln.rstrip("\n").split("\t", 1) for ln in f if ln.strip() and not ln.startswith("#")]
     with ThreadPoolExecutor(8) as pool:
         res = list(pool.map(lambda it: check_url(it[0].strip(), it[1].strip() if len(it) > 1 else ""), items))
-    print("| URL | Thread availability | Indexing eligibility | Why | Final URL |")
-    print("|---|---|---|---|---|")
+    print("| URL | Thread availability | Indexing eligibility | Evidence | Why | Final URL |")
+    print("|---|---|---|---|---|---|")
     for it, r in zip(items, res):
-        rows.append({"url": it[0].strip(), "availability": r["availability"], "indexing": r["indexing"],
+        ev = (f"blocked — evidence from {r['evidence_source']}" + (f" ({r['evidence_date']})" if r.get("evidence_date") else "")) \
+            if r.get("evidence_source") else ""
+        rows.append({"url": it[0].strip(), "availability": r["availability"], "indexing": r["indexing"], "evidence": ev,
                      "why": r["why"], "final": r["final"], "checked": date.today().isoformat()})
-        print(f"| {it[0].strip()} | {r['availability']} | {r['indexing']} | {r['why']} | {r['final']} |")
+        print(f"| {it[0].strip()} | {r['availability']} | {r['indexing']} | {ev or '—'} | {r['why']} | {r['final']} |")
     if out:
         with open(out, "w", newline="", encoding="utf-8") as f:
-            wr = csv.DictWriter(f, fieldnames=["url", "availability", "indexing", "why", "final", "checked"])
+            wr = csv.DictWriter(f, fieldnames=["url", "availability", "indexing", "evidence", "why", "final", "checked"])
             wr.writeheader()
             wr.writerows(rows)
     print("\nThread availability and indexing eligibility are page checks only — not a Google position. "
@@ -669,13 +908,15 @@ def verify(platforms, signup=True, workers=8):
             pg = platforms[i]["pages"][j]
             pg["availability"], pg["indexing"] = r["availability"], r["indexing"]
             pg["status"], pg["why"] = verdict(r)
+            if r.get("evidence_source"):
+                pg["evidence_source"], pg["evidence_date"] = r["evidence_source"], r.get("evidence_date", "")
     for p in platforms:
         st = [pg.get("status") for pg in p["pages"][:3]]
-        p["live"] = "abuse" if p["cost"] == "abuse" else "live" if "live" in st else \
+        p["live"] = "abuse" if p["cost"] == "abuse" else "live" if "live" in st else "blocked" if "blocked" in st else \
             "removed" if st and all(s == "removed" for s in st) else "unverified"
-    todo = [p for p in platforms if signup and p["live"] == "live" and p["cost"] in ("free", "check")]
+    todo = [p for p in platforms if signup and p["live"] in ("live", "blocked") and p["cost"] in ("free", "check")]
     with ThreadPoolExecutor(workers) as pool:
-        for p, (su, home) in zip(todo, pool.map(lambda p: find_signup(next(pg["url"] for pg in p["pages"] if pg.get("status") == "live"), p["domain"]), todo)):
+        for p, (su, home) in zip(todo, pool.map(lambda p: find_signup(next(pg["url"] for pg in p["pages"] if pg.get("status") in ("live", "blocked")), p["domain"]), todo)):
             p["signup"], p["home"] = su, home
     return platforms
 
@@ -736,7 +977,11 @@ def load_history(paths, journal=None, today=None):
 
 def evidence_cell(pg, live_status):
     """№70 never "ranks" without a position read from Google: ranking verified (a ranking page is indexed) ·
-    seen in a Google block · example URL verified live only."""
+    seen in a Google block · example URL verified live only. №91 blocked pages carry where the evidence came from."""
+    if live_status == "blocked" and pg:
+        day = f" ({pg['evidence_date']})" if pg.get("evidence_date") else ""
+        pos = f" · seen at #{pg['position']} in the search" if pg.get("position") else ""
+        return f"blocked — evidence from {pg.get('evidence_source', '?')}{day}{pos} · indexing not verified"
     if live_status != "live":
         return "example removed" if live_status == "removed" else "could not verify"
     if pg and pg.get("position"):
@@ -792,7 +1037,8 @@ def report(platforms, skipped, out, allowed, yours, today, hist=None):
     shown_hidden = 0
     rows = []
     for p in platforms:
-        live_pages = [pg for pg in p["pages"][:3] if pg.get("status") == "live"]
+        live_pages = [pg for pg in p["pages"][:3] if pg.get("status") == "live"] or \
+            [pg for pg in p["pages"][:3] if pg.get("status") == "blocked"]
         if allowed is not None:
             before = len(live_pages)
             live_pages = [pg for pg in live_pages if pg["url"] in allowed]
@@ -802,7 +1048,7 @@ def report(platforms, skipped, out, allowed, yours, today, hist=None):
                      "product": live_pages[0]["product"] if live_pages else "",
                      "position": (live_pages[0]["position"] or "") if live_pages else "",
                      "platform": p["domain"], "type": p["type"], "cost": p["cost"],
-                     "signup": signup_cell(p) if p["live"] == "live" else "",
+                     "signup": signup_cell(p) if p["live"] in ("live", "blocked") else "",
                      "status": p["live"], "products": len(p["products"]), "best_position": p["best_position"],
                      "serp_blocks": " ".join(p["serp_blocks"]), "yours": "yes" if p["platform"] in yours else "",
                      "more_posts": " ".join(pg["url"] for pg in live_pages[1:]),
@@ -814,23 +1060,25 @@ def report(platforms, skipped, out, allowed, yours, today, hist=None):
         rows[-1]["discovery"] = discovery_cell(p, hist, yours)
         rows[-1]["history"], rows[-1]["conflict"] = history_cell(p, hist, p["live"])
         rows[-1]["policy"] = "UNKNOWN"          # the platform's own rules: filled by the skill with the official URL
-    order = {"live": 0, "unverified": 1, "removed": 2, "abuse": 3}
+    order = {"live": 0, "blocked": 1, "unverified": 2, "removed": 3, "abuse": 4}
     rows.sort(key=lambda r: (order[r["status"]], -r["products"], r["position"] or r["best_position"] or 999))
     with open(out, "w", newline="", encoding="utf-8") as f:
         wr = csv.DictWriter(f, fieldnames=list(rows[0].keys()) if rows else ["post"])
         wr.writeheader()
         wr.writerows(rows)
 
-    live = [r for r in rows if r["status"] == "live"]
+    live = [r for r in rows if r["status"] in ("live", "blocked")]
+    n_blocked = sum(r["status"] == "blocked" for r in rows)
     dead = [r for r in rows if r["status"] == "removed"]
     unver = [r for r in rows if r["status"] == "unverified"]
     n_found = len([r for r in rows if r["status"] != "abuse"])
     n_skip = len(skipped["stop"]) + len(skipped["black"])
-    print(f"Found {n_found} platforms · live {len(live)} · removed {len(dead)} · "
+    print(f"Found {n_found} platforms · live {len(live) - n_blocked} · "
+          + (f"blocked with evidence {n_blocked} · " if n_blocked else "") + f"removed {len(dead)} · "
           f"skipped by stop / black list {n_skip}"
           + (f" · skipped as known dead {len(skipped['dead'])}" if skipped["dead"] else "")
           + (f" · could not verify {len(unver)}" if unver else "") + f" · checked {today} · saved to {out}\n")
-    found_rows = [r for r in rows if r["status"] in ("live", "unverified")]
+    found_rows = [r for r in rows if r["status"] in ("live", "blocked", "unverified")]
     n_new = sum(r["discovery"] == "NEW platform" for r in found_rows)
     n_ev = sum(r["discovery"] == "EXISTING · NEW evidence" for r in found_rows)
     n_rep = sum(r["discovery"].startswith("EXISTING · repeated") for r in found_rows)
@@ -861,7 +1109,7 @@ def report(platforms, skipped, out, allowed, yours, today, hist=None):
         print("In Google, but the pages are removed (not in the working list): "
               + ", ".join(f"{r['platform']}" for r in dead[:30]))
     if unver:
-        print("Could not verify (the site blocks automatic checks — open an example by hand): "
+        print("Could not verify (the site blocks automatic checks and no feed, sitemap or public API lists the page — open an example by hand): "
               + ", ".join(r["platform"] for r in unver[:30]))
     if n_skip:
         print("Skipped by stop / black list: " + ", ".join(skipped["stop"] + skipped["black"])[:600])
@@ -877,6 +1125,211 @@ def report(platforms, skipped, out, allowed, yours, today, hist=None):
         f.write("\n".join(hosts) + ("\n" if hosts else ""))
     if dead:
         print(f"Dead domains saved to {dead_path} — skip them in your next scans (--exclude) so you don't pay to scan them again.")
+
+
+# ---------- №90 cheap targeted verification: between free discovery and a full paid SERP scan ----------
+# Free discovery (web search, the agent, a pattern search) finds hosted pages; only the top few most promising
+# get a Google check on the user's own SerpApi / DataForSEO: indexed? (site:<url>) and position for the target
+# query. The cost is printed first. Two lists, never mixed: "found in web search" vs "verified in Google".
+TYPE_WEIGHT = {"forum": 30, "community": 30, "q&a": 25, "article": 15, "blog": 15, "page": 12, "site-builder": 12,
+               "document": 10, "document/pdf": 10, "social": 8, "video": 5}
+VERIFY_TOP = 5
+
+
+def read_candidates(path):
+    """Hosted results of free discovery: TSV `URL<TAB>target query[<TAB>product][<TAB>type]` or a CSV with
+    url / post, query (or product → "<product> review"), product, type, status columns (platforms-scan.csv works)."""
+    out = []
+    with open(path, encoding="utf-8") as f:
+        text = f.read()
+    first = text.splitlines()[0] if text.strip() else ""
+    if path.lower().endswith(".csv") and ("post" in first or "url" in first):
+        for r in csv.DictReader(text.splitlines()):
+            u = (r.get("url") or r.get("post") or "").strip()
+            if not u.startswith("http"):
+                continue
+            prod = (r.get("product") or "").strip()
+            out.append({"url": u, "query": (r.get("query") or (f"{prod} review" if prod else "")).strip(), "product": prod,
+                        "type": (r.get("type") or "").strip(), "status": (r.get("status") or "").strip()})
+    else:
+        for ln in text.splitlines():
+            if not ln.strip() or ln.startswith("#"):
+                continue
+            parts = [x.strip() for x in ln.split("\t")] + ["", "", ""]
+            if parts[0].startswith("http"):
+                out.append({"url": parts[0], "query": parts[1], "product": parts[2], "type": parts[3], "status": ""})
+    seen, uniq = set(), []
+    for c in out:
+        k = _key(c["url"])
+        if k not in seen:
+            seen.add(k)
+            uniq.append(c)
+    return uniq
+
+
+def promise(c, by_domain):
+    """Rank score of one hosted result: a live, indexable page first, then evidence of a blocked one; forums and
+    communities before other types; a domain hosting several products' reviews before a one-off. Dead / noindex: -1."""
+    st = c.get("status") or ""
+    if st in ("removed", "abuse"):
+        return -1
+    base = {"live": 300, "blocked": 200}.get(st, 100)
+    typ = c.get("type") or classify(c["url"])[2] or ""
+    return base + TYPE_WEIGHT.get(typ, 6) + 5 * min(6, by_domain.get(host_of(c["url"]), 1)) + (4 if c.get("query") else 0)
+
+
+def pick(cands, top=VERIFY_TOP):
+    by_domain = defaultdict(set)
+    for c in cands:
+        by_domain[host_of(c["url"])].add((c.get("product") or c.get("query") or c["url"]).lower())
+    counts = {d: len(v) for d, v in by_domain.items()}
+    scored = sorted(((promise(c, counts), i, c) for i, c in enumerate(cands)), key=lambda x: (-x[0], x[1]))
+    chosen, doms = [], set()
+    for sc, _, c in scored:                     # one page per domain first: more platforms for the same cost
+        if sc >= 0 and host_of(c["url"]) not in doms and len(chosen) < top:
+            chosen.append(c); doms.add(host_of(c["url"]))
+    for sc, _, c in scored:
+        if sc >= 0 and c not in chosen and len(chosen) < top:
+            chosen.append(c)
+    return chosen
+
+
+def site_query(url):
+    return "site:" + re.sub(r"^https?://", "", url).split("#")[0].rstrip("/")
+
+
+def verify_cost(chosen, provider, depth=10):
+    """{index, positions, searches, usd}: 1 site: search per page + 1 search per unique target query (per 10 results)."""
+    per = max(1, math.ceil(depth / 10))
+    idx = len(chosen)
+    queries = {c["query"].lower() for c in chosen if c.get("query")}
+    searches = idx + len(queries) * per
+    usd = idx * 0.002 + len(queries) * 0.002 * per          # DataForSEO live endpoint
+    return {"index": idx, "positions": len(queries), "searches": searches, "usd": round(usd, 3),
+            "label": (f"~{searches} SerpApi searches ({idx} index + {len(queries)} position" + (f" × {per}" if per > 1 else "") + ")")
+            if provider == "serpapi" else f"~${usd:.3f} DataForSEO ({idx} index + {len(queries)} position checks, live)"}
+
+
+def verify_pages(chosen, search, depth=10, today=None):
+    """search(query, depth) → [{position, url, title, snippet, date}] organic. Pure apart from search (unit-tested)."""
+    today = today or date.today().isoformat()
+    cache = {}
+
+    def run(q, d):
+        if (q, d) not in cache:
+            cache[(q, d)] = search(q, d)
+        return cache[(q, d)]
+    out = []
+    for c in chosen:
+        r = dict(c, checked=today)
+        hits = run(site_query(c["url"]), 10)
+        own = next((h for h in hits if same_page(c["url"], h["url"])), None)
+        r["indexed"] = bool(own)
+        r["index_cell"] = ("indexed ✓ (site: check" + (f', snippet "{own["snippet"][:60]}"' if own and own.get("snippet") else "")
+                           + (f", {own['date']}" if own and own.get("date") else "") + f", {today})") if own else \
+            f"not in Google's index (site: check, {today})"
+        if c.get("query"):
+            res = run(c["query"], depth)
+            hit = next((h for h in res if same_page(c["url"], h["url"])), None)
+            dom = next((h for h in res if host_of(h["url"]) == host_of(c["url"])), None)
+            r["position"] = hit["position"] if hit else ""
+            r["position_cell"] = (f'#{hit["position"]} for "{c["query"]}" ({today})' if hit else
+                                  f'not in top {depth} for "{c["query"]}"' + (f" · another page of the domain at #{dom['position']}" if dom else "")
+                                  + f" ({today})")
+            if hit:
+                r["indexed"] = True                 # a ranking page is indexed even if site: missed it
+        else:
+            r["position"], r["position_cell"] = "", "no target query given"
+        out.append(r)
+    return out
+
+
+def _provider_search(a):
+    """The user's own account behind search(query, depth): SerpApi or DataForSEO (live endpoint)."""
+    if a.provider == "serpapi":
+        key = read_key(a.auth_fd)
+        if not key:
+            sys.exit(rc.NO_SERPAPI)
+
+        def search(q, depth):
+            ns = argparse.Namespace(engine="google", country=a.country, language=a.language, device=a.device, depth=depth)
+            out, n = [], 0
+            for d in rc.serpapi_query(q, key, ns):
+                for it in d.get("organic_results") or []:
+                    n += 1
+                    if it.get("link"):
+                        out.append({"position": it.get("position") or n, "url": it["link"], "title": it.get("title", ""),
+                                    "snippet": it.get("snippet", ""), "date": it.get("date", "")})
+            return out
+        return search
+    login, password = rc.read_auth(a.auth_fd)
+    if not (login and password):
+        sys.exit(rc.NO_CREDS)
+    loc = rc.COUNTRIES.get(a.country.lower()) or sys.exit("Unknown --country: " + ", ".join(sorted(rc.COUNTRIES)))
+
+    def search(q, depth):
+        d = rc.call("POST", "/live/advanced", login, password,
+                    [{"keyword": q, "location_code": loc, "language_code": a.language, "depth": depth, "device": a.device}])
+        out = []
+        for t in d.get("tasks") or []:
+            for res in t.get("result") or []:
+                for it in res.get("items") or []:
+                    if it.get("type") == "organic" and it.get("url"):
+                        out.append({"position": it.get("rank_group") or it.get("rank_absolute"), "url": it["url"],
+                                    "title": it.get("title") or "", "snippet": it.get("description") or "",
+                                    "date": (it.get("timestamp") or "")[:10]})
+        return out
+    return search
+
+
+def verify_cli(a):
+    cands = read_candidates(a.verify)
+    if not cands:
+        sys.exit("No candidate URLs in " + a.verify + " (one per line: URL<TAB>target query).")
+    todo = [c for c in cands if not c.get("status")]
+    if todo and not a.no_live_check:
+        print(f"- free page check of {len(todo)} found pages first (feeds / sitemaps / APIs when a host blocks)…")
+        with ThreadPoolExecutor(8) as pool:
+            for c, r in zip(todo, pool.map(lambda c: check_url(c["url"], c.get("product") or ""), todo)):
+                c["status"], c["why"] = verdict(r)
+                c["evidence_source"] = r.get("evidence_source", "")
+    chosen = pick(cands, a.top)
+    cost = verify_cost(chosen, a.provider, a.depth)
+    print(f"Targeted verification · google {a.country} · top {len(chosen)} of {len(cands)} found pages · "
+          f"cost before running: {cost['label']}")
+    for i, c in enumerate(chosen, 1):
+        print(f"  {i}. {c['url']} · \"{c.get('query') or '—'}\" · {c.get('status') or 'not checked'}")
+    if a.dry_run:
+        print("\nDry run: nothing was searched. Run again without --dry-run after the user says yes "
+              f"(--top N changes how many pages are verified; now {a.top}).")
+        return
+    res = verify_pages(chosen, _provider_search(a), a.depth)
+    chosen_keys = {_key(c["url"]) for c in chosen}
+    rest = [c for c in cands if _key(c["url"]) not in chosen_keys]
+    today = date.today().isoformat()
+    print(f"\n## Verified in Google — {len(res)} · {a.provider} · {today}")
+    print("| # | Page | Target query | In Google's index | Position | Page check |")
+    print("|---|---|---|---|---|---|")
+    for i, r in enumerate(res, 1):
+        print(f"| {i} | {r['url']} | {r.get('query') or '—'} | {r['index_cell']} | {r['position_cell']} | {r.get('status') or '—'} |")
+    print(f"\n## Found in web search — not verified in Google — {len(rest)}")
+    if rest:
+        print("| # | Page | Target query | Page check |")
+        print("|---|---|---|---|")
+        for i, c in enumerate(rest, len(res) + 1):
+            print(f"| {i} | {c['url']} | {c.get('query') or '—'} | {c.get('status') or 'not checked'} |")
+    print("\nOnly the first list was checked in Google. The second one was seen in web search: no index check, no position.")
+    print(f"Spent: {cost['label'].lstrip('~')}")
+    with open(a.out, "w", newline="", encoding="utf-8") as f:
+        fields = ["url", "query", "product", "type", "status", "verified_in_google", "indexed", "position", "index_cell",
+                  "position_cell", "checked"]
+        wr = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
+        wr.writeheader()
+        for r in res:
+            wr.writerow(dict(r, verified_in_google="yes"))
+        for c in rest:
+            wr.writerow(dict(c, verified_in_google="no", checked=today))
+    print(f"Saved to {a.out}")
 
 
 def self_test():
@@ -976,6 +1429,82 @@ def self_test():
         fresh = {"platform": "fresh.example", "domain": "fresh.example", "best_position": 4,
                  "pages": [{"url": "https://fresh.example/x", "position": 4}]}
         assert discovery_cell(fresh, hist, set()) == "NEW platform" and history_cell(fresh, hist, "live") == ("", "")
+    # №91 blocked host: evidence from the feed, sitemap or public API instead of dropping the page
+    T = "https://forum.example.com/t/acme-review/123"
+
+    def fake(routes):
+        def get(u):
+            if u in routes:
+                code, ctype, body = routes[u]
+                return code, u, {"content-type": ctype}, body.encode()
+            return 404, u, {"content-type": "text/html"}, b"<html>not found</html>"
+        return get
+    rss = ("<rss><channel><title>Forum</title><item><title>Acme review — 3 months</title>"
+           "<link>https://forum.example.com/t/acme-review/123/4</link><pubDate>Thu, 20 Nov 2026 10:00:00 +0000</pubDate>"
+           "</item></channel></rss>")
+    blocked = {T: (403, "text/html", "<title>Just a moment...</title>")}
+    r = check_url(T, get=fake(blocked | {"https://forum.example.com/feed": (200, "application/rss+xml", rss)}))
+    assert r["availability"] == BLOCKED and r["evidence_source"] == "RSS/Atom feed" and r["evidence_date"] == "2026-11-20", r
+    assert r["why"].startswith("blocked — evidence from RSS/Atom feed") and verdict(r)[0] == "blocked"
+    idx = ('<sitemapindex><sitemap><loc>https://forum.example.com/sm-old.xml</loc><lastmod>2025-01-01</lastmod></sitemap>'
+           '<sitemap><loc>https://forum.example.com/sm-new.xml</loc><lastmod>2026-11-01</lastmod></sitemap></sitemapindex>')
+    sm = f"<urlset><url><loc>{T}</loc><lastmod>2026-11-02T08:00:00Z</lastmod></url></urlset>"
+    r = check_url(T, get=fake(blocked | {"https://forum.example.com/robots.txt": (200, "text/plain", "Sitemap: https://forum.example.com/smi.xml"),
+                                         "https://forum.example.com/smi.xml": (200, "application/xml", idx),
+                                         "https://forum.example.com/sm-new.xml": (200, "application/xml", sm)}))
+    assert r["evidence_source"] == "sitemap" and r["evidence_date"] == "2026-11-02", r
+    api = json.dumps({"id": 123, "title": "Acme review", "posts_count": 7, "created_at": "2026-10-30T09:00:00Z"})
+    r = check_url(T, get=fake(blocked | {"https://forum.example.com/t/123.json": (200, "application/json", api)}))
+    assert r["evidence_source"] == "Discourse API" and "7 posts" in r["why"] and r["evidence_date"] == "2026-10-30", r
+    r = check_url(T, get=fake(blocked | {"https://forum.example.com/t/123.json": (404, "application/json", '{"errors":["not found"]}')}))
+    assert r["availability"] == GONE and "removed per Discourse API" in r["why"], r
+    r = check_url(T, get=fake(blocked))
+    assert r["availability"] == BLOCKED and not r.get("evidence_source") and "no feed, sitemap or public API" in r["why"]
+    assert verdict(r)[0] == "unknown"
+    wp = "https://blog.example.org/acme-review/"
+    wpj = json.dumps([{"link": wp, "date": "2026-11-11T10:00:00", "title": {"rendered": "Acme review"}}])
+    r = check_url(wp, get=fake({wp: (429, "text/html", ""), "https://blog.example.org/wp-json/wp/v2/posts?slug=acme-review&_fields=link,date,title": (200, "application/json", wpj)}))
+    assert r["evidence_source"] == "WordPress REST API" and r["evidence_date"] == "2026-11-11", r
+    assert evidence_cell({"url": T, "position": 4, "evidence_source": "sitemap", "evidence_date": "2026-11-02"}, "blocked") == \
+        "blocked — evidence from sitemap (2026-11-02) · seen at #4 in the search · indexing not verified"
+    # №90 targeted verification: pick the most promising few, cost first, two separate lists
+    cands = [{"url": "https://forum.a.example/t/acme-review/1", "query": "acme review", "product": "Acme", "type": "forum", "status": "live"},
+             {"url": "https://forum.a.example/t/zeta-review/2", "query": "zeta review", "product": "Zeta", "type": "forum", "status": "live"},
+             {"url": "https://docs.b.example/acme", "query": "acme review", "product": "Acme", "type": "document", "status": "live"},
+             {"url": "https://gone.c.example/acme", "query": "acme review", "product": "Acme", "status": "removed"},
+             {"url": "https://blk.d.example/t/acme/9", "query": "acme reviews", "product": "Acme", "type": "forum", "status": "blocked"},
+             {"url": "https://x.e.example/acme", "query": "acme review", "product": "Acme", "type": "page", "status": "unknown"}]
+    ch = pick(cands, 3)
+    assert [c["url"] for c in ch] == ["https://forum.a.example/t/acme-review/1", "https://docs.b.example/acme",
+                                      "https://blk.d.example/t/acme/9"], ch
+    assert all("gone.c.example" not in c["url"] for c in pick(cands, 10))           # removed pages are never paid for
+    assert len({host_of(c["url"]) for c in ch}) == 3                                # one page per domain first
+    cost = verify_cost(ch, "serpapi")
+    assert cost["index"] == 3 and cost["searches"] == 3 + cost["positions"] and cost["label"].startswith("~")
+    assert verify_cost(ch, "dataforseo")["label"].startswith("~$")
+    seen = []
+
+    def search(q, depth):
+        seen.append(q)
+        if q.startswith("site:forum.a.example"):
+            return [{"position": 1, "url": "https://forum.a.example/t/acme-review/1", "title": "Acme", "snippet": "Acme review thread", "date": "Nov 3, 2026"}]
+        if q == "acme review":
+            return [{"position": 2, "url": "https://docs.b.example/other"}, {"position": 6, "url": "https://forum.a.example/t/acme-review/1/"}]
+        return []
+    res = verify_pages(ch, search, 10, "2026-11-28")
+    by = {r["url"]: r for r in res}
+    z = by["https://forum.a.example/t/acme-review/1"]
+    assert z["indexed"] and z["position"] == 6 and z["index_cell"].startswith("indexed ✓") and z["position_cell"].startswith("#6")
+    d = by["https://docs.b.example/acme"]
+    assert not d["indexed"] and "not in Google's index" in d["index_cell"] and "another page of the domain at #2" in d["position_cell"]
+    assert by["https://blk.d.example/t/acme/9"]["position_cell"].startswith('not in top 10 for "acme reviews"')
+    assert len(seen) == len(set(seen))                                            # one search per unique query
+    import tempfile
+    with tempfile.TemporaryDirectory() as dd:
+        tsv = os.path.join(dd, "c.tsv")
+        with open(tsv, "w", encoding="utf-8") as f:
+            f.write("# found by web search\nhttps://f.example/t/a-review\tacme review\tAcme\tforum\nhttps://f.example/t/a-review/\tdup\n")
+        assert [c["query"] for c in read_candidates(tsv)] == ["acme review"]
     print("self-test ok")
 
 
@@ -1004,9 +1533,17 @@ def main():
     ap.add_argument("--self-test", action="store_true", help="offline test of exclusions and the live-check rules")
     ap.add_argument("--check-urls", help="free page check only: a file with one URL per line (optionally TAB + expected thread title); "
                                          "prints thread availability and indexing eligibility as two fields (№71)")
+    ap.add_argument("--verify", help="№90 targeted verification: a file of hosted results from free discovery "
+                                      "(URL<TAB>target query[<TAB>product][<TAB>type], or a CSV with url/post + query/product); "
+                                      "the top --top pages get a Google index check (site:) and a position check on the user's account")
+    ap.add_argument("--top", type=int, default=VERIFY_TOP, help="how many pages --verify checks in Google (default 5)")
     a = ap.parse_args()
     if a.self_test:
         return self_test()
+    if a.verify:
+        if a.out == "platforms-scan.csv":
+            a.out = "platforms-verify.csv"
+        return verify_cli(a)
     if a.check_urls:
         return check_urls_cli(a.check_urls, a.out if a.out != "platforms-scan.csv" else "")
 
